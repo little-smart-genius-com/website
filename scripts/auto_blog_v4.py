@@ -96,6 +96,22 @@ SITE_BASE_URL = "https://littlesmartgenius.com"
 DAILY_SLOTS = ["keyword", "product", "freebie"]  # 3 articles per day
 PAUSE_BETWEEN_ARTICLES = 30  # seconds
 
+# ── Escalating Schedule ──
+# LAUNCH_DATE env var sets when week counting starts (YYYY-MM-DD)
+# Week 1-3:  3/day → morning(1 keyword) + afternoon(1 product) + evening(1 freebie)
+# Week 4-6:  4/day → +afternoon slot 2 (1 keyword)
+# Week 7-9:  5/day → +morning slot 2 (1 product)
+# Week 10+:  6/day → +evening slot 2 (1 keyword)
+SCHEDULE_SLOTS = {
+    # (hour_start, hour_end): (slot_type, min_week)
+    (8, 9):   ("keyword", 1),    # Morning slot 1: always
+    (9, 10):  ("product", 7),    # Morning slot 2: week 7+
+    (14, 15): ("product", 1),    # Afternoon slot 1: always
+    (15, 16): ("keyword", 4),    # Afternoon slot 2: week 4+
+    (20, 21): ("freebie", 1),    # Evening slot 1: always
+    (21, 22): ("keyword", 10),   # Evening slot 2: week 10+
+}
+
 # Model ranking (preserved)
 MODELS_RANKING = [
     "gemini-2.5-pro", "gemini-2.5-flash", "gemini-exp-1206",
@@ -1414,6 +1430,48 @@ def run_single(slot: str = None):
 # CLI ENTRY POINT
 # ===================================================================
 
+def get_current_week():
+    """Calculate current week number since LAUNCH_DATE."""
+    launch_str = os.environ.get("LAUNCH_DATE", "2026-02-22")
+    try:
+        launch = datetime.strptime(launch_str, "%Y-%m-%d")
+    except ValueError:
+        launch = datetime(2026, 2, 22)
+    delta = datetime.utcnow() - launch
+    return max(1, (delta.days // 7) + 1)
+
+
+def run_schedule():
+    """Schedule-aware generation: checks current UTC hour and week to decide what to generate."""
+    current_hour = datetime.utcnow().hour
+    current_week = get_current_week()
+
+    print(f"\n{'=' * 80}")
+    print(f"  AUTO BLOG V4.0 — SCHEDULE MODE")
+    print(f"  Week: {current_week} | UTC Hour: {current_hour}")
+    print(f"{'=' * 80}")
+
+    # Find matching slot for current hour
+    matched_slot = None
+    matched_min_week = None
+    for (h_start, h_end), (slot_type, min_week) in SCHEDULE_SLOTS.items():
+        if h_start <= current_hour < h_end:
+            matched_slot = slot_type
+            matched_min_week = min_week
+            break
+
+    if not matched_slot:
+        print(f"[SCHEDULE] No slot configured for hour {current_hour}. Skipping.")
+        return
+
+    if current_week < matched_min_week:
+        print(f"[SCHEDULE] Slot '{matched_slot}' requires week {matched_min_week}+, currently week {current_week}. Skipping.")
+        return
+
+    print(f"[SCHEDULE] Running slot '{matched_slot}' (active from week {matched_min_week})")
+    run_single(matched_slot)
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Auto Blog V4.0 — Generation Engine",
@@ -1421,6 +1479,7 @@ def main():
         epilog="""
 Examples:
   python auto_blog_v4.py --batch              # Daily batch (3 articles)
+  python auto_blog_v4.py --schedule           # Schedule-aware (checks hour + week)
   python auto_blog_v4.py --slot keyword       # Single keyword article
   python auto_blog_v4.py --slot product       # Single product article
   python auto_blog_v4.py --slot freebie       # Single freebie article
@@ -1429,6 +1488,7 @@ Examples:
 """
     )
     parser.add_argument("--batch", action="store_true", help="Run daily batch (3 articles)")
+    parser.add_argument("--schedule", action="store_true", help="Schedule-aware generation (checks hour + week)")
     parser.add_argument("--slot", choices=["keyword", "product", "freebie"],
                        help="Generate a single article for this slot")
     parser.add_argument("--stats", action="store_true", help="Show topic pool statistics")
@@ -1444,7 +1504,9 @@ Examples:
             print(f"  {key}: {val}")
         return
 
-    if args.batch:
+    if args.schedule:
+        run_schedule()
+    elif args.batch:
         run_daily_batch()
     elif args.slot:
         run_single(args.slot)

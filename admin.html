@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Dashboard — Little Smart Genius</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --bg2: #111827;
+            --card: #1e2433;
+            --card-hover: #252d3f;
+            --border: #2d3548;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --brand: #f59e0b;
+            --brand-glow: rgba(245, 158, 11, 0.15);
+            --green: #22c55e;
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --purple: #a855f7;
+            --cyan: #06b6d4;
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── LOGIN ── */
+        #loginOverlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            width: 360px;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .login-box p {
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg2);
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            margin-bottom: 16px;
+        }
+
+        .login-box input:focus {
+            border-color: var(--brand);
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--brand), #d97706);
+            color: #000;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform .15s;
+        }
+
+        .login-box button:hover {
+            transform: scale(1.02);
+        }
+
+        .login-error {
+            color: var(--red);
+            font-size: .8rem;
+            margin-top: 8px;
+            display: none;
+        }
+
+        /* ── HEADER ── */
+        .top-bar {
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+
+        .top-bar h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--brand), #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .top-bar .actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .top-bar .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        /* ── TABS ── */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            padding: 16px 32px 0;
+            background: var(--bg);
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            border-radius: 10px 10px 0 0;
+            background: var(--bg2);
+            color: var(--text-dim);
+            font-weight: 600;
+            font-size: .875rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            transition: all .2s;
+        }
+
+        .tab:hover {
+            color: var(--text);
+            background: var(--card);
+        }
+
+        .tab.active {
+            background: var(--card);
+            color: var(--brand);
+            border-color: var(--border);
+        }
+
+        /* ── PANEL ── */
+        .panel {
+            display: none;
+            padding: 24px 32px;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .panel-header h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* ── STAT CARDS ── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .stat-card.orange::before {
+            background: linear-gradient(90deg, var(--brand), #fbbf24);
+        }
+
+        .stat-card.green::before {
+            background: linear-gradient(90deg, var(--green), #4ade80);
+        }
+
+        .stat-card.blue::before {
+            background: linear-gradient(90deg, var(--blue), #60a5fa);
+        }
+
+        .stat-card.purple::before {
+            background: linear-gradient(90deg, var(--purple), #c084fc);
+        }
+
+        .stat-card.cyan::before {
+            background: linear-gradient(90deg, var(--cyan), #22d3ee);
+        }
+
+        .stat-card.red::before {
+            background: linear-gradient(90deg, var(--red), #f87171);
+        }
+
+        .stat-label {
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .stat-sub {
+            font-size: .75rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        /* ── TABLE ── */
+        .tbl-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: var(--bg2);
+            padding: 12px 16px;
+            text-align: left;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: var(--text-dim);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: .875rem;
+        }
+
+        tr:hover td {
+            background: var(--card-hover);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: .7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-ok {
+            background: rgba(34, 197, 94, .15);
+            color: var(--green);
+        }
+
+        .badge-warn {
+            background: rgba(245, 158, 11, .15);
+            color: var(--brand);
+        }
+
+        .badge-error {
+            background: rgba(239, 68, 68, .15);
+            color: var(--red);
+        }
+
+        .badge-cat {
+            background: rgba(99, 102, 241, .15);
+            color: #818cf8;
+        }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: .8rem;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            transition: all .2s;
+        }
+
+        .btn:hover {
+            background: var(--card-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-brand {
+            background: linear-gradient(135deg, var(--brand), #d97706);
+            color: #000;
+            border: none;
+        }
+
+        .btn-brand:hover {
+            box-shadow: 0 4px 20px rgba(245, 158, 11, .3);
+        }
+
+        .btn-red {
+            background: rgba(239, 68, 68, .15);
+            color: var(--red);
+            border-color: rgba(239, 68, 68, .3);
+        }
+
+        .btn-red:hover {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .btn-blue {
+            background: rgba(59, 130, 246, .15);
+            color: var(--blue);
+            border-color: rgba(59, 130, 246, .3);
+        }
+
+        .btn-blue:hover {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .btn-green {
+            background: rgba(34, 197, 94, .15);
+            color: var(--green);
+            border-color: rgba(34, 197, 94, .3);
+        }
+
+        .btn-green:hover {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .btn-sm {
+            padding: 5px 12px;
+            font-size: .75rem;
+        }
+
+        /* ── HEALTH ── */
+        .health-score {
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .health-score.good {
+            color: var(--green);
+        }
+
+        .health-score.ok {
+            color: var(--brand);
+        }
+
+        .health-score.bad {
+            color: var(--red);
+        }
+
+        .issue-list {
+            list-style: none;
+        }
+
+        .issue-item {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .issue-icon {
+            font-size: 1.2rem;
+        }
+
+        /* ── GEN GRID ── */
+        .gen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .gen-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            transition: all .3s;
+        }
+
+        .gen-card:hover {
+            border-color: var(--brand);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .3);
+        }
+
+        .gen-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .gen-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .gen-card p {
+            font-size: .8rem;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+        }
+
+        /* ── TOPICS ── */
+        .topic-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .topic-section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .topic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .topic-tag {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: .75rem;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+        }
+
+        .topic-tag.used {
+            opacity: .4;
+            text-decoration: line-through;
+        }
+
+        /* ── TOAST ── */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 24px;
+            z-index: 10000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all .3s;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .4);
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            border-color: var(--green);
+        }
+
+        .toast.error {
+            border-color: var(--red);
+        }
+
+        /* ── LOADING ── */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-top-color: var(--brand);
+            border-radius: 50%;
+            animation: spin .6s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 14, 26, .8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            z-index: 10;
+        }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 9000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            max-width: 480px;
+            width: 90%;
+        }
+
+        .modal h3 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+        }
+
+        .modal p {
+            font-size: .875rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .modal .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:768px) {
+            .tabs {
+                padding: 12px 16px 0;
+            }
+
+            .panel {
+                padding: 16px;
+            }
+
+            .top-bar {
+                padding: 12px 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════ LOGIN ══════ -->
+    <div id="loginOverlay">
+        <div class="login-box">
+            <h2>🎛️ Admin Dashboard</h2>
+            <p>Little Smart Genius — Project Control Center</p>
+            <input type="password" id="loginPass" placeholder="Enter admin password"
+                onkeydown="if(event.key==='Enter')doLogin()">
+            <button onclick="doLogin()">Access Dashboard</button>
+            <div class="login-error" id="loginError">Wrong password</div>
+        </div>
+    </div>
+
+    <!-- ══════ MAIN ══════ -->
+    <div id="app" style="display:none">
+
+        <div class="top-bar">
+            <h1>🎛️ LSG Admin Dashboard</h1>
+            <div class="actions">
+                <span class="status-dot"></span>
+                <span style="font-size:.8rem;color:var(--text-dim)">Connected</span>
+                <button class="btn btn-sm" onclick="refreshAll()" style="margin-left:12px">🔄 Refresh</button>
+                <button class="btn btn-sm btn-red" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('overview')">📊 Overview</div>
+            <div class="tab" onclick="switchTab('articles')">📝 Articles</div>
+            <div class="tab" onclick="switchTab('generator')">⚡ Generator</div>
+            <div class="tab" onclick="switchTab('health')">🏥 Health</div>
+            <div class="tab" onclick="switchTab('topics')">🔑 Topics</div>
+        </div>
+
+        <!-- ══════ OVERVIEW ══════ -->
+        <div class="panel active" id="panel-overview">
+            <div class="panel-header">
+                <h2>📊 Vue d'ensemble</h2>
+            </div>
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card orange">
+                    <div class="stat-label">Articles</div>
+                    <div class="stat-value" id="s-articles">—</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="stat-label">Images</div>
+                    <div class="stat-value" id="s-images">—</div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="stat-label">Instagram</div>
+                    <div class="stat-value" id="s-ig">—</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-label">Health Score</div>
+                    <div class="stat-value" id="s-health">—</div>
+                </div>
+                <div class="stat-card cyan">
+                    <div class="stat-label">Keywords restants</div>
+                    <div class="stat-value" id="s-kw">—</div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-label">Problèmes</div>
+                    <div class="stat-value" id="s-issues">—</div>
+                </div>
+            </div>
+            <h3 style="margin-bottom:12px">Catégories</h3>
+            <div id="categoriesGrid" class="stats-grid"></div>
+        </div>
+
+        <!-- ══════ ARTICLES ══════ -->
+        <div class="panel" id="panel-articles">
+            <div class="panel-header">
+                <h2>📝 Articles (<span id="articleCount">0</span>)</h2>
+                <button class="btn btn-brand" onclick="triggerGenerate('batch')">⚡ Générer Batch</button>
+            </div>
+            <div class="tbl-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Catégorie</th>
+                            <th>Date</th>
+                            <th>Images</th>
+                            <th>IG</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="articlesTbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ══════ GENERATOR ══════ -->
+        <div class="panel" id="panel-generator">
+            <div class="panel-header">
+                <h2>⚡ Générateur de Contenu</h2>
+            </div>
+            <p style="color:var(--text-dim);margin-bottom:20px;">Déclenchez la génération d'articles directement depuis
+                le dashboard. Chaque action lance un workflow GitHub Actions.</p>
+            <div class="gen-grid">
+                <div class="gen-card">
+                    <div class="icon">🔍</div>
+                    <h3>Article Keyword</h3>
+                    <p>Article SEO basé sur un mot-clé de votre liste keywords.txt</p>
+                    <button class="btn btn-brand" onclick="triggerGenerate('keyword')">Générer Keyword</button>
+                </div>
+                <div class="gen-card">
+                    <div class="icon">🛒</div>
+                    <h3>Article Produit</h3>
+                    <p>Review/showcase d'un produit TpT de votre boutique</p>
+                    <button class="btn btn-brand" onclick="triggerGenerate('product')">Générer Product</button>
+                </div>
+                <div class="gen-card">
+                    <div class="icon">🎁</div>
+                    <h3>Article Freebie</h3>
+                    <p>Tutoriel pour un freebie avec lien de téléchargement</p>
+                    <button class="btn btn-brand" onclick="triggerGenerate('freebie')">Générer Freebie</button>
+                </div>
+                <div class="gen-card">
+                    <div class="icon">📦</div>
+                    <h3>Batch Complet</h3>
+                    <p>Génère 1 keyword + 1 product + 1 freebie d'un coup</p>
+                    <button class="btn btn-brand" onclick="triggerGenerate('batch')">Lancer Batch</button>
+                </div>
+                <div class="gen-card">
+                    <div class="icon">🏗️</div>
+                    <h3>Rebuild Site</h3>
+                    <p>Reconstruit les HTML, sitemap et index sans générer de contenu</p>
+                    <button class="btn btn-blue" onclick="triggerGenerate('build-only')">Rebuild</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════ HEALTH ══════ -->
+        <div class="panel" id="panel-health">
+            <div class="panel-header">
+                <h2>🏥 Analyseur de Santé</h2>
+                <button class="btn btn-green" onclick="loadHealth()">🔄 Re-analyser</button>
+            </div>
+            <div style="text-align:center">
+                <div id="healthScore" class="health-score good">—</div>
+                <p style="color:var(--text-dim);margin-bottom:20px">Score de santé global</p>
+            </div>
+            <div class="stats-grid" style="margin-bottom:20px">
+                <div class="stat-card green">
+                    <div class="stat-label">Articles</div>
+                    <div class="stat-value" id="h-articles">—</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="stat-label">Images</div>
+                    <div class="stat-value" id="h-images">—</div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="stat-label">Instagram</div>
+                    <div class="stat-value" id="h-ig">—</div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-label">Problèmes</div>
+                    <div class="stat-value" id="h-issues">—</div>
+                </div>
+            </div>
+            <h3 style="margin-bottom:12px">Détails des problèmes</h3>
+            <ul class="issue-list" id="issueList"></ul>
+            <p id="noIssues" style="display:none;text-align:center;color:var(--green);padding:24px;font-weight:600;">✅
+                Aucun problème détecté — Votre site est en parfaite santé !</p>
+        </div>
+
+        <!-- ══════ TOPICS ══════ -->
+        <div class="panel" id="panel-topics">
+            <div class="panel-header">
+                <h2>🔑 Gestion des Topics</h2>
+            </div>
+            <div id="topicsContainer"></div>
+        </div>
+
+    </div>
+
+    <!-- ══════ DELETE MODAL ══════ -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal">
+            <h3>🗑️ Confirmer la suppression</h3>
+            <p>Êtes-vous sûr de vouloir supprimer <strong id="deleteSlugName"></strong> ?<br>
+                Tous les fichiers liés seront supprimés : HTML, JSON, images, Instagram, sitemap et index.</p>
+            <div class="btn-group">
+                <button class="btn" onclick="closeModal()">Annuler</button>
+                <button class="btn btn-red" id="confirmDeleteBtn" onclick="confirmDelete()">🗑️ Supprimer tout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════ TOAST ══════ -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ═══════════════════════════════════════════════════════
+        // CONFIG
+        // ═══════════════════════════════════════════════════════
+        const API_BASE = "/.netlify/functions/admin-api";
+        let AUTH_TOKEN = "";
+        let pendingDeleteSlug = "";
+
+        // ═══════════════════════════════════════════════════════
+        // AUTH
+        // ═══════════════════════════════════════════════════════
+        function doLogin() {
+            const pass = document.getElementById("loginPass").value;
+            if (!pass) return;
+            AUTH_TOKEN = pass;
+            // Test auth with a simple call
+            apiFetch("stats").then(data => {
+                document.getElementById("loginOverlay").style.display = "none";
+                document.getElementById("app").style.display = "block";
+                localStorage.setItem("lsg_admin_token", pass);
+                refreshAll();
+            }).catch(err => {
+                document.getElementById("loginError").style.display = "block";
+            });
+        }
+
+        function logout() {
+            localStorage.removeItem("lsg_admin_token");
+            location.reload();
+        }
+
+        // Auto-login
+        (function () {
+            const saved = localStorage.getItem("lsg_admin_token");
+            if (saved) {
+                AUTH_TOKEN = saved;
+                apiFetch("stats").then(() => {
+                    document.getElementById("loginOverlay").style.display = "none";
+                    document.getElementById("app").style.display = "block";
+                    refreshAll();
+                }).catch(() => {
+                    localStorage.removeItem("lsg_admin_token");
+                });
+            }
+        })();
+
+        // ═══════════════════════════════════════════════════════
+        // API
+        // ═══════════════════════════════════════════════════════
+        async function apiFetch(action, params = {}, method = "GET") {
+            const qs = new URLSearchParams({ action, ...params }).toString();
+            const res = await fetch(`${API_BASE}?${qs}`, {
+                method,
+                headers: { Authorization: `Bearer ${AUTH_TOKEN}` },
+            });
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({ error: "Network error" }));
+                throw new Error(err.error || `HTTP ${res.status}`);
+            }
+            return res.json();
+        }
+
+        // ═══════════════════════════════════════════════════════
+        // TABS
+        // ═══════════════════════════════════════════════════════
+        function switchTab(name) {
+            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+            document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+            document.getElementById(`panel-${name}`).classList.add("active");
+            event.target.classList.add("active");
+
+            // Lazy-load data
+            if (name === "articles" && !document.getElementById("articlesTbody").children.length) loadArticles();
+            if (name === "health" && document.getElementById("healthScore").textContent === "—") loadHealth();
+            if (name === "topics" && !document.getElementById("topicsContainer").children.length) loadTopics();
+        }
+
+        // ═══════════════════════════════════════════════════════
+        // REFRESH ALL
+        // ═══════════════════════════════════════════════════════
+        async function refreshAll() {
+            try {
+                const [stats, health] = await Promise.all([
+                    apiFetch("stats"),
+                    apiFetch("health"),
+                ]);
+                renderStats(stats);
+                renderHealthOverview(health);
+            } catch (e) {
+                toast("Erreur: " + e.message, "error");
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════
+        // STATS
+        // ═══════════════════════════════════════════════════════
+        function renderStats(data) {
+            document.getElementById("s-articles").textContent = data.articles;
+            document.getElementById("s-images").textContent = data.images;
+            document.getElementById("s-ig").textContent = data.instagram;
+            document.getElementById("s-kw").textContent = data.topics?.keyword?.total
+                ? `${data.topics.keyword.total - data.topics.keyword.used} / ${data.topics.keyword.total}`
+                : "—";
+
+            // Categories
+            const grid = document.getElementById("categoriesGrid");
+            grid.innerHTML = "";
+            const colors = ["orange", "blue", "purple", "green", "cyan", "red"];
+            let i = 0;
+            for (const [cat, count] of Object.entries(data.categories || {}).sort((a, b) => b[1] - a[1])) {
+                grid.innerHTML += `<div class="stat-card ${colors[i % colors.length]}"><div class="stat-label">${esc(cat)}</div><div class="stat-value">${count}</div></div>`;
+                i++;
+            }
+        }
+
+        function renderHealthOverview(data) {
+            const el = document.getElementById("s-health");
+            el.textContent = data.score + "%";
+            document.getElementById("s-issues").textContent = data.issueCount;
+        }
+
+        // ═══════════════════════════════════════════════════════
+        // ARTICLES
+        // ═══════════════════════════════════════════════════════
+        async function loadArticles() {
+            const tbody = document.getElementById("articlesTbody");
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px"><div class="spinner"></div> Chargement...</td></tr>';
+            try {
+                const data = await apiFetch("articles");
+                document.getElementById("articleCount").textContent = data.total;
+                tbody.innerHTML = "";
+                data.articles.forEach(a => {
+                    const statusClass = a.health === "ok" ? "badge-ok" : "badge-warn";
+                    const statusText = a.health === "ok" ? "OK" : "⚠️";
+                    const date = a.date ? new Date(a.date).toLocaleDateString("fr-FR") : "—";
+                    tbody.innerHTML += `<tr>
+                <td style="max-width:300px"><strong>${esc(a.title || a.slug)}</strong></td>
+                <td><span class="badge badge-cat">${esc(a.category || "—")}</span></td>
+                <td style="white-space:nowrap">${date}</td>
+                <td>${a.imageCount || 0}</td>
+                <td>${a.hasInstagram ? "✅" : "❌"}</td>
+                <td><span class="badge ${statusClass}">${statusText}</span></td>
+                <td><button class="btn btn-red btn-sm" onclick="askDelete('${esc(a.slug)}')">🗑️</button></td>
+            </tr>`;
+                });
+            } catch (e) {
+                tbody.innerHTML = `<tr><td colspan="7" style="color:var(--red);text-align:center">Erreur: ${esc(e.message)}</td></tr>`;
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════
+        // DELETE
+        // ═══════════════════════════════════════════════════════
+        function askDelete(slug) {
+            pendingDeleteSlug = slug;
+            document.getElementById("deleteSlugName").textContent = slug;
+            document.getElementById("deleteModal").classList.add("show");
+        }
+        function closeModal() {
+            document.getElementById("deleteModal").classList.remove("show");
+            pendingDeleteSlug = "";
+        }
+        async function confirmDelete() {
+            if (!pendingDeleteSlug) return;
+            const btn = document.getElementById("confirmDeleteBtn");
+            btn.innerHTML = '<div class="spinner"></div> Suppression...';
+            btn.disabled = true;
+            try {
+                const result = await apiFetch("delete", { slug: pendingDeleteSlug }, "DELETE");
+                toast(`✅ ${result.totalDeleted} fichiers supprimés pour "${pendingDeleteSlug}"`, "success");
+                closeModal();
+                loadArticles();
+                refreshAll();
+            } catch (e) {
+                toast("❌ Erreur: " + e.message, "error");
+            }
+            btn.innerHTML = "🗑️ Supprimer tout";
+            btn.disabled = false;
+        }
+
+        // ═══════════════════════════════════════════════════════
+        // HEALTH
+        // ═══════════════════════════════════════════════════════
+        async function loadHealth() {
+            const scoreEl = document.getElementById("healthScore");
+            scoreEl.textContent = "...";
+            scoreEl.className = "health-score";
+            try {
+                const data = await apiFetch("health");
+                scoreEl.textContent = data.score + "%";
+                scoreEl.className = "health-score " + (data.score >= 90 ? "good" : data.score >= 70 ? "ok" : "bad");
+                document.getElementById("h-articles").textContent = data.totalArticles;
+                document.getElementById("h-images").textContent = data.totalImages;
+                document.getElementById("h-ig").textContent = data.totalInstagram;
+                document.getElementById("h-issues").textContent = data.issueCount;
+
+                const list = document.getElementById("issueList");
+                const noIssues = document.getElementById("noIssues");
+                list.innerHTML = "";
+                if (data.issues.length === 0) {
+                    noIssues.style.display = "block";
+                } else {
+                    noIssues.style.display = "none";
+                    data.issues.forEach(iss => {
+                        const icon = iss.type === "error" ? "🔴" : "🟡";
+                        list.innerHTML += `<li class="issue-item"><span class="issue-icon">${icon}</span><span>${esc(iss.message)}</span><span class="badge badge-cat" style="margin-left:auto">${esc(iss.category)}</span></li>`;
+                    });
+                }
+            } catch (e) {
+                scoreEl.textContent = "ERR";
+                scoreEl.className = "health-score bad";
+                toast("Erreur health: " + e.message, "error");
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════
+        // GENERATOR
+        // ═══════════════════════════════════════════════════════
+        async function triggerGenerate(slot) {
+            if (!confirm(`Lancer la génération "${slot}" ? Un workflow GitHub Actions sera déclenché.`)) return;
+            try {
+                await apiFetch("generate", { slot }, "POST");
+                toast(`✅ Workflow "${slot}" déclenché ! Vérifiez l'avancement sur GitHub Actions.`, "success");
+            } catch (e) {
+                toast("❌ Erreur: " + e.message, "error");
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════
+        // TOPICS
+        // ═══════════════════════════════════════════════════════
+        async function loadTopics() {
+            const container = document.getElementById("topicsContainer");
+            container.innerHTML = '<div style="text-align:center;padding:40px"><div class="spinner"></div></div>';
+            try {
+                const data = await apiFetch("topics");
+
+                let html = "";
+
+                // Keywords section
+                html += `<div class="topic-section">
+            <h3>🔍 Keywords (${data.remaining.keywordCount} restants / ${data.allKeywords.length} total)</h3>
+            <div class="topic-tags">`;
+                const usedKW = new Set(data.used.keyword || []);
+                data.allKeywords.forEach(kw => {
+                    html += `<span class="topic-tag ${usedKW.has(kw) ? 'used' : ''}">${esc(kw)}</span>`;
+                });
+                html += `</div></div>`;
+
+                // Products section
+                const usedProd = data.used.product || [];
+                html += `<div class="topic-section">
+            <h3>🛒 Produits utilisés (${usedProd.length})</h3>
+            <div class="topic-tags">`;
+                usedProd.forEach(p => { html += `<span class="topic-tag used">${esc(p)}</span>`; });
+                html += `</div></div>`;
+
+                // Freebies section
+                const usedFree = data.used.freebie || [];
+                html += `<div class="topic-section">
+            <h3>🎁 Freebies utilisés (${usedFree.length})</h3>
+            <div class="topic-tags">`;
+                usedFree.forEach(f => { html += `<span class="topic-tag used">${esc(f)}</span>`; });
+                html += `</div></div>`;
+
+                container.innerHTML = html;
+            } catch (e) {
+                container.innerHTML = `<p style="color:var(--red)">Erreur: ${esc(e.message)}</p>`;
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════
+        // UTILS
+        // ═══════════════════════════════════════════════════════
+        function esc(str) {
+            if (!str) return "";
+            const d = document.createElement("div");
+            d.textContent = str;
+            return d.innerHTML;
+        }
+
+        function toast(msg, type = "success") {
+            const t = document.getElementById("toast");
+            t.textContent = msg;
+            t.className = `toast show ${type}`;
+            setTimeout(() => t.className = "toast", 4000);
+        }
+    </script>
+</body>
+
+</html>
