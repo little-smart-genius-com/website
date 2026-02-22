@@ -1,0 +1,43 @@
+# System / IDE
+.env
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+
+# Chrome Automation
+chrome_profile/
+undetected_chromedriver/
+logs/
+selenium_logs/
+
+# Temporary / Build Files
+tmp/
+dist/
+build/
+*.bak
+*.tmp
+_compare_json.py
+_inspect_cooking.py
+_check_images.py
+_fix_cooking_images.py
+_test_webhook.py
+_publish_all_ig.py
+_test_single_post.py
+
+# Large Assets / Data (Keep JSON and small images)
+# instagram/
+# posts/
+# images/
+
+# Sensitive data
+!_check_images.py
+!.gitignore

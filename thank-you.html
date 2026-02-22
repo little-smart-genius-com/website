@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Little Smart Genius</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { brand: '#F48C06' } } }
+        }
+    </script>
+
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --bg: #FAFAFA;
+            --text: #1E293B;
+            --card: #FFFFFF;
+            --head: rgba(255, 255, 255, 0.95);
+            --bord: #E2E8F0;
+        }
+
+        .dark {
+            --bg: #0F172A;
+            --text: #F8FAFC;
+            --card: #1E293B;
+            --head: rgba(15, 23, 42, 0.95);
+            --bord: #334155;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            transition: 0.3s;
+        }
+
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--head);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--bord);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px md:padding-0-40px;
+            transition: 0.3s;
+        }
+
+        /* Padding ajusté pour mobile (20px) et desktop (40px) via Tailwind classes dans le HTML plus bas */
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #F48C06;
+            object-fit: cover;
+        }
+
+        .nav-link {
+            font-weight: 700;
+            color: #64748B;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #F48C06;
+        }
+
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-bottom: 1px solid var(--bord);
+            flex-direction: column;
+            padding: 20px;
+            z-index: 49;
+        }
+
+        .paper-plane {
+            font-size: 60px;
+            animation: fly 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(-5deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top-header px-5 md:px-10">
+        <a href="index.html" class="flex items-center gap-3 no-underline">
+            <img src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+                class="logo-img" alt="Logo">
+            <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span
+                    class="text-brand">.</span></span>
+        </a>
+
+        <nav class="hidden lg:flex gap-8">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="products.html" class="nav-link">Store</a>
+            <a href="freebies.html" class="nav-link">Freebies</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link active">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+                class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition">TpT
+                Store</a>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition"
+                onclick="toggleTheme()"><span id="theme-icon">🌙</span></div>
+            <button class="block lg:hidden text-2xl" style="color:var(--text)" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </header>
+
+    <div id="mobile-menu">
+        <a href="index.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
+        <a href="products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
+        <a href="freebies.html" class="py-3 border-b border-gray-200 font-bold">Freebies</a>
+        <a href="blog.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Blog</a>
+        <a href="about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">About</a>
+        <a href="contact.html" class="py-3 border-b border-gray-200 font-bold text-brand">Contact</a>
+        <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+            class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg">Visit TpT Store</a>
+    </div>
+
+    <div class="min-h-screen flex flex-col justify-center items-center px-6 text-center pt-24 pb-12">
+        <div
+            class="p-8 md:p-12 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xl max-w-lg w-full relative overflow-hidden transition-colors duration-300">
+            <div class="absolute top-0 left-0 w-full h-2 bg-brand"></div>
+            <div class="paper-plane mb-6">🚀</div>
+
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-4" style="color:var(--text)">Message Received!</h1>
+
+            <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed transition-colors duration-300">
+                Thanks for reaching out to us. We have received your message and our team will get back to you shortly.
+            </p>
+
+            <div
+                class="bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-xl p-4 mb-8 transition-colors duration-300">
+                <p class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-1">Response Time</p>
+                <p class="text-xs text-slate-600 dark:text-slate-300">We usually reply within <strong>24-48
+                        hours</strong>. Check your spam folder if you don't hear from us!</p>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <a href="index.html"
+                    class="block w-full py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-brand transition shadow-lg">Back
+                    to Home</a>
+                <a href="products.html"
+                    class="block w-full py-4 border-2 border-slate-200 dark:border-slate-700 font-bold rounded-xl hover:text-brand hover:border-brand transition"
+                    style="color:var(--text)">Visit our Store</a>
+            </div>
+        </div>
+    </div>
+
+    <footer
+        class="text-center text-slate-400 text-xs py-6 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
+        <div class="flex justify-center gap-4 mb-2">
+            <a href="terms.html" class="hover:text-brand transition">Terms of Service</a>
+            <span>•</span>
+            <a href="privacy.html" class="hover:text-brand transition">Privacy Policy</a>
+        </div>
+        &copy; 2026 Little Smart Genius. All rights reserved.
+    </footer>
+
+    <script>
+        // --- LOGIQUE DARK MODE ---
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').innerHTML = '☀️';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').innerHTML = '🌙';
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').innerHTML = isDark ? '☀️' : '🌙';
+        }
+
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // Init au chargement
+        initTheme();
+    </script>
+
+    <div id="cookie-banner"
+        class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0">
+        <div class="flex items-start gap-4">
+            <div class="text-3xl">🍪</div>
+            <div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                    We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
+                    our <a href="privacy.html" class="text-brand font-bold hover:underline">Privacy Policy</a>.
+                </p>
+                <div class="flex gap-3">
+                    <button onclick="acceptCookies()"
+                        class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md">
+                        Accept
+                    </button>
+                    <button onclick="closeCookies()"
+                        class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logique du Bandeau Cookie
+        window.addEventListener('load', function () {
+            // Vérifie si l'utilisateur a déjà accepté
+            if (!localStorage.getItem('cookieConsent')) {
+                const banner = document.getElementById('cookie-banner');
+                banner.classList.remove('hidden');
+                // Petit délai pour l'animation d'entrée
+                setTimeout(() => {
+                    banner.classList.remove('translate-y-20', 'opacity-0');
+                }, 100);
+            }
+        });
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'true');
+            hideBanner();
+            // Ici, vous pourriez déclencher Google Analytics si vous l'ajoutez plus tard
+        }
+
+        function closeCookies() {
+            // Optionnel : enregistrer le refus ou juste fermer
+            hideBanner();
+        }
+
+        function hideBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                banner.classList.add('hidden');
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>

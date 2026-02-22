@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freebies Library | Little Smart Genius</title>
+    <meta name="description"
+        content="Download 40+ free educational printables for kids — worksheets, activities, and resources for math, reading, science, and more. No signup required.">
+    <link rel="icon"
+        href="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+        type="image/jpeg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Educational Printables | Little Smart Genius">
+    <meta property="og:description"
+        content="Download 40+ free educational printables for kids — worksheets, activities, and resources. No signup required.">
+    <meta property="og:image"
+        content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg">
+    <meta property="og:url" content="https://littlesmartgenius.com/freebies.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Educational Printables | Little Smart Genius">
+    <meta name="twitter:description" content="40+ free educational printables for kids. No signup required.">
+    <meta name="twitter:image"
+        content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { brand: '#F48C06' } } }
+        }
+    </script>
+
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --bg: #FAFAFA;
+            --text: #1E293B;
+            --card: #FFFFFF;
+            --head: rgba(255, 255, 255, 0.95);
+            --bord: #E2E8F0;
+            --btn-bg: #F1F5F9;
+            --btn-text: #F48C06;
+        }
+
+        .dark {
+            --bg: #0F172A;
+            --text: #F8FAFC;
+            --card: #1E293B;
+            --head: rgba(15, 23, 42, 0.95);
+            --bord: #334155;
+            --btn-bg: #334155;
+            --btn-text: #F48C06;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            transition: 0.3s;
+        }
+
+        /* HEADER */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--head);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--bord);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px md:padding-0-40px;
+            transition: 0.3s;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #F48C06;
+            object-fit: cover;
+        }
+
+        .nav-link {
+            font-weight: 700;
+            color: #64748B;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #F48C06;
+        }
+
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-bottom: 1px solid var(--bord);
+            flex-direction: column;
+            padding: 20px;
+            z-index: 49;
+        }
+
+        /* Modal */
+        #email-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        #email-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Honeypot */
+        .hp-field {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 0;
+            z-index: -1;
+        }
+
+        /* Social Proof Toast (NOUVEAU DESIGN) */
+        #social-proof-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--card);
+            border: 1px solid var(--bord);
+            padding: 12px 16px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            z-index: 40;
+            transform: translateY(120px);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-width: 320px;
+        }
+
+        #social-proof-toast.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .sp-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #FFF7ED;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+            border: 1px solid #FFE4E6;
+        }
+
+        .dark .sp-img {
+            background: #334155;
+            border-color: #475569;
+        }
+
+        /* Styles Cartes & Compteur */
+        .activity-card {
+            background-color: var(--card);
+            border: 1px solid var(--bord);
+            transition: all 0.3s;
+            animation: fadeIn 0.5s ease-out;
+            color: var(--text);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(244, 140, 6, 0.15);
+            border-color: #F48C06;
+        }
+
+        .activity-card:hover .emoji-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .emoji-icon {
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .card-btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            transition: 0.3s;
+        }
+
+        .dark .card-btn {
+            background-color: #334155;
+            color: #F48C06;
+        }
+
+        .activity-card:hover .card-btn {
+            background-color: #F48C06;
+            color: white;
+        }
+
+        .countdown-box {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .time-unit {
+            text-align: center;
+            min-width: 45px;
+        }
+
+        .time-val {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #F48C06;
+            line-height: 1;
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+        }
+
+        .time-label {
+            font-size: 0.60rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .separator {
+            font-size: 1.2rem;
+            color: #64748B;
+            padding-bottom: 15px;
+        }
+
+        .filter-btn {
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .filter-btn.active {
+            background-color: #F48C06;
+            color: white;
+            border-color: #F48C06;
+            box-shadow: 0 4px 10px rgba(244, 140, 6, 0.3);
+        }
+
+        .filter-btn:not(.active) {
+            background-color: #F1F5F9;
+            color: #1E293B;
+        }
+
+        .filter-btn:hover:not(.active) {
+            background-color: rgba(244, 140, 6, 0.1);
+            color: #F48C06;
+            border-color: #F48C06;
+        }
+
+        .input-error {
+            border-color: #EF4444 !important;
+            background-color: #FEF2F2 !important;
+        }
+
+        .dark .input-error {
+            background-color: #450a0a !important;
+        }
+
+        .custom-checkbox {
+            accent-color: #F48C06;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .top-header {
+                padding: 0 20px;
+            }
+
+            #filter-scroll {
+                overflow-x: auto;
+                padding-bottom: 10px;
+                justify-content: flex-start;
+            }
+
+            .filter-btn {
+                flex-shrink: 0;
+            }
+
+            .countdown-box {
+                gap: 5px;
+                padding: 10px 15px;
+            }
+
+            .time-val {
+                font-size: 1.2rem;
+            }
+
+            #social-proof-toast {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                max-width: none;
+            }
+        }
+    </style>
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1S8G205JX2');
+    </script>
+
+<style>
+    .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+    .social-footer-bar a {
+        width: 40px; height: 40px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(244, 140, 6, 0.1); color: #F48C06;
+        transition: all 0.3s; text-decoration: none;
+    }
+    .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+    .social-footer-bar svg { width: 20px; height: 20px; }
+    .site-footer { text-align: center; padding: 15px 20px 25px; color: #94A3B8; font-size: 0.75rem; }
+    .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+    .site-footer a:hover { color: #F48C06; }
+</style>
+</head>
+
+<body>
+    <header class="top-header px-5 md:px-10">
+        <a href="index.html" class="flex items-center gap-3 no-underline">
+            <img src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+                class="logo-img">
+            <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span
+                    class="text-brand">.</span></span>
+        </a>
+
+        <nav class="hidden lg:flex gap-8">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="products.html" class="nav-link">Store</a>
+            <a href="freebies.html" class="nav-link active">Freebies</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+
+            <div class="hidden lg:flex items-center gap-2 mr-3">
+                <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+                </a>
+                <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                </a>
+            </div>
+
+            <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+                class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition">TpT
+                Store</a>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition"
+                onclick="toggleTheme()"><span id="theme-icon">🌙</span></div>
+            <button class="block lg:hidden text-2xl" style="color:var(--text)" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </header>
+
+    <div id="mobile-menu">
+        <a href="index.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
+        <a href="products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
+        <a href="freebies.html" class="py-3 border-b border-gray-200 font-bold text-brand">Freebies</a>
+        <a href="blog.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Blog</a>
+        <a href="about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">About</a>
+        <a href="contact.html" class="py-3 font-bold" style="color:var(--text)">Contact</a>
+        <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+            class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg">Visit TpT Store</a>
+    </div>
+
+    <div class="pt-32 px-6 max-w-7xl mx-auto text-center mb-8">
+        <div
+            class="inline-block px-3 py-1 mb-4 rounded-full bg-orange-100 text-brand text-[10px] font-bold tracking-widest uppercase border border-orange-200">
+            ✨ Free Resources for You, Kids & Students
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight" style="color:var(--text)">
+            The Ultimate <span class="text-brand">Freebie</span> Library
+        </h1>
+        <p class="text-slate-500 max-w-3xl mx-auto text-lg mb-8">
+            Explore our vast collection of <strong>Printables</strong>, <strong>Worksheets</strong>, and <strong>Brain
+                Puzzles</strong>. Everything is 100% Downloadable & Printable.
+        </p>
+
+        <div class="flex justify-center">
+            <div class="countdown-box">
+                <div class="text-left hidden md:block border-r border-white/20 pr-4 mr-2">
+                    <p class="text-xs font-bold text-slate-300 uppercase">Next Content Drop</p>
+                    <p class="text-[10px] text-brand font-bold">Every Sunday @ 7PM EST</p>
+                </div>
+                <div class="flex gap-2 items-center">
+                    <span class="text-2xl mr-2">🚀</span>
+                    <div class="time-unit">
+                        <div class="time-val" id="days">00</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <span class="separator">:</span>
+                    <div class="time-unit">
+                        <div class="time-val" id="hours">00</div>
+                        <div class="time-label">Hours</div>
+                    </div>
+                    <span class="separator">:</span>
+                    <div class="time-unit">
+                        <div class="time-val" id="minutes">00</div>
+                        <div class="time-label">Mins</div>
+                    </div>
+                    <span class="separator">:</span>
+                    <div class="time-unit">
+                        <div class="time-val" id="seconds">00</div>
+                        <div class="time-label">Secs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-xs text-slate-400 font-medium animate-pulse">New puzzles added every Sunday!</p>
+    </div>
+
+    <div class="px-6 max-w-7xl mx-auto mb-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex flex-nowrap md:flex-wrap gap-2 w-full md:w-auto" id="filter-scroll">
+            <button onclick="filterSelection('all')"
+                class="filter-btn active px-5 py-2 rounded-full font-bold text-sm">All</button>
+            <button onclick="filterSelection('creative')" class="filter-btn px-5 py-2 rounded-full font-bold text-sm">🎨
+                Creative</button>
+            <button onclick="filterSelection('logic')" class="filter-btn px-5 py-2 rounded-full font-bold text-sm">🧠
+                Logic</button>
+            <button onclick="filterSelection('math')" class="filter-btn px-5 py-2 rounded-full font-bold text-sm">🔢
+                Math</button>
+            <button onclick="filterSelection('word')" class="filter-btn px-5 py-2 rounded-full font-bold text-sm">📝
+                Words</button>
+        </div>
+
+        <button id="bulk-dl-btn" onclick="handleBulkDownload()"
+            class="w-full md:w-auto px-6 py-3 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:bg-brand hover:shadow-brand/50 transition flex items-center justify-center gap-2 border border-transparent">
+            <span>📥</span> <span id="bulk-dl-text">Download Full Pack</span>
+        </button>
+    </div>
+
+    <div class="px-6 pb-20 max-w-7xl mx-auto">
+        <div id="activities-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"></div>
+        <p id="no-results" class="hidden text-center text-slate-400 py-10 font-medium">No activities found in this
+            category.</p>
+    </div>
+
+    <div id="social-proof-toast">
+        <div class="sp-img" id="sp-icon">🎁</div>
+        <div id="sp-content">
+        </div>
+    </div>
+
+    <div id="email-modal">
+        <div
+            class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold">&times;</button>
+
+            <div id="modal-new-user" class="text-center">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-brand mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block"
+                    id="product-name-display">Product Name</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto" id="product-desc-display">Description...
+                </p>
+
+                <input type="text" id="website-honeypot" class="hp-field" tabindex="-1" autocomplete="off">
+
+                <input type="email" id="user-email" placeholder="your@email.com"
+                    class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-brand mb-4 transition">
+
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input type="checkbox" id="consent-check" class="custom-checkbox mt-1">
+                    <label for="consent-check" class="text-[10px] text-slate-500 leading-snug cursor-pointer">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a href="terms.html" target="_blank" class="text-brand underline">Terms & Conditions</a>, and I
+                        accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+
+                <button onclick="submitEmail()"
+                    class="w-full py-3 bg-brand text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition">Send
+                    it to me!</button>
+            </div>
+
+            <div id="modal-returning-user" class="text-center hidden">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Sending:</p>
+                <p class="text-sm font-bold text-brand mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block"
+                    id="product-name-display-return">Product Name</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto" id="product-desc-display-return">
+                    Description...</p>
+
+                <p class="text-sm text-slate-500 mb-2">Use saved email:</p>
+                <div class="bg-slate-100 dark:bg-slate-900 p-3 rounded-lg font-mono text-sm text-brand mb-6 border border-slate-200 dark:border-slate-700 break-all"
+                    id="saved-email-display">
+                    user@example.com
+                </div>
+
+                <button onclick="processDownload()"
+                    class="w-full py-3 bg-brand text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3">
+                    Yes, Send Here
+                </button>
+                <button onclick="resetEmail()"
+                    class="text-xs text-slate-400 hover:text-red-500 underline decoration-dotted">Change Email</button>
+            </div>
+
+            <div id="modal-success" class="text-center hidden">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+
+                <div id="resend-container">
+                    <button onclick="handleResend()"
+                        class="text-xs font-bold text-slate-400 hover:text-brand underline decoration-dotted transition"
+                        id="resend-btn">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+
+                <div id="direct-download-container"
+                    class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower
+                        than usual. Please use this direct link:</p>
+                    <a id="direct-dl-link" href="#" target="_blank"
+                        class="w-full block py-2 border-2 border-brand text-brand font-bold rounded-xl hover:bg-brand hover:text-white transition text-sm">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="download_links.js"></script>
+    <script src="social_proof.js"></script>
+
+    <script>
+        // --- DATA STRUCTURE (UI) ---
+        const activitiesData = [
+            // LOGIC
+            { name: "Tic Tac Toe", icon: "❌", category: "logic" },
+            { name: "Tic Tac Logic", icon: "🧠", category: "logic" },
+            { name: "Nurikabe", icon: "⬜", category: "logic" },
+            { name: "Hitori", icon: "1️⃣", category: "logic" },
+            { name: "Kakurasu", icon: "🔢", category: "logic" },
+            { name: "Shikaku", icon: "⏹️", category: "logic" },
+            { name: "Four In A Row", icon: "🔴", category: "logic" },
+            { name: "Skyscrapper", icon: "🏙️", category: "logic" },
+            { name: "Mine Finder", icon: "💣", category: "logic" },
+            { name: "Warships", icon: "🚢", category: "logic" },
+            { name: "Logic Puzzle (Adult)", icon: "💡", category: "logic" },
+            // WORDS
+            { name: "ABC Path", icon: "🔤", category: "word" },
+            { name: "Hangman", icon: "😵", category: "word" },
+            { name: "Word Search", icon: "🔍", category: "word" },
+            { name: "Crossword", icon: "📝", category: "word" },
+            { name: "Missing Vowels", icon: "🅰️", category: "word" },
+            { name: "Word Scramble", icon: "🔀", category: "word" },
+            { name: "Cryptogram", icon: "🔐", category: "word" },
+            { name: "Complete the Word", icon: "✍️", category: "word" },
+            { name: "Spot Correct Spelling", icon: "✅", category: "word" },
+            { name: "Bi-Lingual Matching", icon: "🗣️", category: "word" },
+            // MATH
+            { name: "Sudoku", icon: "🔢", category: "math" },
+            { name: "CalcuDoku", icon: "➕", category: "math" },
+            { name: "Kids Math Equations", icon: "➗", category: "math" },
+            { name: "Counting Numbers", icon: "1️⃣", category: "math" },
+            { name: "Range Puzzle", icon: "📏", category: "math" },
+            { name: "One Hundred Puzzle", icon: "💯", category: "math" },
+            // CREATIVE
+            { name: "Stickers Pack", icon: "⭐", category: "creative" },
+            { name: "Clip Art Set", icon: "📎", category: "creative" },
+            { name: "Coloring Page (Kids)", icon: "🖍️", category: "creative" },
+            { name: "Coloring Page (Adult)", icon: "🎨", category: "creative" },
+            { name: "Cookbook for Kids", icon: "🍳", category: "creative" },
+            { name: "Joke Book for Kids", icon: "😂", category: "creative" },
+            { name: "Activity Book", icon: "📚", category: "creative" },
+            { name: "Spot the Difference", icon: "👁️", category: "creative" },
+            { name: "Shadow Matching", icon: "👤", category: "creative" },
+            { name: "Maze for Kids", icon: "🌀", category: "creative" }
+        ];
+
+        // --- RENDER ---
+        const grid = document.getElementById('activities-grid');
+        let currentFilter = 'all';
+
+        function renderItems(filter = 'all') {
+            grid.innerHTML = "";
+            let count = 0;
+            const sortedData = activitiesData.sort((a, b) => a.name.localeCompare(b.name));
+
+            sortedData.forEach(itemData => {
+                if (filter !== 'all' && itemData.category !== filter) return;
+                const el = document.createElement('div');
+                el.className = 'activity-card p-5 rounded-3xl flex flex-col items-center text-center cursor-pointer group';
+                el.onclick = () => handleDownload(itemData);
+
+                el.innerHTML = `
+                    <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center mb-4 transition-colors duration-300 shadow-sm">
+                        <span class="emoji-icon text-3xl">${itemData.icon}</span>
+                    </div>
+                    <h4 class="font-bold text-sm leading-tight mb-4 flex-grow">${itemData.name}</h4>
+                    <button class="card-btn px-5 py-2.5 text-xs font-extrabold rounded-full w-full group-hover:bg-brand group-hover:text-white transition duration-300">Download</button>
+                `;
+                grid.appendChild(el);
+                count++;
+            });
+            document.getElementById('no-results').style.display = count === 0 ? 'block' : 'none';
+        }
+
+        function filterSelection(category) {
+            currentFilter = category;
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            btns.forEach(btn => { if (btn.getAttribute('onclick').includes(`'${category}'`)) btn.classList.add('active'); });
+            updateBulkButton(category);
+            renderItems(category);
+        }
+
+        function updateBulkButton(cat) {
+            const btnText = document.getElementById('bulk-dl-text');
+            const catName = cat.charAt(0).toUpperCase() + cat.slice(1);
+            if (cat === 'all') btnText.innerText = "Download Full Pack";
+            else btnText.innerText = `Download ${catName} Pack`;
+        }
+
+        function handleBulkDownload() {
+            let name = "Full Freebie Pack";
+            if (currentFilter !== 'all') {
+                name = currentFilter.charAt(0).toUpperCase() + currentFilter.slice(1) + " Pack";
+            }
+            // On appelle le modal avec ce nom spécial
+            handleDownload({ name: name, icon: '📦' });
+        }
+
+        renderItems('all');
+
+        // --- LOGIQUE DOWNLOAD & MODAL ---
+        let currentItem = null;
+        let resendCount = 0;
+        const EXPIRY_DAYS = 30;
+
+        function getStoredData() {
+            const dataStr = localStorage.getItem('lsg_user_data');
+            if (!dataStr) return null;
+            try {
+                const data = JSON.parse(dataStr);
+                if (new Date().getTime() > data.expiry) {
+                    localStorage.removeItem('lsg_user_data');
+                    return null;
+                }
+                return data.email;
+            } catch (e) { return null; }
+        }
+
+        function setStoredData(email) {
+            const now = new Date();
+            const expiryTime = now.getTime() + (EXPIRY_DAYS * 24 * 60 * 60 * 1000);
+            const data = { email: email, expiry: expiryTime };
+            localStorage.setItem('lsg_user_data', JSON.stringify(data));
+        }
+
+        function handleDownload(item) {
+            currentItem = item;
+            resendCount = 0;
+
+            // Récupération des infos depuis le fichier download_links.js
+            let linkInfo = { link: "#", desc: "Unlock this exclusive content by confirming your email." };
+            if (typeof productData !== 'undefined' && productData[item.name]) {
+                linkInfo = productData[item.name];
+            }
+
+            // Mise à jour UI
+            document.getElementById('product-name-display').innerText = item.name;
+            document.getElementById('product-name-display-return').innerText = item.name;
+            document.getElementById('product-desc-display').innerText = linkInfo.desc;
+            document.getElementById('product-desc-display-return').innerText = linkInfo.desc;
+            document.getElementById('direct-dl-link').href = linkInfo.link;
+
+            // Reset UI boutons
+            document.getElementById('direct-download-container').classList.add('hidden');
+            const resendBtn = document.getElementById('resend-btn');
+            resendBtn.innerText = "Didn't receive it? Click to resend.";
+            resendBtn.style.textDecoration = "underline";
+            resendBtn.style.cursor = "pointer";
+            resendBtn.disabled = false;
+
+            const savedEmail = getStoredData();
+            const modal = document.getElementById('email-modal');
+
+            // Reset vues
+            document.getElementById('modal-success').classList.add('hidden');
+
+            if (savedEmail) {
+                document.getElementById('saved-email-display').textContent = savedEmail;
+                document.getElementById('modal-new-user').classList.add('hidden');
+                document.getElementById('modal-returning-user').classList.remove('hidden');
+            } else {
+                document.getElementById('modal-new-user').classList.remove('hidden');
+                document.getElementById('modal-returning-user').classList.add('hidden');
+            }
+            modal.classList.add('active');
+        }
+
+        function submitEmail() {
+            const emailInput = document.getElementById('user-email');
+            const email = emailInput.value.trim();
+            const consent = document.getElementById('consent-check').checked;
+            const honeypot = document.getElementById('website-honeypot').value;
+
+            if (honeypot) { console.log("Bot blocked"); return; }
+
+            if (!consent) {
+                alert("Please check the box to confirm you agree to our Terms & Conditions.");
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(email)) {
+                setStoredData(email);
+                showSuccessView();
+                // ICI: Envoyer l'event à GA4 si configuré
+                // gtag('event', 'generate_lead', { 'item_name': currentItem.name });
+            } else {
+                emailInput.classList.add('input-error');
+            }
+        }
+
+        function processDownload() {
+            showSuccessView();
+        }
+
+        function showSuccessView() {
+            document.getElementById('modal-new-user').classList.add('hidden');
+            document.getElementById('modal-returning-user').classList.add('hidden');
+            document.getElementById('modal-success').classList.remove('hidden');
+        }
+
+        function handleResend() {
+            const btn = document.getElementById('resend-btn');
+            resendCount++;
+
+            if (resendCount < 2) {
+                // Tentative 1 : Simulation
+                btn.innerText = "Sending again...";
+                btn.disabled = true;
+                setTimeout(() => {
+                    btn.innerText = "Sent! Check again (Spam folder too).";
+                    btn.disabled = false;
+                }, 1500);
+            } else {
+                // Tentative 2+ : High Demand Mode
+                btn.innerText = "High traffic detected. Switching to manual mode...";
+                btn.style.textDecoration = "none";
+                btn.style.cursor = "default";
+                btn.disabled = true;
+                document.getElementById('direct-download-container').classList.remove('hidden');
+            }
+        }
+
+        function resetEmail() {
+            localStorage.removeItem('lsg_user_data');
+            document.getElementById('modal-returning-user').classList.add('hidden');
+            document.getElementById('modal-new-user').classList.remove('hidden');
+        }
+
+        document.getElementById('user-email').addEventListener('input', function () { this.classList.remove('input-error'); });
+        function closeModal() { document.getElementById('email-modal').classList.remove('active'); }
+
+        // --- COUNTDOWN (Dimanche 19h) ---
+        function updateCountdown() {
+            const now = new Date();
+            let nextUpdate = new Date(now);
+            const currentDay = now.getDay();
+            const currentHour = now.getHours();
+
+            let daysUntilSunday = (currentDay === 0 && currentHour < 19) ? 0 : (7 - currentDay);
+            nextUpdate.setDate(now.getDate() + daysUntilSunday);
+            nextUpdate.setHours(19, 0, 0, 0);
+            if (nextUpdate < now) nextUpdate.setDate(nextUpdate.getDate() + 7);
+
+            const diff = nextUpdate - now;
+            const d = Math.floor(diff / 86400000); const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000); const s = Math.floor((diff % 60000) / 1000);
+            document.getElementById('days').innerText = d < 10 ? '0' + d : d; document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+            document.getElementById('minutes').innerText = m < 10 ? '0' + m : m; document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+        }
+        setInterval(updateCountdown, 1000); updateCountdown();
+
+        // --- THEME ---
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').innerHTML = '☀️';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').innerHTML = '🌙';
+            }
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').innerHTML = isDark ? '☀️' : '🌙';
+        }
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+        window.onload = function () { initTheme(); };
+    </script>
+
+    <div id="cookie-banner"
+        class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0">
+        <div class="flex items-start gap-4">
+            <div class="text-3xl">🍪</div>
+            <div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                    We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
+                    our <a href="privacy.html" class="text-brand font-bold hover:underline">Privacy Policy</a>.
+                </p>
+                <div class="flex gap-3">
+                    <button onclick="acceptCookies()"
+                        class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md">
+                        Accept
+                    </button>
+                    <button onclick="closeCookies()"
+                        class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            if (!localStorage.getItem('cookieConsent')) {
+                const banner = document.getElementById('cookie-banner');
+                banner.classList.remove('hidden');
+                setTimeout(() => { banner.classList.remove('translate-y-20', 'opacity-0'); }, 100);
+            }
+        });
+        function acceptCookies() { localStorage.setItem('cookieConsent', 'true'); hideBanner(); }
+        function closeCookies() { hideBanner(); }
+        function hideBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-20', 'opacity-0');
+            setTimeout(() => { banner.classList.add('hidden'); }, 500);
+        }
+    </script>
+
+<!-- SOCIAL MEDIA & FOOTER -->
+<div style="border-top: 1px solid var(--bord, #E2E8F0);" class="dark:border-slate-700">
+    <div class="social-footer-bar">
+        <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+        </a>
+        <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        </a>
+    </div>
+    <div class="site-footer">
+        <div style="margin-bottom: 6px;">
+            <a href="terms.html">Terms of Service</a>
+            <span style="margin: 0 8px;">&bull;</span>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+        &copy; 2026 Little Smart Genius. All rights reserved.
+    </div>
+</div>
+</body>
+
+</html>

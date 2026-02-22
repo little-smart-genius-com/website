@@ -1,0 +1,124 @@
+{
+  "keyword": [
+    "fun math activities for kindergarten at home",
+    "critical thinking activities for kindergarten",
+    "fine motor skills worksheets for preschoolers",
+    "benefits of puzzles for child brain development",
+    "printable math worksheets for first graders",
+    "counting exercises for preschoolers printable",
+    "shadow matching worksheets for toddlers"
+  ],
+  "product": [
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7",
+    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.3",
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.1",
+    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2",
+    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.4",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4"
+  ],
+  "freebie": [
+    "Four In A Row",
+    "Maze for Kids",
+    "Kids Math Equations",
+    "Clip Art Set",
+    "Cookbook for Kids",
+    "Activity Book"
+  ],
+  "daily_log": [
+    {
+      "slot": "keyword",
+      "topic": "fun math activities for kindergarten at home",
+      "date": "2026-02-20T23:23:01.487294"
+    },
+    {
+      "slot": "keyword",
+      "topic": "critical thinking activities for kindergarten",
+      "date": "2026-02-21T00:03:33.197236"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7",
+      "date": "2026-02-21T00:12:14.808178"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Four In A Row",
+      "date": "2026-02-21T00:19:53.743914"
+    },
+    {
+      "slot": "keyword",
+      "topic": "fine motor skills worksheets for preschoolers",
+      "date": "2026-02-21T00:26:19.369666"
+    },
+    {
+      "slot": "product",
+      "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.3",
+      "date": "2026-02-21T00:29:39.885601"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Maze for Kids",
+      "date": "2026-02-21T00:33:20.132159"
+    },
+    {
+      "slot": "keyword",
+      "topic": "benefits of puzzles for child brain development",
+      "date": "2026-02-21T00:36:54.752295"
+    },
+    {
+      "slot": "product",
+      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.1",
+      "date": "2026-02-21T00:39:59.276874"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Kids Math Equations",
+      "date": "2026-02-21T00:44:54.779121"
+    },
+    {
+      "slot": "product",
+      "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2",
+      "date": "2026-02-21T00:49:08.918573"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Clip Art Set",
+      "date": "2026-02-21T00:58:31.536954"
+    },
+    {
+      "slot": "keyword",
+      "topic": "printable math worksheets for first graders",
+      "date": "2026-02-21T01:06:15.524040"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.4",
+      "date": "2026-02-21T01:15:52.179761"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Cookbook for Kids",
+      "date": "2026-02-21T01:24:08.901817"
+    },
+    {
+      "slot": "keyword",
+      "topic": "counting exercises for preschoolers printable",
+      "date": "2026-02-21T01:28:13.295252"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
+      "date": "2026-02-21T01:32:43.469068"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Activity Book",
+      "date": "2026-02-21T01:42:19.444878"
+    },
+    {
+      "slot": "keyword",
+      "topic": "shadow matching worksheets for toddlers",
+      "date": "2026-02-21T14:49:41.973819"
+    }
+  ]
+}

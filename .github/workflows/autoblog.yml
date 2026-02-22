@@ -1,0 +1,71 @@
+# ============================================================
+# Little Smart Genius — Daily Auto-Blog Pipeline
+# ============================================================
+# Runs daily at 08:00 UTC:
+#   1. Generate new articles (keyword + product + freebie)
+#   2. Convert JSON → HTML + paginate + search index
+#   3. Commit & push changes (triggers Netlify)
+#
+# REQUIREMENTS (GitHub Secrets):
+#   - DEEPSEEK_API_KEY
+#   - MAKECOM_WEBHOOK_URL (Optional, for Instagram auto-post)
+# ============================================================
+
+name: Daily Auto-Blog
+
+on:
+  workflow_dispatch:  # Manual trigger
+  schedule:
+    - cron: '0 8 * * *'  # Daily at 08:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt
+          pip install requests python-dotenv pillow  # Ensure core deps are present
+
+      - name: Generate articles & Instagram posts
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          MAKECOM_WEBHOOK_URL: ${{ secrets.MAKECOM_WEBHOOK_URL }}
+          PYTHONIOENCODING: utf-8
+        run: python scripts/auto_blog_v4.py --batch
+
+      - name: Build site (JSON → HTML)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/build_articles.py
+
+      - name: Run maintenance scan
+        run: python scripts/maintenance.py --stats
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "Auto-Blog Bot"
+          git config user.email "bot@littlesmartgenius.com"
+          git add -A
+          CHANGES=$(git diff --cached --stat)
+          if [ -n "$CHANGES" ]; then
+            DATE=$(date +%Y-%m-%d)
+            git commit -m "Auto-blog: ${DATE} [skip ci]"
+            git push
+            echo "Changes pushed successfully"
+          else
+            echo "No changes to commit"
+          fi

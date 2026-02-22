@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Little Smart Genius</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Let's get you back on track!">
+    <link rel="icon"
+        href="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+        type="image/jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { brand: '#F48C06' } } }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --text: #1E293B;
+            --card: #FFFFFF;
+            --head: rgba(255, 255, 255, 0.95);
+            --bord: #E2E8F0;
+        }
+
+        .dark {
+            --bg: #0F172A;
+            --text: #F8FAFC;
+            --card: #1E293B;
+            --head: rgba(15, 23, 42, 0.95);
+            --bord: #334155;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            transition: 0.3s;
+        }
+
+        .hero-title {
+            background: linear-gradient(135deg, #F48C06, #E85D04);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1S8G205JX2');
+    </script>
+
+<style>
+    .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+    .social-footer-bar a {
+        width: 40px; height: 40px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(244, 140, 6, 0.1); color: #F48C06;
+        transition: all 0.3s; text-decoration: none;
+    }
+    .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+    .social-footer-bar svg { width: 20px; height: 20px; }
+    .site-footer { text-align: center; padding: 15px 20px 25px; color: #94A3B8; font-size: 0.75rem; }
+    .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+    .site-footer a:hover { color: #F48C06; }
+</style>
+</head>
+
+<body>
+    <main class="min-h-screen flex items-center justify-center px-5 py-20">
+        <div class="text-center max-w-lg">
+            <!-- Big 404 -->
+            <div class="text-9xl font-extrabold hero-title mb-4 float-animation">404</div>
+
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-4" style="color: var(--text);">
+                Oops! Page Not Found
+            </h1>
+
+            <p class="text-lg text-slate-500 dark:text-slate-400 mb-8">
+                The page you're looking for doesn't exist or has been moved.<br>
+                Let's get you back on track!
+            </p>
+
+            <!-- Quick Links -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+                <a href="index.html"
+                    class="px-8 py-3 rounded-xl font-bold text-white bg-gradient-to-r from-brand to-orange-500 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    🏠 Go Home
+                </a>
+                <a href="blog.html"
+                    class="px-8 py-3 rounded-xl font-bold border-2 border-brand text-brand hover:bg-brand hover:text-white transition-all duration-300">
+                    📝 Read Blog
+                </a>
+                <a href="freebies.html"
+                    class="px-8 py-3 rounded-xl font-bold border-2 border-brand text-brand hover:bg-brand hover:text-white transition-all duration-300">
+                    🎁 Free Resources
+                </a>
+            </div>
+
+            <!-- Search suggestion -->
+            <div class="rounded-2xl p-6 border" style="background: var(--card); border-color: var(--bord);">
+                <p class="text-sm font-bold text-slate-500 mb-4">Or try these popular pages:</p>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <a href="products.html"
+                        class="px-4 py-2 rounded-lg text-sm font-bold bg-orange-50 dark:bg-slate-800 text-brand hover:bg-orange-100 dark:hover:bg-slate-700 transition">TpT
+                        Store</a>
+                    <a href="about.html"
+                        class="px-4 py-2 rounded-lg text-sm font-bold bg-orange-50 dark:bg-slate-800 text-brand hover:bg-orange-100 dark:hover:bg-slate-700 transition">About
+                        Us</a>
+                    <a href="contact.html"
+                        class="px-4 py-2 rounded-lg text-sm font-bold bg-orange-50 dark:bg-slate-800 text-brand hover:bg-orange-100 dark:hover:bg-slate-700 transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Dark mode -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+<!-- SOCIAL MEDIA & FOOTER -->
+<div style="border-top: 1px solid var(--bord, #E2E8F0);" class="dark:border-slate-700">
+    <div class="social-footer-bar">
+        <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+        </a>
+        <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        </a>
+    </div>
+    <div class="site-footer">
+        <div style="margin-bottom: 6px;">
+            <a href="terms.html">Terms of Service</a>
+            <span style="margin: 0 8px;">&bull;</span>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+        &copy; 2026 Little Smart Genius. All rights reserved.
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Smart Genius | Premium Store</title>
+    <meta name="description"
+        content="Browse 50+ premium educational printables for kids — math worksheets, logic puzzles, reading activities, and more. Instant digital download.">
+    <link rel="icon"
+        href="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+        type="image/jpeg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Premium Store | Little Smart Genius">
+    <meta property="og:description"
+        content="Browse 50+ premium educational printables for kids — math worksheets, logic puzzles, reading activities. Instant digital download.">
+    <meta property="og:image"
+        content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg">
+    <meta property="og:url" content="https://littlesmartgenius.com/products.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Premium Store | Little Smart Genius">
+    <meta name="twitter:description" content="50+ premium educational printables for kids. Instant digital download.">
+    <meta name="twitter:image"
+        content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FAFAFA;
+            --text-color: #1E293B;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --border-color: #E2E8F0;
+            --card-bg: #FFFFFF;
+            --hover-bg: #FFF7ED;
+            --text-secondary: #64748B;
+        }
+
+        /* NOUVEAU (Standard Tailwind comme sur l'Index) */
+        .dark {
+            --bg-color: #0F172A;
+            /* Slate 900 */
+            --text-color: #F8FAFC;
+            /* Slate 50 */
+            --header-bg: rgba(15, 23, 42, 0.95);
+            --border-color: #334155;
+            /* Slate 700 */
+            --card-bg: #1E293B;
+            /* Slate 800 */
+            --sidebar-bg: rgba(15, 23, 42, 0.9);
+            --text-secondary: #94A3B8;
+            /* Slate 400 */
+            --hover-bg: #334155;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+        }
+
+        /* --- HEADER STANDARDISÉ (COPIE EXACTE DE INDEX.HTML) --- */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.3s;
+        }
+
+        /* Styles Menu */
+        .nav-link {
+            font-weight: 700;
+            color: #64748B;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #F48C06;
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            flex-direction: column;
+            padding: 20px;
+            z-index: 49;
+        }
+
+        /* --- LAYOUT STORE --- */
+        .page-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding-top: 120px;
+            padding-left: 40px;
+            padding-right: 40px;
+            display: flex;
+            gap: 50px;
+        }
+
+        .filters-sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            height: calc(100vh - 120px);
+            position: sticky;
+            top: 120px;
+            overflow-y: auto;
+            padding-right: 10px;
+            transition: background 0.3s;
+        }
+
+        .filter-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            margin-bottom: 5px;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: var(--hover-bg);
+            color: #F48C06;
+        }
+
+        .filter-btn.active {
+            background: #F48C06;
+            color: white;
+            box-shadow: 0 4px 12px rgba(244, 140, 6, 0.3);
+        }
+
+        .products-area {
+            flex-grow: 1;
+            padding-bottom: 50px;
+        }
+
+        .mobile-filter-trigger {
+            display: none;
+            width: 100%;
+            padding: 15px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-filter-trigger span {
+            color: #F48C06;
+            transition: transform 0.3s;
+        }
+
+        @media (max-width: 1024px) {
+            .top-header {
+                padding: 0 20px;
+            }
+
+            .page-container {
+                display: block;
+                padding: 100px 20px 20px 20px;
+            }
+
+            .filters-sidebar {
+                display: none;
+                width: 100%;
+                height: auto;
+                position: static;
+                margin-bottom: 30px;
+                background: var(--card-bg);
+                padding: 10px;
+                border-radius: 12px;
+                border: 1px solid var(--border-color);
+            }
+
+            .filters-sidebar.open {
+                display: block;
+                animation: slideDown 0.3s ease-out;
+            }
+
+            .mobile-filter-trigger {
+                display: flex;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* CARDS */
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            border-color: #FCD34D;
+        }
+
+        .slider-window {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            background: var(--card-bg);
+            transition: background 0.3s;
+        }
+
+        .slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 3s cubic-bezier(0.45, 0, 0.55, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-in;
+        }
+
+        .slide img {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: contain;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            color: #1E293B;
+        }
+
+        .product-card:hover .nav-btn {
+            opacity: 1;
+        }
+
+        .prev {
+            left: 12px;
+        }
+
+        .next {
+            right: 12px;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            background: #FFF;
+            color: #F48C06;
+        }
+
+        .badge-common {
+            position: absolute;
+            top: 10px;
+            z-index: 20;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 6px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge-price-container {
+            right: 10px;
+        }
+
+        .badge-normal {
+            background: #0F172A;
+            color: white;
+        }
+
+        .dark-mode .badge-normal {
+            background: #F1F5F9;
+            color: #0F172A;
+        }
+
+        .badge-free {
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            color: #FEF08A;
+            border: 1px solid #FEF08A;
+            box-shadow: 0 3px 8px rgba(220, 38, 38, 0.3);
+        }
+
+        .badge-rating-container {
+            left: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1E293B;
+            border: 1px solid #E2E8F0;
+            gap: 2px;
+        }
+
+        .dark-mode .badge-rating-container {
+            background: rgba(30, 41, 59, 0.95);
+            color: #F1F5F9;
+            border-color: #334155;
+        }
+
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #lb-img {
+            max-height: 85vh;
+            max-width: 90vw;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .lb-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .lb-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lb-prev {
+            left: 30px;
+        }
+
+        .lb-next {
+            right: 30px;
+        }
+
+        .lb-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .lb-close:hover {
+            background: #EF4444;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { brand: '#F48C06' } } }
+        }
+    </script>
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1S8G205JX2');
+    </script>
+
+    <style>
+        .social-footer-bar {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding: 20px 0 10px;
+        }
+
+        .social-footer-bar a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(244, 140, 6, 0.1);
+            color: #F48C06;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-footer-bar a:hover {
+            background: #F48C06;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .social-footer-bar svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+
+        .site-footer a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .site-footer a:hover {
+            color: #F48C06;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="lightbox" onclick="if(event.target.id==='lightbox') closeLightbox()">
+        <div class="lb-close" onclick="closeLightbox()"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg></div>
+        <div class="lb-nav lb-prev" onclick="switchLb(-1)"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg></div>
+        <div class="flex flex-col items-center max-w-[90vw]"><img id="lb-img" src="" alt="Zoom"
+                class="transition-opacity duration-300"></div>
+        <div class="lb-nav lb-next" onclick="switchLb(1)"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg></div>
+    </div>
+
+    <header class="top-header px-5 md:px-10">
+        <a href="index.html" class="flex items-center gap-3 no-underline">
+            <img src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+                class="w-[45px] h-[45px] rounded-full border-2 border-brand object-cover" alt="Logo">
+            <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text-color)">Little Smart
+                Genius<span class="text-brand">.</span></span>
+        </a>
+
+        <nav class="hidden lg:flex gap-8">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="products.html" class="nav-link active">Store</a>
+            <a href="freebies.html" class="nav-link">Freebies</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+
+            <div class="hidden lg:flex items-center gap-2 mr-3">
+                <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener"
+                    title="Instagram"
+                    class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                    </svg>
+                </a>
+                <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener"
+                    title="Pinterest"
+                    class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z" />
+                    </svg>
+                </a>
+                <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium"
+                    class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+                    </svg>
+                </a>
+            </div>
+
+            <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+                class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition shadow-lg">TpT
+                Store</a>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition"
+                onclick="toggleTheme()"><span id="theme-icon">🌙</span></div>
+            <button class="block lg:hidden text-2xl" style="color:var(--text-color)"
+                onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </header>
+
+    <div id="mobile-menu">
+        <a href="index.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text-color)">Home</a>
+        <a href="products.html" class="py-3 border-b border-gray-200 font-bold text-brand">Store</a>
+        <a href="freebies.html" class="py-3 border-b border-gray-200 font-bold"
+            style="color:var(--text-color)">Freebies</a>
+        <a href="blog.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text-color)">Blog</a>
+        <a href="about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text-color)">About</a>
+        <a href="contact.html" class="py-3 font-bold" style="color:var(--text-color)">Contact</a>
+        <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+            class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg">Visit TpT Store</a>
+    </div>
+
+    <div class="page-container">
+
+        <button class="mobile-filter-trigger" onclick="toggleFilters()">
+            <span>📂 Browse Collections</span>
+            <span id="filter-arrow">▼</span>
+        </button>
+
+        <aside class="filters-sidebar">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-4 ml-2 tracking-widest">Collections</p>
+            <div id="cat-list" class="space-y-1"></div>
+            <div
+                class="mt-8 p-6 bg-white rounded-2xl border border-orange-100 text-center shadow-lg shadow-orange-500/5">
+                <div class="flex justify-center gap-1 mb-3">
+                    <span class="text-yellow-400 text-lg">★</span>
+                    <span class="text-yellow-400 text-lg">★</span>
+                    <span class="text-yellow-400 text-lg">★</span>
+                    <span class="text-yellow-400 text-lg">★</span>
+                    <span class="text-yellow-400 text-lg">★</span>
+                </div>
+                <p class="text-sm font-extrabold text-slate-800 mb-1 flex justify-center items-center gap-2">
+                    <span
+                        class="w-4 h-4 bg-green-500 rounded-full text-white flex items-center justify-center text-[10px]">✓</span>
+                    Teacher Approved
+                </p>
+                <p class="text-xs text-slate-500 font-medium">Join <span class="text-brand font-bold">1,000+</span>
+                    happy educators trusting our resources.</p>
+
+                <!-- SHARE BUTTONS -->
+                <div class="flex justify-center gap-2 mt-4 pt-4 border-t border-orange-100">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://littlesmartgenius.com/products.html"
+                        target="_blank" rel="noopener" title="Share on Facebook"
+                        class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener"
+                        title="Follow on Instagram"
+                        class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-pink-500 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:text-white hover:border-pink-500 transition-all duration-300">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=https://littlesmartgenius.com/products.html&text=Premium%20educational%20printables%20for%20kids!"
+                        target="_blank" rel="noopener" title="Share on X"
+                        class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-800 hover:bg-black hover:text-white hover:border-black transition-all duration-300">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="https://pinterest.com/pin/create/button/?url=https://littlesmartgenius.com/products.html&description=Premium%20educational%20printables%20for%20kids!"
+                        target="_blank" rel="noopener" title="Pin on Pinterest"
+                        class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z" />
+                        </svg>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?text=Check%20out%20these%20educational%20printables!%20https://littlesmartgenius.com/products.html"
+                        target="_blank" rel="noopener" title="Share on WhatsApp"
+                        class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white hover:border-green-500 transition-all duration-300">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="products-area">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-slate-900" style="color:var(--text-color)">Catalog</h2>
+                    <div class="flex items-center mt-2 space-x-2">
+                        <div class="w-2 h-2 rounded-full bg-brand"></div>
+                        <p class="text-slate-500 font-medium" id="count-label">Loading products...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"></div>
+
+            <div id="scroll-sentinel" class="h-10 w-full flex justify-center items-center mt-8">
+                <span class="text-slate-400 text-xs italic opacity-0 transition-opacity duration-300"
+                    id="loading-indicator">Loading more...</span>
+            </div>
+        </main>
+    </div>
+
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 z-[200] flex items-center justify-center p-4 lg:p-10 bg-slate-900/80 backdrop-blur-sm"
+        onclick="closePreview()">
+        <div class="bg-white w-full h-full max-w-6xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center px-8 py-5 border-b border-slate-100 bg-white">
+                <div class="flex items-center space-x-4">
+                    <h3 class="font-bold text-slate-800 text-lg">Document Preview</h3><a id="dl-btn" href="#"
+                        target="_blank" class="text-xs text-brand font-bold hover:underline">Download PDF</a>
+                </div><button onclick="closePreview()"
+                    class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-red-50 hover:text-red-500 font-bold text-xl">&times;</button>
+            </div>
+            <div class="flex-grow bg-slate-100 relative"><iframe id="pdf-frame" class="w-full h-full border-0"
+                    src=""></iframe></div>
+        </div>
+    </div>
+
+    <div id="cookie-banner"
+        class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0">
+        <div class="flex items-start gap-4">
+            <div class="text-3xl">🍪</div>
+            <div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                    We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
+                    our <a href="privacy.html" class="text-brand font-bold hover:underline">Privacy Policy</a>.
+                </p>
+                <div class="flex gap-3">
+                    <button onclick="acceptCookies()"
+                        class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md">
+                        Accept
+                    </button>
+                    <button onclick="closeCookies()"
+                        class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="products_tpt.js"></script>
+
+    <script>
+        const products = (typeof window.tptProducts !== 'undefined') ? window.tptProducts : [];
+        const categories = (typeof window.tptCategories !== 'undefined') ? window.tptCategories : [];
+
+        // --- 1. VARIABLES ESSENTIELLES (C'est ce qui manquait) ---
+        let itemsToShow = 9;
+        const itemsPerLoad = 6;
+        let observer;
+        let currentCategory = 'all';
+
+        // --- 2. SETUP DE L'INFINITE SCROLL ---
+        function setupIntersectionObserver() {
+            const sentinel = document.getElementById('scroll-sentinel');
+            const indicator = document.getElementById('loading-indicator');
+
+            observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        indicator.classList.remove('opacity-0');
+
+                        setTimeout(() => {
+                            itemsToShow += itemsPerLoad;
+                            renderProducts(currentCategory);
+                            indicator.classList.add('opacity-0');
+                        }, 300);
+                    }
+                });
+            }, { rootMargin: '100px' });
+
+            if (sentinel) observer.observe(sentinel);
+        }
+
+        // --- 3. CHARGEMENT INITIAL ---
+        window.onload = function () {
+            // Loader
+            setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').style.display = 'none', 500); }, 600);
+
+            renderCategories();
+            renderProducts('all');
+            setupIntersectionObserver();
+
+            // CORRECTION ICI : On vérifie 'dark' et on l'applique sur document.documentElement (html)
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').innerHTML = '☀️';
+            }
+
+            if (!localStorage.getItem('cookieConsent')) {
+                const banner = document.getElementById('cookie-banner');
+                banner.classList.remove('hidden');
+                setTimeout(() => { banner.classList.remove('translate-y-20', 'opacity-0'); }, 100);
+            }
+        };
+
+        // --- 4. FONCTIONS STANDARD (Design inchangé) ---
+        function toggleTheme() {
+            const html = document.documentElement; // On cible <html> comme sur l'index
+            html.classList.toggle('dark');       // On utilise la classe standard 'dark'
+
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').innerHTML = isDark ? '☀️' : '🌙';
+        }
+
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            if (m.style.display === 'flex') {
+                m.style.display = 'none';
+            } else {
+                m.style.display = 'flex';
+            }
+        }
+
+        function toggleFilters() {
+            const sb = document.querySelector('.filters-sidebar');
+            const btn = document.getElementById('filter-arrow');
+            sb.classList.toggle('open');
+            btn.style.transform = sb.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('cat-list');
+            let html = `<button class="filter-btn active" onclick="filterData('all', this)">All Products</button>`;
+            categories.forEach(c => { html += `<button class="filter-btn" onclick="filterData('${c}', this)">${c}</button>`; });
+            container.innerHTML = html;
+        }
+
+        function filterData(cat, btn) {
+            // Reset du scroll quand on change de catégorie
+            itemsToShow = 9;
+            currentCategory = cat;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            renderProducts(cat);
+
+            // Réactiver la sentinelle pour permettre le scroll dans la nouvelle catégorie
+            const sentinel = document.getElementById('scroll-sentinel');
+            if (sentinel) {
+                sentinel.style.display = 'flex';
+                observer.observe(sentinel);
+            }
+
+            if (window.innerWidth <= 1024) toggleFilters();
+        }
+
+        // --- 5. MOTEUR D'AFFICHAGE (CORRIGÉ & OPTIMISÉ) ---
+        function renderProducts(filterCat) {
+            const grid = document.getElementById('product-grid');
+
+            if (products.length === 0) {
+                grid.innerHTML = `<p class="col-span-full text-center text-slate-400 py-10">Product catalog is updating... Please refresh in a moment.</p>`;
+                document.getElementById('count-label').textContent = "0 Resources Found";
+                return;
+            }
+
+            // ÉTAPE 1 : Filtrer tout
+            const allFiltered = products.filter(p => filterCat === 'all' || p[4] === filterCat);
+            document.getElementById('count-label').textContent = allFiltered.length + " Resources Found";
+
+            // ÉTAPE 2 : Gérer la sentinelle (Cacher si on a tout vu)
+            const sentinel = document.getElementById('scroll-sentinel');
+            if (itemsToShow >= allFiltered.length) {
+                if (sentinel) sentinel.style.display = 'none';
+                itemsToShow = allFiltered.length;
+            } else {
+                if (sentinel) sentinel.style.display = 'flex';
+            }
+
+            // ÉTAPE 3 : Couper la liste pour l'affichage progressif
+            const visibleProducts = allFiltered.slice(0, itemsToShow);
+
+            grid.innerHTML = "";
+
+            // BOUCLE D'AFFICHAGE (Design Strictement Identique)
+            visibleProducts.forEach((p, index) => {
+                let baseImg = p[2].includes('-') ? p[2].substring(0, p[2].lastIndexOf('-')) : p[2].replace('.jpg', '');
+
+                let slides = "";
+                let dots = "";
+                for (let s = 1; s <= 4; s++) {
+                    let url = `https://ecdn.teacherspayteachers.com/cdn-cgi/image/format=webp,width=600,quality=85/thumbitem/${baseImg}-${s}.jpg`;
+                    slides += `<div class="slide" onclick="openLightbox(${index}, ${s})"><img src="${url}" loading="lazy" onerror="this.parentNode.style.display='none'"></div>`;
+                    dots += `<div class="w-1.5 h-1.5 rounded-full bg-slate-300 ${(s === 1) ? 'bg-brand w-3' : ''}"></div>`;
+                }
+
+                let row = Math.floor(index / 3);
+                let col = index % 3;
+                let dir = (row % 2 === 0) ? (col % 2 === 0 ? -1 : 1) : (col % 2 === 0 ? 1 : -1);
+
+                let ratingHtml = "";
+                if (p[5] && p[5] !== "New") {
+                    ratingHtml = `
+                    <div class="badge-common badge-rating-container">
+                        <svg class="w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        ${p[5]} <span class="font-medium ml-1" style="opacity:0.7">(${p[6]})</span>
+                    </div>`;
+                }
+
+                let viewerUrl = "", directUrl = "";
+                if (p[7]) {
+                    directUrl = p[7];
+                    viewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(directUrl)}&embedded=true`;
+                }
+
+                let badgeClass = p[3] === "FREE" ? "badge-free" : "badge-normal";
+                let priceHtml = `<div class="badge-common badge-price-container ${badgeClass}">${p[3]}</div>`;
+                let buyBtnText = (p[3] === "FREE") ? "Get Free on TpT" : "Buy on TpT";
+
+                const cardHtml = `
+                <div class="product-card group" onmouseenter="stopSlider(${index})" onmouseleave="startSlider(${index}, ${dir})">
+                    <div class="slider-window">
+                        <div id="track-${index}" class="slider-track">${slides}</div>
+                        <div class="nav-btn prev" onclick="event.stopPropagation(); moveManual(${index}, -1)">&#10094;</div>
+                        <div class="nav-btn next" onclick="event.stopPropagation(); moveManual(${index}, 1)">&#10095;</div>
+                        <div class="absolute bottom-3 left-0 right-0 flex justify-center space-x-1" id="dots-${index}">${dots}</div>
+                        ${ratingHtml}
+                        ${priceHtml}
+                    </div>
+                    <div class="p-5">
+                        <div class="text-[10px] font-bold text-brand uppercase tracking-widest mb-1 opacity-80 text-center">${p[4]}</div>
+                        <h3 class="font-bold text-base text-center mb-4 line-clamp-2 leading-snug h-12" style="color:var(--text-color)" title="${p[0]}">${p[0]}</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="openPreview('${viewerUrl}', '${directUrl}')" class="flex items-center justify-center py-2.5 rounded-lg border-2 border-slate-100 text-slate-500 font-bold text-sm hover:border-red-100 hover:text-red-500 hover:bg-red-50 transition">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>Preview
+                            </button>
+                            <a href="${p[1]}" target="_blank" class="flex items-center justify-center py-2.5 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-brand transition shadow-lg hover:shadow-brand/50">${buyBtnText}</a>
+                        </div>
+                    </div>
+                </div>`;
+                grid.innerHTML += cardHtml;
+                startSlider(index, dir);
+            });
+        }
+
+        // --- 6. UTILITAIRES (Slider, Lightbox, Cookies - INCHANGÉS) ---
+        const sliders = {};
+        function moveSlider(id, dir) {
+            const track = document.getElementById(`track-${id}`); if (!track) return;
+            let currentX = track.style.transform ? parseInt(track.style.transform.replace('translateX(-', '').replace('%)', '')) : 0;
+            let currentIdx = currentX / 100; let count = track.children.length;
+            let nextIdx = (currentIdx + dir + count) % count;
+            track.style.transform = `translateX(-${nextIdx * 100}%)`;
+            const dots = document.getElementById(`dots-${id}`).children;
+            for (let d of dots) { d.classList.remove('bg-brand', 'w-3'); d.classList.add('bg-slate-300', 'w-1.5'); }
+            if (dots[nextIdx]) { dots[nextIdx].classList.remove('bg-slate-300', 'w-1.5'); dots[nextIdx].classList.add('bg-brand', 'w-3'); }
+        }
+        function startSlider(id, dir) { if (sliders[id]) clearInterval(sliders[id]); sliders[id] = setInterval(() => moveSlider(id, dir), 7000); }
+        function stopSlider(id) { if (sliders[id]) clearInterval(sliders[id]); }
+        function moveManual(id, dir) { stopSlider(id); moveSlider(id, dir); }
+
+        let lbProductIndex = 0; let lbImageIndex = 1;
+        function openLightbox(pIdx, imgIdx) { lbProductIndex = pIdx; lbImageIndex = imgIdx; updateLightboxImage(); document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        function switchLb(dir) { lbImageIndex = lbImageIndex + dir; if (lbImageIndex > 4) lbImageIndex = 1; if (lbImageIndex < 1) lbImageIndex = 4; updateLightboxImage(); }
+        function updateLightboxImage() {
+            const activeFilter = document.querySelector('.filter-btn.active').innerText;
+            const filtered = (activeFilter === "All Products") ? products : products.filter(p => p[4] === activeFilter);
+
+            const p = filtered[lbProductIndex];
+            if (!p) return;
+            const baseImg = p[2].includes('-') ? p[2].substring(0, p[2].lastIndexOf('-')) : p[2].replace('.jpg', '');
+            const hdUrl = `https://ecdn.teacherspayteachers.com/thumbitem/${baseImg}-${lbImageIndex}.jpg`;
+            const img = document.getElementById('lb-img'); img.style.opacity = '0.5'; img.src = hdUrl;
+            img.onload = () => img.style.opacity = '1';
+        }
+
+        function openPreview(vUrl, dUrl) {
+            document.getElementById('pdf-frame').src = vUrl; document.getElementById('dl-btn').href = dUrl;
+            document.getElementById('pdf-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden';
+        }
+        function closePreview() {
+            document.getElementById('pdf-modal').classList.add('hidden'); document.getElementById('pdf-frame').src = ''; document.body.style.overflow = 'auto';
+        }
+
+        function acceptCookies() { localStorage.setItem('cookieConsent', 'true'); hideBanner(); }
+        function closeCookies() { hideBanner(); }
+        function hideBanner() { const b = document.getElementById('cookie-banner'); b.classList.add('translate-y-20', 'opacity-0'); setTimeout(() => b.classList.add('hidden'), 500); }
+    </script>
+
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div style="border-top: 1px solid var(--bord, #E2E8F0);" class="dark:border-slate-700">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z" />
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">&bull;</span>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            &copy; 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+</body>
+
+</html>
