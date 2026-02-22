@@ -1,16 +1,11 @@
 # ============================================================
-# Little Smart Genius — Auto-Blog Pipeline (Escalating Schedule)
+# Little Smart Genius — Auto-Blog Pipeline (Full Control)
 # ============================================================
-# Schedule progressif:
-#   Semaine 1-3:  3 articles/jour (1 matin + 1 aprem + 1 soir)
-#   Semaine 4-6:  4 articles/jour (1 matin + 2 aprem + 1 soir)
-#   Semaine 7-9:  5 articles/jour (2 matin + 2 aprem + 1 soir)
-#   Semaine 10+:  6 articles/jour (2 matin + 2 aprem + 2 soir)
-#
-# REQUIREMENTS (GitHub Secrets):
-#   - DEEPSEEK_API_KEY
-#   - POLLINATIONS_API_KEY_1..5
-#   - MAKECOM_WEBHOOK_URL
+# Escalating schedule:
+#   Week 1-3:  3 articles/day (1 matin + 1 aprem + 1 soir)
+#   Week 4-6:  4 articles/day (1 matin + 2 aprem + 1 soir)
+#   Week 7-9:  5 articles/day (2 matin + 2 aprem + 1 soir)
+#   Week 10+:  6 articles/day (2 matin + 2 aprem + 2 soir)
 # ============================================================
 
 name: Daily Auto-Blog
@@ -18,29 +13,31 @@ name: Daily Auto-Blog
 on:
   workflow_dispatch:
     inputs:
-      slot:
-        description: 'Slot to generate (keyword/product/freebie/batch/build-only)'
+      action:
+        description: 'Action to perform'
         required: false
-        default: 'batch'
+        default: 'generate-batch'
         type: choice
         options:
-          - batch
-          - keyword
-          - product
-          - freebie
-          - build-only
+          - generate-batch
+          - generate-keyword
+          - generate-product
+          - generate-freebie
+          - build-site
+          - full-rebuild
+          - maintenance-scan
   schedule:
-    # Matin slot 1  — toujours actif
+    # Matin slot 1  — always
     - cron: '0 8 * * *'
-    # Matin slot 2  — actif semaine 7+
+    # Matin slot 2  — week 7+
     - cron: '30 9 * * *'
-    # Après-midi slot 1 — toujours actif
+    # Après-midi slot 1 — always
     - cron: '0 14 * * *'
-    # Après-midi slot 2 — actif semaine 4+
+    # Après-midi slot 2 — week 4+
     - cron: '30 15 * * *'
-    # Soir slot 1 — toujours actif
+    # Soir slot 1 — always
     - cron: '0 20 * * *'
-    # Soir slot 2 — actif semaine 10+
+    # Soir slot 2 — week 10+
     - cron: '30 21 * * *'
 
 permissions:
@@ -65,7 +62,16 @@ jobs:
           pip install -r scripts/requirements.txt
           pip install requests python-dotenv pillow
 
+      - name: Determine action
+        id: action
+        run: |
+          ACTION="${{ github.event.inputs.action || 'schedule' }}"
+          echo "action=$ACTION" >> $GITHUB_OUTPUT
+          echo "Running action: $ACTION"
+
+      # ── GENERATE ARTICLES ──
       - name: Generate articles
+        if: steps.action.outputs.action != 'build-site' && steps.action.outputs.action != 'full-rebuild' && steps.action.outputs.action != 'maintenance-scan'
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           POLLINATIONS_API_KEY_1: ${{ secrets.POLLINATIONS_API_KEY_1 }}
@@ -77,23 +83,45 @@ jobs:
           LAUNCH_DATE: '2026-02-22'
           PYTHONIOENCODING: utf-8
         run: |
-          SLOT="${{ github.event.inputs.slot || 'schedule' }}"
-          if [ "$SLOT" = "build-only" ]; then
-            echo "Build-only mode — skipping article generation"
-          elif [ "$SLOT" = "schedule" ]; then
-            python scripts/auto_blog_v4.py --schedule
-          else
-            python scripts/auto_blog_v4.py --slot "$SLOT"
-          fi
+          ACTION="${{ steps.action.outputs.action }}"
+          case "$ACTION" in
+            generate-keyword)  python scripts/auto_blog_v4.py --slot keyword ;;
+            generate-product)  python scripts/auto_blog_v4.py --slot product ;;
+            generate-freebie)  python scripts/auto_blog_v4.py --slot freebie ;;
+            generate-batch)    python scripts/auto_blog_v4.py --batch ;;
+            schedule)          python scripts/auto_blog_v4.py --schedule ;;
+          esac
 
-      - name: Build site (JSON → HTML)
+      # ── BUILD PIPELINE ──
+      - name: Build articles (JSON → HTML)
+        if: steps.action.outputs.action != 'maintenance-scan'
         env:
           PYTHONIOENCODING: utf-8
         run: python scripts/build_articles.py
 
-      - name: Run maintenance scan
+      - name: Rebuild blog listing pages
+        if: steps.action.outputs.action != 'maintenance-scan'
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/rebuild_blog_pages.py
+
+      - name: Post-process (related articles + backlinks)
+        if: steps.action.outputs.action != 'maintenance-scan'
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/_post_process.py
+
+      - name: Inject search index
+        if: steps.action.outputs.action != 'maintenance-scan'
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/_inject_search.py
+
+      # ── MAINTENANCE ──
+      - name: Run maintenance
         run: python scripts/maintenance.py --stats
 
+      # ── COMMIT & PUSH ──
       - name: Commit and push changes
         run: |
           git config user.name "Auto-Blog Bot"
@@ -103,7 +131,8 @@ jobs:
           if [ -n "$CHANGES" ]; then
             DATE=$(date +%Y-%m-%d)
             HOUR=$(date +%H)
-            git commit -m "Auto-blog: ${DATE} ${HOUR}h [skip ci]"
+            ACTION="${{ steps.action.outputs.action }}"
+            git commit -m "Auto-blog: ${DATE} ${HOUR}h — ${ACTION} [skip ci]"
             git push
             echo "Changes pushed successfully"
           else

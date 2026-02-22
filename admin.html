@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <style>
+        /* ═══════════════════════════════════════════ THEME ═══ */
         :root {
             --bg: #0a0e1a;
             --bg2: #111827;
@@ -17,14 +18,29 @@
             --border: #2d3548;
             --text: #e2e8f0;
             --text-dim: #94a3b8;
+            --text-inv: #1e293b;
             --brand: #f59e0b;
-            --brand-glow: rgba(245, 158, 11, 0.15);
+            --brand-dark: #d97706;
             --green: #22c55e;
             --red: #ef4444;
             --blue: #3b82f6;
             --purple: #a855f7;
             --cyan: #06b6d4;
-            --radius: 16px;
+            --pink: #ec4899;
+            --radius: 14px;
+            --shadow: 0 4px 24px rgba(0, 0, 0, .3);
+        }
+
+        [data-theme="light"] {
+            --bg: #f1f5f9;
+            --bg2: #ffffff;
+            --card: #ffffff;
+            --card-hover: #f8fafc;
+            --border: #e2e8f0;
+            --text: #1e293b;
+            --text-dim: #64748b;
+            --text-inv: #f8fafc;
+            --shadow: 0 4px 24px rgba(0, 0, 0, .08);
         }
 
         * {
@@ -38,9 +54,10 @@
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
+            transition: background .3s, color .3s;
         }
 
-        /* ── LOGIN ── */
+        /* ═══════════════════════════════════════ LOGIN ═══ */
         #loginOverlay {
             position: fixed;
             inset: 0;
@@ -49,6 +66,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background .3s;
         }
 
         .login-box {
@@ -56,18 +74,19 @@
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 40px;
-            width: 360px;
+            width: 380px;
             text-align: center;
+            box-shadow: var(--shadow);
         }
 
         .login-box h2 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-size: 1.6rem;
+            margin-bottom: 6px;
         }
 
         .login-box p {
             color: var(--text-dim);
-            font-size: 0.875rem;
+            font-size: .85rem;
             margin-bottom: 24px;
         }
 
@@ -76,11 +95,12 @@
             padding: 12px 16px;
             border: 1px solid var(--border);
             border-radius: 10px;
-            background: var(--bg2);
+            background: var(--bg);
             color: var(--text);
             font-size: 1rem;
             outline: none;
             margin-bottom: 16px;
+            transition: border .2s;
         }
 
         .login-box input:focus {
@@ -92,7 +112,7 @@
             padding: 12px;
             border: none;
             border-radius: 10px;
-            background: linear-gradient(135deg, var(--brand), #d97706);
+            background: linear-gradient(135deg, var(--brand), var(--brand-dark));
             color: #000;
             font-weight: 700;
             font-size: 1rem;
@@ -111,11 +131,11 @@
             display: none;
         }
 
-        /* ── HEADER ── */
+        /* ═══════════════════════════════════════ HEADER ═══ */
         .top-bar {
             background: var(--bg2);
             border-bottom: 1px solid var(--border);
-            padding: 16px 32px;
+            padding: 14px 28px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -123,12 +143,14 @@
             top: 0;
             z-index: 100;
             backdrop-filter: blur(12px);
+            transition: background .3s;
         }
 
         .top-bar h1 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--brand), #fbbf24);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -139,35 +161,71 @@
             align-items: center;
         }
 
-        .top-bar .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--green);
-            display: inline-block;
-            margin-right: 6px;
+        /* ═══════════════════════════════ THEME TOGGLE ═══ */
+        .theme-toggle {
+            width: 44px;
+            height: 24px;
+            border-radius: 12px;
+            background: var(--border);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: background .3s;
         }
 
-        /* ── TABS ── */
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--brand);
+            transition: transform .3s;
+        }
+
+        [data-theme="light"] .theme-toggle::after {
+            transform: translateX(20px);
+        }
+
+        .theme-toggle .icon {
+            position: absolute;
+            top: 4px;
+            font-size: 12px;
+            pointer-events: none;
+        }
+
+        .theme-toggle .icon-moon {
+            left: 5px;
+        }
+
+        .theme-toggle .icon-sun {
+            right: 5px;
+        }
+
+        /* ═══════════════════════════════════════ TABS ═══ */
         .tabs {
             display: flex;
-            gap: 4px;
-            padding: 16px 32px 0;
+            gap: 3px;
+            padding: 12px 28px 0;
             background: var(--bg);
             flex-wrap: wrap;
+            transition: background .3s;
         }
 
         .tab {
-            padding: 10px 20px;
+            padding: 9px 16px;
             border-radius: 10px 10px 0 0;
             background: var(--bg2);
             color: var(--text-dim);
             font-weight: 600;
-            font-size: .875rem;
+            font-size: .8rem;
             cursor: pointer;
             border: 1px solid transparent;
             border-bottom: none;
             transition: all .2s;
+            white-space: nowrap;
         }
 
         .tab:hover {
@@ -181,10 +239,10 @@
             border-color: var(--border);
         }
 
-        /* ── PANEL ── */
+        /* ═══════════════════════════════════════ PANEL ═══ */
         .panel {
             display: none;
-            padding: 24px 32px;
+            padding: 20px 28px;
         }
 
         .panel.active {
@@ -195,29 +253,37 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .panel-header h2 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
         }
 
-        /* ── STAT CARDS ── */
+        /* ═══════════════════════════════════ STAT CARDS ═══ */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .stat-card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 20px;
+            padding: 16px;
             position: relative;
             overflow: hidden;
+            transition: all .3s;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
         }
 
         .stat-card::before {
@@ -253,30 +319,35 @@
             background: linear-gradient(90deg, var(--red), #f87171);
         }
 
+        .stat-card.pink::before {
+            background: linear-gradient(90deg, var(--pink), #f472b6);
+        }
+
         .stat-label {
-            font-size: .75rem;
+            font-size: .7rem;
             text-transform: uppercase;
             letter-spacing: .05em;
             color: var(--text-dim);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .stat-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
         }
 
         .stat-sub {
-            font-size: .75rem;
+            font-size: .7rem;
             color: var(--text-dim);
             margin-top: 4px;
         }
 
-        /* ── TABLE ── */
+        /* ═══════════════════════════════════════ TABLE ═══ */
         .tbl-wrap {
             overflow-x: auto;
             border-radius: var(--radius);
             border: 1px solid var(--border);
+            box-shadow: var(--shadow);
         }
 
         table {
@@ -286,9 +357,9 @@
 
         th {
             background: var(--bg2);
-            padding: 12px 16px;
+            padding: 10px 14px;
             text-align: left;
-            font-size: .75rem;
+            font-size: .7rem;
             text-transform: uppercase;
             letter-spacing: .05em;
             color: var(--text-dim);
@@ -298,9 +369,10 @@
         }
 
         td {
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-bottom: 1px solid var(--border);
-            font-size: .875rem;
+            font-size: .82rem;
+            transition: background .2s;
         }
 
         tr:hover td {
@@ -309,9 +381,9 @@
 
         .badge {
             display: inline-block;
-            padding: 3px 10px;
+            padding: 2px 10px;
             border-radius: 20px;
-            font-size: .7rem;
+            font-size: .68rem;
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -336,20 +408,26 @@
             color: #818cf8;
         }
 
-        /* ── BUTTONS ── */
+        .badge-info {
+            background: rgba(6, 182, 212, .15);
+            color: var(--cyan);
+        }
+
+        /* ═══════════════════════════════════════ BUTTONS ═══ */
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
+            gap: 5px;
+            padding: 7px 14px;
             border-radius: 10px;
             font-weight: 600;
-            font-size: .8rem;
+            font-size: .78rem;
             cursor: pointer;
             border: 1px solid var(--border);
             background: var(--card);
             color: var(--text);
             transition: all .2s;
+            white-space: nowrap;
         }
 
         .btn:hover {
@@ -358,7 +436,7 @@
         }
 
         .btn-brand {
-            background: linear-gradient(135deg, var(--brand), #d97706);
+            background: linear-gradient(135deg, var(--brand), var(--brand-dark));
             color: #000;
             border: none;
         }
@@ -400,17 +478,45 @@
             color: #fff;
         }
 
-        .btn-sm {
-            padding: 5px 12px;
-            font-size: .75rem;
+        .btn-purple {
+            background: rgba(168, 85, 247, .15);
+            color: var(--purple);
+            border-color: rgba(168, 85, 247, .3);
         }
 
-        /* ── HEALTH ── */
+        .btn-purple:hover {
+            background: var(--purple);
+            color: #fff;
+        }
+
+        .btn-cyan {
+            background: rgba(6, 182, 212, .15);
+            color: var(--cyan);
+            border-color: rgba(6, 182, 212, .3);
+        }
+
+        .btn-cyan:hover {
+            background: var(--cyan);
+            color: #fff;
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: .72rem;
+        }
+
+        .btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ═══════════════════════════════════ HEALTH ═══ */
         .health-score {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 900;
             text-align: center;
-            margin: 20px 0;
+            margin: 16px 0;
         }
 
         .health-score.good {
@@ -430,69 +536,68 @@
         }
 
         .issue-item {
-            padding: 10px 16px;
+            padding: 8px 14px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: .82rem;
         }
 
-        .issue-icon {
-            font-size: 1.2rem;
-        }
-
-        /* ── GEN GRID ── */
-        .gen-grid {
+        /* ═══════════════════════════ GENERATOR / BUILD ═══ */
+        .action-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
         }
 
-        .gen-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px;
-            text-align: center;
-            transition: all .3s;
-        }
-
-        .gen-card:hover {
-            border-color: var(--brand);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, .3);
-        }
-
-        .gen-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-
-        .gen-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .gen-card p {
-            font-size: .8rem;
-            color: var(--text-dim);
-            margin-bottom: 16px;
-        }
-
-        /* ── TOPICS ── */
-        .topic-section {
+        .action-card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 20px;
-            margin-bottom: 16px;
+            text-align: center;
+            transition: all .3s;
+            box-shadow: var(--shadow);
+        }
+
+        .action-card:hover {
+            border-color: var(--brand);
+            transform: translateY(-2px);
+        }
+
+        .action-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .action-card h3 {
+            font-size: .9rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .action-card p {
+            font-size: .75rem;
+            color: var(--text-dim);
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        /* ═══════════════════════════════ TOPICS ═══ */
+        .topic-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: var(--shadow);
         }
 
         .topic-section h3 {
-            font-size: 1rem;
+            font-size: .9rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -501,23 +606,57 @@
         .topic-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 5px;
         }
 
         .topic-tag {
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 20px;
-            font-size: .75rem;
-            background: var(--bg2);
+            font-size: .72rem;
+            background: var(--bg);
             border: 1px solid var(--border);
         }
 
         .topic-tag.used {
-            opacity: .4;
+            opacity: .35;
             text-decoration: line-through;
         }
 
-        /* ── TOAST ── */
+        /* ═══════════════════════════ WORKFLOW RUNS ═══ */
+        .run-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-bottom: 1px solid var(--border);
+            font-size: .82rem;
+        }
+
+        .run-item .run-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .run-item .run-status.success {
+            background: var(--green);
+        }
+
+        .run-item .run-status.failure {
+            background: var(--red);
+        }
+
+        .run-item .run-status.in_progress {
+            background: var(--brand);
+            animation: pulse 1.5s infinite;
+        }
+
+        .run-item .run-status.queued {
+            background: var(--text-dim);
+        }
+
+        /* ═══════════════════════════ UTILITIES ═══ */
         .toast {
             position: fixed;
             bottom: 24px;
@@ -525,13 +664,14 @@
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 16px 24px;
+            padding: 14px 22px;
             z-index: 10000;
             transform: translateY(100px);
             opacity: 0;
             transition: all .3s;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, .4);
-            max-width: 400px;
+            box-shadow: var(--shadow);
+            max-width: 420px;
+            font-size: .85rem;
         }
 
         .toast.show {
@@ -547,11 +687,10 @@
             border-color: var(--red);
         }
 
-        /* ── LOADING ── */
         .spinner {
             display: inline-block;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border: 2px solid var(--border);
             border-top-color: var(--brand);
             border-radius: 50%;
@@ -564,18 +703,18 @@
             }
         }
 
-        .loading-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(10, 14, 26, .8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius);
-            z-index: 10;
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .4;
+            }
         }
 
-        /* ── MODAL ── */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -595,20 +734,22 @@
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 32px;
-            max-width: 480px;
+            padding: 28px;
+            max-width: 460px;
             width: 90%;
+            box-shadow: var(--shadow);
         }
 
         .modal h3 {
-            font-size: 1.15rem;
-            margin-bottom: 12px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
         }
 
         .modal p {
-            font-size: .875rem;
+            font-size: .85rem;
             color: var(--text-dim);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            line-height: 1.5;
         }
 
         .modal .btn-group {
@@ -617,22 +758,40 @@
             justify-content: flex-end;
         }
 
-        /* ── RESPONSIVE ── */
+        .section-title {
+            font-size: .95rem;
+            font-weight: 700;
+            margin: 16px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         @media(max-width:768px) {
             .tabs {
-                padding: 12px 16px 0;
+                padding: 10px 14px 0;
+                gap: 2px;
+            }
+
+            .tab {
+                padding: 7px 10px;
+                font-size: .72rem;
             }
 
             .panel {
-                padding: 16px;
+                padding: 14px;
             }
 
             .top-bar {
-                padding: 12px 16px;
+                padding: 10px 14px;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            .action-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -640,11 +799,11 @@
 
 <body>
 
-    <!-- ══════ LOGIN ══════ -->
+    <!-- ═══════ LOGIN ═══════ -->
     <div id="loginOverlay">
         <div class="login-box">
             <h2>🎛️ Admin Dashboard</h2>
-            <p>Little Smart Genius — Project Control Center</p>
+            <p>Little Smart Genius — Full Control Center</p>
             <input type="password" id="loginPass" placeholder="Enter admin password"
                 onkeydown="if(event.key==='Enter')doLogin()">
             <button onclick="doLogin()">Access Dashboard</button>
@@ -652,28 +811,34 @@
         </div>
     </div>
 
-    <!-- ══════ MAIN ══════ -->
+    <!-- ═══════ MAIN APP ═══════ -->
     <div id="app" style="display:none">
 
+        <!-- TOP BAR -->
         <div class="top-bar">
-            <h1>🎛️ LSG Admin Dashboard</h1>
+            <h1>🎛️ LSG Admin — Full Control</h1>
             <div class="actions">
-                <span class="status-dot"></span>
-                <span style="font-size:.8rem;color:var(--text-dim)">Connected</span>
-                <button class="btn btn-sm" onclick="refreshAll()" style="margin-left:12px">🔄 Refresh</button>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <span class="icon icon-moon">🌙</span>
+                    <span class="icon icon-sun">☀️</span>
+                </button>
+                <button class="btn btn-sm" onclick="refreshAll()">🔄 Refresh</button>
                 <button class="btn btn-sm btn-red" onclick="logout()">Logout</button>
             </div>
         </div>
 
-        <div class="tabs">
-            <div class="tab active" onclick="switchTab('overview')">📊 Overview</div>
-            <div class="tab" onclick="switchTab('articles')">📝 Articles</div>
-            <div class="tab" onclick="switchTab('generator')">⚡ Generator</div>
-            <div class="tab" onclick="switchTab('health')">🏥 Health</div>
-            <div class="tab" onclick="switchTab('topics')">🔑 Topics</div>
+        <!-- TABS -->
+        <div class="tabs" id="tabsBar">
+            <div class="tab active" data-tab="overview">📊 Overview</div>
+            <div class="tab" data-tab="articles">📝 Articles</div>
+            <div class="tab" data-tab="generator">⚡ Generator</div>
+            <div class="tab" data-tab="build">🏗️ Build</div>
+            <div class="tab" data-tab="health">🏥 Health</div>
+            <div class="tab" data-tab="topics">🔑 Topics</div>
+            <div class="tab" data-tab="runs">📋 Runs</div>
         </div>
 
-        <!-- ══════ OVERVIEW ══════ -->
+        <!-- ═══════ OVERVIEW ═══════ -->
         <div class="panel active" id="panel-overview">
             <div class="panel-header">
                 <h2>📊 Vue d'ensemble</h2>
@@ -699,31 +864,42 @@
                     <div class="stat-label">Keywords restants</div>
                     <div class="stat-value" id="s-kw">—</div>
                 </div>
+                <div class="stat-card pink">
+                    <div class="stat-label">Semaine</div>
+                    <div class="stat-value" id="s-week">—</div>
+                    <div class="stat-sub" id="s-rate"></div>
+                </div>
                 <div class="stat-card red">
-                    <div class="stat-label">Problèmes</div>
+                    <div class="stat-label">Problemes</div>
                     <div class="stat-value" id="s-issues">—</div>
                 </div>
             </div>
-            <h3 style="margin-bottom:12px">Catégories</h3>
+            <div class="section-title">📁 Categories</div>
             <div id="categoriesGrid" class="stats-grid"></div>
         </div>
 
-        <!-- ══════ ARTICLES ══════ -->
+        <!-- ═══════ ARTICLES ═══════ -->
         <div class="panel" id="panel-articles">
             <div class="panel-header">
                 <h2>📝 Articles (<span id="articleCount">0</span>)</h2>
-                <button class="btn btn-brand" onclick="triggerGenerate('batch')">⚡ Générer Batch</button>
+                <div style="display:flex;gap:6px;flex-wrap:wrap">
+                    <button class="btn btn-brand btn-sm" onclick="triggerAction('generate-batch')">⚡ Batch</button>
+                    <button class="btn btn-blue btn-sm" onclick="triggerAction('build-site')">🏗️ Rebuild Blog</button>
+                    <button class="btn btn-sm" onclick="loadArticles()">🔄</button>
+                </div>
             </div>
             <div class="tbl-wrap">
                 <table>
                     <thead>
                         <tr>
                             <th>Titre</th>
-                            <th>Catégorie</th>
+                            <th>Categorie</th>
                             <th>Date</th>
-                            <th>Images</th>
+                            <th>Cover</th>
+                            <th>Imgs</th>
                             <th>IG</th>
-                            <th>Statut</th>
+                            <th>JSON</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -732,82 +908,160 @@
             </div>
         </div>
 
-        <!-- ══════ GENERATOR ══════ -->
+        <!-- ═══════ GENERATOR ═══════ -->
         <div class="panel" id="panel-generator">
             <div class="panel-header">
-                <h2>⚡ Générateur de Contenu</h2>
+                <h2>⚡ Generateur de Contenu</h2>
             </div>
-            <p style="color:var(--text-dim);margin-bottom:20px;">Déclenchez la génération d'articles directement depuis
-                le dashboard. Chaque action lance un workflow GitHub Actions.</p>
-            <div class="gen-grid">
-                <div class="gen-card">
+            <p style="color:var(--text-dim);margin-bottom:16px;font-size:.85rem">Declenchement a distance des workflows
+                GitHub Actions. Chaque action genere un ou plusieurs articles puis reconstruit le site automatiquement.
+            </p>
+            <div class="action-grid">
+                <div class="action-card">
                     <div class="icon">🔍</div>
-                    <h3>Article Keyword</h3>
-                    <p>Article SEO basé sur un mot-clé de votre liste keywords.txt</p>
-                    <button class="btn btn-brand" onclick="triggerGenerate('keyword')">Générer Keyword</button>
+                    <h3>Keyword Article</h3>
+                    <p>Article SEO base sur un mot-cle de keywords.txt</p>
+                    <button class="btn btn-brand" onclick="triggerAction('generate-keyword')">Generer 1 Keyword</button>
                 </div>
-                <div class="gen-card">
+                <div class="action-card">
                     <div class="icon">🛒</div>
-                    <h3>Article Produit</h3>
-                    <p>Review/showcase d'un produit TpT de votre boutique</p>
-                    <button class="btn btn-brand" onclick="triggerGenerate('product')">Générer Product</button>
+                    <h3>Product Article</h3>
+                    <p>Review / showcase d'un produit TpT</p>
+                    <button class="btn btn-brand" onclick="triggerAction('generate-product')">Generer 1 Product</button>
                 </div>
-                <div class="gen-card">
+                <div class="action-card">
                     <div class="icon">🎁</div>
-                    <h3>Article Freebie</h3>
-                    <p>Tutoriel pour un freebie avec lien de téléchargement</p>
-                    <button class="btn btn-brand" onclick="triggerGenerate('freebie')">Générer Freebie</button>
+                    <h3>Freebie Article</h3>
+                    <p>Tutoriel pour un freebie avec lien download</p>
+                    <button class="btn btn-brand" onclick="triggerAction('generate-freebie')">Generer 1 Freebie</button>
                 </div>
-                <div class="gen-card">
+                <div class="action-card">
                     <div class="icon">📦</div>
                     <h3>Batch Complet</h3>
-                    <p>Génère 1 keyword + 1 product + 1 freebie d'un coup</p>
-                    <button class="btn btn-brand" onclick="triggerGenerate('batch')">Lancer Batch</button>
-                </div>
-                <div class="gen-card">
-                    <div class="icon">🏗️</div>
-                    <h3>Rebuild Site</h3>
-                    <p>Reconstruit les HTML, sitemap et index sans générer de contenu</p>
-                    <button class="btn btn-blue" onclick="triggerGenerate('build-only')">Rebuild</button>
+                    <p>1 keyword + 1 product + 1 freebie d'un coup</p>
+                    <button class="btn btn-brand" onclick="triggerAction('generate-batch')">Lancer Batch (3)</button>
                 </div>
             </div>
         </div>
 
-        <!-- ══════ HEALTH ══════ -->
+        <!-- ═══════ BUILD & DEPLOY ═══════ -->
+        <div class="panel" id="panel-build">
+            <div class="panel-header">
+                <h2>🏗️ Build & Deploy</h2>
+            </div>
+            <p style="color:var(--text-dim);margin-bottom:16px;font-size:.85rem">Reconstruit le site sans generer de
+                nouveaux articles. Utile quand les articles existent (JSON/images) mais ne sont pas visibles sur le
+                blog.</p>
+            <div class="action-grid">
+                <div class="action-card">
+                    <div class="icon">🔧</div>
+                    <h3>Build Site</h3>
+                    <p>Execute le pipeline complet :<br>
+                        <strong>build_articles.py</strong> (JSON→HTML)<br>
+                        <strong>rebuild_blog_pages.py</strong> (blog listing)<br>
+                        <strong>_post_process.py</strong> (related articles)<br>
+                        <strong>_inject_search.py</strong> (search index)
+                    </p>
+                    <button class="btn btn-blue" onclick="triggerAction('build-site')">🔧 Build Site</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">🔄</div>
+                    <h3>Full Rebuild</h3>
+                    <p>Comme Build Site mais avec un scan de maintenance complet en plus. Ideal pour un nettoyage
+                        general.</p>
+                    <button class="btn btn-purple" onclick="triggerAction('full-rebuild')">🔄 Full Rebuild</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">📊</div>
+                    <h3>Maintenance Scan</h3>
+                    <p>Lance uniquement le scan de maintenance pour verifier l'etat du site sans rien modifier.</p>
+                    <button class="btn btn-cyan" onclick="triggerAction('maintenance-scan')">📊 Maintenance</button>
+                </div>
+            </div>
+            <div class="section-title" style="margin-top:20px">📋 Pipeline de Build (executé automatiquement)</div>
+            <div class="tbl-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Script</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>build_articles.py</strong></td>
+                            <td>Convertit les JSON en articles HTML + met a jour articles.json, search_index.json,
+                                sitemap.xml</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>rebuild_blog_pages.py</strong></td>
+                            <td>Regenere blog.html, blog-2.html etc. avec la liste des articles a jour</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>_post_process.py</strong></td>
+                            <td>Injecte les articles relies, backlinks TpT et liens internes dans chaque article</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>_inject_search.py</strong></td>
+                            <td>Injecte le search_index inline dans les pages blog pour la recherche cote client</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>maintenance.py</strong></td>
+                            <td>Scan de stats et sante</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ═══════ HEALTH ═══════ -->
         <div class="panel" id="panel-health">
             <div class="panel-header">
-                <h2>🏥 Analyseur de Santé</h2>
-                <button class="btn btn-green" onclick="loadHealth()">🔄 Re-analyser</button>
+                <h2>🏥 Analyseur de Sante</h2>
+                <div style="display:flex;gap:6px">
+                    <button class="btn btn-green btn-sm" onclick="loadHealth()">🔄 Re-analyser</button>
+                    <button class="btn btn-blue btn-sm" onclick="triggerAction('build-site')">🔧 Fix: Rebuild</button>
+                </div>
             </div>
             <div style="text-align:center">
                 <div id="healthScore" class="health-score good">—</div>
-                <p style="color:var(--text-dim);margin-bottom:20px">Score de santé global</p>
+                <p style="color:var(--text-dim);margin-bottom:16px;font-size:.85rem">Score de sante global</p>
             </div>
-            <div class="stats-grid" style="margin-bottom:20px">
+            <div class="stats-grid">
                 <div class="stat-card green">
-                    <div class="stat-label">Articles</div>
+                    <div class="stat-label">Articles HTML</div>
                     <div class="stat-value" id="h-articles">—</div>
                 </div>
                 <div class="stat-card blue">
+                    <div class="stat-label">Posts JSON</div>
+                    <div class="stat-value" id="h-posts">—</div>
+                </div>
+                <div class="stat-card purple">
                     <div class="stat-label">Images</div>
                     <div class="stat-value" id="h-images">—</div>
                 </div>
-                <div class="stat-card purple">
+                <div class="stat-card cyan">
                     <div class="stat-label">Instagram</div>
                     <div class="stat-value" id="h-ig">—</div>
                 </div>
                 <div class="stat-card red">
-                    <div class="stat-label">Problèmes</div>
+                    <div class="stat-label">Problemes</div>
                     <div class="stat-value" id="h-issues">—</div>
                 </div>
             </div>
-            <h3 style="margin-bottom:12px">Détails des problèmes</h3>
+            <div class="section-title">Details des problemes</div>
             <ul class="issue-list" id="issueList"></ul>
-            <p id="noIssues" style="display:none;text-align:center;color:var(--green);padding:24px;font-weight:600;">✅
-                Aucun problème détecté — Votre site est en parfaite santé !</p>
+            <p id="noIssues" style="display:none;text-align:center;color:var(--green);padding:20px;font-weight:600;">✅
+                Aucun probleme detecte !</p>
         </div>
 
-        <!-- ══════ TOPICS ══════ -->
+        <!-- ═══════ TOPICS ═══════ -->
         <div class="panel" id="panel-topics">
             <div class="panel-header">
                 <h2>🔑 Gestion des Topics</h2>
@@ -815,14 +1069,25 @@
             <div id="topicsContainer"></div>
         </div>
 
+        <!-- ═══════ WORKFLOW RUNS ═══════ -->
+        <div class="panel" id="panel-runs">
+            <div class="panel-header">
+                <h2>📋 Dernieres Executions</h2>
+                <button class="btn btn-sm" onclick="loadRuns()">🔄</button>
+            </div>
+            <p style="color:var(--text-dim);margin-bottom:14px;font-size:.85rem">Les 10 dernieres executions du workflow
+                GitHub Actions</p>
+            <div id="runsList"></div>
+        </div>
+
     </div>
 
-    <!-- ══════ DELETE MODAL ══════ -->
+    <!-- ═══════ DELETE MODAL ═══════ -->
     <div class="modal-overlay" id="deleteModal">
         <div class="modal">
             <h3>🗑️ Confirmer la suppression</h3>
-            <p>Êtes-vous sûr de vouloir supprimer <strong id="deleteSlugName"></strong> ?<br>
-                Tous les fichiers liés seront supprimés : HTML, JSON, images, Instagram, sitemap et index.</p>
+            <p>Supprimer <strong id="deleteSlugName"></strong> et tous les fichiers lies ?<br>HTML, JSON, images,
+                Instagram, sitemap et index seront nettoyes.</p>
             <div class="btn-group">
                 <button class="btn" onclick="closeModal()">Annuler</button>
                 <button class="btn btn-red" id="confirmDeleteBtn" onclick="confirmDelete()">🗑️ Supprimer tout</button>
@@ -830,294 +1095,254 @@
         </div>
     </div>
 
-    <!-- ══════ TOAST ══════ -->
     <div class="toast" id="toast"></div>
 
     <script>
-        // ═══════════════════════════════════════════════════════
-        // CONFIG
-        // ═══════════════════════════════════════════════════════
-        const API_BASE = "/.netlify/functions/admin-api";
-        let AUTH_TOKEN = "";
-        let pendingDeleteSlug = "";
+        const API = "/.netlify/functions/admin-api";
+        let TOKEN = "";
+        let pendingSlug = "";
 
-        // ═══════════════════════════════════════════════════════
-        // AUTH
-        // ═══════════════════════════════════════════════════════
+        // ═══════ THEME ═══════
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            html.setAttribute("data-theme", next);
+            localStorage.setItem("lsg_theme", next);
+        }
+        (function () {
+            const saved = localStorage.getItem("lsg_theme");
+            if (saved) document.documentElement.setAttribute("data-theme", saved);
+        })();
+
+        // ═══════ AUTH ═══════
         function doLogin() {
             const pass = document.getElementById("loginPass").value;
             if (!pass) return;
-            AUTH_TOKEN = pass;
-            // Test auth with a simple call
-            apiFetch("stats").then(data => {
+            TOKEN = pass;
+            api("stats").then(() => {
                 document.getElementById("loginOverlay").style.display = "none";
                 document.getElementById("app").style.display = "block";
-                localStorage.setItem("lsg_admin_token", pass);
+                localStorage.setItem("lsg_token", pass);
                 refreshAll();
-            }).catch(err => {
+            }).catch(() => {
                 document.getElementById("loginError").style.display = "block";
             });
         }
-
-        function logout() {
-            localStorage.removeItem("lsg_admin_token");
-            location.reload();
-        }
-
-        // Auto-login
+        function logout() { localStorage.removeItem("lsg_token"); location.reload(); }
         (function () {
-            const saved = localStorage.getItem("lsg_admin_token");
-            if (saved) {
-                AUTH_TOKEN = saved;
-                apiFetch("stats").then(() => {
+            const s = localStorage.getItem("lsg_token");
+            if (s) {
+                TOKEN = s; api("stats").then(() => {
                     document.getElementById("loginOverlay").style.display = "none";
-                    document.getElementById("app").style.display = "block";
-                    refreshAll();
-                }).catch(() => {
-                    localStorage.removeItem("lsg_admin_token");
-                });
+                    document.getElementById("app").style.display = "block"; refreshAll();
+                }).catch(() => localStorage.removeItem("lsg_token"));
             }
         })();
 
-        // ═══════════════════════════════════════════════════════
-        // API
-        // ═══════════════════════════════════════════════════════
-        async function apiFetch(action, params = {}, method = "GET") {
+        // ═══════ API ═══════
+        async function api(action, params = {}, method = "GET") {
             const qs = new URLSearchParams({ action, ...params }).toString();
-            const res = await fetch(`${API_BASE}?${qs}`, {
-                method,
-                headers: { Authorization: `Bearer ${AUTH_TOKEN}` },
-            });
-            if (!res.ok) {
-                const err = await res.json().catch(() => ({ error: "Network error" }));
-                throw new Error(err.error || `HTTP ${res.status}`);
-            }
+            const res = await fetch(`${API}?${qs}`, { method, headers: { Authorization: `Bearer ${TOKEN}` } });
+            if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error || `HTTP ${res.status}`); }
             return res.json();
         }
 
-        // ═══════════════════════════════════════════════════════
-        // TABS
-        // ═══════════════════════════════════════════════════════
-        function switchTab(name) {
+        // ═══════ TABS ═══════
+        document.getElementById("tabsBar").addEventListener("click", e => {
+            const tab = e.target.closest(".tab");
+            if (!tab) return;
+            const name = tab.dataset.tab;
             document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
             document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+            tab.classList.add("active");
             document.getElementById(`panel-${name}`).classList.add("active");
-            event.target.classList.add("active");
+            // Lazy load
+            const loads = { articles: loadArticles, health: loadHealth, topics: loadTopics, runs: loadRuns };
+            if (loads[name] && !document.getElementById(`panel-${name}`).dataset.loaded) {
+                loads[name]();
+                document.getElementById(`panel-${name}`).dataset.loaded = "1";
+            }
+        });
 
-            // Lazy-load data
-            if (name === "articles" && !document.getElementById("articlesTbody").children.length) loadArticles();
-            if (name === "health" && document.getElementById("healthScore").textContent === "—") loadHealth();
-            if (name === "topics" && !document.getElementById("topicsContainer").children.length) loadTopics();
-        }
-
-        // ═══════════════════════════════════════════════════════
-        // REFRESH ALL
-        // ═══════════════════════════════════════════════════════
+        // ═══════ REFRESH ALL ═══════
         async function refreshAll() {
             try {
-                const [stats, health] = await Promise.all([
-                    apiFetch("stats"),
-                    apiFetch("health"),
-                ]);
-                renderStats(stats);
-                renderHealthOverview(health);
-            } catch (e) {
-                toast("Erreur: " + e.message, "error");
-            }
+                const [stats, health] = await Promise.all([api("stats"), api("health")]);
+                renderStats(stats); renderHealthOverview(health);
+            } catch (e) { toast("Erreur: " + e.message, "error"); }
         }
 
-        // ═══════════════════════════════════════════════════════
-        // STATS
-        // ═══════════════════════════════════════════════════════
-        function renderStats(data) {
-            document.getElementById("s-articles").textContent = data.articles;
-            document.getElementById("s-images").textContent = data.images;
-            document.getElementById("s-ig").textContent = data.instagram;
-            document.getElementById("s-kw").textContent = data.topics?.keyword?.total
-                ? `${data.topics.keyword.total - data.topics.keyword.used} / ${data.topics.keyword.total}`
-                : "—";
-
-            // Categories
+        // ═══════ STATS ═══════
+        function renderStats(d) {
+            document.getElementById("s-articles").textContent = d.articles;
+            document.getElementById("s-images").textContent = d.images;
+            document.getElementById("s-ig").textContent = d.instagram;
+            document.getElementById("s-kw").textContent = d.topics?.keyword?.total
+                ? `${d.topics.keyword.total - d.topics.keyword.used}/${d.topics.keyword.total}` : "—";
+            if (d.schedule) {
+                document.getElementById("s-week").textContent = d.schedule.week;
+                document.getElementById("s-rate").textContent = `${d.schedule.articlesPerDay} articles/jour`;
+            }
             const grid = document.getElementById("categoriesGrid");
             grid.innerHTML = "";
-            const colors = ["orange", "blue", "purple", "green", "cyan", "red"];
+            const colors = ["orange", "blue", "purple", "green", "cyan", "pink", "red"];
             let i = 0;
-            for (const [cat, count] of Object.entries(data.categories || {}).sort((a, b) => b[1] - a[1])) {
-                grid.innerHTML += `<div class="stat-card ${colors[i % colors.length]}"><div class="stat-label">${esc(cat)}</div><div class="stat-value">${count}</div></div>`;
+            for (const [cat, n] of Object.entries(d.categories || {}).sort((a, b) => b[1] - a[1])) {
+                grid.innerHTML += `<div class="stat-card ${colors[i % colors.length]}"><div class="stat-label">${esc(cat)}</div><div class="stat-value">${n}</div></div>`;
                 i++;
             }
         }
-
-        function renderHealthOverview(data) {
-            const el = document.getElementById("s-health");
-            el.textContent = data.score + "%";
-            document.getElementById("s-issues").textContent = data.issueCount;
+        function renderHealthOverview(d) {
+            document.getElementById("s-health").textContent = d.score + "%";
+            document.getElementById("s-issues").textContent = d.issueCount;
         }
 
-        // ═══════════════════════════════════════════════════════
-        // ARTICLES
-        // ═══════════════════════════════════════════════════════
+        // ═══════ ARTICLES ═══════
         async function loadArticles() {
             const tbody = document.getElementById("articlesTbody");
-            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px"><div class="spinner"></div> Chargement...</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:30px"><div class="spinner"></div> Chargement...</td></tr>';
             try {
-                const data = await apiFetch("articles");
-                document.getElementById("articleCount").textContent = data.total;
+                const d = await api("articles");
+                document.getElementById("articleCount").textContent = d.total;
                 tbody.innerHTML = "";
-                data.articles.forEach(a => {
-                    const statusClass = a.health === "ok" ? "badge-ok" : "badge-warn";
-                    const statusText = a.health === "ok" ? "OK" : "⚠️";
-                    const date = a.date ? new Date(a.date).toLocaleDateString("fr-FR") : "—";
+                d.articles.forEach(a => {
+                    const sc = a.health === "ok" ? "badge-ok" : a.health === "warning" ? "badge-warn" : "badge-error";
+                    const st = a.health === "ok" ? "OK" : a.health === "warning" ? "⚠️" : "❌";
+                    const dt = a.date ? new Date(a.date).toLocaleDateString("fr-FR") : "—";
                     tbody.innerHTML += `<tr>
-                <td style="max-width:300px"><strong>${esc(a.title || a.slug)}</strong></td>
+                <td style="max-width:260px"><strong>${esc(a.title || a.slug)}</strong></td>
                 <td><span class="badge badge-cat">${esc(a.category || "—")}</span></td>
-                <td style="white-space:nowrap">${date}</td>
-                <td>${a.imageCount || 0}</td>
+                <td style="white-space:nowrap">${dt}</td>
+                <td>${a.coverCount || 0}</td>
+                <td>${a.contentImgCount || 0}/4</td>
                 <td>${a.hasInstagram ? "✅" : "❌"}</td>
-                <td><span class="badge ${statusClass}">${statusText}</span></td>
+                <td>${a.hasPost ? "✅" : "❌"}</td>
+                <td><span class="badge ${sc}">${st}</span></td>
                 <td><button class="btn btn-red btn-sm" onclick="askDelete('${esc(a.slug)}')">🗑️</button></td>
             </tr>`;
                 });
             } catch (e) {
-                tbody.innerHTML = `<tr><td colspan="7" style="color:var(--red);text-align:center">Erreur: ${esc(e.message)}</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="9" style="color:var(--red);text-align:center">${esc(e.message)}</td></tr>`;
             }
         }
 
-        // ═══════════════════════════════════════════════════════
-        // DELETE
-        // ═══════════════════════════════════════════════════════
+        // ═══════ DELETE ═══════
         function askDelete(slug) {
-            pendingDeleteSlug = slug;
+            pendingSlug = slug;
             document.getElementById("deleteSlugName").textContent = slug;
             document.getElementById("deleteModal").classList.add("show");
         }
-        function closeModal() {
-            document.getElementById("deleteModal").classList.remove("show");
-            pendingDeleteSlug = "";
-        }
+        function closeModal() { document.getElementById("deleteModal").classList.remove("show"); pendingSlug = ""; }
         async function confirmDelete() {
-            if (!pendingDeleteSlug) return;
+            if (!pendingSlug) return;
             const btn = document.getElementById("confirmDeleteBtn");
-            btn.innerHTML = '<div class="spinner"></div> Suppression...';
-            btn.disabled = true;
+            btn.innerHTML = '<div class="spinner"></div>'; btn.disabled = true;
             try {
-                const result = await apiFetch("delete", { slug: pendingDeleteSlug }, "DELETE");
-                toast(`✅ ${result.totalDeleted} fichiers supprimés pour "${pendingDeleteSlug}"`, "success");
-                closeModal();
-                loadArticles();
-                refreshAll();
-            } catch (e) {
-                toast("❌ Erreur: " + e.message, "error");
-            }
-            btn.innerHTML = "🗑️ Supprimer tout";
-            btn.disabled = false;
+                const r = await api("delete", { slug: pendingSlug }, "DELETE");
+                toast(`✅ ${r.totalDeleted} fichiers supprimes pour "${pendingSlug}"`, "success");
+                closeModal(); loadArticles(); refreshAll();
+            } catch (e) { toast("❌ " + e.message, "error"); }
+            btn.innerHTML = "🗑️ Supprimer tout"; btn.disabled = false;
         }
 
-        // ═══════════════════════════════════════════════════════
-        // HEALTH
-        // ═══════════════════════════════════════════════════════
-        async function loadHealth() {
-            const scoreEl = document.getElementById("healthScore");
-            scoreEl.textContent = "...";
-            scoreEl.className = "health-score";
+        // ═══════ TRIGGER WORKFLOW ═══════
+        async function triggerAction(action) {
+            const labels = {
+                "generate-keyword": "Generer 1 article keyword",
+                "generate-product": "Generer 1 article product",
+                "generate-freebie": "Generer 1 article freebie",
+                "generate-batch": "Generer batch (3 articles)",
+                "build-site": "Rebuild site complet",
+                "full-rebuild": "Full rebuild + maintenance",
+                "maintenance-scan": "Maintenance scan",
+            };
+            if (!confirm(`Lancer: "${labels[action] || action}" ?\nUn workflow GitHub Actions sera declenche.`)) return;
             try {
-                const data = await apiFetch("health");
-                scoreEl.textContent = data.score + "%";
-                scoreEl.className = "health-score " + (data.score >= 90 ? "good" : data.score >= 70 ? "ok" : "bad");
-                document.getElementById("h-articles").textContent = data.totalArticles;
-                document.getElementById("h-images").textContent = data.totalImages;
-                document.getElementById("h-ig").textContent = data.totalInstagram;
-                document.getElementById("h-issues").textContent = data.issueCount;
+                await api("generate", { type: action }, "POST");
+                toast(`✅ "${labels[action]}" declenche ! Verifiez dans l'onglet Runs.`, "success");
+            } catch (e) { toast("❌ " + e.message, "error"); }
+        }
 
+        // ═══════ HEALTH ═══════
+        async function loadHealth() {
+            const el = document.getElementById("healthScore");
+            el.textContent = "..."; el.className = "health-score";
+            try {
+                const d = await api("health");
+                el.textContent = d.score + "%";
+                el.className = "health-score " + (d.score >= 90 ? "good" : d.score >= 70 ? "ok" : "bad");
+                document.getElementById("h-articles").textContent = d.totalArticles;
+                document.getElementById("h-posts").textContent = d.totalPosts;
+                document.getElementById("h-images").textContent = d.totalImages;
+                document.getElementById("h-ig").textContent = d.totalInstagram;
+                document.getElementById("h-issues").textContent = d.issueCount;
                 const list = document.getElementById("issueList");
-                const noIssues = document.getElementById("noIssues");
+                const noI = document.getElementById("noIssues");
                 list.innerHTML = "";
-                if (data.issues.length === 0) {
-                    noIssues.style.display = "block";
-                } else {
-                    noIssues.style.display = "none";
-                    data.issues.forEach(iss => {
-                        const icon = iss.type === "error" ? "🔴" : "🟡";
-                        list.innerHTML += `<li class="issue-item"><span class="issue-icon">${icon}</span><span>${esc(iss.message)}</span><span class="badge badge-cat" style="margin-left:auto">${esc(iss.category)}</span></li>`;
+                if (!d.issues.length) { noI.style.display = "block"; }
+                else {
+                    noI.style.display = "none";
+                    d.issues.forEach(i => {
+                        const icon = i.type === "error" ? "🔴" : i.type === "warning" ? "🟡" : "🔵";
+                        list.innerHTML += `<li class="issue-item"><span>${icon}</span><span>${esc(i.message)}</span><span class="badge badge-info" style="margin-left:auto">${esc(i.category)}</span></li>`;
                     });
                 }
-            } catch (e) {
-                scoreEl.textContent = "ERR";
-                scoreEl.className = "health-score bad";
-                toast("Erreur health: " + e.message, "error");
-            }
+            } catch (e) { el.textContent = "ERR"; el.className = "health-score bad"; toast("Erreur: " + e.message, "error"); }
         }
 
-        // ═══════════════════════════════════════════════════════
-        // GENERATOR
-        // ═══════════════════════════════════════════════════════
-        async function triggerGenerate(slot) {
-            if (!confirm(`Lancer la génération "${slot}" ? Un workflow GitHub Actions sera déclenché.`)) return;
-            try {
-                await apiFetch("generate", { slot }, "POST");
-                toast(`✅ Workflow "${slot}" déclenché ! Vérifiez l'avancement sur GitHub Actions.`, "success");
-            } catch (e) {
-                toast("❌ Erreur: " + e.message, "error");
-            }
-        }
-
-        // ═══════════════════════════════════════════════════════
-        // TOPICS
-        // ═══════════════════════════════════════════════════════
+        // ═══════ TOPICS ═══════
         async function loadTopics() {
-            const container = document.getElementById("topicsContainer");
-            container.innerHTML = '<div style="text-align:center;padding:40px"><div class="spinner"></div></div>';
+            const c = document.getElementById("topicsContainer");
+            c.innerHTML = '<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
             try {
-                const data = await apiFetch("topics");
+                const d = await api("topics");
+                let h = "";
+                h += `<div class="topic-section"><h3>🔍 Keywords (${d.remaining.keywordCount} restants / ${d.allKeywords.length} total)</h3><div class="topic-tags">`;
+                const usedKW = new Set(d.used.keyword || []);
+                d.allKeywords.forEach(k => { h += `<span class="topic-tag ${usedKW.has(k) ? 'used' : ''}">${esc(k)}</span>`; });
+                h += `</div></div>`;
+                const usedP = d.used.product || [];
+                h += `<div class="topic-section"><h3>🛒 Produits utilises (${usedP.length})</h3><div class="topic-tags">`;
+                usedP.forEach(p => { h += `<span class="topic-tag used">${esc(p)}</span>`; });
+                h += `</div></div>`;
+                const usedF = d.used.freebie || [];
+                h += `<div class="topic-section"><h3>🎁 Freebies utilises (${usedF.length})</h3><div class="topic-tags">`;
+                usedF.forEach(f => { h += `<span class="topic-tag used">${esc(f)}</span>`; });
+                h += `</div></div>`;
+                c.innerHTML = h;
+            } catch (e) { c.innerHTML = `<p style="color:var(--red)">${esc(e.message)}</p>`; }
+        }
 
-                let html = "";
-
-                // Keywords section
-                html += `<div class="topic-section">
-            <h3>🔍 Keywords (${data.remaining.keywordCount} restants / ${data.allKeywords.length} total)</h3>
-            <div class="topic-tags">`;
-                const usedKW = new Set(data.used.keyword || []);
-                data.allKeywords.forEach(kw => {
-                    html += `<span class="topic-tag ${usedKW.has(kw) ? 'used' : ''}">${esc(kw)}</span>`;
+        // ═══════ WORKFLOW RUNS ═══════
+        async function loadRuns() {
+            const c = document.getElementById("runsList");
+            c.innerHTML = '<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
+            try {
+                const d = await api("runs");
+                if (!d.runs.length) { c.innerHTML = '<p style="color:var(--text-dim);text-align:center;padding:20px">Aucune execution trouvee</p>'; return; }
+                let h = '<div class="tbl-wrap"><table><thead><tr><th></th><th>#</th><th>Date</th><th>Status</th><th>Conclusion</th><th>Lien</th></tr></thead><tbody>';
+                d.runs.forEach(r => {
+                    const cls = r.conclusion === "success" ? "success" : r.conclusion === "failure" ? "failure" : r.status === "in_progress" ? "in_progress" : "queued";
+                    const dt = new Date(r.created_at).toLocaleString("fr-FR");
+                    h += `<tr>
+                <td><span class="run-status ${cls}" style="display:inline-block"></span></td>
+                <td>#${r.run_number}</td>
+                <td style="white-space:nowrap">${dt}</td>
+                <td><span class="badge badge-info">${r.status}</span></td>
+                <td><span class="badge ${r.conclusion === 'success' ? 'badge-ok' : r.conclusion === 'failure' ? 'badge-error' : 'badge-warn'}">${r.conclusion || '—'}</span></td>
+                <td><a href="${r.html_url}" target="_blank" class="btn btn-sm">Voir ↗</a></td>
+            </tr>`;
                 });
-                html += `</div></div>`;
-
-                // Products section
-                const usedProd = data.used.product || [];
-                html += `<div class="topic-section">
-            <h3>🛒 Produits utilisés (${usedProd.length})</h3>
-            <div class="topic-tags">`;
-                usedProd.forEach(p => { html += `<span class="topic-tag used">${esc(p)}</span>`; });
-                html += `</div></div>`;
-
-                // Freebies section
-                const usedFree = data.used.freebie || [];
-                html += `<div class="topic-section">
-            <h3>🎁 Freebies utilisés (${usedFree.length})</h3>
-            <div class="topic-tags">`;
-                usedFree.forEach(f => { html += `<span class="topic-tag used">${esc(f)}</span>`; });
-                html += `</div></div>`;
-
-                container.innerHTML = html;
-            } catch (e) {
-                container.innerHTML = `<p style="color:var(--red)">Erreur: ${esc(e.message)}</p>`;
-            }
+                h += '</tbody></table></div>';
+                c.innerHTML = h;
+            } catch (e) { c.innerHTML = `<p style="color:var(--red)">${esc(e.message)}</p>`; }
         }
 
-        // ═══════════════════════════════════════════════════════
-        // UTILS
-        // ═══════════════════════════════════════════════════════
-        function esc(str) {
-            if (!str) return "";
-            const d = document.createElement("div");
-            d.textContent = str;
-            return d.innerHTML;
-        }
-
+        // ═══════ UTILS ═══════
+        function esc(s) { if (!s) return ""; const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
         function toast(msg, type = "success") {
             const t = document.getElementById("toast");
-            t.textContent = msg;
-            t.className = `toast show ${type}`;
+            t.textContent = msg; t.className = `toast show ${type}`;
             setTimeout(() => t.className = "toast", 4000);
         }
     </script>

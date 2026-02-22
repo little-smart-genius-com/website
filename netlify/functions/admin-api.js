@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════
-// ADMIN API — Little Smart Genius Dashboard Backend
-// Netlify Serverless Function — Full project control
+// ADMIN API V2 — Little Smart Genius Full-Control Backend
+// Netlify Serverless Function — Complete project control
 // ═══════════════════════════════════════════════════════════
 
 const GITHUB_API = "https://api.github.com";
@@ -29,15 +29,12 @@ async function ghFetch(path, opts = {}) {
             ...(opts.headers || {}),
         },
     });
-    if (!res.ok && opts.okStatuses && !opts.okStatuses.includes(res.status)) {
-        const text = await res.text();
-        throw new Error(`GitHub ${res.status}: ${text.substring(0, 200)}`);
-    }
     return res;
 }
 
 async function ghJSON(path) {
     const res = await ghFetch(path);
+    if (!res.ok) throw new Error(`GitHub ${res.status}`);
     return res.json();
 }
 
@@ -69,6 +66,18 @@ async function ghListDir(path) {
     }
 }
 
+async function ghUpdateFile(path, content, sha, message) {
+    return ghFetch(`contents/${path}`, {
+        method: "PUT",
+        body: JSON.stringify({
+            message,
+            content: Buffer.from(content).toString("base64"),
+            sha,
+            branch: BRANCH,
+        }),
+    });
+}
+
 // ── Auth check ──────────────────────────────────────────
 
 function checkAuth(event) {
@@ -91,30 +100,42 @@ async function listArticles() {
     const data = JSON.parse(content);
     const articles = data.articles || [];
 
-    // Check which files actually exist
-    const [htmlFiles, imgFiles, igFiles] = await Promise.all([
+    const [htmlFiles, imgFiles, igFiles, postFiles] = await Promise.all([
         ghListDir("articles"),
         ghListDir("images"),
         ghListDir("instagram"),
+        ghListDir("posts"),
     ]);
 
     const htmlSet = new Set(htmlFiles.map(f => f.name));
-    const imgSet = new Set(imgFiles.map(f => f.name));
-    const igSet = new Set(igFiles.map(f => f.name));
+    const postSlugs = new Set(postFiles.map(f => {
+        const m = f.name.match(/^(.+)-\d+\.json$/);
+        return m ? m[1] : f.name.replace(".json", "");
+    }));
 
     const enriched = articles.map(a => {
         const slug = a.slug || "";
         const hasHtml = htmlSet.has(`${slug}.html`);
+        const hasPost = postSlugs.has(slug);
         const coverImgs = imgFiles.filter(f => f.name.startsWith(slug) && f.name.includes("-cover-"));
         const contentImgs = imgFiles.filter(f => f.name.startsWith(slug) && f.name.includes("-img"));
         const igPost = igFiles.filter(f => f.name.startsWith(slug));
 
+        let health = "ok";
+        if (!hasHtml) health = "error";
+        else if (coverImgs.length === 0) health = "warning";
+        else if (!hasPost) health = "warning";
+
         return {
             ...a,
             hasHtml,
+            hasPost,
+            coverCount: coverImgs.length,
+            contentImgCount: contentImgs.length,
             imageCount: coverImgs.length + contentImgs.length,
             hasInstagram: igPost.length > 0,
-            health: hasHtml && coverImgs.length > 0 ? "ok" : "warning",
+            igCount: igPost.length,
+            health,
         };
     });
 
@@ -131,7 +152,6 @@ async function cascadeDelete(slug) {
     const deleted = [];
     const errors = [];
 
-    // 1. Find all files matching this slug
     const [htmlFiles, postFiles, imgFiles, igFiles] = await Promise.all([
         ghListDir("articles"),
         ghListDir("posts"),
@@ -141,26 +161,19 @@ async function cascadeDelete(slug) {
 
     const toDelete = [];
 
-    // articles/{slug}.html
-    const html = htmlFiles.find(f => f.name === `${slug}.html`);
-    if (html) toDelete.push({ path: `articles/${html.name}`, sha: html.sha });
-
-    // posts/{slug}-*.json
+    htmlFiles.filter(f => f.name === `${slug}.html`).forEach(f => {
+        toDelete.push({ path: `articles/${f.name}`, sha: f.sha });
+    });
     postFiles.filter(f => f.name.startsWith(slug)).forEach(f => {
         toDelete.push({ path: `posts/${f.name}`, sha: f.sha });
     });
-
-    // images/{slug}-*.webp
     imgFiles.filter(f => f.name.startsWith(slug)).forEach(f => {
         toDelete.push({ path: `images/${f.name}`, sha: f.sha });
     });
-
-    // instagram/{slug}-*.jpg/.txt
     igFiles.filter(f => f.name.startsWith(slug)).forEach(f => {
         toDelete.push({ path: `instagram/${f.name}`, sha: f.sha });
     });
 
-    // Delete files sequentially (GitHub API rate limit)
     for (const file of toDelete) {
         try {
             await ghDeleteFile(file.path, file.sha, `Dashboard: delete ${slug}`);
@@ -170,64 +183,38 @@ async function cascadeDelete(slug) {
         }
     }
 
-    // 2. Update articles.json (remove entry)
+    // Update articles.json
     try {
         const { content: ajContent, sha: ajSha } = await ghFileContent("articles.json");
         if (ajContent) {
             const ajData = JSON.parse(ajContent);
             ajData.articles = (ajData.articles || []).filter(a => a.slug !== slug);
             ajData.total_articles = ajData.articles.length;
-            await ghFetch(`contents/articles.json`, {
-                method: "PUT",
-                body: JSON.stringify({
-                    message: `Dashboard: remove ${slug} from articles.json`,
-                    content: Buffer.from(JSON.stringify(ajData, null, 2)).toString("base64"),
-                    sha: ajSha,
-                    branch: BRANCH,
-                }),
-            });
+            await ghUpdateFile("articles.json", JSON.stringify(ajData, null, 2), ajSha, `Dashboard: remove ${slug} from articles.json`);
             deleted.push("articles.json (entry removed)");
         }
     } catch (e) { errors.push({ path: "articles.json", error: e.message }); }
 
-    // 3. Update search_index.json (remove entry)
+    // Update search_index.json
     try {
         const { content: siContent, sha: siSha } = await ghFileContent("search_index.json");
         if (siContent) {
             const siData = JSON.parse(siContent);
             siData.articles = (siData.articles || []).filter(a => a.slug !== slug);
             siData.total_articles = siData.articles.length;
-            await ghFetch(`contents/search_index.json`, {
-                method: "PUT",
-                body: JSON.stringify({
-                    message: `Dashboard: remove ${slug} from search_index.json`,
-                    content: Buffer.from(JSON.stringify(siData, null, 2)).toString("base64"),
-                    sha: siSha,
-                    branch: BRANCH,
-                }),
-            });
+            await ghUpdateFile("search_index.json", JSON.stringify(siData, null, 2), siSha, `Dashboard: remove ${slug} from search_index.json`);
             deleted.push("search_index.json (entry removed)");
         }
     } catch (e) { errors.push({ path: "search_index.json", error: e.message }); }
 
-    // 4. Update sitemap.xml (remove URL)
+    // Update sitemap.xml
     try {
         const { content: smContent, sha: smSha } = await ghFileContent("sitemap.xml");
         if (smContent) {
-            const urlPattern = new RegExp(
-                `\\s*<url>\\s*<loc>[^<]*${slug}[^<]*</loc>[\\s\\S]*?</url>`, "g"
-            );
+            const urlPattern = new RegExp(`\\s*<url>\\s*<loc>[^<]*${slug}[^<]*</loc>[\\s\\S]*?</url>`, "g");
             const newSitemap = smContent.replace(urlPattern, "");
             if (newSitemap !== smContent) {
-                await ghFetch(`contents/sitemap.xml`, {
-                    method: "PUT",
-                    body: JSON.stringify({
-                        message: `Dashboard: remove ${slug} from sitemap.xml`,
-                        content: Buffer.from(newSitemap).toString("base64"),
-                        sha: smSha,
-                        branch: BRANCH,
-                    }),
-                });
+                await ghUpdateFile("sitemap.xml", newSitemap, smSha, `Dashboard: remove ${slug} from sitemap.xml`);
                 deleted.push("sitemap.xml (URL removed)");
             }
         }
@@ -261,7 +248,7 @@ async function healthCheck() {
         return m ? m[1] : f.name.replace(".json", "");
     }));
 
-    // Check: HTML without JSON
+    // HTML without JSON
     htmlSlugs.forEach(slug => {
         if (!postSlugs.has(slug)) {
             issues.push({ type: "warning", category: "orphan", message: `Article HTML sans JSON: ${slug}` });
@@ -269,7 +256,7 @@ async function healthCheck() {
         }
     });
 
-    // Check: JSON without HTML
+    // JSON without HTML
     postSlugs.forEach(slug => {
         if (!htmlSlugs.has(slug)) {
             issues.push({ type: "error", category: "orphan", message: `Post JSON sans HTML: ${slug}` });
@@ -277,7 +264,7 @@ async function healthCheck() {
         }
     });
 
-    // Check: Articles missing from index
+    // Missing from index
     htmlSlugs.forEach(slug => {
         if (!indexSlugs.has(slug)) {
             issues.push({ type: "warning", category: "index", message: `Article absent de articles.json: ${slug}` });
@@ -285,15 +272,15 @@ async function healthCheck() {
         }
     });
 
-    // Check: Index entries without HTML
+    // Index without HTML
     indexSlugs.forEach(slug => {
         if (!htmlSlugs.has(slug)) {
-            issues.push({ type: "error", category: "index", message: `Entrée index sans HTML: ${slug}` });
+            issues.push({ type: "error", category: "index", message: `Entree index sans HTML: ${slug}` });
             score -= 3;
         }
     });
 
-    // Check: Missing cover images
+    // Missing cover images
     htmlSlugs.forEach(slug => {
         const hasCover = imgFiles.some(f => f.name.startsWith(slug) && f.name.includes("-cover-"));
         if (!hasCover) {
@@ -302,7 +289,16 @@ async function healthCheck() {
         }
     });
 
-    // Check: Sitemap
+    // Missing content images
+    htmlSlugs.forEach(slug => {
+        const contentImgs = imgFiles.filter(f => f.name.startsWith(slug) && f.name.includes("-img"));
+        if (contentImgs.length < 4) {
+            issues.push({ type: "warning", category: "image", message: `Images contenu (${contentImgs.length}/4): ${slug}` });
+            score -= 1;
+        }
+    });
+
+    // Sitemap check
     const { content: smContent } = await ghFileContent("sitemap.xml");
     if (smContent) {
         htmlSlugs.forEach(slug => {
@@ -313,12 +309,20 @@ async function healthCheck() {
         });
     }
 
+    // Instagram check
+    htmlSlugs.forEach(slug => {
+        const hasIg = igFiles.some(f => f.name.startsWith(slug));
+        if (!hasIg) {
+            issues.push({ type: "info", category: "instagram", message: `Pas de post Instagram: ${slug}` });
+        }
+    });
+
     return {
         score: Math.max(0, score),
         totalArticles: htmlSlugs.size,
         totalPosts: postSlugs.size,
         totalImages: imgFiles.length,
-        totalInstagram: igFiles.filter(f => f.name.endsWith(".jpg")).length,
+        totalInstagram: igFiles.filter(f => f.name.endsWith(".jpg") || f.name.endsWith(".png")).length,
         issues,
         issueCount: issues.length,
     };
@@ -339,30 +343,42 @@ async function getStats() {
     const { content: ajContent } = await ghFileContent("articles.json");
     const ajData = ajContent ? JSON.parse(ajContent) : { articles: [] };
 
-    // Categories breakdown
     const categories = {};
     (ajData.articles || []).forEach(a => {
         const cat = a.category || "Uncategorized";
         categories[cat] = (categories[cat] || 0) + 1;
     });
 
-    // Topics
     const { content: topicsContent } = await ghFileContent("data/used_topics.json");
     const topics = topicsContent ? JSON.parse(topicsContent) : {};
 
     const { content: kwContent } = await ghFileContent("data/keywords.txt");
     const totalKeywords = kwContent ? kwContent.split("\n").filter(l => l.trim() && !l.startsWith("#")).length : 0;
 
+    // Calculate schedule info
+    const launchDate = new Date("2026-02-22");
+    const now = new Date();
+    const weekNum = Math.max(1, Math.floor((now - launchDate) / (7 * 24 * 60 * 60 * 1000)) + 1);
+    let articlesPerDay = 3;
+    if (weekNum >= 10) articlesPerDay = 6;
+    else if (weekNum >= 7) articlesPerDay = 5;
+    else if (weekNum >= 4) articlesPerDay = 4;
+
     return {
         articles: htmlFiles.length,
         posts: postFiles.filter(f => f.name.endsWith(".json")).length,
         images: imgFiles.length,
-        instagram: igFiles.filter(f => f.name.endsWith(".jpg")).length,
+        instagram: igFiles.filter(f => f.name.endsWith(".jpg") || f.name.endsWith(".png")).length,
         categories,
         topics: {
             keyword: { used: (topics.keyword || []).length, total: totalKeywords },
             product: { used: (topics.product || []).length },
             freebie: { used: (topics.freebie || []).length },
+        },
+        schedule: {
+            week: weekNum,
+            articlesPerDay,
+            launchDate: "2026-02-22",
         },
     };
 }
@@ -385,10 +401,7 @@ async function getTopics() {
 
     return {
         used: topics,
-        remaining: {
-            keyword: remainingKeywords,
-            keywordCount: remainingKeywords.length,
-        },
+        remaining: { keyword: remainingKeywords, keywordCount: remainingKeywords.length },
         allKeywords,
     };
 }
@@ -397,19 +410,50 @@ async function getTopics() {
 // ACTION: TRIGGER WORKFLOW
 // ═══════════════════════════════════════════════════════════
 
-async function triggerWorkflow(slot) {
-    const validSlots = ["keyword", "product", "freebie", "batch", "build-only"];
-    if (!validSlots.includes(slot)) throw new Error(`Invalid slot: ${slot}`);
+async function triggerWorkflow(action) {
+    const validActions = [
+        "generate-batch", "generate-keyword", "generate-product", "generate-freebie",
+        "build-site", "full-rebuild", "maintenance-scan",
+    ];
+    if (!validActions.includes(action)) throw new Error(`Invalid action: ${action}`);
 
-    await ghFetch(`actions/workflows/autoblog.yml/dispatches`, {
+    const res = await ghFetch(`actions/workflows/autoblog.yml/dispatches`, {
         method: "POST",
         body: JSON.stringify({
             ref: BRANCH,
-            inputs: { slot },
+            inputs: { action },
         }),
     });
 
-    return { triggered: true, slot, message: `Workflow triggered for slot: ${slot}` };
+    if (!res.ok && res.status !== 204) {
+        const text = await res.text();
+        throw new Error(`GitHub ${res.status}: ${text.substring(0, 200)}`);
+    }
+
+    return { triggered: true, action, message: `Workflow triggered: ${action}` };
+}
+
+// ═══════════════════════════════════════════════════════════
+// ACTION: WORKFLOW RUNS
+// ═══════════════════════════════════════════════════════════
+
+async function getWorkflowRuns() {
+    try {
+        const data = await ghJSON(`actions/runs?per_page=10&branch=${BRANCH}`);
+        const runs = (data.workflow_runs || []).map(r => ({
+            id: r.id,
+            name: r.name,
+            status: r.status,
+            conclusion: r.conclusion,
+            created_at: r.created_at,
+            updated_at: r.updated_at,
+            html_url: r.html_url,
+            run_number: r.run_number,
+        }));
+        return { runs };
+    } catch {
+        return { runs: [] };
+    }
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -417,12 +461,10 @@ async function triggerWorkflow(slot) {
 // ═══════════════════════════════════════════════════════════
 
 exports.handler = async (event) => {
-    // CORS preflight
     if (event.httpMethod === "OPTIONS") {
         return { statusCode: 204, headers, body: "" };
     }
 
-    // Auth
     const authErr = checkAuth(event);
     if (authErr) return authErr;
 
@@ -452,14 +494,17 @@ exports.handler = async (event) => {
                 result = await getTopics();
                 break;
             case "generate":
-                result = await triggerWorkflow(params.slot || "batch");
+                result = await triggerWorkflow(params.type || "generate-batch");
+                break;
+            case "runs":
+                result = await getWorkflowRuns();
                 break;
             default:
                 return {
                     statusCode: 400, headers,
                     body: JSON.stringify({
                         error: "Unknown action",
-                        available: ["articles", "delete", "health", "stats", "topics", "generate"],
+                        available: ["articles", "delete", "health", "stats", "topics", "generate", "runs"],
                     }),
                 };
         }
