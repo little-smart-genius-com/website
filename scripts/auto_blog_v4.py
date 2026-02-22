@@ -60,14 +60,19 @@ DEEPSEEK_FALLBACK_MODEL = "deepseek-chat"
 DEEPSEEK_TEXT_URL   = "https://api.deepseek.com/v1/chat/completions"
 
 # IMAGES — Pollinations Klein-Large (5 keys)
-POLLINATIONS_KEYS = [k for k in [
+_keys_in_env = [
     os.environ.get("POLLINATIONS_API_KEY_1"),
     os.environ.get("POLLINATIONS_API_KEY_2"),
     os.environ.get("POLLINATIONS_API_KEY_3"),
     os.environ.get("POLLINATIONS_API_KEY_4"),
     os.environ.get("POLLINATIONS_API_KEY_5"),
-] if k]
+]
+POLLINATIONS_KEYS = [k for k in _keys_in_env if k and len(k) > 5]
 POLLINATIONS_MODEL = "klein-large"
+
+# Small debug (safe)
+if os.environ.get("GITHUB_ACTIONS") == "true":
+    print(f"[CI-DEBUG] Pollinations keys found in env: {len(POLLINATIONS_KEYS)} / {len(_keys_in_env)}")
 
 # Compatibility
 CONTENT_KEYS = [DEEPSEEK_API_KEY] if DEEPSEEK_API_KEY else []
