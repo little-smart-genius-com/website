@@ -539,7 +539,7 @@ async function getTopics() {
 async function triggerWorkflow(action) {
     const validActions = [
         "generate-batch", "generate-keyword", "generate-product", "generate-freebie",
-        "build-site", "full-rebuild", "maintenance-scan",
+        "build-site", "full-rebuild", "fix-images", "maintenance-scan",
     ];
     if (!validActions.includes(action)) throw new Error(`Invalid action: ${action}`);
 

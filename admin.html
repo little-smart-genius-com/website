@@ -961,6 +961,7 @@
                 <div style="display:flex;gap:6px;flex-wrap:wrap">
                     <button class="btn btn-brand" id="deepScanBtn" onclick="runDeepScan()">🔍 Lancer le Scan
                         Complet</button>
+                    <button class="btn btn-green btn-sm" onclick="triggerAction('fix-images')">🖼️ Fix Images</button>
                     <button class="btn btn-blue btn-sm" onclick="triggerAction('build-site')">🏗️ Rebuild Blog</button>
                 </div>
             </div>
@@ -1048,6 +1049,12 @@
                     <h3>Full Rebuild</h3>
                     <p>Build + maintenance scan</p><button class="btn btn-purple"
                         onclick="triggerAction('full-rebuild')">🔄 Full Rebuild</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">🖼️</div>
+                    <h3>Fix Images</h3>
+                    <p>Regenere les images manquantes pour tous les articles</p><button class="btn btn-green"
+                        onclick="triggerAction('fix-images')">🖼️ Fix Images</button>
                 </div>
                 <div class="action-card">
                     <div class="icon">📊</div>
@@ -1237,7 +1244,7 @@
 
         // ═══════ TRIGGER WORKFLOW ═══════
         async function triggerAction(action) {
-            const labels = { "generate-keyword": "Generer 1 keyword", "generate-product": "Generer 1 product", "generate-freebie": "Generer 1 freebie", "generate-batch": "Batch (3 articles)", "build-site": "Rebuild site complet", "full-rebuild": "Full rebuild + maintenance", "maintenance-scan": "Maintenance scan" };
+            const labels = { "generate-keyword": "Generer 1 keyword", "generate-product": "Generer 1 product", "generate-freebie": "Generer 1 freebie", "generate-batch": "Batch (3 articles)", "build-site": "Rebuild site complet", "full-rebuild": "Full rebuild + maintenance", "fix-images": "Regenerer images manquantes", "maintenance-scan": "Maintenance scan" };
             if (!confirm(`Lancer: "${labels[action] || action}" ?`)) return;
             try { await api("generate", { type: action }, "POST"); toast(`✅ "${labels[action]}" declenche ! Voir onglet Runs.`, "success") } catch (e) { toast("❌ " + e.message, "error") }
         }

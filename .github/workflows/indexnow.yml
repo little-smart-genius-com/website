@@ -1,0 +1,27 @@
+name: IndexNow Auto Submit
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'articles/**'
+      - 'sitemap.xml'
+      - 'articles.json'
+  schedule:
+    # Submit sitemap every night at 3am UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Submit sitemap to IndexNow
+        uses: bojieyang/indexnow-action@v2
+        with:
+          sitemap-location: 'https://littlesmartgenius.com/sitemap.xml'
+          key: ${{ secrets.INDEXNOW_KEY }}

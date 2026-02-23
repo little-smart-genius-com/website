@@ -25,6 +25,7 @@ on:
           - generate-freebie
           - build-site
           - full-rebuild
+          - fix-images
           - maintenance-scan
   schedule:
     # Matin slot 1  — always
@@ -71,7 +72,7 @@ jobs:
 
       # ── GENERATE ARTICLES ──
       - name: Generate articles
-        if: steps.action.outputs.action != 'build-site' && steps.action.outputs.action != 'full-rebuild' && steps.action.outputs.action != 'maintenance-scan'
+        if: steps.action.outputs.action != 'build-site' && steps.action.outputs.action != 'full-rebuild' && steps.action.outputs.action != 'maintenance-scan' && steps.action.outputs.action != 'fix-images'
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           POLLINATIONS_API_KEY_1: ${{ secrets.POLLINATIONS_API_KEY_1 }}
@@ -91,6 +92,18 @@ jobs:
             generate-batch)    python scripts/auto_blog_v4.py --batch ;;
             schedule)          python scripts/auto_blog_v4.py --schedule ;;
           esac
+
+      # ── FIX IMAGES ──
+      - name: Fix missing images
+        if: steps.action.outputs.action == 'fix-images'
+        env:
+          POLLINATIONS_API_KEY_1: ${{ secrets.POLLINATIONS_API_KEY_1 }}
+          POLLINATIONS_API_KEY_2: ${{ secrets.POLLINATIONS_API_KEY_2 }}
+          POLLINATIONS_API_KEY_3: ${{ secrets.POLLINATIONS_API_KEY_3 }}
+          POLLINATIONS_API_KEY_4: ${{ secrets.POLLINATIONS_API_KEY_4 }}
+          POLLINATIONS_API_KEY_5: ${{ secrets.POLLINATIONS_API_KEY_5 }}
+          PYTHONIOENCODING: utf-8
+        run: python scripts/fix_images.py
 
       # ── BUILD PIPELINE ──
       - name: Build articles (JSON → HTML)

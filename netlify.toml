@@ -4,6 +4,20 @@
 [functions]
   directory = "netlify/functions"
 
+# ── Sitemap Auto-Submit (Google + Yandex) ──
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
+
+  [plugins.inputs]
+    baseUrl = "https://littlesmartgenius.com"
+    sitemapPath = "/sitemap.xml"
+    ignorePeriod = 0
+    providers = [
+      "google",
+      "yandex"
+    ]
+
+# ── Redirects (API routes) ──
 [[redirects]]
   from = "/subscribe"
   to = "/.netlify/functions/subscribe"
