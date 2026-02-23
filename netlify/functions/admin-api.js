@@ -640,7 +640,7 @@ async function fixSeo(slug) {
 
     // Write back
     const encoded = Buffer.from(fixed).toString("base64");
-    await ghFetch(`/repos/${REPO}/contents/${path}`, {
+    await ghFetch(`contents/${path}`, {
         method: "PUT",
         body: JSON.stringify({
             message: `SEO fix: ${slug} (${fixes.length} corrections)`,
@@ -776,7 +776,7 @@ async function getWorkflowRuns() {
 // ═══════════════════════════════════════════════════════════
 
 async function listSnapshots() {
-    const res = await ghFetch(`repos/${REPO}/releases`, { method: "GET" });
+    const res = await ghFetch(`releases`, { method: "GET" });
     if (!res.ok) throw new Error(`GitHub releases: ${res.status}`);
     const releases = await res.json();
 
@@ -807,7 +807,7 @@ async function createSnapshot(name) {
     const tag = `snapshot-${name.toLowerCase().replace(/[^a-z0-9-]/g, "-").slice(0, 40)}`;
 
     // Get current HEAD commit SHA
-    const refRes = await ghFetch(`repos/${REPO}/git/ref/heads/${BRANCH}`, { method: "GET" });
+    const refRes = await ghFetch(`git/ref/heads/${BRANCH}`, { method: "GET" });
     if (!refRes.ok) throw new Error(`Could not get HEAD: ${refRes.status}`);
     const refData = await refRes.json();
     const commitSha = refData.object.sha;
@@ -834,7 +834,7 @@ async function createSnapshot(name) {
     };
 
     // Create lightweight tag
-    const tagRes = await ghFetch(`repos/${REPO}/git/refs`, {
+    const tagRes = await ghFetch(`git/refs`, {
         method: "POST",
         body: JSON.stringify({
             ref: `refs/tags/${tag}`,
@@ -847,7 +847,7 @@ async function createSnapshot(name) {
     }
 
     // Create release
-    const relRes = await ghFetch(`repos/${REPO}/releases`, {
+    const relRes = await ghFetch(`releases`, {
         method: "POST",
         body: JSON.stringify({
             tag_name: tag,
@@ -876,24 +876,24 @@ async function restoreSnapshot(tag) {
     if (!tag) throw new Error("tag required");
 
     // Get the commit SHA for this tag
-    const tagRes = await ghFetch(`repos/${REPO}/git/ref/tags/${tag}`, { method: "GET" });
+    const tagRes = await ghFetch(`git/ref/tags/${tag}`, { method: "GET" });
     if (!tagRes.ok) throw new Error(`Tag not found: ${tag}`);
     const tagData = await tagRes.json();
     const targetSha = tagData.object.sha;
 
     // Create a safety snapshot before restoring
     const safetyTag = `pre-restore-${Date.now()}`;
-    const headRes = await ghFetch(`repos/${REPO}/git/ref/heads/${BRANCH}`, { method: "GET" });
+    const headRes = await ghFetch(`git/ref/heads/${BRANCH}`, { method: "GET" });
     if (headRes.ok) {
         const headData = await headRes.json();
-        await ghFetch(`repos/${REPO}/git/refs`, {
+        await ghFetch(`git/refs`, {
             method: "POST",
             body: JSON.stringify({ ref: `refs/tags/${safetyTag}`, sha: headData.object.sha }),
         });
     }
 
     // Force-update main branch to the snapshot's commit
-    const updateRes = await ghFetch(`repos/${REPO}/git/refs/heads/${BRANCH}`, {
+    const updateRes = await ghFetch(`git/refs/heads/${BRANCH}`, {
         method: "PATCH",
         body: JSON.stringify({ sha: targetSha, force: true }),
     });
@@ -915,14 +915,14 @@ async function deleteSnapshot(tag) {
     if (!tag) throw new Error("tag required");
 
     // Find and delete the release
-    const relRes = await ghFetch(`repos/${REPO}/releases/tags/${tag}`, { method: "GET" });
+    const relRes = await ghFetch(`releases/tags/${tag}`, { method: "GET" });
     if (relRes.ok) {
         const rel = await relRes.json();
-        await ghFetch(`repos/${REPO}/releases/${rel.id}`, { method: "DELETE" });
+        await ghFetch(`releases/${rel.id}`, { method: "DELETE" });
     }
 
     // Delete the tag
-    const tagRes = await ghFetch(`repos/${REPO}/git/refs/tags/${tag}`, { method: "DELETE" });
+    const tagDelRes = await ghFetch(`git/refs/tags/${tag}`, { method: "DELETE" });
 
     return { deleted: true, tag, message: `Snapshot "${tag}" deleted` };
 }
