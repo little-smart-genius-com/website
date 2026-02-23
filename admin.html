@@ -1250,6 +1250,14 @@
                     <p>Scan de maintenance</p><button class="btn btn-cyan" onclick="triggerAction('maintenance-scan')"
                         data-tip="Lance un scan pour détecter fichiers orphelins et problèmes">📊 Maintenance</button>
                 </div>
+                <div class="action-card">
+                    <div class="icon">🔍</div>
+                    <h3>Scan TPT Store</h3>
+                    <p>Met à jour les produits depuis TeachersPayTeachers</p><button class="btn btn-orange"
+                        onclick="scanTptStore()"
+                        data-tip="Lance le scraper TPT pour actualiser products_tpt.js et featured_products.js">🔍 Scan
+                        TPT</button>
+                </div>
             </div>
             <div class="section-title" style="margin-top:20px">📋 Pipeline de Build</div>
             <div class="tbl-wrap">
@@ -1830,6 +1838,17 @@
             const labels = { "generate-keyword": "Generer 1 keyword", "generate-product": "Generer 1 product", "generate-freebie": "Generer 1 freebie", "generate-batch": "Batch (3 articles)", "build-site": "Rebuild site complet", "full-rebuild": "Full rebuild + maintenance", "fix-images": "Regenerer images manquantes", "maintenance-scan": "Maintenance scan" };
             if (!confirm(`Lancer: "${labels[action] || action}" ?`)) return;
             try { await api("generate", { type: action }, "POST"); toast(`✅ "${labels[action]}" declenche ! Voir onglet Runs.`, "success") } catch (e) { toast("❌ " + e.message, "error") }
+        }
+
+        async function scanTptStore() {
+            if (!confirm('Lancer le scan de la boutique TPT ?\nCela met à jour products_tpt.js et featured_products.js.')) return;
+            toast('🔍 Scan TPT lancé...', 'info');
+            try {
+                const data = await api('scan-tpt');
+                toast(data.message || 'Scan TPT déclenché !', 'success');
+            } catch (e) {
+                toast('Erreur: ' + e.message, 'error');
+            }
         }
 
         // ═══════ DEEP SCAN (BLOG) ═══════

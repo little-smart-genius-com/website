@@ -928,6 +928,21 @@ async function deleteSnapshot(tag) {
 }
 
 // ═══════════════════════════════════════════════════════════
+// TPT STORE SCANNER — Trigger GitHub Action
+// ═══════════════════════════════════════════════════════════
+
+async function scanTpt() {
+    const res = await ghFetch(`actions/workflows/scrape-tpt.yml/dispatches`, {
+        method: "POST",
+        body: JSON.stringify({ ref: BRANCH }),
+    });
+    if (!res.ok && res.status !== 204) {
+        throw new Error(`Failed to trigger TPT scan: ${res.status}`);
+    }
+    return { success: true, message: "TPT scan workflow triggered! Check GitHub Actions for progress." };
+}
+
+// ═══════════════════════════════════════════════════════════
 // MAIN HANDLER
 // ═══════════════════════════════════════════════════════════
 
@@ -977,11 +992,12 @@ exports.handler = async (event) => {
                 break;
             case "generate": result = await triggerWorkflow(params.type || "generate-batch", params.slug || null); break;
             case "runs": result = await getWorkflowRuns(); break;
+            case "scan-tpt": result = await scanTpt(); break;
             default:
                 return {
                     statusCode: 400, headers, body: JSON.stringify({
                         error: "Unknown action",
-                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs"],
+                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs", "scan-tpt"],
                     })
                 };
         }
