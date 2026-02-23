@@ -171,7 +171,12 @@ jobs:
             HOUR=$(date +%H)
             ACTION="${{ steps.action.outputs.action }}"
             git commit -m "Auto-blog: ${DATE} ${HOUR}h — ${ACTION} [skip ci]"
-            git push
+            # Pull any remote changes before pushing (handles concurrent pushes)
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              echo "Retry $i..."
+              sleep 5
+            done
             echo "Changes pushed successfully"
           else
             echo "No changes to commit"
