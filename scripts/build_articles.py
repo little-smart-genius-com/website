@@ -763,6 +763,10 @@ def convert_markdown_to_html(content: str) -> str:
 
 def fix_image_paths(content: str) -> str:
     """Fix image paths to use ../ prefix for articles/ directory."""
+    # Fix absolute server paths: src="..//home/runner/.../images/xxx.webp" → src="../images/xxx.webp"
+    content = re.sub(r'src="\.\./(/.+?/images/([^"]+))"', r'src="../images/\2"', content)
+    # Fix absolute paths without ../ prefix: src="/home/runner/.../images/xxx.webp"
+    content = re.sub(r'src="(/[^"]*?/images/([^"]+))"', r'src="../images/\2"', content)
     # Fix src="images/..." to src="../images/..."
     content = re.sub(r'src="images/', 'src="../images/', content)
     # Fix src="/images/..." to src="../images/..."

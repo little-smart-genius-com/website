@@ -1426,6 +1426,58 @@ def run_single(slot: str = None):
     return generate_article(slot, topic, ts)
 
 
+def run_regenerate(slug: str):
+    """Regenerate a single article by slug.
+    
+    Reads the existing JSON from posts/ to recover topic metadata,
+    then reruns the full article generation pipeline.
+    """
+    ts = TopicSelector()
+    posts_dir = os.path.join(BASE_DIR, "posts")
+    json_path = os.path.join(posts_dir, f"{slug}.json")
+    
+    # Try to recover topic info from existing JSON
+    topic_name = slug.replace('-', ' ').title()
+    category = "education"
+    keywords = topic_name
+    slot = "keyword"
+    
+    if os.path.exists(json_path):
+        try:
+            with open(json_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            topic_name = data.get('title', topic_name)
+            category = data.get('category', category)
+            keywords = data.get('keywords', keywords)
+            if isinstance(keywords, list):
+                keywords = ', '.join(keywords)
+            print(f"[REGEN] Recovered metadata from {slug}.json")
+        except Exception as e:
+            print(f"[REGEN] Could not read JSON: {e}, using slug-derived topic")
+    else:
+        print(f"[REGEN] No JSON found for '{slug}', using slug-derived topic")
+    
+    topic = {
+        "topic_name": topic_name,
+        "category": category,
+        "keywords": keywords,
+        "product_data": None,
+    }
+    
+    print(f"\n{'=' * 80}")
+    print(f"  AUTO BLOG V4.0 — REGENERATE ARTICLE")
+    print(f"  Slug: {slug}")
+    print(f"  Topic: {topic_name}")
+    print(f"{'=' * 80}")
+    
+    result = generate_article(slot, topic, ts)
+    if result:
+        print(f"[REGEN] Successfully regenerated: {slug}")
+    else:
+        print(f"[REGEN] Failed to regenerate: {slug}")
+    return result
+
+
 # ===================================================================
 # CLI ENTRY POINT
 # ===================================================================
@@ -1491,6 +1543,8 @@ Examples:
     parser.add_argument("--schedule", action="store_true", help="Schedule-aware generation (checks hour + week)")
     parser.add_argument("--slot", choices=["keyword", "product", "freebie"],
                        help="Generate a single article for this slot")
+    parser.add_argument("--regenerate", metavar="SLUG",
+                       help="Regenerate a single article by slug (content + images)")
     parser.add_argument("--stats", action="store_true", help="Show topic pool statistics")
 
     args = parser.parse_args()
@@ -1504,7 +1558,9 @@ Examples:
             print(f"  {key}: {val}")
         return
 
-    if args.schedule:
+    if args.regenerate:
+        run_regenerate(args.regenerate)
+    elif args.schedule:
         run_schedule()
     elif args.batch:
         run_daily_batch()

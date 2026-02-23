@@ -529,23 +529,43 @@ async function getTopics() {
         used: topics,
         remaining: { keyword: remainingKeywords, keywordCount: remainingKeywords.length },
         allKeywords,
+        keywordsRaw: kwContent || "",
     };
+}
+
+async function saveKeywords(content) {
+    const { sha } = await ghFileContent("data/keywords.txt");
+    const encoded = Buffer.from(content).toString("base64");
+    await ghFetch(`/repos/${process.env.GITHUB_REPO}/contents/data/keywords.txt`, {
+        method: "PUT",
+        body: JSON.stringify({
+            message: "Update keywords from admin dashboard",
+            content: encoded,
+            sha: sha || undefined,
+        }),
+    });
+    const lines = content.split("\n").filter(l => l.trim() && !l.startsWith("#"));
+    return { saved: lines.length, message: `${lines.length} keywords saved` };
 }
 
 // ═══════════════════════════════════════════════════════════
 // TRIGGER WORKFLOW
 // ═══════════════════════════════════════════════════════════
 
-async function triggerWorkflow(action) {
+async function triggerWorkflow(action, slug = null) {
     const validActions = [
         "generate-batch", "generate-keyword", "generate-product", "generate-freebie",
         "build-site", "full-rebuild", "fix-images", "maintenance-scan",
+        "regenerate-article",
     ];
     if (!validActions.includes(action)) throw new Error(`Invalid action: ${action}`);
 
+    const inputs = { action };
+    if (slug) inputs.slug = slug;
+
     const res = await ghFetch(`actions/workflows/autoblog.yml/dispatches`, {
         method: "POST",
-        body: JSON.stringify({ ref: BRANCH, inputs: { action } }),
+        body: JSON.stringify({ ref: BRANCH, inputs }),
     });
 
     if (!res.ok && res.status !== 204) {
@@ -553,7 +573,7 @@ async function triggerWorkflow(action) {
         throw new Error(`GitHub ${res.status}: ${text.substring(0, 200)}`);
     }
 
-    return { triggered: true, action, message: `Workflow triggered: ${action}` };
+    return { triggered: true, action, slug, message: `Workflow triggered: ${action}${slug ? ` for ${slug}` : ''}` };
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -607,13 +627,19 @@ exports.handler = async (event) => {
             case "deep-scan": result = await deepScan(params.slug || null); break;
             case "stats": result = await getStats(); break;
             case "topics": result = await getTopics(); break;
-            case "generate": result = await triggerWorkflow(params.type || "generate-batch"); break;
+            case "save-keywords":
+                if (event.httpMethod !== "POST")
+                    return { statusCode: 405, headers, body: JSON.stringify({ error: "Use POST" }) };
+                const kwContent = decodeURIComponent(params.content || "");
+                result = await saveKeywords(kwContent);
+                break;
+            case "generate": result = await triggerWorkflow(params.type || "generate-batch", params.slug || null); break;
             case "runs": result = await getWorkflowRuns(); break;
             default:
                 return {
                     statusCode: 400, headers, body: JSON.stringify({
                         error: "Unknown action",
-                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "generate", "runs"],
+                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "generate", "runs"],
                     })
                 };
         }
