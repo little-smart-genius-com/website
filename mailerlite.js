@@ -24,8 +24,8 @@
     );
     const PROXY_BASE = isLocal ? "http://localhost:5555" : "";
     const ENDPOINTS = {
-        subscribe: `${PROXY_BASE}/subscribe`,
-        contact: `${PROXY_BASE}/contact`,
+        subscribe: isLocal ? `${PROXY_BASE}/subscribe` : `/.netlify/functions/subscribe`,
+        contact: isLocal ? `${PROXY_BASE}/contact` : `/.netlify/functions/contact`,
     };
 
     // ── Utility ─────────────────────────────────────────────
