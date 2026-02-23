@@ -502,8 +502,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
                 </div>
             </div>
 
-            <!-- RELATED ARTICLES (placeholder, filled by _post_process.py) -->
-            {related_articles_html}
+            <!-- RELATED ARTICLES — injected by _post_process.py only -->
 
         </article>
     </main>
@@ -1521,14 +1520,8 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     # Canonical URL
     canonical_url = f"{SITE_URL}/articles/{slug}.html"
     
-    # Build related articles section
-    related_html = build_related_articles_html(
-        current_slug=slug,
-        current_category=category,
-        current_keywords=json_data.get('keywords', []),
-        all_articles=all_articles or [],
-        max_related=3
-    )
+    # Related articles are handled exclusively by _post_process.py
+    # (removed from build to avoid duplication)
     
     # Build prev/next navigation HTML
     prev_html = ''
@@ -1556,7 +1549,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
         category_display=category_display,
         image=image,
         content=content,
-        related_articles_html=related_html,
+
         prev_nav_html=prev_html,
         next_nav_html=next_html
     )

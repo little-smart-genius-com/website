@@ -320,8 +320,7 @@ async function deepScan(targetSlug) {
         ? htmlFiles.filter(f => f.name === `${targetSlug}.html`)
         : htmlFiles.filter(f => f.name.endsWith(".html"));
 
-    // Limit to 15 articles per scan to stay within timeout
-    const batch = filesToScan.slice(0, 15);
+    const batch = filesToScan;
     const results = [];
 
     for (const file of batch) {
@@ -514,22 +513,56 @@ async function getStats() {
 // ═══════════════════════════════════════════════════════════
 
 async function getTopics() {
-    const { content: topicsContent } = await ghFileContent("data/used_topics.json");
-    const topics = topicsContent ? JSON.parse(topicsContent) : {};
+    const [topicsRes, kwRes, productsRes, freebiesRes] = await Promise.all([
+        ghFileContent("data/used_topics.json"),
+        ghFileContent("data/keywords.txt"),
+        ghFileContent("products_tpt.js"),
+        ghFileContent("download_links.js"),
+    ]);
 
-    const { content: kwContent } = await ghFileContent("data/keywords.txt");
-    const allKeywords = kwContent
-        ? kwContent.split("\n").filter(l => l.trim() && !l.startsWith("#")).map(l => l.trim())
+    const topics = topicsRes.content ? JSON.parse(topicsRes.content) : {};
+
+    const allKeywords = kwRes.content
+        ? kwRes.content.split("\n").filter(l => l.trim() && !l.startsWith("#")).map(l => l.trim())
         : [];
-
     const usedKeywords = new Set(topics.keyword || []);
     const remainingKeywords = allKeywords.filter(k => !usedKeywords.has(k));
+
+    // Parse all product names from products_tpt.js
+    let allProducts = [];
+    if (productsRes.content) {
+        try {
+            const match = productsRes.content.match(/window\.tptProducts\s*=\s*(\[.+?\]);/s);
+            if (match) {
+                const arr = JSON.parse(match[1]);
+                allProducts = arr.map(p => p[0]); // p[0] = name
+            }
+        } catch (e) { console.error("Parse products error:", e.message); }
+    }
+
+    // Parse all freebie names from download_links.js
+    let allFreebies = [];
+    if (freebiesRes.content) {
+        try {
+            const nameMatches = freebiesRes.content.match(/"([^"]+)"\s*:/g);
+            if (nameMatches) {
+                allFreebies = nameMatches.map(m => m.replace(/"/g, '').replace(/:$/, '').trim());
+            }
+        } catch (e) { console.error("Parse freebies error:", e.message); }
+    }
+
+    const usedProducts = new Set(topics.product || []);
+    const usedFreebies = new Set(topics.freebie || []);
 
     return {
         used: topics,
         remaining: { keyword: remainingKeywords, keywordCount: remainingKeywords.length },
         allKeywords,
-        keywordsRaw: kwContent || "",
+        keywordsRaw: kwRes.content || "",
+        allProducts,
+        allFreebies,
+        remainingProducts: allProducts.filter(p => !usedProducts.has(p)),
+        remainingFreebies: allFreebies.filter(f => !usedFreebies.has(f)),
     };
 }
 
@@ -546,6 +579,145 @@ async function saveKeywords(content) {
     });
     const lines = content.split("\n").filter(l => l.trim() && !l.startsWith("#"));
     return { saved: lines.length, message: `${lines.length} keywords saved` };
+}// ═══════════════════════════════════════════════════════════
+// FIX SEO — Smart auto-correction of SEO issues
+// ═══════════════════════════════════════════════════════════
+
+async function fixSeo(slug) {
+    if (!slug) throw new Error("slug required");
+    const path = `articles/${slug}.html`;
+    const { content: html, sha } = await ghFileContent(path);
+    if (!html) throw new Error(`Article not found: ${slug}`);
+
+    let fixed = html;
+    const fixes = [];
+
+    // Fix 1: Title too long (>65 chars) → trim intelligently
+    const titleMatch = fixed.match(/<title>([^<]*)<\/title>/i);
+    if (titleMatch && titleMatch[1].length > 65) {
+        const oldTitle = titleMatch[1];
+        // Remove "| Little Smart Genius" suffix first, then trim
+        let newTitle = oldTitle.replace(/\s*\|\s*Little Smart Genius$/i, '');
+        if (newTitle.length > 60) {
+            newTitle = newTitle.substring(0, 57) + '...';
+        }
+        newTitle += ' | Little Smart Genius';
+        if (newTitle.length <= 65) {
+            fixed = fixed.replace(`<title>${oldTitle}</title>`, `<title>${newTitle}</title>`);
+            fixes.push(`Title: ${oldTitle.length} → ${newTitle.length} chars`);
+        }
+    }
+
+    // Fix 2: Meta description too short (<110 chars) → extract from first paragraph
+    const metaDescMatch = fixed.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i);
+    if (metaDescMatch && metaDescMatch[1].length < 110) {
+        // Find first substantial paragraph
+        const pMatch = fixed.match(/<p[^>]*>([^<]{100,})<\/p>/i);
+        if (pMatch) {
+            let newDesc = pMatch[1].replace(/\s+/g, ' ').trim();
+            if (newDesc.length > 155) newDesc = newDesc.substring(0, 152) + '...';
+            fixed = fixed.replace(metaDescMatch[0],
+                `<meta name="description" content="${newDesc.replace(/"/g, '&quot;')}"`);
+            fixes.push(`Meta desc: ${metaDescMatch[1].length} → ${newDesc.length} chars`);
+        }
+    }
+
+    // Fix 3: Multiple H1 tags → keep first, convert others to H2
+    const h1Regex = /<h1([^>]*)>([\s\S]*?)<\/h1>/gi;
+    let h1Count = 0;
+    fixed = fixed.replace(h1Regex, (match, attrs, content) => {
+        h1Count++;
+        if (h1Count > 1) {
+            fixes.push(`H1 #${h1Count} → H2: ${content.substring(0, 40)}...`);
+            return `<h2${attrs}>${content}</h2>`;
+        }
+        return match;
+    });
+
+    if (fixes.length === 0) {
+        return { slug, fixed: 0, message: "No SEO issues to fix" };
+    }
+
+    // Write back
+    const encoded = Buffer.from(fixed).toString("base64");
+    await ghFetch(`/repos/${REPO}/contents/${path}`, {
+        method: "PUT",
+        body: JSON.stringify({
+            message: `SEO fix: ${slug} (${fixes.length} corrections)`,
+            content: encoded,
+            sha,
+        }),
+    });
+
+    return { slug, fixed: fixes.length, fixes, message: `${fixes.length} SEO issues fixed` };
+}
+
+// ═══════════════════════════════════════════════════════════
+// PUSH INSTAGRAM — Manual IG post via Make webhook
+// ═══════════════════════════════════════════════════════════
+
+async function pushInstagram(slug) {
+    if (!slug) throw new Error("slug required");
+
+    const igFiles = await ghListDir("instagram");
+    const slugFiles = igFiles.filter(f => f.name.startsWith(slug));
+
+    if (slugFiles.length === 0) {
+        throw new Error(`No Instagram files found for: ${slug}`);
+    }
+
+    // Find image and caption
+    const imgFile = slugFiles.find(f => /\.(jpg|png|webp)$/i.test(f.name));
+    const captionFile = slugFiles.find(f => /\.txt$/i.test(f.name));
+
+    let imageUrl = '';
+    let caption = '';
+
+    if (imgFile) {
+        imageUrl = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/instagram/${imgFile.name}`;
+    }
+
+    if (captionFile) {
+        const { content } = await ghFileContent(`instagram/${captionFile.name}`);
+        caption = content || '';
+    }
+
+    if (!imageUrl) {
+        throw new Error(`No image found for Instagram post: ${slug}`);
+    }
+
+    // Send to Make webhook
+    const webhookUrl = process.env.MAKECOM_WEBHOOK_URL;
+    if (!webhookUrl) {
+        return {
+            slug,
+            imageUrl,
+            caption: caption.substring(0, 200),
+            message: "No MAKECOM_WEBHOOK_URL configured. Data ready but not sent.",
+            sent: false,
+        };
+    }
+
+    const webhookRes = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            action: "instagram-post",
+            slug,
+            imageUrl,
+            caption,
+            siteUrl: `${SITE_URL}/articles/${slug}.html`,
+        }),
+    });
+
+    return {
+        slug,
+        imageUrl,
+        caption: caption.substring(0, 200),
+        webhookStatus: webhookRes.status,
+        sent: webhookRes.ok,
+        message: webhookRes.ok ? "Instagram post sent to Make!" : `Webhook error: ${webhookRes.status}`,
+    };
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -633,13 +805,15 @@ exports.handler = async (event) => {
                 const kwContent = decodeURIComponent(params.content || "");
                 result = await saveKeywords(kwContent);
                 break;
+            case "fix-seo": result = await fixSeo(params.slug); break;
+            case "push-instagram": result = await pushInstagram(params.slug); break;
             case "generate": result = await triggerWorkflow(params.type || "generate-batch", params.slug || null); break;
             case "runs": result = await getWorkflowRuns(); break;
             default:
                 return {
                     statusCode: 400, headers, body: JSON.stringify({
                         error: "Unknown action",
-                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "generate", "runs"],
+                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "generate", "runs"],
                     })
                 };
         }

@@ -1740,10 +1740,41 @@
                 <button class="btn btn-green btn-sm" onclick="regenArticle('${esc(a.slug)}')" data-tip="Regenerer l'article complet (contenu + images)">🔄</button>
                 <button class="btn btn-cyan btn-sm" onclick="regenImages('${esc(a.slug)}')" data-tip="Regenerer uniquement les images de cet article">🖼️</button>
                 <button class="btn btn-purple btn-sm" onclick="scanSingle('${esc(a.slug)}')" data-tip="Analyse SEO approfondie">🔍</button>
+                <button class="btn btn-sm" style="background:#F59E0B;color:#fff" onclick="fixSeo('${esc(a.slug)}')" data-tip="Auto-corriger les problemes SEO (titre, meta desc, H1 multiples)">🔧</button>
+                <button class="btn btn-sm" style="background:#E1306C;color:#fff" onclick="pushInstagram('${esc(a.slug)}')" data-tip="Envoyer image + caption vers Instagram via Make webhook">📸</button>
                 <button class="btn btn-red btn-sm" onclick="askDelete('${esc(a.slug)}')" data-tip="Supprimer l'article et ses fichiers">🗑️</button>
             </td></tr>`;
                 });
             } catch (e) { tbody.innerHTML = `<tr><td colspan="9" style="color:var(--red);text-align:center">${esc(e.message)}</td></tr>` }
+        }
+
+        // ═══════ FIX SEO ═══════
+        async function fixSeo(slug) {
+            if (!confirm(`Corriger automatiquement les problemes SEO de "${slug}" ?`)) return;
+            toast(`🔧 Fix SEO en cours: ${slug}...`, "info");
+            try {
+                const r = await api("fix-seo", { slug });
+                if (r.fixed > 0) {
+                    toast(`✅ ${r.fixed} correction(s): ${r.fixes.join(", ")}`, "success");
+                    loadArticles();
+                } else {
+                    toast("✅ Aucun probleme SEO a corriger", "success");
+                }
+            } catch (e) { toast("❌ " + e.message, "error") }
+        }
+
+        // ═══════ INSTAGRAM PUSH ═══════
+        async function pushInstagram(slug) {
+            if (!confirm(`Envoyer l'article "${slug}" sur Instagram ?`)) return;
+            toast(`📸 Envoi Instagram: ${slug}...`, "info");
+            try {
+                const r = await api("push-instagram", { slug });
+                if (r.sent) {
+                    toast(`✅ Instagram envoye! ${r.message}`, "success");
+                } else {
+                    toast(`⚠️ ${r.message}`, "warning");
+                }
+            } catch (e) { toast("❌ " + e.message, "error") }
         }
 
         // ═══════ DELETE ═══════
@@ -1899,11 +1930,22 @@
             const c = document.getElementById("topicsContainer"); c.innerHTML = '<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
             try {
                 const d = await api("topics"); let h = "";
+                // Keywords section
                 h += `<div class="topic-section"><h3>🔍 Keywords (${d.remaining.keywordCount} restants / ${d.allKeywords.length} total)</h3><div class="topic-tags">`;
                 const usedKW = new Set(d.used.keyword || []); d.allKeywords.forEach(k => { h += `<span class="topic-tag ${usedKW.has(k) ? 'used' : ''}">${esc(k)}</span>` });
                 h += `</div></div>`;
-                const usedP = d.used.product || []; h += `<div class="topic-section"><h3>🛒 Produits (${usedP.length})</h3><div class="topic-tags">`; usedP.forEach(p => { h += `<span class="topic-tag used">${esc(p)}</span>` }); h += `</div></div>`;
-                const usedF = d.used.freebie || []; h += `<div class="topic-section"><h3>🎁 Freebies (${usedF.length})</h3><div class="topic-tags">`; usedF.forEach(f => { h += `<span class="topic-tag used">${esc(f)}</span>` }); h += `</div></div>`;
+                // Products section — full catalog
+                const usedP = new Set(d.used.product || []);
+                const remainP = (d.allProducts || []).filter(p => !usedP.has(p));
+                h += `<div class="topic-section"><h3>🛒 Produits (${remainP.length} restants / ${(d.allProducts || []).length} total)</h3><div class="topic-tags">`;
+                (d.allProducts || []).forEach(p => { h += `<span class="topic-tag ${usedP.has(p) ? 'used' : ''}" style="font-size:.7rem">${esc(p)}</span>` });
+                h += `</div></div>`;
+                // Freebies section — full catalog
+                const usedF = new Set(d.used.freebie || []);
+                const remainF = (d.allFreebies || []).filter(f => !usedF.has(f));
+                h += `<div class="topic-section"><h3>🎁 Freebies (${remainF.length} restants / ${(d.allFreebies || []).length} total)</h3><div class="topic-tags">`;
+                (d.allFreebies || []).forEach(f => { h += `<span class="topic-tag ${usedF.has(f) ? 'used' : ''}">${esc(f)}</span>` });
+                h += `</div></div>`;
                 c.innerHTML = h;
             } catch (e) { c.innerHTML = `<p style="color:var(--red)">${esc(e.message)}</p>` }
         }
