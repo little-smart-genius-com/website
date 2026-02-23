@@ -1054,6 +1054,7 @@
             <div class="tab" data-tab="build" data-tip="Reconstruire le site, fixer images, maintenance">🏗️ Build</div>
             <div class="tab" data-tab="health" data-tip="Vérification des fichiers et score de santé">🏥 Health</div>
             <div class="tab" data-tab="topics" data-tip="Keywords, produits, freebies + gestion">🔑 Topics</div>
+            <div class="tab" data-tab="backups" data-tip="Snapshots, sauvegardes et restauration">📦 Backups</div>
             <div class="tab" data-tab="runs" data-tip="Historique des exécutions GitHub Actions">📋 Runs</div>
             <div class="tab" data-tab="guide" data-tip="Guide complet d'utilisation du dashboard">📚 Guide</div>
         </div>
@@ -1362,6 +1363,32 @@
             </div>
 
             <div id="topicsContainer"></div>
+        </div>
+
+        <!-- ═══════ BACKUPS ═══════ -->
+        <div class="panel" id="panel-backups">
+            <div class="panel-header">
+                <h2>📦 Snapshots & Backups</h2><button class="btn btn-sm" onclick="loadSnapshots()"
+                    data-tip="Rafraichir la liste des snapshots">🔄</button>
+            </div>
+            <p style="color:var(--text-dim);margin-bottom:14px;font-size:.82rem">Créez des sauvegardes complètes de
+                votre site. Chaque snapshot est téléchargeable en ZIP.</p>
+
+            <!-- Create Snapshot Form -->
+            <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap">
+                <div style="flex:1;min-width:200px">
+                    <label style="font-size:.75rem;color:var(--text-dim);display:block;margin-bottom:4px">Nom du
+                        snapshot</label>
+                    <input type="text" id="snapshotName" placeholder="ex: avant-refonte, v2-stable..."
+                        style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--bord);background:var(--card);color:var(--text);font-size:.85rem">
+                </div>
+                <button class="btn btn-green" id="createSnapshotBtn" onclick="createSnapshot()"
+                    data-tip="Créer un nouveau snapshot du site actuel" style="white-space:nowrap">📸 Créer
+                    Snapshot</button>
+            </div>
+
+            <!-- Snapshots List -->
+            <div id="snapshotsList"></div>
         </div>
 
         <!-- ═══════ RUNS ═══════ -->
@@ -1699,7 +1726,7 @@
         async function api(action, params = {}, method = "GET") { const qs = new URLSearchParams({ action, ...params }).toString(); const res = await fetch(`${API}?${qs}`, { method, headers: { Authorization: `Bearer ${TOKEN}` } }); if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error || `HTTP ${res.status}`) } return res.json() }
 
         // ═══════ TABS ═══════
-        document.getElementById("tabsBar").addEventListener("click", e => { const tab = e.target.closest(".tab"); if (!tab) return; const name = tab.dataset.tab; document.querySelectorAll(".tab").forEach(t => t.classList.remove("active")); document.querySelectorAll(".panel").forEach(p => p.classList.remove("active")); tab.classList.add("active"); document.getElementById(`panel-${name}`).classList.add("active"); const loads = { articles: loadArticles, health: loadHealth, topics: () => { loadTopics(); loadKeywordsEditor() }, runs: loadRuns }; if (loads[name] && !document.getElementById(`panel-${name}`).dataset.loaded) { loads[name](); document.getElementById(`panel-${name}`).dataset.loaded = "1" } });
+        document.getElementById("tabsBar").addEventListener("click", e => { const tab = e.target.closest(".tab"); if (!tab) return; const name = tab.dataset.tab; document.querySelectorAll(".tab").forEach(t => t.classList.remove("active")); document.querySelectorAll(".panel").forEach(p => p.classList.remove("active")); tab.classList.add("active"); document.getElementById(`panel-${name}`).classList.add("active"); const loads = { articles: loadArticles, health: loadHealth, topics: () => { loadTopics(); loadKeywordsEditor() }, backups: loadSnapshots, runs: loadRuns }; if (loads[name] && !document.getElementById(`panel-${name}`).dataset.loaded) { loads[name](); document.getElementById(`panel-${name}`).dataset.loaded = "1" } });
 
         // ═══════ REFRESH ALL ═══════
         async function refreshAll() { try { const [stats, health] = await Promise.all([api("stats"), api("health")]); renderStats(stats); renderHealthOverview(health) } catch (e) { toast("Erreur: " + e.message, "error") } }
@@ -1948,6 +1975,75 @@
                 h += `</div></div>`;
                 c.innerHTML = h;
             } catch (e) { c.innerHTML = `<p style="color:var(--red)">${esc(e.message)}</p>` }
+        }
+
+        // ═══════ SNAPSHOTS ═══════
+        async function loadSnapshots() {
+            const c = document.getElementById("snapshotsList"); c.innerHTML = '<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
+            try {
+                const d = await api("snapshots");
+                if (!d.snapshots.length) { c.innerHTML = '<p style="color:var(--text-dim);text-align:center;padding:20px">Aucun snapshot. Créez votre premier backup!</p>'; return }
+                let h = '<div class="tbl-wrap"><table><thead><tr><th>Nom</th><th>Date</th><th>Commit</th><th>Articles</th><th>Images</th><th>Actions</th></tr></thead><tbody>';
+                d.snapshots.forEach(s => {
+                    const dt = new Date(s.date).toLocaleString("fr-FR");
+                    h += `<tr>
+                        <td><strong>${esc(s.name)}</strong><br><span style="font-size:.68rem;color:var(--text-dim)">${esc(s.tag)}</span></td>
+                        <td style="white-space:nowrap;font-size:.78rem">${dt}</td>
+                        <td><code style="background:var(--bg);padding:2px 6px;border-radius:4px;font-size:.75rem">${esc(s.commit)}</code></td>
+                        <td style="text-align:center">${s.articles}</td>
+                        <td style="text-align:center">${s.images}</td>
+                        <td style="white-space:nowrap">
+                            <a href="https://api.github.com/repos/${esc(s.downloadUrl?.split('/repos/')[1] || '')}" target="_blank" class="btn btn-blue btn-sm" data-tip="Télécharger le ZIP complet de ce snapshot" onclick="event.preventDefault(); downloadSnapshot('${esc(s.tag)}')">⬇️</a>
+                            <button class="btn btn-sm" style="background:#F59E0B;color:#fff" onclick="restoreSnapshot('${esc(s.tag)}','${esc(s.name)}')" data-tip="Restaurer le site à cet état (crée un backup de sécurité automatiquement)">🔄</button>
+                            <button class="btn btn-red btn-sm" onclick="deleteSnapshot('${esc(s.tag)}','${esc(s.name)}')" data-tip="Supprimer définitivement ce snapshot">🗑️</button>
+                        </td>
+                    </tr>`;
+                });
+                h += '</tbody></table></div>';
+                c.innerHTML = h;
+            } catch (e) { c.innerHTML = `<p style="color:var(--red)">${esc(e.message)}</p>` }
+        }
+
+        async function createSnapshot() {
+            const nameInput = document.getElementById("snapshotName");
+            const name = nameInput.value.trim();
+            const btn = document.getElementById("createSnapshotBtn");
+            btn.innerHTML = '<div class="spinner"></div> Création...'; btn.disabled = true;
+            try {
+                const r = await api("create-snapshot", name ? { name } : {});
+                toast(`✅ ${r.message}`, "success");
+                nameInput.value = "";
+                document.getElementById("panel-backups").dataset.loaded = "";
+                loadSnapshots();
+            } catch (e) { toast("❌ " + e.message, "error") }
+            btn.innerHTML = "📸 Créer Snapshot"; btn.disabled = false;
+        }
+
+        function downloadSnapshot(tag) {
+            // Open GitHub zipball URL directly (requires auth via PAT in URL won't work, so use API proxy approach)
+            toast("⬇️ Préparation du téléchargement...", "info");
+            window.open(`https://github.com/${document.querySelector('meta[name="repo"]')?.content || 'little-smart-genius-com/website'}/archive/refs/tags/${tag}.zip`, '_blank');
+        }
+
+        async function restoreSnapshot(tag, name) {
+            if (!confirm(`⚠️ ATTENTION: Restaurer le site à "${name}" ?\n\nCela remplacera TOUT le contenu actuel par celui du snapshot.\nUn backup de sécurité sera automatiquement créé avant la restauration.`)) return;
+            if (!confirm(`🔴 CONFIRMATION FINALE\n\nVous allez restaurer: ${name}\nTag: ${tag}\n\nContinuer ?`)) return;
+            toast(`🔄 Restauration en cours: ${name}...`, "info");
+            try {
+                const r = await api("restore-snapshot", { tag });
+                toast(`✅ ${r.message}`, "success");
+                loadSnapshots();
+            } catch (e) { toast("❌ " + e.message, "error") }
+        }
+
+        async function deleteSnapshot(tag, name) {
+            if (!confirm(`Supprimer le snapshot "${name}" ?\nCette action est irréversible.`)) return;
+            toast(`🗑️ Suppression: ${name}...`, "info");
+            try {
+                const r = await api("delete-snapshot", { tag });
+                toast(`✅ ${r.message}`, "success");
+                loadSnapshots();
+            } catch (e) { toast("❌ " + e.message, "error") }
         }
 
         // ═══════ RUNS ═══════

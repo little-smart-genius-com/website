@@ -772,6 +772,162 @@ async function getWorkflowRuns() {
 }
 
 // ═══════════════════════════════════════════════════════════
+// SNAPSHOTS — Create, List, Restore, Delete
+// ═══════════════════════════════════════════════════════════
+
+async function listSnapshots() {
+    const res = await ghFetch(`repos/${REPO}/releases`, { method: "GET" });
+    if (!res.ok) throw new Error(`GitHub releases: ${res.status}`);
+    const releases = await res.json();
+
+    const snapshots = releases
+        .filter(r => r.tag_name.startsWith("snapshot-"))
+        .map(r => {
+            let meta = {};
+            try { meta = JSON.parse(r.body || "{}"); } catch (e) { /* ignore */ }
+            return {
+                id: r.id,
+                tag: r.tag_name,
+                name: r.name || r.tag_name,
+                date: r.created_at,
+                commit: meta.commit || "unknown",
+                articles: meta.articles || 0,
+                images: meta.images || 0,
+                posts: meta.posts || 0,
+                downloadUrl: r.zipball_url,
+                tarballUrl: r.tarball_url,
+            };
+        });
+
+    return { snapshots, total: snapshots.length };
+}
+
+async function createSnapshot(name) {
+    if (!name) name = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
+    const tag = `snapshot-${name.toLowerCase().replace(/[^a-z0-9-]/g, "-").slice(0, 40)}`;
+
+    // Get current HEAD commit SHA
+    const refRes = await ghFetch(`repos/${REPO}/git/ref/heads/${BRANCH}`, { method: "GET" });
+    if (!refRes.ok) throw new Error(`Could not get HEAD: ${refRes.status}`);
+    const refData = await refRes.json();
+    const commitSha = refData.object.sha;
+
+    // Count files for metadata
+    let articleCount = 0, imageCount = 0, postCount = 0;
+    try {
+        const [arts, imgs, posts] = await Promise.all([
+            ghListDir("articles"),
+            ghListDir("images"),
+            ghListDir("posts"),
+        ]);
+        articleCount = arts.filter(f => f.name.endsWith(".html")).length;
+        imageCount = imgs.length;
+        postCount = posts.filter(f => f.name.endsWith(".json")).length;
+    } catch (e) { /* non-critical */ }
+
+    const metadata = {
+        commit: commitSha.substring(0, 8),
+        articles: articleCount,
+        images: imageCount,
+        posts: postCount,
+        createdAt: new Date().toISOString(),
+    };
+
+    // Create lightweight tag
+    const tagRes = await ghFetch(`repos/${REPO}/git/refs`, {
+        method: "POST",
+        body: JSON.stringify({
+            ref: `refs/tags/${tag}`,
+            sha: commitSha,
+        }),
+    });
+    if (!tagRes.ok && tagRes.status !== 422) {
+        const txt = await tagRes.text();
+        throw new Error(`Create tag failed: ${tagRes.status} ${txt.substring(0, 200)}`);
+    }
+
+    // Create release
+    const relRes = await ghFetch(`repos/${REPO}/releases`, {
+        method: "POST",
+        body: JSON.stringify({
+            tag_name: tag,
+            name: `📸 ${name}`,
+            body: JSON.stringify(metadata),
+            draft: false,
+            prerelease: false,
+        }),
+    });
+    if (!relRes.ok) {
+        const txt = await relRes.text();
+        throw new Error(`Create release failed: ${relRes.status} ${txt.substring(0, 200)}`);
+    }
+
+    return {
+        tag,
+        name,
+        commit: metadata.commit,
+        articles: articleCount,
+        images: imageCount,
+        message: `Snapshot "${name}" created (${articleCount} articles, ${imageCount} images)`,
+    };
+}
+
+async function restoreSnapshot(tag) {
+    if (!tag) throw new Error("tag required");
+
+    // Get the commit SHA for this tag
+    const tagRes = await ghFetch(`repos/${REPO}/git/ref/tags/${tag}`, { method: "GET" });
+    if (!tagRes.ok) throw new Error(`Tag not found: ${tag}`);
+    const tagData = await tagRes.json();
+    const targetSha = tagData.object.sha;
+
+    // Create a safety snapshot before restoring
+    const safetyTag = `pre-restore-${Date.now()}`;
+    const headRes = await ghFetch(`repos/${REPO}/git/ref/heads/${BRANCH}`, { method: "GET" });
+    if (headRes.ok) {
+        const headData = await headRes.json();
+        await ghFetch(`repos/${REPO}/git/refs`, {
+            method: "POST",
+            body: JSON.stringify({ ref: `refs/tags/${safetyTag}`, sha: headData.object.sha }),
+        });
+    }
+
+    // Force-update main branch to the snapshot's commit
+    const updateRes = await ghFetch(`repos/${REPO}/git/refs/heads/${BRANCH}`, {
+        method: "PATCH",
+        body: JSON.stringify({ sha: targetSha, force: true }),
+    });
+    if (!updateRes.ok) {
+        const txt = await updateRes.text();
+        throw new Error(`Restore failed: ${updateRes.status} ${txt.substring(0, 200)}`);
+    }
+
+    return {
+        restored: true,
+        tag,
+        commit: targetSha.substring(0, 8),
+        safetyTag,
+        message: `Restored to "${tag}". Safety backup: ${safetyTag}`,
+    };
+}
+
+async function deleteSnapshot(tag) {
+    if (!tag) throw new Error("tag required");
+
+    // Find and delete the release
+    const relRes = await ghFetch(`repos/${REPO}/releases/tags/${tag}`, { method: "GET" });
+    if (relRes.ok) {
+        const rel = await relRes.json();
+        await ghFetch(`repos/${REPO}/releases/${rel.id}`, { method: "DELETE" });
+    }
+
+    // Delete the tag
+    const tagRes = await ghFetch(`repos/${REPO}/git/refs/tags/${tag}`, { method: "DELETE" });
+
+    return { deleted: true, tag, message: `Snapshot "${tag}" deleted` };
+}
+
+// ═══════════════════════════════════════════════════════════
 // MAIN HANDLER
 // ═══════════════════════════════════════════════════════════
 
@@ -807,13 +963,25 @@ exports.handler = async (event) => {
                 break;
             case "fix-seo": result = await fixSeo(params.slug); break;
             case "push-instagram": result = await pushInstagram(params.slug); break;
+            case "snapshots": result = await listSnapshots(); break;
+            case "create-snapshot":
+                result = await createSnapshot(params.name || null);
+                break;
+            case "restore-snapshot":
+                if (!params.tag) return { statusCode: 400, headers, body: JSON.stringify({ error: "tag required" }) };
+                result = await restoreSnapshot(params.tag);
+                break;
+            case "delete-snapshot":
+                if (!params.tag) return { statusCode: 400, headers, body: JSON.stringify({ error: "tag required" }) };
+                result = await deleteSnapshot(params.tag);
+                break;
             case "generate": result = await triggerWorkflow(params.type || "generate-batch", params.slug || null); break;
             case "runs": result = await getWorkflowRuns(); break;
             default:
                 return {
                     statusCode: 400, headers, body: JSON.stringify({
                         error: "Unknown action",
-                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "generate", "runs"],
+                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs"],
                     })
                 };
         }
