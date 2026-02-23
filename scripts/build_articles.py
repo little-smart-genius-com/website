@@ -30,6 +30,16 @@ os.makedirs(ARTICLES_DIR, exist_ok=True)
 # ARTICLE HTML TEMPLATE — matches index.html design system
 # ═══════════════════════════════════════════════════════════════
 
+def normalize_image_path(path):
+    """Convert absolute server paths to relative web paths."""
+    if not path or path.startswith('http'):
+        return path
+    # Extract just the filename from any absolute path
+    basename = os.path.basename(path)
+    if basename:
+        return f"images/{basename}"
+    return path
+
 ARTICLE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -1495,7 +1505,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     category_display = f'<span>&bull;</span><span>{category}</span>' if category else ''
     
     # Image
-    image = json_data.get('image', 'images/placeholder.webp')
+    image = normalize_image_path(json_data.get('image', 'images/placeholder.webp'))
     og_image = f"{SITE_URL}/{image}" if not image.startswith('http') else image
     
     # Keywords
@@ -1588,7 +1598,7 @@ def build_all():
                 "iso_date": data.get('iso_date', ''),
                 "category": data.get('category', ''),
                 "excerpt": (data.get('excerpt') or data.get('meta_description', ''))[:200],
-                "image": data.get('image', ''),
+                "image": normalize_image_path(data.get('image', '')),
                 "reading_time": data.get('reading_time', 5),
                 "url": f"articles/{slug}.html",
                 "keywords": data.get('keywords', []),

@@ -25,9 +25,9 @@ def generate_article_card(article):
     reading_time = article.get("reading_time", 5)
     date = esc(article.get("date", ""))
 
-    return f"""        <article class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border" style="background: var(--card); border-color: var(--bord);">
+    return f"""        <article class="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border" style="background: var(--card); border-color: var(--bord);">
             <a href="{url}" class="block">
-                <div class="aspect-video overflow-hidden">
+                <div class="aspect-video overflow-hidden rounded-t-2xl">
                     <img src="{image}" alt="{title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy">
                 </div>
                 <div class="p-6">
@@ -35,7 +35,7 @@ def generate_article_card(article):
                         <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-1 rounded-full">{category}</span>
                         <span class="text-xs text-slate-500">\U0001f4d6 {reading_time} min</span>
                     </div>
-                    <h3 class="text-xl font-extrabold mb-3 hover:text-brand transition" style="color: var(--text);">
+                    <h3 class="text-lg font-extrabold mb-3 hover:text-brand transition leading-snug" style="color: var(--text);">
                         {title}
                     </h3>
                     <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">

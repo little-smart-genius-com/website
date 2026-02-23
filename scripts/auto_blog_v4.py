@@ -578,7 +578,7 @@ def download_and_optimize_image(prompt: str, filename: str, logger: DetailedLogg
             logger.image_saved(webp_name, file_size // 1024)
 
             alt_text = generate_seo_alt_text(clean_prompt[:50], alt_context)
-            return f"{IMAGES_DIR}/{webp_name}", alt_text
+            return f"images/{webp_name}", alt_text
         except Exception as e:
             logger.error(f"Erreur traitement image: {str(e)[:50]}", 4)
 
