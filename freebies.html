@@ -997,6 +997,20 @@
                 banner.classList.remove('hidden');
                 setTimeout(() => { banner.classList.remove('translate-y-20', 'opacity-0'); }, 100);
             }
+
+            // --- AUTO-SELECTION (Tâche 3) ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const dlParam = urlParams.get('dl');
+            if (dlParam) {
+                // Find the activity in activitiesData
+                const activity = activitiesData.find(item => item.name.toLowerCase() === dlParam.toLowerCase());
+                if (activity) {
+                    // Slight delay to ensure UI is ready
+                    setTimeout(() => {
+                        handleDownload(activity);
+                    }, 300);
+                }
+            }
         });
         function acceptCookies() { localStorage.setItem('cookieConsent', 'true'); hideBanner(); }
         function closeCookies() { hideBanner(); }
