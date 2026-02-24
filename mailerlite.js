@@ -3,12 +3,12 @@
  * =========================================================
  * Detects environment automatically:
  *   - Local dev  → calls http://localhost:5555  (mailer_proxy.py)
- *   - Production → calls /subscribe and /contact (Netlify Functions)
+ *   - Production → Cloudflare Workers (contact-worker, subscribe-worker)
  *
  * Features:
  *   - Newsletter subscribe (email → MailerLite group)
  *   - Contact form with math captcha anti-spam
- *   - Dual submit: MailerLite + Netlify Forms (email notifications)
+ *   - Email notifications via MailChannels (free, no Gmail password needed)
  *
  * Usage: <script src="mailerlite.js" defer></script>
  */
@@ -23,9 +23,14 @@
         location.protocol === "file:"
     );
     const PROXY_BASE = isLocal ? "http://localhost:5555" : "";
+    // ── Cloudflare Workers endpoints ────────────────────────
+    const WORKERS = {
+        subscribe: "https://subscribe.littlesmartgenius.com",
+        contact: "https://contact.littlesmartgenius.com",
+    };
     const ENDPOINTS = {
-        subscribe: isLocal ? `${PROXY_BASE}/subscribe` : `/.netlify/functions/subscribe`,
-        contact: isLocal ? `${PROXY_BASE}/contact` : `/.netlify/functions/contact`,
+        subscribe: isLocal ? `${PROXY_BASE}/subscribe` : WORKERS.subscribe,
+        contact: isLocal ? `${PROXY_BASE}/contact` : WORKERS.contact,
     };
 
     // ── Utility ─────────────────────────────────────────────
@@ -121,25 +126,7 @@
         initCaptcha();
     }
 
-    // ── Netlify Forms dual-submit ───────────────────────────
-    async function submitToNetlifyForms(payload) {
-        try {
-            const formData = new URLSearchParams();
-            formData.append("form-name", "contact");
-            formData.append("name", payload.name);
-            formData.append("email", payload.email);
-            formData.append("subject", payload.subject);
-            formData.append("message", payload.message);
-            await fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: formData.toString(),
-            });
-        } catch (e) {
-            // Netlify Forms submission is best-effort; don't block the UX
-            console.warn("Netlify Forms submit failed (non-blocking):", e);
-        }
-    }
+    // ── (Netlify Forms removed — email now sent via Cloudflare Worker + MailChannels) ──
 
     // ── Newsletter form ─────────────────────────────────────
     function initNewsletter() {
@@ -204,14 +191,9 @@
 
             setLoading(btn, true);
             try {
-                // 1. Submit to MailerLite (subscriber + custom field)
+                // Submit to Cloudflare Worker (sends email + adds to MailerLite)
                 const { ok, message } = await postForm(ENDPOINTS.contact, payload);
                 showResult(result, ok, message);
-
-                // 2. Also submit to Netlify Forms (email notification)
-                if (ok && !isLocal) {
-                    await submitToNetlifyForms(payload);
-                }
 
                 if (ok) {
                     form.reset();

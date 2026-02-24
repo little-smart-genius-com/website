@@ -57,6 +57,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -172,12 +174,18 @@ jobs:
             ACTION="${{ steps.action.outputs.action }}"
             git commit -m "Auto-blog: ${DATE} ${HOUR}h — ${ACTION} [skip ci]"
             # Pull any remote changes before pushing (handles concurrent pushes)
-            for i in 1 2 3; do
-              git pull --rebase origin main && git push && break
-              echo "Retry $i..."
+            for i in 1 2 3 4 5; do
+              echo "Attempt $i..."
+              git pull --rebase origin main
+              if git push origin main; then
+                echo "Changes pushed successfully"
+                exit 0
+              fi
+              echo "Push failed, retrying in 5 seconds..."
               sleep 5
             done
-            echo "Changes pushed successfully"
+            echo "Failed to push changes after multiple attempts"
+            exit 1
           else
             echo "No changes to commit"
           fi

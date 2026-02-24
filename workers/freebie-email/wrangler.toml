@@ -1,0 +1,11 @@
+name = "lsg-freebie-email"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Custom domain route (configure in Cloudflare dashboard)
+# routes = [{ pattern = "freebie-email.littlesmartgenius.com/*", zone_name = "littlesmartgenius.com" }]
+
+# Secrets (set via: npx wrangler secret put SECRET_NAME)
+# MAILERLITE_API_KEY
+# MAILERLITE_GROUP_ID
+# SITE_URL
