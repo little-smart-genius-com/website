@@ -10,74 +10,38 @@
         rel="stylesheet">
     <style>
         /* ═══════════════════════════ THEME ═══ */
-                /* ═══════════════════════════ PREMIUM GLASSMORPHISM THEME ═══════════════════════════ */
         :root {
-            --bg: #09090b;
-            --bg2: rgba(24, 24, 27, 0.65);
-            --card: rgba(39, 39, 42, 0.4);
-            --card-hover: rgba(39, 39, 42, 0.8);
-            --border: rgba(255, 255, 255, 0.1);
-            --text: #f8fafc;
+            --bg: #0a0e1a;
+            --bg2: #111827;
+            --card: #1e2433;
+            --card-hover: #252d3f;
+            --border: #2d3548;
+            --text: #e2e8f0;
             --text-dim: #94a3b8;
             --brand: #f59e0b;
-            --brand-dark: #fbbf24;
-            --green: #10b981;
+            --brand-dark: #d97706;
+            --green: #22c55e;
             --red: #ef4444;
             --blue: #3b82f6;
-            --purple: #8b5cf6;
+            --purple: #a855f7;
             --cyan: #06b6d4;
             --pink: #ec4899;
-            --radius: 16px;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --glass-blur: blur(16px);
+            --radius: 14px;
+            --shadow: 0 4px 24px rgba(0, 0, 0, .3)
         }
 
         [data-theme="light"] {
-            --bg: #f8fafc;
-            --bg2: rgba(255, 255, 255, 0.7);
-            --card: rgba(255, 255, 255, 0.5);
-            --card-hover: rgba(255, 255, 255, 0.8);
-            --border: rgba(0, 0, 0, 0.08);
-            --text: #0f172a;
+            --bg: #f1f5f9;
+            --bg2: #fff;
+            --card: #fff;
+            --card-hover: #f8fafc;
+            --border: #e2e8f0;
+            --text: #1e293b;
             --text-dim: #64748b;
-            --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow: 0 4px 24px rgba(0, 0, 0, .08)
         }
 
-        /* Ambient Orbs */
-        .ambient-orb { position: fixed; border-radius: 50%; filter: var(--glass-blur); z-index: 0; opacity: 0.15; pointer-events: none; filter: blur(120px); }
-        .orb-1 { top: -10%; left: -5%; width: 500px; height: 500px; background: var(--brand); }
-        .orb-2 { bottom: -10%; right: -5%; width: 600px; height: 600px; background: var(--purple); }
-
-        /* Glassmorphism applications */
-        .top-bar { backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); background: var(--bg2); }
-        .tabs { background: transparent; }
-        .tab { background: var(--card); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); }
-        .tab.active { background: var(--card-hover); border-color: var(--brand); }
-        
-        .stat-card, .action-card, .scan-card, .topic-section, .guide-section, .kw-editor, .login-box, .modal {
-            background: var(--card);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--border);
-        }
-        
-        .tbl-wrap { background: var(--card); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); }
-        #app { position: relative; z-index: 10; }
-        
-        /* Fix login input */
-        .login-box input { background: rgba(0,0,0,0.2) !important; color: white !important; }
-        [data-theme="light"] .login-box input { background: rgba(255,255,255,0.5) !important; color: black !important; }
-
-        /* API Keys styles */
-        .api-key-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-        .api-key-input { flex: 1; padding: 12px 16px; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: monospace; }
-        [data-theme="light"] .api-key-input { background: rgba(255,255,255,0.5); }
-        .api-status { width: 120px; text-align: center; padding: 8px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; }
-        .status-idle { background: var(--card); color: var(--text-dim); }
-        .status-ok { background: rgba(16, 185, 129, 0.15); color: var(--green); }
-        .status-fail { background: rgba(239, 68, 68, 0.15); color: var(--red); }
-        .status-testing { background: rgba(59, 130, 246, 0.15); color: var(--blue); }
-* {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box
@@ -1043,12 +1007,61 @@
             color: var(--text-dim);
             margin-left: auto
         }
+
+        /* API Keys styles */
+        .api-key-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .api-key-input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: monospace;
+        }
+
+        [data-theme="light"] .api-key-input {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .api-status {
+            width: 120px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .status-idle {
+            background: var(--card);
+            color: var(--text-dim);
+        }
+
+        .status-ok {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--green);
+        }
+
+        .status-fail {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--red);
+        }
+
+        .status-testing {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--blue);
+        }
     </style>
 </head>
 
 <body>
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
 
     <!-- ═══════ LOGIN ═══════ -->
     <div id="loginOverlay">
@@ -1093,7 +1106,7 @@
             <div class="tab" data-tab="health" data-tip="Vérification des fichiers et score de santé">🏥 Health</div>
             <div class="tab" data-tab="topics" data-tip="Keywords, produits, freebies + gestion">🔑 Topics</div>
             <div class="tab" data-tab="backups" data-tip="Snapshots, sauvegardes et restauration">📦 Backups</div>
-                        <div class="tab" data-tab="runs" data-tip="Historique des exécutions GitHub Actions">📋 Runs</div>
+            <div class="tab" data-tab="runs" data-tip="Historique des exécutions GitHub Actions">📋 Runs</div>
             <div class="tab" data-tab="apikeys" data-tip="Gérer et tester les clés API Pollinations">🔑 API Keys</div>
             <div class="tab" data-tab="guide" data-tip="Guide complet d'utilisation du dashboard">📚 Guide</div>
         </div>
@@ -1104,6 +1117,28 @@
                 <h2>📊 Vue d'ensemble</h2>
             </div>
             <div class="stats-grid" id="statsGrid">
+                <div class="stat-card" style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green);">
+                    <div class="stat-label">👥 Visiteurs (30j)</div>
+                    <div class="stat-value" id="s-visitors">—</div>
+                </div>
+                <div class="stat-card" style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--blue);">
+                    <div class="stat-label">👁️ Vues (30j)</div>
+                    <div class="stat-value" id="s-views">—</div>
+                </div>
+                <div class="stat-card" style="background: rgba(139, 92, 246, 0.1); border: 1px solid var(--purple);">
+                    <div class="stat-label">⏱️ Tps Moyen</div>
+                    <div class="stat-value" id="s-avg-time">—</div>
+                </div>
+                <div class="stat-card"
+                    style="background: rgba(239, 68, 68, 0.1); border: 1px solid var(--red); position: relative; overflow: hidden;">
+                    <div class="stat-label" style="display:flex;align-items:center;gap:6px">
+                        <span
+                            style="width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse 1.5s infinite"></span>🔴
+                        En Direct
+                    </div>
+                    <div class="stat-value" id="s-realtime" style="color:var(--red); font-size:2rem; margin-top:5px">—
+                    </div>
+                </div>
                 <div class="stat-card orange">
                     <div class="stat-label">Articles</div>
                     <div class="stat-value" id="s-articles">—</div>
@@ -1179,6 +1214,9 @@
                     <button class="btn btn-brand" id="deepScanBtn" onclick="runDeepScan()"
                         data-tip="Analyse SEO complète : title, meta, H1, images, liens internes">🔍 Lancer le Scan
                         Complet</button>
+                    <button class="btn btn-purple" id="bulkFixBtn" onclick="bulkFixSeo()" style="display:none"
+                        data-tip="Répare automatiquement tous les problèmes SEO (Title, Meta, H1) !">✨ Bulk Fix All
+                        SEO</button>
                     <button class="btn btn-green btn-sm" onclick="triggerAction('fix-images')"
                         data-tip="Régénère les images manquantes via Pollinations AI">🖼️ Fix Images</button>
                     <button class="btn btn-blue btn-sm" onclick="triggerAction('build-site')"
@@ -1449,21 +1487,22 @@
             <div id="runsList"></div>
         </div>
 
-        
         <!-- ═══════ API KEYS MANAGER ═══════ -->
         <div class="panel" id="panel-apikeys">
             <div class="panel-header">
                 <h2>🔑 API Keys Manager</h2>
             </div>
-            
+
             <div class="topic-section">
                 <h3 style="margin-bottom: 8px;">Pollinations.ai Keys Tester</h3>
                 <p style="color:var(--text-dim); font-size:0.85rem; margin-bottom: 24px; line-height:1.6">
-                    Testez vos clés API Pollinations gratuitement ici. Si une génération échoue, une clé a pu expirer (erreur 429).<br>
+                    Testez vos clés API Pollinations gratuitement ici. Si une génération échoue, une clé a pu expirer
+                    (erreur 429).<br>
                     <strong>Note:</strong> Mettez à jour les clés dans vos Secrets GitHub (POLLINATIONS_API_KEY_1 à 5).
                 </p>
                 <div id="apiKeysList"></div>
-                <button class="btn btn-brand" style="margin-top: 16px;" onclick="testAllKeys()" id="testKeysBtn">🧪 Tester les 5 Clés</button>
+                <button class="btn btn-brand" style="margin-top: 16px;" onclick="testAllKeys()" id="testKeysBtn">🧪
+                    Tester les 5 Clés</button>
             </div>
         </div>
 
@@ -1798,6 +1837,26 @@
 
         // ═══════ STATS ═══════
         function renderStats(d) {
+            if (d.analytics && !d.analytics.error) {
+                document.getElementById("s-visitors").textContent = (d.analytics.visitors || 0).toLocaleString();
+                document.getElementById("s-views").textContent = (d.analytics.views || 0).toLocaleString();
+                const m = Math.floor((d.analytics.avgTime || 0) / 60);
+                const s = Math.floor((d.analytics.avgTime || 0) % 60);
+                document.getElementById("s-avg-time").textContent = `${m}m ${s}s`;
+            } else if (d.analytics && d.analytics.error) {
+                document.getElementById("s-visitors").textContent = "Err";
+                document.getElementById("s-views").textContent = "Err";
+                document.getElementById("s-avg-time").textContent = "Err";
+                console.error("GA4 Error:", d.analytics.error);
+            }
+
+            if (d.realtime && !d.realtime.error) {
+                document.getElementById("s-realtime").textContent = (d.realtime.activeUsers || 0).toLocaleString();
+            } else if (d.realtime && d.realtime.error) {
+                document.getElementById("s-realtime").textContent = "Err";
+                console.error("GA4 Realtime Error:", d.realtime.error);
+            }
+
             document.getElementById("s-articles").textContent = d.articles;
             document.getElementById("s-images").textContent = d.images;
             document.getElementById("s-ig").textContent = d.instagram;
@@ -2191,39 +2250,38 @@
             event.target.value = ''; // Reset file input
         }
 
-        
         // ═══════ NEW: API KEYS MANAGER & SEO BULK FIX ═══════
-        function getSavedKeys() { try { return JSON.parse(localStorage.getItem('lsg_api_keys') || '["","","","",""]') } catch { return ["","","","",""] } }
+        function getSavedKeys() { try { return JSON.parse(localStorage.getItem('lsg_api_keys') || '["","","","",""]') } catch { return ["", "", "", "", ""] } }
         function renderApiKeysManager() {
             const keys = getSavedKeys(); let h = "";
-            for(let i=0; i<5; i++) {
+            for (let i = 0; i < 5; i++) {
                 h += `<div class="api-key-row">
-                    <span style="font-weight:700; color:var(--text-dim); width: 24px;">#${i+1}</span>
-                    <input type="text" class="api-key-input" id="apiKeyIn_${i}" value="${esc(keys[i])}" placeholder="Clé pollinations ${i+1}..." onchange="saveApiKeysLocally()">
+                    <span style="font-weight:700; color:var(--text-dim); width: 24px;">#${i + 1}</span>
+                    <input type="text" class="api-key-input" id="apiKeyIn_${i}" value="${esc(keys[i])}" placeholder="Clé pollinations ${i + 1}..." onchange="saveApiKeysLocally()">
                     <div class="api-status status-idle" id="apiStatus_${i}">Idle</div>
                 </div>`;
             }
             document.getElementById("apiKeysList").innerHTML = h;
         }
         function saveApiKeysLocally() {
-            const arr = []; for(let i=0; i<5; i++) arr.push(document.getElementById(`apiKeyIn_${i}`).value.trim());
+            const arr = []; for (let i = 0; i < 5; i++) arr.push(document.getElementById(`apiKeyIn_${i}`).value.trim());
             localStorage.setItem('lsg_api_keys', JSON.stringify(arr));
         }
         async function testAllKeys() {
             saveApiKeysLocally(); const keys = getSavedKeys(); const btn = document.getElementById("testKeysBtn");
             btn.innerHTML = '<div class="spinner"></div> Testing...'; btn.disabled = true;
-            for(let i=0; i<5; i++) {
+            for (let i = 0; i < 5; i++) {
                 const key = keys[i]; const statEl = document.getElementById(`apiStatus_${i}`);
-                if(!key) { statEl.className = "api-status status-idle"; statEl.innerText = "Empty"; continue; }
+                if (!key) { statEl.className = "api-status status-idle"; statEl.innerText = "Empty"; continue; }
                 statEl.className = "api-status status-testing"; statEl.innerText = "Testing...";
                 try {
                     const res = await fetch(`https://image.pollinations.ai/prompt/test?width=10&height=10&nologo=true`, {
                         headers: { 'Authorization': `Bearer ${key}` }
                     });
-                    if(res.ok) { statEl.className = "api-status status-ok"; statEl.innerText = "✅ Active"; }
-                    else if(res.status === 429) { statEl.className = "api-status status-fail"; statEl.innerText = "❌ 429 Limit"; }
+                    if (res.ok) { statEl.className = "api-status status-ok"; statEl.innerText = "✅ Active"; }
+                    else if (res.status === 429) { statEl.className = "api-status status-fail"; statEl.innerText = "❌ 429 Limit"; }
                     else { statEl.className = "api-status status-fail"; statEl.innerText = `❌ Err ${res.status}`; }
-                } catch(e) { statEl.className = "api-status status-fail"; statEl.innerText = "❌ Network Err"; }
+                } catch (e) { statEl.className = "api-status status-fail"; statEl.innerText = "❌ Network Err"; }
             }
             btn.innerHTML = '🧪 Tester les 5 Clés'; btn.disabled = false;
         }
@@ -2231,12 +2289,12 @@
         let globalSeoList = [];
         async function bulkFixSeo() {
             const fixable = globalSeoList.filter(a => (a.seo && a.seo.issues && a.seo.issues.length > 0));
-            if(!confirm(`Corriger automatiquement ${fixable.length} articles ?`)) return;
+            if (!confirm(`Corriger automatiquement ${fixable.length} articles ?`)) return;
             toast("Bulk fixing started... please wait.", "info");
             document.getElementById("bulkFixBtn").innerHTML = '<div class="spinner"></div>';
             let fixedCount = 0;
-            for(let a of fixable) {
-                try { await api("fix-seo", { slug: a.slug }); fixedCount++; } catch(e) { console.error(e); }
+            for (let a of fixable) {
+                try { await api("fix-seo", { slug: a.slug }); fixedCount++; } catch (e) { console.error(e); }
             }
             toast(`✅ Bulk fix terminé ! ${fixedCount} réparés.`, "success");
             runDeepScan();
