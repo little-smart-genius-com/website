@@ -32,6 +32,7 @@ async function ghFetch(path, opts = {}, env) {
             Authorization: `Bearer ${PAT}`,
             Accept: "application/vnd.github+json",
             "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "LittleSmartGenius-Admin",
             ...(opts.headers || {}),
         },
     });
@@ -99,6 +100,187 @@ function checkAuth(request, env) {
         });
     }
     return null;
+}
+
+// ═══════════════════════════════════════════════════════════
+// GOOGLE ANALYTICS 4 (OAUTH JWT NATIVE IMPLEMENTATION)
+// ═══════════════════════════════════════════════════════════
+
+function str2ab(str) {
+    const buf = new ArrayBuffer(str.length);
+    const bufView = new Uint8Array(buf);
+    for (let i = 0, strLen = str.length; i < strLen; i++) bufView[i] = str.charCodeAt(i);
+    return buf;
+}
+
+function base64UrlEncode(str) {
+    return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function arrayBufferToBase64Url(buffer) {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    for (let i = 0; i < bytes.byteLength; i++) binary += String.fromCharCode(bytes[i]);
+    return base64UrlEncode(binary);
+}
+
+async function getGoogleAccessToken(env) {
+    const clientEmail = env.GA_CLIENT_EMAIL;
+    const privateKey = env.GA_PRIVATE_KEY;
+    if (!clientEmail || !privateKey) return null;
+
+    let pemContents = privateKey;
+    pemContents = pemContents.replace(/\\n/g, '');
+    pemContents = pemContents.replace(/-----BEGIN PRIVATE KEY-----/g, '');
+    pemContents = pemContents.replace(/-----END PRIVATE KEY-----/g, '');
+    pemContents = pemContents.replace(/-----BEGIN RSA PRIVATE KEY-----/g, '');
+    pemContents = pemContents.replace(/-----END RSA PRIVATE KEY-----/g, '');
+    pemContents = pemContents.replace(/\s/g, '');
+
+    let binaryDer;
+    try {
+        binaryDer = atob(pemContents);
+    } catch (e) {
+        console.error("Failed to base64 decode private key:", e);
+        return null;
+    }
+
+    const cryptoKey = await crypto.subtle.importKey(
+        "pkcs8", str2ab(binaryDer),
+        { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+        false, ["sign"]
+    );
+
+    const header = { alg: "RS256", typ: "JWT" };
+    const now = Math.floor(Date.now() / 1000);
+    const claim = {
+        iss: clientEmail,
+        scope: "https://www.googleapis.com/auth/analytics.readonly",
+        aud: "https://oauth2.googleapis.com/token",
+        exp: now + 3600,
+        iat: now
+    };
+
+    const encodedHeader = base64UrlEncode(JSON.stringify(header));
+    const encodedClaim = base64UrlEncode(JSON.stringify(claim));
+    const signatureInput = `${encodedHeader}.${encodedClaim}`;
+
+    const signature = await crypto.subtle.sign("RSASSA-PKCS1-v1_5", cryptoKey, new TextEncoder().encode(signatureInput));
+    const encodedSignature = arrayBufferToBase64Url(signature);
+    const jwt = `${signatureInput}.${encodedSignature}`;
+
+    const tokenRes = await fetch("https://oauth2.googleapis.com/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${jwt}`
+    });
+    const tokenData = await tokenRes.json();
+    return tokenData.access_token || null;
+}
+
+async function fetchGa4Metrics(env) {
+    const propertyId = env.GA_PROPERTY_ID;
+    if (!propertyId) return { error: "Missing GA_PROPERTY_ID" };
+
+    try {
+        const token = await getGoogleAccessToken(env);
+        if (!token) return { error: "Failed to generate access token" };
+
+        const payload = {
+            dateRanges: [
+                { name: "day", startDate: "today", endDate: "today" },
+                { name: "week", startDate: "7daysAgo", endDate: "today" },
+                { name: "month", startDate: "30daysAgo", endDate: "today" }
+            ],
+            dimensions: [{ name: "dateRange" }],
+            metrics: [
+                { name: "activeUsers" },
+                { name: "screenPageViews" },
+                { name: "averageSessionDuration" }
+            ],
+            keepEmptyRows: true
+        };
+
+        const res = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+            const errText = await res.text();
+            throw new Error(`GA4 API Error: ${errText}`);
+        }
+
+        const data = await res.json();
+        const result = {
+            day: { visitors: 0, views: 0 },
+            week: { visitors: 0, views: 0 },
+            month: { visitors: 0, views: 0 },
+            avgTime: 0
+        };
+
+        if (data.rows && data.rows.length > 0) {
+            data.rows.forEach(row => {
+                const rangeName = row.dimensionValues[0].value;
+                const metrics = row.metricValues;
+                if (result[rangeName]) {
+                    result[rangeName].visitors = parseInt(metrics[0].value, 10);
+                    result[rangeName].views = parseInt(metrics[1].value, 10);
+                }
+                if (rangeName === "month") {
+                    result.avgTime = parseFloat(metrics[2].value);
+                }
+            });
+            return result;
+        }
+        return result;
+    } catch (e) {
+        console.error("GA4 Fetch Error:", e);
+        return { error: e.message };
+    }
+}
+
+async function fetchGa4Realtime(env) {
+    const propertyId = env.GA_PROPERTY_ID;
+    if (!propertyId) return { activeUsers: 0 };
+
+    try {
+        const token = await getGoogleAccessToken(env);
+        if (!token) return { activeUsers: 0 };
+
+        const payload = {
+            metrics: [{ name: "activeUsers" }]
+        };
+
+        const res = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runRealtimeReport`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+            const errText = await res.text();
+            throw new Error(`GA4 Realtime API Error: ${errText}`);
+        }
+
+        const data = await res.json();
+        if (data.rows && data.rows.length > 0) {
+            return {
+                activeUsers: parseInt(data.rows[0].metricValues[0].value, 10)
+            };
+        }
+        return { activeUsers: 0 };
+    } catch (e) {
+        console.error("GA4 Realtime Fetch Error:", e);
+        return { activeUsers: 0 };
+    }
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -349,9 +531,11 @@ async function deepScan(targetSlug, env) {
 // ═══════════════════════════════════════════════════════════
 
 async function getStats(env) {
-    const [htmlFiles, postFiles, imgFiles, igFiles] = await Promise.all([
+    const [htmlFiles, postFiles, imgFiles, igFiles, ga4Metrics, ga4Realtime] = await Promise.all([
         ghListDir("articles", env), ghListDir("posts", env),
         ghListDir("images", env), ghListDir("instagram", env),
+        fetchGa4Metrics(env),
+        fetchGa4Realtime(env)
     ]);
     const { content: ajContent } = await ghFileContent("articles.json", env);
     const ajData = ajContent ? JSON.parse(ajContent) : { articles: [] };
@@ -375,6 +559,8 @@ async function getStats(env) {
         images: imgFiles.length, instagram: igFiles.filter(f => f.name.endsWith(".jpg") || f.name.endsWith(".png")).length,
         categories, blogPages, topics: { keyword: { used: (topics.keyword || []).length, total: totalKeywords }, product: { used: (topics.product || []).length }, freebie: { used: (topics.freebie || []).length } },
         schedule: { week: weekNum, articlesPerDay, launchDate: "2026-02-22" },
+        analytics: ga4Metrics,
+        realtime: ga4Realtime
     };
 }
 

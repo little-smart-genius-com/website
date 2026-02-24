@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Dashboard — Little Smart Genius</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ═══════════════════════════ THEME ═══ */
+        :root {
+            --bg: #0a0e1a;
+            --bg2: #111827;
+            --card: #1e2433;
+            --card-hover: #252d3f;
+            --border: #2d3548;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --brand: #f59e0b;
+            --brand-dark: #d97706;
+            --green: #22c55e;
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --purple: #a855f7;
+            --cyan: #06b6d4;
+            --pink: #ec4899;
+            --radius: 14px;
+            --shadow: 0 4px 24px rgba(0, 0, 0, .3)
+        }
+
+        [data-theme="light"] {
+            --bg: #f1f5f9;
+            --bg2: #fff;
+            --card: #fff;
+            --card-hover: #f8fafc;
+            --border: #e2e8f0;
+            --text: #1e293b;
+            --text-dim: #64748b;
+            --shadow: 0 4px 24px rgba(0, 0, 0, .08)
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background .3s, color .3s
+        }
+
+        /* ═══════ LOGIN ═══════ */
+        #loginOverlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .3s
+        }
+
+        .login-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            width: 380px;
+            text-align: center;
+            box-shadow: var(--shadow)
+        }
+
+        .login-box h2 {
+            font-size: 1.6rem;
+            margin-bottom: 6px
+        }
+
+        .login-box p {
+            color: var(--text-dim);
+            font-size: .85rem;
+            margin-bottom: 24px
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            margin-bottom: 16px;
+            transition: border .2s
+        }
+
+        .login-box input:focus {
+            border-color: var(--brand)
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+            color: #000;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform .15s
+        }
+
+        .login-box button:hover {
+            transform: scale(1.02)
+        }
+
+        .login-error {
+            color: var(--red);
+            font-size: .8rem;
+            margin-top: 8px;
+            display: none
+        }
+
+        /* ═══════ HEADER ═══════ */
+        .top-bar {
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            transition: background .3s
+        }
+
+        .top-bar h1 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--brand), #fbbf24);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .top-bar .actions {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        /* ═══════ THEME TOGGLE ═══════ */
+        .theme-toggle {
+            width: 44px;
+            height: 24px;
+            border-radius: 12px;
+            background: var(--border);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: background .3s
+        }
+
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--brand);
+            transition: transform .3s
+        }
+
+        [data-theme="light"] .theme-toggle::after {
+            transform: translateX(20px)
+        }
+
+        .theme-toggle .icon {
+            position: absolute;
+            top: 4px;
+            font-size: 12px;
+            pointer-events: none
+        }
+
+        .theme-toggle .icon-moon {
+            left: 5px
+        }
+
+        .theme-toggle .icon-sun {
+            right: 5px
+        }
+
+        /* ═══════ TABS ═══════ */
+        .tabs {
+            display: flex;
+            gap: 3px;
+            padding: 12px 28px 0;
+            background: var(--bg);
+            flex-wrap: wrap;
+            transition: background .3s
+        }
+
+        .tab {
+            padding: 9px 16px;
+            border-radius: 10px 10px 0 0;
+            background: var(--bg2);
+            color: var(--text-dim);
+            font-weight: 600;
+            font-size: .78rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            transition: all .2s;
+            white-space: nowrap
+        }
+
+        .tab:hover {
+            color: var(--text);
+            background: var(--card)
+        }
+
+        .tab.active {
+            background: var(--card);
+            color: var(--brand);
+            border-color: var(--border)
+        }
+
+        /* ═══════ PANEL ═══════ */
+        .panel {
+            display: none;
+            padding: 20px 28px
+        }
+
+        .panel.active {
+            display: block
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .panel-header h2 {
+            font-size: 1.2rem;
+            font-weight: 700
+        }
+
+        /* ═══════ STAT CARDS ═══════ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: all .3s;
+            box-shadow: var(--shadow)
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px)
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px
+        }
+
+        .stat-card.orange::before {
+            background: linear-gradient(90deg, var(--brand), #fbbf24)
+        }
+
+        .stat-card.green::before {
+            background: linear-gradient(90deg, var(--green), #4ade80)
+        }
+
+        .stat-card.blue::before {
+            background: linear-gradient(90deg, var(--blue), #60a5fa)
+        }
+
+        .stat-card.purple::before {
+            background: linear-gradient(90deg, var(--purple), #c084fc)
+        }
+
+        .stat-card.cyan::before {
+            background: linear-gradient(90deg, var(--cyan), #22d3ee)
+        }
+
+        .stat-card.red::before {
+            background: linear-gradient(90deg, var(--red), #f87171)
+        }
+
+        .stat-card.pink::before {
+            background: linear-gradient(90deg, var(--pink), #f472b6)
+        }
+
+        .stat-label {
+            font-size: .68rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: var(--text-dim);
+            margin-bottom: 6px
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800
+        }
+
+        .stat-sub {
+            font-size: .68rem;
+            color: var(--text-dim);
+            margin-top: 4px
+        }
+
+        /* ═══════ TABLE ═══════ */
+        .tbl-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        th {
+            background: var(--bg2);
+            padding: 10px 12px;
+            text-align: left;
+            font-size: .68rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: var(--text-dim);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap
+        }
+
+        td {
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: .8rem;
+            transition: background .2s
+        }
+
+        tr:hover td {
+            background: var(--card-hover)
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: .66rem;
+            font-weight: 600;
+            text-transform: uppercase
+        }
+
+        .badge-ok {
+            background: rgba(34, 197, 94, .15);
+            color: var(--green)
+        }
+
+        .badge-warn {
+            background: rgba(245, 158, 11, .15);
+            color: var(--brand)
+        }
+
+        .badge-error {
+            background: rgba(239, 68, 68, .15);
+            color: var(--red)
+        }
+
+        .badge-cat {
+            background: rgba(99, 102, 241, .15);
+            color: #818cf8
+        }
+
+        .badge-info {
+            background: rgba(6, 182, 212, .15);
+            color: var(--cyan)
+        }
+
+        /* ═══════ BUTTONS ═══════ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 7px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: .76rem;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            transition: all .2s;
+            white-space: nowrap
+        }
+
+        .btn:hover {
+            background: var(--card-hover);
+            transform: translateY(-1px)
+        }
+
+        .btn-brand {
+            background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+            color: #000;
+            border: none
+        }
+
+        .btn-brand:hover {
+            box-shadow: 0 4px 20px rgba(245, 158, 11, .3)
+        }
+
+        .btn-red {
+            background: rgba(239, 68, 68, .15);
+            color: var(--red);
+            border-color: rgba(239, 68, 68, .3)
+        }
+
+        .btn-red:hover {
+            background: var(--red);
+            color: #fff
+        }
+
+        .btn-blue {
+            background: rgba(59, 130, 246, .15);
+            color: var(--blue);
+            border-color: rgba(59, 130, 246, .3)
+        }
+
+        .btn-blue:hover {
+            background: var(--blue);
+            color: #fff
+        }
+
+        .btn-green {
+            background: rgba(34, 197, 94, .15);
+            color: var(--green);
+            border-color: rgba(34, 197, 94, .3)
+        }
+
+        .btn-green:hover {
+            background: var(--green);
+            color: #fff
+        }
+
+        .btn-purple {
+            background: rgba(168, 85, 247, .15);
+            color: var(--purple);
+            border-color: rgba(168, 85, 247, .3)
+        }
+
+        .btn-purple:hover {
+            background: var(--purple);
+            color: #fff
+        }
+
+        .btn-cyan {
+            background: rgba(6, 182, 212, .15);
+            color: var(--cyan);
+            border-color: rgba(6, 182, 212, .3)
+        }
+
+        .btn-cyan:hover {
+            background: var(--cyan);
+            color: #fff
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: .7rem
+        }
+
+        .btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+            transform: none !important
+        }
+
+        /* ═══════ HEALTH / SEO ═══════ */
+        .health-score {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin: 16px 0
+        }
+
+        .health-score.good {
+            color: var(--green)
+        }
+
+        .health-score.ok {
+            color: var(--brand)
+        }
+
+        .health-score.bad {
+            color: var(--red)
+        }
+
+        .issue-list {
+            list-style: none
+        }
+
+        .issue-item {
+            padding: 8px 14px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .8rem
+        }
+
+        .seo-meter {
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            overflow: hidden;
+            flex: 1
+        }
+
+        .seo-meter-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width .5s
+        }
+
+        /* ═══════ ACTION CARDS ═══════ */
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 14px
+        }
+
+        .action-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            transition: all .3s;
+            box-shadow: var(--shadow)
+        }
+
+        .action-card:hover {
+            border-color: var(--brand);
+            transform: translateY(-2px)
+        }
+
+        .action-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px
+        }
+
+        .action-card h3 {
+            font-size: .88rem;
+            font-weight: 700;
+            margin-bottom: 4px
+        }
+
+        .action-card p {
+            font-size: .73rem;
+            color: var(--text-dim);
+            margin-bottom: 14px;
+            line-height: 1.4
+        }
+
+        /* ═══════ TOPICS ═══════ */
+        .topic-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: var(--shadow)
+        }
+
+        .topic-section h3 {
+            font-size: .88rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .topic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px
+        }
+
+        .topic-tag {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: .7rem;
+            background: var(--bg);
+            border: 1px solid var(--border)
+        }
+
+        .topic-tag.used {
+            opacity: .35;
+            text-decoration: line-through
+        }
+
+        /* ═══════ SCAN RESULTS ═══════ */
+        .scan-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: var(--shadow)
+        }
+
+        .scan-card.has-issues {
+            border-left: 3px solid var(--red)
+        }
+
+        .scan-card.perfect {
+            border-left: 3px solid var(--green)
+        }
+
+        .scan-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px
+        }
+
+        .scan-header h4 {
+            font-size: .88rem;
+            font-weight: 700
+        }
+
+        .scan-details {
+            font-size: .76rem;
+            color: var(--text-dim);
+            line-height: 1.6
+        }
+
+        .scan-details .issue-line {
+            color: var(--red);
+            font-weight: 500
+        }
+
+        .scan-details .ok-line {
+            color: var(--green)
+        }
+
+        /* ═══════ UTILITIES ═══════ */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 22px;
+            z-index: 10000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all .3s;
+            box-shadow: var(--shadow);
+            max-width: 420px;
+            font-size: .82rem
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1
+        }
+
+        .toast.success {
+            border-color: var(--green)
+        }
+
+        .toast.error {
+            border-color: var(--red)
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-top-color: var(--brand);
+            border-radius: 50%;
+            animation: spin .6s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .4
+            }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 9000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px)
+        }
+
+        .modal-overlay.show {
+            display: flex
+        }
+
+        .modal {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            max-width: 460px;
+            width: 90%;
+            box-shadow: var(--shadow)
+        }
+
+        .modal h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px
+        }
+
+        .modal p {
+            font-size: .82rem;
+            color: var(--text-dim);
+            margin-bottom: 18px;
+            line-height: 1.5
+        }
+
+        .modal .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end
+        }
+
+        .section-title {
+            font-size: .92rem;
+            font-weight: 700;
+            margin: 16px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .run-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block
+        }
+
+        .run-status.success {
+            background: var(--green)
+        }
+
+        .run-status.failure {
+            background: var(--red)
+        }
+
+        .run-status.in_progress {
+            background: var(--brand);
+            animation: pulse 1.5s infinite
+        }
+
+        .run-status.queued {
+            background: var(--text-dim)
+        }
+
+        @media(max-width:768px) {
+            .tabs {
+                padding: 10px 14px 0;
+                gap: 2px
+            }
+
+            .tab {
+                padding: 7px 8px;
+                font-size: .68rem
+            }
+
+            .panel {
+                padding: 14px
+            }
+
+            .top-bar {
+                padding: 10px 14px
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .action-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* ═══════ TOOLTIPS ═══════ */
+        [data-tip] {
+            position: relative
+        }
+
+        [data-tip]:hover::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: .72rem;
+            font-weight: 500;
+            white-space: nowrap;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+            pointer-events: none;
+            animation: tipIn .15s ease-out
+        }
+
+        [data-tip]:hover::before {
+            content: '';
+            position: absolute;
+            bottom: calc(100% + 2px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: #1e293b;
+            z-index: 9999
+        }
+
+        @keyframes tipIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(4px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0)
+            }
+        }
+
+        /* ═══════ LOCKOUT ═══════ */
+        .lockout-msg {
+            background: rgba(239, 68, 68, .15);
+            color: var(--red);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: .82rem;
+            text-align: center;
+            margin-top: 10px;
+            display: none
+        }
+
+        .lockout-msg.show {
+            display: block
+        }
+
+        .attempts-counter {
+            font-size: .72rem;
+            color: var(--text-dim);
+            text-align: center;
+            margin-top: 6px
+        }
+
+        /* ═══════ GUIDE ═══════ */
+        .guide-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 14px;
+            box-shadow: var(--shadow)
+        }
+
+        .guide-section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .guide-section p,
+        .guide-section li {
+            font-size: .82rem;
+            color: var(--text-dim);
+            line-height: 1.7
+        }
+
+        .guide-section ul {
+            padding-left: 18px
+        }
+
+        .guide-section code {
+            background: var(--bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .76rem
+        }
+
+        .guide-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0
+        }
+
+        .guide-section table th,
+        .guide-section table td {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            font-size: .78rem;
+            text-align: left
+        }
+
+        .guide-section table th {
+            background: var(--bg2);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: .7rem
+        }
+
+        /* ═══════ KEYWORDS EDITOR ═══════ */
+        .kw-editor {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 14px
+        }
+
+        .kw-editor textarea {
+            width: 100%;
+            min-height: 200px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            padding: 12px;
+            font-family: 'Inter', monospace;
+            font-size: .8rem;
+            resize: vertical
+        }
+
+        .kw-editor .kw-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        .kw-editor .kw-count {
+            font-size: .76rem;
+            color: var(--text-dim);
+            margin-left: auto
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════ LOGIN ═══════ -->
+    <div id="loginOverlay">
+        <div class="login-box">
+            <h2>🎛️ Admin Dashboard</h2>
+            <p>Little Smart Genius — Full Control Center</p>
+            <input type="text" id="loginUser" placeholder="Username" autocomplete="username"
+                onkeydown="if(event.key==='Enter')document.getElementById('loginPass').focus()">
+            <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password"
+                onkeydown="if(event.key==='Enter')doLogin()">
+            <button onclick="doLogin()" id="loginBtn">Access Dashboard</button>
+            <div class="login-error" id="loginError">Wrong credentials</div>
+            <div class="lockout-msg" id="lockoutMsg">🔒 Too many attempts. Try again in <span
+                    id="lockoutTimer">0</span>s</div>
+            <div class="attempts-counter" id="attemptsCounter"></div>
+        </div>
+    </div>
+
+    <!-- ═══════ MAIN APP ═══════ -->
+    <div id="app" style="display:none">
+
+        <div class="top-bar">
+            <h1>🎛️ LSG Admin — Full Control</h1>
+            <div class="actions">
+                <button class="theme-toggle" onclick="toggleTheme()" data-tip="Basculer thème clair/sombre"><span
+                        class="icon icon-moon">🌙</span><span class="icon icon-sun">☀️</span></button>
+                <button class="btn btn-sm" onclick="refreshAll()" data-tip="Rafraîchir toutes les statistiques">🔄
+                    Refresh</button>
+                <button class="btn btn-sm btn-red" onclick="logout()"
+                    data-tip="Déconnexion et retour au login">Logout</button>
+            </div>
+        </div>
+
+        <div class="tabs" id="tabsBar">
+            <div class="tab active" data-tab="overview" data-tip="Vue d'ensemble : stats, catégories, santé">📊 Overview
+            </div>
+            <div class="tab" data-tab="articles" data-tip="Liste de tous les articles avec statut et actions">📝
+                Articles</div>
+            <div class="tab" data-tab="blog" data-tip="Analyse SEO approfondie de chaque article">📰 Blog</div>
+            <div class="tab" data-tab="generator" data-tip="Générer des articles via GitHub Actions">⚡ Generator</div>
+            <div class="tab" data-tab="build" data-tip="Reconstruire le site, fixer images, maintenance">🏗️ Build</div>
+            <div class="tab" data-tab="health" data-tip="Vérification des fichiers et score de santé">🏥 Health</div>
+            <div class="tab" data-tab="topics" data-tip="Keywords, produits, freebies + gestion">🔑 Topics</div>
+            <div class="tab" data-tab="backups" data-tip="Snapshots, sauvegardes et restauration">📦 Backups</div>
+            <div class="tab" data-tab="runs" data-tip="Historique des exécutions GitHub Actions">📋 Runs</div>
+            <div class="tab" data-tab="guide" data-tip="Guide complet d'utilisation du dashboard">📚 Guide</div>
+        </div>
+
+        <!-- ═══════ OVERVIEW ═══════ -->
+        <div class="panel active" id="panel-overview">
+            <div class="panel-header">
+                <h2>📊 Vue d'ensemble</h2>
+            </div>
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card orange">
+                    <div class="stat-label">Articles</div>
+                    <div class="stat-value" id="s-articles">—</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="stat-label">Images</div>
+                    <div class="stat-value" id="s-images">—</div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="stat-label">Instagram</div>
+                    <div class="stat-value" id="s-ig">—</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-label">Health Score</div>
+                    <div class="stat-value" id="s-health">—</div>
+                </div>
+                <div class="stat-card cyan">
+                    <div class="stat-label">Keywords restants</div>
+                    <div class="stat-value" id="s-kw">—</div>
+                </div>
+                <div class="stat-card pink">
+                    <div class="stat-label">Semaine</div>
+                    <div class="stat-value" id="s-week">—</div>
+                    <div class="stat-sub" id="s-rate"></div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-label">Problemes</div>
+                    <div class="stat-value" id="s-issues">—</div>
+                </div>
+            </div>
+            <div class="section-title">📁 Categories</div>
+            <div id="categoriesGrid" class="stats-grid"></div>
+        </div>
+
+        <!-- ═══════ ARTICLES ═══════ -->
+        <div class="panel" id="panel-articles">
+            <div class="panel-header">
+                <h2>📝 Articles (<span id="articleCount">0</span>)</h2>
+                <div style="display:flex;gap:6px;flex-wrap:wrap">
+                    <button class="btn btn-brand btn-sm" onclick="triggerAction('generate-batch')"
+                        data-tip="Génère 3 articles (1 keyword + 1 product + 1 freebie)">⚡ Batch</button>
+                    <button class="btn btn-blue btn-sm" onclick="triggerAction('build-site')"
+                        data-tip="Reconstruit toutes les pages HTML sans générer d'articles">🏗️ Rebuild</button>
+                    <button class="btn btn-sm" onclick="loadArticles()"
+                        data-tip="Rafraîchir la liste des articles">🔄</button>
+                </div>
+            </div>
+            <div class="tbl-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Cat</th>
+                            <th>Date</th>
+                            <th>Cover</th>
+                            <th>Imgs</th>
+                            <th>IG</th>
+                            <th>JSON</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="articlesTbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ═══════ BLOG (Deep Analysis) ═══════ -->
+        <div class="panel" id="panel-blog">
+            <div class="panel-header">
+                <h2>📰 Blog — Analyse Approfondie</h2>
+                <div style="display:flex;gap:6px;flex-wrap:wrap">
+                    <button class="btn btn-brand" id="deepScanBtn" onclick="runDeepScan()"
+                        data-tip="Analyse SEO complète : title, meta, H1, images, liens internes">🔍 Lancer le Scan
+                        Complet</button>
+                    <button class="btn btn-green btn-sm" onclick="triggerAction('fix-images')"
+                        data-tip="Régénère les images manquantes via Pollinations AI">🖼️ Fix Images</button>
+                    <button class="btn btn-blue btn-sm" onclick="triggerAction('build-site')"
+                        data-tip="Reconstruit blog.html, blog-2.html avec les articles">🏗️ Rebuild Blog</button>
+                </div>
+            </div>
+
+            <!-- Scan summary cards -->
+            <div class="stats-grid" id="blogStatsGrid" style="display:none">
+                <div class="stat-card green">
+                    <div class="stat-label">SEO Moyen</div>
+                    <div class="stat-value" id="b-seo">—</div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-label">Images Manquantes</div>
+                    <div class="stat-value" id="b-missing">—</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-label">Articles Sans Image</div>
+                    <div class="stat-value" id="b-noimgs">—</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="stat-label">Articles Scannes</div>
+                    <div class="stat-value" id="b-scanned">—</div>
+                </div>
+            </div>
+
+            <p style="color:var(--text-dim);margin-bottom:16px;font-size:.82rem" id="blogIntro">
+                Le scan approfondi analyse chaque article en detail : images integrees et manquantes, score SEO (title,
+                meta, H1, OG tags, canonical, alt text, mots), et liens internes.
+                Cliquez "Lancer le Scan Complet" pour demarrer l'analyse (peut prendre 15-30s).
+            </p>
+
+            <div id="deepScanResults"></div>
+        </div>
+
+        <!-- ═══════ GENERATOR ═══════ -->
+        <div class="panel" id="panel-generator">
+            <div class="panel-header">
+                <h2>⚡ Generateur de Contenu</h2>
+            </div>
+            <p style="color:var(--text-dim);margin-bottom:16px;font-size:.82rem">Declenchement a distance des workflows
+                GitHub Actions.</p>
+            <div class="action-grid">
+                <div class="action-card">
+                    <div class="icon">🔍</div>
+                    <h3>Keyword Article</h3>
+                    <p>Article SEO mot-cle</p><button class="btn btn-brand" onclick="triggerAction('generate-keyword')"
+                        data-tip="Génère 1 article SEO basé sur le prochain mot-clé de keywords.txt">Generer 1
+                        Keyword</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">🛒</div>
+                    <h3>Product Article</h3>
+                    <p>Review produit TpT</p><button class="btn btn-brand" onclick="triggerAction('generate-product')"
+                        data-tip="Génère 1 article review pour un produit TpT aléatoire">Generer 1 Product</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">🎁</div>
+                    <h3>Freebie Article</h3>
+                    <p>Tutoriel freebie</p><button class="btn btn-brand" onclick="triggerAction('generate-freebie')"
+                        data-tip="Génère 1 article tutoriel pour un freebie aléatoire">Generer 1 Freebie</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">📦</div>
+                    <h3>Batch Complet</h3>
+                    <p>1 keyword + 1 product + 1 freebie</p><button class="btn btn-brand"
+                        onclick="triggerAction('generate-batch')"
+                        data-tip="Génère 3 articles d'un coup (keyword + product + freebie)">Lancer Batch (3)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ BUILD ═══════ -->
+        <div class="panel" id="panel-build">
+            <div class="panel-header">
+                <h2>🏗️ Build & Deploy</h2>
+            </div>
+            <p style="color:var(--text-dim);margin-bottom:16px;font-size:.82rem">Reconstruit le site sans generer de
+                nouveaux articles.</p>
+            <div class="action-grid">
+                <div class="action-card">
+                    <div class="icon">🔧</div>
+                    <h3>Build Site</h3>
+                    <p>build_articles → rebuild_blog_pages → post_process → inject_search</p><button
+                        class="btn btn-blue" onclick="triggerAction('build-site')"
+                        data-tip="Exécute build_articles + rebuild_blog + post_process + inject_search">🔧 Build
+                        Site</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">🔄</div>
+                    <h3>Full Rebuild</h3>
+                    <p>Build + maintenance scan</p><button class="btn btn-purple"
+                        onclick="triggerAction('full-rebuild')"
+                        data-tip="Build complet + scan de maintenance pour détecter les problèmes">🔄 Full
+                        Rebuild</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">🖼️</div>
+                    <h3>Fix Images</h3>
+                    <p>Regenere les images manquantes pour tous les articles</p><button class="btn btn-green"
+                        onclick="triggerAction('fix-images')"
+                        data-tip="Scanne tous les articles et régénère les images manquantes">🖼️ Fix Images</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">📊</div>
+                    <h3>Maintenance</h3>
+                    <p>Scan de maintenance</p><button class="btn btn-cyan" onclick="triggerAction('maintenance-scan')"
+                        data-tip="Lance un scan pour détecter fichiers orphelins et problèmes">📊 Maintenance</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">🔍</div>
+                    <h3>Scan TPT Store</h3>
+                    <p>Met à jour les produits depuis TeachersPayTeachers</p><button class="btn btn-orange"
+                        onclick="scanTptStore()"
+                        data-tip="Lance le scraper TPT pour actualiser products_tpt.js et featured_products.js">🔍 Scan
+                        TPT</button>
+                </div>
+            </div>
+            <div class="section-title" style="margin-top:20px">📋 Pipeline de Build</div>
+            <div class="tbl-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Script</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>build_articles.py</strong></td>
+                            <td>JSON → HTML + articles.json + search_index + sitemap</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>rebuild_blog_pages.py</strong></td>
+                            <td>Regenere blog.html, blog-2.html avec les articles</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>_post_process.py</strong></td>
+                            <td>Injecte articles relies + backlinks TpT</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>_inject_search.py</strong></td>
+                            <td>Injecte search_index inline pour recherche</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>maintenance.py</strong></td>
+                            <td>Scan de stats et sante</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ═══════ HEALTH ═══════ -->
+        <div class="panel" id="panel-health">
+            <div class="panel-header">
+                <h2>🏥 Health Check</h2>
+                <div style="display:flex;gap:6px"><button class="btn btn-green btn-sm" onclick="loadHealth()"
+                        data-tip="Relance l'analyse de santé du site">🔄
+                        Analyser</button><button class="btn btn-blue btn-sm" onclick="triggerAction('build-site')"
+                        data-tip="Reconstruit le site pour corriger les problèmes détectés">🔧
+                        Fix: Rebuild</button></div>
+            </div>
+            <div style="text-align:center">
+                <div id="healthScore" class="health-score good">—</div>
+                <p style="color:var(--text-dim);margin-bottom:16px;font-size:.82rem">Score global (verification des
+                    fichiers)</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card green">
+                    <div class="stat-label">Articles HTML</div>
+                    <div class="stat-value" id="h-articles">—</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="stat-label">Posts JSON</div>
+                    <div class="stat-value" id="h-posts">—</div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="stat-label">Images</div>
+                    <div class="stat-value" id="h-images">—</div>
+                </div>
+                <div class="stat-card cyan">
+                    <div class="stat-label">Instagram</div>
+                    <div class="stat-value" id="h-ig">—</div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-label">Problemes</div>
+                    <div class="stat-value" id="h-issues">—</div>
+                </div>
+            </div>
+            <div class="section-title">Details des problemes</div>
+            <ul class="issue-list" id="issueList"></ul>
+            <p id="noIssues" style="display:none;text-align:center;color:var(--green);padding:20px;font-weight:600">✅
+                Aucun probleme detecte !</p>
+        </div>
+
+        <!-- ═══════ TOPICS ═══════ -->
+        <div class="panel" id="panel-topics">
+            <div class="panel-header">
+                <h2>🔑 Gestion des Topics</h2>
+            </div>
+
+            <!-- Keywords Editor -->
+            <div class="kw-editor">
+                <h3 style="font-size:.92rem;font-weight:700;margin-bottom:10px">📝 Editeur de Keywords</h3>
+                <p style="font-size:.76rem;color:var(--text-dim);margin-bottom:10px">Un mot-cle par ligne. Les lignes
+                    commencant par # sont des commentaires.</p>
+                <textarea id="kwTextarea"
+                    placeholder="# Ajoutez vos keywords ici (un par ligne)&#10;printable math worksheets for kids&#10;fun learning activities at home"></textarea>
+                <div class="kw-actions">
+                    <button class="btn btn-brand btn-sm" onclick="saveKeywords()"
+                        data-tip="Sauvegarde les keywords via GitHub API">💾 Sauvegarder</button>
+                    <label class="btn btn-blue btn-sm" style="cursor:pointer"
+                        data-tip="Importer des keywords depuis un fichier .txt">
+                        📤 Importer .txt
+                        <input type="file" accept=".txt" onchange="importKeywordsFile(event)" style="display:none">
+                    </label>
+                    <button class="btn btn-sm" onclick="loadKeywordsEditor()"
+                        data-tip="Recharger les keywords depuis le serveur">🔄</button>
+                    <span class="kw-count" id="kwCount">0 keywords</span>
+                </div>
+            </div>
+
+            <div id="topicsContainer"></div>
+        </div>
+
+        <!-- ═══════ BACKUPS ═══════ -->
+        <div class="panel" id="panel-backups">
+            <div class="panel-header">
+                <h2>📦 Snapshots & Backups</h2><button class="btn btn-sm" onclick="loadSnapshots()"
+                    data-tip="Rafraichir la liste des snapshots">🔄</button>
+            </div>
+            <p style="color:var(--text-dim);margin-bottom:14px;font-size:.82rem">Créez des sauvegardes complètes de
+                votre site. Chaque snapshot est téléchargeable en ZIP.</p>
+
+            <!-- Create Snapshot Form -->
+            <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap">
+                <div style="flex:1;min-width:200px">
+                    <label style="font-size:.75rem;color:var(--text-dim);display:block;margin-bottom:4px">Nom du
+                        snapshot</label>
+                    <input type="text" id="snapshotName" placeholder="ex: avant-refonte, v2-stable..."
+                        style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--bord);background:var(--card);color:var(--text);font-size:.85rem">
+                </div>
+                <button class="btn btn-green" id="createSnapshotBtn" onclick="createSnapshot()"
+                    data-tip="Créer un nouveau snapshot du site actuel" style="white-space:nowrap">📸 Créer
+                    Snapshot</button>
+            </div>
+
+            <!-- Snapshots List -->
+            <div id="snapshotsList"></div>
+        </div>
+
+        <!-- ═══════ RUNS ═══════ -->
+        <div class="panel" id="panel-runs">
+            <div class="panel-header">
+                <h2>📋 Dernieres Executions</h2><button class="btn btn-sm" onclick="loadRuns()"
+                    data-tip="Rafraichir la liste des executions">🔄</button>
+            </div>
+            <p style="color:var(--text-dim);margin-bottom:14px;font-size:.82rem">10 dernieres executions GitHub Actions
+            </p>
+            <div id="runsList"></div>
+        </div>
+
+        <!-- ═══════ GUIDE ═══════ -->
+        <div class="panel" id="panel-guide">
+            <div class="panel-header">
+                <h2>📚 Guide d'Utilisation Complet</h2>
+            </div>
+
+            <div class="guide-section">
+                <h3>🏗️ Architecture du Systeme</h3>
+                <p>Le site Little Smart Genius fonctionne avec un pipeline automatise :</p>
+                <ul>
+                    <li><strong>GitHub Actions</strong> — Execute les scripts Python automatiquement (generation, build,
+                        maintenance)</li>
+                    <li><strong>auto_blog_v4.py</strong> — Genere les articles avec DeepSeek AI + images via
+                        Pollinations</li>
+                    <li><strong>build_articles.py</strong> — Convertit les JSON en pages HTML + genere articles.json,
+                        sitemap, search_index</li>
+                    <li><strong>rebuild_blog_pages.py</strong> — Genere les pages blog.html, blog-2.html, etc.</li>
+                    <li><strong>Netlify</strong> — Heberge le site et les fonctions API (admin-api)</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>📊 Onglet Overview</h3>
+                <p>Vue d'ensemble rapide du site :</p>
+                <ul>
+                    <li><strong>Articles</strong> — Nombre total d'articles publies</li>
+                    <li><strong>Images</strong> — Nombre total d'images generees</li>
+                    <li><strong>Instagram</strong> — Nombre de posts Instagram generes</li>
+                    <li><strong>Health Score</strong> — Score de sante global (fichiers manquants, erreurs)</li>
+                    <li><strong>Keywords restants</strong> — Nombre de mots-cles encore disponibles pour la generation
+                    </li>
+                    <li><strong>Semaine</strong> — Semaine actuelle du calendrier editorial</li>
+                    <li><strong>Problemes</strong> — Nombre total de problemes detectes</li>
+                    <li><strong>Categories</strong> — Repartition des articles par categorie</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>📝 Onglet Articles</h3>
+                <p>Liste detaillee de tous les articles avec :</p>
+                <ul>
+                    <li><strong>Titre</strong> — Titre complet de l'article</li>
+                    <li><strong>Cat</strong> — Categorie (Math, Logic, Visual Perception, etc.)</li>
+                    <li><strong>Date</strong> — Date de publication</li>
+                    <li><strong>Cover</strong> — Image de couverture (1 = presente, 0 = manquante)</li>
+                    <li><strong>Imgs</strong> — Images de contenu (X/4 = X images sur 4 attendues)</li>
+                    <li><strong>IG</strong> — Post Instagram genere (✅/❌)</li>
+                    <li><strong>JSON</strong> — Fichier post JSON present (✅/❌)</li>
+                    <li><strong>Status</strong> — Etat global (ok/warning/error)</li>
+                    <li><strong>👁️ Voir</strong> — Ouvre l'article dans un nouvel onglet</li>
+                    <li><strong>🔍 Deep Scan</strong> — Lance l'analyse SEO approfondie de cet article</li>
+                    <li><strong>🗑️ Supprimer</strong> — Supprime l'article + toutes ses ressources (images, JSON, IG)
+                    </li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>📰 Onglet Blog — Deep Scan</h3>
+                <p>Analyse SEO approfondie de chaque article :</p>
+                <ul>
+                    <li><strong>Score SEO</strong> — Note sur 100% basee sur title, meta description, H1, H2, OG tags,
+                        canonical, alt text</li>
+                    <li><strong>Images</strong> — Nombre total + images manquantes (fichier non trouve sur le serveur)
+                    </li>
+                    <li><strong>Liens internes</strong> — Nombre de liens vers d'autres articles du site</li>
+                    <li><strong>Mots</strong> — Nombre de mots dans l'article (ideal : 1500-3000)</li>
+                </ul>
+                <p><strong>Boutons :</strong></p>
+                <ul>
+                    <li><strong>🔍 Lancer le Scan</strong> — Analyse tous les articles (15-30 secondes)</li>
+                    <li><strong>🖼️ Fix Images</strong> — Regenere les images manquantes via Pollinations AI</li>
+                    <li><strong>🏗️ Rebuild Blog</strong> — Reconstruit les pages blog avec les derniers articles</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>⚡ Onglet Generator</h3>
+                <p>Declenchement a distance des workflows GitHub Actions :</p>
+                <table>
+                    <tr>
+                        <th>Bouton</th>
+                        <th>Action</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Keyword Article</td>
+                        <td><code>generate-keyword</code></td>
+                        <td>Genere 1 article SEO base sur le prochain mot-cle non utilise de
+                            <code>data/keywords.txt</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Product Article</td>
+                        <td><code>generate-product</code></td>
+                        <td>Genere 1 article review pour un produit TpT aleatoire non encore couvert</td>
+                    </tr>
+                    <tr>
+                        <td>Freebie Article</td>
+                        <td><code>generate-freebie</code></td>
+                        <td>Genere 1 article tutoriel pour un freebie aleatoire</td>
+                    </tr>
+                    <tr>
+                        <td>Batch Complet</td>
+                        <td><code>generate-batch</code></td>
+                        <td>Genere 3 articles d'un coup : 1 keyword + 1 product + 1 freebie</td>
+                    </tr>
+                </table>
+                <p><strong>Chaque article genere inclut :</strong> 1 image de couverture + 3 images de contenu + 1 post
+                    Instagram + SEO optimise + liens internes</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>🏗️ Onglet Build & Deploy</h3>
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>Scripts executes</th>
+                        <th>Quand l'utiliser</th>
+                    </tr>
+                    <tr>
+                        <td>Build Site</td>
+                        <td>build_articles → rebuild_blog → post_process → inject_search</td>
+                        <td>Apres modification manuelle d'articles ou des templates</td>
+                    </tr>
+                    <tr>
+                        <td>Full Rebuild</td>
+                        <td>Build + maintenance scan</td>
+                        <td>Pour un nettoyage complet + detection de problemes</td>
+                    </tr>
+                    <tr>
+                        <td>Fix Images</td>
+                        <td>Scan + regeneration images</td>
+                        <td>Quand des images sont manquantes (detectees dans Deep Scan)</td>
+                    </tr>
+                    <tr>
+                        <td>Maintenance</td>
+                        <td>maintenance.py</td>
+                        <td>Scan de stats et sante sans reconstruire</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="guide-section">
+                <h3>🏥 Onglet Health Check</h3>
+                <p>Verification automatique de l'integrite des fichiers :</p>
+                <ul>
+                    <li>Verifie que chaque article HTML a son JSON, ses images, et son post Instagram</li>
+                    <li>Score 100% = aucun fichier manquant</li>
+                    <li>Les problemes sont listes avec leur type (erreur, warning, info)</li>
+                    <li><strong>Fix : Rebuild</strong> corrige la plupart des problemes automatiquement</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>🔑 Onglet Topics</h3>
+                <p>Gestion des sujets pour la generation d'articles :</p>
+                <ul>
+                    <li><strong>Keywords</strong> — Liste des mots-cles SEO. Les mots barres ont deja ete utilises.
+                        Ajoutez-en via l'editeur ci-dessus.</li>
+                    <li><strong>Produits</strong> — Liste des produits TpT ayant deja un article</li>
+                    <li><strong>Freebies</strong> — Liste des freebies ayant deja un article</li>
+                </ul>
+                <p><strong>Editeur de Keywords :</strong></p>
+                <ul>
+                    <li>Ecrivez un keyword par ligne dans la zone de texte</li>
+                    <li>Les lignes commencant par <code>#</code> sont des commentaires (categories)</li>
+                    <li>Cliquez <strong>Sauvegarder</strong> pour envoyer au serveur via GitHub API</li>
+                    <li>Ou importez un fichier <code>.txt</code> avec le bouton <strong>Importer</strong></li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>📋 Onglet Runs</h3>
+                <p>Historique des 10 dernieres executions GitHub Actions :</p>
+                <ul>
+                    <li><strong>🟢</strong> = succes, <strong>🔴</strong> = echec, <strong>🟡</strong> = en cours</li>
+                    <li>Cliquez ↗ pour voir les logs detailles sur GitHub</li>
+                    <li>Un run prend generalement 3-5 minutes pour un article et 8-12 minutes pour un batch</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>📅 Workflow Quotidien Recommande</h3>
+                <ol style="padding-left:18px;font-size:.82rem;color:var(--text-dim);line-height:1.8">
+                    <li>Ouvrez le dashboard et verifiez l'<strong>Overview</strong></li>
+                    <li>Lancez un <strong>Batch (3 articles)</strong> depuis l'onglet Generator</li>
+                    <li>Attendez 8-12 min, suivez la progression dans l'onglet <strong>Runs</strong></li>
+                    <li>Verifiez les nouveaux articles dans l'onglet <strong>Articles</strong></li>
+                    <li>Lancez un <strong>Deep Scan</strong> pour verifier le SEO</li>
+                    <li>Si des images manquent, cliquez <strong>Fix Images</strong></li>
+                    <li>Verifiez le <strong>Health Score</strong> — objectif : 100%</li>
+                </ol>
+            </div>
+
+            <div class="guide-section">
+                <h3>🔧 Troubleshooting</h3>
+                <table>
+                    <tr>
+                        <th>Probleme</th>
+                        <th>Solution</th>
+                    </tr>
+                    <tr>
+                        <td>Images manquantes</td>
+                        <td>Onglet Build → <strong>Fix Images</strong>. Si persiste, verifiez les logs dans Runs</td>
+                    </tr>
+                    <tr>
+                        <td>Article sans contenu</td>
+                        <td>Le workflow a peut-etre echoue. Verifiez Runs → ↗ pour les logs GitHub</td>
+                    </tr>
+                    <tr>
+                        <td>Score SEO bas (&lt;70%)</td>
+                        <td>Deep Scan identifie les problemes. Souvent : meta description manquante ou title trop long.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Keywords epuises</td>
+                        <td>Ajoutez de nouveaux keywords dans Topics → Editeur de Keywords</td>
+                    </tr>
+                    <tr>
+                        <td>Health Score bas</td>
+                        <td>Lancez Build Site ou Full Rebuild pour regenerer les fichiers manquants</td>
+                    </tr>
+                    <tr>
+                        <td>Workflow bloque</td>
+                        <td>Verifiez les Runs. Si bloque &gt;15min, relancez depuis GitHub Actions directement</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ═══════ MODALS ═══════ -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal">
+            <h3>🗑️ Confirmer la suppression</h3>
+            <p>Supprimer <strong id="deleteSlugName"></strong> et tous les fichiers lies ?</p>
+            <div class="btn-group"><button class="btn" onclick="closeModal()">Annuler</button><button
+                    class="btn btn-red" id="confirmDeleteBtn" onclick="confirmDelete()">🗑️ Supprimer</button></div>
+        </div>
+    </div>
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const API = "https://admin-api.littlesmartgenius.com"; let TOKEN = "", pendingSlug = "";
+
+        // ═══════ THEME ═══════
+        function toggleTheme() { const h = document.documentElement, n = h.getAttribute("data-theme") === "dark" ? "light" : "dark"; h.setAttribute("data-theme", n); localStorage.setItem("lsg_theme", n) }
+        (function () { const s = localStorage.getItem("lsg_theme"); if (s) document.documentElement.setAttribute("data-theme", s) })();
+
+        // ═══════ AUTH (with brute-force lockout) ═══════
+        const LOCKOUT_DURATIONS = [60, 60, 60, 300, 300, 300, 900, 900, 900, 3600]; // seconds per failed attempt bracket
+        function getLockoutState() {
+            try { return JSON.parse(localStorage.getItem('lsg_lockout') || '{}') } catch { return {} }
+        }
+        function saveLockoutState(s) { localStorage.setItem('lsg_lockout', JSON.stringify(s)) }
+        function getLockoutSeconds(fails) {
+            // After every 3 fails, increase lockout: 1min, 5min, 15min, 60min
+            if (fails < 3) return 0;
+            const bracket = Math.min(Math.floor((fails - 1) / 3), 3);
+            return [60, 300, 900, 3600][bracket];
+        }
+        function checkLockout() {
+            const s = getLockoutState();
+            if (!s.lockedUntil) return false;
+            const remaining = Math.ceil((s.lockedUntil - Date.now()) / 1000);
+            if (remaining <= 0) { s.lockedUntil = 0; saveLockoutState(s); document.getElementById('lockoutMsg').classList.remove('show'); return false }
+            document.getElementById('lockoutMsg').classList.add('show');
+            document.getElementById('lockoutTimer').textContent = remaining;
+            document.getElementById('loginBtn').disabled = true;
+            return true;
+        }
+        function startLockoutTimer() {
+            const iv = setInterval(() => {
+                if (!checkLockout()) { clearInterval(iv); document.getElementById('loginBtn').disabled = false }
+            }, 1000);
+        }
+        function updateAttemptsDisplay() {
+            const s = getLockoutState();
+            const el = document.getElementById('attemptsCounter');
+            if (s.fails > 0) { el.textContent = `${s.fails} failed attempt${s.fails > 1 ? 's' : ''} — lockout after ${3 - (s.fails % 3 || 3)} more` }
+            else { el.textContent = '' }
+        }
+
+        function doLogin() {
+            if (checkLockout()) return;
+            const u = document.getElementById('loginUser').value.trim();
+            const p = document.getElementById('loginPass').value;
+            if (!u || !p) return;
+            TOKEN = p;
+            api('stats').then(() => {
+                // Success — reset lockout
+                saveLockoutState({ fails: 0, lockedUntil: 0 });
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('app').style.display = 'block';
+                localStorage.setItem('lsg_token', p);
+                localStorage.setItem('lsg_user', u);
+                refreshAll();
+            }).catch(() => {
+                document.getElementById('loginError').style.display = 'block';
+                const s = getLockoutState();
+                s.fails = (s.fails || 0) + 1;
+                const lockSec = getLockoutSeconds(s.fails);
+                if (lockSec > 0) { s.lockedUntil = Date.now() + lockSec * 1000 }
+                saveLockoutState(s);
+                updateAttemptsDisplay();
+                if (lockSec > 0) { checkLockout(); startLockoutTimer() }
+            });
+        }
+        function logout() { localStorage.removeItem('lsg_token'); localStorage.removeItem('lsg_user'); location.reload() }
+        // Auto-login
+        (function () {
+            if (checkLockout()) startLockoutTimer();
+            updateAttemptsDisplay();
+            const s = localStorage.getItem('lsg_token');
+            const u = localStorage.getItem('lsg_user');
+            if (u) document.getElementById('loginUser').value = u;
+            if (s) { TOKEN = s; api('stats').then(() => { document.getElementById('loginOverlay').style.display = 'none'; document.getElementById('app').style.display = 'block'; refreshAll() }).catch(() => localStorage.removeItem('lsg_token')) }
+        })();
+
+        // ═══════ API ═══════
+        async function api(action, params = {}, method = "GET") { const qs = new URLSearchParams({ action, ...params }).toString(); const res = await fetch(`${API}?${qs}`, { method, headers: { Authorization: `Bearer ${TOKEN}` } }); if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error || `HTTP ${res.status}`) } return res.json() }
+
+        // ═══════ TABS ═══════
+        document.getElementById("tabsBar").addEventListener("click", e => { const tab = e.target.closest(".tab"); if (!tab) return; const name = tab.dataset.tab; document.querySelectorAll(".tab").forEach(t => t.classList.remove("active")); document.querySelectorAll(".panel").forEach(p => p.classList.remove("active")); tab.classList.add("active"); document.getElementById(`panel-${name}`).classList.add("active"); const loads = { articles: loadArticles, health: loadHealth, topics: () => { loadTopics(); loadKeywordsEditor() }, backups: loadSnapshots, runs: loadRuns }; if (loads[name] && !document.getElementById(`panel-${name}`).dataset.loaded) { loads[name](); document.getElementById(`panel-${name}`).dataset.loaded = "1" } });
+
+        // ═══════ REFRESH ALL ═══════
+        async function refreshAll() { try { const [stats, health] = await Promise.all([api("stats"), api("health")]); renderStats(stats); renderHealthOverview(health) } catch (e) { toast("Erreur: " + e.message, "error") } }
+
+        // ═══════ STATS ═══════
+        function renderStats(d) {
+            document.getElementById("s-articles").textContent = d.articles;
+            document.getElementById("s-images").textContent = d.images;
+            document.getElementById("s-ig").textContent = d.instagram;
+            document.getElementById("s-kw").textContent = d.topics?.keyword?.total ? `${d.topics.keyword.total - d.topics.keyword.used}/${d.topics.keyword.total}` : "—";
+            if (d.schedule) { document.getElementById("s-week").textContent = d.schedule.week; document.getElementById("s-rate").textContent = `${d.schedule.articlesPerDay} articles/jour` }
+            const grid = document.getElementById("categoriesGrid"); grid.innerHTML = "";
+            const colors = ["orange", "blue", "purple", "green", "cyan", "pink", "red"]; let i = 0;
+            for (const [cat, n] of Object.entries(d.categories || {}).sort((a, b) => b[1] - a[1])) { grid.innerHTML += `<div class="stat-card ${colors[i % colors.length]}"><div class="stat-label">${esc(cat)}</div><div class="stat-value">${n}</div></div>`; i++ }
+        }
+        function renderHealthOverview(d) { document.getElementById("s-health").textContent = d.score + "%"; document.getElementById("s-issues").textContent = d.issueCount }
+
+        // ═══════ ARTICLES ═══════
+        async function loadArticles() {
+            const tbody = document.getElementById("articlesTbody");
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:30px"><div class="spinner"></div></td></tr>';
+            try {
+                const d = await api("articles");
+                document.getElementById("articleCount").textContent = d.total; tbody.innerHTML = "";
+                d.articles.forEach(a => {
+                    const sc = a.health === "ok" ? "badge-ok" : a.health === "warning" ? "badge-warn" : "badge-error";
+                    const st = a.health === "ok" ? "✅" : a.health === "warning" ? "⚠️" : "❌";
+                    const dt = a.date ? a.date.substring(0, 20) : "—";
+                    tbody.innerHTML += `<tr>
+            <td style="max-width:300px"><strong>${esc(a.title || a.slug)}</strong></td>
+            <td><span class="badge badge-cat">${esc(a.category || "—")}</span></td>
+            <td style="white-space:nowrap;font-size:.72rem">${dt}</td>
+            <td>${a.coverCount || 0}</td><td>${a.contentImgCount || 0}/4</td>
+            <td>${a.hasInstagram ? "✅" : "❌"}</td><td>${a.hasPost ? "✅" : "❌"}</td>
+            <td><span class="badge ${sc}">${st}</span></td>
+            <td style="white-space:nowrap">
+                <a href="${esc(a.viewUrl)}" target="_blank" class="btn btn-blue btn-sm" data-tip="Voir l'article dans un nouvel onglet">👁️</a>
+                <button class="btn btn-green btn-sm" onclick="regenArticle('${esc(a.slug)}')" data-tip="Regenerer l'article complet (contenu + images)">🔄</button>
+                <button class="btn btn-cyan btn-sm" onclick="regenImages('${esc(a.slug)}')" data-tip="Regenerer uniquement les images de cet article">🖼️</button>
+                <button class="btn btn-purple btn-sm" onclick="scanSingle('${esc(a.slug)}')" data-tip="Analyse SEO approfondie">🔍</button>
+                <button class="btn btn-sm" style="background:#F59E0B;color:#fff" onclick="fixSeo('${esc(a.slug)}')" data-tip="Auto-corriger les problemes SEO (titre, meta desc, H1 multiples)">🔧</button>
+                <button class="btn btn-sm" style="background:#E1306C;color:#fff" onclick="pushInstagram('${esc(a.slug)}')" data-tip="Envoyer image + caption vers Instagram via Make webhook">📸</button>
+                <button class="btn btn-red btn-sm" onclick="askDelete('${esc(a.slug)}')" data-tip="Supprimer l'article et ses fichiers">🗑️</button>
+            </td></tr>`;
+                });
+            } catch (e) { tbody.innerHTML = `<tr><td colspan="9" style="color:var(--red);text-align:center">${esc(e.message)}</td></tr>` }
+        }
+
+        // ═══════ FIX SEO ═══════
+        async function fixSeo(slug) {
+            if (!confirm(`Corriger automatiquement les problemes SEO de "${slug}" ?`)) return;
+            toast(`🔧 Fix SEO en cours: ${slug}...`, "info");
+            try {
+                const r = await api("fix-seo", { slug });
+                if (r.fixed > 0) {
+                    toast(`✅ ${r.fixed} correction(s): ${r.fixes.join(", ")}`, "success");
+                    loadArticles();
+                } else {
+                    toast("✅ Aucun probleme SEO a corriger", "success");
+                }
+            } catch (e) { toast("❌ " + e.message, "error") }
+        }
+
+        // ═══════ INSTAGRAM PUSH ═══════
+        async function pushInstagram(slug) {
+            if (!confirm(`Envoyer l'article "${slug}" sur Instagram ?`)) return;
+            toast(`📸 Envoi Instagram: ${slug}...`, "info");
+            try {
+                const r = await api("push-instagram", { slug });
+                if (r.sent) {
+                    toast(`✅ Instagram envoye! ${r.message}`, "success");
+                } else {
+                    toast(`⚠️ ${r.message}`, "warning");
+                }
+            } catch (e) { toast("❌ " + e.message, "error") }
+        }
+
+        // ═══════ DELETE ═══════
+        function askDelete(slug) { pendingSlug = slug; document.getElementById("deleteSlugName").textContent = slug; document.getElementById("deleteModal").classList.add("show") }
+        function closeModal() { document.getElementById("deleteModal").classList.remove("show"); pendingSlug = "" }
+        async function confirmDelete() { if (!pendingSlug) return; const btn = document.getElementById("confirmDeleteBtn"); btn.innerHTML = '<div class="spinner"></div>'; btn.disabled = true; try { const r = await api("delete", { slug: pendingSlug }, "DELETE"); toast(`✅ ${r.totalDeleted} fichiers supprimes`, "success"); closeModal(); loadArticles(); refreshAll() } catch (e) { toast("❌ " + e.message, "error") } btn.innerHTML = "🗑️ Supprimer"; btn.disabled = false }
+
+        // ═══════ REGENERATION ═══════
+        async function regenArticle(slug) {
+            if (!confirm(`Regenerer l'article "${slug}" ? Cela va recreer le contenu et les images.`)) return;
+            try {
+                await api('generate', { type: 'regenerate-article', slug: slug });
+                toast(`✅ Regeneration de "${slug}" lancee ! Suivez dans Runs.`, 'success');
+            } catch (e) { toast('❌ ' + e.message, 'error') }
+        }
+        async function regenImages(slug) {
+            if (!confirm(`Regenerer les images de "${slug}" ?`)) return;
+            try {
+                await api('generate', { type: 'fix-images', slug: slug });
+                toast(`✅ Regeneration images de "${slug}" lancee ! Suivez dans Runs.`, 'success');
+            } catch (e) { toast('❌ ' + e.message, 'error') }
+        }
+
+        // ═══════ TRIGGER WORKFLOW ═══════
+        async function triggerAction(action) {
+            const labels = { "generate-keyword": "Generer 1 keyword", "generate-product": "Generer 1 product", "generate-freebie": "Generer 1 freebie", "generate-batch": "Batch (3 articles)", "build-site": "Rebuild site complet", "full-rebuild": "Full rebuild + maintenance", "fix-images": "Regenerer images manquantes", "maintenance-scan": "Maintenance scan" };
+            if (!confirm(`Lancer: "${labels[action] || action}" ?`)) return;
+            try { await api("generate", { type: action }, "POST"); toast(`✅ "${labels[action]}" declenche ! Voir onglet Runs.`, "success") } catch (e) { toast("❌ " + e.message, "error") }
+        }
+
+        async function scanTptStore() {
+            if (!confirm('Lancer le scan de la boutique TPT ?\nCela met à jour products_tpt.js et featured_products.js.')) return;
+            toast('🔍 Scan TPT lancé...', 'info');
+            try {
+                const data = await api('scan-tpt');
+                toast(data.message || 'Scan TPT déclenché !', 'success');
+            } catch (e) {
+                toast('Erreur: ' + e.message, 'error');
+            }
+        }
+
+        // ═══════ DEEP SCAN (BLOG) ═══════
+        async function runDeepScan() {
+            const btn = document.getElementById("deepScanBtn");
+            const out = document.getElementById("deepScanResults");
+            btn.innerHTML = '<div class="spinner"></div> Scan en cours...'; btn.disabled = true;
+            out.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-dim)"><div class="spinner"></div><p style="margin-top:12px">Analyse de chaque article (15-30 secondes)...</p></div>';
+            document.getElementById("blogStatsGrid").style.display = "none";
+            try {
+                const d = await api("deep-scan");
+                // Summary cards
+                document.getElementById("blogStatsGrid").style.display = "grid";
+                document.getElementById("b-seo").textContent = d.avgSeoScore + "%";
+                document.getElementById("b-missing").textContent = d.totalMissingImages;
+                document.getElementById("b-noimgs").textContent = d.articlesWithNoImages;
+                document.getElementById("b-scanned").textContent = d.scanned + (d.totalAvailable > d.scanned ? `/${d.totalAvailable}` : "");
+                // Per-article results
+                let h = "";
+                // Sort: issues first
+                const sorted = [...d.articles].sort((a, b) => {
+                    const aIssues = (a.seo?.issues?.length || 0) + (a.images?.missingCount || 0) + (a.error ? 10 : 0);
+                    const bIssues = (b.seo?.issues?.length || 0) + (b.images?.missingCount || 0) + (b.error ? 10 : 0);
+                    return bIssues - aIssues;
+                });
+                sorted.forEach(a => {
+                    if (a.error) { h += `<div class="scan-card has-issues"><div class="scan-header"><h4>❌ ${esc(a.slug)}</h4></div><div class="scan-details"><span class="issue-line">${esc(a.error)}</span></div></div>`; return }
+                    const hasIssues = a.seo.issues.length > 0 || a.images.missingCount > 0;
+                    const cls = hasIssues ? "has-issues" : "perfect";
+                    const seoColor = a.seo.score >= 90 ? "var(--green)" : a.seo.score >= 70 ? "var(--brand)" : "var(--red)";
+                    h += `<div class="scan-card ${cls}">
+            <div class="scan-header">
+                <h4>${hasIssues ? "⚠️" : "✅"} ${esc(a.slug.substring(0, 60))}</h4>
+                <div style="display:flex;gap:6px;align-items:center">
+                    <span style="font-size:.72rem;font-weight:700;color:${seoColor}">SEO ${a.seo.score}%</span>
+                    <div class="seo-meter" style="width:80px"><div class="seo-meter-fill" style="width:${a.seo.score}%;background:${seoColor}"></div></div>
+                    <a href="${esc(a.viewUrl)}" target="_blank" class="btn btn-blue btn-sm">👁️ Voir</a>
+                </div>
+            </div>
+            <div class="scan-details">
+                <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:4px">
+                    <span>📝 ${a.seo.wordCount} mots</span>
+                    <span>🖼️ ${a.images.total} images${a.images.missingCount > 0 ? ` (<span class="issue-line">${a.images.missingCount} manquantes</span>)` : ""}</span>
+                    <span>🔗 ${a.links.internal} liens internes</span>
+                    <span>📑 H1:${a.seo.h1Count} H2:${a.seo.h2Count}</span>
+                    <span>${a.seo.hasOgTags ? "✅" : "❌"} OG Tags</span>
+                    <span>${a.seo.hasCanonical ? "✅" : "❌"} Canonical</span>
+                    <span>${a.seo.altMissing === 0 ? "✅" : "❌"} Alt: ${a.seo.altMissing} manquants</span>
+                </div>`;
+                    if (a.seo.issues.length > 0) {
+                        h += `<div style="margin-top:4px">`;
+                        a.seo.issues.forEach(i => { h += `<span class="issue-line" style="margin-right:10px">• ${esc(i)}</span>` });
+                        h += `</div>`;
+                    }
+                    if (a.images.missingCount > 0) {
+                        h += `<div style="margin-top:4px">`;
+                        a.images.missing.forEach(m => { h += `<div class="issue-line">🖼️ Manquante: ${esc(m.filename)}</div>` });
+                        h += `</div>`;
+                    }
+                    h += `</div></div>`;
+                });
+                out.innerHTML = h;
+            } catch (e) { out.innerHTML = `<p style="color:var(--red);padding:20px">${esc(e.message)}</p>` }
+            btn.innerHTML = "🔍 Lancer le Scan Complet"; btn.disabled = false;
+        }
+
+        // Single article scan (from articles tab)
+        async function scanSingle(slug) {
+            toast("🔍 Scan de " + slug + "...", "success");
+            try {
+                const d = await api("deep-scan", { slug });
+                if (d.articles && d.articles[0]) {
+                    // Switch to blog tab and show result
+                    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+                    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+                    document.querySelector('[data-tab="blog"]').classList.add("active");
+                    document.getElementById("panel-blog").classList.add("active");
+                    const a = d.articles[0];
+                    if (a.error) { toast("❌ " + a.error, "error"); return }
+                    document.getElementById("blogStatsGrid").style.display = "grid";
+                    document.getElementById("b-seo").textContent = a.seo.score + "%";
+                    document.getElementById("b-missing").textContent = a.images.missingCount;
+                    document.getElementById("b-noimgs").textContent = a.images.total === 0 ? "1" : "0";
+                    document.getElementById("b-scanned").textContent = "1";
+                    // Reuse deep scan rendering for single article
+                    const out = document.getElementById("deepScanResults");
+                    const hasIssues = a.seo.issues.length > 0 || a.images.missingCount > 0;
+                    const seoColor = a.seo.score >= 90 ? "var(--green)" : a.seo.score >= 70 ? "var(--brand)" : "var(--red)";
+                    out.innerHTML = `<div class="scan-card ${hasIssues ? 'has-issues' : 'perfect'}">
+            <div class="scan-header"><h4>${hasIssues ? "⚠️" : "✅"} ${esc(a.slug)}</h4>
+            <div style="display:flex;gap:6px;align-items:center"><span style="font-weight:700;color:${seoColor}">SEO ${a.seo.score}%</span>
+            <a href="${esc(a.viewUrl)}" target="_blank" class="btn btn-blue btn-sm">👁️ Voir</a></div></div>
+            <div class="scan-details">
+            <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:4px">
+                <span>📝 ${a.seo.wordCount} mots</span><span>🖼️ ${a.images.total} images (${a.images.missingCount} manquantes)</span>
+                <span>🔗 ${a.links.internal} liens</span><span>📑 H1:${a.seo.h1Count} H2:${a.seo.h2Count}</span>
+                <span>${a.seo.hasOgTags ? "✅" : "❌"} OG</span><span>${a.seo.hasCanonical ? "✅" : "❌"} Canonical</span>
+                <span>${a.seo.altMissing === 0 ? "✅" : "❌"} Alt: ${a.seo.altMissing} manquants</span>
+            </div>
+            ${a.seo.issues.length > 0 ? `<div style="margin-top:4px">${a.seo.issues.map(i => `<span class="issue-line" style="margin-right:10px">• ${esc(i)}</span>`).join("")}</div>` : ""}
+            ${a.images.missingCount > 0 ? `<div style="margin-top:4px">${a.images.missing.map(m => `<div class="issue-line">🖼️ ${esc(m.filename)}</div>`).join("")}</div>` : ""}
+            ${a.images.total > 0 ? `<div style="margin-top:8px"><strong>Toutes les images:</strong><br>${a.images.details.map(i => `<span style="margin-right:8px">${i.exists ? "✅" : "❌"} ${esc(i.filename)}</span>`).join("")}</div>` : ""}
+            </div></div>`;
+                }
+            } catch (e) { toast("❌ " + e.message, "error") }
+        }
+
+        // ═══════ HEALTH ═══════
+        async function loadHealth() {
+            const el = document.getElementById("healthScore"); el.textContent = "..."; el.className = "health-score";
+            try {
+                const d = await api("health");
+                el.textContent = d.score + "%"; el.className = "health-score " + (d.score >= 90 ? "good" : d.score >= 70 ? "ok" : "bad");
+                document.getElementById("h-articles").textContent = d.totalArticles; document.getElementById("h-posts").textContent = d.totalPosts;
+                document.getElementById("h-images").textContent = d.totalImages; document.getElementById("h-ig").textContent = d.totalInstagram;
+                document.getElementById("h-issues").textContent = d.issueCount;
+                const list = document.getElementById("issueList"), noI = document.getElementById("noIssues"); list.innerHTML = "";
+                if (!d.issues.length) { noI.style.display = "block" }
+                else { noI.style.display = "none"; d.issues.forEach(i => { const icon = i.type === "error" ? "🔴" : i.type === "warning" ? "🟡" : "🔵"; list.innerHTML += `<li class="issue-item"><span>${icon}</span><span>${esc(i.msg)}</span><span class="badge badge-info" style="margin-left:auto">${esc(i.cat)}</span></li>` }) }
+            } catch (e) { el.textContent = "ERR"; el.className = "health-score bad"; toast("Erreur: " + e.message, "error") }
+        }
+
+        // ═══════ TOPICS ═══════
+        async function loadTopics() {
+            const c = document.getElementById("topicsContainer"); c.innerHTML = '<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
+            try {
+                const d = await api("topics"); let h = "";
+                // Keywords section
+                h += `<div class="topic-section"><h3>🔍 Keywords (${d.remaining.keywordCount} restants / ${d.allKeywords.length} total)</h3><div class="topic-tags">`;
+                const usedKW = new Set(d.used.keyword || []); d.allKeywords.forEach(k => { h += `<span class="topic-tag ${usedKW.has(k) ? 'used' : ''}">${esc(k)}</span>` });
+                h += `</div></div>`;
+                // Products section — full catalog
+                const usedP = new Set(d.used.product || []);
+                const remainP = (d.allProducts || []).filter(p => !usedP.has(p));
+                h += `<div class="topic-section"><h3>🛒 Produits (${remainP.length} restants / ${(d.allProducts || []).length} total)</h3><div class="topic-tags">`;
+                (d.allProducts || []).forEach(p => { h += `<span class="topic-tag ${usedP.has(p) ? 'used' : ''}" style="font-size:.7rem">${esc(p)}</span>` });
+                h += `</div></div>`;
+                // Freebies section — full catalog
+                const usedF = new Set(d.used.freebie || []);
+                const remainF = (d.allFreebies || []).filter(f => !usedF.has(f));
+                h += `<div class="topic-section"><h3>🎁 Freebies (${remainF.length} restants / ${(d.allFreebies || []).length} total)</h3><div class="topic-tags">`;
+                (d.allFreebies || []).forEach(f => { h += `<span class="topic-tag ${usedF.has(f) ? 'used' : ''}">${esc(f)}</span>` });
+                h += `</div></div>`;
+                c.innerHTML = h;
+            } catch (e) { c.innerHTML = `<p style="color:var(--red)">${esc(e.message)}</p>` }
+        }
+
+        // ═══════ SNAPSHOTS ═══════
+        async function loadSnapshots() {
+            const c = document.getElementById("snapshotsList"); c.innerHTML = '<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
+            try {
+                const d = await api("snapshots");
+                if (!d.snapshots.length) { c.innerHTML = '<p style="color:var(--text-dim);text-align:center;padding:20px">Aucun snapshot. Créez votre premier backup!</p>'; return }
+                let h = '<div class="tbl-wrap"><table><thead><tr><th>Nom</th><th>Date</th><th>Commit</th><th>Articles</th><th>Images</th><th>Actions</th></tr></thead><tbody>';
+                d.snapshots.forEach(s => {
+                    const dt = new Date(s.date).toLocaleString("fr-FR");
+                    h += `<tr>
+                        <td><strong>${esc(s.name)}</strong><br><span style="font-size:.68rem;color:var(--text-dim)">${esc(s.tag)}</span></td>
+                        <td style="white-space:nowrap;font-size:.78rem">${dt}</td>
+                        <td><code style="background:var(--bg);padding:2px 6px;border-radius:4px;font-size:.75rem">${esc(s.commit)}</code></td>
+                        <td style="text-align:center">${s.articles}</td>
+                        <td style="text-align:center">${s.images}</td>
+                        <td style="white-space:nowrap">
+                            <a href="https://api.github.com/repos/${esc(s.downloadUrl?.split('/repos/')[1] || '')}" target="_blank" class="btn btn-blue btn-sm" data-tip="Télécharger le ZIP complet de ce snapshot" onclick="event.preventDefault(); downloadSnapshot('${esc(s.tag)}')">⬇️</a>
+                            <button class="btn btn-sm" style="background:#F59E0B;color:#fff" onclick="restoreSnapshot('${esc(s.tag)}','${esc(s.name)}')" data-tip="Restaurer le site à cet état (crée un backup de sécurité automatiquement)">🔄</button>
+                            <button class="btn btn-red btn-sm" onclick="deleteSnapshot('${esc(s.tag)}','${esc(s.name)}')" data-tip="Supprimer définitivement ce snapshot">🗑️</button>
+                        </td>
+                    </tr>`;
+                });
+                h += '</tbody></table></div>';
+                c.innerHTML = h;
+            } catch (e) { c.innerHTML = `<p style="color:var(--red)">${esc(e.message)}</p>` }
+        }
+
+        async function createSnapshot() {
+            const nameInput = document.getElementById("snapshotName");
+            const name = nameInput.value.trim();
+            const btn = document.getElementById("createSnapshotBtn");
+            btn.innerHTML = '<div class="spinner"></div> Création...'; btn.disabled = true;
+            try {
+                const r = await api("create-snapshot", name ? { name } : {});
+                toast(`✅ ${r.message}`, "success");
+                nameInput.value = "";
+                document.getElementById("panel-backups").dataset.loaded = "";
+                loadSnapshots();
+            } catch (e) { toast("❌ " + e.message, "error") }
+            btn.innerHTML = "📸 Créer Snapshot"; btn.disabled = false;
+        }
+
+        function downloadSnapshot(tag) {
+            // Open GitHub zipball URL directly (requires auth via PAT in URL won't work, so use API proxy approach)
+            toast("⬇️ Préparation du téléchargement...", "info");
+            window.open(`https://github.com/${document.querySelector('meta[name="repo"]')?.content || 'little-smart-genius-com/website'}/archive/refs/tags/${tag}.zip`, '_blank');
+        }
+
+        async function restoreSnapshot(tag, name) {
+            if (!confirm(`⚠️ ATTENTION: Restaurer le site à "${name}" ?\n\nCela remplacera TOUT le contenu actuel par celui du snapshot.\nUn backup de sécurité sera automatiquement créé avant la restauration.`)) return;
+            if (!confirm(`🔴 CONFIRMATION FINALE\n\nVous allez restaurer: ${name}\nTag: ${tag}\n\nContinuer ?`)) return;
+            toast(`🔄 Restauration en cours: ${name}...`, "info");
+            try {
+                const r = await api("restore-snapshot", { tag });
+                toast(`✅ ${r.message}`, "success");
+                loadSnapshots();
+            } catch (e) { toast("❌ " + e.message, "error") }
+        }
+
+        async function deleteSnapshot(tag, name) {
+            if (!confirm(`Supprimer le snapshot "${name}" ?\nCette action est irréversible.`)) return;
+            toast(`🗑️ Suppression: ${name}...`, "info");
+            try {
+                const r = await api("delete-snapshot", { tag });
+                toast(`✅ ${r.message}`, "success");
+                loadSnapshots();
+            } catch (e) { toast("❌ " + e.message, "error") }
+        }
+
+        // ═══════ RUNS ═══════
+        async function loadRuns() {
+            const c = document.getElementById("runsList"); c.innerHTML = '<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
+            try {
+                const d = await api("runs");
+                if (!d.runs.length) { c.innerHTML = '<p style="color:var(--text-dim);text-align:center;padding:20px">Aucune execution</p>'; return }
+                let h = '<div class="tbl-wrap"><table><thead><tr><th></th><th>#</th><th>Date</th><th>Status</th><th>Resultat</th><th>Lien</th></tr></thead><tbody>';
+                d.runs.forEach(r => {
+                    const cls = r.conclusion === "success" ? "success" : r.conclusion === "failure" ? "failure" : r.status === "in_progress" ? "in_progress" : "queued";
+                    const dt = new Date(r.created_at).toLocaleString("fr-FR");
+                    h += `<tr><td><span class="run-status ${cls}"></span></td><td>#${r.run_number}</td><td style="white-space:nowrap;font-size:.72rem">${dt}</td><td><span class="badge badge-info">${r.status}</span></td><td><span class="badge ${r.conclusion === 'success' ? 'badge-ok' : r.conclusion === 'failure' ? 'badge-error' : 'badge-warn'}">${r.conclusion || '—'}</span></td><td><a href="${r.html_url}" target="_blank" class="btn btn-sm">↗</a></td></tr>`;
+                });
+                h += '</tbody></table></div>'; c.innerHTML = h;
+            } catch (e) { c.innerHTML = `<p style="color:var(--red)">${esc(e.message)}</p>` }
+        }
+
+        // ═══════ KEYWORDS EDITOR ═══════
+        async function loadKeywordsEditor() {
+            try {
+                const d = await api('topics');
+                const ta = document.getElementById('kwTextarea');
+                // Build content from allKeywords
+                if (d.allKeywords && d.allKeywords.length > 0) {
+                    ta.value = d.keywordsRaw || d.allKeywords.join('\n');
+                }
+                updateKwCount();
+            } catch (e) { toast('Erreur chargement keywords: ' + e.message, 'error') }
+        }
+        function updateKwCount() {
+            const ta = document.getElementById('kwTextarea');
+            const lines = ta.value.split('\n').filter(l => l.trim() && !l.trim().startsWith('#'));
+            document.getElementById('kwCount').textContent = lines.length + ' keywords';
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const ta = document.getElementById('kwTextarea');
+            if (ta) ta.addEventListener('input', updateKwCount);
+        });
+        async function saveKeywords() {
+            const ta = document.getElementById('kwTextarea');
+            const content = ta.value;
+            try {
+                await api('save-keywords', { content: encodeURIComponent(content) }, 'POST');
+                toast('✅ Keywords sauvegardes !', 'success');
+                updateKwCount();
+            } catch (e) { toast('❌ ' + e.message, 'error') }
+        }
+        function importKeywordsFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const ta = document.getElementById('kwTextarea');
+                const existing = ta.value.trim();
+                const imported = e.target.result.trim();
+                ta.value = existing ? existing + '\n\n# --- Imported ---\n' + imported : imported;
+                updateKwCount();
+                toast('✅ ' + file.name + ' importe !', 'success');
+            };
+            reader.readAsText(file);
+            event.target.value = ''; // Reset file input
+        }
+
+        // ═══════ UTILS ═══════
+        function esc(s) { if (!s) return ""; const d = document.createElement("div"); d.textContent = s; return d.innerHTML }
+        function toast(msg, type = "success") { const t = document.getElementById("toast"); t.textContent = msg; t.className = `toast show ${type}`; setTimeout(() => t.className = "toast", 4000) }
+    </script>
+</body>
+
+</html>
