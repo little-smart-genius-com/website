@@ -1,8 +1,9 @@
 # ============================================================
 # Little Smart Genius — GitHub Pages Deployment
 # ============================================================
-# Triggered on every push to main (except [skip ci] commits)
-# Deploys the static site to GitHub Pages
+# Triggered on every push to main
+# Deploys ONLY static web files to GitHub Pages
+# Excludes: Python scripts, workers source, .env, etc.
 # ============================================================
 
 name: Deploy to GitHub Pages
@@ -32,14 +33,32 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Prepare site files
+        run: |
+          mkdir -p _site
+
+          # Copy only web-relevant files
+          cp -r articles images posts instagram _site/ 2>/dev/null || true
+          cp *.html *.js *.json *.css *.xml *.txt _site/ 2>/dev/null || true
+          cp CNAME _site/ 2>/dev/null || true
+          cp robots.txt _site/ 2>/dev/null || true
+          cp sitemap.xml _site/ 2>/dev/null || true
+
+          # Remove anything that shouldn't be public
+          rm -rf _site/scripts _site/_legacy _site/workers _site/data
+          rm -f _site/.env _site/*.py _site/requirements.txt
+          rm -f _site/.gitignore _site/node_modules
+
+          echo "=== Site files ready ==="
+          ls -la _site/
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository root (all static files)
-          path: '.'
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         id: deployment

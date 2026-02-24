@@ -11,13 +11,14 @@ __pycache__/
 *$py.class
 venv/
 env/
-.env
 
 # Chrome Automation
 chrome_profile/
 undetected_chromedriver/
-logs/
 selenium_logs/
+
+# Wrangler cache
+.wrangler/
 
 # Temporary / Build Files
 tmp/
@@ -25,6 +26,8 @@ dist/
 build/
 *.bak
 *.tmp
+
+# Python scripts (not needed for static site)
 _compare_json.py
 _inspect_cooking.py
 _check_images.py
@@ -33,11 +36,12 @@ _test_webhook.py
 _publish_all_ig.py
 _test_single_post.py
 
-# Large Assets / Data (Keep JSON and small images)
-# instagram/
-# posts/
-# images/
+# Sensitive / Internal data
+download_links.js
+data/
+logs/
+backups/
+reports/
 
-# Sensitive data
-!_check_images.py
+# Keep these tracked
 !.gitignore

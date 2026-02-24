@@ -577,6 +577,62 @@ async function scanTpt(env) {
 }
 
 // ═══════════════════════════════════════════════════════════
+// CLEANUP INSTAGRAM (delete files > 24h old)
+// ═══════════════════════════════════════════════════════════
+
+async function cleanupInstagram(env) {
+    const igFiles = await ghListDir("instagram", env);
+    if (igFiles.length === 0) return { deleted: [], skipped: 0, message: "Instagram folder is empty" };
+
+    const now = Date.now();
+    const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
+    const deleted = [];
+    const errors = [];
+    let skipped = 0;
+
+    // Group files by their timestamp suffix (e.g. "-ig-1771634214")
+    const filesByTimestamp = {};
+    for (const f of igFiles) {
+        const match = f.name.match(/-ig-(\d+)\.(jpg|png|txt)$/i);
+        if (match) {
+            const ts = match[1];
+            if (!filesByTimestamp[ts]) filesByTimestamp[ts] = [];
+            filesByTimestamp[ts].push(f);
+        }
+    }
+
+    for (const [tsStr, files] of Object.entries(filesByTimestamp)) {
+        const timestamp = parseInt(tsStr, 10);
+        // The timestamp in filenames is Unix seconds
+        const fileAge = now - (timestamp * 1000);
+
+        if (fileAge > TWENTY_FOUR_HOURS) {
+            // Delete all files in this group
+            for (const f of files) {
+                try {
+                    await ghDeleteFile(`instagram/${f.name}`, f.sha, `Auto-cleanup: Instagram file > 24h`, env);
+                    deleted.push(f.name);
+                } catch (e) {
+                    errors.push({ file: f.name, error: e.message });
+                }
+            }
+        } else {
+            skipped += files.length;
+        }
+    }
+
+    return {
+        deleted,
+        deletedCount: deleted.length,
+        skipped,
+        errors,
+        message: deleted.length > 0
+            ? `Cleaned up ${deleted.length} Instagram files older than 24h`
+            : `No files older than 24h found (${skipped} files are recent)`,
+    };
+}
+
+// ═══════════════════════════════════════════════════════════
 // MAIN HANDLER (Cloudflare Workers format)
 // ═══════════════════════════════════════════════════════════
 
@@ -621,10 +677,11 @@ export default {
                 case "generate": result = await triggerWorkflow(params.type || "generate-batch", params.slug || null, env); break;
                 case "runs": result = await getWorkflowRuns(env); break;
                 case "scan-tpt": result = await scanTpt(env); break;
+                case "cleanup-instagram": result = await cleanupInstagram(env); break;
                 default:
                     return new Response(JSON.stringify({
                         error: "Unknown action",
-                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs", "scan-tpt"],
+                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs", "scan-tpt", "cleanup-instagram"],
                     }), { status: 400, headers: corsHeaders });
             }
             return new Response(JSON.stringify(result), { status: 200, headers: corsHeaders });
