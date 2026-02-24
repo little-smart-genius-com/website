@@ -1,6 +1,7 @@
 name = "lsg-contact"
 main = "index.js"
 compatibility_date = "2024-01-01"
+workers_dev = true
 
 # Custom domain route (configure in Cloudflare dashboard)
 # routes = [{ pattern = "contact.littlesmartgenius.com/*", zone_name = "littlesmartgenius.com" }]

@@ -25,8 +25,8 @@
     const PROXY_BASE = isLocal ? "http://localhost:5555" : "";
     // ── Cloudflare Workers endpoints ────────────────────────
     const WORKERS = {
-        subscribe: "https://subscribe.littlesmartgenius.com",
-        contact: "https://contact.littlesmartgenius.com",
+        subscribe: "https://lsg-subscribe.littlesmartgeniuscom.workers.dev",
+        contact: "https://lsg-contact.littlesmartgeniuscom.workers.dev",
     };
     const ENDPOINTS = {
         subscribe: isLocal ? `${PROXY_BASE}/subscribe` : WORKERS.subscribe,
