@@ -3,8 +3,9 @@ main = "index.js"
 compatibility_date = "2024-01-01"
 workers_dev = true
 
-# Custom domain route (configure in Cloudflare dashboard)
-# routes = [{ pattern = "subscribe.littlesmartgenius.com/*", zone_name = "littlesmartgenius.com" }]
+routes = [
+  { pattern = "subscribe.littlesmartgenius.com/*", zone_name = "littlesmartgenius.com" }
+]
 
 # Secrets (set via: npx wrangler secret put SECRET_NAME)
 # MAILERLITE_API_KEY
