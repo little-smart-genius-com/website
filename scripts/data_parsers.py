@@ -26,7 +26,10 @@ def parse_products_tpt(filepath: str = None) -> List[Dict]:
     """
     if filepath is None:
         filepath = os.path.join(BASE_DIR, "products_tpt.js")
-    
+
+    if not os.path.exists(filepath):
+        return []
+
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
     
@@ -84,7 +87,10 @@ def parse_download_links(filepath: str = None) -> Dict[str, Dict]:
     """
     if filepath is None:
         filepath = os.path.join(BASE_DIR, "download_links.js")
-    
+
+    if not os.path.exists(filepath):
+        return {}
+
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
     
