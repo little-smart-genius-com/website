@@ -1246,12 +1246,13 @@ PASS if score >= 900, otherwise REJECT."""
         file_size = os.path.getsize(output_file)
         self.logger.success(f"Saved ({file_size // 1024} KB): {output_file}", 2)
 
-        # Instagram
+        # Instagram + Make.com Webhook
         ig_cover = None
         if self.image_paths and not self.image_paths[0].startswith("http"):
             ig_cover = os.path.join(PROJECT_ROOT, self.image_paths[0])
 
         try:
+            from instagram_generator import generate_instagram_post, send_to_makecom
             ig_result = generate_instagram_post(final_data, ig_cover)
             if ig_result:
                 self.logger.success(f"Instagram post: {ig_result['image_path']}", 2)
