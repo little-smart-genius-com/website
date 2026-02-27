@@ -38,7 +38,6 @@ _test_single_post.py
 
 # Sensitive / Internal data
 download_links.js
-data/
 logs/
 backups/
 reports/

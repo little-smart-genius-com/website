@@ -1,6 +1,9 @@
 # ============================================================
-# Little Smart Genius — Auto-Blog Pipeline (Full Control)
+# Little Smart Genius — Auto-Blog V6 Ultimate Pipeline
 # ============================================================
+# Hybrid DeepSeek model: reasoner for Architect+Validator,
+# chat for Writers/ArtDirector/Assembler
+#
 # Escalating schedule:
 #   Week 1-3:  3 articles/day (1 matin + 1 aprem + 1 soir)
 #   Week 4-6:  4 articles/day (1 matin + 2 aprem + 1 soir)
@@ -8,7 +11,7 @@
 #   Week 10+:  6 articles/day (2 matin + 2 aprem + 2 soir)
 # ============================================================
 
-name: Daily Auto-Blog
+name: Daily Auto-Blog V6
 
 on:
   workflow_dispatch:
@@ -69,7 +72,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r scripts/requirements.txt
-          pip install requests python-dotenv pillow
 
       - name: Determine action
         id: action
@@ -80,44 +82,69 @@ jobs:
           echo "slug=$SLUG" >> $GITHUB_OUTPUT
           echo "Running action: $ACTION (slug: $SLUG)"
 
-      # ── GENERATE ARTICLES ──
+      # ── GENERATE ARTICLES (V6 Ultimate) ──
       - name: Generate articles
         if: steps.action.outputs.action != 'build-site' && steps.action.outputs.action != 'full-rebuild' && steps.action.outputs.action != 'maintenance-scan' && steps.action.outputs.action != 'fix-images' && steps.action.outputs.action != 'regenerate-article'
         env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          # DeepSeek Keys (7 keys for parallel agents)
+          DEEPSEEK_API_KEY_1: ${{ secrets.DEEPSEEK_API_KEY_1 }}
+          DEEPSEEK_API_KEY_2: ${{ secrets.DEEPSEEK_API_KEY_2 }}
+          DEEPSEEK_API_KEY_3: ${{ secrets.DEEPSEEK_API_KEY_3 }}
+          DEEPSEEK_API_KEY_4: ${{ secrets.DEEPSEEK_API_KEY_4 }}
+          DEEPSEEK_API_KEY_5: ${{ secrets.DEEPSEEK_API_KEY_5 }}
+          DEEPSEEK_API_KEY_6: ${{ secrets.DEEPSEEK_API_KEY_6 }}
+          DEEPSEEK_API_KEY_7: ${{ secrets.DEEPSEEK_API_KEY_7 }}
+          # Pollinations Image Keys (5 primary + 5 backup)
           POLLINATIONS_API_KEY_1: ${{ secrets.POLLINATIONS_API_KEY_1 }}
           POLLINATIONS_API_KEY_2: ${{ secrets.POLLINATIONS_API_KEY_2 }}
           POLLINATIONS_API_KEY_3: ${{ secrets.POLLINATIONS_API_KEY_3 }}
           POLLINATIONS_API_KEY_4: ${{ secrets.POLLINATIONS_API_KEY_4 }}
           POLLINATIONS_API_KEY_5: ${{ secrets.POLLINATIONS_API_KEY_5 }}
+          POLLINATIONS_API_KEY_BCK_1: ${{ secrets.POLLINATIONS_API_KEY_BCK_1 }}
+          POLLINATIONS_API_KEY_BCK_2: ${{ secrets.POLLINATIONS_API_KEY_BCK_2 }}
+          POLLINATIONS_API_KEY_BCK_3: ${{ secrets.POLLINATIONS_API_KEY_BCK_3 }}
+          POLLINATIONS_API_KEY_BCK_4: ${{ secrets.POLLINATIONS_API_KEY_BCK_4 }}
+          POLLINATIONS_API_KEY_BCK_5: ${{ secrets.POLLINATIONS_API_KEY_BCK_5 }}
+          # Other
           MAKECOM_WEBHOOK_URL: ${{ secrets.MAKECOM_WEBHOOK_URL }}
           LAUNCH_DATE: '2026-02-22'
           PYTHONIOENCODING: utf-8
         run: |
           ACTION="${{ steps.action.outputs.action }}"
           case "$ACTION" in
-            generate-keyword)  python scripts/auto_blog_v4.py --slot keyword ;;
-            generate-product)  python scripts/auto_blog_v4.py --slot product ;;
-            generate-freebie)  python scripts/auto_blog_v4.py --slot freebie ;;
-            generate-batch)    python scripts/auto_blog_v4.py --batch ;;
-            schedule)          python scripts/auto_blog_v4.py --schedule ;;
+            generate-keyword)  python scripts/auto_blog_v6_ultimate.py --slot keyword ;;
+            generate-product)  python scripts/auto_blog_v6_ultimate.py --slot product ;;
+            generate-freebie)  python scripts/auto_blog_v6_ultimate.py --slot freebie ;;
+            generate-batch)    python scripts/auto_blog_v6_ultimate.py --batch ;;
+            schedule)          python scripts/auto_blog_v6_ultimate.py --schedule ;;
           esac
 
       # ── REGENERATE SINGLE ARTICLE ──
       - name: Regenerate single article
         if: steps.action.outputs.action == 'regenerate-article' && steps.action.outputs.slug != ''
         env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_API_KEY_1: ${{ secrets.DEEPSEEK_API_KEY_1 }}
+          DEEPSEEK_API_KEY_2: ${{ secrets.DEEPSEEK_API_KEY_2 }}
+          DEEPSEEK_API_KEY_3: ${{ secrets.DEEPSEEK_API_KEY_3 }}
+          DEEPSEEK_API_KEY_4: ${{ secrets.DEEPSEEK_API_KEY_4 }}
+          DEEPSEEK_API_KEY_5: ${{ secrets.DEEPSEEK_API_KEY_5 }}
+          DEEPSEEK_API_KEY_6: ${{ secrets.DEEPSEEK_API_KEY_6 }}
+          DEEPSEEK_API_KEY_7: ${{ secrets.DEEPSEEK_API_KEY_7 }}
           POLLINATIONS_API_KEY_1: ${{ secrets.POLLINATIONS_API_KEY_1 }}
           POLLINATIONS_API_KEY_2: ${{ secrets.POLLINATIONS_API_KEY_2 }}
           POLLINATIONS_API_KEY_3: ${{ secrets.POLLINATIONS_API_KEY_3 }}
           POLLINATIONS_API_KEY_4: ${{ secrets.POLLINATIONS_API_KEY_4 }}
           POLLINATIONS_API_KEY_5: ${{ secrets.POLLINATIONS_API_KEY_5 }}
+          POLLINATIONS_API_KEY_BCK_1: ${{ secrets.POLLINATIONS_API_KEY_BCK_1 }}
+          POLLINATIONS_API_KEY_BCK_2: ${{ secrets.POLLINATIONS_API_KEY_BCK_2 }}
+          POLLINATIONS_API_KEY_BCK_3: ${{ secrets.POLLINATIONS_API_KEY_BCK_3 }}
+          POLLINATIONS_API_KEY_BCK_4: ${{ secrets.POLLINATIONS_API_KEY_BCK_4 }}
+          POLLINATIONS_API_KEY_BCK_5: ${{ secrets.POLLINATIONS_API_KEY_BCK_5 }}
           MAKECOM_WEBHOOK_URL: ${{ secrets.MAKECOM_WEBHOOK_URL }}
           LAUNCH_DATE: '2026-02-22'
           PYTHONIOENCODING: utf-8
           SLUG: ${{ steps.action.outputs.slug }}
-        run: python scripts/auto_blog_v4.py --regenerate "$SLUG"
+        run: python scripts/auto_blog_v6_ultimate.py --regenerate "$SLUG"
 
       # ── FIX IMAGES ──
       - name: Fix missing images
@@ -172,7 +199,7 @@ jobs:
             DATE=$(date +%Y-%m-%d)
             HOUR=$(date +%H)
             ACTION="${{ steps.action.outputs.action }}"
-            git commit -m "Auto-blog: ${DATE} ${HOUR}h — ${ACTION} [skip ci]"
+            git commit -m "Auto-blog V6: ${DATE} ${HOUR}h — ${ACTION} [skip ci]"
             # Pull any remote changes before pushing (handles concurrent pushes)
             for i in 1 2 3 4 5; do
               echo "Attempt $i..."

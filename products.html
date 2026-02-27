@@ -128,16 +128,62 @@
             top: 120px;
             overflow-y: auto;
             padding-right: 10px;
-            transition: background 0.3s;
+            transition: width 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+        }
+
+        .filters-sidebar.collapsed {
+            width: 0;
+            overflow: hidden;
+            opacity: 0;
+            margin-right: -50px;
+            padding: 0;
+        }
+
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 85px;
+            left: 10px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #F48C06;
+            border: 2px solid #F48C06;
+            color: white;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            z-index: 51;
+            font-size: 14px;
+            box-shadow: 0 3px 10px rgba(244, 140, 6, 0.35);
+            transition: all 0.2s;
+        }
+
+        .sidebar-toggle:hover {
+            background: #e07c00;
+            border-color: #e07c00;
+            transform: scale(1.1);
+        }
+
+        .sidebar-toggle.show-btn {
+            left: 10px;
+            top: 85px;
+        }
+
+        @media (min-width: 1025px) {
+            .sidebar-toggle {
+                display: flex;
+            }
         }
 
         .filter-btn {
             display: block;
             width: 100%;
             text-align: left;
-            padding: 12px 20px;
-            margin-bottom: 5px;
-            border-radius: 12px;
+            padding: 9px 16px;
+            margin-bottom: 3px;
+            border-radius: 10px;
+            font-size: 0.88rem;
             color: var(--text-secondary);
             font-weight: 600;
             transition: all 0.2s;
@@ -162,18 +208,19 @@
         .mobile-filter-trigger {
             display: none;
             width: 100%;
-            padding: 15px;
+            padding: 10px 14px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 10px;
             text-align: left;
             font-weight: 700;
+            font-size: 0.85rem;
             color: var(--text-color);
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
         }
 
         .mobile-filter-trigger span {
@@ -431,6 +478,31 @@
         .lb-close:hover {
             background: #EF4444;
         }
+
+        /* TYPE FILTER BUTTONS */
+        .type-filter-btn {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .type-filter-btn:hover {
+            border-color: #F48C06;
+            color: #F48C06;
+        }
+
+        .type-filter-btn.active {
+            background: #F48C06;
+            color: white;
+            border-color: #F48C06;
+            box-shadow: 0 4px 12px rgba(244, 140, 6, 0.3);
+        }
+
+        /* SCROLL TO TOP BUTTON */
+        #scroll-top-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -586,12 +658,20 @@
 
     <div class="page-container">
 
-        <button class="mobile-filter-trigger" onclick="toggleFilters()">
-            <span>📂 Browse Collections</span>
-            <span id="filter-arrow">▼</span>
+        <!-- Show Sidebar button (visible when sidebar collapsed) -->
+        <button class="sidebar-toggle show-btn" id="sidebar-show" onclick="toggleSidebar()" title="Show collections"
+            style="display:none">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+            </svg>
         </button>
 
-        <aside class="filters-sidebar">
+        <aside class="filters-sidebar" id="sidebar">
+            <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()" title="Hide sidebar">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
             <p class="text-xs font-bold text-slate-400 uppercase mb-4 ml-2 tracking-widest">Collections</p>
             <div id="cat-list" class="space-y-1"></div>
             <div
@@ -658,12 +738,54 @@
         </aside>
 
         <main class="products-area">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-                <div>
-                    <h2 class="text-3xl font-extrabold text-slate-900" style="color:var(--text-color)">Catalog</h2>
-                    <div class="flex items-center mt-2 space-x-2">
+            <!-- DESKTOP ROW: Catalog | Search (full width) | Sort+Show (far right) -->
+            <div class="flex flex-col lg:flex-row lg:items-center gap-4 mb-8">
+
+                <!-- LEFT: Title + Count -->
+                <div class="flex-shrink-0 text-center lg:text-left">
+                    <h2 class="text-3xl font-extrabold" style="color:var(--text-color)">Catalog</h2>
+                    <div class="flex items-center mt-1 space-x-2 justify-center lg:justify-start">
                         <div class="w-2 h-2 rounded-full bg-brand"></div>
-                        <p class="text-slate-500 font-medium" id="count-label">Loading products...</p>
+                        <p class="text-slate-500 font-medium text-sm" id="count-label">Loading products...</p>
+                    </div>
+                </div>
+
+                <!-- MOBILE ONLY: Browse Collections -->
+                <button class="mobile-filter-trigger lg:hidden" onclick="toggleFilters()">
+                    <span>📂 Browse Collections</span>
+                    <span id="filter-arrow">▼</span>
+                </button>
+
+                <!-- CENTER: Search Bar (fills all available space) -->
+                <div class="flex-1 min-w-0 w-full relative">
+                    <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input id="search-input" type="text" placeholder="Search products..."
+                        class="w-full pl-12 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition text-sm font-medium"
+                        style="color:var(--text-color)" oninput="applyFilters()">
+                </div>
+
+                <!-- RIGHT (far right): Sort + Type Filter -->
+                <div class="flex flex-wrap items-center gap-3 flex-shrink-0 ml-auto">
+                    <select id="sort-select" onchange="applyFilters()"
+                        class="px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-medium outline-none focus:border-brand transition cursor-pointer"
+                        style="color:var(--text-color)">
+                        <option value="default">Sort: Default</option>
+                        <option value="price-asc">Price: Low → High</option>
+                        <option value="price-desc">Price: High → Low</option>
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                    <div class="flex gap-1">
+                        <button class="type-filter-btn active px-3 py-1.5 rounded-lg text-xs font-bold transition"
+                            onclick="setTypeFilter('all', this)">All</button>
+                        <button class="type-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition"
+                            onclick="setTypeFilter('free', this)">Free</button>
+                        <button class="type-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition"
+                            onclick="setTypeFilter('paid', this)">Paid</button>
                     </div>
                 </div>
             </div>
@@ -676,6 +798,15 @@
             </div>
         </main>
     </div>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-brand text-white shadow-lg hover:bg-orange-600 hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center z-50 opacity-0 pointer-events-none"
+        title="Back to top">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
 
     <div id="pdf-modal"
         class="hidden fixed inset-0 z-[200] flex items-center justify-center p-4 lg:p-10 bg-slate-900/80 backdrop-blur-sm"
@@ -772,7 +903,67 @@
                 banner.classList.remove('hidden');
                 setTimeout(() => { banner.classList.remove('translate-y-20', 'opacity-0'); }, 100);
             }
+
+            // --- DEEP LINK: Detect ?product= parameter from index page ---
+            handleProductDeepLink();
+
+            // --- Restore sidebar collapsed state ---
+            if (localStorage.getItem('sidebarCollapsed') === 'true' && window.innerWidth > 1024) {
+                document.getElementById('sidebar').classList.add('collapsed');
+                document.getElementById('sidebar-show').style.display = 'flex';
+                document.getElementById('sidebar-toggle').style.display = 'none';
+            }
         };
+
+        function handleProductDeepLink() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productName = urlParams.get('product');
+            if (!productName) return;
+
+            const decodedName = decodeURIComponent(productName);
+
+            // Find the product in the catalog
+            const matchIndex = products.findIndex(p => p[0] === decodedName);
+            if (matchIndex === -1) return;
+
+            const matchedProduct = products[matchIndex];
+            const productCategory = matchedProduct[4];
+
+            // Show all products so the target is visible
+            itemsToShow = products.length;
+            renderProducts('all');
+
+            // Wait for DOM to render, then scroll to the matching card
+            setTimeout(() => {
+                const grid = document.getElementById('product-grid');
+                const cards = grid.querySelectorAll('.product-card');
+
+                // Find the card and its index by matching the product name in title attribute
+                let targetCard = null;
+                let targetIndex = -1;
+                cards.forEach((card, idx) => {
+                    const h3 = card.querySelector('h3');
+                    if (h3 && h3.getAttribute('title') === decodedName) {
+                        targetCard = card;
+                        targetIndex = idx;
+                    }
+                });
+
+                if (targetCard) {
+                    // Scroll to the card with offset for fixed header
+                    const cardTop = targetCard.getBoundingClientRect().top + window.scrollY - 140;
+                    window.scrollTo({ top: cardTop, behavior: 'smooth' });
+
+                    // Auto-open the first image in the lightbox after scroll completes
+                    setTimeout(() => {
+                        openLightbox(targetIndex, 1);
+                    }, 800);
+
+                    // Store reference so highlight triggers AFTER lightbox is closed
+                    window._deepLinkCard = targetCard;
+                }
+            }, 500);
+        }
 
         // --- 4. FONCTIONS STANDARD (Design inchangé) ---
         function toggleTheme() {
@@ -799,6 +990,66 @@
             sb.classList.toggle('open');
             btn.style.transform = sb.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
+
+        // --- SIDEBAR TOGGLE ---
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const showBtn = document.getElementById('sidebar-show');
+            const toggleBtn = document.getElementById('sidebar-toggle');
+            const isCollapsed = sidebar.classList.toggle('collapsed');
+
+            if (isCollapsed) {
+                showBtn.style.display = 'flex';
+                toggleBtn.style.display = 'none';
+                localStorage.setItem('sidebarCollapsed', 'true');
+            } else {
+                showBtn.style.display = 'none';
+                toggleBtn.style.display = 'flex';
+                localStorage.setItem('sidebarCollapsed', 'false');
+            }
+        }
+
+        // --- SEARCH, SORT & FILTER STATE ---
+        let currentSearchQuery = '';
+        let currentSortMode = 'default';
+        let currentTypeFilter = 'all';
+
+        function applyFilters() {
+            currentSearchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+            currentSortMode = document.getElementById('sort-select').value;
+            itemsToShow = 9;
+            renderProducts(currentCategory);
+
+            // Re-enable sentinel
+            const sentinel = document.getElementById('scroll-sentinel');
+            if (sentinel) { sentinel.style.display = 'flex'; observer.observe(sentinel); }
+        }
+
+        function setTypeFilter(type, btn) {
+            currentTypeFilter = type;
+            document.querySelectorAll('.type-filter-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            itemsToShow = 9;
+            renderProducts(currentCategory);
+
+            const sentinel = document.getElementById('scroll-sentinel');
+            if (sentinel) { sentinel.style.display = 'flex'; observer.observe(sentinel); }
+        }
+
+        function parsePrice(priceStr) {
+            if (priceStr === 'FREE') return 0;
+            return parseFloat(priceStr.replace('$', '')) || 0;
+        }
+
+        // --- SCROLL TO TOP VISIBILITY ---
+        window.addEventListener('scroll', function () {
+            const btn = document.getElementById('scroll-top-btn');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
 
         function renderCategories() {
             const container = document.getElementById('cat-list');
@@ -838,8 +1089,31 @@
                 return;
             }
 
-            // ÉTAPE 1 : Filtrer tout
-            const allFiltered = products.filter(p => filterCat === 'all' || p[4] === filterCat);
+            // ÉTAPE 1 : Filtrer par catégorie
+            let allFiltered = products.filter(p => filterCat === 'all' || p[4] === filterCat);
+
+            // ÉTAPE 1b : Filtrer par recherche (nom du produit)
+            if (currentSearchQuery) {
+                allFiltered = allFiltered.filter(p => p[0].toLowerCase().includes(currentSearchQuery));
+            }
+
+            // ÉTAPE 1c : Filtrer par type (free / paid / all)
+            if (currentTypeFilter === 'free') {
+                allFiltered = allFiltered.filter(p => p[3] === 'FREE');
+            } else if (currentTypeFilter === 'paid') {
+                allFiltered = allFiltered.filter(p => p[3] !== 'FREE');
+            }
+
+            // ÉTAPE 1d : Trier
+            if (currentSortMode === 'price-asc') {
+                allFiltered.sort((a, b) => parsePrice(a[3]) - parsePrice(b[3]));
+            } else if (currentSortMode === 'price-desc') {
+                allFiltered.sort((a, b) => parsePrice(b[3]) - parsePrice(a[3]));
+            } else if (currentSortMode === 'newest') {
+                allFiltered.reverse(); // Products are stored oldest first, so reverse = newest first
+            }
+            // 'oldest' = default order, 'default' = original order
+
             document.getElementById('count-label').textContent = allFiltered.length + " Resources Found";
 
             // ÉTAPE 2 : Gérer la sentinelle (Cacher si on a tout vu)
@@ -860,11 +1134,19 @@
             visibleProducts.forEach((p, index) => {
                 let baseImg = p[2].includes('-') ? p[2].substring(0, p[2].lastIndexOf('-')) : p[2].replace('.jpg', '');
 
+                // Extract product ID from image path for local WebP thumbnail
+                let pidMatch = p[2].match(/-(\d{7,})-/);
+                let localThumb = pidMatch ? `images/products-thumbs/${pidMatch[1]}.webp` : null;
+
                 let slides = "";
                 let dots = "";
                 for (let s = 1; s <= 4; s++) {
-                    let url = `https://ecdn.teacherspayteachers.com/cdn-cgi/image/format=webp,width=600,quality=85/thumbitem/${baseImg}-${s}.jpg`;
-                    slides += `<div class="slide" onclick="openLightbox(${index}, ${s})"><img src="${url}" loading="lazy" onerror="this.parentNode.style.display='none'"></div>`;
+                    let tptUrl = `https://ecdn.teacherspayteachers.com/cdn-cgi/image/format=webp,width=600,quality=85/thumbitem/${baseImg}-${s}.jpg`;
+                    // All slides: local WebP thumb on mobile, TPT CDN 600px on desktop
+                    let imgTag = localThumb
+                        ? `<img src="${tptUrl}" srcset="${localThumb} 480w, ${tptUrl} 600w" sizes="(max-width:768px) 480px, 600px" loading="lazy" decoding="async" onerror="this.parentNode.style.display='none'">`
+                        : `<img src="${tptUrl}" loading="lazy" decoding="async" onerror="this.parentNode.style.display='none'">`;
+                    slides += `<div class="slide" onclick="openLightbox(${index}, ${s})">${imgTag}</div>`;
                     dots += `<div class="w-1.5 h-1.5 rounded-full bg-slate-300 ${(s === 1) ? 'bg-brand w-3' : ''}"></div>`;
                 }
 
@@ -935,7 +1217,30 @@
 
         let lbProductIndex = 0; let lbImageIndex = 1;
         function openLightbox(pIdx, imgIdx) { lbProductIndex = pIdx; lbImageIndex = imgIdx; updateLightboxImage(); document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+
+            // If arriving from deep link, highlight the product card after closing lightbox
+            if (window._deepLinkCard) {
+                const card = window._deepLinkCard;
+                window._deepLinkCard = null; // only trigger once
+
+                card.style.border = '3px solid #F48C06';
+                card.style.boxShadow = '0 0 20px rgba(244, 140, 6, 0.4)';
+                card.style.transition = 'all 0.5s ease';
+
+                // Scroll back to the card
+                const cardTop = card.getBoundingClientRect().top + window.scrollY - 140;
+                window.scrollTo({ top: cardTop, behavior: 'smooth' });
+
+                // Remove highlight after 10 seconds
+                setTimeout(() => {
+                    card.style.border = '';
+                    card.style.boxShadow = '';
+                }, 10000);
+            }
+        }
         function switchLb(dir) { lbImageIndex = lbImageIndex + dir; if (lbImageIndex > 4) lbImageIndex = 1; if (lbImageIndex < 1) lbImageIndex = 4; updateLightboxImage(); }
         function updateLightboxImage() {
             const activeFilter = document.querySelector('.filter-btn.active').innerText;
@@ -993,6 +1298,7 @@
             &copy; 2026 Little Smart Genius. All rights reserved.
         </div>
     </div>
+    <script src="exit-intent.js"></script>
 </body>
 
 </html>

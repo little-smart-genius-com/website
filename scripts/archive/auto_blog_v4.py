@@ -1300,7 +1300,16 @@ def generate_article(slot: str, topic: dict, topic_selector: TopicSelector) -> O
         # Send to Make.com for auto-posting
         article_url = f"{SITE_BASE_URL}/articles/{slug}.html"
         if send_to_makecom(ig_result, article_url):
-            logger.success("Make.com webhook sent — Instagram post queued", 2)
+            logger.success("Make.com webhook sent -- Instagram post queued", 2)
+            # Mark posted file for 48h auto-cleanup
+            try:
+                import sys as _sys
+                _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+                from instagram_cleanup import mark as ig_mark
+                ig_mark(os.path.basename(ig_result['image_path']))
+                logger.success("Instagram file marked for 48h auto-cleanup", 2)
+            except Exception as _e:
+                logger.info(f"Could not mark for cleanup: {_e}", 2)
         else:
             logger.info("Make.com webhook skipped (no URL configured or error)", 2)
     else:
@@ -1339,6 +1348,13 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def run_daily_batch():
     """Run the daily batch: generate 3 articles (keyword, product, freebie)."""
+    # Auto-cleanup expired Instagram posts (older than 48h)
+    try:
+        from instagram_cleanup import cleanup as ig_cleanup
+        ig_cleanup()
+    except Exception:
+        pass
+
     print("\n" + "=" * 80)
     print("  AUTO BLOG V4.0 — DAILY BATCH")
     print(f"  Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")

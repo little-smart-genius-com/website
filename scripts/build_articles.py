@@ -4,11 +4,13 @@ Reads all posts/*.json, generates articles/*.html, search_index.json,
 articles.json, and sitemap.xml.
 """
 import os
+import traceback
 import sys
 import io
 import json
 import re
 import glob
+import urllib.parse
 from datetime import datetime
 
 # Fix Windows terminal encoding
@@ -345,15 +347,25 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         .share-btn.cp:hover {{ background: #64748B; color: #fff; border-color: #64748B; }}
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer {{ display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }}
-        .social-footer a {{
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar {{ display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }}
+        .social-footer-bar a {{
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }}
-        .social-footer a:hover {{ background: #F48C06; color: #fff; transform: translateY(-2px); }}
-        .social-footer svg {{ width: 18px; height: 18px; }}
+        .social-footer-bar a:hover {{ background: #F48C06; color: #fff; transform: translateY(-2px); }}
+        .social-footer-bar svg {{ width: 20px; height: 20px; }}
+
+        /* SITE FOOTER TEXT */
+        .site-footer {{
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }}
+        .site-footer a {{ color: #94A3B8; text-decoration: none; transition: 0.2s; }}
+        .site-footer a:hover {{ color: #F48C06; }}
 
         @media (max-width: 1024px) {{
             .top-header {{
@@ -431,9 +443,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            {breadcrumb_html}
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -476,8 +486,17 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../{image}" alt="{title}" class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../{image}"
+                    srcset="../{thumb_image} 480w, ../{image} 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="{title}"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
@@ -506,27 +525,6 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -637,6 +635,45 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    {lead_magnet_html}
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>
 """
@@ -770,6 +807,40 @@ def fix_image_paths(content: str) -> str:
     content = re.sub(r'src="images/', 'src="../images/', content)
     # Fix src="/images/..." to src="../images/..."
     content = re.sub(r'src="/images/', 'src="../images/', content)
+    
+    # ── LCP Optimization: Add Base64 placeholder and dimensions to body images ──
+    b64_placeholder = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4="
+    
+    def enhance_img(match):
+        img_tag = match.group(0)
+        
+        # Assume it's an auto-generated body image without dimensions
+        if "data:image/svg+xml" in img_tag:
+            return img_tag
+            
+        enhancements = []
+        if 'loading=' not in img_tag:
+            enhancements.append('loading="lazy"')
+        if 'width=' not in img_tag:
+            enhancements.append('width="800"')
+        if 'height=' not in img_tag:
+            enhancements.append('height="450"')
+        if 'style=' not in img_tag:
+            enhancements.append(f'style="background: url(\'{b64_placeholder}\') center/cover; background-color: var(--bord);"')
+            
+        if enhancements:
+            # Inject right before the closing >
+            close_idx = img_tag.rfind('/>')
+            if close_idx != -1:
+                return img_tag[:close_idx] + " " + " ".join(enhancements) + " " + img_tag[close_idx:]
+            close_idx = img_tag.rfind('>')
+            if close_idx != -1:
+                return img_tag[:close_idx] + " " + " ".join(enhancements) + img_tag[close_idx:]
+        
+        return img_tag
+        
+    content = re.sub(r'<img\b[^>]*>', enhance_img, content, flags=re.IGNORECASE)
+    
     return content
 
 
@@ -1100,7 +1171,367 @@ def redistribute_images(content: str) -> str:
     return '\n'.join(result)
 
 
-def build_link_targets(all_articles, current_slug=''):
+def load_tpt_products() -> list:
+    """Parse products_tpt.js and extract product data for internal linking."""
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "products_tpt.js")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        match = re.search(r'window\.tptProducts\s*=\s*(\[.+?\]);', content, re.DOTALL)
+        if match:
+            products = json.loads(match.group(1))
+            return [{"title": p[0], "url": p[1]} for p in products if len(p) >= 2]
+    except Exception as e:
+        print(f"Warning: Could not load TPT products: {e}")
+    return []
+
+def load_freebies() -> list:
+    """Parse freebies.html to extract freebie names and data for internal linking and lead magnets."""
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "freebies.html")
+    freebies = []
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        
+        # Regex to extract the JS objects in freebies.html
+        pattern = r'\{\s*name:\s*"(.*?)",\s*icon:\s*"(.*?)",\s*category:\s*"(.*?)"\s*\}'
+        matches = re.findall(pattern, content)
+        
+        for m in matches:
+            name = m[0]
+            icon = m[1]
+            cat = m[2]
+            encoded_fname = urllib.parse.quote(name)
+            url = f"../freebies.html?dl={encoded_fname}"
+            
+            freebies.append({
+                "title": name,
+                "image": icon,
+                "category": cat,
+                "url": url
+            })
+    except Exception as e:
+        print(f"Warning: Could not load freebies: {e}")
+    return freebies
+
+
+def build_lead_magnet_html(category: str, freebies: list) -> str:
+    """Generate a slide-in Contextual Lead Magnet pop-up."""
+    if not freebies:
+        return ""
+    
+    import hashlib
+    
+    cat_lower = category.lower() if category else ""
+    
+    # Map article categories to freebie categories
+    # Freebie categories in freebies.html: "logic", "math", "word", "creative"
+    CATEGORY_MAP = {
+        'critical thinking': 'logic',
+        'problem solving': 'logic',
+        'math skills': 'math',
+        'language arts': 'word',
+        'word search activity worksheet': 'word',
+        'creative arts': 'creative',
+        'coloring book': 'creative',
+        'visual skills': 'logic',
+        'spot the difference (photorealistic)': 'logic',
+        'education': None,  # general — pick random
+    }
+    
+    # Find the mapped freebie category
+    mapped_cat = None
+    for art_cat, fb_cat in CATEGORY_MAP.items():
+        if art_cat in cat_lower:
+            mapped_cat = fb_cat
+            break
+    
+    # Collect matching freebies
+    candidates = []
+    if mapped_cat:
+        candidates = [fb for fb in freebies if fb.get('category', '').lower() == mapped_cat]
+    
+    # If no category match, use ALL freebies as candidates
+    if not candidates:
+        candidates = freebies
+    
+    # Pick a deterministic-but-varied freebie based on the category string
+    # (using hash so the same category always gets the same freebie, but different categories get different ones)
+    hash_val = int(hashlib.md5(cat_lower.encode()).hexdigest(), 16)
+    target = candidates[hash_val % len(candidates)]
+        
+    title = target.get('title', 'Free Educational Resource')
+    url = target.get('url', '../freebies.html')
+    image = target.get('image', '')
+    
+    if image and not image.startswith('http') and not image.startswith('../'):
+        # Check if it's an actual image path (contains . or /) or just an emoji
+        if '/' in image or '.' in image:
+            image = f"../{image}"
+        else:
+            # It's an emoji, not a file path — use it as text
+            pass
+        
+    # Determine if image is a file path or an emoji
+    is_image_file = image and ('/' in image or '.' in image)
+    if is_image_file:
+        img_html = f'<img src="{image}" alt="{title}" class="w-16 h-16 object-cover rounded shadow-sm border border-slate-200">'
+    elif image:
+        # It's an emoji icon — render as styled text
+        img_html = f'<div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">{image}</div>'
+    else:
+        img_html = '<div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🎁</div>'
+    
+    # Escape title for JS string
+    title_js = title.replace("'", "\\'").replace('"', '\\"')
+    
+    return f"""
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            {img_html}
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">{title}</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">{title}</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">{title}</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {{
+            var LM_PRODUCT = "{title_js}";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {{
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {{
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) {{ localStorage.removeItem('lsg_user_data'); return null; }}
+                    return o.email;
+                }} catch(e) {{ return null; }}
+            }}
+            function setStored(email) {{
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({{email:email, expiry:exp}}));
+            }}
+            
+            window.openLeadMagnetModal = function() {{
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {{
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                }} else {{
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }}
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {{
+                    gtag('event', 'lead_magnet_click', {{'event_category':'freebies','event_label':LM_PRODUCT}});
+                }}
+            }};
+            
+            window.closeLeadMagnetModal = function() {{
+                document.getElementById('lm-download-modal').style.display = 'none';
+            }};
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {{
+                if (e.target === this) closeLeadMagnetModal();
+            }});
+            
+            function showSuccess() {{
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }}
+            
+            async function callAPI(email) {{
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {{
+                    var resp = await fetch(LM_WORKER, {{
+                        method:"POST", headers:{{"Content-Type":"application/json"}},
+                        body: JSON.stringify({{email:email, productName:LM_PRODUCT}})
+                    }});
+                    var data = await resp.json();
+                    if (data.success) {{
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }} else {{
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }}
+                }} catch(err) {{
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }}
+            }}
+            
+            function showDirectDL() {{
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }}
+            
+            window.lmSubmitEmail = function() {{
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) {{ alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }}
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {{
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {{
+                        gtag('event', 'lead_magnet_email_submit', {{'event_category':'freebies','event_label':LM_PRODUCT}});
+                    }}
+                }} else {{
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }}
+            }};
+            
+            window.lmDirectDownload = async function() {{
+                var email = getStored();
+                if (!email) {{ lmResetEmail(); return; }}
+                try {{
+                    var resp = await fetch(LM_WORKER, {{
+                        method:"POST", headers:{{"Content-Type":"application/json"}},
+                        body: JSON.stringify({{email:email, productName:LM_PRODUCT, directOnly:true}})
+                    }});
+                    var data = await resp.json();
+                    if (data.downloadLink) {{
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    }} else {{
+                        lmSendEmail();
+                    }}
+                }} catch(err) {{
+                    lmSendEmail();
+                }}
+            }};
+            
+            window.lmSendEmail = function() {{
+                var email = getStored();
+                if (email) callAPI(email);
+            }};
+            
+            window.lmHandleResend = function() {{
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            }};
+            
+            window.lmResetEmail = function() {{
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            }};
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {{
+                var triggered = false;
+                window.addEventListener("scroll", function() {{
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {{
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }}
+                }});
+            }}
+        }})();
+    </script>
+"""
+
+def build_link_targets(all_articles, current_slug='', tpt_products=None, freebies=None):
     """Build a dictionary of linkable phrases and their target URLs.
     
     Returns list of (phrase, url, priority) sorted by phrase length (longest first)
@@ -1128,8 +1559,8 @@ def build_link_targets(all_articles, current_slug=''):
         url = f"../{art.get('url', '')}"
         keywords = art.get('keywords', [])
         for kw in keywords:
-            # Only link multi-word keywords (3+ words) to avoid over-linking
-            if len(kw.split()) >= 3 and len(kw) > 15:
+            # Link keywords of 2 or more words directly to this specific article
+            if len(kw.split()) >= 2 and len(kw) > 8:
                 targets.append((kw, url, 4))
     
     # 2. Link to category-filtered blog pages
@@ -1137,7 +1568,9 @@ def build_link_targets(all_articles, current_slug=''):
     for art in all_articles:
         cat = art.get('category', '')
         if cat and cat not in category_map:
-            category_map[cat] = f"../blog.html"  # All link to blog
+            cat_slug = re.sub(r'[^a-z0-9]+', '-', cat.lower()).strip('-')
+            if cat_slug:
+                category_map[cat] = f"../blog-{cat_slug}.html"
     
     for cat, url in category_map.items():
         targets.append((cat, url, 8))
@@ -1214,6 +1647,32 @@ def build_link_targets(all_articles, current_slug=''):
     targets.append(('early childhood education', '../blog.html', 4))
     targets.append(('preschool learning activities', '../blog.html', 4))
     targets.append(('kindergarten activities', '../blog.html', 4))
+    
+    # 5. Link to Specific TPT Products
+    if tpt_products:
+        for product in tpt_products:
+            title = product.get('title', '')
+            if title:
+                encoded_title = urllib.parse.quote(title)
+                url = f"../products.html?product={encoded_title}"
+                # Full title match (High priority)
+                targets.append((title, url, 9))
+                # Short title match (e.g. up to the first pipe)
+                parts = title.split('|')
+                if len(parts) > 1:
+                    short_title = parts[0].strip()
+                    if short_title and len(short_title) > 10:
+                        targets.append((short_title, url, 6))
+                        
+    # 6. Link to Specific Freebies
+    if freebies:
+        for fb in freebies:
+            fname = fb.get('title') if isinstance(fb, dict) else fb
+            if not fname: continue
+            
+            encoded_fname = urllib.parse.quote(fname)
+            url = f"../freebies.html?dl={encoded_fname}"
+            targets.append((fname, url, 9))
     
     # Sort by phrase length (longest first) to prevent partial matches
     targets.sort(key=lambda x: (-len(x[0]), -x[2]))
@@ -1308,6 +1767,72 @@ def build_faq_html(faq_schema):
         {faq_items}
     </div>"""
 
+def add_table_of_contents(content: str) -> str:
+    """Finds all H2 tags, assigns IDs, and injects a Table of Contents right before the first H2."""
+    h2_pattern = re.compile(r'<h2(.*?)>(.*?)</h2>', re.IGNORECASE | re.DOTALL)
+    
+    toc_items = []
+    seen_ids = set()
+    
+    def h2_repl_func(match):
+        attrs = match.group(1)
+        inner_html = match.group(2)
+        inner_text = re.sub(r'<[^>]+>', '', inner_html).strip()
+        
+        # Check if already has id
+        id_match = re.search(r'id=["\']([^"\']+)["\']', attrs, re.IGNORECASE)
+        if id_match:
+            h2_id = id_match.group(1)
+        else:
+            # Generate ID
+            h2_id = re.sub(r'[^a-z0-9]+', '-', inner_text.lower()).strip('-')
+            if not h2_id:
+                h2_id = "section"
+            
+            # Ensure uniqueness
+            base_id = h2_id
+            counter = 1
+            while h2_id in seen_ids:
+                h2_id = f"{base_id}-{counter}"
+                counter += 1
+                
+            attrs = f' id="{h2_id}"{attrs}'
+            
+        seen_ids.add(h2_id)
+        toc_items.append((h2_id, inner_text))
+        
+        return f'<h2{attrs}>{inner_html}</h2>'
+
+    # First pass: replace H2s and collect TOC items
+    content_with_ids = h2_pattern.sub(h2_repl_func, content)
+    
+    # If there are fewer than 2 H2 headers, a TOC isn't very useful
+    if len(toc_items) < 2:
+        return content_with_ids
+        
+    # Build TOC HTML
+    lis = []
+    for h2_id, text in toc_items:
+        lis.append(f'<li class="py-1"><a href="#{h2_id}" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">{text}</a></li>')
+        
+    toc_html = f"""
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            {''.join(lis)}
+        </ul>
+    </div>
+    """
+    
+    # Inject TOC before the first <h2>
+    first_h2_idx = content_with_ids.lower().find("<h2")
+    if first_h2_idx != -1:
+        content_with_ids = content_with_ids[:first_h2_idx] + toc_html + content_with_ids[first_h2_idx:]
+        
+    return content_with_ids
+
 
 def build_faq_schema_json(faq_schema, title, canonical_url):
     """Build JSON-LD FAQ schema."""
@@ -1376,6 +1901,8 @@ def build_related_articles_html(current_slug, current_category, current_keywords
         title = art.get('title', 'Untitled')
         url = art.get('url', '#')
         image = art.get('image', '')
+        # Thumbnail path for srcset (mobile)
+        thumb_image = image.replace('images/', 'images/thumbs/', 1) if image.startswith('images/') else image
         category = art.get('category', '')
         reading_time = art.get('reading_time', 5)
         date = art.get('date', '')
@@ -1386,7 +1913,14 @@ def build_related_articles_html(current_slug, current_category, current_keywords
         cards.append(f'''<article class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border" style="background: var(--card); border-color: var(--bord);">
                 <a href="../{url}" class="block">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../{image}" alt="{title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../{image}"
+                            srcset="../{thumb_image} 480w, ../{image} 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="{title}"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-2">
@@ -1409,7 +1943,50 @@ def build_related_articles_html(current_slug, current_category, current_keywords
             </div>'''
 
 
-def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_article=None, next_article=None) -> str:
+def build_breadcrumb_schema(title: str, category: str, canonical_url: str) -> str:
+    """Generate JSON-LD schema for BreadcrumbList."""
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": f"{SITE_URL}/index.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": f"{SITE_URL}/blog.html"
+            }
+        ]
+    }
+    
+    pos = 3
+    if category:
+        cat_slug = re.sub(r'[^a-z0-9]+', '-', category.lower()).strip('-')
+        cat_url = f"{SITE_URL}/blog-{cat_slug}.html" if cat_slug else f"{SITE_URL}/blog.html"
+        schema["itemListElement"].append({
+            "@type": "ListItem",
+            "position": pos,
+            "name": category,
+            "item": cat_url
+        })
+        pos += 1
+        
+    schema["itemListElement"].append({
+        "@type": "ListItem",
+        "position": pos,
+        "name": title,
+        "item": canonical_url
+    })
+    
+    return f'\n<script type="application/ld+json">\n{json.dumps(schema, ensure_ascii=False, indent=2)}\n</script>\n'
+
+
+def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_article=None, next_article=None, tpt_products=None, freebies=None) -> str:
     """Generate full HTML page for an article."""
     title = json_data.get('title', 'Untitled Article')
     content = json_data.get('content', '<p>No content available.</p>')
@@ -1481,12 +2058,35 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     
     # 4. Inject smart internal links (SEO backlinks)
     if all_articles:
-        link_targets = build_link_targets(all_articles, current_slug=slug)
-        content = inject_internal_links(content, link_targets, max_links=12)
+        link_targets = build_link_targets(all_articles, current_slug=slug, tpt_products=tpt_products, freebies=freebies)
+        content = inject_internal_links(content, link_targets, max_links=20)
+        
+    # 5. Add Table of Contents
+    content = add_table_of_contents(content)
     
-    # Add FAQ section
+    # Add Tags section
+    keywords = json_data.get('keywords', [])
+    if keywords:
+        tags_list = []
+        for kw in keywords:
+            encoded_kw = urllib.parse.quote(kw.strip())
+            tags_list.append(f'<a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#{kw.strip()}</a>')
+        
+        tags_html = f"""
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            {''.join(tags_list)}
+        </div>
+    </div>"""
+        content += tags_html
+    
+    # Add FAQ section (accordion HTML + Schema JSON-LD)
     faq_schema = json_data.get('faq_schema', [])
-    faq_html = build_faq_html(faq_schema)
+    faq_html = build_faq_html(faq_schema) 
+    
+    # Check if the AI accidentally left a plain-text FAQ at the bottom; if so, we just append the accordion anyway.
+    # The accordion looks much better.
     content += faq_html
     
     # Excerpt
@@ -1499,9 +2099,18 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     author_name = json_data.get('author_name', 'Little Smart Genius')
     author_display = author_name if author_name != 'Little Smart Genius' else 'Little Smart Genius Team'
     
-    # Date
-    date_str = json_data.get('date', datetime.now().strftime("%B %d, %Y"))
-    iso_date = json_data.get('iso_date', datetime.now().isoformat())
+    # Date & Time (Task 4.2)
+    iso_date_str = json_data.get('iso_date', datetime.now().isoformat())
+    iso_date = iso_date_str
+    
+    try:
+        # Parse the ISO date string to a datetime object
+        dt = datetime.fromisoformat(iso_date_str.replace('Z', '+00:00'))
+        # Format as "Month DD, YYYY at HH:MM AM/PM"
+        date_str = dt.strftime("%B %d, %Y at %I:%M %p")
+    except ValueError:
+        # Fallback if parsing fails
+        date_str = json_data.get('date', datetime.now().strftime("%B %d, %Y at %I:%M %p"))
     
     # Category
     category = json_data.get('category', '')
@@ -1509,7 +2118,11 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     
     # Image
     image = normalize_image_path(json_data.get('image', 'images/placeholder.webp'))
-    og_image = f"{SITE_URL}/{image}" if not image.startswith('http') else image
+    # Thumbnail path for srcset (mobile-optimised, ~14KB vs ~80KB)
+    thumb_image = image.replace('images/', 'images/thumbs/', 1) if image.startswith('images/') else image
+    
+    # Custom OpenGraph image
+    og_image = f"{SITE_URL}/images/og/{slug}.jpg"
     
     # Keywords
     keywords = ', '.join(json_data.get('keywords', []))
@@ -1535,6 +2148,32 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
         next_title = next_article.get('title', 'Next Article')[:45]
         next_html = f'<div id="nextArticleNav" class="article-nav article-nav-next"><a href="{next_url}" title="{next_title}">&#8594;</a><span class="nav-title">{next_title}</span></div>'
     
+    # Build Breadcrumb UI HTML
+    cat_slug = re.sub(r'[^a-z0-9]+', '-', category.lower()).strip('-') if category else ''
+    cat_url = f"../blog-{cat_slug}.html" if cat_slug else "../blog.html"
+    
+    breadcrumb_html = f"""
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+"""
+    if category:
+        breadcrumb_html += f"""
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="{cat_url}" class="hover:text-brand transition">{category}</a></li>
+"""
+    breadcrumb_html += f"""
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="{title}">{title}</li>
+            </ol>
+        </nav>
+"""
+    
+    # Contextual Lead Magnet
+    lead_magnet_html = build_lead_magnet_html(category, freebies)
+    
     html = ARTICLE_TEMPLATE.format(
         title=title,
         excerpt=excerpt,
@@ -1548,16 +2187,23 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
         date=date_str,
         category_display=category_display,
         image=image,
+        thumb_image=thumb_image,
         content=content,
 
         prev_nav_html=prev_html,
-        next_nav_html=next_html
+        next_nav_html=next_html,
+        breadcrumb_html=breadcrumb_html,
+        lead_magnet_html=lead_magnet_html
     )
     
-    # Add FAQ schema JSON-LD before </head>
+    # ── Breadcrumb Schema ──
+    breadcrumb_schema_json = build_breadcrumb_schema(title, category, canonical_url)
+    
+    # Add schemas before </head>
     faq_schema_json = build_faq_schema_json(faq_schema, title, canonical_url)
-    if faq_schema_json:
-        html = html.replace('</head>', f'{faq_schema_json}\n</head>')
+    all_schemas = breadcrumb_schema_json + (faq_schema_json if faq_schema_json else "")
+    if all_schemas:
+        html = html.replace('</head>', f'{all_schemas}\n</head>')
     
     return html
 
@@ -1612,6 +2258,9 @@ def build_all():
     # Sort articles by date (newest first)
     all_articles.sort(key=lambda a: a.get('iso_date', ''), reverse=True)
     
+    tpt_products = load_tpt_products()
+    freebies = load_freebies()
+    
     # ── PASS 2: Generate HTML with related articles + prev/next nav ──
     # Build a slug-to-index mapping in sorted order for prev/next
     slug_to_sorted_idx = {a['slug']: idx for idx, a in enumerate(all_articles)}
@@ -1627,7 +2276,7 @@ def build_all():
             next_art = all_articles[sorted_idx + 1] if sorted_idx is not None and sorted_idx < len(all_articles) - 1 else None
             
             # Generate HTML (now with related articles + prev/next nav)
-            html = generate_article_html(data, slug, all_articles=all_articles, prev_article=prev_art, next_article=next_art)
+            html = generate_article_html(data, slug, all_articles=all_articles, prev_article=prev_art, next_article=next_art, tpt_products=tpt_products, freebies=freebies)
             
             # Save HTML file
             html_path = os.path.join(ARTICLES_DIR, f"{slug}.html")
@@ -1641,6 +2290,7 @@ def build_all():
         except Exception as e:
             errors.append((slug, str(e)))
             print(f"  [{i:>2}] ERR {slug}: {str(e)[:60]}")
+            traceback.print_exc()
     
     # Build search_index.json
     index_data = {
@@ -1712,6 +2362,16 @@ def build_all():
             print(f"    {os.path.basename(pf)}: {err}")
     else:
         print(f"  No errors!")
+        
+    print(f"\n{'=' * 80}")
+    print(f"  RUNNING POST-PROCESSOR (Related Articles & TPT Products)")
+    print(f"{'=' * 80}")
+    import subprocess
+    post_process_script = os.path.join(BASE_DIR, "scripts", "_post_process.py")
+    if os.path.exists(post_process_script):
+        subprocess.run([sys.executable, post_process_script])
+    else:
+        print(f"  [!] _post_process.py not found at {post_process_script}")
 
 
 if __name__ == "__main__":

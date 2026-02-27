@@ -295,26 +295,91 @@ def generate_storepage_js(all_products, categories):
         f.write(content)
 
 # ==========================================
+# 5. PRODUCT THUMBNAIL SYNC (WebP local)
+# ==========================================
+def ensure_product_thumbs(all_products):
+    """
+    After each scan, ensure every product has a local WebP thumbnail in
+    images/products-thumbs/<product_id>.webp.
+    Downloads and converts any missing ones from the TPT CDN.
+    """
+    try:
+        from PIL import Image
+        from io import BytesIO
+        import urllib.request as ureq
+    except ImportError:
+        print("   [thumbs] Pillow not installed — skipping thumbnail sync (pip install Pillow)")
+        return
+
+    thumbs_dir = os.path.join(PROJECT_ROOT, "images", "products-thumbs")
+    os.makedirs(thumbs_dir, exist_ok=True)
+    local_files = set(os.listdir(thumbs_dir))
+
+    missing = []
+    for p in all_products:
+        img_path = p["img_clean"]
+        pid_match = re.search(r"-(\d{7,})-", img_path)
+        if not pid_match:
+            continue
+        pid = pid_match.group(1)
+        if f"{pid}.webp" not in local_files:
+            missing.append((pid, img_path, p["name"]))
+
+    if not missing:
+        print(f"   [thumbs] All {len(all_products)} product thumbnails already present locally. OK")
+        return
+
+    print(f"   [thumbs] {len(missing)} new thumbnail(s) to download...")
+    downloaded = errors = 0
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+
+    for pid, img_path, name in missing:
+        url = f"https://ecdn.teacherspayteachers.com/cdn-cgi/image/format=auto,width=480,quality=80/thumbitem/{img_path}"
+        out_path = os.path.join(thumbs_dir, f"{pid}.webp")
+        try:
+            request = ureq.Request(url, headers=headers)
+            with ureq.urlopen(request, timeout=15) as resp:
+                data = resp.read()
+            img = Image.open(BytesIO(data)).convert("RGB")
+            img.thumbnail((480, 480), Image.LANCZOS)
+            img.save(out_path, "WEBP", quality=80, method=6)
+            size_kb = os.path.getsize(out_path) // 1024
+            print(f"   [thumbs] OK [{pid}] {name[:45]:<45} -> {size_kb}KB")
+            local_files.add(f"{pid}.webp")
+            downloaded += 1
+            time.sleep(0.2)
+        except Exception as e:
+            print(f"   [thumbs] ERR [{pid}] {name[:45]}: {e}")
+            errors += 1
+
+    print(f"   [thumbs] Done: {downloaded} downloaded, {errors} error(s).")
+
+
+# ==========================================
 # MAIN EXECUTION
 # ==========================================
 if __name__ == "__main__":
     start_time = time.time()
-    
+
     # 1. SCANNER TOUT UNE FOIS
     products, categories = scan_whole_store()
-    
+
     if products:
-        print(f"✅ Scan terminé : {len(products)} produits trouvés.")
-        
+        print(f"OK Scan termine : {len(products)} produits trouves.")
+
         # 2. PREPARER FREEBIES
         freebies_list = process_local_freebies()
-        
+
         # 3. GENERER SORTIE ACCUEIL (featured_products.js)
         generate_homepage_js(products, freebies_list)
-        
+
         # 4. GENERER SORTIE BOUTIQUE (products_tpt.js)
         generate_storepage_js(products, categories)
-        
-        print(f"🏁 TERMINÉ en {round(time.time() - start_time, 2)} secondes.")
+
+        # 5. SYNC MINIATURES WEBP (auto-complete les manquantes)
+        print("\nVerification des miniatures produits locales...")
+        ensure_product_thumbs(products)
+
+        print(f"TERMINE en {round(time.time() - start_time, 2)} secondes.")
     else:
-        print("❌ Erreur critique : Aucun produit trouvé.")
+        print("Erreur critique : Aucun produit trouve.")

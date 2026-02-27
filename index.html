@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 
 <html class="scroll-smooth" lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Home | Little Smart Genius</title>
-<meta content="High-quality, engaging educational materials designed to spark creativity and critical thinking." name="description"/>
-<link href="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg" rel="icon" type="image/jpeg"/>
-<!-- Open Graph -->
-<meta content="Little Smart Genius — Educational Printables for Kids" property="og:title"/>
-<meta content="Free and Premium educational printables, logic puzzles, and visual perception activities for kids." property="og:description"/>
-<meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg" property="og:image"/>
-<meta content="https://littlesmartgenius.com/" property="og:url"/>
-<meta content="website" property="og:type"/>
-<!-- Twitter Card -->
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Little Smart Genius — Educational Printables for Kids" name="twitter:title"/>
-<meta content="Free and Premium educational printables, logic puzzles, and visual perception activities for kids." name="twitter:description"/>
-<meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg" name="twitter:image"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
-<script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Home | Little Smart Genius</title>
+    <meta content="High-quality, engaging educational materials designed to spark creativity and critical thinking."
+        name="description" />
+    <link href="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+        rel="icon" type="image/jpeg" />
+    <!-- Open Graph -->
+    <meta content="Little Smart Genius — Educational Printables for Kids" property="og:title" />
+    <meta content="Free and Premium educational printables, logic puzzles, and visual perception activities for kids."
+        property="og:description" />
+    <meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+        property="og:image" />
+    <meta content="https://littlesmartgenius.com/" property="og:url" />
+    <meta content="website" property="og:type" />
+    <!-- Twitter Card -->
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="Little Smart Genius — Educational Printables for Kids" name="twitter:title" />
+    <meta content="Free and Premium educational printables, logic puzzles, and visual perception activities for kids."
+        name="twitter:description" />
+    <meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+        name="twitter:image" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&amp;display=swap"
+        rel="stylesheet" />
+    <script>
         tailwind.config = {
             darkMode: 'class',
             theme: { extend: { colors: { brand: '#F48C06' } } }
         }
     </script>
-<style>
+    <style>
         :root {
             --bg: #FAFAFA;
             --text: #1E293B;
@@ -65,7 +73,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 20px md:padding-0-40px;
+            padding: 0 40px;
             transition: 0.3s;
         }
 
@@ -89,6 +97,86 @@
         .nav-link:hover,
         .nav-link.active {
             color: #F48C06;
+        }
+
+        .review-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        /* Lightbox Styles */
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #lb-img {
+            max-height: 85vh;
+            max-width: 90vw;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .lb-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .lb-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lb-prev {
+            left: 30px;
+        }
+
+        .lb-next {
+            right: 30px;
+        }
+
+        .lb-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .lb-close:hover {
+            background: #EF4444;
         }
 
         /* MOBILE MENU - TOP 80px */
@@ -144,12 +232,14 @@
         .hero-title {
             background: linear-gradient(135deg, #1E293B 0%, #F48C06 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .dark .hero-title {
             background: linear-gradient(135deg, #FFFFFF 0%, #F48C06 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -201,15 +291,15 @@
             }
         }
     </style>
-<!-- Google Analytics GA4 -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
-<script>
+    <!-- Google Analytics GA4 -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
-<style>
+    <style>
         .social-footer-bar {
             display: flex;
             justify-content: center;
@@ -259,202 +349,371 @@
         }
     </style>
 </head>
+
 <body>
-<header class="top-header px-5 md:px-10">
-<a class="flex items-center gap-3 no-underline" href="index.html">
-<img alt="Logo" class="logo-img" src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"/>
-<span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span class="text-brand">.</span></span>
-</a>
-<nav class="hidden lg:flex gap-8">
-<a class="nav-link active" href="index.html">Home</a>
-<a class="nav-link" href="products.html">Store</a>
-<a class="nav-link" href="freebies.html">Freebies</a>
-<a class="nav-link" href="blog.html">Blog</a>
-<a class="nav-link" href="about.html">About</a>
-<a class="nav-link" href="contact.html">Contact</a>
-</nav>
-<div class="flex items-center gap-4">
-<div class="hidden lg:flex items-center gap-2 mr-3">
-<a class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300" href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
-<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path>
-</svg>
-</a>
-<a class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 transition-all duration-300" href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
-<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
-<path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"></path>
-</svg>
-</a>
-<a class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-300" href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
-<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
-<path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"></path>
-</svg>
-</a>
-</div>
-<a class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition" href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank">TpT
+    <!-- Lightbox Element -->
+    <div id="lightbox" onclick="if(event.target.id==='lightbox') closeLightbox()">
+        <div class="lb-close" onclick="closeLightbox()"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg></div>
+        <div class="lb-nav lb-prev" onclick="switchLb(-1)"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg></div>
+        <div class="flex flex-col items-center max-w-[90vw]"><img id="lb-img" src="" alt="Zoom"
+                class="transition-opacity duration-300"></div>
+        <div class="lb-nav lb-next" onclick="switchLb(1)"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg></div>
+    </div>
+
+    <header class="top-header px-5 md:px-10">
+        <a class="flex items-center gap-3 no-underline" href="index.html">
+            <img alt="Logo" class="logo-img"
+                src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg" />
+            <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span
+                    class="text-brand">.</span></span>
+        </a>
+        <nav class="hidden lg:flex gap-8">
+            <a class="nav-link active" href="index.html">Home</a>
+            <a class="nav-link" href="products.html">Store</a>
+            <a class="nav-link" href="freebies.html">Freebies</a>
+            <a class="nav-link" href="blog.html">Blog</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center gap-2 mr-3">
+                <a class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300"
+                    href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank"
+                    title="Instagram">
+                    <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                        </path>
+                    </svg>
+                </a>
+                <a class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 transition-all duration-300"
+                    href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank"
+                    title="Pinterest">
+                    <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+                        <path
+                            d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                        </path>
+                    </svg>
+                </a>
+                <a class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-300"
+                    href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                    <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+                        <path
+                            d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+            <a class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition"
+                href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank">TpT
                 Store</a>
-<div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition" onclick="toggleTheme()"><span id="theme-icon">🌙</span></div>
-<button class="block lg:hidden text-2xl" onclick="toggleMobileMenu()" style="color:var(--text)">☰</button>
-</div>
-</header>
-<div id="mobile-menu">
-<a class="py-3 border-b border-gray-200 font-bold text-brand" href="index.html">Home</a>
-<a class="py-3 border-b border-gray-200 font-bold" href="products.html" style="color:var(--text)">Store</a>
-<a class="py-3 border-b border-gray-200 font-bold" href="freebies.html" style="color:var(--text)">Freebies</a>
-<a class="py-3 border-b border-gray-200 font-bold" href="blog.html" style="color:var(--text)">Blog</a>
-<a class="py-3 border-b border-gray-200 font-bold" href="about.html" style="color:var(--text)">About</a>
-<a class="py-3 font-bold" href="contact.html" style="color:var(--text)">Contact</a>
-<a class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg hover:bg-brand transition" href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank">Visit
+            <div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition"
+                onclick="toggleTheme()"><span id="theme-icon">🌙</span></div>
+            <button class="block lg:hidden text-2xl" onclick="toggleMobileMenu()" style="color:var(--text)">☰</button>
+        </div>
+    </header>
+    <div id="mobile-menu">
+        <a class="py-3 border-b border-gray-200 font-bold text-brand" href="index.html">Home</a>
+        <a class="py-3 border-b border-gray-200 font-bold" href="products.html" style="color:var(--text)">Store</a>
+        <a class="py-3 border-b border-gray-200 font-bold" href="freebies.html" style="color:var(--text)">Freebies</a>
+        <a class="py-3 border-b border-gray-200 font-bold" href="blog.html" style="color:var(--text)">Blog</a>
+        <a class="py-3 border-b border-gray-200 font-bold" href="about.html" style="color:var(--text)">About</a>
+        <a class="py-3 font-bold" href="contact.html" style="color:var(--text)">Contact</a>
+        <a class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg hover:bg-brand transition"
+            href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank">Visit
             TpT Store</a>
-</div>
-<div class="pt-32 pb-4 px-6 text-center max-w-6xl mx-auto flex flex-col items-center">
-<div class="mb-4">
-<div class="inline-block px-3 py-1 mb-2 rounded-full bg-brand text-white text-[10px] font-bold tracking-widest uppercase badge-pulse">
+    </div>
+    <div class="pt-32 pb-4 px-6 text-center max-w-6xl mx-auto flex flex-col items-center">
+        <div class="mb-4">
+            <div
+                class="inline-block px-3 py-1 mb-2 rounded-full bg-brand text-white text-[10px] font-bold tracking-widest uppercase badge-pulse">
                 New Collections!</div>
-<h1 class="text-3xl md:text-5xl font-extrabold mb-1 hero-title leading-tight pb-1">Smart Resources<br/>for
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-1 hero-title leading-tight pb-1">Smart Resources<br />for
                 Growing Minds.</h1>
-</div>
-<div class="w-full max-w-4xl mb-4 fade-in-up">
-<img alt="Banner" class="w-full h-auto rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 object-cover" src="https://cdn.filestackcontent.com/resize=w:1200/auto_image/compress/z3pkrwHXTWumdlsfcvpz"/>
-</div>
-<p class="text-base md:text-lg max-w-2xl mx-auto mb-6 text-slate-500 dark:text-slate-400 transition-colors fade-in-up" style="animation-delay: 0.1s;">
+        </div>
+        <div class="w-full max-w-4xl mb-4 fade-in-up relative rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 group"
+            id="hero-slider">
+
+            <!-- Slide 1: Banner 1 -->
+            <div class="relative transition-opacity duration-1000 ease-in-out opacity-100 slider-slide">
+                <img alt="Little Smart Genius – Smart Resources for Growing Minds" class="w-full h-auto object-contain"
+                    src="images/banners/Little_Smart_Genius_Banner_1.webp" width="1200" height="630" />
+            </div>
+
+            <!-- Slide 2: Banner 2 -->
+            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slider-slide hidden">
+                <img alt="Little Smart Genius – Exclusive Offer: Buy 3 Get 1 Free" class="w-full h-auto object-contain"
+                    src="images/banners/Little_Smart_Genius_Banner_2.webp" width="1200" height="630" loading="lazy" />
+            </div>
+
+            <!-- Slide 3: Banner 3 -->
+            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slider-slide hidden">
+                <img alt="Little Smart Genius – New Free Resources Every Sunday at 7PM EST"
+                    class="w-full h-auto object-contain" src="images/banners/Little_Smart_Genius_Banner_3.webp"
+                    width="1200" height="630" loading="lazy" />
+            </div>
+
+            <!-- Left/Right Navigation Arrows -->
+            <button onclick="prevSlide()"
+                class="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white/70 dark:bg-slate-900/70 hover:bg-brand hover:text-white text-slate-800 dark:text-white rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 shadow-md transform -translate-x-4 group-hover:translate-x-0">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button onclick="nextSlide()"
+                class="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white/70 dark:bg-slate-900/70 hover:bg-brand hover:text-white text-slate-800 dark:text-white rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 shadow-md transform translate-x-4 group-hover:translate-x-0">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+
+            <!-- Slider Navigation Dots -->
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
+                <button
+                    class="w-2.5 h-2.5 rounded-full bg-brand/60 dark:bg-white/80 slider-dot transition-all duration-300"
+                    onclick="goToSlide(0)"></button>
+                <button
+                    class="w-2.5 h-2.5 rounded-full bg-brand/20 dark:bg-white/30 hover:bg-brand/40 dark:hover:bg-white/50 slider-dot transition-all duration-300"
+                    onclick="goToSlide(1)"></button>
+                <button
+                    class="w-2.5 h-2.5 rounded-full bg-brand/20 dark:bg-white/30 hover:bg-brand/40 dark:hover:bg-white/50 slider-dot transition-all duration-300"
+                    onclick="goToSlide(2)"></button>
+            </div>
+
+            <script>
+                // Slider Logic
+                let currentSlideIndex = 0;
+                let slideInterval;
+                const SLIDE_DURATION = 5000; // 5 seconds
+
+                function goToSlide(index) {
+                    const slides = document.querySelectorAll('.slider-slide');
+                    const dots = document.querySelectorAll('.slider-dot');
+
+                    if (slides.length === 0) return;
+
+                    // Hide all and transition
+                    slides.forEach((s, i) => {
+                        s.classList.replace('opacity-100', 'opacity-0');
+                        // Add hidden after transition
+                        setTimeout(() => {
+                            if (currentSlideIndex !== i && i > 0) {
+                                s.classList.add('hidden');
+                                s.style.zIndex = 0;
+                            }
+                        }, 1000);
+                    });
+
+                    dots.forEach(d => {
+                        d.classList.replace('bg-brand/60', 'bg-brand/20');
+                        d.classList.replace('dark:bg-white/80', 'dark:bg-white/30');
+                        d.classList.replace('w-6', 'w-2.5'); // shrink active dot
+                    });
+
+                    // Show target immediately
+                    if (index > 0) slides[index].classList.remove('hidden');
+                    slides[index].style.zIndex = 10;
+
+                    // Force reflow
+                    void slides[index].offsetWidth;
+
+                    slides[index].classList.replace('opacity-0', 'opacity-100');
+
+                    dots[index].classList.replace('bg-brand/20', 'bg-brand/60');
+                    dots[index].classList.replace('dark:bg-white/30', 'dark:bg-white/80');
+                    dots[index].classList.replace('w-2.5', 'w-6'); // stretch active dot
+
+                    currentSlideIndex = index;
+                    resetSlideInterval();
+                }
+
+                function nextSlide() {
+                    const slides = document.querySelectorAll('.slider-slide');
+                    let nextIndex = (currentSlideIndex + 1) % slides.length;
+                    goToSlide(nextIndex);
+                }
+
+                function prevSlide() {
+                    const slides = document.querySelectorAll('.slider-slide');
+                    let prevIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+                    goToSlide(prevIndex);
+                }
+
+                function resetSlideInterval() {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+                }
+
+                // Initialize
+                document.addEventListener('DOMContentLoaded', () => {
+                    goToSlide(0);
+                });
+            </script>
+        </div>
+        <p class="text-base md:text-lg max-w-2xl mx-auto mb-6 text-slate-500 dark:text-slate-400 transition-colors fade-in-up"
+            style="animation-delay: 0.1s;">
             High-quality, engaging educational materials designed to spark creativity and critical thinking.
         </p>
-<div class="flex gap-3 flex-wrap justify-center fade-in-up" style="animation-delay: 0.2s;">
-<a class="px-6 py-2 bg-brand text-white font-bold rounded-full hover:shadow-xl hover:scale-105 transition transform text-sm" href="products.html">Browse
+        <div class="flex gap-3 flex-wrap justify-center fade-in-up" style="animation-delay: 0.2s;">
+            <a class="px-6 py-2 bg-brand text-white font-bold rounded-full hover:shadow-xl hover:scale-105 transition transform text-sm"
+                href="products.html">Browse
                 Store</a>
-<a class="px-6 py-2 border-2 border-slate-300 dark:border-slate-600 font-bold rounded-full hover:border-brand hover:text-brand transition text-sm" href="freebies.html" style="color:var(--text)">Get Freebies</a>
-</div>
-</div>
-<div class="bg-brand/5 py-4 border-y border-brand/10 mb-8">
-<div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-<div>
-<p class="text-xl font-extrabold text-brand">4.8</p>
-<p class="text-[9px] uppercase font-bold text-slate-500">Average Rating</p>
-</div>
-<div>
-<p class="text-xl font-extrabold text-brand">PreK-12+</p>
-<p class="text-[9px] uppercase font-bold text-slate-500">To Adult Ed</p>
-</div>
-<div>
-<p class="text-xl font-extrabold text-brand">Included</p>
-<p class="text-[9px] uppercase font-bold text-slate-500">Answer Keys</p>
-</div>
-<div>
-<p class="text-xl font-extrabold text-brand">Instant</p>
-<p class="text-[9px] uppercase font-bold text-slate-500">Digital Access</p>
-</div>
-</div>
-</div>
-<div class="py-6 px-6 max-w-6xl mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-3 items-end mb-6 gap-4">
-<div class="hidden md:block"></div>
-<div class="text-center">
-<h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Premium Picks ⭐</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs">Handpicked quality resources</p>
-</div>
-<div class="text-center md:text-right">
-<a class="inline-block text-brand font-bold text-xs hover:underline" href="products.html">View All
+            <a class="px-6 py-2 border-2 border-slate-300 dark:border-slate-600 font-bold rounded-full hover:border-brand hover:text-brand transition text-sm"
+                href="freebies.html" style="color:var(--text)">Get Freebies</a>
+        </div>
+    </div>
+    <div class="bg-brand/5 py-4 border-y border-brand/10 mb-8">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+                <p class="text-xl font-extrabold text-brand">4.8</p>
+                <p class="text-[9px] uppercase font-bold text-slate-500">Average Rating</p>
+            </div>
+            <div>
+                <p class="text-xl font-extrabold text-brand">PreK-12+</p>
+                <p class="text-[9px] uppercase font-bold text-slate-500">To Adult Ed</p>
+            </div>
+            <div>
+                <p class="text-xl font-extrabold text-brand">Included</p>
+                <p class="text-[9px] uppercase font-bold text-slate-500">Answer Keys</p>
+            </div>
+            <div>
+                <p class="text-xl font-extrabold text-brand">Instant</p>
+                <p class="text-[9px] uppercase font-bold text-slate-500">Digital Access</p>
+            </div>
+        </div>
+    </div>
+    <div class="py-6 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 items-end mb-6 gap-4">
+            <div class="hidden md:block"></div>
+            <div class="text-center">
+                <h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Premium Picks ⭐</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-xs">Handpicked quality resources</p>
+            </div>
+            <div class="text-center md:text-right">
+                <a class="inline-block text-brand font-bold text-xs hover:underline" href="products.html">View All
                     -&gt;</a>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="store-grid">
-<p class="col-span-full text-center text-slate-400 py-6">Loading products...</p>
-</div>
-</div>
-<div class="py-6 px-6 max-w-6xl mx-auto bg-slate-50 dark:bg-slate-900 transition-colors">
-<div class="grid grid-cols-1 md:grid-cols-3 items-end mb-6 gap-4">
-<div class="hidden md:block"></div>
-<div class="text-center">
-<h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Popular Freebies 🔥</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs">Grab them while they're hot!</p>
-</div>
-<div class="text-center md:text-right">
-<a class="inline-block text-brand font-bold text-xs hover:underline" href="freebies.html">More Freebies
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="store-grid">
+            <p class="col-span-full text-center text-slate-400 py-6">Loading products...</p>
+        </div>
+    </div>
+    <div class="py-6 px-6 max-w-6xl mx-auto bg-slate-50 dark:bg-slate-900 transition-colors">
+        <div class="grid grid-cols-1 md:grid-cols-3 items-end mb-6 gap-4">
+            <div class="hidden md:block"></div>
+            <div class="text-center">
+                <h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Popular Freebies 🔥</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-xs">Grab them while they're hot!</p>
+            </div>
+            <div class="text-center md:text-right">
+                <a class="inline-block text-brand font-bold text-xs hover:underline" href="freebies.html">More Freebies
                     -&gt;</a>
-</div>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4" id="freebies-grid">
-<p class="col-span-full text-center text-slate-400">Loading freebies...</p>
-</div>
-</div>
-<div class="py-6 px-6 max-w-7xl mx-auto">
-<div class="text-center mb-6">
-<h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Loved by Educators 💖</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs">Verified purchases from our TpT Store.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start" id="reviews-grid">
-</div>
-</div>
-<div class="py-6 px-6 max-w-3xl mx-auto">
-<div class="text-center mb-6">
-<h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Frequently Asked Questions 💬</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs">Got questions? We've got answers.</p>
-</div>
-<div class="space-y-3" id="faq-container">
-</div>
-</div>
-<div class="px-6 py-6 max-w-3xl mx-auto">
-<div class="text-center mb-6">
-<h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Join the Club 💌</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs">Get exclusive deals and educational tips.</p>
-</div>
-<div class="relative bg-white dark:bg-slate-800 rounded-3xl p-6 text-center shadow-xl border-2 border-orange-100 dark:border-slate-700 overflow-hidden group">
-<div class="absolute top-0 right-0 w-48 h-48 bg-orange-50 dark:bg-slate-700 rounded-full -mr-10 -mt-10 opacity-50 transition-transform group-hover:scale-110">
-</div>
-<div class="absolute bottom-0 left-0 w-32 h-32 bg-orange-50 dark:bg-slate-700 rounded-full -ml-8 -mb-8 opacity-50 transition-transform group-hover:scale-110">
-</div>
-<div class="relative z-10">
-<div class="w-12 h-12 bg-orange-100 dark:bg-slate-700 rounded-xl flex items-center justify-center text-2xl mx-auto mb-2 shadow-sm text-brand">
+            </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4" id="freebies-grid">
+            <p class="col-span-full text-center text-slate-400">Loading freebies...</p>
+        </div>
+    </div>
+    <div class="py-6 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Loved by Educators 💖</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-xs">Verified purchases from our TpT Store.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start" id="reviews-grid">
+        </div>
+    </div>
+    <div class="py-6 px-6 max-w-3xl mx-auto">
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Frequently Asked Questions 💬</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-xs">Got questions? We've got answers.</p>
+        </div>
+        <div class="space-y-3" id="faq-container">
+        </div>
+    </div>
+    <div class="px-6 py-6 max-w-3xl mx-auto">
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Join the Club 💌</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-xs">Get exclusive deals and educational tips.</p>
+        </div>
+        <div
+            class="relative bg-white dark:bg-slate-800 rounded-3xl p-6 text-center shadow-xl border-2 border-orange-100 dark:border-slate-700 overflow-hidden group">
+            <div
+                class="absolute top-0 right-0 w-48 h-48 bg-orange-50 dark:bg-slate-700 rounded-full -mr-10 -mt-10 opacity-50 transition-transform group-hover:scale-110">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-32 h-32 bg-orange-50 dark:bg-slate-700 rounded-full -ml-8 -mb-8 opacity-50 transition-transform group-hover:scale-110">
+            </div>
+            <div class="relative z-10">
+                <div
+                    class="w-12 h-12 bg-orange-100 dark:bg-slate-700 rounded-xl flex items-center justify-center text-2xl mx-auto mb-2 shadow-sm text-brand">
                     💌</div>
-<h2 class="text-2xl font-extrabold mb-0 text-slate-900 dark:text-white">Our Newsletter</h2>
-<p class="text-sm font-bold text-brand mb-3">1 email per week to stay in the loop</p>
-<div class="max-w-lg mx-auto mb-4 text-slate-600 dark:text-slate-300 text-xs leading-relaxed space-y-0.5">
-<p class="font-bold uppercase tracking-widest text-[9px] mb-1 text-slate-400">Go Further</p>
-<p>The best educational content delivered straight to your inbox.</p>
-<p class="text-[10px] italic opacity-80">No spam. Just free content and resources to help you level
+                <h2 class="text-2xl font-extrabold mb-0 text-slate-900 dark:text-white">Our Newsletter</h2>
+                <p class="text-sm font-bold text-brand mb-3">1 email per week to stay in the loop</p>
+                <div
+                    class="max-w-lg mx-auto mb-4 text-slate-600 dark:text-slate-300 text-xs leading-relaxed space-y-0.5">
+                    <p class="font-bold uppercase tracking-widest text-[9px] mb-1 text-slate-400">Go Further</p>
+                    <p>The best educational content delivered straight to your inbox.</p>
+                    <p class="text-[10px] italic opacity-80">No spam. Just free content and resources to help you level
                         up!</p>
-</div>
-<form class="flex flex-col gap-2 max-w-sm mx-auto" id="newsletter-form">
-<div class="flex flex-col sm:flex-row gap-2">
-<input class="w-full p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-900 dark:text-white outline-none focus:border-brand transition shadow-inner placeholder:text-slate-400 text-sm" name="email" placeholder="Your email address" required="" type="email"/>
-<button class="px-5 py-2.5 bg-brand text-white font-bold rounded-lg hover:bg-orange-600 hover:shadow-lg transition text-sm whitespace-nowrap shadow-md" type="submit">Subscribe</button>
-</div>
-<div id="newsletter-result"></div>
-</form>
-</div>
-</div>
-</div>
-<div class="py-6 px-6">
-<div class="max-w-5xl mx-auto text-center">
-<h3 class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-3">Designed For All Learners
+                </div>
+                <form class="flex flex-col gap-2 max-w-sm mx-auto" id="newsletter-form">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input
+                            class="w-full p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-900 dark:text-white outline-none focus:border-brand transition shadow-inner placeholder:text-slate-400 text-sm"
+                            name="email" placeholder="Your email address" required="" type="email" />
+                        <button
+                            class="px-5 py-2.5 bg-brand text-white font-bold rounded-lg hover:bg-orange-600 hover:shadow-lg transition text-sm whitespace-nowrap shadow-md"
+                            type="submit">Subscribe</button>
+                    </div>
+                    <div id="newsletter-result"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="py-6 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <h3 class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-3">Designed For All Learners
             </h3>
-<div class="flex flex-wrap justify-center gap-1.5" id="seo-tags">
-</div>
-</div>
-</div>
-<div class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0" id="cookie-banner">
-<div class="flex items-start gap-4">
-<div class="text-3xl">🍪</div>
-<div>
-<h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
-<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+            <div class="flex flex-wrap justify-center gap-1.5" id="seo-tags">
+            </div>
+        </div>
+    </div>
+    <div class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0"
+        id="cookie-banner">
+        <div class="flex items-start gap-4">
+            <div class="text-3xl">🍪</div>
+            <div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
                     We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
                     our <a class="text-brand font-bold hover:underline" href="privacy.html">Privacy Policy</a>.
                 </p>
-<div class="flex gap-3">
-<button class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md" onclick="acceptCookies()">
+                <div class="flex gap-3">
+                    <button
+                        class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md"
+                        onclick="acceptCookies()">
                         Accept
                     </button>
-<button class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition" onclick="closeCookies()">
+                    <button
+                        class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition"
+                        onclick="closeCookies()">
                         Decline
                     </button>
-</div>
-</div>
-</div>
-</div>
-<script onerror="console.log('Script not found')" src="featured_products.js"></script>
-<script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script onerror="console.log('Script not found')" src="featured_products.js"></script>
+    <script>
         // --- DATA & RENDER ---
 
         const reviews = [
@@ -539,18 +798,58 @@
             const container = document.getElementById('store-grid');
             let data = (typeof window.importedProducts !== 'undefined' && window.importedProducts.length > 0) ? window.importedProducts : fallbackProducts;
             data = data.slice(0, 6);
-            container.innerHTML = data.map(p => {
+            container.innerHTML = data.map((p, index) => {
                 let badgeClass = p.price === "FREE" ? "badge-free" : "badge-normal";
+                let storeLink = `products.html?product=${encodeURIComponent(p.name)}`;
+                let optimizedImg = p.img.includes('teacherspayteachers.com/thumbitem') ? p.img.replace('https://ecdn.teacherspayteachers.com/thumbitem/', 'https://ecdn.teacherspayteachers.com/cdn-cgi/image/format=webp,width=400,quality=85/thumbitem/') : p.img;
                 return `
                 <div class="product-card bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:shadow-xl transition flex flex-col h-full group">
-                    <div class="aspect-square w-full rounded-xl mb-3 overflow-hidden bg-slate-100 relative">
+                    <div onclick="openLightbox(${index})" class="aspect-square w-full rounded-xl mb-3 overflow-hidden bg-slate-100 relative block cursor-pointer">
                          <div class="badge-common ${badgeClass}">${p.price}</div>
-                         <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400?text=No+Image'">
+                         <img src="${optimizedImg}" alt="${p.name}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400?text=No+Image'">
                     </div>
                     <div class="flex-grow text-center"><h3 class="font-bold text-slate-800 dark:text-slate-100 text-base md:text-sm mb-1 line-clamp-2">${p.name}</h3></div>
-                    <a href="${p.url}" target="_blank" class="mt-3 w-full py-2 bg-slate-900 text-white hover:bg-brand font-bold text-center rounded-lg text-[10px] uppercase tracking-wide transition">View Details</a>
+                    <a href="${storeLink}" target="_blank" class="mt-3 w-full py-2 bg-slate-900 text-white hover:bg-brand font-bold text-center rounded-lg text-[10px] uppercase tracking-wide transition">View Details</a>
                 </div>
             `}).join('');
+        }
+
+        // Lightbox Functions
+        let lbProductIndex = 0; let lbImageIndex = 1;
+        function openLightbox(pIdx) {
+            lbProductIndex = pIdx;
+            lbImageIndex = 1;
+            updateLightboxImage();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        function switchLb(dir) {
+            lbImageIndex = lbImageIndex + dir;
+            if (lbImageIndex > 4) lbImageIndex = 1;
+            if (lbImageIndex < 1) lbImageIndex = 4;
+            updateLightboxImage();
+        }
+        function updateLightboxImage() {
+            let data = (typeof window.importedProducts !== 'undefined' && window.importedProducts.length > 0) ? window.importedProducts : fallbackProducts;
+            const p = data[lbProductIndex];
+            if (!p || !p.img) return;
+            const imgPath = p.img;
+            let baseImg = imgPath;
+            if (imgPath.includes('-')) {
+                baseImg = imgPath.substring(0, imgPath.lastIndexOf('-'));
+            } else if (imgPath.endsWith('.jpg')) {
+                baseImg = imgPath.replace('.jpg', '');
+            }
+            const hdUrl = `${baseImg}-${lbImageIndex}.jpg`;
+            const optimizedUrl = hdUrl.replace('https://ecdn.teacherspayteachers.com/', 'https://ecdn.teacherspayteachers.com/cdn-cgi/image/format=webp,width=600,quality=85/');
+            const img = document.getElementById('lb-img');
+            img.style.opacity = '0.5';
+            img.src = optimizedUrl;
+            img.onload = () => img.style.opacity = '1';
         }
 
         function renderFreebies() {
@@ -558,9 +857,9 @@
             let data = (typeof window.importedFreebies !== 'undefined' && window.importedFreebies.length > 0) ? window.importedFreebies : fallbackFreebies;
             data = data.slice(0, 10);
             container.innerHTML = data.map(f => `
-                <div class="product-card bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:shadow-xl transition flex flex-col h-full group cursor-pointer" onclick="window.location.href='freebies.html?dl=${encodeURIComponent(f.name)}'">
+                <div class="product-card bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:shadow-xl transition flex flex-col h-full group cursor-pointer" onclick="window.open('freebies.html?dl=${encodeURIComponent(f.name)}', '_blank')">
                     <div class="aspect-square w-full bg-white rounded-xl mb-3 flex items-center justify-center text-4xl shadow-inner group-hover:bg-orange-50 transition overflow-hidden">
-                        ${f.img ? `<img src="${f.img}" class="w-full h-full object-cover">` : `<span class="emoji-icon filter drop-shadow-md">${f.icon || '🎁'}</span>`}
+                        ${f.img ? `<img src="${f.img}" loading="lazy" decoding="async" class="w-full h-full object-cover">` : `<span class="emoji-icon filter drop-shadow-md">${f.icon || '🎁'}</span>`}
                     </div>
                     <div class="flex-grow text-center">
                         <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xs md:text-sm mb-0.5 line-clamp-2">${f.name}</h3>
@@ -608,34 +907,42 @@
             setTimeout(() => banner.classList.add('hidden'), 500);
         }
     </script>
-<script defer="" src="mailerlite.js"></script>
-<!-- SOCIAL MEDIA & FOOTER -->
-<div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0);">
-<div class="social-footer-bar">
-<a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
-<svg fill="currentColor" viewbox="0 0 24 24">
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path>
-</svg>
-</a>
-<a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
-<svg fill="currentColor" viewbox="0 0 24 24">
-<path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"></path>
-</svg>
-</a>
-<a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
-<svg fill="currentColor" viewbox="0 0 24 24">
-<path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"></path>
-</svg>
-</a>
-</div>
-<div class="site-footer">
-<div style="margin-bottom: 6px;">
-<a href="terms.html">Terms of Service</a>
-<span style="margin: 0 8px;">•</span>
-<a href="privacy.html">Privacy Policy</a>
-</div>
+    <script defer="" src="mailerlite.js"></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0);">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
             © 2026 Little Smart Genius. All rights reserved.
         </div>
-</div>
+    </div>
+    <script src="exit-intent.js"></script>
 </body>
+
 </html>

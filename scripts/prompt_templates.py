@@ -7,38 +7,44 @@ Each returns plan_prompt + content_prompt_builder for the 2-step generation pipe
 
 
 # ═══════════════════════════════════════════════════════════════
-# ANTI-AI PHRASES (to detect and remove)
+# ANTI-AI PHRASES (to detect and remove) — EXTENDED FOR V5.1 DEEPSEEK
 # ═══════════════════════════════════════════════════════════════
 
 AI_DETECTION_PHRASES = [
-    "it's important to note", "it is important to note",
-    "moreover", "furthermore", "in conclusion",
-    "it's worth noting", "it is worth noting",
-    "in today's world", "in today's fast-paced",
-    "without further ado", "needless to say",
-    "at the end of the day", "it goes without saying",
-    "as a matter of fact", "by and large",
-    "last but not least", "in a nutshell",
-    "delve into", "delve deeper", "let's delve",
-    "embark on", "navigate the",
-    "leverage", "utilize", "facilitate",
-    "comprehensive guide", "comprehensive overview",
-    "in the realm of", "in the world of",
-    "game-changer", "paradigm shift",
-    "unlock the power", "unlock the potential",
-    "dive into", "deep dive",
-    "tapestry of", "plethora of",
+    # Intros / Outros
+    "dans cet article", "nous allons découvrir", "il est important de noter", 
+    "en conclusion", "pour conclure", "en résumé", "aujourd'hui", "de nos jours",
+    "it's important to note", "it is important to note", "in this article",
+    "in today's world", "in today's fast-paced", "without further ado",
+    "in a nutshell", "at the end of the day", "it goes without saying",
+    
+    # Transitions
+    "moreover", "furthermore", "additionally", "subsequently", "consequently",
+    "needless to say", "as a matter of fact", "last but not least",
+    "notablement", "cependant", "néanmoins", "par ailleurs", "en outre",
+    
+    # Vocabulary & Verbs
+    "delve into", "delve deeper", "let's delve", "dive into", "deep dive",
+    "embark on", "navigate the", "navigate through", "unlock the power",
+    "unlock the potential", "leverage", "utilize", "facilitate", "foster",
+    "spearhead", "orchestrate", "elevate", "optimize", "maximize",
+    
+    # Metaphors & Nouns
+    "tapestry of", "plethora of", "symphony of", "myriad of", "cornucopia of",
+    "paradigm shift", "game-changer", "testament to", "crucial", "pivotal",
+    "comprehensive guide", "comprehensive overview", "in the realm of",
+    "in the world of", "landscape", "beacon of", "cornerstone"
 ]
 
 # Transition words that signal human writing
 TRANSITION_WORDS = [
-    "here's the thing", "honestly", "look", "okay so",
-    "in my experience", "what I've found", "here's why",
-    "the truth is", "real talk", "fun fact",
-    "quick tip", "one thing I love", "something I noticed",
-    "you know what", "I'll be honest", "between you and me",
-    "bottom line", "long story short", "the good news",
-    "here's what works", "here's a secret", "pro tip",
+    "here's the thing", "honestly", "look", "okay so", "let's be real",
+    "in my experience", "what I've found", "here's why", "think about it",
+    "the truth is", "real talk", "fun fact", "by the way", "plus",
+    "quick tip", "one thing I love", "something I noticed", "the best part?",
+    "you know what", "I'll be honest", "between you and me", "the reality is",
+    "bottom line", "long story short", "the good news", "the catch?",
+    "here's what works", "here's a secret", "pro tip", "fair warning",
 ]
 
 
@@ -191,20 +197,21 @@ LSI Keywords (weave naturally): {lsi_plan_str}
 Target: {target_words} words MINIMUM (aim for 2000-2200)
 Article Type: SEO Informational — must rank on Google for "{keyword}"
 
-═══ WRITING PERSONALITY ═══
-- Write like you're chatting with a fellow parent at a coffee shop
-- Share a SHORT personal anecdote in the intro (1-2 sentences max)
-- Use rhetorical questions to engage: "Sound familiar?" "Ring a bell?"
-- Use these transitions naturally: "Here's the thing", "In my experience", "What I've found", "Pro tip", "Quick tip", "Real talk", "The truth is"
-- Vary sentence length: mix short punchy sentences (5-8 words) with longer ones (15-20 words)
-- Short paragraphs: 2-3 sentences max per paragraph
-- ACTIVE VOICE throughout
+═══ WRITING PERSONALITY & RHYTHM (CRITICAL ANTI-AI) ═══
+- Write like a REAL HUMAN writing to a friend: authentic, slightly informal, nuanced.
+- VARY YOUR RHYTHM (Burstiness): Mix very short, punchy sentences (2-5 words) with longer, flowing ones.
+- NO SYMMETRY: Do NOT use a perfectly balanced "H2 -> intro paragraph -> bullet list -> conclusion" format in every section. Break the pattern.
+- Be concrete: Use real-world examples, not theoretical fluff.
+- Include transitions naturally: "Here's the thing", "Honestly", "Plus".
+- NEVER start an introduction with "In this article..." or "Today we will discover...".
+- Use ACTIVE VOICE exclusively.
 
 ═══ BANNED PHRASES (AI detection — NEVER use these) ═══
 "It's important to note", "Moreover", "Furthermore", "In conclusion", "Delve into",
 "Dive into", "In today's world", "Comprehensive guide", "Embark on", "Navigate the",
 "Leverage", "Utilize", "Facilitate", "Game-changer", "Unlock the potential",
-"Without further ado", "Needless to say", "Plethora of", "Tapestry of"
+"Without further ado", "Needless to say", "Plethora of", "Tapestry of", "Testament to",
+"Crucial", "Pivotal", "Dans cet article", "Nous allons", "Il est important de"
 
 ═══ STRUCTURE ═══
 1. INTRODUCTION (150-200 words):
@@ -336,16 +343,22 @@ Product Link: {product_url}
 Target: {target_words} words MINIMUM
 RATIO: 80% educational value, 20% product recommendation
 
-═══ WRITING PERSONALITY ═══
-- Write as a teacher who genuinely uses and loves these resources
-- Share a classroom/parenting experience (1-2 sentences in intro)
-- Be honest: mention what makes these activities effective
-- Include tips that work even WITHOUT buying the product
-- Use transitions: "In my classroom", "What I've found works best", "One thing I love about"
+═══ WRITING PERSONALITY & RHYTHM (CRITICAL ANTI-AI) ═══
+- Write as a passionate, real educator, not a salesperson or encyclopedia.
+- Share a classroom/parenting experience (1-2 sentences in intro). MUST feel authentic.
+- VARY YOUR RHYTHM (Burstiness): Mix very short, spontaneous sentences (2-5 words) with longer explanations.
+- NO SYMMETRY: Do NOT use the exact same paragraph-list structure in every section. 
+- Break the pattern. Add a 1-sentence paragraph for emphasis.
+- Include tips that work even WITHOUT buying the product.
+- Use transitions like: "Let's be real", "What I've found works best", "One thing I love about".
+- NEVER start an introduction with "In this article..." or "Today we will explore...".
 
-═══ BANNED PHRASES (AI detection) ═══
+═══ BANNED PHRASES (AI detection — NEVER use these) ═══
 "It's important to note", "Moreover", "Furthermore", "In conclusion", "Delve into",
-"Game-changer", "Unlock the potential", "Comprehensive guide", "Leverage", "Utilize"
+"Dive into", "In today's world", "Comprehensive guide", "Embark on", "Navigate the",
+"Leverage", "Utilize", "Facilitate", "Game-changer", "Unlock the potential",
+"Without further ado", "Needless to say", "Plethora of", "Tapestry of", "Testament to",
+"Crucial", "Pivotal", "Dans cet article", "Nous allons", "Il est important de"
 
 ═══ STRUCTURE ═══
 1. INTRODUCTION (150-200 words):
@@ -412,28 +425,38 @@ LSI KEYWORDS: {lsi_str}
 AUDIENCE: Parents and teachers of children aged 4-12
 
 ═══ OUTPUT FORMAT (JSON ONLY) ═══
+1. INTENT & E-E-A-T FOCUS (CRITICAL)
+   - Every plan MUST include a pedagogical focus: What is the goal? Who is it for (Age/Grade)?
+   - Include sections for "Materials Needed", "Step-by-Step Instructions", and "Variations/Modifications".
+   - The FAQ MUST address real parent/teacher concerns (e.g., "What if my child gets frustrated?").  
+
+2. The response must be valid JSON matching this schema exactly:
 {{
-  "title": "SEO title 30-60 chars — 'How to Use [Activity] to Boost [Skill]' format. Include power word.",
-  "meta_description": "120-155 chars — mention 'free printable' or 'free download' + educational benefit",
-  "primary_keyword": "derived keyword (e.g., '{freebie_name.lower()} for kids')",
-  "lsi_keywords": ["6 LSI keywords"],
-  "cover_concept": "Specific visual: child excitedly using {freebie_name} activity",
+  "title": "Engaging and emotional title with the primary keyword",
+  "slug": "seo-friendly-url-slug-no-stopwords",
+  "meta_description": "Compelling meta description addressing the parent/teacher's pain point.",
+  "primary_keyword": "{freebie_name.lower()} for kids",
+  "keywords": ["LSI keyword 1", "LSI keyword 2", "LSI keyword 3"],
+  "category": "education",
+  "cover_concept": "High-quality scene showing...",
   "sections": [
     {{
-      "h2": "Section title with keyword",
-      "h3_subsections": ["Sub 1", "Sub 2", "Sub 3"],
-      "key_points": ["Point 1", "Point 2", "Point 3"],
-      "image_concept": "Unique visual for this section",
-      "internal_link_opportunity": "Natural anchor text"
+      "h2": "Pedagogical Goal & Why This Works",
+      "h3s": ["Cognitive Benefits", "Ideal Age Group"],
+      "image_concept": "Vector illustration showing..."
+    }},
+    {{
+      "h2": "Materials Needed & Preparation",
+      "h3s": []
+    }},
+    {{
+      "h2": "Step-by-Step Activity Instructions",
+      "h3s": ["Step 1: Setup", "Step 2: Execution", "Variations for Older/Younger Kids"]
     }}
   ],
-  "download_cta": {{
-    "headline": "Download {freebie_name} — FREE!",
-    "description": "{freebie_desc}",
-    "button_text": "Download Now (Free PDF)"
-  }},
-  "faq": [
-    {{"q": "Question about {freebie_name}?", "a": "Helpful answer"}}
+  "faq_schema": [
+    {{"q": "Real parent question?", "a": "Detailed answer."}},
+    {{"q": "Real teacher question?", "a": "Detailed answer."}}
   ]
 }}
 
@@ -469,16 +492,21 @@ Download Link: {freebie_url}
 Target: {target_words} words MINIMUM
 TONE: Enthusiastic friend explaining their favorite activity
 
-═══ WRITING PERSONALITY ═══
-- Write like you're excitedly telling a friend about a great free resource
-- Include a quick personal anecdote about using this activity
-- Be step-by-step practical (number your instructions)
-- Include age-appropriate modifications
-- Use transitions: "Here's the fun part", "What I love about this", "Pro tip from experience"
+═══ WRITING PERSONALITY & RHYTHM (CRITICAL ANTI-AI) ═══
+- Write like a REAL HUMAN excitedly sharing a find with a friend.
+- Include a quick personal anecdote about using this activity.
+- VARY YOUR RHYTHM (Burstiness): Mix very short, punchy sentences (2-5 words) with longer explanations.
+- NO SYMMETRY: Break the mold. Don't use the exact same format for every section.
+- Be step-by-step practical (number your instructions), but keep the tone conversational.
+- Use transitions like: "Here's the fun part", "What I love about this", "Pro tip from experience".
+- NEVER start an introduction with "In this article..." or "Today we will discover...".
 
-═══ BANNED PHRASES (AI detection) ═══
+═══ BANNED PHRASES (AI detection — NEVER use these) ═══
 "It's important to note", "Moreover", "Furthermore", "In conclusion", "Delve into",
-"Game-changer", "Comprehensive guide", "Leverage", "Utilize", "Navigate the"
+"Dive into", "In today's world", "Comprehensive guide", "Embark on", "Navigate the",
+"Leverage", "Utilize", "Facilitate", "Game-changer", "Unlock the potential",
+"Without further ado", "Needless to say", "Plethora of", "Tapestry of", "Testament to",
+"Crucial", "Pivotal", "Dans cet article", "Nous allons", "Il est important de"
 
 ═══ STRUCTURE ═══
 1. INTRODUCTION (150-200 words):

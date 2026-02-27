@@ -164,9 +164,12 @@ def generate_related_articles_html(related: List[Dict]) -> str:
     cards_html = ""
     for article in related:
         image = article.get("image", "")
-        # Fix relative path for articles/ subfolder
+        # Prefer thumbnail for card view (much smaller file size)
         if image and not image.startswith("http"):
-            image = f"../{image}"
+            # Compute both paths: thumb for mobile, original for desktop
+            thumb = image.replace("images/", "images/thumbs/", 1)
+            thumb_path = f"../{thumb}"
+            full_path  = f"../{image}"
         
         url = article.get("url", "")
         if url and not url.startswith("http"):
@@ -178,7 +181,14 @@ def generate_related_articles_html(related: List[Dict]) -> str:
         cards_html += f"""
                 <a href="{esc(url)}" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="{esc(image)}" alt="{esc(article.get('title', ''))}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="{esc(thumb_path)}"
+                            srcset="{esc(thumb_path)} 480w, {esc(full_path)} 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="{esc(article.get('title', ''))}"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -220,8 +230,41 @@ def generate_tpt_product_html(product: Dict) -> str:
     
     price_class = "text-green-600 dark:text-green-400" if price == "FREE" else "text-brand"
     
+    # Generate JSON-LD schema
+    schema = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": product.get("title", ""),
+        "image": product.get("image", ""),
+        "description": f"Educational resource: {product.get('title', '')}",
+        "brand": {
+            "@type": "Brand",
+            "name": "Little Smart Genius"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": product.get("url", ""),
+            "priceCurrency": "USD",
+            "price": "0.00" if price == "FREE" else price.replace("$", "").strip(),
+            "availability": "https://schema.org/InStock",
+            "seller": {
+                "@type": "Organization",
+                "name": "Little Smart Genius"
+            }
+        }
+    }
+    
+    if rating and rating != "New":
+        schema["aggregateRating"] = {
+            "@type": "AggregateRating",
+            "ratingValue": rating,
+            "reviewCount": reviews if reviews and reviews != "0" else "1"
+        }
+        
+    schema_html = f'\n        <script type="application/ld+json">\n{json.dumps(schema, ensure_ascii=False, indent=2)}\n        </script>\n'
+    
     return f"""
-        <!-- ═══ TPT PRODUCT RECOMMENDATION ═══ -->
+        <!-- ═══ TPT PRODUCT RECOMMENDATION & SCHEMA ═══ -->{schema_html}
         <div class="mt-10 rounded-2xl overflow-hidden border-2 border-brand/30 hover:border-brand/60 transition-all duration-300" style="background: linear-gradient(135deg, rgba(251, 146, 60, 0.05), rgba(99, 102, 241, 0.05));">
             <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-4">
@@ -246,12 +289,11 @@ def generate_tpt_product_html(product: Dict) -> str:
 """
 
 def generate_internal_links_html(current_slug: str, all_articles: List[Dict]) -> str:
-    """Generate a compact 'More from our blog' section with text links."""
+    """Generate a compact 'More from our blog' section with text links. (Currently disabled as per user request to avoid duplication with image cards)"""
+    return ""
+    
     # Pick 5 random other articles for internal link juice
     import random
-    others = [a for a in all_articles if a.get("slug", "") != current_slug]
-    if len(others) > 5:
-        others = random.sample(others, 5)
     
     if not others:
         return ""
