@@ -1,7 +1,57 @@
 {
-  "generated_at": "2026-02-27T20:28:35.390274",
-  "total_articles": 25,
+  "generated_at": "2026-02-27T20:40:41.736184",
+  "total_articles": 27,
   "articles": [
+    {
+      "title": "Best Sudoku Puzzles for Beginners Kids: Ultimate Guide",
+      "slug": "best-sudoku-puzzles-for-beginners-kids-ultimate-guide",
+      "date": "February 27, 2026",
+      "iso_date": "2026-02-27T20:39:36.796848",
+      "category": "Math Skills",
+      "excerpt": "Why Sudoku Puzzles Are Essential for Child Development\nLet's be honest. When you hear \"sudoku,\" you probably think of a newspaper puzzle for adults.",
+      "image": "images/best-sudoku-puzzles-for-beginners-kids-ultimate-guide-cover-1772224640.webp",
+      "reading_time": 14,
+      "url": "articles/best-sudoku-puzzles-for-beginners-kids-ultimate-guide.html",
+      "keywords": [
+        "sudoku",
+        "puzzles",
+        "kids",
+        "puzzle",
+        "grid",
+        "their",
+        "numbers",
+        "skills",
+        "learning",
+        "activities"
+      ],
+      "word_count": 2861,
+      "slot": "keyword"
+    },
+    {
+      "title": "Ultimate Printable Logic Puzzles for Kids 6-10",
+      "slug": "ultimate-printable-logic-puzzles-for-kids-6-10",
+      "date": "February 27, 2026",
+      "iso_date": "2026-02-27T20:24:43.674032",
+      "category": "Critical Thinking",
+      "excerpt": "Why Printable Logic Puzzles Are Essential for Kids 6-10\n\nLet's be honest. Sometimes, you just need a quiet, focused activity.",
+      "image": "images/printable-logic-puzzles-for-kids-ages-6-10-ultimate-collection-cover-1772223543.webp",
+      "reading_time": 14,
+      "url": "articles/ultimate-printable-logic-puzzles-for-kids-6-10.html",
+      "keywords": [
+        "puzzles",
+        "logic",
+        "puzzle",
+        "just",
+        "about",
+        "kids",
+        "their",
+        "printable",
+        "learning",
+        "thinking"
+      ],
+      "word_count": 2973,
+      "slot": "keyword"
+    },
     {
       "title": "Best Spelling Practice Worksheets for Elementary Students",
       "slug": "best-spelling-practice-worksheets-for-elementary-students",

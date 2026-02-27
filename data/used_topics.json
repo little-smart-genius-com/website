@@ -13,7 +13,8 @@
     "cryptogram puzzles for kids beginners",
     "spot the difference puzzles for kids printable",
     "how to make learning fun for reluctant learners",
-    "printable logic puzzles for kids ages 6-10"
+    "printable logic puzzles for kids ages 6-10",
+    "sudoku puzzles for beginners kids"
   ],
   "product": [
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7",
@@ -185,6 +186,11 @@
       "slot": "keyword",
       "topic": "printable logic puzzles for kids ages 6-10",
       "date": "2026-02-27T20:24:45.844958"
+    },
+    {
+      "slot": "keyword",
+      "topic": "sudoku puzzles for beginners kids",
+      "date": "2026-02-27T20:40:36.952560"
     }
   ]
 }
