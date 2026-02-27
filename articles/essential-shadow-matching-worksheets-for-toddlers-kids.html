@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Essential Shadow Matching Worksheets for Toddlers & Kids">
     <meta property="og:description" content="Discover fun shadow matching worksheets for toddlers. Download free printables and expert tips to boost cognitive & motor skills!">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/essential-shadow-matching-worksheets-for-toddlers-kids.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/essential-shadow-matching-worksheets-for-toddlers-kids.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-21T14:48:03.931962">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Visual Skills",
+      "item": "https://littlesmartgenius.com/blog-visual-skills.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Essential Shadow Matching Worksheets for Toddlers & Kids",
+      "item": "https://littlesmartgenius.com/articles/essential-shadow-matching-worksheets-for-toddlers-kids.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What age is appropriate for shadow matching worksheets?", "acceptedAnswer": {"@type": "Answer", "text": "Children as young as 18-24 months can begin with very simple, high-contrast shadow matching using large, familiar object shapes. True worksheet engagement typically starts around age 2-3 with adult guidance."}}, {"@type": "Question", "name": "How do shadow matching activities help child development?", "acceptedAnswer": {"@type": "Answer", "text": "They primarily develop visual discrimination (critical for reading), focus and concentration, problem-solving skills, and vocabulary. The physical act of matching also strengthens fine motor skills and hand-eye coordination."}}, {"@type": "Question", "name": "Why won't my toddler sit still for a matching worksheet?", "acceptedAnswer": {"@type": "Answer", "text": "This is normal! Keep sessions under 5 minutes, make it a hands-on game (not a sit-down test), and follow their interest. Try a kinesthetic version, like matching large floor cards, instead of a table worksheet."}}, {"@type": "Question", "name": "How can I make my own shadow matching worksheets?", "acceptedAnswer": {"@type": "Answer", "text": "Use simple clipart or photographs of everyday objects. In a document program, copy the image, convert one copy to solid black, and place them side-by-side. Ensure the black shadow is a clear, filled silhouette for easiest matching."}}, {"@type": "Question", "name": "Is shadow matching a pre-writing activity?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, indirectly. It builds the visual perception needed to recognize letters and the fine motor control needed to manipulate objects, both of which are foundational for later holding a pencil and forming letters correctly."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-visual-skills.html" class="hover:text-brand transition">Visual Skills</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Essential Shadow Matching Worksheets for Toddlers & Kids">Essential Shadow Matching Worksheets for Toddlers & Kids</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>Little Smart Genius Team</span>
                     <span>&bull;</span>
-                    <span>February 21, 2026</span>
+                    <span>February 21, 2026 at 02:48 PM</span>
                     <span>&bull;</span><span>Visual Skills</span>
                 </div>
 
@@ -436,62 +491,79 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp" alt="Essential Shadow Matching Worksheets for Toddlers & Kids" class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp"
+                    srcset="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 480w, ../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Essential Shadow Matching Worksheets for Toddlers & Kids"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
-                <h2>Essential Shadow Matching Worksheets for Toddlers & Kids</h2>
+                
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#essential-shadow-matching-worksheets-for-toddlers-kids" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Essential Shadow Matching Worksheets for Toddlers & Kids</a></li><li class="py-1"><a href="#why-shadow-matching-is-the-ultimate-cognitive-skill-builder" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why Shadow Matching is the Ultimate Cognitive Skill Builder</a></li><li class="py-1"><a href="#best-practices-for-introducing-shadow-matching-activities" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Best Practices for Introducing Shadow Matching Activities</a></li><li class="py-1"><a href="#top-age-appropriate-worksheet-themes-progressions" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Top Age-Appropriate Worksheet Themes & Progressions</a></li><li class="py-1"><a href="#how-to-boost-fine-motor-skills-while-shadow-matching" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">How to Boost Fine Motor Skills While Shadow Matching</a></li><li class="py-1"><a href="#essential-educational-resources-for-classroom-home" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Essential Educational Resources for Classroom & Home</a></li><li class="py-1"><a href="#proven-hands-on-learning-activities-beyond-the-worksheet" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Proven Hands-On Learning Activities Beyond the Worksheet</a></li><li class="py-1"><a href="#your-next-steps" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Your Next Steps</a></li>
+        </ul>
+    </div>
+    <h2 id="essential-shadow-matching-worksheets-for-toddlers-kids">Essential Shadow Matching Worksheets for Toddlers & Kids</h2>
 <div style="height: 0.5rem;"></div>
 <p>I’ll never forget watching my then two-year-old stare intently at a simple matching card, a little plastic apple in one hand and a picture of its shadow in the other. His brow was furrowed in that adorable way toddlers get when they’re <em>really</em> thinking. Then, a lightbulb moment. He slammed that apple down on the shadow with a triumphant “Ta-da!” That tiny victory wasn't just cute—it was his brain building a critical foundation for learning. When it comes to <strong>shadow matching worksheets for toddlers</strong>, parents have many great options.</p>
 <p>Sound familiar? You’re probably here because you’ve seen that look of concentration, too. You want to nurture that budding genius, but sorting through a million Pinterest ideas is overwhelming. Where do you even start with <strong>shadow matching worksheets for toddlers</strong>?</p>
-<p>Here’s the thing: you’ve found the perfect starting line. In my 15 years of teaching little ones, I’ve seen firsthand how powerful these simple activities are. This isn't just busy work. It’s brain-building work. Let’s walk through exactly why shadow matching is a superstar activity, how to introduce it without tears (yours or theirs!), and my favorite age-by-age themes and extensions.</p>
-<p>I’ll even share where to grab some amazing <a href="#"><a href="../freebies.html">free printables</a></a> to get you started today. This is especially helpful for <strong>shadow matching worksheets for toddlers</strong>.</p>
-<h2>Why Shadow Matching is the Ultimate Cognitive Skill Builder</h2>
+<p>Here’s the thing: you’ve found the perfect starting line. In my 15 years of teaching little ones, I’ve seen firsthand how powerful these simple activities are. This isn't just busy work. It’s brain-building work. Let’s walk through exactly why <a href="../freebies.html?dl=Shadow%20Matching" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">shadow matching</a> is a superstar activity, how to introduce it without tears (yours or theirs!), and my favorite age-by-age themes and extensions. I’ll even share where to grab some amazing <a href="../freebies.html">free printables</a> to get you started today.</p>
+<h2 id="why-shadow-matching-is-the-ultimate-cognitive-skill-builder">Why Shadow Matching is the Ultimate Cognitive Skill Builder</h2>
 <div style="height: 0.5rem;"></div>
-<p>At first glance, matching a butterfly to its dark outline seems straightforward. But under the surface? There’s a whole symphony of cognitive development happening. It's one of the most versatile <strong>learning activities</strong> you can pull out.</p>
+<p>At first glance, matching a butterfly to its dark outline seems straightforward. But under the surface? There’s a whole lot of <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">cognitive development</a> happening. Honestly, it's one of the most versatile <strong>learning activities</strong> you can pull out.</p>
 <h3>The Brain Science Behind Visual Discrimination</h3>
 <div style="height: 0.25rem;"></div>
-<p>Shadow matching directly trains the brain's visual cortex. Think of it as a workout for the eyes. According to research from the Child Development Institute, activities requiring strong visual discrimination in early childhood correlate with stronger literacy skills later. Why? Because recognizing that a squiggle is an "a" and not an "o" uses the exact same mental muscle as telling a cow’s shadow from a dog’s.</p>
+<p>Shadow matching directly trains the brain's visual cortex. Think of it as a workout for the eyes. Research shows that activities requiring strong visual discrimination in early childhood link to stronger literacy skills later. Here's why: recognizing that a squiggle is an "a" and not an "o" uses the exact same mental muscle as telling a cow’s shadow from a dog’s. It’s all about noticing details.</p>
 <h3>From Concrete to Abstract: A Foundational Step</h3>
 <div style="height: 0.25rem;"></div>
-<p>This task is a magic bridge. A toddler holds a real, red ball. Then they see a picture of a red ball. Finally, they see a solid black circle. Matching them connects all three. They learn that a symbol can represent a real object. That’s a huge leap toward abstract thinking, the kind needed for math and reading. This is especially helpful for <strong>shadow matching worksheets for toddlers</strong>.</p>
+<p>This task is a magic bridge. A toddler holds a real, red ball. Then they see a picture of a red ball. Finally, they see a solid black circle. Matching them connects all three. They learn that a symbol can represent a real object. That’s a huge leap. It’s the first step toward abstract thinking, the kind needed for math and reading.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-img1-1771685221.webp" alt="soft-watercolor-illustration-of-an-overhead-close--why-shadow-matching-is-the-ultimate-cognitive-skill-builder" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Building Attention Span and Patience</h3>
 <div style="height: 0.25rem;"></div>
-<p>Let’s be real. Toddler attention spans are... brief. Shadow matching meets them where they are. Start with just 2-3 simple matches for a 2-year-old. That small, achievable task builds focus. Celebrate the win! Then, gradually increase the complexity as their patience and confidence grow.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-img1-1771685221.webp" alt="soft-watercolor-illustration-of-an-overhead-close--why-shadow-matching-is-the-ultimate-cognitive-skill-builder" loading="lazy" width="1200" height="675"></figure></div>
-
+<p>Let’s be real. Toddler attention spans are... brief. Shadow matching meets them where they are. Start with just 2-3 simple matches for a 2-year-old. That small, achievable task builds focus. Celebrate the win! Then, gradually increase the complexity. Their patience and confidence will grow right along with it.</p>
 <blockquote>“Visual perception skills are the building blocks for reading, writing, and math. Games like shadow matching make developing these skills feel like play.” – A quote I often share from an early childhood occupational therapist.</blockquote>
 <div style="height: 1.5rem;"></div>
 <p><a href="#">Download our beginner-friendly sets on our freebies page to start this cognitive journey.</a></p>
-<h2>Best Practices for Introducing Shadow Matching Activities</h2>
+<h2 id="best-practices-for-introducing-shadow-matching-activities">Best Practices for Introducing Shadow Matching Activities</h2>
 <div style="height: 0.5rem;"></div>
-<p>Okay, so you’ve got a worksheet. How do you actually do this without it ending in crumpled paper? In my experience, the setup is everything. This is especially helpful for <strong>shadow matching worksheets for toddlers</strong>.</p>
+<p>Okay, so you’ve got a worksheet. How do you actually do this without it ending in crumpled paper? In my experience, the setup is everything.</p>
 <h3>Creating a Successful 'First Try' Experience</h3>
 <div style="height: 0.25rem;"></div>
-<p>Always do the activity yourself first. Is it too cluttered? Too vague? For a true beginner, think BIG and BOLD. Use large, highly contrasting shapes. Think a solid black banana silhouette next to a bright yellow banana. That visual pop is a clear signal for their brain.</p>
+<p>Always do the activity yourself first. Is it too cluttered? Too vague? For a true beginner, think BIG and BOLD. Use large, highly contrasting shapes. Think a solid black banana silhouette next to a bright yellow banana. That visual pop is a clear signal for their brain. It makes the choice obvious and builds instant confidence.</p>
 <h3>Using Language That Empowers, Not Frustrates</h3>
 <div style="height: 0.25rem;"></div>
-<p>Ditch the “Is this right?” which can feel like a test. Use open-ended, playful prompts. Try “I wonder which shadow this apple wants to snuggle into?” or “Can you find where this car’s shadow is parked?” It reduces pressure and keeps it a game.</p>
+<p>Ditch the “Is this right?” It can feel like a test. Use open-ended, playful prompts instead. Try “I wonder which shadow this apple wants to snuggle into?” or “Can you find where this car’s shadow is parked?” It reduces pressure. It keeps it a game. The tone matters more than you think.</p>
 <h3>The Power of Modeling & Thinking Aloud</h3>
 <div style="height: 0.25rem;"></div>
-<p>Don’t just hand it over. Sit beside them and do one yourself. Verbalize your process: “Hmm, this shape is round at the top and pointy at the bottom… let me look for a shadow that looks just like that.” You’re showing them *how* to think, not just what the answer is.</p>
-<h2>Top Age-Appropriate Worksheet Themes & Progressions</h2>
+<p>Don’t just hand it over. Sit beside them and do one yourself. Verbalize your process: “Hmm, this shape is round at the top and pointy at the bottom… let me look for a shadow that looks just like that.” You’re showing them *how* to think, not just what the answer is. They’ll copy your strategy.</p>
+<h2 id="top-age-appropriate-worksheet-themes-progressions">Top Age-Appropriate Worksheet Themes & Progressions</h2>
 <div style="height: 0.5rem;"></div>
-<p>Not all <strong>shadow matching worksheets for toddlers</strong> are created equal. Throwing a complex sheet at a young kid is a recipe for frustration. Here’s my tried-and-true progression.</p>
+<p>Not all <strong>shadow matching worksheets for toddlers</strong> are created equal. Throwing a complex sheet at a young kid is a recipe for frustration. Here’s my tried-and-true progression from years in the classroom.</p>
 <h3>Ages 18-24 Months: High-Contrast & Familiar Objects</h3>
 <div style="height: 0.25rem;"></div>
-<p>Think gigantic matching cards featuring household items. A cup, a ball, a spoon. Use only black and white for maximum visual pop. At this stage, you might be doing most of the matching while they watch and point. That’s okay! They’re absorbing the concept.</p>
+<p>Think gigantic matching cards featuring household items. A cup, a ball, a spoon. Use only black and white for maximum visual pop. At this stage, you might be doing most of the matching while they watch and point. That’s okay! They’re absorbing the concept. The exposure is the win.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-img2-1771685221.webp" alt="a-vibrant-modern-classroom-with-shelves-of-educat-best-practices-for-introducing-shadow-matching-activities" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Ages 2-3 Years: Expanding Vocabulary & Simple Scenes</h3>
 <div style="height: 0.25rem;"></div>
-<p>Now we can add color and themes! Introduce simple sheets like ‘Animals on the Farm’ or ‘Fruits in a Bowl.’ This is where matching ties directly to vocabulary building. “You found the pig’s shadow! What does a pig say?”</p>
+<p>Now we can add color and themes! Introduce simple sheets like ‘Animals on the Farm’ or ‘Fruits in a Bowl.’ This is where matching ties directly to vocabulary building. “You found the pig’s shadow! What does a pig say?” Two lessons in one.</p>
 <h3>Ages 4-6 Years: Complex Shapes, Letters, and Numbers</h3>
 <div style="height: 0.25rem;"></div>
-<p>For pre-K and kindergarten readiness, level up. Match shadows of geometric shapes, lowercase letters, and number symbols. This builds direct skills for school. Can they match the shadow of a ‘triangle’ or the number ‘4’? It’s a stealthy learning win.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-img2-1771685221.webp" alt="a-vibrant-modern-classroom-with-shelves-of-educat-best-practices-for-introducing-shadow-matching-activities" loading="lazy" width="1200" height="675"></figure></div>
-
+<p>For pre-K and kindergarten readiness, level up. Match shadows of geometric shapes, lowercase letters, and number symbols. This builds direct skills for school. Can they match the shadow of a ‘triangle’ or the number ‘4’? It’s a stealthy learning win. They feel like they’re playing a puzzle.</p>
 <p>My favorite themes to keep it engaging:</p>
 <ul>
 <li><strong>Transportation:</strong> Cars, planes, trains, boats.</li>
@@ -499,96 +571,79 @@
 <li><strong>Seasonal Fun:</strong> Pumpkins, snowflakes, beach balls.</li>
 </ul>
 <div style="height: 1rem;"></div>
-<p><a href="#">Our <a href="../blog.html">our blog</a> has a full progression guide for matching activities from toddler to kindergarten.</a></p>
-<h2>How to Boost Fine Motor Skills While Shadow Matching</h2>
+<p><a href="../blog.html">Our blog has a full progression guide for matching activities from toddler to kindergarten.</a></p>
+<h2 id="how-to-boost-fine-motor-skills-while-shadow-matching">How to Boost Fine Motor Skills While Shadow Matching</h2>
 <div style="height: 0.5rem;"></div>
 <p>Here’s a pro tip: don’t just use a pencil. We can double-dip and work on those essential <strong>fine motor skills</strong> at the same time. This is where your <strong>educational resources</strong> get super smart.</p>
 <h3>Beyond Pencils: Tweezers, Clips, and Stickers</h3>
 <div style="height: 0.25rem;"></div>
-<p>Provide child-safe tweezers or clothespins for picking up and placing the matching pieces. That pincer grasp action is gold for future writing. Or, use small stickers! Peeling a sticker and placing it on the correct shadow is a fantastic workout for little fingers.</p>
+<p>Provide child-safe tweezers or clothespins for picking up and placing the matching pieces. That pincer grasp action is gold for future writing. Or, use small stickers! Peeling a sticker and placing it on the correct shadow is a fantastic workout for little fingers. It’s sticky, fun, and effective.</p>
 <h3>Incorporating Scissor Practice Safely</h3>
 <div style="height: 0.25rem;"></div>
-<p>For kids ready for scissors, give them a pre-cut strip of paper with the shapes on it. Their first job is to snip the shape out. Then, they match the loose piece to the shadow. Two skills, one activity.</p>
+<p>For kids ready for scissors, give them a pre-cut strip of paper with the shapes on it. Their first job is to snip the shape out. Then, they match the loose piece to the shadow. Two skills, one activity. It builds independence and sequencing.</p>
 <h3>The 'Match & Paste' Method for Coordination</h3>
 <div style="height: 0.25rem;"></div>
-<p>Turn it into a craft. Have them apply a dot of glue from a glue stick to the back of the matched shape, then press it onto the shadow. This combines visual discrimination with precise hand-eye coordination. Messy? Maybe. Worth it? Absolutely.</p>
+<p>Turn it into a craft. Have them apply a dot of glue from a glue stick to the back of the matched shape, then press it onto the shadow. This combines visual discrimination with precise hand-eye coordination. Messy? Maybe. Worth it? Absolutely. The tactile feedback is priceless.</p>
 <p><a href="#">Check our products page for our fine-motor booster kits that include special tools.</a></p>
-<h2>Essential Educational Resources for Classroom & Home</h2>
+<h2 id="essential-educational-resources-for-classroom-home">Essential Educational Resources for Classroom & Home</h2>
 <div style="height: 0.5rem;"></div>
 <p>Whether you’re a parent setting up a quiet time activity or a teacher creating a learning center, a few smart supplies make all the difference.</p>
 <h3>Must-Have Materials for a Matching Center</h3>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-img3-1771685221.webp" alt="a-soft-sunlit-classroom-corner-with-two-ethnicall-top-age-appropriate-worksheet-themes-progressions" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <ol>
-<li><strong>Laminator and Velcro Dots:</strong> Laminate your best worksheets. Add a hook-and-loop dot to the shadow and the back of the matching piece. Suddenly, it’s a reusable, tactile board that can survive a classroom of eager hands.</li>
-<li><strong>Small Manipulatives:</strong> Keep a bin of counters, mini erasers, or buttons nearby. Kids can cover the matching shadow with an object instead of drawing, which is less permanent and encourages repetition.</li>
+<li><strong>Laminator and Velcro Dots:</strong> Laminate your best worksheets. Add a hook-and-loop dot to the shadow and the back of the matching piece. Suddenly, it’s a reusable, tactile board that can survive a classroom of eager hands. It lasts for years.</li>
+<li><strong>Small Manipulatives:</strong> Keep a bin of counters, mini erasers, or buttons nearby. Kids can cover the matching shadow with an object instead of drawing, which is less permanent and encourages repetition. They love the click of a counter on the paper.</li>
 </ol>
 <h3>DIY: Creating Durable, Reusable Matching Sets</h3>
 <div style="height: 0.25rem;"></div>
-<p>Grab some colored cardstock and black cardstock. Cut out simple shapes from the colored paper. Then, use them as a stencil to cut identical shapes from the black paper—instant shadows! Mount them on wooden blocks or felt for a lovely 3D, sensory-rich set.</p>
+<p>Grab some colored cardstock and black cardstock. Cut out simple shapes from the colored paper. Then, use them as a stencil to cut identical shapes from the black paper—instant shadows! Mount them on wooden blocks or felt for a lovely 3D, sensory-rich set. It feels substantial in their hands.</p>
 <h3>Digital Alternatives: When to Use Screen-Based Matching</h3>
 <div style="height: 0.25rem;"></div>
-<p>Real talk: sometimes you need a quick, contained activity. A quality digital matching game on a tablet is great for drag-and-drop practice and can be perfect for waiting rooms. But limit it. It lacks the crucial fine motor component of physically manipulating an object. Think of screens as the occasional supplement, not the main course.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-img3-1771685221.webp" alt="a-soft-sunlit-classroom-corner-with-two-ethnicall-top-age-appropriate-worksheet-themes-progressions" loading="lazy" width="1200" height="675"></figure></div>
-
-<h2>Proven Hands-On Learning Activities Beyond the Worksheet</h2>
+<p>Real talk: sometimes you need a quick, contained activity. A quality digital matching game on a tablet is great for drag-and-drop practice. It can be perfect for waiting rooms. But limit it. It lacks the crucial fine motor component of physically manipulating an object. Think of screens as the occasional supplement, not the main course. Nothing beats real-world touch.</p>
+<h2 id="proven-hands-on-learning-activities-beyond-the-worksheet">Proven Hands-On Learning Activities Beyond the Worksheet</h2>
 <div style="height: 0.5rem;"></div>
 <p>Ready to get up and move? Let’s take the concept off the page! These <strong>educational activities</strong> are classroom and backyard favorites.</p>
 <h3>Shadow Puppet Theater: A Dramatic Extension</h3>
 <div style="height: 0.25rem;"></div>
-<p>At night, use a flashlight and your hands to make simple animal shadows on the wall. Have your child hold up the correct matching card from a set for the shadow they see. It’s magical and memorable.</p>
+<p>At night, use a flashlight and your hands to make simple animal shadows on the wall. Have your child hold up the correct matching card from a set for the shadow they see. It’s magical and memorable. They’re connecting a moving image to a static one. It blows their minds.</p>
 <h3>'Match the Shadow' Outdoor Nature Hunt</h3>
 <div style="height: 0.25rem;"></div>
-<p>On a sunny day, take toys or found nature items (a leaf, a pinecone, a toy dinosaur) outside. Place them on the pavement and trace their shadows with sidewalk chalk. Mix up the objects and let the kids match the item back to its chalky shadow outline.</p>
+<p>On a sunny day, take toys or found nature items (a leaf, a pinecone, a toy dinosaur) outside. Place them on the pavement and trace their shadows with sidewalk chalk. Mix up the objects and let the kids match the item back to its chalky shadow outline. Fresh air plus learning? Yes, please.</p>
 <h3>Kinesthetic Matching: Body Shadows & Movement</h3>
 <div style="height: 0.25rem;"></div>
-<p>Get their whole body involved! Tape a large sheet of paper to the wall. Have a child stand sideways in front of a lamp while you trace their body’s shadow. Later, can they pose to match that same shadow shape? It’s hilarious, active, and deeply insightful.</p>
+<p>Get their whole body involved! Tape a large sheet of paper to the wall. Have a child stand sideways in front of a lamp while you trace their body’s shadow. Later, can they pose to match that same shadow shape? It’s hilarious, active, and deeply insightful. They learn about their own form.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-img4-1771685221.webp" alt="in-a-bright-inviting-classroom-filled-with-educat-how-to-boost-fine-motor-skills-while-shadow-matching" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <p><a href="#">For more active learning ideas, explore our collection of classroom activities.</a></p>
-<h2>Wrapping It All Up</h2>
+<h2 id="your-next-steps">Your Next Steps</h2>
 <div style="height: 0.5rem;"></div>
-<p>Let’s bring it home. Shadow matching is so much more than a quiet-time filler. It’s a powerhouse for building the visual and mental skills your child needs to thrive. Remember these three things:</p>
+<p>Let’s bring it home. Shadow matching is so much more than a quiet-time filler. It’s a powerhouse for building the visual and mental skills your child needs to thrive. Remember these three things from my years of doing this:</p>
 <ol>
 <li>Start simple and celebrate the effort, not just the correct match.</li>
-<li>Use it as a chance to build fine motor skills with fun tools.</li>
+<li>Use it as a chance to build <a href="../blog-creative-arts.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">fine motor skills</a> with fun tools.</li>
 <li>Don’t be afraid to take the learning off the worksheet and into play.</li>
 </ol>
 <div style="height: 1rem;"></div>
-<p>You’ve got this. By offering these activities, you’re giving your little smart genius a fantastic, playful head start. The best part? You can begin right this second. I’ve created a bundle of my most-loved <strong>shadow matching worksheets for toddlers</strong> that you can download for free. And if you’re looking for a full, done-for-you curriculum of matching and pre-writing fun, my <a href="#"><a href="../products.html">premium resources</a></a> have you covered.</p>
-<h2>Frequently Asked Questions</h2>
-<div style="height: 0.5rem;"></div>
-<p><strong>What age is appropriate for <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">shadow matching worksheets</a>?</strong><br>
+<p>You’ve got this. By offering these activities, you’re giving your little smart genius a fantastic, playful head start. The best part? You can begin right this second. I’ve created a bundle of my most-loved <strong>shadow matching worksheets for toddlers</strong> that you can download for free. And if you’re looking for a full, done-for-you curriculum of matching and pre-writing fun, my <a href="../products.html">premium resources</a> have you covered.</p>
+<p><strong>What age is appropriate for <a href="../blog-visual-skills.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">shadow matching worksheets</a>?</strong><br>
 Children as young as 18-24 months can begin with very simple, high-contrast shadow matching using large, familiar object shapes. True worksheet engagement typically starts around age 2-3 with adult guidance.</p>
-<p><strong>How do <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">shadow matching activities</a> help child development?</strong><br>
-They primarily develop visual discrimination (critical for reading), focus and concentration, problem-solving skills, and vocabulary. The physical act of matching also strengthens fine motor skills and hand-eye coordination.</p>
+<p><strong>How do <a href="../blog-visual-skills.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">shadow matching activities</a> help child development?</strong><br>
+They primarily develop visual discrimination (critical for reading), focus and concentration, <a href="../blog-problem-solving.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">problem-solving skills</a>, and vocabulary. The physical act of matching also strengthens fine motor skills and hand-eye coordination.</p>
 <p><strong>Why won't my toddler sit still for a matching worksheet?</strong><br>
 This is normal! Keep sessions under 5 minutes, make it a hands-on game (not a sit-down test), and follow their interest. Try a kinesthetic version, like matching large floor cards, instead of a table worksheet.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-img4-1771685221.webp" alt="in-a-bright-inviting-classroom-filled-with-educat-how-to-boost-fine-motor-skills-while-shadow-matching" loading="lazy" width="1200" height="675"></figure></div>
-
 <p><strong>How can I make my own shadow matching worksheets?</strong><br>
 Use simple clipart or photographs of everyday objects. In a document program, copy the image, convert one copy to solid black, and place them side-by-side. Ensure the black shadow is a clear, filled silhouette for easiest matching.</p>
 <p><strong>Is shadow matching a pre-writing activity?</strong><br>
 Yes, indirectly. It builds the visual perception needed to recognize letters and the fine motor control needed to manipulate objects, both of which are foundational for later holding a pencil and forming letters correctly.</p>
-<p><em>According to the <a href="https://www.naeyc.org/resources" target="_blank" rel="noopener">National Association for the Education of Young Children (NAEYC)</a>, hands-on educational activities are crucial for early childhood development.</em></p>
-<div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What age is appropriate for shadow matching worksheets?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Children as young as 18-24 months can begin with very simple, high-contrast shadow matching using large, familiar object shapes. True worksheet engagement typically starts around age 2-3 with adult guidance.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How do shadow matching activities help child development?</h3>
-<div style="height: 0.25rem;"></div>
-<p>They primarily develop visual discrimination (critical for reading), focus and concentration, problem-solving skills, and vocabulary. The physical act of matching also strengthens fine motor skills and hand-eye coordination.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Why won't my toddler sit still for a matching worksheet?</h3>
-<div style="height: 0.25rem;"></div>
-<p>This is normal! Keep sessions under 5 minutes, make it a hands-on game (not a sit-down test), and follow their interest. Try a kinesthetic version, like matching large floor cards, instead of a table worksheet.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How can I make my own shadow matching worksheets?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Use simple clipart or photographs of everyday objects. In a document program, copy the image, convert one copy to solid black, and place them side-by-side. Ensure the black shadow is a clear, filled silhouette for easiest matching.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Is shadow matching a pre-writing activity?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Yes, indirectly. It builds the visual perception needed to recognize letters and the fine motor control needed to manipulate objects, both of which are foundational for later holding a pencil and forming letters correctly.</p></div></div>
-<div class="cta-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: center;">
-    <h3 style="color: white; margin-bottom: 15px;">Love Learning Activities?</h3>
-<div style="height: 0.25rem;"></div>
-<p style="color: white; margin-bottom: 20px;">Discover our <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">free printable worksheets</a> and <a href="../products.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">premium resources</a>:</p>
-    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="../freebies.html" style="background: #F48C06; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Free Worksheets</a>
-        <a href="../products.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Premium Resources</a>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#matching</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#shadow</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#worksheets</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#skills</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#activities</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#simple</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#visual</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#worksheet</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#fine</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#motor</a>
+        </div>
     </div>
-</div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -626,7 +681,14 @@ Yes, indirectly. It builds the visual perception needed to recognize letters and
                 
                 <a href="../articles/ultimate-counting-exercises-for-preschoolers-printable.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp" alt="Ultimate Counting Exercises for Preschoolers Printable" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp"
+                            srcset="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 480w, ../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Counting Exercises for Preschoolers Printable"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -638,7 +700,14 @@ Yes, indirectly. It builds the visual perception needed to recognize letters and
                 </a>
                 <a href="../articles/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide-cover-1771633341.webp" alt="Best Fine Motor Skills Worksheets for Preschoolers: The U..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide-cover-1771633341.webp"
+                            srcset="../images/thumbs/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide-cover-1771633341.webp 480w, ../images/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide-cover-1771633341.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Fine Motor Skills Worksheets for Preschoolers: The U..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -650,7 +719,81 @@ Yes, indirectly. It builds the visual perception needed to recognize letters and
                 </a>
                 <a href="../articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp" alt="Best Printable Math Worksheets for First Graders: Ultimat..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp"
+                            srcset="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 480w, ../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Printable Math Worksheets for First Graders: Ultimat..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Math Skills</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Best Printable Math Worksheets for First Graders: Ultimat...</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="../articles/ultimate-counting-exercises-for-preschoolers-printable.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp"
+                            srcset="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 480w, ../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Counting Exercises for Preschoolers Printable"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Math Skills</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Ultimate Counting Exercises for Preschoolers Printable</h4>
+                    </div>
+                </a>
+                <a href="../articles/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide-cover-1771633341.webp"
+                            srcset="../images/thumbs/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide-cover-1771633341.webp 480w, ../images/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide-cover-1771633341.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Fine Motor Skills Worksheets for Preschoolers: The U..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Creative Arts</span>
+                            <span class="text-xs text-slate-500">📖 14 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Best Fine Motor Skills Worksheets for Preschoolers: The U...</h4>
+                    </div>
+                </a>
+                <a href="../articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp"
+                            srcset="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 480w, ../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Printable Math Worksheets for First Graders: Ultimat..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -663,41 +806,7 @@ Yes, indirectly. It builds the visual perception needed to recognize letters and
             </div>
         </div>
 
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Mazes to Unlock Your Child's Problem-Solving S...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-skyscraper-to-boost-your-childs-logic-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Skyscraper to Boost Your Child's Logic Skills
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-coloring-activities-build-cognitive-skills-in-children.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Coloring Activities Build Cognitive Skills in Children
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Fine Motor Skills Worksheets for Preschoolers: The U...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-photorealistic-spot-the-difference-puzzles-build-focus-visual-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Photorealistic Spot the Difference Puzzles Build Focu...
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
-            </div>
-        </div>
+
 
 
             <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
@@ -721,27 +830,6 @@ Yes, indirectly. It builds the visual perception needed to recognize letters and
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -852,5 +940,288 @@ Yes, indirectly. It builds the visual perception needed to recognize letters and
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🔢</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Kakurasu</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Kakurasu</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Kakurasu</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Kakurasu";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>

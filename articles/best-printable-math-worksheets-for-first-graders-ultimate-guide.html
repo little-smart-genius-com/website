@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Best Printable Math Worksheets for First Graders: Ultimat...">
     <meta property="og:description" content="Download free 1st-grade math worksheets designed by an expert teacher. Boost your child's skills with printable PDFs and teaching tips today!">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/best-printable-math-worksheets-for-first-graders-ultimate-guide.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-21T01:02:07.233530">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Math Skills",
+      "item": "https://littlesmartgenius.com/blog-math-skills.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Best Printable Math Worksheets for First Graders: Ultimat...",
+      "item": "https://littlesmartgenius.com/articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What math skills should a first grader know?", "acceptedAnswer": {"@type": "Answer", "text": "A first grader should master adding and subtracting within 20, understand place value (tens and ones), tell time to the hour and half-hour, and identify basic 2D and 3D shapes. Printable math worksheets for first graders are excellent for reinforcing each of these core areas with targeted practice."}}, {"@type": "Question", "name": "How can I get free printable worksheets?", "acceptedAnswer": {"@type": "Answer", "text": "Many educational websites offer free downloadable PDF resources. Look for sites created by teachers that provide samples of their work. Our blog offers several free, high-quality worksheet packs focusing on addition and number bonds to get you started without any cost."}}, {"@type": "Question", "name": "How do you differentiate math worksheets?", "acceptedAnswer": {"@type": "Answer", "text": "Differentiate by providing varying levels of the same concept. For example, for addition: one worksheet with pictures, one with a number line, and one with challenging missing addend problems. This allows all children in a classroom or homeschool setting to work at their appropriate challenge level using the same core teaching resources."}}, {"@type": "Question", "name": "How long should a first grader do worksheets?", "acceptedAnswer": {"@type": "Answer", "text": "Limit focused worksheet time to 10-15 minutes per session for typical 6-7 year olds. Their attention spans are short. It's more effective to do a brief, focused worksheet activity daily than one long, frustrating session. Always pair it with hands-on educational activities."}}, {"@type": "Question", "name": "Are worksheets aligned with Common Core?", "acceptedAnswer": {"@type": "Answer", "text": "Quality teaching resources should be. Reputable creators will explicitly state if their printable math worksheets for first graders are aligned with Common Core or other state standards. This ensures the skills practiced match what is being taught in most public school classrooms."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-math-skills.html" class="hover:text-brand transition">Math Skills</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Best Printable Math Worksheets for First Graders: Ultimat...">Best Printable Math Worksheets for First Graders: Ultimat...</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>Little Smart Genius Team</span>
                     <span>&bull;</span>
-                    <span>February 21, 2026</span>
+                    <span>February 21, 2026 at 01:02 AM</span>
                     <span>&bull;</span><span>Math Skills</span>
                 </div>
 
@@ -436,155 +491,144 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp" alt="Best Printable Math Worksheets for First Graders: Ultimat..." class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp"
+                    srcset="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 480w, ../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Best Printable Math Worksheets for First Graders: Ultimat..."
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
                 </figure>
-Remember the Great Macaroni Math Incident of 2012? I had a student so determined to count his 100th-day collection that he glued actual macaroni to his paper. It was creative, but let’s just say it didn’t dry well. That’s when I truly appreciated the clean, reusable magic of a good **printable <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">math worksheets</a> for first graders**. As a teacher for over 15 years, I’ve seen the panic in a parent’s eyes when they want to help their child practice math at home. Where do you even start? The internet is a jungle of resources.
-Sound familiar? You’re not alone. This guide is your map. I’ll walk you through why these worksheets work, how to pick the best ones, and where to find amazing free and <a href="../products.html">premium resources</a>. You’ll discover the core skills to focus on and get my insider tips for making these learning materials a stress-free part of your routine. Let’s find the perfect printables for your little smart genius.
-<h2>Why Printable Math Worksheets are Essential for First Grade Learning</h2>
-Here’s the thing: young kids need practice. But it has to be the right kind. Worksheets get a bad rap sometimes, but when they’re designed well, they’re a powerful tool. They’re not about busywork. They’re about building confidence through structured, achievable steps.
-Think of them like training wheels for the brain. They provide a safe space to try out new skills before riding solo on a word problem or a tricky calculation.
-<h3>Building Foundational Math Fluency</h3>
-Worksheets provide repetitive, structured practice that cements concepts like addition facts. This repetition is key for moving from counting on fingers to automatic recall. The National Council of Teachers of Mathematics stresses the importance of developing procedural fluency—and targeted practice is how we get there. It’s like memorizing your phone number; you do it enough times, it just sticks.
-<h3>Supporting Differentiated Instruction</h3>
-This is teacher-talk for meeting each kid where they are. In one classroom, I might have a child struggling to grasp subtraction and another ready for a challenge. With printables, I can easily tailor the work. Example: A child struggling with subtraction can use a targeted worksheet with number lines, while an advanced peer tackles a missing addend puzzle page. Everyone feels successful.
-<h3>Encouraging Independent Practice</h3>
-First grade is a huge year for growing independence. A clear, well-designed worksheet gives a child a task they can understand and complete on their own. That “I did it myself!” feeling is pure gold for their confidence. Quick tip: Limit worksheet time to 10-15 minute sessions for 6-7 year olds. This maintains engagement and prevents frustration. Always follow it with a hands-on activity.
-For more foundational number sense ideas that pair perfectly with worksheets, explore our <a href="../blog.html">our blog</a> post on fun math games.
-<h2>How to Choose the Best Educational Activities and Worksheets</h2>
-</figure>
-Not all worksheets are created equal. I’ve downloaded my fair share of duds—cluttered pages, tiny fonts, confusing instructions. You want resources that help, not hinder. So, what should you look for?
+You know what? I’ll never forget the year a student brought his 100th-day project to show-and-tell. He’d glued 100 pieces of macaroni to a poster board. It was a masterpiece until it started to… well, let’s say it had a unique aroma by lunchtime. That experience, funny as it was, taught me something. It showed me the quiet, reliable value of a simple **printable <a href="../blog-math-skills.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">math worksheets</a> for first graders**. No mess, no fuss, just pure practice. After 15 years in the classroom and now helping parents at home, I see that same look—a mix of love and sheer panic—when a parent asks, “How do I help them with math?” The internet feels endless and overwhelming.
+You’re in the right place. I’ve been there. Let me share what I’ve learned works. We’ll talk about why these sheets are more than just paper, how to spot the good ones in a sea of clutter, and where to find fantastic materials that won’t break the bank. I’ll point you to the skills that matter most and give you my real-world tips for making this a peaceful part of your day. Ready to find the perfect fit for your little learner?
 
-<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-img1-1771635640.webp" alt="a-soft-watercolor-style-close-up-overhead-flat-la-why-printable-math-worksheets-are-essential-for-first-grade-learning" loading="lazy" width="1200" height="675"></figure></div>
-
-<h3>Aligning with Core Curriculum Standards</h3>
-This sounds technical, but it’s simple. You want resources that cover what schools are actually teaching. For first grade, focus on these big areas:
-<ul>
-<li><strong>Operations & Algebraic Thinking:</strong> Adding and subtracting within 20.</li>
-<li><strong>Number & Operations in Base Ten:</strong> Understanding tens and ones (place value).</li>
-<li><strong>Measurement & Data:</strong> Telling time, organizing data on simple graphs.</li>
-<li><strong>Geometry:</strong> Naming and composing 2D and 3D shapes.</li>
-</ul>
-When worksheets align with these standards, you know you’re reinforcing the right stuff.
-<h3>Assessing Visual Clarity and Readability</h3>
-Look at the page. Is it friendly? Detailed point: Worksheets should have clear, large print, ample space for writing, and uncluttered visuals. Too many borders, cartoons, or problems crammed together can overwhelm a new reader. The math challenge should be the numbers, not figuring out what to do.
-<h3>Matching Worksheets to Your Child's Learning Style</h3>
-All kids learn differently. A visual learner might love color-by-number math sheets. A hands-on, kinesthetic learner might struggle with a page of pure equations. Actionable tip: For those kinesthetic learners, pair a standard worksheet with physical objects like blocks or cereal. Let them solve the problem with the manipulative first, then record the answer on the sheet.
-Check our standards-aligned <strong>printable math worksheet</strong> packs in the teaching resources section—they’re designed with all these principles in mind.
-<h2>Top Free vs. Premium Downloadable PDF Resources</h2>
-Let’s talk about the great free vs. paid debate. In my experience, there’s a place for both in your teaching toolkit.
-<h3>Where to Find Quality Free Classroom Materials</h3>
-Many amazing teacher-created sites offer fantastic freebies. These are perfect for:
-<ol>
-<li>Testing a new topic to see if your child is ready.</li>
-<li>Getting a single, focused practice page on a specific skill, like “adding doubles.”</li>
-<li>Finding a fun seasonal activity for a rainy day.</li>
-</ol>
-The catch? <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Free resources</a> often lack a coherent sequence. You might find a great addition sheet, but not a matching subtraction sheet or word problems to follow it up. They also rarely include answer keys or teaching notes.
-<h3>What You Get with Premium Homeschool Packages</h3>
-When you invest in a quality premium pack, you’re buying time and coherence. You typically get:
-<ul>
-<li>A full scope and sequence for a unit or entire year.</li>
-<li>Differentiated levels (easy, medium, challenge) for the same skill.</li>
-<li>Detailed answer keys.</li>
-<li>Thematic units that integrate skills.</li>
-<li>Teacher/parent guides with activity ideas.</li>
-</ul>
-It’s the difference between buying a single puzzle piece and getting the whole puzzle box with the picture on the front.
-<h3>Maximizing Value: Mixing Free and Paid Resources</h3>
-My favorite strategy? Start with free resources to gauge interest and identify gaps. Then, invest in a comprehensive bundle for the skills that need the most work. For instance, use free addition worksheets, but if word problems are a major hurdle, get a premium word problem bundle that systematically builds that skill.
-Grab three of our most popular <a href="../freebies.html">free worksheets</a> PDFs from the homepage to start your collection.
-
-<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-img2-1771635640.webp" alt="a-cheerful-female-teacher-with-mixed-ethnicity-si-how-to-choose-the-best-educational-activities-and-worksheets" loading="lazy" width="1200" height="675"></figure></div>
-
-<h2>Core Math Skills: Ultimate Printable Worksheets Library</h2>
-</figure>
-So what should you actually be practicing? Let’s break down the first grade math world into three key areas. Think of these as your worksheet shopping list.
-<h3>Addition & Subtraction Mastery Sheets</h3>
-Fluency here is everything. Look for worksheets that progress logically:
-<ol>
-<li><em>Concrete:</em> Using pictures (how many apples total?).</li>
-<li><em>Representational:</em> Using number lines or ten frames.</li>
-<li><em>Abstract:</em> Bare equations (5 + 3 = __).</li>
-</ol>
-Don’t just practice facts in isolation. Seek out “Fact Family” worksheets (showing the relationship between 3, 4, and 7) and missing addend problems (2 + __ = 5). These build deeper understanding.
-<h3>Place Value and Number Sense Printables</h3>
-This is about understanding that the “1” in “12” means “one ten,” not just “one.” The best printables make this tangible. Look for:
-- “Build a Number” mats where kids draw tens rods and ones cubes.
-- Cut-and-paste activities matching numbers to their base-ten block representation.
-- Number chart puzzles where pieces of a 100-chart are missing.
-<h3>Geometry & Measurement Fun Activities</h3>
-Go beyond “circle the square.” Great worksheets ask kids to compose new shapes from smaller ones (using triangles to make a rhombus). For measurement, find pages that use non-standard units—like measuring a pencil with paperclips. Sorting and graphing worksheets where they categorize toy animals or shapes are also fantastic for early data skills.
-<blockquote>“The shift from ‘all I see is a page of problems’ to ‘I know how to tackle this’ is what we’re after. A well-designed worksheet scaffolds that shift.” – Ms. Alvarez, 1st Grade Teacher & Curriculum Specialist</blockquote>
-Our comprehensive <strong>addition worksheet library</strong> offers this graduated difficulty, perfect for meeting every child right where they are.
-<h2>Seasonal and Thematic Teaching Resources for Year-Round Fun</h2>
-</figure>
-Real talk: a pumpkin worksheet in October just *feels* more exciting. Thematic resources are secret engagement boosters. They connect math to the child’s world.
-<h3>Holiday-Themed Problem Solving</h3>
-Think “How many more ornaments does the tree need?” for Christmas or “Count the shamrocks” for St. Patrick’s Day. This contextualizes math. It’s not just subtraction; it’s figuring out how many Valentine’s cards are left to give out. The novelty captures their attention.
-<h3>Connecting Math to Science and Nature</h3>
-Example: A ‘Fall Leaf Sort’ worksheet teaches categorization, counting, and comparing—all core <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">math skills</a>—while talking about science. You can graph the types of leaves found on a walk. Suddenly, math is an exploration, not just a subject.
-<h3>Using Story-Based Word Problems</h3>
-Narrative is powerful. A worksheet that tells a short story about “Sam’s Lemonade Stand” for money practice, or “The Search for the Missing Dinosaurs” for counting, does double duty. It builds reading comprehension and shows kids *why* we need math. They’re solving a mystery, not just filling in blanks.
-See our autumn-themed learning materials bundle for more integrated activities like these.
-<h2>Pro Tips: Organizing and Using Your Learning Materials Effectively</h2>
-
-<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-img3-1771635640.webp" alt="a-medium-shot-in-a-cozy-sunlit-home-office-where-top-free-vs-premium-downloadable-pdf-resources" loading="lazy" width="1200" height="675"></figure></div>
-
-You’ve downloaded the gems. Now what? Avoid the dreaded pile of papers on the kitchen counter. A little organization goes a long way.
-<h3>Creating a Simple Worksheet Binder System</h3>
-All you need is one 3-ring binder and some tab dividers. Label the tabs by skill (Addition, Subtraction, Geometry, Time, etc.). Hole-punch your worksheets and file them. Keep a pencil pouch with sharpened pencils, a small eraser, and a few crayons right in the binder ring. Everything is in one portable spot.
-<h3>Incorporating Worksheets into Daily Routines</h3>
-Consistency beats marathon sessions. Set a predictable “Math Minute” time 3-4 days a week. Maybe right after breakfast or before afternoon play. Pair a 10-minute worksheet with a 5-minute hands-on game. This balance keeps it fresh and sustainable.
-<h3>Tracking Progress Without the Stress</h3>
-Please, don’t grade every sheet. Use a highlighter to circle problems they did well on. Use a fun stamp or sticker for completion. Every few weeks, pull out an old worksheet and a new one on the same skill. Sit with your child and say, “Look at this! Two months ago, these number lines really helped you. Now you’re solving these in your head!” Showing them their own growth is the best motivator.
-Our blog has a full guide on setting up a stress-free homeschool schedule if you need more structure ideas.
-<h2>Wrapping It Up</h2>
-Okay, let’s recap the big ideas. First, choose <strong>printable math worksheets for first graders</strong> that are clear, standards-aligned, and fit your child’s learning style. Second, mix free gems with targeted <a href="../products.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">premium resources</a> to save your sanity. Third, keep it short, fun, and organized to build confidence, not frustration.
-You’ve got this. Supporting your first grader’s math journey is about providing the right tools at the right time. These worksheets are one of those tools. Use them wisely, pair them with play, and celebrate every bit of progress.
-Remember, the goal isn’t a perfect page. It’s a child who feels capable and curious about numbers. Now you’re equipped with the ultimate guide to finding the best **printable math worksheets for first graders** out there. Go forth and print (and maybe keep the real macaroni for dinner).
-<h2>Frequently Asked Questions (FAQ)</h2>
-<h3>What math skills should a first grader know?</h3>
-<div style="height: 0.25rem;"></div>
-<p>A first grader should master adding and subtracting within 20, understand place value (tens and ones), tell time to the hour and half-hour, and identify basic 2D and 3D shapes. <strong>Printable math worksheets for first graders</strong> are excellent for reinforcing each of these core areas with targeted practice.</p>
-<h3>How can I get free printable worksheets?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Many educational websites offer free downloadable PDF resources. Look for sites created by teachers that provide samples of their work. Our blog offers several free, high-quality worksheet packs focusing on addition and number bonds to get you started without any cost.</p>
-<h3>How do you differentiate math worksheets?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Differentiate by providing varying levels of the same concept. For example, for addition: one worksheet with pictures, one with a number line, and one with challenging missing addend problems. This allows all children in a classroom or homeschool setting to work at their appropriate challenge level using the same core teaching resources.</p>
-
-<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-img4-1771635640.webp" alt="a-cheerful-diverse-7-year-old-child-in-a-cozy-su-core-math-skills-ultimate-printable-worksheets-library" loading="lazy" width="1200" height="675"></figure></div>
-
-<h3>How long should a first grader do worksheets?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Limit focused worksheet time to 10-15 minutes per session for typical 6-7 year olds. Their attention spans are short. It's more effective to do a brief, focused worksheet activity daily than one long, frustrating session. Always pair it with hands-on educational activities.</p>
-<h3>Are worksheets aligned with Common Core?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Quality teaching resources should be. Reputable creators will explicitly state if their <strong>printable math worksheets for first graders</strong> are aligned with Common Core or other state standards. This ensures the skills practiced match what is being taught in most public school classrooms.</p><p><em>According to the <a href="https://www.naeyc.org/resources" target="_blank" rel="noopener">National Association for the Education of Young Children (NAEYC)</a>, hands-on educational activities are crucial for early childhood development.</em></p>
-<div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What math skills should a first grader know?</h3>
-<div style="height: 0.25rem;"></div>
-<p>A first grader should master adding and subtracting within 20, understand place value (tens and ones), tell time to the hour and half-hour, and identify basic 2D and 3D shapes. Printable math worksheets for first graders are excellent for reinforcing each of these core areas with targeted practice.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How can I get free printable worksheets?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Many educational websites offer free downloadable PDF resources. Look for sites created by teachers that provide samples of their work. Our blog offers several free, high-quality worksheet packs focusing on addition and number bonds to get you started without any cost.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How do you differentiate math worksheets?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Differentiate by providing varying levels of the same concept. For example, for addition: one worksheet with pictures, one with a number line, and one with challenging missing addend problems. This allows all children in a classroom or homeschool setting to work at their appropriate challenge level using the same core teaching resources.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How long should a first grader do worksheets?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Limit focused worksheet time to 10-15 minutes per session for typical 6-7 year olds. Their attention spans are short. It's more effective to do a brief, focused worksheet activity daily than one long, frustrating session. Always pair it with hands-on educational activities.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Are worksheets aligned with Common Core?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Quality teaching resources should be. Reputable creators will explicitly state if their printable math worksheets for first graders are aligned with Common Core or other state standards. This ensures the skills practiced match what is being taught in most public school classrooms.</p></div></div>
-<div class="cta-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: center;">
-    <h3 style="color: white; margin-bottom: 15px;">Love Learning Activities?</h3>
-<div style="height: 0.25rem;"></div>
-<p style="color: white; margin-bottom: 20px;">Discover our <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">free printable worksheets</a> and premium resources:</p>
-    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="../freebies.html" style="background: #F48C06; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Free Worksheets</a>
-        <a href="../products.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Premium Resources</a>
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#why-printable-math-worksheets-are-essential-for-first-grade-learning" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why Printable Math Worksheets are Essential for First Grade Learning</a></li><li class="py-1"><a href="#how-to-choose-the-best-educational-activities-and-worksheets" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">How to Choose the Best Educational Activities and Worksheets</a></li><li class="py-1"><a href="#top-free-vs-premium-downloadable-pdf-resources" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Top Free vs. Premium Downloadable PDF Resources</a></li><li class="py-1"><a href="#core-math-skills-ultimate-printable-worksheets-library" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Core Math Skills: Ultimate Printable Worksheets Library</a></li><li class="py-1"><a href="#seasonal-and-thematic-teaching-resources-for-year-round-fun" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Seasonal and Thematic Teaching Resources for Year-Round Fun</a></li><li class="py-1"><a href="#pro-tips-organizing-and-using-your-learning-materials-effectively" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Pro Tips: Organizing and Using Your Learning Materials Effectively</a></li><li class="py-1"><a href="#wrapping-it-up" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Wrapping It Up</a></li>
+        </ul>
     </div>
-</div>
+    <h2 id="why-printable-math-worksheets-are-essential-for-first-grade-learning">Why Printable Math Worksheets are Essential for First Grade Learning</h2>
+Here’s the thing: practice is non-negotiable. But it has to be the right practice. I know worksheets can get a bad reputation. Honestly, some deserve it—those boring, repetitive pages that feel like punishment. But a well-designed worksheet? That’s a different story. It’s not busywork. It’s a confidence-building tool.
+Think about it. It’s like a safe playground for their brain. Before they tackle a tricky word problem all on their own, this is where they build the muscle memory. It’s their training ground.
+<h3>Building Foundational Math Fluency</h3>
+In my experience, that structured repetition is everything. It turns counting on fingers into instant recall. Think about how you learned your home address. You said it over and over until it was automatic. Math facts are the same. Targeted practice makes them stick. The goal is fluency, and that only comes from doing.
+<h3>Supporting Differentiated Instruction</h3>
+This is just a fancy way of saying we meet kids where they are. In any group, abilities vary. One child might need extra help with subtraction concepts. Another might be bored and ready for a puzzle. With the right printables, I can hand them each a page that fits. A struggling learner gets a worksheet with big, clear number lines. The child who needs a challenge gets a page with missing addends or logic problems. Everyone gets a win.
+
+<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-img1-1771635640.webp" alt="a-soft-watercolor-style-close-up-overhead-flat-la-why-printable-math-worksheets-are-essential-for-first-grade-learning" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<h3>Encouraging Independent Practice</h3>
+First grade is a huge leap toward “I can do it myself!” A clear, friendly worksheet gives them a task they can own. That moment when they put their pencil down and beam with pride? It’s priceless. Quick tip: Keep sessions short. Ten to fifteen minutes is the sweet spot for this age. Any longer and you lose them. Always, always pair it with something hands-on right after.
+For more ideas on building number sense that work hand-in-hand with worksheets, take a look at <a href="../blog.html">our blog</a> for some of our favorite math games.
+<h2 id="how-to-choose-the-best-educational-activities-and-worksheets">How to Choose the Best Educational Activities and Worksheets</h2>
+</figure>
+Let’s be real. I’ve printed my share of terrible worksheets. Tiny font, confusing pictures, problems crammed into every corner. You want a resource that helps, not one that causes tears. So what makes a worksheet great?
+<h3>Aligning with Core Curriculum Standards</h3>
+This sounds official, but it’s straightforward. You want sheets that practice what schools are focusing on. For first grade, that boils down to a few key areas:
+<ul>
+<li><strong>Operations & Algebraic Thinking:</strong> Adding and subtracting up to 20.</li>
+<li><strong>Number & Operations in Base Ten:</strong> Getting that the ‘1’ in ’12’ means a ten.</li>
+<li><strong>Measurement & Data:</strong> Starting to tell time and make simple graphs.</li>
+<li><strong>Geometry:</strong> Naming shapes and putting them together.</li>
+</ul>
+When a worksheet hits these targets, you know you’re reinforcing the right lessons.
+<h3>Assessing Visual Clarity and Readability</h3>
+Look at the page. Is it inviting? Or is it chaotic? What I’ve found works best are pages with clean, large print. Lots of space for little hands to write. The focus should be on the math, not on decoding a busy background. If it looks overwhelming to you, it will definitely overwhelm a six-year-old.
+<h3>Matching Worksheets to Your Child's Learning Style</h3>
+Kids soak up information in different ways. A visual learner might thrive on a color-by-number addition sheet. A kid who needs to move might stare blankly at a page of equations. Here’s what works: for that active learner, give them blocks or cereal pieces first. Let them solve the problem with the objects, then record the answer on the sheet. It bridges the gap.
+Our <strong>printable math worksheet</strong> collections are built with this clarity and flexibility in mind—take a look in our teaching resources.
+
+<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-img2-1771635640.webp" alt="a-cheerful-female-teacher-with-mixed-ethnicity-si-how-to-choose-the-best-educational-activities-and-worksheets" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<h2 id="top-free-vs-premium-downloadable-pdf-resources">Top Free vs. Premium Downloadable PDF Resources</h2>
+Okay so, let’s talk about the free versus paid question. Between you and me, you need a mix of both.
+<h3>Where to Find Quality Free Classroom Materials</h3>
+There are incredible teachers sharing their work for free online. These are perfect for:
+<ol>
+<li>Testing the waters with a new skill.</li>
+<li>Grabbing one specific practice page, like for “adding doubles.”</li>
+<li>Finding a fun, seasonal activity in a pinch.</li>
+</ol>
+The catch? <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Free resources</a> are often one-offs. You might find a great sheet on addition, but not the follow-up subtraction sheet or the word problems to go with it. They also rarely come with answer keys or guidance for you.
+<h3>What You Get with Premium Homeschool Packages</h3>
+When you invest in a good premium pack, you’re buying a system. You typically get:
+<ul>
+<li>A logical sequence that builds skills over time.</li>
+<li>Different versions of the same skill for different levels.</li>
+<li>Full answer keys (a sanity-saver!).</li>
+<li>Thematic units that weave concepts together.</li>
+<li>Notes to help you teach it.</li>
+</ul>
+It’s the difference between getting a single puzzle piece and getting the whole box with the picture on the lid.
+<h3>Maximizing Value: Mixing Free and Paid Resources</h3>
+My strategy? Start with freebies to see what clicks and where the struggles are. Then, invest in a solid bundle for the areas that need the most support. For example, use free fact practice sheets, but if telling time is a battle, get a dedicated premium unit on clocks and schedules. It’s a targeted approach.
+You can grab a few of our most popular <a href="../freebies.html">free worksheets</a> right from our homepage to get started.
+<h2 id="core-math-skills-ultimate-printable-worksheets-library">Core Math Skills: Ultimate Printable Worksheets Library</h2>
+</figure>
+Let’s get practical. What skills should you have worksheets for? Think of these as your core shopping list for first grade math.
+<h3>Addition & Subtraction Mastery Sheets</h3>
+Fluency here is the bedrock. Look for sheets that build understanding step-by-step:
+<ol>
+<li><em>Concrete:</em> Problems with pictures to count (total apples?).</li>
+<li><em>Representational:</em> Using tools like ten frames.</li>
+<li><em>Abstract:</em> Straight equations (7 - 2 = __).</li>
+</ol>
+Don’t just drill random facts. “Fact Family” sheets are gold—they show how 3, 4, and 7 are all related. And missing number problems (__ + 5 = 8) build real <a href="../blog-problem-solving.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">problem-solving skills</a>.
+<h3>Place Value and Number Sense Printables</h3>
+This is about understanding that 23 isn't just a two and a three. It’s two tens and three ones. The best printables make this visual. Look for:
+
+<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-img3-1771635640.webp" alt="a-medium-shot-in-a-cozy-sunlit-home-office-where-top-free-vs-premium-downloadable-pdf-resources" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+- “Show the Number” mats where they draw tens and ones.
+- Matching games pairing numbers with base-ten block images.
+- Puzzles with missing pieces of a 100-chart.
+<h3>Geometry & Measurement Fun Activities</h3>
+Move beyond simple shape identification. Great sheets ask kids to build a hexagon using triangles. For measurement, find pages that use paperclips or blocks to measure length. Sorting and graphing activities are also fantastic—have them categorize buttons or stickers and then count the groups. It’s math they can see and touch.
+<blockquote>“The moment a child moves from ‘This is too hard’ to ‘I know what to do’ is everything. A thoughtful worksheet is the scaffold for that moment.” – Ms. Alvarez, 1st Grade Teacher & Curriculum Specialist</blockquote>
+Our <strong>addition worksheet library</strong> is built with this gradual progression, so you can find the just-right challenge for any child.
+<h2 id="seasonal-and-thematic-teaching-resources-for-year-round-fun">Seasonal and Thematic Teaching Resources for Year-Round Fun</h2>
+</figure>
+Real talk: math with pumpkins in October is just more fun. Thematic resources are a secret weapon for engagement. They connect numbers to a child’s world.
+<h3>Holiday-Themed Problem Solving</h3>
+Think “How many more eggs to fill the Easter basket?” or “Count the hearts on the Valentine.” It’s not just subtraction; it’s part of a story. The novelty grabs their attention and makes the work feel like play.
+<h3>Connecting Math to Science and Nature</h3>
+Fun fact: a ‘Sort the Fall Leaves’ sheet teaches comparing, counting, and categorizing. All math. You can then graph what you found. Suddenly, math isn’t a separate subject. It’s a tool for exploring the park.
+<h3>Using Story-Based Word Problems</h3>
+Narrative is powerful. A worksheet about “Lily’s Lemonade Stand” practices coins and making change. One about “The Missing Toy Cars” practices counting and comparing. It builds reading skills and shows them the *why* behind the math. They’re solving a mini-mystery.
+Our autumn-themed bundle is full of activities that blend math with seasonal fun—check it out for more ideas.
+<h2 id="pro-tips-organizing-and-using-your-learning-materials-effectively">Pro Tips: Organizing and Using Your Learning Materials Effectively</h2>
+You’ve found amazing resources. Now, don’t let them become a messy pile on the table! A tiny bit of organization makes this so much easier.
+<h3>Creating a Simple Worksheet Binder System</h3>
+All you need is one binder and some dividers. Label tabs by skill: Addition, Shapes, Time, etc. Punch holes in your sheets and file them. Stick a pencil pouch with supplies right in the rings. Now everything has a home. No more frantic searching.
+
+<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-img4-1771635640.webp" alt="a-cheerful-diverse-7-year-old-child-in-a-cozy-su-core-math-skills-ultimate-printable-worksheets-library" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<h3>Incorporating Worksheets into Daily Routines</h3>
+Consistency is key. Short bursts work better than long slogs. Pick a “Math Power 10” time a few days a week. Right after a snack, maybe. Do a 10-minute worksheet, then follow it with a 5-minute math game. This balance keeps it from feeling like a chore.
+<h3>Tracking Progress Without the Stress</h3>
+Fair warning: don’t grade every single problem. Use a highlighter to mark their best work. Give a fun sticker for finishing. Every so often, pull out an old sheet and a new one on the same topic. Sit together and point out their growth. “Look! Two months ago you used the number line for all these. Now you just *know* them!” Showing them their own progress is the best motivation.
+We have more ideas for creating a calm learning rhythm over on our blog if you need them.
+<h2 id="wrapping-it-up">Wrapping It Up</h2>
+Bottom line? Choose <strong>printable math worksheets for first graders</strong> that are clear, focused, and fit how your child learns. Blend free finds with a few key <a href="../products.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">premium resources</a> to cover all your bases. Keep sessions short, organized, and paired with play.
+You can do this. Supporting your first grader’s math journey is about offering the right tools. Worksheets are one of those tools. Use them as a springboard, not the whole pool.
+The goal isn’t a flawless paper. It’s a kid who looks at a number problem and thinks, “I can try.” Now you’re ready to find the best **printable math worksheets for first graders** for your family. Go print some learning fun (and maybe save the macaroni for soup night).
+<p><em>According to the <a href="https://www.naeyc.org/resources" target="_blank" rel="noopener">National Association for the Education of Young Children (NAEYC)</a>, hands-on educational activities are crucial for early childhood development.</em></p>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#worksheets</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#math</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#worksheet</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#first</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#resources</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#free</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#printable</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#their</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#these</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#number</a>
+        </div>
+    </div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -622,7 +666,14 @@ Remember, the goal isn’t a perfect page. It’s a child who feels capable and 
                 
                 <a href="../articles/ultimate-counting-exercises-for-preschoolers-printable.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp" alt="Ultimate Counting Exercises for Preschoolers Printable" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp"
+                            srcset="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 480w, ../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Counting Exercises for Preschoolers Printable"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -634,7 +685,14 @@ Remember, the goal isn’t a perfect page. It’s a child who feels capable and 
                 </a>
                 <a href="../articles/how-to-use-kids-math-equations-to-supercharge-number-sense.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp" alt="How to Use Kids Math Equations to Supercharge Number Sense" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp"
+                            srcset="../images/thumbs/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 480w, ../images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Kids Math Equations to Supercharge Number Sense"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -646,7 +704,81 @@ Remember, the goal isn’t a perfect page. It’s a child who feels capable and 
                 </a>
                 <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp" alt="Essential Shadow Matching Worksheets for Toddlers &amp; Kids" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp"
+                            srcset="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 480w, ../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Essential Shadow Matching Worksheets for Toddlers &amp; Kids"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Visual Skills</span>
+                            <span class="text-xs text-slate-500">📖 10 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Essential Shadow Matching Worksheets for Toddlers &amp; Kids</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="../articles/ultimate-counting-exercises-for-preschoolers-printable.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp"
+                            srcset="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 480w, ../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Counting Exercises for Preschoolers Printable"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Math Skills</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Ultimate Counting Exercises for Preschoolers Printable</h4>
+                    </div>
+                </a>
+                <a href="../articles/how-to-use-kids-math-equations-to-supercharge-number-sense.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp"
+                            srcset="../images/thumbs/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 480w, ../images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Kids Math Equations to Supercharge Number Sense"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Math Skills</span>
+                            <span class="text-xs text-slate-500">📖 10 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use Kids Math Equations to Supercharge Number Sense</h4>
+                    </div>
+                </a>
+                <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp"
+                            srcset="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 480w, ../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Essential Shadow Matching Worksheets for Toddlers &amp; Kids"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -659,41 +791,7 @@ Remember, the goal isn’t a perfect page. It’s a child who feels capable and 
             </div>
         </div>
 
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/best-spelling-practice-worksheets-for-elementary-students.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Spelling Practice Worksheets for Elementary Students
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Essential Shadow Matching Worksheets for Toddlers &amp; Kids
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-benefits-of-puzzles-for-child-brain-development.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Benefits of Puzzles for Child Brain Development
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/ultimate-counting-exercises-for-preschoolers-printable.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Ultimate Counting Exercises for Preschoolers Printable
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-a-freebie-pack-to-boost-essential-learning-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use a Freebie Pack to Boost Essential Learning Skills
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
-            </div>
-        </div>
+
 
 
             <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
@@ -717,27 +815,6 @@ Remember, the goal isn’t a perfect page. It’s a child who feels capable and 
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -848,5 +925,288 @@ Remember, the goal isn’t a perfect page. It’s a child who feels capable and 
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">💯</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">One Hundred Puzzle</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">One Hundred Puzzle</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">One Hundred Puzzle</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "One Hundred Puzzle";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>

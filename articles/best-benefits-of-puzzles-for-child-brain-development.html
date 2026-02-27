@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Best Benefits of Puzzles for Child Brain Development">
     <meta property="og:description" content="Educational worksheets boost child brain development. Science-backed benefits for cognitive skills and fine motor control. Download now!">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/best-benefits-of-puzzles-for-child-brain-development.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/best-benefits-of-puzzles-for-child-brain-development.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-21T00:36:07.979649">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Critical Thinking",
+      "item": "https://littlesmartgenius.com/blog-critical-thinking.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Best Benefits of Puzzles for Child Brain Development",
+      "item": "https://littlesmartgenius.com/articles/best-benefits-of-puzzles-for-child-brain-development.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What age should a child start doing puzzles?", "acceptedAnswer": {"@type": "Answer", "text": "Children can start with simple shape sorters or chunky wooden puzzles with knobs as early as 12-18 months. These focus on gross motor skills and matching. By age 2, most children are ready for basic 3-5 piece puzzles with large, distinct shapes."}}, {"@type": "Question", "name": "How do puzzles help a child's cognitive development?", "acceptedAnswer": {"@type": "Answer", "text": "Puzzles directly develop cognitive skills like problem-solving, visual-spatial reasoning, and memory. They require a child to analyze shapes, remember the image, and test hypotheses—all of which strengthen critical neural pathways in the brain's prefrontal cortex."}}, {"@type": "Question", "name": "Are jigsaw puzzles better than digital puzzle games?", "acceptedAnswer": {"@type": "Answer", "text": "For young children, physical jigsaw puzzles are superior for brain development. They provide essential tactile feedback, develop fine motor skills, and allow for true three-dimensional manipulation that 2D screens cannot replicate. The hands-on learning is crucial for building concrete understanding."}}, {"@type": "Question", "name": "How many puzzle pieces are age-appropriate for a 4-year-old?", "acceptedAnswer": {"@type": "Answer", "text": "Most 4-year-olds thrive with puzzles ranging from 12 to 24 pieces. Look for large, interlocking pieces with a clear, engaging image. The key is a challenge they can achieve with some effort, fostering persistence rather than frustration."}}, {"@type": "Question", "name": "Why is my child obsessed with doing the same puzzle over and over?", "acceptedAnswer": {"@type": "Answer", "text": "Repetition is a core part of child-led learning and is highly beneficial! It builds mastery, confidence, and mental fluency. Each time they repeat it, they solidify neural connections and may use a more efficient strategy, showing deeper cognitive processing."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-critical-thinking.html" class="hover:text-brand transition">Critical Thinking</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Best Benefits of Puzzles for Child Brain Development">Best Benefits of Puzzles for Child Brain Development</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>Little Smart Genius Team</span>
                     <span>&bull;</span>
-                    <span>February 21, 2026</span>
+                    <span>February 21, 2026 at 12:36 AM</span>
                     <span>&bull;</span><span>Critical Thinking</span>
                 </div>
 
@@ -436,157 +491,163 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp" alt="Best Benefits of Puzzles for Child Brain Development" class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp"
+                    srcset="../images/thumbs/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 480w, ../images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Best Benefits of Puzzles for Child Brain Development"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
                 </figure>
 <div style="height: 1.5rem;"></div>
-<p>Remember that quiet, focused look on your child’s face? The one where their whole world shrinks down to the piece in their hand and the space it needs to fill? I live for that look. Just last week, my youngest spent a solid twenty minutes determinedly fitting together a dinosaur puzzle, her little tongue poking out in concentration.</p>
-<p>When that final piece clicked, her triumphant “I did it!” was pure magic. It’s in those moments we see it—the incredible <strong>benefits of puzzles for child brain development</strong> happening right before our eyes.</p>
-<p>But if you’re like me, you might wonder: Is this <em>just</em> play, or is something deeper going on? Are puzzles truly worth the investment (and the inevitable lost pieces under the couch)? The truth is, that simple activity is a powerhouse for building young minds. Let’s chat about why puzzles are more than just a quiet-time activity and how you can harness their full potential to support everything from <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">fine motor skills</a> to fearless problem-solving.</p>
-<h2>Ultimate Guide: How Puzzles Fuel Child Brain Development</h2>
+<p>You know that look. The one where their whole world shrinks down to a single cardboard piece. I see it all the time. Just yesterday, my five-year-old was hunched over a 48-piece ocean scene. Her brow was furrowed. She was muttering to herself. Then—click. The sea turtle’s flipper slid perfectly into place.</p>
+<p>Her grin? Absolutely priceless. That’s the moment. It’s not just quiet time. It’s brain-building in action. The real, tangible <strong>benefits of puzzles for child brain development</strong> are happening right there on your living room floor.</p>
+<p>But I get it. You might be thinking, “It’s just a puzzle.” Is it really that powerful? Here’s what I’ve found after years of teaching and parenting: that simple box of pieces is one of the most effective learning tools you can own. Let’s talk about why, and how you can use it to build everything from patience to <a href="../blog-problem-solving.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">problem-solving skills</a>.</p>
+
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#ultimate-guide-how-puzzles-fuel-child-brain-development" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Ultimate Guide: How Puzzles Fuel Child Brain Development</a></li><li class="py-1"><a href="#top-cognitive-skills-sharpened-by-puzzle-play" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Top Cognitive Skills Sharpened by Puzzle Play</a></li><li class="py-1"><a href="#how-puzzles-build-essential-fine-motor-skills" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">How Puzzles Build Essential Fine Motor Skills</a></li><li class="py-1"><a href="#why-puzzles-are-powerful-social-emotional-learning-activities" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why Puzzles Are Powerful Social & Emotional Learning Activities</a></li><li class="py-1"><a href="#how-to-choose-age-appropriate-puzzles-for-maximum-benefit" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">How to Choose Age-Appropriate Puzzles for Maximum Benefit</a></li><li class="py-1"><a href="#proven-tips-integrating-puzzles-into-daily-classroom-activities" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Proven Tips: Integrating Puzzles into Daily Classroom Activities</a></li>
+        </ul>
+    </div>
+    <h2 id="ultimate-guide-how-puzzles-fuel-child-brain-development">Ultimate Guide: How Puzzles Fuel Child Brain Development</h2>
 <div style="height: 0.5rem;"></div>
-<p>Here’s the thing: play is a child’s work. And puzzle play is some of the most productive work they can do.</p>
+<p>Look, play is serious business for kids. And puzzle play? It’s some of the hardest, most rewarding work they’ll do.</p>
 <h3>The Brain Science Behind Play: Why Puzzles Work</h3>
 <div style="height: 0.25rem;"></div>
-<p>When your child works on a puzzle, their brain lights up like a busy command center. The prefrontal cortex—the area responsible for executive functions like planning, decision-making, and impulse control—goes into high gear. Simultaneously, the hippocampus, crucial for memory, is actively recalling what the image should look like and where similar pieces might be. It’s a full-brain workout disguised as fun.</p>
-<p>A compelling 2020 study from the University of Chicago even found that the amount of puzzle play in toddlers was a significant predictor of their later spatial transformation skills. That’s the ability to mentally manipulate shapes, a cornerstone for math and engineering.</p>
+<p>When your child is searching for that one blue piece, their brain isn’t just idling. It’s firing on all cylinders. The front part of their brain, which handles planning and decisions, is running the show. At the same time, the memory center is flipping through mental files: “What does the finished picture look like? Where did I see a similar shape?” It’s a complete neurological workout, disguised as a game.</p>
+<p>I remember reading a study a while back that stuck with me. Researchers found that toddlers who spent more time with puzzles developed stronger spatial skills later on. That’s the ability to twist and turn shapes in their mind—a fundamental skill for math and science. It’s proof that this early play has long-lasting legs.</p>
 <h3>From Neurons to Knowledge: A Developmental Overview</h3>
 <div style="height: 0.25rem;"></div>
-<p>This isn’t a one-and-done skill. Puzzle mastery evolves beautifully with your child. A one-year-old mouths a chunky piece. A three-year-old matches colors. A seven-year-old strategizes by sorting edge pieces. Each stage builds on the last, forging stronger, more complex neural pathways. It’s a visible timeline of their cognitive growth.</p>
+<p>This skill doesn’t appear overnight. It unfolds. A baby gums a chunky wooden piece. A two-year-old matches a circle to a circle hole. A first-grader sorts all the edge pieces first. Each stage builds directly on the last, creating stronger, more complex connections in their growing brain. You can literally watch their thinking evolve.</p>
+
+<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-benefits-of-puzzles-for-child-brain-development-img1-1771634114.webp" alt="a-close-up-soft-watercolor-illustration-with-cris-ultimate-guide-how-puzzles-fuel-child-brain-development" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Setting the Stage: Creating a Puzzle-Friendly Environment</h3>
 <div style="height: 0.25rem;"></div>
-<p>In my experience, the setup matters. If puzzles are buried in a toy box, they won’t get used. Pro tip: Store a few <strong>age-appropriate</strong> puzzles on accessible, low shelves. Rotate them every few weeks to renew interest. This encourages child-led, independent play—a core Montessori principle that builds intrinsic motivation. For more hands-on <strong>educational activities</strong> that promote this kind of independence, you’ve got to visit our <strong><a href="../freebies.html">free printables</a></strong> page.</p>
-
-<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-benefits-of-puzzles-for-child-brain-development-img1-1771634114.webp" alt="a-close-up-soft-watercolor-illustration-with-cris-ultimate-guide-how-puzzles-fuel-child-brain-development" loading="lazy" width="1200" height="675"></figure></div>
-
+<p>Okay so, the environment makes a huge difference. If the puzzle is buried in a bin of Legos, it won’t get played with. Here’s what works in my home: I keep a few <strong>age-appropriate</strong> puzzles on a low, open shelf. I swap them out every couple of weeks. This simple act makes them inviting and sparks independent play.</p>
+<p>That child-led choice is powerful. For more ideas that encourage this kind of self-directed learning, I always recommend checking out our <strong><a href="../freebies.html">free printables</a></strong> page. It’s a goldmine.</p>
 </figure>
-<h2>Top Cognitive Skills Sharpened by Puzzle Play</h2>
+<h2 id="top-cognitive-skills-sharpened-by-puzzle-play">Top Cognitive Skills Sharpened by Puzzle Play</h2>
 <div style="height: 0.5rem;"></div>
-<p>Think of a puzzle as a gym for the mind. Here are the key “mental muscles” it builds.</p>
+<p>Think of a puzzle as a gym for your child’s mind. Here are the key muscles it’s strengthening.</p>
 <h3>Problem-Solving & Critical Thinking: The ‘Aha!’ Moment</h3>
 <div style="height: 0.25rem;"></div>
-<p>Every attempted piece is a mini-experiment. “Does this fit? No. How about this one?” Your child is learning the scientific method: form a hypothesis, test it, and revise. That moment of discovery—“Aha! This blue piece goes with the sky!”—cements a love for figuring things out.</p>
+<p>Every single piece is a tiny experiment. “Does this fit? Nope. How about if I turn it?” They’re learning the basic steps of solving any problem: make a guess, test it, and adjust. That “Aha!” moment when they find the right spot? It wires their brain to enjoy the process of figuring things out.</p>
 <h3>Visual-Spatial Reasoning: Seeing the Big Picture</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is all about understanding how objects relate in space. Manipulating puzzle pieces helps kids internalize concepts like rotation, symmetry, and perspective. This skill is the foundation for reading a map, packing a suitcase, and later, mastering geometry and trigonometry.</p>
-<p>Quick tip to see this in action:</p>
+<p>This is all about understanding how objects fit together in space. Twisting a puzzle piece helps kids grasp ideas like rotation and perspective without any lecture. This skill is the bedrock for so much later—reading a map, building a fort, even understanding geometry.</p>
+<p>Quick tip to see this growth:</p>
 <ol>
-<li>Time your child with a familiar puzzle.</li>
-<li>Do it again a week later.</li>
-<li>Watch their time drop as their brain maps the spatial relationships more efficiently, and point out that progress to build their confidence.</li>
+<li>Time them on a favorite puzzle.</li>
+<li>Try it again next week.</li>
+<li>Watch their time drop. Their brain is mapping the space faster. Point that out! “Wow, you remembered where the red barn goes!” It builds such confidence.</li>
 </ol>
 <h3>Memory & Concentration: Building Mental Muscle</h3>
 <div style="height: 0.25rem;"></div>
-<p>Puzzles demand sustained attention. A child has to hold the overall image in their working memory while searching for specific details. This is focus training. What I’ve found is that starting with a manageable challenge, like a 24-piece puzzle for a capable 5-year-old, sets them up for a success that lengthens their concentration span.</p>
-<h2>How Puzzles Build Essential Fine Motor Skills</h2>
+<p>Puzzles demand focus. A child has to hold the big picture in their head while hunting for a tiny detail. It’s concentration training. In my experience, starting with a puzzle that’s just challenging enough is key. A 24-piece puzzle for a capable 4-year-old offers a success that naturally stretches their attention span.</p>
+<h2 id="how-puzzles-build-essential-fine-motor-skills">How Puzzles Build Essential Fine Motor Skills</h2>
 <div style="height: 0.5rem;"></div>
-<p>The connection between hand and brain is direct. Puzzle play is a masterclass in physical dexterity.</p>
+<p>The hand-brain connection is real. Puzzle play is a masterclass in physical control.</p>
 <h3>The Pincer Grip to Pencil Grip Connection</h3>
 <div style="height: 0.25rem;"></div>
-<p>Watch a toddler fumble with a knob. Now watch a preschooler precisely pinch a small peg piece. That journey—from a palmar grasp to a refined pincer grip—is the exact same muscle development needed to hold a pencil correctly. Puzzles are stealthy pre-writing practice.</p>
+<p>Watch a toddler grab a puzzle knob with their whole fist. Now watch a preschooler pinch a small peg piece between their thumb and forefinger. That journey is everything. It’s the exact same muscle development they need for holding a pencil correctly. Puzzles are stealthy pre-writing practice.</p>
+
+<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-benefits-of-puzzles-for-child-brain-development-img2-1771634114.webp" alt="from-a-first-person-perspective-a-childs-hands-ho-top-cognitive-skills-sharpened-by-puzzle-play" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Building Bilateral Coordination: Two Hands Working Together</h3>
 <div style="height: 0.25rem;"></div>
-<p>One hand holds the puzzle frame steady. The other searches, picks up, and twists a piece. This coordinated use of both sides of the body is called bilateral coordination. It’s essential for future tasks like:</p>
+<p>One hand steadies the board. The other picks up and tries a piece. This coordinated dance between both sides of the body is called bilateral coordination. It’s non-negotiable for future tasks like:</p>
 <ul>
-<li>Cutting with scissors</li>
-<li>Tying shoes</li>
-<li>Playing a musical instrument</li>
+<li>Using scissors</li>
+<li>Buttoning a coat</li>
+<li>Catching a ball</li>
 </ul>
 <h3>Patience and Persistence: The Emotional Motor Link</h3>
 <div style="height: 0.25rem;"></div>
-<p>Real talk: frustration happens. The piece doesn’t fit. The strategy fails. This is where we can guide them. Instead of solving it, model calm persistence. Say, <em>“It’s tricky! Let’s try all the edge pieces first.”</em> You’re scaffolding their emotional regulation alongside their physical skill.</p>
+<p>Real talk: they will get frustrated. The piece won’t fit. Their plan will fall apart. This is our moment to guide, not rescue. I might say, “It’s tricky, huh? Let’s take a breath and look for all the straight edges together.” You’re teaching emotional regulation right alongside physical skill.</p>
 </figure>
-<h2>Why Puzzles Are Powerful Social & Emotional Learning Activities</h2>
-
-<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-benefits-of-puzzles-for-child-brain-development-img2-1771634114.webp" alt="from-a-first-person-perspective-a-childs-hands-ho-top-cognitive-skills-sharpened-by-puzzle-play" loading="lazy" width="1200" height="675"></figure></div>
-
-<p>Puzzles aren’t always a solo mission. They can be a wonderful social catalyst.</p>
+<h2 id="why-puzzles-are-powerful-social-emotional-learning-activities">Why Puzzles Are Powerful Social & Emotional Learning Activities</h2>
+<div style="height: 0.5rem;"></div>
+<p>Puzzles don’t have to be a solo mission. They can be a fantastic social tool.</p>
 <h3>Cooperative Play: Building Teamwork and Communication</h3>
 <div style="height: 0.25rem;"></div>
-<p>Picture siblings or friends tackling a 100-piece floor puzzle. They learn to share space, delegate (“You look for all the green grass pieces”), and communicate. The shared goal builds community and teaches them that collaboration leads to success.</p>
+<p>Picture two kids working on a big floor puzzle. They have to share space, talk strategy (“You find the yellow sun pieces”), and work toward a shared goal. It teaches them that collaboration gets results. The success feels sweeter when it’s shared.</p>
 <h3>Managing Frustration and Building Resilience</h3>
-<blockquote>“I can’t do it!” is a familiar cry in our house. My go-to Montessori-inspired response is to acknowledge the feeling first: “It is challenging, isn’t it? That’s okay. Let’s take a breath and look at it again.” This validates their struggle and teaches them that obstacles are surmountable.</blockquote>
+<blockquote>“I quit!” is a phrase I’ve heard more than once. My response is always to name the feeling first. “It’s really challenging, I see that. It’s okay to feel stuck. Let’s walk away for a minute and come back with fresh eyes.” This validates the struggle and shows them that obstacles are temporary.</blockquote>
 <div style="height: 1.5rem;"></div>
 <h3>The Confidence Boost of Completion</h3>
 <div style="height: 0.25rem;"></div>
-<p>There is nothing quite like the palpable pride in a child’s posture after they snap in that final piece. Shoulders go back, a smile spreads. They have tangible, undeniable proof of their own capability. That “I did it!” confidence spills over into every other area of their life.</p>
-<h2>How to Choose Age-Appropriate Puzzles for Maximum Benefit</h2>
+<p>There is nothing like the pride on a child’s face after that final piece snaps in. Their whole posture changes. They stand taller. They have concrete, undeniable proof: “I can do hard things.” That confidence doesn’t stay at the puzzle table. It travels with them.</p>
+<h2 id="how-to-choose-age-appropriate-puzzles-for-maximum-benefit">How to Choose Age-Appropriate Puzzles for Maximum Benefit</h2>
 <div style="height: 0.5rem;"></div>
-<p>The right puzzle engages without overwhelming. The wrong one collects dust. Here’s a simple guide.</p>
+<p>The right puzzle engages. The wrong one frustrates. Here’s a simple, practical guide.</p>
 </figure>
 <h3>Ages 2-4: Chunky, Knobbed, and Simple Shapes</h3>
 <div style="height: 0.25rem;"></div>
-<p>Look for wood over cardboard. Pieces should be large, with 4-12 pieces maximum. Knobs are great for little hands. Choose realistic images (animals, fruits, vehicles) over abstract cartoons to connect the activity to their real world.</p>
+<p>Go for wood over flimsy cardboard. Pieces need to be big—think 4 to 12 pieces max. Knobs are a lifesaver for little hands. Choose images of real things they know: a dog, an apple, a car. It connects the activity to their world.</p>
 <h3>Ages 5-7: Expanding Piece Count and Complexity</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is the golden age for interlocking jigsaws. Move from 24 pieces up to 60. Themes that match their passions—dinosaurs, space, princesses—will captivate them. This is also a perfect time to introduce simple logic puzzles and pattern blocks as <strong>educational resources</strong>.</p>
+<p>This is the sweet spot for interlocking jigsaws. Move from 24 pieces up to 60 or even 100. Themes matter here—if they love dinosaurs, get a dinosaur puzzle. Their passion will fuel their persistence. This is also a great time for pattern blocks and simple logic games as <strong>educational resources</strong>.</p>
+
+<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-benefits-of-puzzles-for-child-brain-development-img3-1771634114.webp" alt="a-diverse-preschoolers-hands-full-of-focused-joy-how-puzzles-build-essential-fine-motor-skills" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Ages 8-12: Themed Challenges and 3D Puzzles</h3>
 <div style="height: 0.25rem;"></div>
-<p>Think complex 100-500 piece puzzles, intricate mosaics, and 3D models of the solar system or architecture. Tangrams and Sudoku are fantastic here. These puzzles connect directly to STEM <strong>learning activities</strong> and satisfy their growing need for a real challenge. For a full list of our top-rated picks by age, explore our <a href="../blog.html">our blog</a>’s guides on <strong><a href="../products.html">premium resources</a></strong>.</p>
-<h2>Proven Tips: Integrating Puzzles into Daily Classroom Activities</h2>
+<p>Think bigger. Complex 300-piece puzzles, 3D models of famous landmarks, or intricate mosaics. Tangrams and <a href="../freebies.html?dl=Sudoku" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Sudoku</a> are fantastic here. These puzzles feed their need for a real challenge and connect directly to STEM <strong>learning activities</strong>. For specific recommendations, our <a href="../blog.html">our blog</a> has guides on <strong><a href="../products.html">premium resources</a></strong> we’ve tested and loved.</p>
+<h2 id="proven-tips-integrating-puzzles-into-daily-classroom-activities">Proven Tips: Integrating Puzzles into Daily Classroom Activities</h2>
 <div style="height: 0.5rem;"></div>
-<p>Whether you’re a teacher or a homeschooling parent, puzzles are a versatile tool.</p>
+<p>Whether you’re a teacher or a homeschooling parent, puzzles are incredibly versatile.</p>
 <h3>Puzzle Stations: A Cornerstone of the Prepared Environment</h3>
 <div style="height: 0.25rem;"></div>
-<p>Dedicate a quiet corner with a small shelf. Arrange 3-5 puzzles in order of increasing difficulty. This allows children to self-select and progress at their own pace, which is key to deep, meaningful learning.</p>
-
-<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-benefits-of-puzzles-for-child-brain-development-img3-1771634114.webp" alt="a-diverse-preschoolers-hands-full-of-focused-joy-how-puzzles-build-essential-fine-motor-skills" loading="lazy" width="1200" height="675"></figure></div>
-
+<p>Dedicate a quiet corner with a small shelf. Line up 3-5 puzzles from easiest to hardest. This lets children choose their own challenge and work at their own pace. That autonomy is where deep learning happens.</p>
 <h3>Cross-Curricular Connections: Math, Language, and Science</h3>
 <div style="height: 0.25rem;"></div>
-<p>Puzzles are the ultimate interdisciplinary tool. Try this:</p>
+<p>Puzzles are the ultimate cross-over tool. Try this:</p>
 <ol>
-<li><strong>Math:</strong> Count pieces. Sort by number of “bumps” (knobs) to introduce addition.</li>
-<li><strong>Language:</strong> Label everything in the puzzle image to build vocabulary.</li>
-<li><strong>Science/Geography:</strong> Use a world map puzzle to talk about habitats or continents.</li>
+<li><strong>Math:</strong> Count pieces. Sort by color and count the groups.</li>
+<li><strong>Language:</strong> Describe the puzzle scene. “What’s the bear doing? Where is the tree?”</li>
+<li><strong>Science/Geography:</strong> Use a solar system puzzle to talk about planets. A map puzzle opens up conversations about oceans and mountains.</li>
 </ol>
 <h3>Observing Progress: What Your Child's Puzzle Play Reveals</h3>
 <div style="height: 0.25rem;"></div>
-<p>Watch quietly. Do they start with the edges? Do they sort by color or shape? This isn’t just play—it’s a window into their unique problem-solving mind. Their strategy shows you how they think, allowing you to provide better, more personalized support.</p>
-<p>So, what’s the real takeaway for us busy parents? First, those puzzle pieces are building far more than a picture—they’re constructing a stronger, more resilient brain. The <strong>benefits of puzzles for child brain development</strong> are profound and layered. Second, the right puzzle for the right age makes all the difference in keeping them engaged. And finally, sometimes the best thing we can do is just sit nearby, observe, and let them work it out.</p>
-<p>You’re not just buying a toy. You’re investing in a tool that builds cognitive skills, fine motor skills, and gritty perseverance. So next time you see that box of scattered pieces, see it for what it truly is: a blueprint for brilliance.</p>
-<h2>Frequently Asked Questions</h2>
+<p>Sometimes, the best thing you can do is just watch. Do they start with the corners? Do they sort by color first? Their strategy is a window into their unique mind. It shows you how they think, so you can offer better, more personalized support.</p>
+<p>Long story short? Those scattered pieces are building far more than a picture. The <strong>benefits of puzzles for child brain development</strong> are deep and multifaceted. Choose the right puzzle for their age. Create a space where they can explore. Then, often, just step back. Let them work. Let them struggle a little. Let them triumph.</p>
+<p>You’re not just cleaning up cardboard pieces. You’re gathering up evidence of a growing, capable mind. So next time you see that box, see it for what it is: a toolkit for building brilliance.</p>
 <h3>What age should a child start doing puzzles?</h3>
 <div style="height: 0.25rem;"></div>
-<p>Children can start with simple shape sorters or chunky wooden puzzles with knobs as early as 12-18 months. These focus on gross motor skills and matching. By age 2, most children are ready for basic 3-5 piece puzzles with large, distinct shapes.</p>
+<p>You can start really early, around 12 to 18 months. Look for simple shape sorters or chunky wooden puzzles with big knobs. At this stage, it’s about gross motor skills and basic matching. By age two, most kids are ready for basic 3 to 5 piece puzzles.</p>
+
+<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-benefits-of-puzzles-for-child-brain-development-img4-1771634114.webp" alt="a-wide-ultra-detailed-3d-pixar-style-illustration-why-puzzles-are-powerful-social-emotional-learning-activities" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>How do puzzles help a child's cognitive development?</h3>
 <div style="height: 0.25rem;"></div>
-<p>Puzzles directly develop cognitive skills like problem-solving, visual-spatial reasoning, and memory. They require a child to analyze shapes, remember the image, and test hypotheses—all of which strengthen critical neural pathways in the brain's prefrontal cortex.</p>
+<p>They train the brain directly. Puzzles develop problem-solving, visual-spatial reasoning, and memory. A child has to analyze shapes, remember the goal image, and test their ideas. This whole process strengthens critical pathways in the brain, especially in the areas used for planning and focus.</p>
 <h3>Are jigsaw puzzles better than digital puzzle games?</h3>
 <div style="height: 0.25rem;"></div>
-<p>For young children, physical jigsaw puzzles are superior for <strong>child development</strong>. They provide essential tactile feedback, develop fine motor skills, and allow for true three-dimensional manipulation that 2D screens cannot replicate. The hands-on learning is crucial for building concrete understanding.</p>
+<p>For young kids, physical puzzles win, hands down. They provide essential tactile feedback you just can’t get from a screen. The act of picking up, turning, and fitting a piece develops <a href="../blog-creative-arts.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">fine motor skills</a> and builds a concrete understanding of space. That hands-on learning is irreplaceable for <strong>child development</strong>.</p>
 <h3>How many puzzle pieces are age-appropriate for a 4-year-old?</h3>
 <div style="height: 0.25rem;"></div>
-<p>Most 4-year-olds thrive with puzzles ranging from 12 to 24 pieces. Look for large, interlocking pieces with a clear, engaging image. The key is a challenge they can achieve with some effort, fostering persistence rather than frustration.</p>
-
-<div style="margin: 2.5rem 0;"><figure><figure class="article-image"><img src="../images/best-benefits-of-puzzles-for-child-brain-development-img4-1771634114.webp" alt="a-wide-ultra-detailed-3d-pixar-style-illustration-why-puzzles-are-powerful-social-emotional-learning-activities" loading="lazy" width="1200" height="675"></figure></div>
-
+<p>Most 4-year-olds do great with puzzles between 12 and 24 pieces. Look for large, sturdy, interlocking pieces with a clear, engaging picture. The goal is a challenge they can meet with a bit of effort, which builds persistence instead of frustration.</p>
 <h3>Why is my child obsessed with doing the same puzzle over and over?</h3>
 <div style="height: 0.25rem;"></div>
-<p>Repetition is a core part of child-led learning and is highly beneficial! It builds mastery, confidence, and mental fluency. Each time they repeat it, they solidify neural connections and may use a more efficient strategy, showing deeper cognitive processing. Celebrate the focus!<p><em>According to the <a href="https://www.naeyc.org/resources" target="_blank" rel="noopener">National Association for the Education of Young Children (NAEYC)</a>, hands-on educational activities are crucial for early childhood development.</em> When it comes to <strong>benefits of puzzles for child brain development</strong>, parents have many great options.</p></p>
-<div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What age should a child start doing puzzles?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Children can start with simple shape sorters or chunky wooden puzzles with knobs as early as 12-18 months. These focus on gross motor skills and matching. By age 2, most children are ready for basic 3-5 piece puzzles with large, distinct shapes.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How do puzzles help a child's cognitive development?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Puzzles directly develop cognitive skills like problem-solving, visual-spatial reasoning, and memory. They require a child to analyze shapes, remember the image, and test hypotheses—all of which strengthen critical neural pathways in the brain's prefrontal cortex.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Are jigsaw puzzles better than digital puzzle games?</h3>
-<div style="height: 0.25rem;"></div>
-<p>For young children, physical jigsaw puzzles are superior for brain development. They provide essential tactile feedback, develop fine motor skills, and allow for true three-dimensional manipulation that 2D screens cannot replicate. The hands-on learning is crucial for building concrete understanding. This is especially helpful for <strong>benefits of puzzles for child brain development</strong>.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How many puzzle pieces are age-appropriate for a 4-year-old?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Most 4-year-olds thrive with puzzles ranging from 12 to 24 pieces. Look for large, interlocking pieces with a clear, engaging image. The key is a challenge they can achieve with some effort, fostering persistence rather than frustration.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Why is my child obsessed with doing the same puzzle over and over?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Repetition is a core part of child-led learning and is highly beneficial! It builds mastery, confidence, and mental fluency. Each time they repeat it, they solidify neural connections and may use a more efficient strategy, showing deeper cognitive processing.</p></div></div>
-<div class="cta-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: center;">
-    <h3 style="color: white; margin-bottom: 15px;">Love Learning Activities?</h3>
-<div style="height: 0.25rem;"></div>
-<p style="color: white; margin-bottom: 20px;">Discover our <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">free printable worksheets</a> and <a href="../products.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">premium resources</a>: This is especially helpful for <strong>benefits of puzzles for child brain development</strong>.</p>
-    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-<p><a href="../freebies.html" style="background: #F48C06; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Free Worksheets</a></p>
-<p><a href="../products.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Premium Resources</a></p>
+<p>Celebrate this! Repetition is a core part of how young children learn. It builds mastery and solid confidence. Each time they do it, they’re strengthening neural pathways and often using a smarter, faster strategy. It shows deep engagement and cognitive processing. It’s a very good sign.<p><em>According to the <a href="https://www.naeyc.org/resources" target="_blank" rel="noopener">National Association for the Education of Young Children (NAEYC)</a>, hands-on educational activities are crucial for early childhood development.</em></p>
+<p>When it comes to <strong>benefits of puzzles for child brain development</strong>, parents have many great options.</p></p>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#puzzles</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#puzzle</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#child</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#their</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#pieces</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#piece</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#brain</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#skills</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#play</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#like</a>
+        </div>
     </div>
-</div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -624,7 +685,14 @@
                 
                 <a href="../articles/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp" alt="How to Use Four In A Row to Unlock Your Child's Strategic..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp"
+                            srcset="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 480w, ../images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Four In A Row to Unlock Your Child's Strategic..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -636,7 +704,14 @@
                 </a>
                 <a href="../articles/how-to-use-skyscraper-to-boost-your-childs-logic-skills.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp" alt="How to Use Skyscraper to Boost Your Child's Logic Skills" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp"
+                            srcset="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 480w, ../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Skyscraper to Boost Your Child's Logic Skills"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -648,7 +723,81 @@
                 </a>
                 <a href="../articles/ultimate-critical-thinking-activities-for-kindergarten.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp" alt="Ultimate Critical Thinking Activities for Kindergarten" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp"
+                            srcset="../images/thumbs/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 480w, ../images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Critical Thinking Activities for Kindergarten"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Ultimate Critical Thinking Activities for Kindergarten</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="../articles/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp"
+                            srcset="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 480w, ../images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Four In A Row to Unlock Your Child's Strategic..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 11 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use Four In A Row to Unlock Your Child's Strategic...</h4>
+                    </div>
+                </a>
+                <a href="../articles/how-to-use-skyscraper-to-boost-your-childs-logic-skills.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp"
+                            srcset="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 480w, ../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Skyscraper to Boost Your Child's Logic Skills"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 11 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use Skyscraper to Boost Your Child's Logic Skills</h4>
+                    </div>
+                </a>
+                <a href="../articles/ultimate-critical-thinking-activities-for-kindergarten.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp"
+                            srcset="../images/thumbs/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 480w, ../images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Critical Thinking Activities for Kindergarten"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -661,41 +810,7 @@
             </div>
         </div>
 
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-creative-clip-art-to-boost-fine-motor-cognitive-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Creative Clip Art to Boost Fine Motor &amp; Cognit...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Printable Math Worksheets for First Graders: Ultimat...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-coloring-activities-build-cognitive-skills-in-children.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Coloring Activities Build Cognitive Skills in Children
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-photorealistic-spot-the-difference-puzzles-sharpen-a-childs-focus.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Photorealistic Spot the Difference Puzzles Sharpen a ...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/engaging-classroom-activities-top-early-learner-essentials.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Engaging Classroom Activities: Top Early Learner Essentials
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
-            </div>
-        </div>
+
 
 
             <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
@@ -719,27 +834,6 @@
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -850,5 +944,288 @@
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🚢</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Warships</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Warships</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Warships</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Warships";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>

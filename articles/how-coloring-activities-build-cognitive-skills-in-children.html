@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="How Coloring Activities Build Cognitive Skills in Children">
     <meta property="og:description" content="Boost your child's creativity & key skills with educational coloring pages. Download our fun Thanksgiving worksheets today!">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/how-coloring-activities-build-cognitive-skills-in-children-cover-1771634886.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/how-coloring-activities-build-cognitive-skills-in-children.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/how-coloring-activities-build-cognitive-skills-in-children.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-21T00:48:59.933996">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Coloring Book",
+      "item": "https://littlesmartgenius.com/blog-coloring-book.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "How Coloring Activities Build Cognitive Skills in Children",
+      "item": "https://littlesmartgenius.com/articles/how-coloring-activities-build-cognitive-skills-in-children.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "My 5-year-old just scribbles on the page. Is he doing it wrong?", "acceptedAnswer": {"@type": "Answer", "text": "Not at all. Scribbling is a vital pre-writing stage. It builds motor strength, explores cause-and-effect (color appears!), and is a form of expressive mark-making. Celebrate the effort and gradually introduce simple shapes to color."}}, {"@type": "Question", "name": "How long should I expect my child to focus on a coloring activity?", "acceptedAnswer": {"@type": "Answer", "text": "Focus time is age-dependent. A general guideline is 2-5 minutes per year of age. A 4-year-old may color for 8-20 minutes, while a 10-year-old might engage for 20-50 minutes on a complex page. The key is to stop before frustration sets in."}}, {"@type": "Question", "name": "Are coloring pages better than free-drawing for development?", "acceptedAnswer": {"@type": "Answer", "text": "They serve different purposes. Coloring pages excel at practicing specific skills like fine motor control, boundary awareness, and color planning within a structure. Free-drawing fosters imagination, spatial planning, and original ideation. A balanced diet of both is ideal."}}, {"@type": "Question", "name": "Should I correct my child if they color a turkey purple?", "acceptedAnswer": {"@type": "Answer", "text": "Resist the urge. Creative expression and confidence are more important than realistic color use. Instead, ask curious questions: 'Tell me about your purple turkey!' This values their thought process and encourages language development."}}, {"@type": "Question", "name": "What's the best type of coloring tool for my child's age?", "acceptedAnswer": {"@type": "Answer", "text": "Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Standard crayons and thicker colored pencils. Ages 10+: Fine-tip markers and quality colored pencils for detail and blending. Always prioritize tools that fit comfortably in their hand."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-coloring-book.html" class="hover:text-brand transition">Coloring Book</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="How Coloring Activities Build Cognitive Skills in Children">How Coloring Activities Build Cognitive Skills in Children</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>Little Smart Genius Team</span>
                     <span>&bull;</span>
-                    <span>February 21, 2026</span>
+                    <span>February 21, 2026 at 12:48 AM</span>
                     <span>&bull;</span><span>Coloring Book</span>
                 </div>
 
@@ -436,164 +491,151 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/how-coloring-activities-build-cognitive-skills-in-children-cover-1771634886.webp" alt="How Coloring Activities Build Cognitive Skills in Children" class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/how-coloring-activities-build-cognitive-skills-in-children-cover-1771634886.webp"
+                    srcset="../images/thumbs/how-coloring-activities-build-cognitive-skills-in-children-cover-1771634886.webp 480w, ../images/how-coloring-activities-build-cognitive-skills-in-children-cover-1771634886.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="How Coloring Activities Build Cognitive Skills in Children"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
                 <article>
 <h1>How Coloring Activities Build Cognitive Skills in Children</h1>
-<p>I’ll never forget the quiet hum of focus that fell over my classroom of six-year-olds one hectic November afternoon. I’d handed out a simple turkey coloring page, expecting five minutes of calm. Twenty minutes later, they were still deeply engaged, not just filling in feathers, but debating whether a turkey’s wattle should be red or orange, practicing their newly-learned patterning, and telling elaborate stories about their birds' Thanksgiving Day adventures.</p>
-<p>That’s when it truly clicked for me: <strong>educational <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">coloring pages</a> for kids</strong> are far more than a time-filler. They are a silent, vibrant workshop for the developing brain. Research, like the work by neuroscientist Dr. Stanislas Dehaene, highlights how activities requiring focused attention and fine motor control, like coloring, actively strengthen the brain's reading circuits.</p>
-<p>In this guide, we’ll explore the profound developmental benefits of coloring, how to tailor it to your child’s age, and practical ways to turn this simple activity into a powerhouse for growth.</p>
-<h2>The Science Behind Coloring: More Than Just a Fun Activity</h2>
+<p>I’ll never forget the quiet hum of focus that fell over my classroom of six-year-olds one hectic November afternoon. I’d handed out a simple turkey coloring page, expecting five minutes of calm. Twenty minutes later, they were still deeply engaged. They weren't just filling in feathers. They were debating whether a turkey’s wattle should be red or orange.</p>
+<p>They were practicing their newly-learned patterning. They were telling elaborate stories about their birds' Thanksgiving Day adventures. That’s when it truly clicked for me: <strong>educational <a href="../blog-coloring-book.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">coloring pages</a> for kids</strong> are far more than a time-filler. They are a silent, vibrant workshop for the developing brain. Research, like the work by neuroscientist Dr.</p>
+<p>Stanislas Dehaene, highlights how activities requiring focused attention and fine motor control actively strengthen the brain's reading circuits. Let's be real, I want to show you the profound developmental benefits of coloring. We'll also talk about how to tailor it to your child’s age. I'll share practical ways to turn this simple activity into a powerhouse for growth.</p>
+
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#the-science-behind-coloring-more-than-just-a-fun-activity" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">The Science Behind Coloring: More Than Just a Fun Activity</a></li><li class="py-1"><a href="#tailoring-coloring-activities-by-developmental-stage-ages-4-12" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Tailoring Coloring Activities by Developmental Stage (Ages 4-12)</a></li><li class="py-1"><a href="#a-step-by-step-guide-for-parents-and-teachers" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">A Step-by-Step Guide for Parents and Teachers</a></li><li class="py-1"><a href="#creative-variations-to-extend-the-learning" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Creative Variations to Extend the Learning</a></li><li class="py-1"><a href="#common-mistakes-to-avoid-for-a-positive-experience" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Common Mistakes to Avoid for a Positive Experience</a></li><li class="py-1"><a href="#why-we-recommend-happy-thanksgiving-coloring-page-coloring-pages-thanksgiving-turkey-vol-2" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why We Recommend Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2</a></li><li class="py-1"><a href="#wrapping-up-your-questions-answered" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Wrapping Up & Your Questions Answered</a></li>
+        </ul>
+    </div>
+    <h2 id="the-science-behind-coloring-more-than-just-a-fun-activity">The Science Behind Coloring: More Than Just a Fun Activity</h2>
 <div style="height: 0.5rem;"></div>
-<p>It’s easy to dismiss coloring as mere play. But under the surface, a symphony of cognitive processes is firing up. What looks like a child quietly making a page pretty is actually a full-brain workout.</p>
+<p>It’s easy to dismiss coloring as mere play. But under the surface, a whole lot is happening. What looks like a child quietly making a page pretty is actually a full-brain workout. Here's the thing: it's serious skill-building disguised as fun.</p>
 <h3>The Brain on Color: Neural Pathways and Focus</h3>
 <div style="height: 0.25rem;"></div>
-<p>When a child chooses a blue crayon for the sky and carefully applies it within the lines, they are engaging their prefrontal cortex—the brain’s command center for executive function. This area manages focus, decision-making, and impulse control. Coloring demands sustained attention and a clear goal (completing the picture), which acts like weightlifting for these mental muscles.</p>
-<p>It’s a form of mindfulness that anchors a child in the present moment, filtering out distractions. This is especially helpful for <strong>educational coloring pages for kids</strong>.</p>
+<p>When a child chooses a blue crayon for the sky and carefully applies it within the lines, they are engaging their prefrontal cortex. That's the brain’s command center. It manages focus, decision-making, and impulse control. Coloring demands sustained attention. It requires a clear goal. This acts like weightlifting for these mental muscles. Honestly, it’s a form of mindfulness. It anchors a child in the present moment. It filters out distractions. This is especially helpful for <strong>educational coloring pages for kids</strong>.</p>
 <h3>Fine Motor Skills: The Foundation for Writing</h3>
 <div style="height: 0.25rem;"></div>
-<p>That three-fingered grasp on a crayon? That’s the tripod grip, the very same one needed for holding a pencil. The precise, controlled movements required to color small spaces strengthen the tiny muscles in the hands, wrists, and fingers. This builds dexterity and endurance. Think of it as essential training. A child who spends time coloring is literally building the physical capacity and control for legible, less fatiguing handwriting later on.</p>
+<p>That three-fingered grasp on a crayon? That’s the tripod grip. It's the very same one needed for holding a pencil. The precise, controlled movements required to color small spaces strengthen tiny muscles. It builds dexterity. It builds endurance. Think about it as essential training. A child who spends time coloring is literally building the physical capacity for legible handwriting later on. They're learning control.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-coloring-activities-build-cognitive-skills-in-children-img1-1771634886.webp" alt="an-educational-split-screen-layout-left-side-a-so-the-science-behind-coloring-more-than-just-a-fun-activity" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Emotional Regulation Through Artistic Expression</h3>
 <div style="height: 0.25rem;"></div>
-<p>In my classroom, I often have a “calm down corner” stocked with coloring sheets. There’s a scientific reason it works. The repetitive, rhythmic motion of coloring has a meditative effect, which can lower cortisol (the stress hormone) levels. It gives children a non-verbal outlet for their emotions. A child feeling frustrated might press harder with a dark red; a content child might create a soft, blended rainbow. It’s a safe space for emotional processing.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-coloring-activities-build-cognitive-skills-in-children-img1-1771634886.webp" alt="an-educational-split-screen-layout-left-side-a-so-the-science-behind-coloring-more-than-just-a-fun-activity" loading="lazy" width="1200" height="675"></figure></div>
-
-<h2>Tailoring Coloring Activities by Developmental Stage (Ages 4-12)</h2>
+<p>In my classroom, I always had a “calm down corner” stocked with coloring sheets. There’s a scientific reason it works. The repetitive, rhythmic motion of coloring has a meditative effect. It can lower cortisol levels. That's the stress hormone. It gives children a non-verbal outlet for their feelings. A child feeling frustrated might press harder with a dark red.</p>
+<p>A content child might create a soft, blended rainbow. It’s a safe space for emotional processing. I've seen it work time and again.</p>
+<h2 id="tailoring-coloring-activities-by-developmental-stage-ages-4-12">Tailoring Coloring Activities by Developmental Stage (Ages 4-12)</h2>
 <div style="height: 0.5rem;"></div>
-<p>One size does not fit all in development. What challenges a four-year-old will bore a ten-year-old. Here’s how to match the activity to the stage. This is especially helpful for <strong>educational coloring pages for kids</strong>.</p>
+<p>One size does not fit all. What challenges a four-year-old will bore a ten-year-old. Here’s how to match the activity to the stage. This is especially helpful for <strong>educational coloring pages for kids</strong>.</p>
 <h3>Ages 4-6: Building Foundations</h3>
 <div style="height: 0.25rem;"></div>
 <p>For preschoolers and kindergarteners, think big and simple. The goal is success in basic tasks.</p>
 <ol>
-<li><strong>Shape & Color Recognition:</strong> Use pages with large, simple shapes (a big pumpkin, a single leaf). Name the colors and shapes as they choose them.</li>
+<li><strong>Shape & Color Recognition:</strong> Use pages with large, simple shapes. Think a big pumpkin or a single leaf. Name the colors and shapes as they choose them.</li>
 <li><strong>Boundary Awareness (Sort Of!):</strong> Don’t expect them to stay in the lines. The goal is to get the color generally on the shape. Celebrate the effort!</li>
-<li><strong>Motor Strength:</strong> Provide chunky crayons or triangular pencils that are easier for little hands to grip.</li>
+<li><strong>Motor Strength:</strong> Provide chunky crayons or triangular pencils. They're easier for little hands to grip.</li>
 </ol>
 <div style="height: 1rem;"></div>
-<p>What I've found works best is to sit and color alongside them, modeling without correcting.</p>
+<p>What I've found works best is to sit and color alongside them. Model without correcting. Just enjoy the process together.</p>
 <h3>Ages 7-9: Mastering Skills & Storytelling</h3>
 <div style="height: 0.25rem;"></div>
-<p>Early elementary children are ready for more. Their <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">fine motor skills</a> are sharper, and their minds are making rich connections.</p>
+<p>Early elementary children are ready for more. Their <a href="../blog-creative-arts.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">fine motor skills</a> are sharper. Their minds are making rich connections.</p>
 <ul>
-<li><strong>Precision Practice:</strong> Introduce pages with more detail—a turkey with individual feathers, a scene with a house and trees. This hones their pencil control.</li>
-<li><strong>Narrative Development:</strong> This is golden. Ask them to tell you a story about their picture. “Where is this turkey going? Who lives in this house?” This links visual art to language and sequencing.</li>
-<li><strong>Color Theory Play:</strong> Gently introduce concepts like, “What happens if you layer blue over yellow?”</li>
+<li><strong>Precision Practice:</strong> Introduce pages with more detail. A turkey with individual feathers works. A scene with a house and trees is great. This hones their pencil control.</li>
+<li><strong>Narrative Development:</strong> This is golden. Ask them to tell you a story about their picture. “Where is this turkey going? Who lives in this house?” This links visual art to language.</li>
+<li><strong>Color Theory Play:</strong> Gently introduce concepts. Try asking, “What happens if you layer blue over yellow?”</li>
 </ul>
 <h3>Ages 10-12: Complex Patterns and Personal Style</h3>
 <div style="height: 0.25rem;"></div>
 <p>Tweens often dismiss coloring as “babyish” if the content is too simple. Meet them where they are.</p>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-coloring-activities-build-cognitive-skills-in-children-img2-1771634886.webp" alt="a-modern-isometric-infographic-scene-featuring-th-tailoring-coloring-activities-by-developmental-stage-ages-4-12" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure>
 <ol>
-<li><strong>Intricate Designs:</strong> Offer detailed mandalas, zentangles, or complex nature scenes. This challenges their focus and provides a legitimate sense of accomplishment.</li>
-<li><strong>Artistic Technique:</strong> Encourage shading, blending, and color layering with quality colored pencils. This is about personal expression and artistry.</li>
-<li><strong>Thematic Relevance:</strong> Connect pages to their interests—historical periods, pop culture, or advanced science topics.</li>
+<li><strong>Intricate Designs:</strong> Offer detailed mandalas or complex nature scenes. This challenges their focus. It provides a legitimate sense of accomplishment.</li>
+<li><strong>Artistic Technique:</strong> Encourage shading and blending with quality colored pencils. This is about personal expression now.</li>
+<li><strong>Thematic Relevance:</strong> Connect pages to their interests. Historical periods work. So do advanced science topics.</li>
 </ol>
 <div style="height: 1rem;"></div>
-<p>This is especially helpful for <strong>educational coloring pages for kids</strong>.</p>
-<h2>A Step-by-Step Guide for Parents and Teachers</h2>
+<p>The good news? This approach keeps them engaged. It's especially helpful for <strong>educational coloring pages for kids</strong> in this age group.</p>
+<h2 id="a-step-by-step-guide-for-parents-and-teachers">A Step-by-Step Guide for Parents and Teachers</h2>
 <div style="height: 0.5rem;"></div>
-<p>Setting up for success makes all the difference. Here’s a practical framework I use.</p>
+<p>Setting up for success makes all the difference. Here’s a practical framework I use. It's simple but effective.</p>
 <h3>Setting the Stage for Success</h3>
 <div style="height: 0.25rem;"></div>
-<p>Frustration is the enemy of learning. A dedicated, organized space prevents it. Use a clean, well-lit table. Provide a set of sharpened, good-quality colored pencils or crayons. A sharpener and an eraser are a must. This communicates that their work is valued and allows them to focus purely on the task.</p>
+<p>Frustration is the enemy of learning. A dedicated, organized space prevents it. Use a clean, well-lit table. Provide a set of sharpened, good-quality colored pencils or crayons. A sharpener and an eraser are a must. Pro tip: This communicates that their work is valued. It allows them to focus purely on the task.</p>
 <h3>The Process: From Selection to Display</h3>
 <div style="height: 0.25rem;"></div>
 <p>Guide them through a thoughtful routine:</p>
 <ul>
-<li><strong>Selection:</strong> Let them choose from 2-3 appropriate pages. Agency increases engagement.</li>
-<li><strong>Planning:</strong> Suggest a strategy: “Maybe start with the biggest area first,” or “Which part are you most excited to color?”</li>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-coloring-activities-build-cognitive-skills-in-children-img2-1771634886.webp" alt="a-modern-isometric-infographic-scene-featuring-th-tailoring-coloring-activities-by-developmental-stage-ages-4-12" loading="lazy" width="1200" height="675"></figure>
-<div style="height: 1.5rem;"></div>
-<p></div>
-
-<li><strong>Attentive Work:</strong> Allow for quiet focus. Your role is observer and occasional encourager, not director.</li>
-<li><strong>Discussion & Display:</strong> Always talk about the finished work and display it prominently. This validates the effort and closes the activity positively.</li>
-</ul></p>
+<li><strong>Selection:</strong> Let them choose from 2-3 appropriate pages. Agency increases engagement every time.</li>
+<li><strong>Planning:</strong> Suggest a quick strategy. “Maybe start with the biggest area first,” works well. Or ask, “Which part are you most excited to color?”</li>
+<li><strong>Attentive Work:</strong> Allow for quiet focus. Your role is observer. Be an occasional encourager, not a director.</li>
+<li><strong>Discussion & Display:</strong> Always talk about the finished work. Display it prominently. This validates the effort. It closes the activity on a positive note.</li>
+</ul>
 <h3>Promoting Language and Critical Thinking</h3>
 <div style="height: 0.25rem;"></div>
-<p>Don’t just say “Nice job!” Ask open-ended questions that stretch their thinking:</p>
-<blockquote>“What was the trickiest part to color?” (Problem-solving)<br>
-“Why did you make the sky these colors?” (Decision reasoning)<br>
-“If this turkey could talk, what would it say?” (Narrative imagination)</blockquote>
+<p>Don’t just say “Nice job!” Ask open-ended questions. They stretch their thinking:</p>
+<blockquote>“What was the trickiest part to color?” (That's problem-solving)<br>
+“Why did you make the sky these colors?” (That's decision reasoning)<br>
+“If this turkey could talk, what would it say?” (That's narrative imagination)</blockquote>
 <div style="height: 1.5rem;"></div>
-<p>These questions transform a motor activity into a rich cognitive and language-building exercise.</p>
-<h2>Creative Variations to Extend the Learning</h2>
+<p>These questions transform a motor activity. They turn it into a rich cognitive and language-building exercise. You know what? The answers are often amazing.</p>
+<h2 id="creative-variations-to-extend-the-learning">Creative Variations to Extend the Learning</h2>
 <div style="height: 0.5rem;"></div>
-<p>Ready to level up? These ideas can turn a single coloring page into a multi-day, cross-curricular project.</p>
+<p>Ready to level up? These ideas can turn a single coloring page into a multi-day project. They're some of my favorites.</p>
 <h3>Beyond the Lines: Mixed Media Explorations</h3>
-<div style="height: 0.25rem;"></div>
-<p>Glue on dried beans for corn kernels on a Thanksgiving page. Use cotton balls for cloud texture. Add glitter glue to outline shapes. This adds a sensory dimension and encourages innovative thinking, moving from 2D to 2.5D. It’s fantastic for sparking creativity.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-coloring-activities-build-cognitive-skills-in-children-img3-1771634886.webp" alt="in-a-bright-organized-classroom-art-center-with-m-a-step-by-step-guide-for-parents-and-teachers" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<p>Glue on dried beans for corn kernels. Use cotton balls for cloud texture. Add glitter glue to outline shapes. This adds a sensory dimension. It encourages innovative thinking. You're moving from 2D to something more tactile. It’s fantastic for sparking creativity. Plus, it's just fun.</p>
 <h3>Thematic Connections for Holistic Learning</h3>
 <div style="height: 0.25rem;"></div>
-<p>Link coloring directly to other learning. If you’re using a Thanksgiving page, read a historical picture book about the harvest. If it’s a nature scene, go on a leaf-collecting walk first. This builds a web of knowledge, making the coloring part of a bigger, meaningful story. You can find many connections with our library of <a href="#"><a href="../freebies.html">free worksheets</a></a> and <a href="#"><a href="../products.html">premium resources</a></a>.</p>
+<p>Link coloring directly to other learning. Using a Thanksgiving page? Read a historical picture book about the harvest first. Coloring a nature scene? Go on a leaf-collecting walk. This builds a web of knowledge. It makes the coloring part of a bigger, meaningful story. You can find many connections with our library of <a href="../freebies.html">free worksheets</a> and <a href="../products.html">premium resources</a>.</p>
 <h3>Collaborative Coloring Projects</h3>
 <div style="height: 0.25rem;"></div>
-<p>Tape a large, poster-sized coloring mural to the wall. Assign each child a section, or let families work on it together. This teaches teamwork, shared space negotiation, and creates a beautiful collective artifact. The process is just as important as the final product. </p>
-<h2>Common Mistakes to Avoid for a Positive Experience</h2>
+<p>Tape a large, poster-sized coloring mural to the wall. Assign each child a section. Or let families work on it together. This teaches teamwork. It involves shared space negotiation. It creates a beautiful collective artifact. The process is just as important as the final product. </p>
+<h2 id="common-mistakes-to-avoid-for-a-positive-experience">Common Mistakes to Avoid for a Positive Experience</h2>
 <div style="height: 0.5rem;"></div>
-<p>With the best intentions, we can sometimes undermine the benefits. Here’s what to watch for.</p>
+<p>With the best intentions, we can sometimes undermine the benefits. Here’s what to watch for. I've made some of these myself early on.</p>
 <h3>The Pressure of Perfection</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is the biggest one. Correcting color choices (“Turkeys aren’t blue!”) or fussing over line boundaries shuts down creativity and builds anxiety. The goal is the process—the focus, the grip, the expression—not a gallery-ready product. Embrace the purple turkey.</p>
+<p>This is the biggest one. Correcting color choices shuts down creativity. Fussing over line boundaries builds anxiety. The goal is the process. It's about the focus, the grip, the expression. It's not about a gallery-ready product. Embrace the purple turkey. I'll be honest, those are the pictures I remember most.</p>
 <h3>Inappropriate Tools and Spaces</h3>
 <div style="height: 0.25rem;"></div>
-<p>Handing a five-year-old a set of tiny, broken crayons and expecting detailed work is a recipe for frustration. Similarly, coloring in front of a blaring TV splits attention. Invest in decent tools that fit their hands and create a conducive environment.</p>
+<p>Handing a five-year-old a set of tiny, broken crayons is a recipe for frustration. Expecting detailed work with bad tools just doesn't work. Similarly, coloring in front of a blaring TV splits attention. Invest in decent tools that fit their hands. Create a conducive environment. It's worth it.</p>
 <h3>Missing the 'Why' Behind the Activity</h3>
 <div style="height: 0.25rem;"></div>
-<p>Treating coloring purely as busy work to get a quiet moment misses the point. When you understand its role in building <strong>educational coloring pages for kids</strong> into your routine with intention, you engage differently. You observe, you ask questions, you connect. That’s where the magic happens. </p>
+<p>Treating coloring purely as busy work misses the point. When you understand its role in building skills, you engage differently. You observe. You ask questions. You connect. That’s where the magic happens. Integrating <strong>educational coloring pages for kids</strong> into your routine with intention changes everything. </p>
+<h2 id="why-we-recommend-happy-thanksgiving-coloring-page-coloring-pages-thanksgiving-turkey-vol-2">Why We Recommend Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2</h2>
 
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-coloring-activities-build-cognitive-skills-in-children-img3-1771634886.webp" alt="in-a-bright-organized-classroom-art-center-with-m-a-step-by-step-guide-for-parents-and-teachers" loading="lazy" width="1200" height="675"></figure></div>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-coloring-activities-build-cognitive-skills-in-children-img4-1771634886.webp" alt="a-sun-drenched-inviting-classroom-art-station-ba-creative-variations-to-extend-the-learning" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
 
-<h2>Why We Recommend Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2</h2>
-<div style="height: 0.5rem;"></div>
-<p>After years in the classroom and at my kitchen table with my own kids, I’ve become picky about the resources I use. I look for pages that offer more than just an outline—they need to have developmental intentionality. That’s exactly why I was so pleased with the Happy Thanksgiving Coloring Page set.</p>
-<p>One thing I love about this particular collection is how it thoughtfully caters to a wide age range (4-12) on a single theme. It includes simpler, bold turkeys perfect for little hands, as well as incredibly detailed, ornate turkey designs that challenge older kids and even adults. This makes it fantastic for mixed-age settings, like a family gathering or a multi-grade classroom activity.</p>
-<p>The lines are clean and the themes are joyful without being overly cartoonish, which my older students appreciate. If you’re looking for a high-quality, themed resource that gets a lot of mileage, this is one I genuinely use and recommend.</p>
+<p>After years in the classroom and at my kitchen table with my own kids, I’ve become picky about resources. I look for pages that offer more than just an outline. They need to have developmental intentionality. That’s exactly why I was so pleased with the <a href="../products.html?product=Happy%20Thanksgiving%20Coloring%20Page%20%7C%20Coloring%20Pages%20Thanksgiving%20%7C%20Turkey%20Vol.1" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Happy Thanksgiving Coloring Page</a> set. One thing I love about this collection is its range.</p>
+<p>It thoughtfully caters to ages 4-12 on a single theme. It includes simpler, bold turkeys for little hands. It also has incredibly detailed, ornate designs that challenge older kids. This makes it fantastic for mixed-age settings. Think family gatherings or multi-grade classrooms. The lines are clean. The themes are joyful without being overly cartoonish.</p>
+<p>My older students appreciate that. If you’re looking for a high-quality, themed resource that gets a lot of mileage, this is one I genuinely use and recommend.</p>
 <p><a href="https://www.teacherspayteachers.com/Product/Happy-Thanksgiving-Coloring-Page-Coloring-Pages-Thanksgiving-Turkey-Vol2-10534237" target="_blank" rel="noopener">Check out Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2 on TPT</a></p>
-<h2>Wrapping Up & Your Questions Answered</h2>
+<h2 id="wrapping-up-your-questions-answered">Wrapping Up & Your Questions Answered</h2>
 <div style="height: 0.5rem;"></div>
-<p>As we’ve seen, the humble act of coloring is a deceptively powerful tool. It quietly builds the neurological and physical foundations for writing, focuses the mind, regulates emotions, and provides a canvas for storytelling and creative expression. Whether you’re using a page from a beloved book, a printable found online, or a specially designed set, the key is mindful engagement.</p>
-<p>By choosing the right page for your child’s stage, setting up a supportive space, and engaging in curious conversation, you transform simple fun into profound growth. Never underestimate the cognitive workout happening every time your child picks up a crayon with purpose.</p>
-<h3>Frequently Asked Questions</h3>
-<div style="height: 0.25rem;"></div>
-<p><strong>Q: My 5-year-old just scribbles on the page. Is he doing it wrong?</strong><br>
-A: Not at all. Scribbling is a vital pre-writing stage. It builds motor strength, explores cause-and-effect (color appears!), and is a form of expressive mark-making. Celebrate the effort and gradually introduce simple shapes to color.</p>
-<p><strong>Q: How long should I expect my child to focus on a coloring activity?</strong><br>
-A: Focus time is age-dependent. A general guideline is 2-5 minutes per year of age. A 4-year-old may color for 8-20 minutes, while a 10-year-old might engage for 20-50 minutes on a complex page. The key is to stop before frustration sets in.</p>
-<p><strong>Q: Are coloring pages better than free-drawing for development?</strong><br>
-A: They serve different purposes. Coloring pages excel at practicing specific skills like fine motor control, boundary awareness, and color planning within a structure. Free-drawing fosters imagination, spatial planning, and original ideation. A balanced diet of both is ideal.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-coloring-activities-build-cognitive-skills-in-children-img4-1771634886.webp" alt="a-sun-drenched-inviting-classroom-art-station-ba-creative-variations-to-extend-the-learning" loading="lazy" width="1200" height="675"></figure></div>
-
-<p><strong>Q: Should I correct my child if they color a turkey purple?</strong><br>
-A: Resist the urge. Creative expression and confidence are more important than realistic color use. Instead, ask curious questions: 'Tell me about your purple turkey!' This values their thought process and encourages language development.</p>
-<p><strong>Q: What's the best type of coloring tool for my child's age?</strong><br>
-A: Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Standard crayons and thicker colored pencils. Ages 10+: Fine-tip markers and quality colored pencils for detail and blending. Always prioritize tools that fit comfortably in their hand.</p>
-<p>Integrating these tools with thoughtful <strong>educational coloring pages for kids</strong> can create a routine that supports their development in countless joyful ways.</p>
-</article><div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">My 5-year-old just scribbles on the page. Is he doing it wrong?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Not at all. Scribbling is a vital pre-writing stage. It builds motor strength, explores cause-and-effect (color appears!), and is a form of expressive mark-making. Celebrate the effort and gradually introduce simple shapes to color.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How long should I expect my child to focus on a coloring activity?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Focus time is age-dependent. A general guideline is 2-5 minutes per year of age. A 4-year-old may color for 8-20 minutes, while a 10-year-old might engage for 20-50 minutes on a complex page. The key is to stop before frustration sets in.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Are coloring pages better than free-drawing for development?</h3>
-<div style="height: 0.25rem;"></div>
-<p>They serve different purposes. Coloring pages excel at practicing specific skills like fine motor control, boundary awareness, and color planning within a structure. Free-drawing fosters imagination, spatial planning, and original ideation. A balanced diet of both is ideal.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Should I correct my child if they color a turkey purple?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Resist the urge. Creative expression and confidence are more important than realistic color use. Instead, ask curious questions: 'Tell me about your purple turkey!' This values their thought process and encourages language development.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What's the best type of coloring tool for my child's age?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Standard crayons and thicker colored pencils. Ages 10+: Fine-tip markers and quality colored pencils for detail and blending. Always prioritize tools that fit comfortably in their hand.</p></div></div>
-<div class="cta-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: center;">
-    <h3 style="color: white; margin-bottom: 15px;">Ready to Enhance Your Teaching?</h3>
-<div style="height: 0.25rem;"></div>
-<p style="color: white; margin-bottom: 20px;">Explore our premium <a href="../products.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">educational resources</a>:</p>
-    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://www.teacherspayteachers.com/Product/Happy-Thanksgiving-Coloring-Page-Coloring-Pages-Thanksgiving-Turkey-Vol2-10534237" target="_blank" rel="noopener" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Happy Thanksgiving Coloring Page | Coloring Pages </a>
-        <a href="../freebies.html" style="background: #F48C06; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Get Free Resources</a>
+<p>The humble act of coloring is a deceptively powerful tool. It quietly builds foundations for writing. It focuses the mind. It regulates emotions. It provides a canvas for storytelling. Whether you’re using a printable found online or a specially designed set, the key is mindful engagement. Choose the right page for your child’s stage.</p>
+<p>Set up a supportive space. Engage in curious conversation. You transform simple fun into profound growth. Bottom line? Never underestimate the cognitive workout happening every time your child picks up a crayon with purpose.</p>
+<p>Integrating these tools with thoughtful <strong>educational coloring pages for kids</strong> can create a routine. It supports their development in countless joyful ways. Long story short, it's one of the best investments in quiet time you can make.</p>
+</article>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#coloring</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#color</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#their</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#child</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#page</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#pages</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#turkey</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#year</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#focus</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#ages</a>
+        </div>
     </div>
-</div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -631,7 +673,14 @@ A: Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Stand
                 
                 <a href="../articles/best-coloring-activities-for-elementary-kids-development.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/best-coloring-activities-for-elementary-kids-development-cover-1771633709.webp" alt="Best Coloring Activities for Elementary Kids' Development" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/best-coloring-activities-for-elementary-kids-development-cover-1771633709.webp"
+                            srcset="../images/thumbs/best-coloring-activities-for-elementary-kids-development-cover-1771633709.webp 480w, ../images/best-coloring-activities-for-elementary-kids-development-cover-1771633709.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Coloring Activities for Elementary Kids' Development"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -643,7 +692,14 @@ A: Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Stand
                 </a>
                 <a href="../articles/how-word-search-activities-build-vocabulary-focus-in-kids.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-word-search-activities-build-vocabulary-focus-in-kids-cover-1771634342.webp" alt="How Word Search Activities Build Vocabulary &amp; Focus in Kids" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-word-search-activities-build-vocabulary-focus-in-kids-cover-1771634342.webp"
+                            srcset="../images/thumbs/how-word-search-activities-build-vocabulary-focus-in-kids-cover-1771634342.webp 480w, ../images/how-word-search-activities-build-vocabulary-focus-in-kids-cover-1771634342.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How Word Search Activities Build Vocabulary &amp; Focus in Kids"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -655,7 +711,14 @@ A: Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Stand
                 </a>
                 <a href="../articles/engaging-classroom-activities-top-early-learner-essentials.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/engaging-classroom-activities-top-early-learner-essentials-cover-1771746427.webp" alt="Engaging Classroom Activities: Top Early Learner Essentials" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/engaging-classroom-activities-top-early-learner-essentials-cover-1771746427.webp"
+                            srcset="../images/thumbs/engaging-classroom-activities-top-early-learner-essentials-cover-1771746427.webp 480w, ../images/engaging-classroom-activities-top-early-learner-essentials-cover-1771746427.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Engaging Classroom Activities: Top Early Learner Essentials"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -668,7 +731,32 @@ A: Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Stand
             </div>
         </div>
 
-        <!-- ═══ TPT PRODUCT RECOMMENDATION ═══ -->
+        <!-- ═══ TPT PRODUCT RECOMMENDATION & SCHEMA ═══ -->
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
+  "image": "Happy-Thanksgiving-Coloring-Page-Coloring-Pages-Thanksgiving-Turkey-Vol-1-10533959-1704278642/750f-10533959-1.jpg",
+  "description": "Educational resource: Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
+  "brand": {
+    "@type": "Brand",
+    "name": "Little Smart Genius"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.teacherspayteachers.com/Product/Happy-Thanksgiving-Coloring-Page-Coloring-Pages-Thanksgiving-Turkey-Vol1-10533959",
+    "priceCurrency": "USD",
+    "price": "1.00",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Little Smart Genius"
+    }
+  }
+}
+        </script>
+
         <div class="mt-10 rounded-2xl overflow-hidden border-2 border-brand/30 hover:border-brand/60 transition-all duration-300" style="background: linear-gradient(135deg, rgba(251, 146, 60, 0.05), rgba(99, 102, 241, 0.05));">
             <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-4">
@@ -688,42 +776,6 @@ A: Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Stand
                         Browse All Products
                     </a>
                 </div>
-            </div>
-        </div>
-
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-cooking-activities-to-boost-executive-function-proven-method.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Cooking Activities to Boost Executive Function...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-stickers-to-boost-fine-motor-cognitive-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Stickers to Boost Fine Motor &amp; Cognitive Skills
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-spot-the-difference-activities-boost-observation-skills-in-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Spot the Difference Activities Boost Observation Skil...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-spelling-practice-worksheets-for-elementary-students.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Spelling Practice Worksheets for Elementary Students
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-word-search-activities-build-vocabulary-focus-in-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Word Search Activities Build Vocabulary &amp; Focus in Kids
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
             </div>
         </div>
 
@@ -749,27 +801,6 @@ A: Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Stand
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -880,5 +911,288 @@ A: Ages 4-6: Chunky crayons or washable markers for easier grip. Ages 7-9: Stand
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🖍️</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Coloring Page (Kids)</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Coloring Page (Kids)</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Coloring Page (Kids)</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Coloring Page (Kids)";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>

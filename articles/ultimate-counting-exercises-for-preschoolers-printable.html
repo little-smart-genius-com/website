@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Ultimate Counting Exercises for Preschoolers Printable">
     <meta property="og:description" content="Boost early math skills with fun counting worksheets for preschoolers. Download printable PDFs for home or school. Start learning today!">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/ultimate-counting-exercises-for-preschoolers-printable.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/ultimate-counting-exercises-for-preschoolers-printable.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-21T01:27:37.344384">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Math Skills",
+      "item": "https://littlesmartgenius.com/blog-math-skills.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Ultimate Counting Exercises for Preschoolers Printable",
+      "item": "https://littlesmartgenius.com/articles/ultimate-counting-exercises-for-preschoolers-printable.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What age should children start using counting worksheets?", "acceptedAnswer": {"@type": "Answer", "text": "Children can begin simple counting activities around age 3, starting with concrete objects. Printable worksheets are most effective for reinforcing these concepts between ages 4 and 5, when they start developing one-to-one correspondence and can engage with symbols."}}, {"@type": "Question", "name": "How often should preschoolers practice counting?", "acceptedAnswer": {"@type": "Answer", "text": "Short, frequent sessions are best. Aim for 10-15 minutes of focused counting practice, 3-4 times per week. This aligns with a preschooler's attention span and prevents frustration while building consistent skills through playful repetition."}}, {"@type": "Question", "name": "Are printable activities better than counting apps for preschoolers?", "acceptedAnswer": {"@type": "Answer", "text": "Printable activities often provide superior fine motor development through coloring, cutting, and writing. While apps can be supplemental, hands-on worksheets create a tactile learning experience and reduce screen time, which is recommended by the American Academy of Pediatrics for young children."}}, {"@type": "Question", "name": "What should I do if my child gets frustrated with a counting worksheet?", "acceptedAnswer": {"@type": "Answer", "text": "Immediately step back and simplify. Switch to physical objects like blocks or snacks, or offer to do the worksheet together. The goal is positive association with numbers, not completion. Choose an easier printable that matches their current confidence level."}}, {"@type": "Question", "name": "How can I tell if a counting worksheet is educationally sound?", "acceptedAnswer": {"@type": "Answer", "text": "Look for clear, large numbers, countable objects that are not crowded, and a simple task. Avoid worksheets with excessive decorative graphics that distract from the math. The best worksheets focus on one skill at a time, such as counting a group and matching it to a numeral."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-math-skills.html" class="hover:text-brand transition">Math Skills</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Ultimate Counting Exercises for Preschoolers Printable">Ultimate Counting Exercises for Preschoolers Printable</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>David Moreau</span>
                     <span>&bull;</span>
-                    <span>February 21, 2026</span>
+                    <span>February 21, 2026 at 01:27 AM</span>
                     <span>&bull;</span><span>Math Skills</span>
                 </div>
 
@@ -436,18 +491,36 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp" alt="Ultimate Counting Exercises for Preschoolers Printable" class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp"
+                    srcset="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 480w, ../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Ultimate Counting Exercises for Preschoolers Printable"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
-                <h2>Ultimate Counting Exercises for Preschoolers Printable</h2>
+                
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#ultimate-counting-exercises-for-preschoolers-printable" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Ultimate Counting Exercises for Preschoolers Printable</a></li><li class="py-1"><a href="#why-printable-counting-exercises-are-essential-for-preschoolers" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why Printable Counting Exercises Are Essential for Preschoolers</a></li><li class="py-1"><a href="#top-6-types-of-counting-worksheets-for-early-learners" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Top 6 Types of Counting Worksheets for Early Learners</a></li><li class="py-1"><a href="#how-to-differentiate-counting-activities-for-diverse-learners" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">How to Differentiate Counting Activities for Diverse Learners</a></li><li class="py-1"><a href="#best-practices-for-printing-and-using-counting-pdfs" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Best Practices for Printing and Using Counting PDFs</a></li><li class="py-1"><a href="#creative-ways-to-extend-printable-counting-exercises" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Creative Ways to Extend Printable Counting Exercises</a></li><li class="py-1"><a href="#where-to-find-the-best-free-and-premium-counting-resources" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Where to Find the Best Free and Premium Counting Resources</a></li><li class="py-1"><a href="#wrapping-it-all-up" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Wrapping It All Up</a></li>
+        </ul>
+    </div>
+    <h2 id="ultimate-counting-exercises-for-preschoolers-printable">Ultimate Counting Exercises for Preschoolers Printable</h2>
 <div style="height: 0.5rem;"></div>
 <p>I’ll never forget the look on little Sammy’s face in my class last year. He was staring at a worksheet with pictures of apples, his brow all scrunched up. Then, he carefully touched each one with his finger, whispering “one… two… THREE!” His whole face lit up with this incredible “I did it!” pride.</p>
 <p>That moment, right there, is the magic we’re after. It’s not just about memorizing numbers. It’s about that spark of understanding. When it comes to <strong>counting exercises for preschoolers printable</strong>, parents have many great options.</p>
 <p>Sound familiar? Maybe you’re at home, wanting to support that spark but feeling overwhelmed. You search for <strong>counting exercises for preschoolers printable</strong> and get a million results. Which ones are actually helpful? How do you use them without it feeling like a chore?</p>
 <p>You’ve come to the right place. After 15 years in an early ed classroom, I’ve seen what works. Today, I’m sharing everything I know about using printables effectively. You’ll get the why, the how, and my very best teacher tricks for turning simple PDFs into powerful learning moments. Let’s jump in. This is especially helpful for <strong>counting exercises for preschoolers printable</strong>.</p>
-<h2>Why Printable Counting Exercises Are Essential for Preschoolers</h2>
+<h2 id="why-printable-counting-exercises-are-essential-for-preschoolers">Why Printable Counting Exercises Are Essential for Preschoolers</h2>
 <div style="height: 0.5rem;"></div>
 <p>Here’s the thing. Little kids learn by doing. They need to touch, move, and see concepts right in front of them. That’s where a good printable shines. It’s a bridge between playing with real blocks and understanding the abstract symbol “5.”</p>
 <h3>Building Foundational Number Sense</h3>
@@ -459,15 +532,15 @@
 <h3>Fostering Independent and Guided Learning</h3>
 <div style="height: 0.25rem;"></div>
 <p>The beauty of a printable is its flexibility. A confident child can work on it solo, building confidence. You can also sit side-by-side for a guided session, turning it into a conversation. “What do you notice about this group of butterflies?”</p>
-<p>In my experience, a structured approach pays off huge dividends. Research from the National Association for the <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Education</a> of Young Children (NAEYC) consistently links early, playful counting practice with later math success. My golden rule? Start super simple. Use large, clear numbers 1-5 for 3-4 year olds. Gradually expand to 1-10, then 1-20 for your eager 5-6 year olds. This gradual build is key to avoiding frustration.</p>
+<p>In my experience, a structured approach pays off huge dividends. Research from the National Association for the <a href="../blog-education.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Education</a> of Young Children (NAEYC) consistently links early, playful counting practice with later math success. My golden rule? Start super simple. Use large, clear numbers 1-5 for 3-4 year olds. Gradually expand to 1-10, then 1-20 for your eager 5-6 year olds. This gradual build is key to avoiding frustration.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-counting-exercises-for-preschoolers-printable-img1-1771637186.webp" alt="close-up-overhead-shot-of-a-preschoolers-diverse-h-why-printable-counting-exercises-are-essential-for-preschoolers" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <blockquote>"The goal of early math isn't speed or memorization, but fostering a child's curiosity and confidence about how numbers work." – Adapted from NAEYC’s core principles.</blockquote>
 <div style="height: 1.5rem;"></div>
-<h2>Top 6 Types of Counting Worksheets for Early Learners</h2>
+<h2 id="top-6-types-of-counting-worksheets-for-early-learners">Top 6 Types of Counting Worksheets for Early Learners</h2>
 <div style="height: 0.5rem;"></div>
 <p>Not all worksheets are created equal. You want activities that are clear, focused, and fun. Here are the six formats I use most in my classroom and absolutely swear by. This is especially helpful for <strong>counting exercises for preschoolers printable</strong>.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-counting-exercises-for-preschoolers-printable-img1-1771637186.webp" alt="close-up-overhead-shot-of-a-preschoolers-diverse-h-why-printable-counting-exercises-are-essential-for-preschoolers" loading="lazy" width="1200" height="675"></figure></div>
-
 <ol>
 <li><strong>Count and Circle/Color Activities:</strong> The classic for a reason. A page shows a scatter of objects—say, seven smiling stars. The task is simple: count them and circle the correct number or color in the group. This builds quantity recognition instantly.</li>
 <li><strong>Number Tracing and Writing Practice:</strong> This combines counting with literacy. Kids trace a large, friendly number “4,” then they might draw four squares in a box next to it. It connects the symbol with the amount.</li>
@@ -478,12 +551,15 @@
 </ol>
 <div style="height: 1rem;"></div>
 <p>Pro tip: For cut-and-paste activities, always offer safety scissors with rounded tips and a glue stick. It’s a multisensory counting experience that builds so much motor control. And a quick stat that guides me: over 70% of kindergarten teachers report that students need more number formation practice. Tracing sheets help solve that before they even walk into a kindergarten room.</p>
-<h2>How to Differentiate Counting Activities for Diverse Learners</h2>
+<h2 id="how-to-differentiate-counting-activities-for-diverse-learners">How to Differentiate Counting Activities for Diverse Learners</h2>
 <div style="height: 0.5rem;"></div>
 <p>Real talk: every child is on their own path. The same worksheet won’t work for every kid on the same day. And that’s perfectly okay. The secret is differentiation—offering just-right challenges for everyone.</p>
 <h3>Scaffolding for Beginners: Concrete to Abstract</h3>
 <div style="height: 0.25rem;"></div>
 <p>If a worksheet is too hard, don’t scrap it. Scaffold it. Pair a ‘Count the Bears’ printable with actual bear counters. Let the child line up the physical bears on the pictures first, then transfer the count to the paper. This makes the abstract concept concrete.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-counting-exercises-for-preschoolers-printable-img2-1771637186.webp" alt="an-isometric-overhead-view-of-a-cheerful-sunlit-c-top-6-types-of-counting-worksheets-for-early-learners" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Challenge Sheets for Advanced Preschoolers</h3>
 <div style="height: 0.25rem;"></div>
 <p>For your child who breezes through 1-10, provide an extension. Look for sheets that introduce simple addition frames (“3 ladybugs + 2 more = ?”) or that ask “How many more to make 10?” This keeps them engaged and thinking.</p>
@@ -493,13 +569,10 @@
 <ul>
 <li><em>For the struggling learner:</em> Use worksheets with larger, fewer objects. Reduce the number range. Work together, using your finger to point to each item.</li>
 <li><em>For the eager learner:</em> Provide printables that incorporate simple patterns, sorting, or comparisons (more/less).</li>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-counting-exercises-for-preschoolers-printable-img2-1771637186.webp" alt="an-isometric-overhead-view-of-a-cheerful-sunlit-c-top-6-types-of-counting-worksheets-for-early-learners" loading="lazy" width="1200" height="675"></figure></div>
-
 </ul>
 <div style="height: 1rem;"></div>
 <p>What I’ve found is that this approach keeps math time positive for everyone. No one feels bored or defeated. You can find adaptable lesson plans that make this easy in our <a href="freebies.html">free printables</a> section.</p>
-<h2>Best Practices for Printing and Using Counting PDFs</h2>
+<h2 id="best-practices-for-printing-and-using-counting-pdfs">Best Practices for Printing and Using Counting PDFs</h2>
 <div style="height: 0.5rem;"></div>
 <p>Let’s get practical. You’ve downloaded a great set of <strong>counting exercises for preschoolers printable</strong> files. Now what? How you set them up can make or break the experience.</p>
 <h3>Choosing the Right Paper and Lamination</h3>
@@ -516,12 +589,15 @@
 <li>Use a 3-hole punch for all your printed PDF resources to keep them binder-ready.</li>
 <li>Store dry-erase markers, a small eraser, and a dice right in your activity binder pocket.</li>
 </ul>
-<h2>Creative Ways to Extend Printable Counting Exercises</h2>
+<h2 id="creative-ways-to-extend-printable-counting-exercises">Creative Ways to Extend Printable Counting Exercises</h2>
 <div style="height: 0.5rem;"></div>
 <p>The worksheet doesn’t have to be the end of the learning. It can be the launchpad! Here’s how I take a simple PDF and turn it into a full-blown, engaging <strong>educational activity</strong>.</p>
 <h3>Turning Worksheets into Interactive Games</h3>
 <div style="height: 0.25rem;"></div>
 <p>Take a basic number sequencing sheet. Cut the squares apart. Now hide those numbered squares around the living room! Send your child on a “number hunt” to find them and arrange them in order. Suddenly, it’s an adventure.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-counting-exercises-for-preschoolers-printable-img3-1771637186.webp" alt="a-warm-focused-scene-in-a-sunlit-classroom-corner-how-to-differentiate-counting-activities-for-diverse-learners" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Connecting Counting to Real-World Scenarios</h3>
 <div style="height: 0.25rem;"></div>
 <p>Use a ‘Grocery Store Count’ printable (with pictures of fruits) during your actual shopping trip. Have your child count real apples and match them to the sheet. This links symbols to their world, making math meaningful.</p>
@@ -532,11 +608,8 @@
 <li><strong>Add Movement:</strong> Do a “worksheet workout.” Jump 5 times for the number 5. Stretch up high for big numbers, crouch low for small ones.</li>
 <li><strong>Tell a Story:</strong> The 4 cats on the worksheet? They’re going on a journey. What happens to them? This builds narrative skills alongside math.</li>
 <li><strong>Make it a Race:</strong> (A cooperative one!). Use two identical worksheets and two dot markers. “Can we both find all the groups of 3 before the timer dings? Go!”</li>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-counting-exercises-for-preschoolers-printable-img3-1771637186.webp" alt="a-warm-focused-scene-in-a-sunlit-classroom-corner-how-to-differentiate-counting-activities-for-diverse-learners" loading="lazy" width="1200" height="675"></figure></div>
-
 </ol>
-<h2>Where to Find the Best Free and Premium Counting Resources</h2>
+<h2 id="where-to-find-the-best-free-and-premium-counting-resources">Where to Find the Best Free and Premium Counting Resources</h2>
 <div style="height: 0.5rem;"></div>
 <p>The internet is full of options, but quality varies wildly. As a teacher, I look for specific things to ensure a printable is truly helpful, not just cute.</p>
 <h3>Evaluating Quality in Educational Printables</h3>
@@ -549,47 +622,31 @@
 <div style="height: 0.25rem;"></div>
 <p>For homeschoolers or parents wanting serious structure, a premium bundle is worth it. A good pack sequences skills logically—from counting to number recognition to simple addition. It saves you hours of searching and provides peace of mind that you’re covering all the bases.</p>
 <p>Quick tip: Always download and preview a free sample before buying a large pack. Make sure the style and difficulty are a good match for your little learner.</p>
-<h2>Wrapping It All Up</h2>
+<h2 id="wrapping-it-all-up">Wrapping It All Up</h2>
 <div style="height: 0.5rem;"></div>
 <p>Let’s bring this back to that spark in Sammy’s eyes. Your goal isn’t to create a math prodigy overnight. It’s to nurture that “I can do this!” feeling. Remember these three things:</p>
 <p>First, start where your child is. Use easy, confidence-building printables. Second, make it hands-on and playful—worksheets are tools, not tests. Third, connect the numbers on the page to the wonderful, countable world around you.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-counting-exercises-for-preschoolers-printable-img4-1771637186.webp" alt="a-wide-warm-toned-3d-pixar-style-illustration-of-best-practices-for-printing-and-using-counting-pdfs" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <p>You’ve got this. Those little moments of counting crackers, climbing stairs, or circling ducks on a page? They add up. They build the foundation for a child who feels capable and curious about math.</p>
 <p>I’ve packed our resource library with the kinds of <strong>counting exercises for preschoolers printable</strong> materials I use in my own classroom. To get started, I’d love for you to have our starter pack of <a href="freebies.html">three <a href="../freebies.html">free worksheets</a></a>. They’re simple, focused, and ready to spark some joy. For those looking for a deeper dive, our structured <a href="products.html"><a href="../products.html">premium resources</a></a> offer a full journey from counting to early math concepts. Happy counting!</p>
-<h2>Frequently Asked Questions</h2>
-<div style="height: 0.5rem;"></div>
 <p><strong>What age should children start using counting worksheets?</strong><br>
 Children can begin simple counting activities around age 3, starting with concrete objects. <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Printable worksheets</a> are most effective for reinforcing these concepts between ages 4 and 5, when they start developing one-to-one correspondence and can engage with symbols.</p>
 <p><strong>How often should preschoolers practice counting?</strong><br>
 Short, frequent sessions are best. Aim for 10-15 minutes of focused counting practice, 3-4 times per week. This aligns with a preschooler's attention span and prevents frustration while building consistent skills through playful repetition.</p>
-<p><strong>Are printable activities better than counting apps for preschoolers?</strong><br>
+<p><strong>Are <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">printable activities</a> better than counting apps for preschoolers?</strong><br>
 Printable activities often provide superior fine motor development through coloring, cutting, and writing. While apps can be supplemental, hands-on worksheets create a tactile learning experience and reduce screen time, which is recommended by the American Academy of Pediatrics for young children.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-counting-exercises-for-preschoolers-printable-img4-1771637186.webp" alt="a-wide-warm-toned-3d-pixar-style-illustration-of-best-practices-for-printing-and-using-counting-pdfs" loading="lazy" width="1200" height="675"></figure></div>
-
 <p><strong>What should I do if my child gets frustrated with a counting worksheet?</strong><br>
 Immediately step back and simplify. Switch to physical objects like blocks or snacks, or offer to do the worksheet together. The goal is positive association with numbers, not completion. Choose an easier printable that matches their current confidence level.</p>
 <p><strong>How can I tell if a counting worksheet is educationally sound?</strong><br>
 Look for clear, large numbers, countable objects that are not crowded, and a simple task. Avoid worksheets with excessive decorative graphics that distract from the math. The best worksheets focus on one skill at a time, such as counting a group and matching it to a numeral.</p><p><em>According to the <a href="https://www.naeyc.org/resources" target="_blank" rel="noopener">National Association for the Education of Young Children (NAEYC)</a>, hands-on educational activities are crucial for early childhood development.</em></p>
-<div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What age should children start using counting worksheets?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Children can begin simple counting activities around age 3, starting with concrete objects. Printable worksheets are most effective for reinforcing these concepts between ages 4 and 5, when they start developing one-to-one correspondence and can engage with symbols.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How often should preschoolers practice counting?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Short, frequent sessions are best. Aim for 10-15 minutes of focused counting practice, 3-4 times per week. This aligns with a preschooler's attention span and prevents frustration while building consistent skills through playful repetition.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Are printable activities better than counting apps for preschoolers?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Printable activities often provide superior fine motor development through coloring, cutting, and writing. While apps can be supplemental, hands-on worksheets create a tactile learning experience and reduce screen time, which is recommended by the American Academy of Pediatrics for young children.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What should I do if my child gets frustrated with a counting worksheet?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Immediately step back and simplify. Switch to physical objects like blocks or snacks, or offer to do the worksheet together. The goal is positive association with numbers, not completion. Choose an easier printable that matches their current confidence level.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How can I tell if a counting worksheet is educationally sound?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Look for clear, large numbers, countable objects that are not crowded, and a simple task. Avoid worksheets with excessive decorative graphics that distract from the math. The best worksheets focus on one skill at a time, such as counting a group and matching it to a numeral.</p></div></div>
-<div class="cta-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: center;">
-    <h3 style="color: white; margin-bottom: 15px;">Love Learning Activities?</h3>
-<div style="height: 0.25rem;"></div>
-<p style="color: white; margin-bottom: 20px;">Discover our <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">free printable worksheets</a> and <a href="../products.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">premium resources</a>:</p>
-    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="../freebies.html" style="background: #F48C06; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Free Worksheets</a>
-        <a href="../products.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Premium Resources</a>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#counting</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#printable</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#worksheets</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#child</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#number</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#simple</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#worksheet</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#math</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#activities</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#preschoolers</a>
+        </div>
     </div>
-</div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -627,7 +684,14 @@ Look for clear, large numbers, countable objects that are not crowded, and a sim
                 
                 <a href="../articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp" alt="Best Printable Math Worksheets for First Graders: Ultimat..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp"
+                            srcset="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 480w, ../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Printable Math Worksheets for First Graders: Ultimat..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -639,7 +703,14 @@ Look for clear, large numbers, countable objects that are not crowded, and a sim
                 </a>
                 <a href="../articles/how-to-use-kids-math-equations-to-supercharge-number-sense.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp" alt="How to Use Kids Math Equations to Supercharge Number Sense" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp"
+                            srcset="../images/thumbs/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 480w, ../images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Kids Math Equations to Supercharge Number Sense"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -651,7 +722,81 @@ Look for clear, large numbers, countable objects that are not crowded, and a sim
                 </a>
                 <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp" alt="Essential Shadow Matching Worksheets for Toddlers &amp; Kids" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp"
+                            srcset="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 480w, ../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Essential Shadow Matching Worksheets for Toddlers &amp; Kids"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Visual Skills</span>
+                            <span class="text-xs text-slate-500">📖 10 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Essential Shadow Matching Worksheets for Toddlers &amp; Kids</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="../articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp"
+                            srcset="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 480w, ../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Printable Math Worksheets for First Graders: Ultimat..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Math Skills</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Best Printable Math Worksheets for First Graders: Ultimat...</h4>
+                    </div>
+                </a>
+                <a href="../articles/how-to-use-kids-math-equations-to-supercharge-number-sense.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp"
+                            srcset="../images/thumbs/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 480w, ../images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Kids Math Equations to Supercharge Number Sense"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Math Skills</span>
+                            <span class="text-xs text-slate-500">📖 10 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use Kids Math Equations to Supercharge Number Sense</h4>
+                    </div>
+                </a>
+                <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp"
+                            srcset="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 480w, ../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Essential Shadow Matching Worksheets for Toddlers &amp; Kids"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -664,41 +809,7 @@ Look for clear, large numbers, countable objects that are not crowded, and a sim
             </div>
         </div>
 
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/how-photorealistic-spot-the-difference-puzzles-sharpen-a-childs-focus.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Photorealistic Spot the Difference Puzzles Sharpen a ...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-educational-printables-for-homeschool-ultimate-guide.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Educational Printables for Homeschool: Ultimate Guide
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Essential Shadow Matching Worksheets for Toddlers &amp; Kids
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-coloring-activities-for-elementary-kids-development.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Coloring Activities for Elementary Kids' Development
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-spot-the-difference-activities-boost-observation-skills-in-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Spot the Difference Activities Boost Observation Skil...
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
-            </div>
-        </div>
+
 
 
             <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
@@ -722,27 +833,6 @@ Look for clear, large numbers, countable objects that are not crowded, and a sim
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -853,5 +943,288 @@ Look for clear, large numbers, countable objects that are not crowded, and a sim
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">💯</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">One Hundred Puzzle</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">One Hundred Puzzle</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">One Hundred Puzzle</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "One Hundred Puzzle";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>

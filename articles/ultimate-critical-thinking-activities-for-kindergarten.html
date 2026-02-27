@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Ultimate Critical Thinking Activities for Kindergarten">
     <meta property="og:description" content="Boost logic & problem-solving with fun kindergarten worksheets! Download critical thinking activities now.">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/ultimate-critical-thinking-activities-for-kindergarten.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/ultimate-critical-thinking-activities-for-kindergarten.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-21T00:03:27.609337">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Critical Thinking",
+      "item": "https://littlesmartgenius.com/blog-critical-thinking.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Ultimate Critical Thinking Activities for Kindergarten",
+      "item": "https://littlesmartgenius.com/articles/ultimate-critical-thinking-activities-for-kindergarten.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are examples of critical thinking skills for a 5-year-old?", "acceptedAnswer": {"@type": "Answer", "text": "For a 5-year-old, critical thinking includes sorting objects by multiple attributes (color AND shape), predicting the next step in a simple story, solving a 3-piece sequence puzzle, and making simple choices based on preference (e.g., choosing a red shirt over a blue one). The focus is on basic reasoning, not just memorization."}}, {"@type": "Question", "name": "How can I teach critical thinking without screen time?", "acceptedAnswer": {"@type": "Answer", "text": "Focus on hands-on, conversational activities. Use physical puzzles, board games like 'Hoot Owl Hoot!', sorting household items, 'what's in the bag' guessing games, and building challenges with blocks. The most powerful tool is asking open-ended questions during play and daily routines."}}, {"@type": "Question", "name": "Why are puzzles good for critical thinking?", "acceptedAnswer": {"@type": "Answer", "text": "Puzzles are excellent because they require children to use multiple cognitive skills simultaneously: analyzing shapes (analytical thinking), testing hypotheses (if this piece doesn't fit, try another), planning a strategy (start with corners), and persisting through challenges (problem-solving). They make abstract thinking tangible."}}, {"@type": "Question", "name": "Is critical thinking too advanced for kindergarten?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely not. The kindergarten brain is primed for foundational critical thinking through play. At this age, it's about nurturing innate curiosity, asking 'why,' and exploring cause-and-effect. Simple activities that encourage comparison, prediction, and simple problem-solving are perfectly age-appropriate and essential."}}, {"@type": "Question", "name": "How do you assess critical thinking in young children?", "acceptedAnswer": {"@type": "Answer", "text": "Assess through observation, not tests. Notice if they can explain their reasoning ('I put this here because it's red'), adapt when a first attempt fails, ask insightful questions, or make logical connections during conversation. The process is more important than a correct answer."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-critical-thinking.html" class="hover:text-brand transition">Critical Thinking</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Ultimate Critical Thinking Activities for Kindergarten">Ultimate Critical Thinking Activities for Kindergarten</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>Little Smart Genius Team</span>
                     <span>&bull;</span>
-                    <span>February 21, 2026</span>
+                    <span>February 21, 2026 at 12:03 AM</span>
                     <span>&bull;</span><span>Critical Thinking</span>
                 </div>
 
@@ -436,164 +491,155 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp" alt="Ultimate Critical Thinking Activities for Kindergarten" class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp"
+                    srcset="../images/thumbs/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 480w, ../images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Ultimate Critical Thinking Activities for Kindergarten"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
-                <h2>Why Critical Thinking is the Best Foundation for Early Learning</h2>
+                
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#why-critical-thinking-is-the-best-foundation-for-early-learning" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why Critical Thinking is the Best Foundation for Early Learning</a></li><li class="py-1"><a href="#top-analytical-thinking-games-using-everyday-objects" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Top Analytical Thinking Games Using Everyday Objects</a></li><li class="py-1"><a href="#how-to-teach-problem-solving-with-logic-puzzles" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">How to Teach Problem Solving with Logic Puzzles</a></li><li class="py-1"><a href="#strategic-thinking-activities-that-fuel-creativity" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Strategic Thinking Activities That Fuel Creativity</a></li><li class="py-1"><a href="#the-ultimate-guide-to-developing-reasoning-skills-through-stories" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">The Ultimate Guide to Developing Reasoning Skills Through Stories</a></li><li class="py-1"><a href="#essential-decision-making-practices-for-family-life" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Essential Decision Making Practices for Family Life</a></li><li class="py-1"><a href="#wrapping-it-all-up" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Wrapping It All Up</a></li>
+        </ul>
+    </div>
+    <h2 id="why-critical-thinking-is-the-best-foundation-for-early-learning">Why Critical Thinking is the Best Foundation for Early Learning</h2>
 <div style="height: 0.5rem;"></div>
-<p>I remember watching my daughter, then in kindergarten, stare at a pile of mixed-up socks. She sighed like she’d been asked to solve a calculus problem. "I’ll never match them all!" she declared. Instead of jumping in, I asked, "What’s one way we could start to make it easier?" After a long look, she said, "Find all the white ones first." Bingo. That was her first, beautiful step in <strong>critical thinking activities for kindergarten</strong>.</p>
-<p>Sound familiar? You want to build a strong, agile mind, but flashcards and drills feel... wrong for a five-year-old. Here’s the thing: you’re right. The best foundation isn't more memorization. It’s teaching them *how* to think. This guide is packed with simple, powerful activities that build logic, reasoning, and problem-solving into your everyday play. You'll learn how to turn snack time into a pattern prediction session and story time into a deep  character motivation.</p>
+<p>I remember watching my daughter, then in kindergarten, stare at a pile of mixed-up socks. She sighed like she’d been asked to solve a calculus problem. "I’ll never match them all!" she declared. Honestly, I didn't jump in. I just asked, "What’s one way we could start?" After a long look, she said, "Find all the white ones first." Bingo. That was it. Her first, beautiful step into real thinking. It wasn't a worksheet. It was a sock pile.</p>
+<p>Sound familiar? You want a strong, agile mind for your child. But flashcards feel wrong. Drills feel wrong. You know it. Here's the thing: you're right. The best foundation isn't more memorization. It's teaching them *how* to think. I've spent years in classrooms and at my own kitchen table, and I can tell you—this shift changes everything.</p>
+<p>This guide? It's full of simple, powerful things you can do today. You'll turn snack time into a logic game. Story time into a detective session. Let's get into it.</p>
 <h3>Cognitive Development Milestones (Ages 4-6)</h3>
 <div style="height: 0.25rem;"></div>
-<p>At this magical age, their brains are shifting from "what" to "why" and "how." They’re moving into what psychologist Jean Piaget called the ‘preoperational stage,’ where symbolic thinking and imagination explode. But they’re also starting to grasp cause and effect, classify objects, and see simple sequences. Their reasoning is concrete—tied to what they can see and touch—which is why hands-on activities are non-negotiable. This is especially helpful for <strong>critical thinking activities for kindergarten</strong>.</p>
+<p>This age is pure magic. Their brains are shifting. They're moving from "what" to "why." Psychologist Jean Piaget called it the ‘preoperational stage.’ Imagination explodes. But they're also starting to grasp real concepts. Cause and effect. How to group things. Simple sequences. The key? Their reasoning is concrete. Tied to what they can touch. That's why hands-on activities aren't just fun—they're essential. They're the only way these ideas stick.</p>
 <h3>Beyond Memorization: From Recall to Reasoning</h3>
 <div style="height: 0.25rem;"></div>
-<p>Any child can memorize that 2+2=4. <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Critical thinking</a> asks, "If I have two apples and you give me two more, how many do I have?" It connects the symbol to a real-world scenario. This shift from recall to reasoning is huge. Research consistently shows that early <strong>analytical thinking</strong> skills are a stronger predictor of later academic success in math and reading than rote knowledge alone.</p>
+<p>Any child can memorize that 2+2=4. That's recall. Real thinking asks a different question: "If I have two apples and you give me two more, how many do I have?" It connects the symbol to life. This shift is huge. In my experience, it's the game-changer. Research backs this up, too. Early analytical skills are a stronger predictor of later success in math and reading than rote knowledge alone. The bottom line? We need to build thinkers, not just rememberers.</p>
 <h3>The Link Between Play and Executive Function</h3>
 <div style="height: 0.25rem;"></div>
-<p>When kids negotiate the rules of a made-up game or decide the best block to stabilize their tower, they aren't just playing. They’re honing executive function—the mental skills that include working memory, flexible thinking, and self-control. These are the bedrock of strategic thinking. Play is their brain’s workshop.</p>
-<p><em>Actionable Tip:</em> Swap closed questions for open-ended ones. Instead of "What color is this block?" try "What would happen if we put the big block on top of the little one?" You’re prompting reasoning, not just identification. This is especially helpful for <strong>critical thinking activities for kindergarten</strong>.</p>
+<p>When kids negotiate game rules or choose the right block for a tower, they aren't just playing. They're working. They're honing executive function—skills like working memory, flexible thinking, and self-control. This is the bedrock. Play is their brain's workshop. It's where strategy is born.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-critical-thinking-activities-for-kindergarten-img1-1771632132.webp" alt="a-close-up-soft-watercolor-style-photo-with-crisp-why-critical-thinking-is-the-best-foundation-for-early-learning" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<p><em>Actionable Tip:</em> Swap your questions. Instead of "What color is this block?" try "What would happen if we put the big block on top?" You're prompting reasoning. You're asking for a theory. It makes all the difference.</p>
 <blockquote>"We can't solve problems by using the same kind of thinking we used when we created them." — Albert Einstein. This starts by nurturing a different kind of thinking from the very beginning.</blockquote>
 <div style="height: 1.5rem;"></div>
-<h2>Top Analytical Thinking Games Using Everyday Objects</h2>
+<h2 id="top-analytical-thinking-games-using-everyday-objects">Top Analytical Thinking Games Using Everyday Objects</h2>
 <div style="height: 0.5rem;"></div>
-<p>You don’t need fancy kits. Your home is a treasure trove of logic puzzles. The goal is to get them observing, comparing, and justifying their ideas.</p>
+<p>You don't need fancy kits. I promise. Your home is full of logic puzzles. Look in your junk drawer. The goal is simple: get them observing, comparing, and justifying their ideas.</p>
 <h3>The 'Odd One Out' Classification Challenge</h3>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-critical-thinking-activities-for-kindergarten-img1-1771632132.webp" alt="a-close-up-soft-watercolor-style-photo-with-crisp-why-critical-thinking-is-the-best-foundation-for-early-learning" loading="lazy" width="1200" height="675"></figure></div>
-
-<p>This classic is a powerhouse. Place three items and one obvious outlier: a spoon, fork, cup, and knife. Ask, "Which one doesn’t belong?" The cup (not cutlery) is the easy answer. But the real magic is in the follow-up: "Tell me why you chose that." You get a window into their reasoning process. Maybe they say, "You can’t eat soup with it." Valid!</p>
+<div style="height: 0.25rem;"></div>
+<p>This classic is a powerhouse. Place three items and one obvious outlier: a spoon, fork, cup, and knife. Ask, "Which one doesn’t belong?" The cup is the easy answer. But here's the secret: the magic is in the follow-up. "Tell me why you chose that." You get a window into their mind. Maybe they say, "You can’t eat soup with it." Perfect! That's valid logic.</p>
 <h3>Pattern Prediction with Snacks and Toys</h3>
 <div style="height: 0.25rem;"></div>
-<p>Turn snack time into a brain game. Create a simple pattern with crackers and cheese: circle cracker, square cheese, circle cracker... Place a few items and ask, "What comes next?" You’re teaching them to identify a rule and apply it—core analytical thinking. Use toys like cars (red, blue, red, blue...) or blocks for the same effect. This is especially helpful for <strong>critical thinking activities for kindergarten</strong>.</p>
+<p>Turn snack time into a brain game. It's easy. Create a simple pattern: circle cracker, square cheese, circle cracker... Place a few items and ask, "What comes next?" You’re teaching them to find a rule and use it. That's core analytical thinking. Use toys, too. Red car, blue car, red car... The repetition builds that neural pathway. Quick tip: start with two-element patterns before adding a third.</p>
 <h3>Attribute Sorting: Level Up the Color Game</h3>
 <div style="height: 0.25rem;"></div>
-<p>Sorting by color is preschool. Sorting by two attributes is kindergarten critical thinking. Give them a pile of buttons and ask, "Can you find all the red buttons that also have two holes?" They have to hold two criteria in their mind at once. It’s a challenging but fantastic exercise in focused attention and logic.</p>
-<p><em>Pro tip:</em> Start with three items and one clear outlier. Gradually increase to four items where there might be two valid answers (e.g., dog, cat, goldfish, leash). This encourages debate and teaches them to defend their choices with logic.</p>
-<h2>How to Teach Problem Solving with Logic Puzzles</h2>
+<p>Sorting by color is for preschoolers. Sorting by two attributes? That's kindergarten thinking. Give them a pile of buttons. Ask, "Can you find all the red buttons that also have two holes?" They have to hold two rules in their mind. It's challenging. But it's a fantastic exercise in focus and logic. What I've found works is to keep the pile small at first. Success builds confidence.</p>
+<p><em>Pro tip:</em> Start with three items and one clear outlier. Then, get tricky. Use four items where there might be two right answers. Dog, cat, goldfish, leash. Is the odd one out the leash (not an animal) or the goldfish (doesn't walk on land)? This encourages debate. They learn to defend a choice with reason.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-critical-thinking-activities-for-kindergarten-img2-1771632132.webp" alt="overhead-isometric-illustration-of-a-diverse-pair-top-analytical-thinking-games-using-everyday-objects" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<h2 id="how-to-teach-problem-solving-with-logic-puzzles">How to Teach Problem Solving with Logic Puzzles</h2>
 <div style="height: 0.5rem;"></div>
-<p>Logic puzzles sound formal, but for kindergartners, they’re just fun problems with pieces. The key is starting visually and physically.</p>
+<p>Logic puzzles sound formal. For kindergartners, they're just fun problems with pieces. The key is to start visually. Start physically.</p>
 <h3>Starting Simple: Sequence and Order Puzzles</h3>
 <div style="height: 0.25rem;"></div>
-<p>Understanding order is fundamental. Create a 3-card story sequence: a seed, a sprout, a flower. Give them the cards scrambled and ask them to put the story in order. For an extra challenge, give them only the middle card (sprout) and ask what must come before and after. This builds narrative reasoning and prediction skills.</p>
+<p>Understanding order is everything. Create a 3-card story: a seed, a sprout, a flower. Scramble the cards. Ask them to put the story in order. For a bigger challenge, give only the middle card. Ask what must come before and after. This builds narrative reasoning. It builds prediction skills. They learn that events have a logical flow.</p>
 <h3>Introducing Grids: The Magic of 2x2 Sudoku</h3>
 <div style="height: 0.25rem;"></div>
-<p>Yes, Sudoku for five-year-olds! Use pictures instead of numbers. A 2x2 grid is perfect. The rule: each picture (e.g., sun, cloud, star, moon) must appear only once in each row and each column. It teaches them to scan, eliminate possibilities, and think strategically—a brilliant, quiet <strong>logic puzzle</strong>.</p>
+<p>Yes, <a href="../freebies.html?dl=Sudoku" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Sudoku</a> for five-year-olds! Use pictures, not numbers. A 2x2 grid is perfect. The rule: each picture must appear only once in each row and each column. It teaches them to scan. To eliminate possibilities. To think ahead. It's a brilliant, quiet logic puzzle. I love using animal stickers or simple shapes.</p>
 <ol>
-<li>Start with a nearly complete grid (only one empty square).</li>
-<li>Let them use physical picture tiles to test their ideas.</li>
-<li>Celebrate the process of elimination, not just the final answer.</li>
+<li>Start with a nearly complete grid. Just one empty square.</li>
+<li>Let them use physical picture tiles. Moving them around helps.</li>
+<li>Celebrate the process. The elimination. Not just the final answer.</li>
 </ol>
 <h3>If-Then Story Puzzles: Building Causal Reasoning</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is storytelling with a logic twist. Pose simple scenarios. "IF I blow on this dandelion, THEN what will happen?" "IF the dog is barking, THEN what might be outside?" You can even make silly chains: "If I put my boots on, then I can jump in puddles. If I jump in puddles, then I will get wet..." This builds a strong understanding of cause and effect, a cornerstone of scientific reasoning.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-critical-thinking-activities-for-kindergarten-img2-1771632132.webp" alt="overhead-isometric-illustration-of-a-diverse-pair-top-analytical-thinking-games-using-everyday-objects" loading="lazy" width="1200" height="675"></figure></div>
-
-<p><em>Quick tip:</em> If they get frustrated with a puzzle, reduce the number of pieces or choices. We want to scaffold success, not create shutdown.</p>
-<h2>Strategic Thinking Activities That Fuel Creativity</h2>
+<p>This is storytelling with a logic twist. Pose simple scenarios. "IF I blow on this dandelion, THEN what will happen?" "IF the dog is barking, THEN what might be outside?" Make silly chains. "If I put my boots on, then I can jump in puddles. If I jump in puddles, then I will get wet..." This builds a rock-solid understanding of cause and effect. It's the foundation of scientific reasoning.</p>
+<p><em>Quick tip:</em> Frustration happens. If they get stuck, reduce the pieces. Simplify the choices. We want to scaffold success. We don't want shutdown. The goal is the "aha!" moment.</p>
+<h2 id="strategic-thinking-activities-that-fuel-creativity">Strategic Thinking Activities That Fuel Creativity</h2>
 <div style="height: 0.5rem;"></div>
-<p>Strategy isn’t just for chess masters. It’s about planning ahead and managing resources. These activities make that concept tangible and wildly fun.</p>
+<p>Strategy isn't just for chess. It's about planning. Managing resources. These activities make that concept tangible. And they're wildly fun.</p>
 <h3>'What's in the Bag?' Inferential Reasoning Game</h3>
 <div style="height: 0.25rem;"></div>
-<p>Place a familiar object with a distinct texture or shape in a cloth bag. Let them reach in and feel it. Their job is to ask you questions to deduce what it is. "Is it alive?" "Is it smooth?" "Do we eat it?" They must use your clues to narrow down possibilities and form a hypothesis. It’s detective work for tots!</p>
+<p>Put a familiar object in a cloth bag. Something with a distinct shape. Let them reach in and feel it. Their job? Ask questions to figure it out. "Is it hard?" "Do we use it in the kitchen?" "Is it alive?" They must use your clues. They narrow down possibilities. They form a hypothesis. It's detective work for tots! Between you and me, a wooden spoon or a pinecone works great.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-critical-thinking-activities-for-kindergarten-img3-1771632132.webp" alt="sunlit-playroom-with-warm-wood-floors-a-sage-gree-how-to-teach-problem-solving-with-logic-puzzles" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Build the Tallest Tower: Constraints Encourage Strategy</h3>
 <div style="height: 0.25rem;"></div>
-<p>Any kid can stack blocks. But give them a constraint, and you ignite strategy. Challenge: "Build the tallest tower you can, but you can only use three blocks of each color." Suddenly, they have to plan. They might save their long red blocks for the base. A 2020 study on structured block play found it improved planning skills in kindergarteners by up to 15%.</p>
+<p>Any kid can stack blocks. But give them a constraint. Watch their brain light up. Challenge: "Build the tallest tower, but you can only use three blocks of each color." Suddenly, they have to plan. They might save the long red blocks for the base. A 2020 study on structured block play found it improved planning skills in kindergarteners by up to 15%. Constraints don't limit creativity. They fuel it.</p>
 <h3>Simple Board Games That Teach Decision Making</h3>
 <div style="height: 0.25rem;"></div>
-<p>Choose games that require more than just rolling and moving. Games like "Hoot Owl Hoot!" or "Outfoxed!" force players to make collaborative decisions. "Should we play the sun card to move everyone, or the green card to help just the green owl?" They’re weighing outcomes, a key part of <strong>decision making</strong>.</p>
+<p>Choose games that require more than just rolling a die. Games where they have to make a choice. Games like "Hoot Owl Hoot!" force collaborative decisions. "Should we play the sun card to move everyone, or the green card to help just the green owl?" They're weighing outcomes. That's real decision making.</p>
 <ul>
 <li><strong>Hoot Owl Hoot!:</strong> Cooperative color matching and strategic movement.</li>
 <li><strong>My First Castle Panic:</strong> Simple tower defense requiring tactical piece placement.</li>
 <li><strong>Go Away Monster!:</strong> A tactile game of matching and spatial memory.</li>
 </ul>
-<h2>The Ultimate Guide to Developing Reasoning Skills Through Stories</h2>
+<h2 id="the-ultimate-guide-to-developing-reasoning-skills-through-stories">The Ultimate Guide to Developing Reasoning Skills Through Stories</h2>
 <div style="height: 0.5rem;"></div>
-<p>Books are the original virtual reality. They let kids explore consequences, motivations, and complex emotions safely. We just have to read with a questioning mindset.</p>
+<p>Books are the original virtual reality. They let kids explore safely. We just have to read with a questioning mind.</p>
 <h3>Predicting Outcomes: 'What Will Happen Next?'</h3>
 <div style="height: 0.25rem;"></div>
-<p>Don’t just read the page. Pause before a turning point. In "The Three Little Pigs," stop before the wolf huffs and puffs. Ask, "Which house do you think is safest? Why?" Then, "What do you think the wolf will try next?" Make them justify their prediction. This moves them from passive listening to active engagement.</p>
+<p>Don't just read the page. Pause. In "The Three Little Pigs," stop before the wolf huffs. Ask, "Which house is safest? Why?" Then, "What will the wolf try next?" Make them justify it. This moves them from passive listening to active engagement. They're part of the story.</p>
 <h3>Identifying Character Motivations: 'Why Did She Do That?'</h3>
 <div style="height: 0.25rem;"></div>
-<p>This builds empathy and theory of mind—understanding that others have thoughts different from their own. After Goldilocks eats the porridge, ask, "Why do you think she did that? Was she hungry? Was she being rude?" There’s no single right answer. The exercise is in constructing a logical reason based on evidence from the story.</p>
+<p>This builds empathy. It builds theory of mind—understanding others have different thoughts. After Goldilocks eats the porridge, ask, "Why did she do that? Was she hungry? Was she being rude?" There's no single right answer. The exercise is in constructing a logical reason. Using evidence from the story.</p>
 <h3>Evaluating Solutions: 'Was That a Good Choice?'</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is high-level reasoning. After finishing a story, revisit a character’s decision. "The boy in the story cried ‘wolf’ when there wasn’t one. What was the problem with that choice? What could he have done instead?" You’re teaching them to evaluate actions based on their consequences.</p>
+<p>This is high-level reasoning. After the story, revisit a decision. "The boy cried ‘wolf’ when there wasn’t one. What was the problem with that? What could he have done instead?" You're teaching evaluation. Judging actions by their consequences.</p>
+<p><em>Real talk:</em> Some of the best tools for this are wordless picture books. The child *has* to infer everything. The plot. The sequence. The cause. It's a total brain workout. "Journey" by Aaron Becker is a masterpiece for this.</p>
 
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-critical-thinking-activities-for-kindergarten-img3-1771632132.webp" alt="sunlit-playroom-with-warm-wood-floors-a-sage-gree-how-to-teach-problem-solving-with-logic-puzzles" loading="lazy" width="1200" height="675"></figure></div>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-critical-thinking-activities-for-kindergarten-img4-1771632132.webp" alt="a-wide-shot-in-a-sun-drenched-playroom-following-strategic-thinking-activities-that-fuel-creativity" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
 
-<p><em>Real talk:</em> Some of the best tools for this are wordless picture books. The child *has* to infer the entire plot, sequence, and cause/effect from the visuals alone. It’s a total brain workout.</p>
-<h2>Essential Decision Making Practices for Family Life</h2>
+<h2 id="essential-decision-making-practices-for-family-life">Essential Decision Making Practices for Family Life</h2>
 <div style="height: 0.5rem;"></div>
-<p>The best <strong>critical thinking activities for kindergarten</strong> happen in your daily routine. It’s about giving them agency and reflection in real-world moments.</p>
+<p>The best thinking practice happens in your daily routine. It's about giving them agency. And reflection.</p>
 <h3>The Two-Option Rule: Structuring Manageable Choices</h3>
 <div style="height: 0.25rem;"></div>
-<p>Too many choices overwhelm a young brain and lead to meltdowns. Structure autonomy with bounded choice. "Would you like to wear the red shirt or the blue shirt?" "Should we have apples or oranges with lunch?" Both options are valid for you, but the act of choosing builds confidence and the ability to weigh simple preferences.</p>
+<p>Too many choices overwhelm a young brain. It leads to meltdowns. Structure autonomy. Give bounded choice. "Red shirt or blue shirt?" "Apples or oranges with lunch?" Both options work for you. But the act of choosing builds confidence. It builds the ability to weigh simple preferences. In my experience, this one habit reduces power struggles dramatically.</p>
 <h3>Pro-Con Lists for Kids: Weighing Simple Outcomes</h3>
 <div style="height: 0.25rem;"></div>
-<p>Make it visual and silly. Facing a decision like "Should we play outside now or after lunch?" Draw a simple T-chart. For "Outside now," a pro might be "It’s sunny!" A con might be "We’re in our socks." Keep it light. You’re modeling how to weigh factors before deciding.</p>
+<p>Make it visual. Make it silly. Facing a decision like "Play outside now or after lunch?" Draw a simple T-chart. For "Outside now," a pro might be "Sunshine!" A con might be "We're in socks." Keep it light. You're modeling how to weigh factors. You're showing them that decisions have reasons.</p>
 <h3>Reflective Conversations: 'What Would You Do Differently?'</h3>
 <div style="height: 0.25rem;"></div>
-<p>After a conflict or a failed attempt (a tower keeps falling), use a calm-down period followed by a ‘replay’ talk. Ask three simple questions:</p>
+<p>After a conflict or a failed attempt, have a ‘replay’ talk. Keep it calm. Ask three questions:</p>
 <ol>
 <li>"What was the problem?" (Identifying the issue)</li>
 <li>"What did you try?" (Reviewing actions)</li>
 <li>"What could we try next time?" (Planning a new strategy)</li>
 </ol>
 <div style="height: 1rem;"></div>
-<p>This moves them from reactionary behavior to reflective, strategic thinking.</p>
-<h2>Wrapping It All Up</h2>
+<p>This moves them from reaction to reflection. It's powerful.</p>
+<h2 id="wrapping-it-all-up">Wrapping It All Up</h2>
 <div style="height: 0.5rem;"></div>
-<p>Building a critical thinker isn’t about adding more homework. It’s about shifting your approach to the play and conversations you’re already having. Remember these three things:</p>
+<p>Building a critical thinker isn't about more homework. It's a shift in approach. To the play you're already having. The conversations you're already having. Remember these three things:</p>
 <ul>
 <li><strong>Ask "Why?" and "How?" more than "What?"</strong> Prompt the reasoning behind the answer.</li>
 <li><strong>Embrace constraints in play.</strong> Rules and limits force creativity and strategy.</li>
 <li><strong>Reflect out loud.</strong> Talk through your own simple decision-making processes so they can hear the model.</li>
 </ul>
 <div style="height: 1rem;"></div>
-<p>You’ve got this. Your kitchen, your living room floor, and your storytime couch are the best classrooms. Start with one activity that feels fun for you both. For more structured support, we have <a href="#"><a href="../freebies.html">free worksheets</a></a> and beginner puzzles, as well as curated <a href="#"><a href="../products.html">premium resources</a></a> for deeper dives into <strong>educational activities</strong>. The goal isn’t a tiny genius. It’s a confident, curious, and resilient problem-solver. And that journey starts with these simple, powerful <strong>critical thinking activities for kindergarten</strong>.</p>
-<h2>Frequently Asked Questions</h2>
-<h3>What are examples of critical thinking skills for a 5-year-old?</h3>
-<div style="height: 0.25rem;"></div>
-<p>For a 5-year-old, critical thinking includes sorting objects by multiple attributes (color AND shape), predicting the next step in a simple story, solving a 3-piece sequence puzzle, and making simple choices based on preference (e.g., choosing a red shirt over a blue one). The focus is on basic reasoning, not just memorization.</p>
-<h3>How can I teach critical thinking without screen time?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Focus on hands-on, conversational activities. Use physical puzzles, board games like 'Hoot Owl Hoot!', sorting household items, 'what's in the bag' guessing games, and building challenges with blocks. The most powerful tool is asking open-ended questions during play and daily routines.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/ultimate-critical-thinking-activities-for-kindergarten-img4-1771632132.webp" alt="a-wide-shot-in-a-sun-drenched-playroom-following-strategic-thinking-activities-that-fuel-creativity" loading="lazy" width="1200" height="675"></figure></div>
-
-<h3>Why are puzzles good for critical thinking?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Puzzles are excellent because they require children to use multiple cognitive skills simultaneously: analyzing shapes (analytical thinking), testing hypotheses (if this piece doesn’t fit, try another), planning a strategy (start with corners), and persisting through challenges (problem-solving). They make abstract thinking tangible.</p>
-<h3>Is critical thinking too advanced for kindergarten?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Absolutely not. The kindergarten brain is primed for foundational critical thinking through play. At this age, it’s about nurturing innate curiosity, asking ‘why,’ and exploring cause-and-effect. Simple activities that encourage comparison, prediction, and simple problem-solving are perfectly age-appropriate and essential.</p>
-<h3>How do you assess critical thinking in young children?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Assess through observation, not tests. Notice if they can explain their reasoning (‘I put this here because it’s red’), adapt when a first attempt fails, ask insightful questions, or make logical connections during conversation. The process is more important than a correct answer.</p><p><em>According to the <a href="https://www.naeyc.org/resources" target="_blank" rel="noopener">National Association for the Education of Young Children (NAEYC)</a>, hands-on educational activities are crucial for early childhood development.</em></p>
-<div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What are examples of critical thinking skills for a 5-year-old?</h3>
-<div style="height: 0.25rem;"></div>
-<p>For a 5-year-old, critical thinking includes sorting objects by multiple attributes (color AND shape), predicting the next step in a simple story, solving a 3-piece sequence puzzle, and making simple choices based on preference (e.g., choosing a red shirt over a blue one). The focus is on basic reasoning, not just memorization.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How can I teach critical thinking without screen time?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Focus on hands-on, conversational activities. Use physical puzzles, board games like 'Hoot Owl Hoot!', sorting household items, 'what's in the bag' guessing games, and building challenges with blocks. The most powerful tool is asking open-ended questions during play and daily routines.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Why are puzzles good for critical thinking?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Puzzles are excellent because they require children to use multiple cognitive skills simultaneously: analyzing shapes (analytical thinking), testing hypotheses (if this piece doesn't fit, try another), planning a strategy (start with corners), and persisting through challenges (problem-solving). They make abstract thinking tangible.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Is critical thinking too advanced for kindergarten?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Absolutely not. The kindergarten brain is primed for foundational critical thinking through play. At this age, it's about nurturing innate curiosity, asking 'why,' and exploring cause-and-effect. Simple activities that encourage comparison, prediction, and simple problem-solving are perfectly age-appropriate and essential.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How do you assess critical thinking in young children?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Assess through observation, not tests. Notice if they can explain their reasoning ('I put this here because it's red'), adapt when a first attempt fails, ask insightful questions, or make logical connections during conversation. The process is more important than a correct answer.</p></div></div>
-<div class="cta-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: center;">
-    <h3 style="color: white; margin-bottom: 15px;">Love Learning Activities?</h3>
-<div style="height: 0.25rem;"></div>
-<p style="color: white; margin-bottom: 20px;">Discover our <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">free printable worksheets</a> and <a href="../products.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">premium resources</a>:</p>
-    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="../freebies.html" style="background: #F48C06; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Free Worksheets</a>
-        <a href="../products.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Premium Resources</a>
+<p>You’ve got this. Your kitchen is a classroom. Your living room floor is a lab. Start with one activity that feels fun. For more support, we have <a href="../freebies.html">free worksheets</a> and beginner puzzles, plus curated <a href="../products.html">premium resources</a> for deeper dives. The goal isn't a tiny genius. It's a confident, curious problem-solver. That journey starts right here.</p>
+<p><em>According to the <a href="https://www.naeyc.org/resources" target="_blank" rel="noopener">National Association for the Education of Young Children (NAEYC)</a>, hands-on educational activities are crucial for early childhood development.</em></p>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#thinking</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#what</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#critical</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#simple</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#reasoning</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#their</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#activities</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#play</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#puzzles</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#just</a>
+        </div>
     </div>
-</div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -631,7 +677,14 @@
                 
                 <a href="../articles/best-benefits-of-puzzles-for-child-brain-development.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp" alt="Best Benefits of Puzzles for Child Brain Development" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp"
+                            srcset="../images/thumbs/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 480w, ../images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Benefits of Puzzles for Child Brain Development"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -643,7 +696,14 @@
                 </a>
                 <a href="../articles/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp" alt="How to Use Four In A Row to Unlock Your Child's Strategic..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp"
+                            srcset="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 480w, ../images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Four In A Row to Unlock Your Child's Strategic..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -655,7 +715,81 @@
                 </a>
                 <a href="../articles/how-to-use-skyscraper-to-boost-your-childs-logic-skills.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp" alt="How to Use Skyscraper to Boost Your Child's Logic Skills" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp"
+                            srcset="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 480w, ../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Skyscraper to Boost Your Child's Logic Skills"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 11 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use Skyscraper to Boost Your Child's Logic Skills</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="../articles/best-benefits-of-puzzles-for-child-brain-development.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp"
+                            srcset="../images/thumbs/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 480w, ../images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Benefits of Puzzles for Child Brain Development"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 10 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Best Benefits of Puzzles for Child Brain Development</h4>
+                    </div>
+                </a>
+                <a href="../articles/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp"
+                            srcset="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 480w, ../images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Four In A Row to Unlock Your Child's Strategic..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 11 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use Four In A Row to Unlock Your Child's Strategic...</h4>
+                    </div>
+                </a>
+                <a href="../articles/how-to-use-skyscraper-to-boost-your-childs-logic-skills.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp"
+                            srcset="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 480w, ../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Skyscraper to Boost Your Child's Logic Skills"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -668,41 +802,7 @@
             </div>
         </div>
 
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Fine Motor Skills Worksheets for Preschoolers: The U...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-kids-math-equations-to-supercharge-number-sense.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Kids Math Equations to Supercharge Number Sense
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-a-freebie-pack-to-boost-essential-learning-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use a Freebie Pack to Boost Essential Learning Skills
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-spot-the-difference-activities-boost-observation-skills-in-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Spot the Difference Activities Boost Observation Skil...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-spot-the-difference-photorealistic-pictures-build-focus-observation-skills-i.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Spot the Difference (Photorealistic) Build Focus in Kids
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
-            </div>
-        </div>
+
 
 
             <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
@@ -726,27 +826,6 @@
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -857,5 +936,288 @@
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🚢</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Warships</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Warships</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Warships</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Warships";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>

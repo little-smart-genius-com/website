@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="How to Use Kids Math Equations to Supercharge Number Sense">
     <meta property="og:description" content="Download a free printable math game to build confidence and fluency. Psychologist-backed method for problem-solving skills!">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/how-to-use-kids-math-equations-to-supercharge-number-sense.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/how-to-use-kids-math-equations-to-supercharge-number-sense.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-21T00:43:05.682158">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Math Skills",
+      "item": "https://littlesmartgenius.com/blog-math-skills.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "How to Use Kids Math Equations to Supercharge Number Sense",
+      "item": "https://littlesmartgenius.com/articles/how-to-use-kids-math-equations-to-supercharge-number-sense.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What age is the Kids Math Equations printable best for?", "acceptedAnswer": {"@type": "Answer", "text": "The resource is designed with adaptable difficulty, making it perfect for children ages 4-12. Younger children can focus on simple addition/subtraction (1-10), while older kids can tackle multiplication/division or larger numbers."}}, {"@type": "Question", "name": "How does this activity help a child who struggles with math?", "acceptedAnswer": {"@type": "Answer", "text": "It reframes math as a puzzle game, reducing anxiety. The visual 'clear the board' goal provides motivation, and the manageable, bite-sized problems build success incrementally, which is key for developing confidence."}}, {"@type": "Question", "name": "Do I need special materials to use this?", "acceptedAnswer": {"@type": "Answer", "text": "No! Just the printed worksheet, a pencil, and an eraser. For younger children, you can add manipulatives like cereal pieces or counters to make the equations tactile."}}, {"@type": "Question", "name": "How often should we use this activity?", "acceptedAnswer": {"@type": "Answer", "text": "Short, frequent sessions (10-15 minutes, 2-3 times a week) are more effective than long, infrequent ones. Consistency helps solidify neural pathways related to number sense and recall."}}, {"@type": "Question", "name": "Can this be used in a classroom or homeschool setting?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. It's excellent for independent work stations, morning warm-ups, or as a quick small-group activity. Teachers can easily differentiate by assigning specific equation sets based on each student's level."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-math-skills.html" class="hover:text-brand transition">Math Skills</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="How to Use Kids Math Equations to Supercharge Number Sense">How to Use Kids Math Equations to Supercharge Number Sense</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>Dr. Emily Carter</span>
                     <span>&bull;</span>
-                    <span>February 21, 2026</span>
+                    <span>February 21, 2026 at 12:43 AM</span>
                     <span>&bull;</span><span>Math Skills</span>
                 </div>
 
@@ -436,123 +491,134 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp" alt="How to Use Kids Math Equations to Supercharge Number Sense" class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp"
+                    srcset="../images/thumbs/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 480w, ../images/how-to-use-kids-math-equations-to-supercharge-number-sense-cover-1771634530.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="How to Use Kids Math Equations to Supercharge Number Sense"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
-                <h2>How to Use Kids Math Equations to Supercharge Number Sense</h2>
+                
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#how-to-use-kids-math-equations-to-supercharge-number-sense" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">How to Use Kids Math Equations to Supercharge Number Sense</a></li><li class="py-1"><a href="#what-are-kids-math-equations-and-why-do-they-work" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">What Are Kids Math Equations and Why Do They Work?</a></li><li class="py-1"><a href="#the-5-key-skills-kids-math-equations-develops" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">The 5 Key Skills Kids Math Equations Develops</a></li><li class="py-1"><a href="#a-step-by-step-guide-to-your-first-session" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">A Step-by-Step Guide to Your First Session</a></li><li class="py-1"><a href="#age-specific-tips-adapting-for-4-7s-vs-8-12s" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Age-Specific Tips: Adapting for 4-7s vs. 8-12s</a></li><li class="py-1"><a href="#5-creative-variations-to-extend-the-learning" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">5 Creative Variations to Extend the Learning</a></li><li class="py-1"><a href="#your-questions-answered" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Your Questions, Answered!</a></li>
+        </ul>
+    </div>
+    <h2 id="how-to-use-kids-math-equations-to-supercharge-number-sense">How to Use Kids Math Equations to Supercharge Number Sense</h2>
 <div style="height: 0.5rem;"></div>
-<p>Hey there! Let me tell you about this little magic trick I found for helping kids actually <em>like</em> practicing math. You know that look? The glazed-over eyes, the frustrated sigh when a worksheet comes out? I was seeing it with my nephew all the time. Then, we tried something new: <strong>Kids Math Equations</strong>.</p>
-<p>It wasn’t a worksheet to him—it was a puzzle he was determined to crack. And the best part? I’ve got a <strong>free printable version</strong> of this exact activity for you to download and use today. This isn’t about rote memorization; it’s about building rock-solid number sense, calculation fluency, and a genuine “I can do this!” attitude.</p>
-<p>Think of it as a brain-training game that secretly teaches all the good stuff. When it comes to <strong>Kids Math Equations for kids</strong>, parents have many great options.</p>
-<h2>What Are Kids Math Equations and Why Do They Work?</h2>
+<p>Okay so, I want to share a story. I was helping my niece with her homework. The second she saw numbers on a page, she’d freeze up. Total dread. Then, we switched gears. We tried a <strong>Kids Math Equations</strong> board. Honestly, it changed everything. For her, it wasn't a worksheet. It was a quest.</p>
+<p>And the best part? I have that exact <strong>free printable</strong> for you right here. Look, this isn't about memorizing facts. It's about building a feel for numbers. Think of it as a puzzle that secretly teaches math. What I've found is that for <strong>Kids Math Equations for kids</strong>, this method just makes sense.</p>
+<h2 id="what-are-kids-math-equations-and-why-do-they-work">What Are Kids Math Equations and Why Do They Work?</h2>
 <div style="height: 0.5rem;"></div>
-<p>So, what exactly is this? The <strong>Kids Math Equations</strong> printable is a board filled with arithmetic problems. But here’s the twist: the goal isn’t just to solve them. The goal is to solve them *all* to clear the board. It transforms math from an abstract chore into a concrete, visual mission. Let’s break down why this simple format is so brilliantly effective.</p>
+<p>Here's the thing. The <strong>Kids Math Equations</strong> printable is a page filled with little math problems. But here's the secret: the goal isn't just to get answers. The goal is to solve them *all* to wipe the board clean. It turns numbers into a visual mission. Let's break down why this simple sheet is so powerful.</p>
 <h3>The 'Solve to Clear' Game Mechanic</h3>
 <div style="height: 0.25rem;"></div>
-<p>Imagine a grid of, say, 20 small equations. The instruction is simple: solve each one. But the <em>feeling</em> is different. Each solved problem gets marked off. Kids aren't just writing "7" in a blank; they’re checking a box, circling an answer, or (my favorite) erasing the problem entirely. They get to see their progress in real-time.</p>
-<p>With every correct answer, the board gets less cluttered, moving them visibly toward the finish line. This tangible progress is a huge motivator—way more powerful than just getting to the bottom of a page. This is especially helpful for <strong>Kids Math Equations for kids</strong>.</p>
+<p>Imagine a grid of 15 or 20 equations. The rule is simple: solve each one. But the *feeling* is different. Each solved problem gets crossed off. Kids aren't just writing "9" in a blank. They're checking a box. They're erasing it! They watch their progress happen right there. With every correct answer, the page gets cleaner. That visible progress? It's a huge motivator. Way better than just finishing a line. This is especially helpful for <strong>Kids Math Equations for kids</strong>.</p>
 <h3>The Psychology Behind the Fun</h3>
 <div style="height: 0.25rem;"></div>
-<p>What I love about this is how it messes with a kid’s brain in the best way. It takes the pressure off. The focus shifts from “Am I right?” to “What’s the next step in my mission?” This subtle reframing is everything for reducing math anxiety. The activity also provides instant visual feedback. If the numbers don’t work out to clear the path, they know to double-check their work. It’s cause-and-effect learning at its finest.</p>
+<p>What I love is the brain trick. It removes pressure. The focus shifts from “Am I right?” to “What's my next target?” That tiny shift cuts math anxiety way down. Plus, they get instant feedback. If the numbers don't work out to clear a spot, they know to double-check. It's cause-and-effect. Pure and simple.</p>
 
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-img1-1771634530.webp" alt="overhead-split-frame-close-up-on-the-left-a-child-what-are-kids-math-equations-and-why-do-they-work" loading="lazy" width="1200" height="675"></figure></div>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-img1-1771634530.webp" alt="overhead-split-frame-close-up-on-the-left-a-child-what-are-kids-math-equations-and-why-do-they-work" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
 
 <h3>More Than Just Drills</h3>
 <div style="height: 0.25rem;"></div>
-<p>Don’t let the simplicity fool you. This is a dynamic thinking exercise. Kids start to strategize. Do they tackle the easy ones first for momentum? Do they go row by row? They’re planning, organizing, and self-correcting—all those <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">executive function skills</a> that are critical for all learning, not just math.</p>
-<h2>The 5 Key Skills Kids Math Equations Develops</h2>
+<p>Don't let the simplicity fool you. This is a dynamic thinking exercise. Kids begin to plan. Do they tackle the easy ones first? Row by row? They're organizing. They're strategizing. They're self-correcting. Those are <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">executive function skills</a>. Critical for life, not just math class.</p>
+<h2 id="the-5-key-skills-kids-math-equations-develops">The 5 Key Skills Kids Math Equations Develops</h2>
 <div style="height: 0.5rem;"></div>
-<p>When your child is engaged with these equations, they’re not just “doing math.” Their brains are firing on all cylinders, building a whole toolkit of essential skills. Here’s what’s really getting a workout: This is especially helpful for <strong>Kids Math Equations for kids</strong>.</p>
+<p>When your child works on these, they're not just "doing math." Their brain is getting a full workout. Here's what's really being built: This is especially helpful for <strong>Kids Math Equations for kids</strong>.</p>
 <ol>
-<li><strong>Cognitive: Building Mathematical Schemas</strong> – Every time they solve 5 + 3 = 8 and then see 8 - 3 = 5, they’re reinforcing the inverse relationship between operations. They’re building a connected web of number facts, not just isolated memories.</li>
-<li><strong>Executive Function: Planning & Self-Correction</strong> – As I mentioned, they learn to approach the board with a plan. Working memory gets stronger as they hold numbers in their head, and they practice self-monitoring when an answer doesn’t seem to fit.</li>
-<li><strong>Motor & Visual: Bridging Brain and Hand</strong> – The physical act of writing numbers neatly in a small space develops fine motor control. Their eyes learn to track systematically across the grid, a skill that translates directly to reading and other written work.</li>
-<li><strong>Confidence & Persistence</strong> – That “I finished!” feeling is pure gold. It builds a growth mindset, showing them that persistence with challenging tasks pays off with a clear, satisfying result.</li>
-<li><strong>Arithmetic Fluency</strong> – This is the obvious one, but it’s worth stating: the repeated, engaging practice makes basic facts (like addition doubles or times tables) become automatic. This frees up mental energy for more complex problem-solving later.</li>
+<li><strong>Cognitive: Building Mathematical Schemas</strong> – Every time they solve 7 + 2 = 9 and then see 9 - 2 = 7, connections form. They're building a web of number relationships, not isolated facts.</li>
+<li><strong>Executive Function: Planning & Self-Correction</strong> – Like I said, they learn to approach with a plan. Working memory gets a boost. They practice spotting their own mistakes.</li>
+<li><strong>Motor & Visual: Bridging Brain and Hand</strong> – Writing numbers in small boxes? That's fine motor practice. Their eyes learn to track across a grid. That skill helps with reading, too.</li>
+<li><strong>Confidence & Persistence</strong> – That "I finished the whole thing!" feeling? It's pure gold. It builds a growth mindset. It shows them that sticking with a challenge pays off.</li>
+<li><strong>Arithmetic Fluency</strong> – This one's clear, but it matters. The engaging, repeated practice makes basic facts automatic. That frees up mental space for harder concepts later.</li>
 </ol>
-<h2>A Step-by-Step Guide to Your First Session</h2>
+<h2 id="a-step-by-step-guide-to-your-first-session">A Step-by-Step Guide to Your First Session</h2>
 <div style="height: 0.5rem;"></div>
-<p>Ready to dive in? Let’s walk through exactly how to introduce this activity to make it a hit from the very first try. Pro tip from experience: your attitude sets the stage!</p>
+<p>Ready to try? Let's walk through how to start. Pro tip from my experience: your attitude sets the tone!</p>
 <h3>Step 1: Setting the Stage for Success</h3>
 <div style="height: 0.25rem;"></div>
-<p>Don’t just plop the paper down. Frame it! I like to say, “Hey, I’ve got this cool puzzle game. The mission is to clear this whole board by solving these number codes. Want to try it with me?” Have a sharp pencil and a good eraser ready. Make sure the workspace is clear and cozy. The goal is to create a low-pressure, fun challenge. This is especially helpful for <strong>Kids Math Equations for kids</strong>.</p>
+<p>Don't just hand over the paper. Frame it! I always say, "Hey, I've got a cool puzzle. Your mission is to crack these number codes to clear the board. Want to try it with me?" Have a sharp pencil ready. A good eraser is key. Make the space comfortable. The goal is a fun, low-pressure challenge. This is especially helpful for <strong>Kids Math Equations for kids</strong>.</p>
 
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-img2-1771634530.webp" alt="a-modern-isometric-flat-illustration-in-vibrant-c-the-5-key-skills-kids-math-equations-develops" loading="lazy" width="1200" height="675"></figure></div>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-img2-1771634530.webp" alt="a-modern-isometric-flat-illustration-in-vibrant-c-the-5-key-skills-kids-math-equations-develops" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
 
 <h3>Step 2: Modeling 'Think-Aloud' Problem Solving</h3>
 <div style="height: 0.25rem;"></div>
-<p>For the first few problems, do them together and narrate your thinking. “Okay, this one says 6 + 4. Hmm. I know that if I have 6 and count up 4 more… 7, 8, 9, 10… that makes 10! So I write ’10’ right here in the box.” This shows them the process, not just the answer. It teaches them how to talk themselves through a problem.</p>
+<p>Do the first few together. Talk out loud. "Okay, this says 8 - 3. Hmm. If I have 8 and take away 3... 7, 6, 5. That leaves 5. So I write '5' here." You're showing the process, not just the answer. You're teaching them how to think.</p>
 <h3>Step 3: Scaffolding Independence</h3>
 <div style="height: 0.25rem;"></div>
-<p>After you’ve modeled 3-4 equations, take a step back. Say, “Why don’t you try the next one? I’ll watch.” Be a quiet supporter. If they get stuck, ask guiding questions: “What’s the first number?” “What is the plus/minus sign telling us to do?” Celebrate the small wins as they mark each one off!</p>
-<h2>Age-Specific Tips: Adapting for 4-7s vs. 8-12s</h2>
+<p>After a few equations, step back. Say, "Your turn for this one. I'll watch." Be a quiet supporter. If they're stuck, ask guiding questions: "What's the first number?" "What does that minus sign tell us?" Celebrate every single box they mark off!</p>
+<h2 id="age-specific-tips-adapting-for-4-7s-vs-8-12s">Age-Specific Tips: Adapting for 4-7s vs. 8-12s</h2>
 <div style="height: 0.5rem;"></div>
-<p>The beauty of these <strong>Kids Math Equations</strong> is that they can grow with your child. Here’s how to tweak the activity for different ages and stages.</p>
+<p>The beauty of <strong>Kids Math Equations</strong> is they grow with your child. Here's how to tweak them for different ages.</p>
 <h3>For Pre-K & Early Elementary (Ages 4-7)</h3>
 <ul>
-<li><strong>Focus on Recognition & Counting:</strong> For beginners, just reading the numbers and symbols is practice. “Can you point to the plus sign?”</li>
-<li><strong>Use Manipulatives:</strong> This is non-negotiable for little ones! Use cereal pieces, LEGO bricks, or counting bears to physically build the equation. 5 beans + 3 beans = count all 8 beans. Then write the answer.</li>
-<li><strong>Keep it Short:</strong> Don’t expect them to clear the whole board. Set a mini-goal: “Let’s just solve the problems in this first row.” Success is key!</li>
+<li><strong>Focus on Recognition & Counting:</strong> For beginners, just reading numbers and symbols is practice. "Can you point to the equals sign?"</li>
+<li><strong>Use Manipulatives:</strong> Absolutely necessary for little ones! Use buttons, blocks, or raisins to physically build the equation. 4 blocks + 1 block = count all 5 blocks. Then write it down.</li>
+<li><strong>Keep it Short:</strong> Don't expect the whole board. Set a mini-goal: "Let's just solve these five." Small wins build big confidence.</li>
 </ul>
 <h3>For Upper Elementary (Ages 8-12)</h3>
 <ul>
-<li><strong>Introduce Challenges:</strong> Add a timer for a fun race against the clock (beating their own time, not a sibling’s!). Create multi-step problems by linking equations (e.g., the answer from #1 is the first number in #2).</li>
-<li><strong>Up the Complexity:</strong> Use the board for multiplication, division, or simple two-digit addition/subtraction. The format works for any arithmetic.</li>
-<li><strong>Flip the Script:</strong> Have *them* create a <strong>Kids Math Equations</strong> board for YOU to solve. Creating problems requires a deep understanding of how numbers work together.</li>
+<li><strong>Introduce Challenges:</strong> Add a timer for a fun self-race. Create two-step problems. Link equations in a chain.</li>
+<li><strong>Up the Complexity:</strong> Use the board for multiplication, division, or simple fractions. The format works for any operation.</li>
+<li><strong>Flip the Script:</strong> Have *them* create a <strong>Kids Math Equations</strong> board for a sibling or for you. Creating problems requires deep understanding.</li>
 </ul>
 <h3>The Role of the Adult in Each Stage</h3>
 <div style="height: 0.25rem;"></div>
-<p>With younger kids, you’re a hands-on guide—literally moving counters with them. With older kids, shift to being a facilitator. Ask questions like, “Is there a faster strategy than counting on your fingers for that one?” or “Do you see any related facts on the board that could help you?” Your role evolves from coach to cheerleader to fellow puzzle-solver.</p>
+<p>With younger kids, you're a hands-on guide. You're moving counters with them. With older kids, be a facilitator. Ask questions: "Is there a pattern you see?" or "Could you use a fact you already know?" Your role changes. From coach to fellow puzzle-solver.</p>
 
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-img3-1771634530.webp" alt="a-single-cohesive-image-illustrating-the-progress-a-step-by-step-guide-to-your-first-session" loading="lazy" width="1200" height="675"></figure></div>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-img3-1771634530.webp" alt="a-single-cohesive-image-illustrating-the-progress-a-step-by-step-guide-to-your-first-session" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
 
-<h2>5 Creative Variations to Extend the Learning</h2>
+<h2 id="5-creative-variations-to-extend-the-learning">5 Creative Variations to Extend the Learning</h2>
 <div style="height: 0.5rem;"></div>
-<p>Once the basic game feels familiar, mix it up! These variations keep the <strong>Kids Math Equations</strong> fresh and target different skills.</p>
+<p>Once the basic game feels easy, mix it up! These variations keep <strong>Kids Math Equations</strong> fresh and work different skills.</p>
 <h3>1. The Team Race</h3>
 <div style="height: 0.25rem;"></div>
-<p>Print two boards. You and your child (or two siblings) work on your own boards side-by-side. The goal isn’t to beat each other, but to both “cross the finish line.” You can offer to help each other if someone gets truly stuck. It builds a collaborative, team spirit around math.</p>
+<p>Print two boards. You and your child work side-by-side. The goal isn't to beat each other, but to both finish. Offer help if someone gets stuck. It builds teamwork around numbers.</p>
 <h3>2. The Silent Strategy</h3>
 <div style="height: 0.25rem;"></div>
-<p>Challenge your child to complete a section of the board using only mental math. They can write the answers down, but no whispering counts, no using fingers, no counters. Then, they can go back and check their work with a calculator or manipulatives. This builds incredible calculation speed and confidence.</p>
+<p>Challenge them to do a section using only mental math. They can write answers, but no talking, no fingers, no counters. Then they check. This builds calculation speed.</p>
 <h3>3. Equation Story Problems</h3>
 <div style="height: 0.25rem;"></div>
-<p>Here’s the fun part: after they solve an equation, ask them to turn it into a mini story. For “12 ÷ 3 = 4,” they might say, “I had 12 cookies and shared them fairly with my 2 friends. We each got 4!” This links the abstract symbols to real-world meaning, which is the heart of number sense.</p>
+<p>Here's a fun one. After they solve, ask for a mini story. For "10 ÷ 2 = 5," they might say, "I had 10 cookies and shared them with my sister. We each got 5!" This links symbols to real life. That's number sense.</p>
 <h3>4. Color-Coded Operations</h3>
 <div style="height: 0.25rem;"></div>
-<p>Grab some colored pencils or highlighters. Assign a color to each operation: green for addition, blue for subtraction, red for multiplication, purple for division. Before solving, have them quickly color the operation sign. This visual cue helps them quickly identify what’s required and adds a fun, artistic layer.</p>
+<p>Grab colored pencils. Assign a color to each operation: orange for addition, purple for subtraction. Before solving, they color the sign. It's a visual cue. Adds an artistic twist.</p>
 <h3>5. The “Mystery Number” Challenge</h3>
 <div style="height: 0.25rem;"></div>
-<p>Cover the answer to one equation with a sticky note. Give them clues about the hidden number (e.g., “It’s odd.” “It’s greater than 5 but less than 10.” “It’s the answer to 2 x 4.”). They have to use reasoning, not just calculation, to figure it out before checking.</p>
-<h2>Your Questions, Answered!</h2>
+<p>Cover one answer with a sticky note. Give clues. "It's even." "It's greater than 6." "It's the answer to 3 x 3." They have to reason it out before checking. It's not just calculation.</p>
+<h2 id="your-questions-answered">Your Questions, Answered!</h2>
 <div style="height: 0.5rem;"></div>
-<p><strong>What age is the Kids Math Equations printable best for?</strong><br/>
-The resource is designed with adaptable difficulty, making it perfect for children ages 4-12. Younger children can focus on simple addition/subtraction (1-10), while older kids can tackle multiplication/division or larger numbers.</p>
+<p><strong>What age is the <a href="../freebies.html?dl=Kids%20Math%20Equations" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Kids Math Equations</a> printable best for?</strong><br/>
+It's super flexible. Great for ages 4-12. Little ones can handle simple addition. Older kids can take on multiplication or larger numbers.</p>
 <p><strong>How does this activity help a child who struggles with math?</strong><br/>
-It reframes math as a puzzle game, reducing anxiety. The visual 'clear the board' goal provides motivation, and the manageable, bite-sized problems build success incrementally, which is key for developing confidence.</p>
+It reframes math as a puzzle. That reduces fear. The visual 'clear the board' goal is motivating. Small, manageable problems build success one step at a time. That builds real confidence.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-img4-1771634530.webp" alt="a-split-screen-scene-in-a-cozy-sun-drenched-home-age-specific-tips-adapting-for-4-7s-vs-8-12s" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <p><strong>Do I need special materials to use this?</strong><br/>
-No! Just the printed worksheet, a pencil, and an eraser. For younger children, you can add manipulatives like cereal pieces or counters to make the equations tactile.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-kids-math-equations-to-supercharge-number-sense-img4-1771634530.webp" alt="a-split-screen-scene-in-a-cozy-sun-drenched-home-age-specific-tips-adapting-for-4-7s-vs-8-12s" loading="lazy" width="1200" height="675"></figure></div>
-
+Not at all! Just the printout, a pencil, and an eraser. For younger kids, add counters or cereal to make it hands-on.</p>
 <p><strong>How often should we use this activity?</strong><br/>
-Short, frequent sessions (10-15 minutes, 2-3 times a week) are more effective than long, infrequent ones. Consistency helps solidify neural pathways related to number sense and recall.</p>
+Short and frequent sessions work best. 10-15 minutes, a couple times a week. Consistency strengthens those number pathways in the brain.</p>
 <p><strong>Can this be used in a classroom or homeschool setting?</strong><br/>
-Absolutely. It's excellent for independent work stations, morning warm-ups, or as a quick small-group activity. Teachers can easily differentiate by assigning specific equation sets based on each student's level. For more structured practice, pair it with other <strong><a href="../freebies.html">free worksheets</a></strong> or explore our <strong><a href="../products.html">premium resources</a></strong> for expanded content.</p>
-<p>I hope you’re as excited as I am about this simple but powerful tool. Watching a child’s face light up when they finally clear that last box is just the best. It turns “Ugh, math” into “I did it!” Remember, the goal isn’t perfection; it’s engagement, persistence, and building that strong foundation of number sense.</p>
-<p>You’ve got this! And you’ve got a fantastic, <strong>free resource</strong> to help. Grab your <a href="../freebies.html">Kids Math Equations for kids</a> printable and get ready for some surprisingly fun math time.</p><div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What age is the Kids Math Equations printable best for?</h3>
-<div style="height: 0.25rem;"></div>
-<p>The resource is designed with adaptable difficulty, making it perfect for children ages 4-12. Younger children can focus on simple addition/subtraction (1-10), while older kids can tackle multiplication/division or larger numbers.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How does this activity help a child who struggles with math?</h3>
-<div style="height: 0.25rem;"></div>
-<p>It reframes math as a puzzle game, reducing anxiety. The visual 'clear the board' goal provides motivation, and the manageable, bite-sized problems build success incrementally, which is key for developing confidence.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Do I need special materials to use this?</h3>
-<div style="height: 0.25rem;"></div>
-<p>No! Just the printed worksheet, a pencil, and an eraser. For younger children, you can add manipulatives like cereal pieces or counters to make the equations tactile.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How often should we use this activity?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Short, frequent sessions (10-15 minutes, 2-3 times a week) are more effective than long, infrequent ones. Consistency helps solidify neural pathways related to number sense and recall.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Can this be used in a classroom or homeschool setting?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Absolutely. It's excellent for independent work stations, morning warm-ups, or as a quick small-group activity. Teachers can easily differentiate by assigning specific equation sets based on each student's level.</p></div></div>
+Absolutely. It's perfect for independent work, morning warm-ups, or small groups. Teachers can assign different equation sets based on level. For more practice, pair it with other <strong><a href="../freebies.html">free worksheets</a></strong> or check our <strong><a href="../products.html">premium resources</a></strong> for more ideas.</p>
+<p>I hope you give this a try. Seeing a kid's smile when they clear that last box? Nothing beats it. It turns "I hate math" into "I did it!" Remember, the goal isn't perfection. It's engagement. It's sticking with it. It's building that strong number foundation. You can do this! And you have a fantastic, <strong>free resource</strong> to help. Grab your <a href="../freebies.html">Kids Math Equations for kids</a> printable and get ready for some fun math time.</p>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#math</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#kids</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#equations</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#just</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#number</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#board</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#clear</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#activity</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#each</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#what</a>
+        </div>
+    </div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -590,7 +656,14 @@ Absolutely. It's excellent for independent work stations, morning warm-ups, or a
                 
                 <a href="../articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp" alt="Best Printable Math Worksheets for First Graders: Ultimat..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp"
+                            srcset="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 480w, ../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Printable Math Worksheets for First Graders: Ultimat..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -602,7 +675,14 @@ Absolutely. It's excellent for independent work stations, morning warm-ups, or a
                 </a>
                 <a href="../articles/ultimate-counting-exercises-for-preschoolers-printable.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp" alt="Ultimate Counting Exercises for Preschoolers Printable" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp"
+                            srcset="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 480w, ../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Counting Exercises for Preschoolers Printable"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -614,7 +694,81 @@ Absolutely. It's excellent for independent work stations, morning warm-ups, or a
                 </a>
                 <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp" alt="Essential Shadow Matching Worksheets for Toddlers &amp; Kids" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp"
+                            srcset="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 480w, ../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Essential Shadow Matching Worksheets for Toddlers &amp; Kids"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Visual Skills</span>
+                            <span class="text-xs text-slate-500">📖 10 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Essential Shadow Matching Worksheets for Toddlers &amp; Kids</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="../articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp"
+                            srcset="../images/thumbs/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 480w, ../images/best-printable-math-worksheets-for-first-graders-ultimate-guide-cover-1771635640.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Printable Math Worksheets for First Graders: Ultimat..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Math Skills</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Best Printable Math Worksheets for First Graders: Ultimat...</h4>
+                    </div>
+                </a>
+                <a href="../articles/ultimate-counting-exercises-for-preschoolers-printable.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp"
+                            srcset="../images/thumbs/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 480w, ../images/ultimate-counting-exercises-for-preschoolers-printable-cover-1771637186.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Counting Exercises for Preschoolers Printable"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Math Skills</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Ultimate Counting Exercises for Preschoolers Printable</h4>
+                    </div>
+                </a>
+                <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp"
+                            srcset="../images/thumbs/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 480w, ../images/essential-shadow-matching-worksheets-for-toddlers-kids-cover-1771685221.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Essential Shadow Matching Worksheets for Toddlers &amp; Kids"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -627,41 +781,7 @@ Absolutely. It's excellent for independent work stations, morning warm-ups, or a
             </div>
         </div>
 
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-cooking-activities-to-boost-executive-function-proven-method.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Cooking Activities to Boost Executive Function...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-printable-math-worksheets-for-first-graders-ultimate-guide.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Printable Math Worksheets for First Graders: Ultimat...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-word-search-activities-build-vocabulary-focus-in-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Word Search Activities Build Vocabulary &amp; Focus in Kids
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Mazes to Unlock Your Child's Problem-Solving S...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Fine Motor Skills Worksheets for Preschoolers: The U...
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
-            </div>
-        </div>
+
 
 
             <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
@@ -685,27 +805,6 @@ Absolutely. It's excellent for independent work stations, morning warm-ups, or a
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -816,5 +915,288 @@ Absolutely. It's excellent for independent work stations, morning warm-ups, or a
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">💯</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">One Hundred Puzzle</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">One Hundred Puzzle</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">One Hundred Puzzle</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "One Hundred Puzzle";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>

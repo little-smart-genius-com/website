@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="How to Use Mazes to Unlock Your Child's Problem-Solving S...">
     <meta property="og:description" content="Discover the surprising benefits of mazes for child development. Get your free printable maze for kids to boost cognitive and fine motor skills at home.">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-cover-1771633904.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-21T00:32:49.093736">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Problem Solving",
+      "item": "https://littlesmartgenius.com/blog-problem-solving.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "How to Use Mazes to Unlock Your Child's Problem-Solving S...",
+      "item": "https://littlesmartgenius.com/articles/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "At what age can children start doing mazes?", "acceptedAnswer": {"@type": "Answer", "text": "Children as young as 3 can begin with very simple, wide-path mazes (like helping a animal get to its home). The activity is highly adaptable, making it perfect for ages 4-12 with the right level of complexity."}}, {"@type": "Question", "name": "My child gets frustrated and quits. What should I do?", "acceptedAnswer": {"@type": "Answer", "text": "This is a great teaching moment! Model resilience. Say, 'Let's look at that dead end together.' Encourage them to trace back to the last good choice. Start with easier mazes to build confidence first."}}, {"@type": "Question", "name": "Are mazes better done with pencil, crayon, or marker?", "acceptedAnswer": {"@type": "Answer", "text": "Pencils are ideal for beginners as erasing allows for error correction, which reduces anxiety. Markers can be used for confidence-building on easy mazes where success is almost guaranteed. Crayons are great for adding color after solving."}}, {"@type": "Question", "name": "How does this maze specifically help with school readiness?", "acceptedAnswer": {"@type": "Answer", "text": "It directly builds the fine motor control needed for writing letters and the cognitive skills for following multi-step instructions and solving math word problems. It's foundational learning disguised as play."}}, {"@type": "Question", "name": "Can I use this same maze more than once?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely! For repeated use, place the printed sheet inside a clear plastic sheet protector and let your child use a dry-erase marker. This saves paper and allows for quick resetting of the challenge."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-problem-solving.html" class="hover:text-brand transition">Problem Solving</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="How to Use Mazes to Unlock Your Child's Problem-Solving S...">How to Use Mazes to Unlock Your Child's Problem-Solving S...</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>Sarah Mitchell</span>
                     <span>&bull;</span>
-                    <span>February 21, 2026</span>
+                    <span>February 21, 2026 at 12:32 AM</span>
                     <span>&bull;</span><span>Problem Solving</span>
                 </div>
 
@@ -436,149 +491,157 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-cover-1771633904.webp" alt="How to Use Mazes to Unlock Your Child's Problem-Solving S..." class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-cover-1771633904.webp"
+                    srcset="../images/thumbs/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-cover-1771633904.webp 480w, ../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-cover-1771633904.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="How to Use Mazes to Unlock Your Child's Problem-Solving S..."
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
-                <strong>How to Use Mazes to Unlock Your Child's <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Problem-Solving Skills</a></strong>
-Hey there! Let me tell you about one of my all-time favorite, super simple, and secretly genius learning tools I’ve used in my classroom for years: a **maze for kids**. Seriously, I have a whole folder of them! Just last week, I watched a student who was struggling with a tricky reading assignment light up with confidence after solving a challenging maze. That “I did it!” smile? It’s pure gold. And the best part? I’m going to share a fantastic free resource with you today.
-A great **maze for kids** is so much more than a line on a page. It’s a tiny adventure that builds massive skills: sharpening <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">critical thinking</a>, boosting pencil control for writing, and teaching that amazing “try again” resilience. It’s hands-on learning at its best. I’ve put together a special, professionally designed <strong>maze for kids</strong> that you can download for free and start using today. It’s the perfect launchpad for all the fun and learning we’re about to .
-Ready to see your child’s problem-solving skills level up? Let’s go!
-<h2>Why Mazes for Kids Are More Than Just a Simple Puzzle</h2>
+                <strong>Mazes Are My Secret Weapon for Building Smarter, More Resilient Kids</strong>
+Look, I've been a teacher for over fifteen years. And if I had to pick one activity that consistently delivers a learning punch? It's a simple **<a href="../freebies.html?dl=Maze%20for%20Kids" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">maze for kids</a>**. I keep a stack in my desk. Honestly, I've seen kids who shut down over a math worksheet light up when they get a maze. That moment of triumph? It's everything. The good news is, I'm giving you a pro-designed one for free today. You can start using it in five minutes.
+Here's the thing: a great **maze for kids** isn't just a puzzle. It's a mini-mission. It builds grit, sharpens thinking, and preps those little hands for writing—all while they think they're just having fun. I've crafted a special one you can download right now. It's the perfect place to start.
+Ready to see what this humble activity can really do? Let's get into it.
+
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#why-mazes-for-kids-are-more-than-just-a-simple-puzzle" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why Mazes for Kids Are More Than Just a Simple Puzzle</a></li><li class="py-1"><a href="#the-3-key-skills-a-simple-maze-develops" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">The 3 Key Skills a Simple Maze Develops</a></li><li class="py-1"><a href="#your-step-by-step-guide-to-making-maze-time-a-learning-win" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Your Step-by-Step Guide to Making Maze Time a Learning Win</a></li><li class="py-1"><a href="#adapting-maze-activities-for-different-ages-4-12" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Adapting Maze Activities for Different Ages (4-12)</a></li><li class="py-1"><a href="#5-creative-ways-to-extend-the-maze-learning" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">5 Creative Ways to Extend the Maze Learning</a></li><li class="py-1"><a href="#your-maze-questions-answered" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Your Maze Questions, Answered!</a></li>
+        </ul>
+    </div>
+    <h2 id="why-mazes-for-kids-are-more-than-just-a-simple-puzzle">Why Mazes for Kids Are More Than Just a Simple Puzzle</h2>
 <div style="height: 0.5rem;"></div>
-<p>If you think of a maze as just busywork, I’m so excited to change your mind. This humble activity is a powerhouse of development, wrapped up in a package kids actually *want* to open. Here’s what I’ve seen over 15 years of watching kids tackle them. When it comes to <strong>maze for kids</strong>, parents have many great options.</p>
+<p>If you see a maze as busywork, I get it. But let me tell you, it's a stealth learning tool. I've watched hundreds of kids tackle them. The engagement is automatic. When you're looking for a solid **maze for kids**, you've got options, but the core benefits are universal.</p>
 <h3>The Built-In 'Fun Factor'</h3>
 <div style="height: 0.25rem;"></div>
-<p>Mazes naturally tap into a child's sense of adventure and curiosity. Where does this path lead? Can I beat it? It feels like a quest, not a chore. The goal is clear and visual—get to the end—which makes the success feel immediate and concrete. What I love about this is that the motivation is built right in. You don't have to sell it; you just have to provide it.</p>
+<p>Mazes tap into curiosity. Where does this go? Can I make it? It feels like a quest. The goal is visual and clear—reach the end. That success is instant and tangible. You know what I love? The motivation is baked in. You don't have to convince them. Just provide the page.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-img1-1771633904.webp" alt="a-split-image-in-a-soft-watercolor-style-with-cris-why-mazes-for-kids-are-more-than-just-a-simple-puzzle" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Low-Floor, High-Ceiling Tasks</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is teacher-speak for an activity that’s easy to start but can get wonderfully complex. A preschooler can follow a wide, simple path. A fifth-grader can strategize through a multi-path labyrinth with dead ends. This means one printable maze can often be adapted for siblings of different ages, which is a total win for busy families.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-img1-1771633904.webp" alt="a-split-image-in-a-soft-watercolor-style-with-cris-why-mazes-for-kids-are-more-than-just-a-simple-puzzle" loading="lazy" width="1200" height="675"></figure></div>
-
+<p>Teacher talk for an activity anyone can start, but that can get deliciously complex. A four-year-old follows a wide path. A ten-year-old strategizes through a web of dead ends. One printable can often work for siblings at different levels. Total win for busy parents.</p>
 <h3>Instant vs. Delayed Gratification</h3>
 <div style="height: 0.25rem;"></div>
-<p>Here’s the fun part: mazes teach both! There’s the instant satisfaction of moving the pencil forward, but they also practice delayed gratification—the final, big-picture win at the exit. This balance is a fantastic life skill, teaching kids to enjoy the journey while keeping their eyes on the prize.</p>
-<h2>The 3 Key Skills a Simple Maze Develops</h2>
+<p>Here's a secret: mazes teach both. There's the quick win of moving the pencil forward. But they also practice waiting for the big payoff at the exit. This balance is a crucial life skill. Enjoy the journey. Keep your eyes on the prize.</p>
+<h2 id="the-3-key-skills-a-simple-maze-develops">The 3 Key Skills a Simple Maze Develops</h2>
 <div style="height: 0.5rem;"></div>
-<p>Let’s break down exactly what’s happening in your child’s brilliant brain and little hands when they’re solving a <strong>maze for kids</strong>. It’s pretty incredible.</p>
+<p>Let's break down what's actually happening in your child's brain and hands. It's pretty amazing.</p>
 <h3>Cognitive & Executive Function</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is the big thinking stuff! A maze boosts:
+<p>This is the heavy thinking. A maze fires up:
 </p>
 <ol>
-<li><strong>Planning:</strong> They have to look ahead and think about their route before they draw.</li>
-<li><strong>Spatial Awareness:</strong> Understanding how the path fits into the whole page.</li>
-<li><strong>Critical Thinking:</strong> Evaluating options and making choices (”If I go left here, will it work?”).</li>
+<li><strong>Planning:</strong> They have to look ahead. Think before they draw.</li>
+<li><strong>Spatial Awareness:</strong> Understanding how the path fits on the page.</li>
+<li><strong>Critical Thinking:</strong> Weighing options. Making choices.</li>
 </ol>
 <div style="height: 1rem;"></div>
-<p>Pro tip from experience: Encourage them to “see with their finger” by tracing a possible path in the air above the paper first. This builds that planning muscle!</p>
+<p>Quick tip from my classroom: Have them "see with their finger" first. Trace a potential path in the air above the paper. It builds that planning muscle beautifully.</p>
 <h3>Fine Motor & Visual Tracking</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is the hidden prep work for beautiful handwriting. Navigating a maze:
+<p>This is hidden handwriting prep. Navigating a maze:
 </p>
 <ul>
-<li>Strengthens the pencil grip and those small hand muscles.</li>
-<li>Develops hand-eye coordination as the eyes guide the hand.</li>
-<li>Builds control for smooth, deliberate lines instead of scratchy scribbles.</li>
+<li>Strengthens the pencil grip. Works those small hand muscles.</li>
+<li>Develops hand-eye coordination. Eyes guide the hand.</li>
+<li>Builds control for smooth, intentional lines.</li>
 </ul>
 <div style="height: 1rem;"></div>
-<p>Think of it as a workout for writing readiness!</p>
+<p>Think of it as a workout for writing readiness. No drills required.</p>
 <h3>Social-Emotional Learning</h3>
 <div style="height: 0.25rem;"></div>
-<p>This might be my favorite part. A maze is a safe space to learn:
-- Patience and focus on a single task.
-- Resilience when they hit a dead end (and how to calmly backtrack).
-- Pride and self-esteem from completing a challenge independently.</p>
-<p>That moment of frustration is a teachable moment, not a failure. We’ll talk about how to navigate that together.</p>
-<h2>Your Step-by-Step Guide to Making Maze Time a Learning Win</h2>
+<p>This might be my favorite part. A maze is a safe space to learn patience. Focus. Resilience when they hit a dead end. Pride from finishing a challenge solo. That moment of frustration? It's a teachable moment. Not a failure.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-img2-1771633904.webp" alt="a-vibrant-isometric-maze-floats-on-a-clean-backgro-the-3-key-skills-a-simple-maze-develops" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<h2 id="your-step-by-step-guide-to-making-maze-time-a-learning-win">Your Step-by-Step Guide to Making Maze Time a Learning Win</h2>
 <div style="height: 0.5rem;"></div>
-<p>Okay, you’ve got the maze printed. Now, let’s set your child up for maximum success and joy. Follow these simple steps to turn a five-minute activity into a deep learning session.</p>
+<p>Okay, you've printed the maze. Now, let's set your child up for success. Follow these steps to turn five minutes into deep learning.</p>
 <h3>The Pre-Activity 'Brain Warm-Up'</h3>
 <div style="height: 0.25rem;"></div>
-<p>Don’t just hand over the pencil! Start with a quick chat. Point to the start and end points. Ask predictive questions like, <em>“Ooh, look at this winding path! Where do you think it might go around this corner?”</em> or <em>“What do you see that might be tricky?”</em> This gets them observing and strategizing before they even begin.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-img2-1771633904.webp" alt="a-vibrant-isometric-maze-floats-on-a-clean-backgro-the-3-key-skills-a-simple-maze-develops" loading="lazy" width="1200" height="675"></figure></div>
-
+<p>Don't just hand over the pencil. Start with a chat. Point to the start and end. Ask questions. "Ooh, look at this twisty part. What's waiting around that corner?" or "What spot looks tricky to you?" This gets them observing. Strategizing. Before they even begin.</p>
 <h3>Guiding Without Giving Answers</h3>
 <div style="height: 0.25rem;"></div>
-<p>Your role is the coach, not the solver. When they get stuck, resist the urge to point. Instead, use prompts:
+<p>Your job is coach, not solver. When they get stuck, resist pointing. Use prompts instead:
 </p>
 <ol>
-<li>“Can you trace two possible paths with your finger first?”</li>
-<li>“Let’s go back to where you last had a choice. What other way could you try?”</li>
-<li>“I see you’re in a tricky spot. Is there a path you haven’t looked at yet?”</li>
+<li>“Can you trace two different paths with your finger first?”</li>
+<li>“Let's go back to your last choice. What other way could you try?”</li>
+<li>“I see a tricky spot. Is there a path you haven't checked yet?”</li>
 </ol>
 <div style="height: 1rem;"></div>
-<p>This builds independent problem-solvers!</p>
+<p>This builds independent problem-solvers. Every time.</p>
 <h3>The Post-Maze Reflection Chat</h3>
 <div style="height: 0.25rem;"></div>
-<p>This step is magic for cementing the learning. After the celebratory “You did it!”, have a quick reflection chat. Ask:
+<p>This step is magic. After the "You did it!" celebration, have a quick chat. Ask:
 </p>
 <ul>
 <li>“How did you figure out the right path?”</li>
-<li>“What was the trickiest part? How did you get past it?”</li>
-<li>“Would you do anything differently next time?”</li>
+<li>“What was the hardest part? How did you push through?”</li>
+<li>“Would you try something different next time?”</li>
 </ul>
 <div style="height: 1rem;"></div>
-<p>This turns experience into insight.</p>
-<h2>Adapting Maze Activities for Different Ages (4-12)</h2>
+<p>This turns experience into insight. It sticks.</p>
+<h2 id="adapting-maze-activities-for-different-ages-4-12">Adapting Maze Activities for Different Ages (4-12)</h2>
 <div style="height: 0.5rem;"></div>
-<p>One size does not fit all, and that’s the beauty of mazes! Here’s how to tweak the challenge to fit your child perfectly. You can find mazes for all these stages in our collection of <a href="#"><a href="../freebies.html">free worksheets</a></a>.</p>
+<p>One size doesn't fit all. That's the beauty of mazes. Here's how to tweak the challenge. You can find mazes for all these stages in our collection of <a href="../freebies.html">free worksheets</a>.</p>
 <h3>Ages 4-6: Building Foundations</h3>
 <div style="height: 0.25rem;"></div>
-<p>For our littlest adventurers, success is key! Use mazes with thick, clear paths and very few dead ends. The focus is on completion and pen control. Let them use a bold marker or crayon for ease. Make it a story: “Help the puppy find his bone!” Celebrate wildly when they finish.</p>
+<p>For little adventurers, success is key. Use mazes with thick, clear paths. Very few dead ends. Focus on completion and pen control. Let them use a chunky crayon. Make it a story. "Help the bunny find the carrot!" Celebrate wildly. Every time.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-img3-1771633904.webp" alt="a-medium-environmental-portrait-in-a-cozy-sunlit-your-step-by-step-guide-to-making-maze-time-a-learning-win" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Ages 7-9: Strategic Thinking</h3>
 <div style="height: 0.25rem;"></div>
-<p>Now we add layers of challenge. Introduce fun rules like a “no lifting your pencil” challenge or a friendly timer (”Can you solve it before this song ends?”). Encourage them to scan the whole maze first. This is where their executive functions really start to shine. For more structured challenges, check out our <a href="#"><a href="../products.html">premium resources</a></a>.</p>
+<p>Now we add layers. Try a "no lifting your pencil" rule. Or a friendly timer. Encourage them to scan the whole maze first. This is where executive function starts to shine. For more structured challenges, our <a href="../products.html">premium resources</a> dive deeper.</p>
 <h3>Ages 10-12: Complex Challenges</h3>
 <div style="height: 0.25rem;"></div>
-<p>Keep those growing minds engaged! Encourage them to create their own mazes for siblings or you to solve. Add themes—maybe it’s a maze through a digestive system or a map of their favorite video game world. You can even introduce logic-grid puzzles, which are like advanced word-based mazes.</p>
-<h2>5 Creative Ways to Extend the Maze Learning</h2>
+<p>Keep those growing minds engaged. Challenge them to *create* a maze for you to solve. Add themes—a maze through a rainforest canopy or a spaceship's circuitry. You can even introduce logic puzzles. They're like word-based mazes for the brain.</p>
+<h2 id="5-creative-ways-to-extend-the-maze-learning">5 Creative Ways to Extend the Maze Learning</h2>
 <div style="height: 0.5rem;"></div>
-<p>Got a child who loves mazes? Let’s run with it! Here are some of my favorite ways to take the learning off the page.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-img3-1771633904.webp" alt="a-medium-environmental-portrait-in-a-cozy-sunlit-your-step-by-step-guide-to-making-maze-time-a-learning-win" loading="lazy" width="1200" height="675"></figure></div>
-
+<p>Got a maze fan? Run with it. Here are my favorite off-the-page extensions.</p>
 <h3>Turn It Into a Story</h3>
 <div style="height: 0.25rem;"></div>
-<p>Give the maze a epic narrative. “You are the knight and you must  dragon’s caves to rescue the treasure!” Have them narrate the journey as they go. This builds language and imagination right alongside problem-solving.</p>
+<p>Give the maze an epic narrative. "You're the explorer searching for the lost temple!" Have them narrate the journey. This builds language and imagination. Right alongside problem-solving.</p>
 <h3>The Blindfold Partner Challenge</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is a fantastic teamwork exercise. One child looks at the maze and gives verbal directions (”move up a little, now go left…”). The other child, with eyes closed or blindfolded, tries to follow those directions with their finger on the maze. It’s a hilarious and powerful lesson in clear communication.</p>
+<p>Fantastic teamwork. One child looks at the maze and gives directions. "Move up a little. Now go left…" The other child, eyes closed, tries to follow with a finger on the page. It's hilarious. And a powerful lesson in clear communication.</p>
 <h3>From 2D to 3D</h3>
 <div style="height: 0.25rem;"></div>
-<p>Build a giant maze on the floor using painter’s tape, pillows, cardboard boxes, or outdoor chalk. Let your child be the marker! They have to ir whole body through it. This takes spatial awareness and motor planning to a whole new level.</p>
-<h2>Your Maze Questions, Answered!</h2>
+<p>Build a giant maze on the floor. Use painter's tape. Pillows. Cardboard boxes. Let your child be the marker. They have to navigate their whole body through it. This takes spatial awareness to a whole new level.</p>
+<h2 id="your-maze-questions-answered">Your Maze Questions, Answered!</h2>
 <div style="height: 0.5rem;"></div>
-<p>I’ve gotten so many great questions from parents over the years. Here are the most common ones, straight from my classroom to your kitchen table.</p>
+<p>I've fielded a lot of questions from parents. Here are the most common ones, straight from my classroom.</p>
 <p><strong>At what age can children start doing mazes?</strong><br>
-Children as young as 3 can begin with very simple, wide-path mazes (like helping a animal get to its home). The activity is highly adaptable, making it perfect for ages 4-12 with the right level of complexity.</p>
-<p><strong>My child gets frustrated and quits. What should I do?</strong><br>
-This is a great teaching moment! Model resilience. Say, 'Let's look at that dead end together.' Encourage them to trace back to the last good choice. Start with easier mazes to build confidence first. You can always grab another <strong>maze for kids</strong> from our <a href="../freebies.html">free download</a> that's a better fit.</p>
-<p><strong>Are mazes better done with pencil, crayon, or marker?</strong><br>
-Pencils are ideal for beginners as erasing allows for error correction, which reduces anxiety. Markers can be used for confidence-building on easy mazes where success is almost guaranteed. Crayons are great for adding color after solving.</p>
-<p><strong>How does this maze specifically help with school readiness?</strong><br>
-It directly builds the fine motor control needed for writing letters and the cognitive skills for following multi-step instructions and solving math word problems. It's foundational learning disguised as play.</p>
-<p><strong>Can I use this same maze more than once?</strong><br></p>
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-img4-1771633904.webp" alt="a-warm-inviting-learning-nook-with-three-large-i-adapting-maze-activities-for-different-ages-4-12" loading="lazy" width="1200" height="675"></figure>
-<div style="height: 1.5rem;"></div>
-<p></div>
+Kids as young as 3 can begin with super simple, wide-path mazes. Think of guiding a ladybug to a leaf. The activity is wildly adaptable. Perfect for ages 4-12 with the right level of challenge.</p>
 
-Absolutely! For repeated use, place the printed sheet inside a clear plastic sheet protector and let your child use a dry-erase marker. This saves paper and allows for quick resetting of the challenge.</p>
-<p>I hope you’re as excited as I am about the incredible potential of a simple piece of paper with a winding path on it. Whether you’re looking for a quiet afternoon activity, a tool to build focus, or a way to make learning feel like an adventure, you really can’t go wrong with a well-chosen <strong>maze for kids</strong>.</p>
-<p>It’s a classic for a reason. So download your free maze, grab a pencil, and get ready to watch your child navigate their way to greater confidence and skill. Happy maze-solving!</p><div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">At what age can children start doing mazes?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Children as young as 3 can begin with very simple, wide-path mazes (like helping a animal get to its home). The activity is highly adaptable, making it perfect for ages 4-12 with the right level of complexity.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">My child gets frustrated and quits. What should I do?</h3>
-<div style="height: 0.25rem;"></div>
-<p>This is a great teaching moment! Model resilience. Say, 'Let's look at that dead end together.' Encourage them to trace back to the last good choice. Start with easier mazes to build confidence first.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Are mazes better done with pencil, crayon, or marker?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Pencils are ideal for beginners as erasing allows for error correction, which reduces anxiety. Markers can be used for confidence-building on easy mazes where success is almost guaranteed. Crayons are great for adding color after solving.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How does this maze specifically help with school readiness?</h3>
-<div style="height: 0.25rem;"></div>
-<p>It directly builds the fine motor control needed for writing letters and the cognitive skills for following multi-step instructions and solving math word problems. It's foundational learning disguised as play.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Can I use this same maze more than once?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Absolutely! For repeated use, place the printed sheet inside a clear plastic sheet protector and let your child use a dry-erase marker. This saves paper and allows for quick resetting of the challenge.</p></div></div>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-img4-1771633904.webp" alt="a-warm-inviting-learning-nook-with-three-large-i-adapting-maze-activities-for-different-ages-4-12" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<p><strong>My child gets frustrated and quits. What should I do?</strong><br>
+This is a great teaching moment. Model calm. Say, 'Let's look at that dead end together.' Help them trace back to the last good choice. Start with easier mazes to build confidence. You can always grab another <strong>maze for kids</strong> from our <a href="../freebies.html">free download</a> that's a better fit.</p>
+<p><strong>Are mazes better done with pencil, crayon, or marker?</strong><br>
+Pencils are ideal for beginners. Erasing allows for error correction. It reduces anxiety. Markers work for easy, confidence-building mazes. Crayons are great for adding color after they've solved it.</p>
+<p><strong>How does this maze specifically help with school readiness?</strong><br>
+It directly builds the fine motor control needed for writing letters. It also strengthens the cognitive skills for following multi-step instructions and solving word problems. It's foundational learning. Disguised as play.</p>
+<p><strong>Can I use this same maze more than once?</strong><br>
+Absolutely. For repeated use, slip the printed sheet into a plastic sleeve. Let your child use a dry-erase marker. It saves paper. Allows for quick resets. Easy.</p>
+<p>I hope you see the potential now. A simple piece of paper with a winding path. Whether you need a quiet activity, a focus tool, or a way to make learning an adventure, a well-chosen <strong>maze for kids</strong> delivers. It's a classic for a reason. So download your free maze. Grab a pencil. Get ready to watch your child navigate their way to greater confidence. Happy solving!</p>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#maze</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#mazes</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#child</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#learning</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#solving</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#kids</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#path</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#what</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#start</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#their</a>
+        </div>
+    </div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -616,7 +679,14 @@ Absolutely! For repeated use, place the printed sheet inside a clear plastic she
                 
                 <a href="../articles/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp" alt="How to Use This Activity Book to Boost Your Child's Criti..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp"
+                            srcset="../images/thumbs/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp 480w, ../images/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use This Activity Book to Boost Your Child's Criti..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -628,7 +698,14 @@ Absolutely! For repeated use, place the printed sheet inside a clear plastic she
                 </a>
                 <a href="../articles/how-to-use-skyscraper-to-boost-your-childs-logic-skills.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp" alt="How to Use Skyscraper to Boost Your Child's Logic Skills" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp"
+                            srcset="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 480w, ../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Skyscraper to Boost Your Child's Logic Skills"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -640,7 +717,81 @@ Absolutely! For repeated use, place the printed sheet inside a clear plastic she
                 </a>
                 <a href="../articles/how-to-use-cooking-activities-to-boost-executive-function-proven-method.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-cooking-activities-to-boost-executive-function-proven-method-cover-1771636688.webp" alt="How to Use Cooking Activities to Boost Executive Function..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-cooking-activities-to-boost-executive-function-proven-method-cover-1771636688.webp"
+                            srcset="../images/thumbs/how-to-use-cooking-activities-to-boost-executive-function-proven-method-cover-1771636688.webp 480w, ../images/how-to-use-cooking-activities-to-boost-executive-function-proven-method-cover-1771636688.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Cooking Activities to Boost Executive Function..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Creative Arts</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use Cooking Activities to Boost Executive Function...</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="../articles/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp"
+                            srcset="../images/thumbs/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp 480w, ../images/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use This Activity Book to Boost Your Child's Criti..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Education</span>
+                            <span class="text-xs text-slate-500">📖 9 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use This Activity Book to Boost Your Child's Criti...</h4>
+                    </div>
+                </a>
+                <a href="../articles/how-to-use-skyscraper-to-boost-your-childs-logic-skills.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp"
+                            srcset="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 480w, ../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Skyscraper to Boost Your Child's Logic Skills"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 11 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use Skyscraper to Boost Your Child's Logic Skills</h4>
+                    </div>
+                </a>
+                <a href="../articles/how-to-use-cooking-activities-to-boost-executive-function-proven-method.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-cooking-activities-to-boost-executive-function-proven-method-cover-1771636688.webp"
+                            srcset="../images/thumbs/how-to-use-cooking-activities-to-boost-executive-function-proven-method-cover-1771636688.webp 480w, ../images/how-to-use-cooking-activities-to-boost-executive-function-proven-method-cover-1771636688.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Cooking Activities to Boost Executive Function..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -653,41 +804,7 @@ Absolutely! For repeated use, place the printed sheet inside a clear plastic she
             </div>
         </div>
 
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/best-benefits-of-puzzles-for-child-brain-development.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Benefits of Puzzles for Child Brain Development
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-word-search-activities-build-vocabulary-focus-in-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How Word Search Activities Build Vocabulary &amp; Focus in Kids
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-creative-clip-art-to-boost-fine-motor-cognitive-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Creative Clip Art to Boost Fine Motor &amp; Cognit...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Essential Shadow Matching Worksheets for Toddlers &amp; Kids
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-fine-motor-skills-worksheets-for-preschoolers-the-ultimate-guide.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Fine Motor Skills Worksheets for Preschoolers: The U...
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
-            </div>
-        </div>
+
 
 
             <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
@@ -711,27 +828,6 @@ Absolutely! For repeated use, place the printed sheet inside a clear plastic she
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -842,5 +938,288 @@ Absolutely! For repeated use, place the printed sheet inside a clear plastic she
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">💡</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Logic Puzzle (Adult)</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Logic Puzzle (Adult)</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Logic Puzzle (Adult)</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Logic Puzzle (Adult)";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>

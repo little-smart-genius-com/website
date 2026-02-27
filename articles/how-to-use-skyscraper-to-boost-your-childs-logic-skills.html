@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="How to Use Skyscraper to Boost Your Child's Logic Skills">
     <meta property="og:description" content="Discover how the Skyscraper puzzle develops logic & problem-solving in kids ages 4-12. Includes a free printable activity download for hands-on learning.">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/how-to-use-skyscraper-to-boost-your-childs-logic-skills.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/how-to-use-skyscraper-to-boost-your-childs-logic-skills.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-22T20:58:50.449555">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Critical Thinking",
+      "item": "https://littlesmartgenius.com/blog-critical-thinking.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "How to Use Skyscraper to Boost Your Child's Logic Skills",
+      "item": "https://littlesmartgenius.com/articles/how-to-use-skyscraper-to-boost-your-childs-logic-skills.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What exactly is the Skyscraper puzzle?", "acceptedAnswer": {"@type": "Answer", "text": "Skyscraper is a logic grid puzzle where players place 'buildings' of different heights into a grid. The clues around the edge tell you how many buildings you'd see looking down each row or column, creating a unique city skyline. It teaches deduction without requiring math skills."}}, {"@type": "Question", "name": "What age is this appropriate for?", "acceptedAnswer": {"@type": "Answer", "text": "With adaptations, it's wonderful for ages 4-12. Our free download includes simpler 3x3 grids with visual clues for pre-readers, and progresses to complex 5x5 puzzles that will challenge a 12-year-old (or even an adult!)."}}, {"@type": "Question", "name": "How does this differ from regular Sudoku?", "acceptedAnswer": {"@type": "Answer", "text": "While based on similar logical deduction, Skyscraper uses visual building pieces and skyline clues instead of numbers. This concrete, spatial element often makes it more accessible and engaging for young children who are still developing number sense."}}, {"@type": "Question", "name": "My child gets frustrated with puzzles. How can I help?", "acceptedAnswer": {"@type": "Answer", "text": "Start with the easiest grid and solve it *together*, verbalizing your thought process for every move. Celebrate the process ('Great deduction!') over speed. Use the 'pencil mark' technique—lightly writing possible buildings in a square—to reduce the mental load."}}, {"@type": "Question", "name": "Can this be used in a classroom or homeschool setting?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely! It's an excellent center activity, morning work challenge, or tool for small-group collaboration. It aligns with curriculum goals for logical reasoning, pattern recognition, and perseverance. Use our 'puzzle-maker' extension for a creative assessment project."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-critical-thinking.html" class="hover:text-brand transition">Critical Thinking</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="How to Use Skyscraper to Boost Your Child's Logic Skills">How to Use Skyscraper to Boost Your Child's Logic Skills</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>Little Smart Genius Team</span>
                     <span>&bull;</span>
-                    <span>February 22, 2026</span>
+                    <span>February 22, 2026 at 08:58 PM</span>
                     <span>&bull;</span><span>Critical Thinking</span>
                 </div>
 
@@ -436,162 +491,160 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp" alt="How to Use Skyscraper to Boost Your Child's Logic Skills" class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp"
+                    srcset="../images/thumbs/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 480w, ../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-cover-1771793869.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="How to Use Skyscraper to Boost Your Child's Logic Skills"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
                 <article>
   <h1>How to Use Skyscraper to Boost Your Child's Logic Skills</h1>
-  <p>Hey there! So, I have to tell you about this absolutely brilliant activity that’s become a staple in our house. It’s quiet, it’s brainy, and my kids actually ask to do it. What is this magical thing? It’s the <strong>skyscraper puzzle for kids</strong>. Picture this: you’re sitting with a cup of coffee, your child is totally engrossed, and the only sound is the quiet scratch of a pencil as they figure out how to build a mini city skyline.</p>
-<p>It’s pure magic. Best of all, it’s secretly building rock-solid logic and reasoning skills while they think they’re just playing. And I’ve got a gorgeous, <a href="../freebies.html">free printables</a> version of this Skyscraper game for you to try today. Trust me, you’ll want it.</p>
-<h2>What Is the Skyscraper Puzzle and Why Kids Love It</h2>
+  <p>Let me share a secret from our homeschool. It's quiet. It's brainy. My kids actually ask for it. What is this magic? The <strong>skyscraper puzzle for kids</strong>. Picture a rainy afternoon. You have your coffee. Your child is totally focused. The only sound is a pencil scratching as they build a tiny skyline.</p>
+<p>It feels like a win. The best part? They're building rock-solid logic skills and think they're just playing. I've got a gorgeous, <a href="../freebies.html">free printables</a> version for you. You'll want it.</p>
+
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#what-is-the-skyscraper-puzzle-and-why-kids-love-it" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">What Is the Skyscraper Puzzle and Why Kids Love It</a></li><li class="py-1"><a href="#key-skills-the-skyscraper-activity-develops" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Key Skills the Skyscraper Activity Develops</a></li><li class="py-1"><a href="#your-step-by-step-guide-to-teaching-skyscraper" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Your Step-by-Step Guide to Teaching Skyscraper</a></li><li class="py-1"><a href="#age-specific-tips-for-skyscraper-success" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Age-Specific Tips for Skyscraper Success</a></li><li class="py-1"><a href="#creative-variations-and-learning-extensions" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Creative Variations and Learning Extensions</a></li><li class="py-1"><a href="#wrapping-up-your-questions-answered" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Wrapping Up & Your Questions Answered</a></li>
+        </ul>
+    </div>
+    <h2 id="what-is-the-skyscraper-puzzle-and-why-kids-love-it">What Is the Skyscraper Puzzle and Why Kids Love It</h2>
 <div style="height: 0.5rem;"></div>
-<p>Let me paint the picture. I first tried this with my seven-year-old on a rainy afternoon. I was prepared for a five-minute attempt before the dreaded “I’m bored” chant. An hour later, I literally had to pull her away for dinner. She was hooked. So what’s the big deal?</p>
+<p>Here's the thing. I tried this with my seven-year-old. I braced for "I'm bored" in five minutes. An hour later? I had to pull her away for dinner. She was hooked. Why?</p>
   <h3>A Fresh Twist on a Classic Logic Game</h3>
 <div style="height: 0.25rem;"></div>
-<p>At its heart, the <strong>skyscraper puzzle for kids</strong> is a close, brilliant cousin of Sudoku. But instead of numbers, you’re working with building heights (usually 1-story, 2-story, up to 4 or 5), and instead of repetitive number clues, you get these cool visual hints. The goal is to place one building of each height in every row and column of a grid.</p>
-<p>The clues around the edge tell you how many buildings you’d see if you stood there and looked down the row. A tall building hides shorter ones behind it! [IMAGE_1: A child's hand pointing to a clue on a Skyscraper puzzle grid]</p>
+<p>Think of it as Sudoku's brilliant cousin. But instead of numbers, you use building heights. The goal? Place one building of each height in every row and column. The clues on the edge tell you how many you'd see looking down that row. A tall building hides shorter ones! It's visual. It clicks.</p>
   <h3>The Building Blocks of Engagement</h3>
 <div style="height: 0.25rem;"></div>
-<p>Kids don’t see “logic puzzle.” They see “let’s build a city.” There’s something instantly more compelling about creating a skyline than filling in abstract numbers. Each correct placement feels like adding a piece to a landscape, not just solving an equation. The feedback is visual and satisfying.</p>
+<p>Kids don't see logic drills. They see a city. Placing a building feels like adding to a landscape. Not filling a blank. The feedback is instant. And satisfying.</p>
   <h3>Why It Feels Like Play, Not Work</h3>
 <div style="height: 0.25rem;"></div>
-<p>Here’s the fun part: the “aha!” moment is built right in. When a child figures out that a ‘1’ clue at the start of a row means the tallest building <em>must</em> be right in front… their eyes light up. That’s the dopamine hit of solving a mystery, and it keeps them coming back for more. It’s a game with clear rules that rewards smart thinking, every single time.</p>
+<p>Real talk: the "aha!" moment is everything. When they realize a '1' clue means the tallest building must be right in front... their eyes light up. That's the dopamine hit. It keeps them coming back. Clear rules. Smart rewards.</p>
 
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-img1-1771793869.webp" alt="an-overhead-close-up-of-two-diverse-children-a-bo-what-is-the-skyscraper-puzzle-and-why-kids-love-it" loading="lazy" width="1200" height="675"></figure></div>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-img1-1771793869.webp" alt="an-overhead-close-up-of-two-diverse-children-a-bo-what-is-the-skyscraper-puzzle-and-why-kids-love-it" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
 
-<h2>Key Skills the Skyscraper Activity Develops</h2>
+<h2 id="key-skills-the-skyscraper-activity-develops">Key Skills the Skyscraper Activity Develops</h2>
 <div style="height: 0.5rem;"></div>
-<p>Okay, let’s geek out for a second on why this simple puzzle is such a powerhouse. When your child is hunched over their grid, here’s what’s really growing:</p>
+<p>Okay, let's geek out. When your child is focused on that grid, here's what's growing:</p>
   <h3>Cognitive & Logical Reasoning</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is the big one. The <strong>skyscraper puzzle for kids</strong> is a gym for the brain. It specifically strengthens:
+<p>This is the core. The <strong>skyscraper puzzle for kids</strong> is a brain gym. Honestly, I've seen it build mental muscle faster than any workbook.
   </p>
   <ul>
-    <li><strong>Deductive Reasoning:</strong> “If this clue is a 3, and I already know that building is there, then this other square <em>cannot</em> be the tall one…” It’s detective work on paper.</li>
-    <li><strong>Pattern Recognition:</strong> They start to see common setups and clue combinations, transferring strategies from one puzzle to the next.</li>
-    <li><strong>Systematic Problem-Solving:</strong> It teaches them to work through possibilities in an order, not just guess randomly. This is a foundational skill for everything from math to computer science.</li>
+    <li><strong>Deductive Reasoning:</strong> "If this clue is a 3, and that building is there, then this square can't be the tall one..." It's detective work.</li>
+    <li><strong>Pattern Recognition:</strong> They start spotting common setups. Strategies transfer. I've watched my kids apply this same thinking to other puzzles.</li>
+    <li><strong>Systematic Problem-Solving:</strong> They learn to work through possibilities. Not just guess. This skill is gold for math and coding. It's foundational.</li>
   </ul>
   <h3>Fine Motor & Visual-Spatial Skills</h3>
 <div style="height: 0.25rem;"></div>
-<p>For younger kids, simply drawing the buildings in the squares or placing tokens is great for pencil control. More importantly, they have to hold the entire grid and the relationships between rows and columns in their mind. They’re visualizing a 3D skyline from a 2D plan—that’s serious spatial intelligence at work! [IMAGE_2: A close-up shot of a child’s hand carefully drawing a building inside a puzzle square]</p>
+<p>For little hands, drawing buildings helps pencil control. But there's more. They have to hold the whole grid in their mind. Relationships between rows and columns. They're visualizing a 3D skyline from a 2D plan. That's serious spatial intelligence. In my experience, this is a huge boost for geometry readiness.</p>
   <h3>Social-Emotional & Executive Function</h3>
 <div style="height: 0.25rem;"></div>
-<p>What I love about this is the soft skills it builds. My kids have learned:
+<p>Here's what I love. The soft skills. You know what? These are often more important than the logic itself.
   </p>
   <ol>
-    <li><strong>Patience and Persistence:</strong> Some squares take time to figure out. The puzzle can’t be rushed.</li>
-    <li><strong>Resilience:</strong> Making a mistake means erasing and re-thinking, not giving up.</li>
-    <li><strong>Focus and Attention to Detail:</strong> Missing one tiny clue means the whole city won’t line up. It trains meticulous attention.</li>
+    <li><strong>Patience and Persistence:</strong> Some squares take time. You can't rush it. The puzzle demands it.</li>
+    <li><strong>Resilience:</strong> A mistake means erasing. And re-thinking. Not quitting. I've seen this build grit in my own children.</li>
+    <li><strong>Focus and Attention to Detail:</strong> Miss one clue? The whole city is off. It trains meticulous attention. It's a workout for their focus muscle.</li>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-img2-1771793869.webp" alt="a-clean-isometric-infographic-scene-centered-on-a-key-skills-the-skyscraper-activity-develops" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
   </ol>
-<h2>Your Step-by-Step Guide to Teaching Skyscraper</h2>
+<h2 id="your-step-by-step-guide-to-teaching-skyscraper">Your Step-by-Step Guide to Teaching Skyscraper</h2>
 <div style="height: 0.5rem;"></div>
-<p>Ready to dive in? Don’t just hand over the puzzle. A little setup goes a <em>long</em> way in building confidence and avoiding frustration. Here’s exactly how I introduce it.</p>
+<p>Ready? Don't just hand over the puzzle. A little setup prevents frustration. Here's how I do it. This method has worked for my kids and dozens I've taught.</p>
   <h3>Setting Up for Success (The Demo)</h3>
 <div style="height: 0.25rem;"></div>
-<p>Pro tip from experience: <strong>Always do one first yourself.</strong> Sit with your child and a fresh puzzle. Talk through every single step out loud.
+<p>Pro tip: <strong>Always do one first yourself.</strong> Sit together. Talk out loud. Narrate your thinking like a sportscaster.
   </p>
   <ol>
-    <li><strong>Explain the City:</strong> “This is our empty lot. We need to build one of each size building (1, 2, 3, 4) in every row and column. No repeating in a row or column!”</li>
-    <li><strong>Decode the Clues:</strong> “See these numbers around the edge? They’re little people. This ‘3’ means if I stand here, I’ll see 3 buildings. A tall one hides a short one behind it.”</li>
-    <li><strong>Find the “Gimmes”:</strong> Point out the easy spots first. “Look! A ‘1’ clue means the tallest building (the 4) <em>has</em> to be right here, in the first spot, or you’d see more behind it.” Fill it in dramatically.</li>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-img2-1771793869.webp" alt="a-clean-isometric-infographic-scene-centered-on-a-key-skills-the-skyscraper-activity-develops" loading="lazy" width="1200" height="675"></figure></div>
-
+    <li><strong>Explain the City:</strong> "This is our empty lot. We need one of each building (1, 2, 3, 4) in every row and column. No repeats!" Keep it simple.</li>
+    <li><strong>Decode the Clues:</strong> "See these edge numbers? Imagine little people standing there. A '3' means they see 3 buildings. A tall one hides a short one." Use your finger to trace the sightline.</li>
+    <li><strong>Find the "Gimmes":</strong> Point out easy spots. "Look! A '1' clue means the tallest building <em>has</em> to be right here." Fill it in. This gives an instant win.</li>
   </ol>
   <h3>The 'Think Aloud' Coaching Method</h3>
 <div style="height: 0.25rem;"></div>
-<p>As they start their own, your job is to ask questions, not give answers. Be their logic coach.
+<p>As they start, ask questions. Don't give answers. Be their coach. This is the secret sauce.
   </p>
   <ul>
-    <li>“What does this clue tell you about what <em>can’t</em> go in this square?”</li>
-    <li>“You’ve placed a 3 in this row. What buildings are left to place in the other squares?”</li>
-    <li>“If you <em>pretend</em> this square was a 2, what would that break in the column below?”</li>
+    <li>"What does this clue tell you about what <em>can't</em> go here?"</li>
+    <li>"You placed a 3 in this row. What's left for the other squares?"</li>
+    <li>"If you <em>pretend</em> this was a 2, what would break in the column?" This hypothetical thinking is powerful.</li>
   </ul>
-<div style="height: 1rem;"></div>
-<p>[IMAGE_3: A parent and child sitting together, looking at a puzzle, with the parent pointing to a clue]</p>
   <h3>When to Step Back & Let Them Build</h3>
 <div style="height: 0.25rem;"></div>
-<p>The goal is independence. Once they’ve got the rhythm, start making yourself scarce. “I’m going to go load the dishwasher, I want to see your finished skyline when I get back!” This communicates trust in their ability. The struggle to figure it out alone is where the deepest learning happens.</p>
-<h2>Age-Specific Tips for Skyscraper Success</h2>
+<p>The goal is independence. Once they have the rhythm, make yourself scarce. "I'm going to load the dishwasher. Show me your skyline when I'm back!" This shows trust. The struggle to figure it out alone? That's where deep learning happens. Resist the urge to hover.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-img3-1771793869.webp" alt="a-south-asian-mother-and-her-enthusiastic-child-wo-your-step-by-step-guide-to-teaching-skyscraper" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<h2 id="age-specific-tips-for-skyscraper-success">Age-Specific Tips for Skyscraper Success</h2>
 <div style="height: 0.5rem;"></div>
-<p>One size does <em>not</em> fit all with puzzles. Here’s how to adapt the <strong>skyscraper puzzle for kids</strong> of different ages and stages.</p>
+<p>One size doesn't fit all. Here's how to adapt. What I've found works best for each stage.</p>
   <h3>Ages 4-6: Focus on the Story</h3>
 <div style="height: 0.25rem;"></div>
-<p>For the littlest architects, ditch the numbers. Use the 3x3 grid from our free pack.
+<p>For little architects, ditch the numbers. Use the 3x3 grid. It's all about the narrative.
   </p>
   <ul>
-    <li>Call them “Short, Medium, and Tall” buildings. Use colored blocks or crayons (e.g., green=short, yellow=medium, red=tall).</li>
-    <li>Turn the clues into a story. “The princess at this end of the row wants to see ALL the buildings. So which one has to go in front?”</li>
-    <li>Celebrate the “city” they make, not just the solved puzzle.</li>
+    <li>Call them "Short, Medium, and Tall." Use colored blocks or crayons. Tactile is better.</li>
+    <li>Turn clues into a story. "The princess here wants to see ALL the buildings. Which one goes in front?" Get silly with it.</li>
+    <li>Celebrate the "city" they make. Not just the solved puzzle. The process is the product.</li>
   </ul>
   <h3>Ages 7-9: Introducing Strategy</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is the sweet spot for the classic rules. Here’s where you level up:
+<p>This is the sweet spot. Level up here. They're ready for real technique.
   </p>
   <ol>
-    <li>Introduce <strong>pencil marks.</strong> Teach them to lightly write the possible building numbers (e.g., 2,3) in a tricky square. This is a HUGE strategy used in advanced logic puzzles.</li>
-    <li>Talk about “row/column intersection.” If a row needs a ‘3’ and a column needs a ‘3’, the square where they meet is a prime candidate.</li>
-    <li>Start timing! Use a stopwatch for a friendly challenge against their own best time.</li>
+    <li>Introduce <strong>pencil marks.</strong> Teach them to lightly write possible numbers (2,3) in a tricky square. Huge strategy. This is a game-changer.</li>
+    <li>Talk about "row/column intersection." If a row and a column both need a '3', that meeting square is prime. This is advanced logic.</li>
+    <li>Start timing! Use a stopwatch for a friendly self-challenge. Beats speed on a screen any day.</li>
   </ol>
   <h3>Ages 10-12: Mastering Complexity</h3>
 <div style="height: 0.25rem;"></div>
-<p>Older kids need a bigger challenge to stay engaged.
+<p>Older kids need a bigger challenge. They crave it.
   </p>
   <ul>
-    <li>Move up to the 5x5 and 6x6 grids. The complexity increases exponentially.</li>
-    <li>Encourage them to create a “solving path” memo for a sibling—teaching it solidifies their own understanding.</li>
-    <li>The ultimate test: Have them <strong>design their own puzzle</strong> for <em>you</em> to solve. This flips the script and requires deep mastery of the rules. [IMAGE_4: An older child designing their own puzzle on graph paper]</li>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-img3-1771793869.webp" alt="a-south-asian-mother-and-her-enthusiastic-child-wo-your-step-by-step-guide-to-teaching-skyscraper" loading="lazy" width="1200" height="675"></figure></div>
-
+    <li>Move to 5x5 and 6x6 grids. Complexity jumps. The logic gets deliciously deep.</li>
+    <li>Have them create a "solving path" memo for a sibling. Teaching solidifies understanding. It builds confidence.</li>
+    <li>The ultimate test: Have them <strong>design their own puzzle</strong> for <em>you</em> to solve. This requires deep mastery. It's the final boss level.</li>
   </ul>
-  <h2>Creative Variations and Learning Extensions</h2>
+  <h2 id="creative-variations-and-learning-extensions">Creative Variations and Learning Extensions</h2>
 <div style="height: 0.5rem;"></div>
-<p>Once you’ve mastered the basics, the fun really begins! Here’s how to keep the <strong>skyscraper puzzle for kids</strong> fresh and connect it to other learning.</p>
+<p>Mastered the basics? The fun really begins. Keep it fresh. Here's what works in our house.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-img4-1771793869.webp" alt="in-a-sun-drenched-cozy-learning-nook-three-diver-age-specific-tips-for-skyscraper-success" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
   <h3>The Collaborative City-Build</h3>
 <div style="height: 0.25rem;"></div>
-<p>Print a huge 6x6 grid. Tape it to the table. Have each family member be in charge of one row or column. You have to communicate your clues and reasoning to make sure the whole city fits together. It’s a fantastic exercise in teamwork and clear communication.</p>
+<p>Print a huge 6x6 grid. Tape it down. Each family member controls one row or column. You must communicate clues and reasoning to make the city fit. Teamwork and clear communication in action. It gets loud and fun.</p>
   <h3>Cross-Curricular Connections</h3>
 <div style="height: 0.25rem;"></div>
 <p>
-    <strong>Math:</strong> Assign “rent” values to buildings ($100 for 1-story, $200 for 2-story, etc.). The clues become “The total rent in this row is $600.” Now it’s a combined logic and addition puzzle!
-    <br><strong>Literacy & Art:</strong> After solving the puzzle, use it as a map. Write a story about the city. Who lives in the tallest building? What’s in the short one on the corner? Draw the skyline from a side view.
+    <strong>Math:</strong> Assign "rent" values. The clues become "Total rent in this row is $600." Now it's logic and addition. Sneaky math practice.
+    <br><strong>Literacy & Art:</strong> Use the solved puzzle as a map. Write a story. Who lives in the tallest building? Draw the skyline from the side. This bridges logic and creativity beautifully.
   </p>
   <h3>From Puzzler to Puzzle-Maker</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is the pinnacle. Hand your child blank grid paper and challenge them to create a solvable puzzle. They must first place the buildings correctly, then figure out what the edge clues would be. It’s reverse-engineering the logic, and it’s tough! It makes for an amazing gift or challenge for a friend.</p>
-  <h2>Wrapping Up & Your Questions Answered</h2>
+<p>This is the pinnacle. Hand them blank grid paper. Challenge them to create a solvable puzzle. They must place buildings correctly, then figure out the edge clues. It's reverse-engineering the logic. Tough. And amazing. It teaches meta-cognition.</p>
+  <h2 id="wrapping-up-your-questions-answered">Wrapping Up & Your Questions Answered</h2>
 <div style="height: 0.5rem;"></div>
-<p>I truly can’t recommend this activity enough. It’s the kind of screen-free, focused, skill-building play that feels like a win for everyone. Whether you’re looking for a quiet afternoon activity, a tool for your homeschool curriculum, or a way to sharpen those logic muscles, the <strong>skyscraper puzzle for kids</strong> delivers. Don’t forget to grab your free pack of puzzles—it’s the easiest way to get started without having to create anything from scratch. You’ve got this!</p>
-  <h3>Frequently Asked Questions</h3>
-<div style="height: 0.25rem;"></div>
-<p><strong>What exactly is the Skyscraper puzzle?</strong><br>
-  Skyscraper is a logic grid puzzle where players place 'buildings' of different heights into a grid. The clues around the edge tell you how many buildings you'd see looking down each row or column, creating a unique city skyline. It teaches deduction without requiring <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">math skills</a>.</p>
-  <p><strong>What age is this appropriate for?</strong><br>
-  With adaptations, it’s wonderful for ages 4-12. Our <a href="/free-worksheets">free download</a> includes simpler 3x3 grids with visual clues for pre-readers, and progresses to complex 5x5 puzzles that will challenge a 12-year-old (or even an adult!).</p>
-  <p><strong>How does this differ from regular Sudoku?</strong><br>
-  While based on similar logical deduction, Skyscraper uses visual building pieces and skyline clues instead of numbers. This concrete, spatial element often makes it more accessible and engaging for young children who are still developing number sense.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-img4-1771793869.webp" alt="in-a-sun-drenched-cozy-learning-nook-three-diver-age-specific-tips-for-skyscraper-success" loading="lazy" width="1200" height="675"></figure></div>
-
-  <p><strong>My child gets frustrated with puzzles. How can I help?</strong><br>
-  Start with the easiest grid and solve it *together*, verbalizing your thought process for every move. Celebrate the process ('Great deduction!') over speed. Use the 'pencil mark' technique—lightly writing possible buildings in a square—to reduce the mental load.</p>
-  <p><strong>Can this be used in a classroom or homeschool setting?</strong><br>
-  Absolutely! It’s an excellent center activity, morning work challenge, or tool for small-group collaboration. It aligns with curriculum goals for logical reasoning, pattern recognition, and perseverance. For educators looking for more structured resources, check out our <a href="/premium-resources"><a href="../products.html">premium resources</a></a> for expanded packs. Use our 'puzzle-maker' extension for a creative assessment project.</p>
+<p>I can't recommend this enough. It's screen-free. Focused. Skill-building. A win for everyone. Quiet afternoon? Homeschool tool? Logic muscle sharpener? The <strong>skyscraper puzzle for kids</strong> delivers. Grab your free pack. It's the easiest start. You've got this. Honestly, just try it. The quiet focus you'll see is worth it.</p>
 </article>
-<div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What exactly is the Skyscraper puzzle?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Skyscraper is a logic grid puzzle where players place 'buildings' of different heights into a grid. The clues around the edge tell you how many buildings you'd see looking down each row or column, creating a unique city skyline. It teaches deduction without requiring <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">math skills</a>.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What age is this appropriate for?</h3>
-<div style="height: 0.25rem;"></div>
-<p>With adaptations, it's wonderful for ages 4-12. Our free download includes simpler 3x3 grids with visual clues for pre-readers, and progresses to complex 5x5 puzzles that will challenge a 12-year-old (or even an adult!).</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How does this differ from regular Sudoku?</h3>
-<div style="height: 0.25rem;"></div>
-<p>While based on similar logical deduction, Skyscraper uses visual building pieces and skyline clues instead of numbers. This concrete, spatial element often makes it more accessible and engaging for young children who are still developing number sense.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">My child gets frustrated with puzzles. How can I help?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Start with the easiest grid and solve it *together*, verbalizing your thought process for every move. Celebrate the process ('Great deduction!') over speed. Use the 'pencil mark' technique—lightly writing possible buildings in a square—to reduce the mental load.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Can this be used in a classroom or homeschool setting?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Absolutely! It's an excellent center activity, morning work challenge, or tool for small-group collaboration. It aligns with curriculum goals for logical reasoning, pattern recognition, and perseverance. Use our 'puzzle-maker' extension for a creative assessment project.</p></div></div>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#puzzle</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#skyscraper</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#child</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#building</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#what</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#buildings</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#clues</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#grid</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#logic</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#kids</a>
+        </div>
+    </div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -629,7 +682,14 @@
                 
                 <a href="../articles/best-benefits-of-puzzles-for-child-brain-development.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp" alt="Best Benefits of Puzzles for Child Brain Development" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp"
+                            srcset="../images/thumbs/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 480w, ../images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Benefits of Puzzles for Child Brain Development"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -641,7 +701,14 @@
                 </a>
                 <a href="../articles/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp" alt="How to Use Four In A Row to Unlock Your Child's Strategic..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp"
+                            srcset="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 480w, ../images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Four In A Row to Unlock Your Child's Strategic..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -653,7 +720,81 @@
                 </a>
                 <a href="../articles/ultimate-critical-thinking-activities-for-kindergarten.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp" alt="Ultimate Critical Thinking Activities for Kindergarten" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp"
+                            srcset="../images/thumbs/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 480w, ../images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Critical Thinking Activities for Kindergarten"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Ultimate Critical Thinking Activities for Kindergarten</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="../articles/best-benefits-of-puzzles-for-child-brain-development.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp"
+                            srcset="../images/thumbs/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 480w, ../images/best-benefits-of-puzzles-for-child-brain-development-cover-1771634114.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Benefits of Puzzles for Child Brain Development"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 10 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Best Benefits of Puzzles for Child Brain Development</h4>
+                    </div>
+                </a>
+                <a href="../articles/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp"
+                            srcset="../images/thumbs/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 480w, ../images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1771632871.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use Four In A Row to Unlock Your Child's Strategic..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 11 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use Four In A Row to Unlock Your Child's Strategic...</h4>
+                    </div>
+                </a>
+                <a href="../articles/ultimate-critical-thinking-activities-for-kindergarten.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp"
+                            srcset="../images/thumbs/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 480w, ../images/ultimate-critical-thinking-activities-for-kindergarten-cover-1771632132.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Ultimate Critical Thinking Activities for Kindergarten"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -666,41 +807,7 @@
             </div>
         </div>
 
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/best-spelling-practice-worksheets-for-elementary-students.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Spelling Practice Worksheets for Elementary Students
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/essential-shadow-matching-worksheets-for-toddlers-kids.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Essential Shadow Matching Worksheets for Toddlers &amp; Kids
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-stickers-to-boost-fine-motor-cognitive-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Stickers to Boost Fine Motor &amp; Cognitive Skills
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-educational-printables-for-homeschool-ultimate-guide.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Educational Printables for Homeschool: Ultimate Guide
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-a-freebie-pack-to-boost-essential-learning-skills.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use a Freebie Pack to Boost Essential Learning Skills
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
-            </div>
-        </div>
+
 
 
             <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
@@ -724,27 +831,6 @@
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -855,5 +941,288 @@
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🚢</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Warships</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Warships</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Warships</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Warships";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>

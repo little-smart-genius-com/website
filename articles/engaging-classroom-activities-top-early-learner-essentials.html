@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Engaging Classroom Activities: Top Early Learner Essentials">
     <meta property="og:description" content="Boost early learning with expert-designed printable worksheets. Develop key skills through play! Download your free activity guide now. (141 chars)">
-    <meta property="og:image" content="https://littlesmartgenius.com/images/engaging-classroom-activities-top-early-learner-essentials-cover-1771746427.webp">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/engaging-classroom-activities-top-early-learner-essentials.jpg">
     <meta property="og:url" content="https://littlesmartgenius.com/articles/engaging-classroom-activities-top-early-learner-essentials.html">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-02-22T07:47:59.685348">
@@ -303,15 +303,25 @@
         .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .social-footer a {
-            width: 36px; height: 36px; border-radius: 50%;
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             background: rgba(244, 140, 6, 0.1); color: #F48C06;
-            transition: all 0.3s;
+            transition: all 0.3s; text-decoration: none;
         }
-        .social-footer a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
-        .social-footer svg { width: 18px; height: 18px; }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 15px 20px 25px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
 
         @media (max-width: 1024px) {
             .top-header {
@@ -333,6 +343,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8G205JX2');
     </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Education",
+      "item": "https://littlesmartgenius.com/blog-education.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Engaging Classroom Activities: Top Early Learner Essentials",
+      "item": "https://littlesmartgenius.com/articles/engaging-classroom-activities-top-early-learner-essentials.html"
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are engaging classroom activities for early learners?", "acceptedAnswer": {"@type": "Answer", "text": "Engaging classroom activities are hands-on, play-based tasks designed to match a child's developmental stage, actively building cognitive, motor, or social skills. Examples include sensory bins for scientific exploration, pattern block puzzles for problem-solving, and collaborative building projects that require sharing and planning."}}, {"@type": "Question", "name": "How do learning activities support child development?", "acceptedAnswer": {"@type": "Answer", "text": "Targeted learning activities directly strengthen neural pathways. For instance, puzzles enhance spatial reasoning and perseverance, while threading beads develops fine motor skills crucial for writing. Each activity is an opportunity to practice executive functions like working memory, cognitive flexibility, and inhibitory control."}}, {"@type": "Question", "name": "Why are fine motor skills important for early learners?", "acceptedAnswer": {"@type": "Answer", "text": "Fine motor skills are the foundation for academic independence. Proficiency in using scissors, pencils, and tools allows a child to translate their thoughts into written words and art. Research links strong fine motor abilities in kindergarten to better achievement in math and reading in later grades."}}, {"@type": "Question", "name": "How long should activities be for a 4-year-old?", "acceptedAnswer": {"@type": "Answer", "text": "For a typical 4-year-old, structured activity focus time should be 10-15 minutes maximum. Their attention spans are still developing, so plan short, impactful tasks with clear beginnings and ends. Successful engagement is more important than duration—it's better to stop while they're still interested."}}, {"@type": "Question", "name": "Is screen time an engaging classroom activity?", "acceptedAnswer": {"@type": "Answer", "text": "While high-quality educational apps can supplement learning, they should not replace hands-on, sensory-rich activities. Real-world manipulation of objects is irreplaceable for building fine motor skills, social interaction, and spatial understanding. Limit passive screen time and prioritize activities where children are creators, not just consumers."}}]}</script>
 </head>
@@ -391,9 +434,21 @@
     <main class="pt-[100px] pb-20 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-brand transition">
-                &larr; Back to Blog
-            </a>
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog.html" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="../blog-education.html" class="hover:text-brand transition">Education</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Engaging Classroom Activities: Top Early Learner Essentials">Engaging Classroom Activities: Top Early Learner Essentials</li>
+            </ol>
+        </nav>
+
         </div>
 
         <article class="max-w-4xl mx-auto">
@@ -408,7 +463,7 @@
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>Dr. Emily Carter</span>
                     <span>&bull;</span>
-                    <span>February 22, 2026</span>
+                    <span>February 22, 2026 at 07:47 AM</span>
                     <span>&bull;</span><span>Education</span>
                 </div>
 
@@ -436,81 +491,84 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord);">
-                <img src="../images/engaging-classroom-activities-top-early-learner-essentials-cover-1771746427.webp" alt="Engaging Classroom Activities: Top Early Learner Essentials" class="w-full h-auto object-cover" loading="lazy">
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="../images/engaging-classroom-activities-top-early-learner-essentials-cover-1771746427.webp"
+                    srcset="../images/thumbs/engaging-classroom-activities-top-early-learner-essentials-cover-1771746427.webp 480w, ../images/engaging-classroom-activities-top-early-learner-essentials-cover-1771746427.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Engaging Classroom Activities: Top Early Learner Essentials"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
             </div>
 
             <div class="article-content">
-                <h2>Why Engaging Activities Are Essential for Child Development</h2>
+                
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>📑</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#why-engaging-activities-are-essential-for-child-development" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why Engaging Activities Are Essential for Child Development</a></li><li class="py-1"><a href="#best-hands-on-learning-activities-for-cognitive-skills" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Best Hands-On Learning Activities for Cognitive Skills</a></li><li class="py-1"><a href="#ultimate-fine-motor-skill-builders-for-little-hands" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Ultimate Fine Motor Skill Builders for Little Hands</a></li><li class="py-1"><a href="#how-to-plan-age-appropriate-classroom-activities" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">How to Plan Age-Appropriate Classroom Activities</a></li><li class="py-1"><a href="#top-5-educational-resources-you-already-have" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Top 5 Educational Resources You Already Have</a></li><li class="py-1"><a href="#proven-strategies-for-seamless-activity-transitions" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Proven Strategies for Seamless Activity Transitions</a></li><li class="py-1"><a href="#wrapping-it-up" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Wrapping It Up</a></li><li class="py-1"><a href="#your-questions-answered" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Your Questions, Answered</a></li>
+        </ul>
+    </div>
+    <h2 id="why-engaging-activities-are-essential-for-child-development">Why Engaging Activities Are Essential for Child Development</h2>
 <div style="height: 0.5rem;"></div>
-<p>I remember watching my daughter at three years old, completely transfixed by a pile of dried beans and an empty yogurt cup. She poured, scooped, and sorted for a solid 45 minutes. That wasn't just play—that was her brain, wiring itself for math and physics. When it comes to <strong>engaging classroom activities for early learners</strong>, parents have many great options.</p>
-<p>Sound familiar? You see your child or students deeply focused, and you just know something important is happening. Here's the thing: that feeling is absolutely right. Choosing the right <strong>engaging classroom activities for early learners</strong> isn't just about keeping little hands busy. It's about construction. We're building minds.</p>
+<p>I remember watching my daughter at three years old, completely transfixed by a pile of dried beans and an empty yogurt cup. She poured, scooped, and sorted for a solid 45 minutes. That wasn't just play—that was her brain, wiring itself for math and physics. Here's the thing: that feeling you get when you see a child deeply focused? You're right. Something important *is* happening. Choosing the right <strong>engaging classroom activities for early learners</strong> isn't about busywork. We're building minds.</p>
 <h3>The Science of Play & Neural Pathways</h3>
 <div style="height: 0.25rem;"></div>
-<p>Think of a young child's brain as a busy garden. Experiences are like water and sunlight. The pathways used most often grow strong and permanent. The ones ignored? They get pruned away.</p>
-<p>This process, called synaptic pruning, is why repeated, meaningful engagement is so powerful. When a child solves a puzzle again and again, they're not just finishing a picture. They're cementing the neural architecture for spatial reasoning and perseverance.</p>
+<p>Think of a young child's brain as a busy garden. Experiences are like water and sunlight. The pathways used most often grow strong. The ones ignored? They fade. This process is called synaptic pruning. It's why repetition matters so much. When a child solves a puzzle again and again, they're not just finishing a picture. They're cementing the neural architecture for spatial reasoning. They're learning perseverance.</p>
 <h3>Beyond Fun: Building Executive Function</h3>
 <div style="height: 0.25rem;"></div>
-<p>Executive function is our brain's air traffic control system. It manages working memory, flexible thinking, and self-control. And guess what? We can exercise it through play.</p>
-<p>A 2020 study in the <em>Journal of Experimental Child Psychology</em> found that structured play improved working memory in 4-6 year-olds by up to 25%. That's huge. Games like "Simon Says" or "Red Light, Green Light" are actually boot camps for inhibitory control.</p>
+<p>Executive function is our brain's air traffic control system. It manages working memory, flexible thinking, and self-control. And guess what? We can exercise it through play. A 2020 study found that structured play improved working memory in 4-6 year-olds by up to 25%. That's huge. Games like "Simon Says"? They're boot camps for inhibitory control. Real talk: they're training focus.</p>
 <h3>Creating a 'Brain-Growing' Environment</h3>
 <div style="height: 0.25rem;"></div>
-<p>What I've found works best is variety and rotation. A static classroom is a boring classroom for a developing brain.</p>
-<p><em>Pro tip:</em> Design activity stations that target different skills and rotate them weekly. Have a fine motor station, a problem-solving corner, and a sensory table. This prevents boredom and promotes cognitive flexibility as kids adapt to new challenges. For ready-made, developmentally sequenced activity kits, explore our curated <a href="#">educational resources</a>.</p>
-<h2>Best Hands-On Learning Activities for Cognitive Skills</h2>
+<p>What I've found works best is variety. A static classroom is a boring classroom for a developing brain. Pro tip: Design activity stations that target different skills. Rotate them weekly. Have a fine motor station. A problem-solving corner. A sensory table. This prevents boredom. It promotes cognitive flexibility as kids adapt to new challenges. For ready-made, developmentally sequenced activity kits, explore our curated <a href="#">educational resources</a>.</p>
+<h2 id="best-hands-on-learning-activities-for-cognitive-skills">Best Hands-On Learning Activities for Cognitive Skills</h2>
 <div style="height: 0.5rem;"></div>
-<p>Cognitive skills are all about how we think, learn, and remember. The best way to build them? Get kids doing, not just listening.</p>
+<p>Cognitive skills are all about how we think, learn, and remember. The best way to build them? Get kids doing. Not just listening.</p>
 <h3>Problem-Solving Puzzles & Pattern Games</h3>
 <div style="height: 0.25rem;"></div>
-<p>Start simple. Create "story sequence" cards—four pictures showing a clear progression, like building a snowman or making a sandwich. Ask the child to order them to tell a logical story. This boosts narrative reasoning and prediction skills.</p>
-<p>Other fantastic options include:</p>
+<p>Start simple. Create "story sequence" cards—four pictures showing a clear progression, like building a snowman. Ask the child to order them logically. This boosts narrative reasoning. It builds prediction skills. Other fantastic options include:</p>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/engaging-classroom-activities-top-early-learner-essentials-img1-1771746427.webp" alt="a-close-up-side-profile-of-a-joyful-7-year-old-boy-why-engaging-activities-are-essential-for-child-development" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure>
 <ul>
 <li>Pattern block puzzles</li>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/engaging-classroom-activities-top-early-learner-essentials-img1-1771746427.webp" alt="a-close-up-side-profile-of-a-joyful-7-year-old-boy-why-engaging-activities-are-essential-for-child-development" loading="lazy" width="1200" height="675"></figure>
-<div style="height: 1.5rem;"></div>
-<p></div>
-
 <li>Simple "what comes next?" bead threads (red, blue, red, blue...)</li>
 <li>Tangram challenges with basic shapes</li>
-</ul></p>
+</ul>
 <h3>Sensory Bins for Scientific Discovery</h3>
 <div style="height: 0.25rem;"></div>
-<p>This is where Piaget's Preoperational Stage comes alive. Kids at this age learn by physically manipulating their world. A sensory bin lets them assimilate new information about texture, weight, and volume firsthand.</p>
-<p>Fill a tub with rice, hidden small toys, scoops, and cups. You've just created a laboratory for concepts like full/empty, sink/float, and classification. The learning is endless.</p>
+<p>This is where Piaget's Preoperational Stage comes alive. Kids at this age learn by physically manipulating their world. A sensory bin lets them assimilate new information firsthand. Fill a tub with rice. Hide small toys inside. Add scoops and cups. You've just created a laboratory. Concepts like full/empty and sink/float emerge naturally. The learning is endless.</p>
 <h3>Memory & Matching Games That Build Focus</h3>
 <div style="height: 0.25rem;"></div>
-<p>Concentration is a muscle. Memory games train it beautifully. The key is to match the complexity to the child's age.</p>
-<p><em>Quick tip:</em> For ages 4-5, start with 6-card matches using simple pictures. For 6-8 year-olds, use 12-16 cards with more complex categories like "things that spin" or "modes of transport." Want a head start? Download our <a href="#">free printable pattern and memory game templates</a> from the <a href="../blog.html">our blog</a>.</p>
-<h2>Ultimate Fine Motor Skill Builders for Little Hands</h2>
+<p>Concentration is a muscle. Memory games train it beautifully. The key is to match the complexity to the child's age. Quick tip: For ages 4-5, start with 6-card matches using simple pictures. For 6-8 year-olds, use 12-16 cards with more complex categories like "things that spin." Want a head start? Download our <a href="#">free printable pattern and memory game templates</a> from the <a href="../blog.html">our blog</a>.</p>
+<h2 id="ultimate-fine-motor-skill-builders-for-little-hands">Ultimate Fine Motor Skill Builders for Little Hands</h2>
 <div style="height: 0.5rem;"></div>
-<p>Those tiny hand muscles need a workout to get strong for writing, buttoning, and everything else. It’s not just about dexterity—it’s about brain-hand connection.</p>
+<p>Those tiny hand muscles need a workout. It’s not just about dexterity—it’s about brain-hand connection. Strong hands lead to confident writers.</p>
 <blockquote>"I was so worried my son would struggle to write. We started with playdough and threading giant beads, and the difference by kindergarten was night and day. It all connects!" – Sarah, mom of two.</blockquote>
 <div style="height: 1.5rem;"></div>
 <h3>Scissor Skills & Tactile Craft Projects</h3>
 <div style="height: 0.25rem;"></div>
-<p>Start with snipping! Give kids strips of thick paper and child-safe scissors. Let them just make cuts along the edge. Progress to cutting along straight lines, then wavy lines.</p>
-<p>My favorite beginner project is "Spaghetti Stringing." Use uncooked tubular pasta (like ziti) and a piece of yarn with a knot at one end. It's much easier than small beads and gives that wonderful feeling of accomplishment.</p>
+<p>Start with snipping! Give kids strips of thick paper and child-safe scissors. Let them just make cuts along the edge. Progress to cutting along straight lines. Then wavy lines. My favorite beginner project is "Spaghetti Stringing." Use uncooked tubular pasta and a piece of yarn with a knot. It's much easier than small beads. It gives that wonderful feeling of accomplishment.</p>
 <h3>Pre-Writing Fun with Playdough & Beads</h3>
 <div style="height: 0.25rem;"></div>
-<p>Before a pencil ever touches paper, strengthen those tripod fingers. Rolling playdough snakes, pinching small beads, and using tweezers to pick up pom-poms are all pre-writing gold.</p>
-<p>Real talk: research consistently shows fine motor skill proficiency in kindergarten is a strong predictor of later academic achievement in reading and math. It’s that fundamental.</p>
+<p>Before a pencil ever touches paper, strengthen those tripod fingers. Rolling playdough snakes works. Pinching small beads works. Using tweezers to pick up pom-poms works. In my experience, these are pre-writing gold. Research consistently shows fine motor skill proficiency in kindergarten predicts later academic achievement. It’s that fundamental.</p>
 <h3>Building & Construction for Precision Grip</h3>
-<div style="height: 0.25rem;"></div>
-<p>Interlocking plastic bricks, wooden blocks, even stacking cups. These all require a precision grip and controlled pressure. Challenge kids to build the tallest tower they can without it falling. You’ll see focus, planning, and delicate adjustments in action.</p>
-<p><em>Actionable tip:</em> Offer a range of tools. Provide thick crayons for 3-4 year-olds, then progress to broken crayon pieces for 5-6 year-olds. The small size <em>forces</em> a proper tripod grasp.</p>
 
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/engaging-classroom-activities-top-early-learner-essentials-img2-1771746427.webp" alt="an-overhead-isometric-flat-lay-illustration-of-fo-best-hands-on-learning-activities-for-cognitive-skills" loading="lazy" width="1200" height="675"></figure></div>
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/engaging-classroom-activities-top-early-learner-essentials-img2-1771746427.webp" alt="an-overhead-isometric-flat-lay-illustration-of-fo-best-hands-on-learning-activities-for-cognitive-skills" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
 
-<h2>How to Plan Age-Appropriate Classroom Activities</h2>
+<p>Interlocking plastic bricks. Wooden blocks. Even stacking cups. These all require a precision grip. They need controlled pressure. Challenge kids to build the tallest stable tower. You’ll see focus. You'll see planning. Actionable tip: Offer a range of tools. Provide thick crayons for 3-4 year-olds. Then progress to broken crayon pieces for 5-6 year-olds. The small size *forces* a proper tripod grasp.</p>
+<h2 id="how-to-plan-age-appropriate-classroom-activities">How to Plan Age-Appropriate Classroom Activities</h2>
 <div style="height: 0.5rem;"></div>
-<p>The magic word is "match." An activity that’s perfect for a five-year-old will frustrate a three-year-old and bore an eight-year-old. We have to meet them where they are.</p>
+<p>The magic word is "match." An activity that’s perfect for a five-year-old will frustrate a three-year-old. It will bore an eight-year-old. We have to meet them where they are.</p>
 <h3>Activity Scaffolding for 4-6 Year Olds</h3>
 <div style="height: 0.25rem;"></div>
-<p>This age group thrives on short, sweet, and successful tasks. Activities should last 10-15 minutes max. Give clear, single-step instructions and aim for an immediate, tangible outcome. Think: "Let's sort these buttons by color into these three bowls." Done. Celebrate.</p>
+<p>This age group thrives on short, sweet, and successful tasks. Activities should last 10-15 minutes max. Give clear, single-step instructions. Aim for an immediate, tangible outcome. Think: "Let's sort these buttons by color into these three bowls." Done. Celebrate. That's the win.</p>
 <h3>Challenging 7-9 Year Olds with Complex Tasks</h3>
 <div style="height: 0.25rem;"></div>
-<p>Now we can introduce multi-step projects. They can follow a sequence. Try a "3-step science experiment" like mixing baking soda and vinegar. Have them predict what will happen, observe the reaction, and then draw what they saw.</p>
+<p>Now we can introduce multi-step projects. They can follow a sequence. Try a "3-step science experiment" like mixing baking soda and vinegar. Have them predict. Observe. Then draw what they saw.</p>
 <ol>
 <li>First, we pour the vinegar.</li>
 <li>Next, we add the baking soda.</li>
@@ -518,11 +576,10 @@
 </ol>
 <h3>Fostering Independence in 10-12 Year Olds</h3>
 <div style="height: 0.25rem;"></div>
-<p>The goal here is to step back and be a guide. Use the "I Do, We Do, You Do" model. Demonstrate the activity, do it together once, then let them lead their own project. Scale back your support as their mastery grows.</p>
-<p>Looking for perfectly pitched ideas? Our <a href="#"><a href="../products.html">premium resources</a></a> product line features kits specifically tagged by age group to ensure that perfect developmental match.</p>
-<h2>Top 5 Educational Resources You Already Have</h2>
+<p>The goal here is to step back. Be a guide. Use the "I Do, We Do, You Do" model. Demonstrate the activity. Do it together once. Then let them lead. Scale back your support as their mastery grows. Looking for perfectly pitched ideas? Our <a href="#"><a href="../products.html">premium resources</a></a> product line features kits specifically tagged by age group. It ensures that perfect developmental match.</p>
+<h2 id="top-5-educational-resources-you-already-have">Top 5 Educational Resources You Already Have</h2>
 <div style="height: 0.5rem;"></div>
-<p>You don't need a fancy catalog or an expensive subscription. The best tools are probably in your kitchen or recycling bin right now.</p>
+<p>You don't need a fancy catalog. The best tools are probably in your kitchen right now. Or your recycling bin.</p>
 <h3>Everyday Math with Snacks & Sorting</h3>
 <div style="height: 0.25rem;"></div>
 <p>Turn snack time into math lab. Use cereal loops or raisins.</p>
@@ -532,79 +589,64 @@
 <li><strong>Add/Subtract:</strong> "If you eat two, how many are left?"</li>
 </ol>
 <div style="height: 1rem;"></div>
-<p>It's delicious learning.</p>
+<p>It's delicious learning. And it works.</p>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/engaging-classroom-activities-top-early-learner-essentials-img3-1771746427.webp" alt="in-a-sunlit-natural-playroom-with-educational-toy-ultimate-fine-motor-skill-builders-for-little-hands" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
 <h3>Literacy Boost from Environmental Print</h3>
 <div style="height: 0.25rem;"></div>
-<p>Children start "reading" logos and signs long before they know letters. This "environmental print" is a critical pre-reading skill. Harness it! Create a classroom label scavenger hunt. Can they find the word "door," "window," or "book"?</p>
+<p>Children start "reading" logos and signs long before they know letters. This "environmental print" is a critical pre-reading skill. Harness it! Create a classroom label scavenger hunt. Can they find the word "door"? How about "window"? It builds confidence.</p>
 <h3>Engineering with Recyclables & Blocks</h3>
 <div style="height: 0.25rem;"></div>
-<p>Save your toilet paper tubes, egg cartons, and empty boxes. Add some tape and scissors. Challenge: "Can you build a marble run?" or "Can you make a vehicle that rolls?" You're teaching physics, problem-solving, and resilience when it topples.</p>
-<p><em>Quick tip:</em> For a classic challenge, ask them to build the tallest stable tower using only paper cups and index cards. Concepts of stability, balance, and structural engineering emerge naturally. Find more of these low-cost, high-impact ideas in our <a href="#">free downloadable resource guide</a>.</p>
-<h2>Proven Strategies for Seamless Activity Transitions</h2>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/engaging-classroom-activities-top-early-learner-essentials-img3-1771746427.webp" alt="in-a-sunlit-natural-playroom-with-educational-toy-ultimate-fine-motor-skill-builders-for-little-hands" loading="lazy" width="1200" height="675"></figure></div>
-
-<p>Let's be honest. Moving from playtime to clean-up can be the hardest part of the day. But smooth transitions are a learnable skill for kids, and they save everyone's sanity.</p>
+<p>Save your toilet paper tubes. Save egg cartons and empty boxes. Add some tape and scissors. Challenge: "Can you build a marble run?" You're teaching physics. You're teaching problem-solving. Quick tip: For a classic challenge, ask them to build the tallest stable tower using only paper cups and index cards. Concepts of stability emerge naturally. Find more of these low-cost ideas in our <a href="#">free downloadable resource guide</a>.</p>
+<h2 id="proven-strategies-for-seamless-activity-transitions">Proven Strategies for Seamless Activity Transitions</h2>
+<div style="height: 0.5rem;"></div>
+<p>Let's be real. Moving from playtime to clean-up can be the hardest part of the day. But smooth transitions are a learnable skill. They save everyone's sanity.</p>
 <h3>Using Visual Schedules & Timers</h3>
 <div style="height: 0.25rem;"></div>
-<p>A picture schedule shows what comes next, which reduces anxiety. Use a large, pictorial timer so children can <em>see</em> how much time is left. Watching the red area disappear gives them a sense of control and prepares them mentally for the change.</p>
+<p>A picture schedule shows what comes next. This reduces anxiety. Use a large, pictorial timer so children can *see* how much time is left. Watching the red area disappear gives them a sense of control. It prepares them mentally for the change.</p>
 <h3>The Power of Clean-Up Songs & Routines</h3>
 <div style="height: 0.25rem;"></div>
-<p>Never underestimate a good song. Consistent auditory cues trigger the brain's procedural memory. When the "Clean Up" song comes on, their brains switch gears automatically. It becomes a habit, not a battle.</p>
+<p>Never underestimate a good song. Consistent auditory cues trigger the brain's procedural memory. When the "Clean Up" song comes on, their brains switch gears automatically. It becomes a habit. Not a battle.</p>
 <h3>Managing Energy: Calm-Down Corners & Movement Breaks</h3>
 <div style="height: 0.25rem;"></div>
-<p>After a high-energy activity, some kids need help resetting. Have a "cozy corner" with pillows, soft toys, and books. Guide them there for 5 minutes of quiet time. Conversely, if energy is low, a quick "freeze dance" or stretching break can re-engage the group.</p>
-<h2>Wrapping It Up</h2>
+<p>After a high-energy activity, some kids need help resetting. Have a "cozy corner" with pillows and books. Guide them there for 5 minutes of quiet time. Conversely, if energy is low, a quick "freeze dance" break can re-engage the whole group. It's about reading the room.</p>
+<h2 id="wrapping-it-up">Wrapping It Up</h2>
 <div style="height: 0.5rem;"></div>
-<p>Planning <strong>engaging classroom activities for early learners</strong> is one of the most impactful things we can do. It’s not about constant entertainment. It’s about intentional, playful connection that builds brains.</p>
-<p>Remember these three things:</p>
+<p>Planning <strong>engaging classroom activities for early learners</strong> is one of the most impactful things we can do. It’s not about constant entertainment. It’s about intentional, playful connection. That connection builds brains. Remember these three things:</p>
 <ul>
 <li><strong>Match the Activity:</strong> Always consider developmental stage first.</li>
 <li><strong>Process Over Product:</strong> The learning is in the doing, not a perfect end result.</li>
+
+<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/engaging-classroom-activities-top-early-learner-essentials-img4-1771746427.webp" alt="a-warm-sun-drenched-classroom-uses-the-rule-of-th-how-to-plan-age-appropriate-classroom-activities" loading="lazy" width="1200" height="675" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure>
+<div style="height: 1.5rem;"></div>
+<p></div>
+
 <li><strong>You Are the Best Resource:</strong> Your attention and encouragement fuel their engagement more than any toy.</li>
 </ul>
-<div style="height: 1rem;"></div>
-<p>You’ve got this. Start with one new activity this week and watch the magic happen. For more support, check out our library of <a href="#"><a href="../freebies.html">free worksheets</a></a> and curated <a href="#">educational activities</a> designed to make your planning easier and their learning brighter.</p>
-<h2>Your Questions, Answered</h2>
+You’ve got this. Start with one new activity this week. Watch the magic happen. For more support, check out our library of <a href="#"><a href="../freebies.html">free worksheets</a></a> and curated <a href="#">educational activities</a>. They're designed to make your planning easier.</p>
+<h2 id="your-questions-answered">Your Questions, Answered</h2>
 <h3>What are engaging classroom activities for early learners?</h3>
 <div style="height: 0.25rem;"></div>
-<p>Engaging classroom activities are hands-on, play-based tasks designed to match a child's developmental stage, actively building cognitive, motor, or social skills. Examples include sensory bins for scientific exploration, pattern block puzzles for problem-solving, and collaborative building projects that require sharing and planning.</p>
+<p>They're hands-on, play-based tasks designed to match a child's developmental stage. They actively build skills. Examples include sensory bins for exploration. Pattern block puzzles for problem-solving. Collaborative building projects that require sharing. The key is active engagement.</p>
 <h3>How do learning activities support child development?</h3>
 <div style="height: 0.25rem;"></div>
-<p>Targeted learning activities directly strengthen neural pathways. For instance, puzzles enhance spatial reasoning and perseverance, while threading beads develops <a href="../blog.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">fine motor skills</a> crucial for writing. Each activity is an opportunity to practice executive functions like working memory, cognitive flexibility, and inhibitory control.</p>
+<p>Targeted learning activities directly strengthen neural pathways. Puzzles enhance spatial reasoning. Threading beads develops <a href="../blog-creative-arts.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">fine motor skills</a> crucial for writing. Each activity is an opportunity to practice executive functions. Things like working memory and cognitive flexibility get a workout.</p>
 <h3>Why are fine motor skills important for early learners?</h3>
 <div style="height: 0.25rem;"></div>
-<p>Fine motor skills are the foundation for academic independence. Proficiency in using scissors, pencils, and tools allows a child to translate their thoughts into written words and art. Research links strong fine motor abilities in kindergarten to better achievement in math and reading in later grades.</p>
-
-<div style="margin: 2.5rem 0;"><figure class="article-image"><img src="../images/engaging-classroom-activities-top-early-learner-essentials-img4-1771746427.webp" alt="a-warm-sun-drenched-classroom-uses-the-rule-of-th-how-to-plan-age-appropriate-classroom-activities" loading="lazy" width="1200" height="675"></figure></div>
-
+<p>Fine motor skills are the foundation for academic independence. Proficiency with scissors and pencils allows a child to translate thoughts into written words. Research links strong fine motor abilities in kindergarten to better achievement in math and reading later on. It's all connected.</p>
 <h3>How long should activities be for a 4-year-old?</h3>
 <div style="height: 0.25rem;"></div>
-<p>For a typical 4-year-old, structured activity focus time should be 10-15 minutes maximum. Their attention spans are still developing, so plan short, impactful tasks with clear beginnings and ends. Successful engagement is more important than duration—it's better to stop while they're still interested.</p>
+<p>For a typical 4-year-old, structured activity focus time should be 10-15 minutes maximum. Their attention spans are still developing. Plan short, impactful tasks with clear beginnings and ends. Successful engagement is more important than duration. Stop while they're still interested.</p>
 <h3>Is screen time an engaging classroom activity?</h3>
 <div style="height: 0.25rem;"></div>
-<p>While high-quality educational apps can supplement learning, they should not replace hands-on, sensory-rich activities. Real-world manipulation of objects is irreplaceable for building fine motor skills, social interaction, and spatial understanding. Limit passive screen time and prioritize activities where children are creators, not just consumers.</p>
-<p><em>According to the <a href="https://www.naeyc.org/resources" target="_blank" rel="noopener">National Association for the Education of Young Children (NAEYC)</a>, hands-on educational activities are crucial for early childhood development.</em></p>
-<div class="faq-section mt-12"><h2>Frequently Asked Questions</h2><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">What are engaging classroom activities for early learners?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Engaging classroom activities are hands-on, play-based tasks designed to match a child's developmental stage, actively building cognitive, motor, or social skills. Examples include sensory bins for scientific exploration, pattern block puzzles for problem-solving, and collaborative building projects that require sharing and planning.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How do learning activities support child development?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Targeted learning activities directly strengthen neural pathways. For instance, puzzles enhance spatial reasoning and perseverance, while threading beads develops fine motor skills crucial for writing. Each activity is an opportunity to practice executive functions like working memory, cognitive flexibility, and inhibitory control.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Why are fine motor skills important for early learners?</h3>
-<div style="height: 0.25rem;"></div>
-<p>Fine motor skills are the foundation for academic independence. Proficiency in using scissors, pencils, and tools allows a child to translate their thoughts into written words and art. Research links strong fine motor abilities in kindergarten to better achievement in math and reading in later grades.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">How long should activities be for a 4-year-old?</h3>
-<div style="height: 0.25rem;"></div>
-<p>For a typical 4-year-old, structured activity focus time should be 10-15 minutes maximum. Their attention spans are still developing, so plan short, impactful tasks with clear beginnings and ends. Successful engagement is more important than duration—it's better to stop while they're still interested.</p></div><div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">Is screen time an engaging classroom activity?</h3>
-<div style="height: 0.25rem;"></div>
-<p>While high-quality educational apps can supplement learning, they should not replace hands-on, sensory-rich activities. Real-world manipulation of objects is irreplaceable for building fine motor skills, social interaction, and spatial understanding. Limit passive screen time and prioritize activities where children are creators, not just consumers.</p></div></div>
-<div class="cta-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: center;">
-    <h3 style="color: white; margin-bottom: 15px;">Love Learning Activities?</h3>
-<div style="height: 0.25rem;"></div>
-<p style="color: white; margin-bottom: 20px;">Discover our <a href="../freebies.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">free printable worksheets</a> and <a href="../products.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">premium resources</a>:</p>
-    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="../freebies.html" style="background: #F48C06; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Free Worksheets</a>
-        <a href="../products.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Premium Resources</a>
+<p>High-quality educational apps can supplement learning. But they should not replace hands-on, sensory-rich activities. Real-world manipulation of objects is irreplaceable. It builds fine motor skills and spatial understanding. Limit passive screen time. Prioritize activities where children are creators.</p>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#activities</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#skills</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#activity</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#motor</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#child</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#year</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#classroom</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#fine</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#learning</a><a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#engaging</a>
+        </div>
     </div>
-</div>
     <div class="mt-12 pt-8 border-t" style="border-color: var(--bord);">
         <h2 class="text-2xl font-extrabold mb-6" style="color: var(--text);">Frequently Asked Questions</h2>
         
@@ -642,7 +684,14 @@
                 
                 <a href="../articles/how-to-use-a-freebie-pack-to-boost-essential-learning-skills.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-a-freebie-pack-to-boost-essential-learning-skills-cover-1771746907.webp" alt="How to Use a Freebie Pack to Boost Essential Learning Skills" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-a-freebie-pack-to-boost-essential-learning-skills-cover-1771746907.webp"
+                            srcset="../images/thumbs/how-to-use-a-freebie-pack-to-boost-essential-learning-skills-cover-1771746907.webp 480w, ../images/how-to-use-a-freebie-pack-to-boost-essential-learning-skills-cover-1771746907.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use a Freebie Pack to Boost Essential Learning Skills"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -654,7 +703,14 @@
                 </a>
                 <a href="../articles/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp" alt="How to Use This Activity Book to Boost Your Child's Criti..." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp"
+                            srcset="../images/thumbs/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp 480w, ../images/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use This Activity Book to Boost Your Child's Criti..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -666,7 +722,81 @@
                 </a>
                 <a href="../articles/best-educational-printables-for-homeschool-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
                     <div class="aspect-video overflow-hidden">
-                        <img src="../images/best-educational-printables-for-homeschool-ultimate-guide-cover-1771751036.webp" alt="Best Educational Printables for Homeschool: Ultimate Guide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img
+                            src="../images/thumbs/best-educational-printables-for-homeschool-ultimate-guide-cover-1771751036.webp"
+                            srcset="../images/thumbs/best-educational-printables-for-homeschool-ultimate-guide-cover-1771751036.webp 480w, ../images/best-educational-printables-for-homeschool-ultimate-guide-cover-1771751036.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Educational Printables for Homeschool: Ultimate Guide"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Education</span>
+                            <span class="text-xs text-slate-500">📖 10 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Best Educational Printables for Homeschool: Ultimate Guide</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="../articles/how-to-use-a-freebie-pack-to-boost-essential-learning-skills.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-a-freebie-pack-to-boost-essential-learning-skills-cover-1771746907.webp"
+                            srcset="../images/thumbs/how-to-use-a-freebie-pack-to-boost-essential-learning-skills-cover-1771746907.webp 480w, ../images/how-to-use-a-freebie-pack-to-boost-essential-learning-skills-cover-1771746907.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use a Freebie Pack to Boost Essential Learning Skills"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Education</span>
+                            <span class="text-xs text-slate-500">📖 9 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use a Freebie Pack to Boost Essential Learning Skills</h4>
+                    </div>
+                </a>
+                <a href="../articles/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp"
+                            srcset="../images/thumbs/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp 480w, ../images/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-cover-1771637685.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Use This Activity Book to Boost Your Child's Criti..."
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Education</span>
+                            <span class="text-xs text-slate-500">📖 9 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Use This Activity Book to Boost Your Child's Criti...</h4>
+                    </div>
+                </a>
+                <a href="../articles/best-educational-printables-for-homeschool-ultimate-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="../images/thumbs/best-educational-printables-for-homeschool-ultimate-guide-cover-1771751036.webp"
+                            srcset="../images/thumbs/best-educational-printables-for-homeschool-ultimate-guide-cover-1771751036.webp 480w, ../images/best-educational-printables-for-homeschool-ultimate-guide-cover-1771751036.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Best Educational Printables for Homeschool: Ultimate Guide"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2 mb-2">
@@ -679,41 +809,7 @@
             </div>
         </div>
 
-        <!-- ═══ INTERNAL LINKS ═══ -->
-        <div class="mt-8 rounded-xl p-6" style="background: var(--card); border: 1px solid var(--bord);">
-            <h4 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">📖 More from Our Blog</h4>
-            <ul class="list-none space-y-0">
-                
-                    <li class="py-1.5">
-                        <a href="../articles/ultimate-counting-exercises-for-preschoolers-printable.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Ultimate Counting Exercises for Preschoolers Printable
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-educational-printables-for-homeschool-ultimate-guide.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Educational Printables for Homeschool: Ultimate Guide
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/best-coloring-activities-for-elementary-kids-development.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            Best Coloring Activities for Elementary Kids' Development
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use Four In A Row to Unlock Your Child's Strategic...
-                        </a>
-                    </li>
-                    <li class="py-1.5">
-                        <a href="../articles/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking.html" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
-                            How to Use This Activity Book to Boost Your Child's Criti...
-                        </a>
-                    </li>
-            </ul>
-            <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
-            </div>
-        </div>
+
 
 
             <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
@@ -737,27 +833,6 @@
 
         </article>
     </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 border-t border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <!-- Social Media Links -->
-        <div class="social-footer">
-            <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
-            </a>
-            <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-        </div>
-        <div class="flex justify-center gap-4 mb-2">
-            <a href="../terms.html" class="hover:text-brand transition">Terms of Service</a>
-            <span>&bull;</span>
-            <a href="../privacy.html" class="hover:text-brand transition">Privacy Policy</a>
-        </div>
-        &copy; 2026 Little Smart Genius. All rights reserved.
-    </footer>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner"
@@ -868,5 +943,288 @@
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
         &#8593;
     </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="../terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🔍</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Word Search</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Word Search</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Word Search</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_blank">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Word Search";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                if (hp) return;
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="../exit-intent.js"></script>
 </body>
 </html>
