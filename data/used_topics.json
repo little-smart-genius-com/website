@@ -12,7 +12,8 @@
     "spelling practice worksheets for elementary students",
     "cryptogram puzzles for kids beginners",
     "spot the difference puzzles for kids printable",
-    "how to make learning fun for reluctant learners"
+    "how to make learning fun for reluctant learners",
+    "printable logic puzzles for kids ages 6-10"
   ],
   "product": [
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7",
@@ -179,6 +180,11 @@
       "slot": "keyword",
       "topic": "how to make learning fun for reluctant learners",
       "date": "2026-02-27T18:46:28.688766"
+    },
+    {
+      "slot": "keyword",
+      "topic": "printable logic puzzles for kids ages 6-10",
+      "date": "2026-02-27T20:24:45.844958"
     }
   ]
 }
