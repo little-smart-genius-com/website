@@ -2066,6 +2066,31 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     # 1.5. Fix malformed HTML: extract block elements from inside <p> tags
     content = fix_nested_blocks(content)
     
+    # 1.75. Dedup guard — remove any inline image that duplicates the cover or is already shown
+    cover_name = os.path.basename(json_data.get('image', ''))
+    def _dedup_inline_images(content, cover_name):
+        """Remove inline <figure>/<img> tags that duplicate the cover or appear more than once."""
+        seen = set()
+        
+        def replacer(m):
+            full_tag = m.group(0)
+            src_match = re.search(r'src=["\']([^"\']+)["\']', full_tag)
+            if not src_match:
+                return full_tag
+            basename = os.path.basename(src_match.group(1))
+            if cover_name and basename == cover_name:
+                return ''  # remove cover duplicate
+            if basename in seen:
+                return ''  # remove image already shown
+            seen.add(basename)
+            return full_tag
+        
+        # Match entire <figure>...</figure> blocks
+        content = re.sub(r'<figure[^>]*>.*?</figure>', replacer, content, flags=re.DOTALL | re.IGNORECASE)
+        return content
+    
+    content = _dedup_inline_images(content, cover_name)
+    
     # 2. Split long paragraphs for comfortable reading
     content = split_long_paragraphs(content, max_words=80)
     
