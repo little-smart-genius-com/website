@@ -869,9 +869,9 @@ RULES:
 2. Ensure transitions between sections are smooth and natural.
 3. Replace the placeholders [IMAGE_1], [IMAGE_2], [IMAGE_3], [IMAGE_4] with the provided image paths INSIDE the body content, one after each major section.
 4. DO NOT change the core meaning or remove keywords.
-5. Provide ONLY the final HTML output (No markdown blocks, no backticks).
+5. Provide ONLY the inner HTML elements (e.g. <h2>, <p>, <ul>). NEVER output <!DOCTYPE html>, <html>, <head>, <style>, or <body> tags.
 6. DO NOT include the cover image — it is already displayed separately above the article. Only use [IMAGE_1] through [IMAGE_4] for inline content images.
-7. DO NOT include a 'You Might Also Like' or related articles section — this is injected separately."""
+7. DO NOT include a 'You Might Also Like', related articles, or FAQ section — these are injected separately."""
 
         user_prompt = f"""IMAGES TO INJECT:
 {images_info}
@@ -905,13 +905,6 @@ Please assemble the final HTML article now. Ensure all [IMAGE_X] placeholders ar
 
     # --- PHASE 5: POST-PROCESSING ---
     def post_process(self):
-        # FAQ
-        faq_html = '<div class="faq-section mt-12"><h2>Frequently Asked Questions</h2>'
-        for faq in self.plan.get('faq', []):
-            faq_html += f'<div class="faq-item mb-6"><h3 class="font-bold text-lg mb-2">{faq["q"]}</h3><p>{faq["a"]}</p></div>'
-        faq_html += '</div>'
-        self.final_content += faq_html
-
         # Smart Linking
         slug = SEOUtils.optimize_slug(self.plan['title'])
         smart_linker = SmartLinker()
