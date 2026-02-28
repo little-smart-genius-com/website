@@ -319,7 +319,7 @@ def _draw_dynamic_title(draw: ImageDraw.Draw, title: str, start_y: int, max_h: i
     return current_y
 
 def _draw_bottom(draw: ImageDraw.Draw, img: Image.Image, fonts: dict, color1: tuple):
-    y_bar = H - 90  # Moved back down since frame is at 12px
+    y_bar = H - 115  # Moved up to give more breathing room from the bottom frame
     _draw_rule(draw, img, y_bar, color1)
     
     brand_text = "LITTLE SMART GENIUS"
