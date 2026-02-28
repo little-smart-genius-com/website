@@ -50,7 +50,7 @@ PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 # V6 modules
 from data_parsers import parse_products_tpt, parse_download_links
 from topic_selector import TopicSelector
-from prompt_templates import get_prompt_builder, AI_DETECTION_PHRASES, TRANSITION_WORDS
+from prompt_templates import get_prompt_builder, AI_DETECTION_PHRASES, TRANSITION_WORDS, IMAGE_STYLE_PRESETS, build_art_director_prompt
 from smart_linker import SmartLinker
 from instagram_generator import generate_instagram_post, send_to_makecom
 
@@ -706,16 +706,21 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
 
     # --- AGENT 5: ART DIRECTOR ---
     async def agent_5_art_director(self, session):
-        print("   [AGENT 5] Art Director drafting 5 image prompts...")
+        print("   [AGENT 5] Art Director drafting 5 image prompts (V4 style presets)...")
 
-        # Image style presets for variety
-        style_presets = [
-            "Hero establishing shot, 3D Pixar-style, bright colors, educational, children theme",
-            "Close-up detailed scene, 3D illustration, soft lighting, warm tones",
-            "Infographic-style flat illustration, clean design, educational icons",
-            "Lifestyle scene, family and children, 3D Pixar-style, joyful atmosphere",
-            "Creative workspace setup, colorful materials, 3D render, educational tools"
+        # Use centralized IMAGE_STYLE_PRESETS from prompt_templates.py (V4 canonical source)
+        # V6 adds a 5th preset (Creative Workspace) for the extra cover image slot
+        V6_STYLE_PRESETS = list(IMAGE_STYLE_PRESETS) + [
+            {
+                "name": "Creative Workspace",
+                "composition": "Top-down flat lay or slight angle, organized materials",
+                "style": "3D Pixar-style, colorful and vibrant, ultra-detailed",
+                "lighting": "Bright even studio lighting, clean background",
+                "palette": "Brand orange (#F48C06), white, slate blue, sunshine yellow",
+            }
         ]
+
+        persona_img_style = self.persona.get('img_style', 'bright educational setting, 3D Pixar style')
 
         concepts = [self.plan.get('cover_concept', f'Educational illustration about {self.topic_name}')]
         for s in self.plan.get('sections', []):
@@ -728,29 +733,62 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
 
         tasks = []
         for i, concept in enumerate(concepts):
-            sys_prompt = "You are Agent 5, the Art Director. Return strictly a 1-2 sentence prompt for an image generator. NO conversational text."
-            style = style_presets[i % len(style_presets)]
-            user_prompt = f"""Create an image generation prompt for this concept:
+            preset = V6_STYLE_PRESETS[i % len(V6_STYLE_PRESETS)]
+            sys_prompt = """You are an expert Art Director with 20 years in children's educational content.
+Return ONLY a 1-2 sentence image generation prompt. NO conversational text, NO markdown."""
+            user_prompt = f"""Transform this concept into a PREMIUM prompt for Flux Klein-Large (9B parameters).
 
 CONCEPT: {concept}
-CONTEXT: Article about {self.topic_name}
-STYLE: {style}
-IMAGE #{i+1} of 5
+ARTICLE CONTEXT: {self.topic_name}
+IMAGE ROLE: {preset['name']} (Image #{i+1} of 5)
+PERSONA STYLE: {persona_img_style}
+TARGET: Parents and teachers of children aged 4-12
 
-Write a detailed, descriptive 1-2 sentence prompt optimized for AI image generation. Include style, mood, and specific visual elements. Do NOT include any text overlays."""
+═══ STYLE PRESET ═══
+- Composition: {preset['composition']}
+- Style: {preset['style']}
+- Lighting: {preset['lighting']}
+- Color Palette: {preset['palette']}
+
+═══ RULES ═══
+- NO text, words, or letters in the image
+- NO brand logos or watermarks
+- Children depicted should be diverse (mix ethnicities)
+- Keep it child-safe and family-friendly
+- Include educational elements (books, puzzles, worksheets visible)
+- Subjects should show JOY and ENGAGEMENT
+
+Return ONLY the enhanced prompt as 1-2 sentences with scene, subjects, action, emotional tone, and technical specs."""
             tasks.append(call_deepseek_async(
                 session, sys_prompt, user_prompt,
                 agent_id=5, temperature=0.4, logger=self.logger
             ))
 
-        prompts = await asyncio.gather(*tasks)
-        print(f"   [AGENT 5] 5 Prompts generated.")
-        return prompts
+        raw_prompts = await asyncio.gather(*tasks, return_exceptions=True)
+
+        # V4-style validation: if prompt is invalid/too short, use fallback basic prompt
+        validated_prompts = []
+        for i, (enhanced, concept) in enumerate(zip(raw_prompts, concepts)):
+            preset = V6_STYLE_PRESETS[i % len(V6_STYLE_PRESETS)]
+            if isinstance(enhanced, Exception) or not enhanced or len(str(enhanced).strip()) < 50:
+                # Fallback like V4's optimize_image_prompt_dir_art()
+                fallback = (
+                    f"{concept}, {self.topic_name}, {persona_img_style}, "
+                    f"{preset['style']}, {preset['palette']}, "
+                    f"3D Pixar style, high quality, vibrant colors, educational, "
+                    f"children aged 4-12, child-safe, family-friendly"
+                )
+                self.logger.warning(f"Agent 5 prompt #{i+1} invalid -- using fallback", 3)
+                validated_prompts.append(fallback)
+            else:
+                validated_prompts.append(str(enhanced).strip().strip('"').strip("'"))
+
+        print(f"   [AGENT 5] 5 Prompts validated ({sum(1 for p in raw_prompts if not isinstance(p, Exception) and p and len(str(p)) >= 50)} AI + {sum(1 for p in raw_prompts if isinstance(p, Exception) or not p or len(str(p)) < 50)} fallback).")
+        return validated_prompts
 
     # --- MODULE 6: IMAGE PIPELINE (8 attempts + hybrid fallback) ---
     async def fetch_and_save_image(self, session, prompt, idx):
-        width = 1200 if idx == 0 else 800
-        height = 675 if idx == 0 else 800
+        width, height = 1200, 675  # Consistent landscape 16:9 for all images (cover + content)
         seed = int(time.time()) + idx * 100
         clean_prompt = re.sub(r'[^a-zA-Z0-9 ,.-]', '', prompt)
         encoded_prompt = urllib.parse.quote(clean_prompt)
@@ -789,7 +827,8 @@ Write a detailed, descriptive 1-2 sentence prompt optimized for AI image generat
                         data = await resp.read()
                         if len(data) > 1024:
                             img = Image.open(BytesIO(data)).convert("RGB")
-                            img.save(out_path, "WEBP", quality=85, method=6)
+                            img.thumbnail((1200, 1200))  # cap size like V4
+                            img.save(out_path, "WEBP", quality=85, optimize=True, method=6)
                             size_kb = os.path.getsize(out_path) // 1024
                             self.logger.image_saved(out_name, size_kb)
                             self.logger.success(f"Image {idx+1} saved ({size_kb}KB) attempt {attempt+1}", 3)
@@ -828,10 +867,11 @@ Your job is to take raw drafted sections and merge them into a single, cohesive,
 RULES:
 1. Harmonize the tone so it sounds like ONE single passionate human author.
 2. Ensure transitions between sections are smooth and natural.
-3. Replace the placeholders [IMAGE_1], [IMAGE_2], [IMAGE_3], [IMAGE_4] with the provided image paths.
+3. Replace the placeholders [IMAGE_1], [IMAGE_2], [IMAGE_3], [IMAGE_4] with the provided image paths INSIDE the body content, one after each major section.
 4. DO NOT change the core meaning or remove keywords.
-5. Provide ONLY the final HTML output (No markdown blocks).
-6. Include the cover image at the very top."""
+5. Provide ONLY the final HTML output (No markdown blocks, no backticks).
+6. DO NOT include the cover image — it is already displayed separately above the article. Only use [IMAGE_1] through [IMAGE_4] for inline content images.
+7. DO NOT include a 'You Might Also Like' or related articles section — this is injected separately."""
 
         user_prompt = f"""IMAGES TO INJECT:
 {images_info}
@@ -917,7 +957,7 @@ Please assemble the final HTML article now. Ensure all [IMAGE_X] placeholders ar
     # ===============================================================
 
     async def phase_6_seo_audit(self, session):
-        """60-criteria SEO audit: Agent 7 (50 AI) + 10 local + auto-corrections."""
+        """60-criteria SEO audit: Agent 7 (50 AI) + 20 local checks + auto-corrections."""
 
         # --- STEP A: Agent 7 AI Audit (50 criteria / 1000 pts) ---
         self.logger.info("STEP A: Agent 7 -- AI Audit (50 criteria / 1000 pts)", 2)
@@ -930,27 +970,27 @@ Please assemble the final HTML article now. Ensure all [IMAGE_X] placeholders ar
             for issue in audit.get("issues", [])[:5]:
                 self.logger.info(f"  -> {issue}", 2)
 
-        # --- STEP B: 10 Local Criteria Checks ---
-        self.logger.info("STEP B: 10 Local Criteria Checks (code-based)", 2)
+        # --- STEP B: 20 Local Criteria Checks (ported from V4) ---
+        self.logger.info("STEP B: 20 Local Criteria Checks (code-based)", 2)
         local_score, local_suggestions = self.local_seo_checks()
-        self.logger.quality_score("Local SEO Checks (10 criteria)", local_score, 50)
+        self.logger.quality_score("Local SEO Checks (20 criteria)", local_score, 100)
 
         combined_score = ai_score_100 + local_score
-        self.logger.quality_score("Combined SEO Score", combined_score, 150)
+        self.logger.quality_score("Combined SEO Score", combined_score, 200)
 
         # --- STEP C: Auto-Corrections (2 rounds max) ---
         for correction_round in range(2):
-            if combined_score >= 130:
-                self.logger.success(f"SEO target reached: {combined_score}/150", 2)
+            if combined_score >= 170:  # 85% of 200
+                self.logger.success(f"SEO target reached: {combined_score}/200", 2)
                 break
 
-            self.logger.info(f"Correction Round {correction_round + 1}/2 (score: {combined_score}/150)", 2)
+            self.logger.info(f"Correction Round {correction_round + 1}/2 (score: {combined_score}/200)", 2)
             self.apply_seo_corrections()
 
             # Re-check local score
             local_score, local_suggestions = self.local_seo_checks()
             combined_score = ai_score_100 + local_score
-            self.logger.quality_score(f"Score after round {correction_round+1}", combined_score, 150)
+            self.logger.quality_score(f"Score after round {correction_round+1}", combined_score, 200)
 
         # Content verification
         self.content_verify()
@@ -1009,7 +1049,7 @@ PASS if score >= 900, otherwise REJECT."""
             return {"score": 700, "issues": [f"Agent 7 error: {str(e)[:50]}"], "verdict": "SKIP"}
 
     def local_seo_checks(self) -> Tuple[int, List[str]]:
-        """10 local code-based SEO checks (50 pts total)."""
+        """20 local code-based SEO checks (100 pts total) — ported from V4."""
         score = 0
         suggestions = []
         content = self.final_content
@@ -1017,7 +1057,7 @@ PASS if score >= 900, otherwise REJECT."""
         word_count = len(plain.split())
         title = self.plan.get('title', '')
         meta = self.plan.get('meta_description', '')
-        kw = self.plan.get('primary_keyword', '')
+        kw = self.plan.get('primary_keyword', '').lower()
 
         # 1. Title length (30-60 chars) — 5 pts
         if 30 <= len(title) <= 60:
@@ -1028,7 +1068,20 @@ PASS if score >= 900, otherwise REJECT."""
         else:
             suggestions.append(f"Title: {len(title)} chars (optimal: 30-60)")
 
-        # 2. Meta description length (120-155 chars) — 5 pts
+        # 2. Keyword in first 3 words of title — 5 pts
+        if kw:
+            title_lower = title.lower()
+            first_3 = " ".join(title_lower.split()[:3])
+            kw_words = kw.split()
+            if any(w in first_3 for w in kw_words):
+                score += 5
+            elif kw in title_lower:
+                score += 3  # keyword present but not at start
+                suggestions.append("Keyword not in first 3 words of title")
+            else:
+                suggestions.append("Keyword absent from title")
+
+        # 3. Meta description length (120-155 chars) — 5 pts
         if 120 <= len(meta) <= 155:
             score += 5
         elif 100 <= len(meta) <= 170:
@@ -1037,7 +1090,35 @@ PASS if score >= 900, otherwise REJECT."""
         else:
             suggestions.append(f"Meta: {len(meta)} chars (optimal: 120-155)")
 
-        # 3. H3 structure (8+) — 5 pts
+        # 4. Keyword in meta description — 5 pts
+        if kw and kw in meta.lower():
+            score += 5
+        elif kw:
+            kw_parts = kw.split()
+            if sum(1 for w in kw_parts if w in meta.lower()) >= len(kw_parts) // 2:
+                score += 3
+            else:
+                suggestions.append("Keyword absent from meta description")
+
+        # 5. Word count ≥2000 — 5 pts
+        if word_count >= TARGET_WORD_COUNT:
+            score += 5
+        elif word_count >= MIN_WORD_COUNT:
+            score += 3
+            suggestions.append(f"Word count: {word_count} (target: {TARGET_WORD_COUNT})")
+        else:
+            suggestions.append(f"Word count too low: {word_count} (min: {MIN_WORD_COUNT})")
+
+        # 6. H2 structure (5+) — 5 pts
+        h2_count = len(re.findall(r'<h2[^>]*>', content))
+        if h2_count >= 5:
+            score += 5
+        elif h2_count >= 3:
+            score += 3
+        else:
+            suggestions.append(f"H2: {h2_count} (target: 5+)")
+
+        # 7. H3 structure (8+) — 5 pts
         h3_count = len(re.findall(r'<h3[^>]*>', content))
         if h3_count >= 8:
             score += 5
@@ -1046,20 +1127,21 @@ PASS if score >= 900, otherwise REJECT."""
         else:
             suggestions.append(f"H3: {h3_count} (target: 8+)")
 
-        # 4. Transition words (5+) — 5 pts
-        transition_count = sum(1 for tw in TRANSITION_WORDS if tw.lower() in plain)
-        if transition_count >= 5:
+        # 8. Images with descriptive alt text (4+) — 5 pts
+        img_tags = re.findall(r'<img[^>]+>', content)
+        imgs_with_alt = [img for img in img_tags if 'alt="' in img and 'alt=""' not in img]
+        if len(imgs_with_alt) >= 4:
             score += 5
-        elif transition_count >= 2:
+        elif len(imgs_with_alt) >= 2:
             score += 3
         else:
-            suggestions.append(f"Transition words: {transition_count} (target: 5+)")
+            suggestions.append(f"Images with alt text: {len(imgs_with_alt)} (target: 4+)")
 
-        # 5. Keyword density (1-3%) — 5 pts
+        # 9. Keyword density (1-3%) — 5 pts
         if kw and word_count > 0:
-            kw_count = plain.count(kw.lower())
-            kw_words = len(kw.split())
-            density = (kw_count * kw_words / word_count) * 100
+            kw_count = plain.count(kw)
+            kw_words_n = len(kw.split())
+            density = (kw_count * kw_words_n / word_count) * 100
             if 1.0 <= density <= 3.0:
                 score += 5
             elif 0.5 <= density <= 4.0:
@@ -1068,14 +1150,45 @@ PASS if score >= 900, otherwise REJECT."""
             else:
                 suggestions.append(f"Keyword density: {density:.1f}% (optimal: 1-3%)")
 
-        # 6. External authority links (1+) — 5 pts
+        # 10. Keyword in first 100 words — 5 pts
+        if kw:
+            first_100 = " ".join(plain.split()[:100])
+            if kw in first_100:
+                score += 5
+            else:
+                kw_parts = kw.split()
+                if sum(1 for w in kw_parts if w in first_100) >= len(kw_parts) // 2:
+                    score += 3
+                else:
+                    suggestions.append("Keyword absent from first 100 words")
+
+        # 11. Internal links (4+) — 5 pts
+        int_links = re.findall(
+            r'<a\s+[^>]*href\s*=\s*["\'][^"\']*(?:littlesmartgenius|freebies|products|blog)[^"\']*["\']',
+            content
+        )
+        all_links = re.findall(r'<a\s+href', content)
+        if len(all_links) >= 4:
+            score += 5
+        elif len(all_links) >= 2:
+            score += 3
+        else:
+            suggestions.append(f"Internal links: {len(all_links)} (target: 4+)")
+
+        # 12. External authority link (1+) — 5 pts
         ext_links = re.findall(r'<a\s+[^>]*href\s*=\s*["\']https?://(?!littlesmartgenius)', content)
         if len(ext_links) >= 1:
             score += 5
         else:
             suggestions.append("No external authority link found")
 
-        # 7. Lists ul/ol (3+) — 5 pts
+        # 13. FAQ section present — 5 pts
+        if '<div class="faq-section' in content or '<div class="faq' in content:
+            score += 5
+        else:
+            suggestions.append("FAQ section missing")
+
+        # 14. Lists ul/ol (3+) — 5 pts
         list_count = len(re.findall(r'<[uo]l[^>]*>', content))
         if list_count >= 3:
             score += 5
@@ -1084,7 +1197,7 @@ PASS if score >= 900, otherwise REJECT."""
         else:
             suggestions.append(f"Lists: {list_count} (target: 3+)")
 
-        # 8. Bold <strong> (3+) — 5 pts
+        # 15. Bold <strong> (3+) — 5 pts
         strong_count = len(re.findall(r'<strong>', content))
         if strong_count >= 3:
             score += 5
@@ -1093,7 +1206,7 @@ PASS if score >= 900, otherwise REJECT."""
         else:
             suggestions.append("No <strong> tags found (target: 3+)")
 
-        # 9. Slug length (10-60 chars) — 5 pts
+        # 16. Slug length (10-60 chars) — 5 pts
         slug = SEOUtils.optimize_slug(title)
         if 10 <= len(slug) <= 60:
             score += 5
@@ -1102,7 +1215,7 @@ PASS if score >= 900, otherwise REJECT."""
         else:
             suggestions.append(f"Slug: {len(slug)} chars (max: 60)")
 
-        # 10. Reading time (8-15 min) — 5 pts
+        # 17. Reading time (8-15 min) — 5 pts
         reading_time = max(1, word_count // 200)
         if 8 <= reading_time <= 15:
             score += 5
@@ -1111,10 +1224,46 @@ PASS if score >= 900, otherwise REJECT."""
         else:
             suggestions.append(f"Reading time: {reading_time} min (optimal: 8-15)")
 
+        # 18. Transition words (5+) — 5 pts
+        transition_count = sum(1 for tw in TRANSITION_WORDS if tw.lower() in plain)
+        if transition_count >= 5:
+            score += 5
+        elif transition_count >= 2:
+            score += 3
+        else:
+            suggestions.append(f"Transition words: {transition_count} (target: 5+)")
+
+        # 19. Short paragraphs (avg ≤4 sentences) — 5 pts
+        paragraphs = re.findall(r'<p[^>]*>(.*?)</p>', content, re.DOTALL)
+        if paragraphs:
+            avg_sentences = sum(
+                len(re.findall(r'[.!?]+', re.sub(r'<[^>]+>', '', p)))
+                for p in paragraphs
+            ) / max(len(paragraphs), 1)
+            if avg_sentences <= 4:
+                score += 5
+            elif avg_sentences <= 6:
+                score += 3
+            else:
+                suggestions.append(f"Paragraphs too long: avg {avg_sentences:.1f} sentences (max: 4)")
+        else:
+            score += 3  # no <p> tags is unusual but not penalized hard
+
+        # 20. Anti-AI phrase detection (0 found) — 5 pts
+        ai_phrases_found = [p for p in AI_DETECTION_PHRASES if p.lower() in plain]
+        if len(ai_phrases_found) == 0:
+            score += 5
+        elif len(ai_phrases_found) <= 2:
+            score += 2
+            suggestions.append(f"AI phrases detected ({len(ai_phrases_found)}): {', '.join(ai_phrases_found[:3])}")
+        else:
+            suggestions.append(f"AI phrases detected ({len(ai_phrases_found)}): {', '.join(ai_phrases_found[:5])}")
+
         for s in suggestions:
             self.logger.verification_result(s, False)
 
         return score, suggestions
+
 
     def apply_seo_corrections(self):
         """Auto-corrections from V4 (title, meta, AI phrases, density, external link, keyword)."""
@@ -1135,12 +1284,26 @@ PASS if score >= 900, otherwise REJECT."""
                 self.plan['title'] = title[:57] + '...'
                 self.logger.correction_applied("Title force-truncated", self.plan['title'][:50])
 
-        # Fix 2: Meta description
+        # Fix 2: Meta description — try DeepSeek correction first (like V4), then extraction fallback
         if not (120 <= len(meta) <= 155):
-            new_meta = SEOUtils.generate_meta_description(self.final_content)
-            if 100 <= len(new_meta) <= 170:
-                self.plan['meta_description'] = new_meta
-                self.logger.correction_applied(f"Meta: {len(meta)}c -> {len(new_meta)}c", new_meta[:50])
+            corrected_meta = call_deepseek_sync(
+                f"Fix this meta description to be 120-155 characters:\n\"{meta}\"\nContext: Educational blog for kids.\nRules: Compelling, include call-to-action, 120-155 chars.\nReturn ONLY the corrected description.",
+                self.logger, "META FIX", "seo"
+            )
+            if corrected_meta:
+                clean = corrected_meta.strip().strip('"').strip("'")
+                if 100 <= len(clean) <= 170:
+                    self.plan['meta_description'] = clean
+                    self.plan['excerpt'] = clean  # sync excerpt like V4
+                    self.logger.correction_applied(f"Meta (AI fix): {len(meta)}c -> {len(clean)}c", clean[:50])
+                    meta = clean
+            # Fallback to extraction if AI fix failed
+            if not (100 <= len(self.plan.get('meta_description', '')) <= 170):
+                new_meta = SEOUtils.generate_meta_description(self.final_content)
+                if 100 <= len(new_meta) <= 170:
+                    self.plan['meta_description'] = new_meta
+                    self.plan['excerpt'] = new_meta  # sync excerpt
+                    self.logger.correction_applied(f"Meta (extract): {len(meta)}c -> {len(new_meta)}c", new_meta[:50])
 
         # Fix 3: Remove AI phrases
         ai_fixes = 0
@@ -1200,7 +1363,8 @@ PASS if score >= 900, otherwise REJECT."""
         self.logger.verification_result("Title (20-70 chars)", 20 <= len(title) <= 70, f"{len(title)} chars")
         self.logger.verification_result("Meta desc (100-170 chars)", 100 <= len(meta) <= 170, f"{len(meta)} chars")
         self.logger.verification_result(f"Words (>={MIN_WORD_COUNT})", word_count >= MIN_WORD_COUNT, f"{word_count} words")
-        self.logger.verification_result("Sections H2 (>=3)", len(re.findall(r'<h2', content)) >= 3)
+        h2_count = len(re.findall(r'<h2', content))
+        self.logger.verification_result(f"Sections H2 (>=5)", h2_count >= 5, f"{h2_count} H2")
         self.logger.verification_result("Images (>=1)", len(re.findall(r'<img', content)) >= 1)
 
     # ===============================================================

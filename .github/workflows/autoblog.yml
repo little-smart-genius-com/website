@@ -166,6 +166,12 @@ jobs:
           PYTHONIOENCODING: utf-8
         run: python scripts/build_articles.py
 
+      - name: Generate OG images (1200×630 branded)
+        if: steps.action.outputs.action != 'maintenance-scan'
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/generate_og_images.py
+
       - name: Rebuild blog listing pages
         if: steps.action.outputs.action != 'maintenance-scan'
         env:

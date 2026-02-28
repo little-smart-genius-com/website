@@ -1,12 +1,17 @@
 // ============================================================
-// Cloudflare Worker — Contact Form Handler
-// Replaces: netlify/functions/contact.js
+// Cloudflare Worker — Contact Form Handler V2
+// Uses MailerLite automation instead of defunct MailChannels.
+//
+// Flow:
+//   1. Receive contact form submission (POST JSON)
+//   2. Add/update subscriber in MailerLite with contact message
+//   3. Trigger MailerLite automation to notify admin
 //
 // Environment variables (set in Cloudflare dashboard):
 //   MAILERLITE_API_KEY    — MailerLite API key
-//   MAILERLITE_GROUP_ID   — MailerLite group ID
+//   MAILERLITE_GROUP_ID   — MailerLite group ID for contacts
 //   SITE_URL              — https://littlesmartgenius.com
-//   ADMIN_EMAIL           — Your email address to receive contact messages
+//   ADMIN_EMAIL           — Admin email (for reference)
 // ============================================================
 
 const ML_BASE = "https://connect.mailerlite.com/api";
@@ -51,32 +56,12 @@ export default {
             });
         }
 
-        // ── Send notification email to admin via MailChannels ──
-        try {
-            await sendEmail({
-                to: env.ADMIN_EMAIL || "contact@littlesmartgenius.com",
-                from: "contact@littlesmartgenius.com",
-                fromName: "Little Smart Genius Contact",
-                subject: `[Contact] ${subject}`,
-                html: `
-                    <h2>New Contact Message</h2>
-                    <p><strong>From:</strong> ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p>
-                    <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
-                    <hr/>
-                    <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
-                    <hr/>
-                    <p style="color:#999;font-size:12px;">Sent from littlesmartgenius.com contact form</p>
-                `,
-            });
-        } catch (e) {
-            console.error("Email send error:", e.message);
-            // Don't block — continue to MailerLite
-        }
+        const errors = [];
 
-        // ── Add to MailerLite ──
+        // ── Step 1: Add subscriber to MailerLite with contact info ──
         if (env.MAILERLITE_API_KEY && env.MAILERLITE_GROUP_ID) {
             try {
-                await fetch(`${ML_BASE}/subscribers`, {
+                const mlResp = await fetch(`${ML_BASE}/subscribers`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -87,13 +72,79 @@ export default {
                         email,
                         groups: [env.MAILERLITE_GROUP_ID],
                         fields: {
-                            name,
-                            last_message: `[${subject}] ${message}`.substring(0, 500),
+                            name: name || "Anonymous",
+                            last_name: "",
+                            company: `[CONTACT] ${subject}`,
+                            // Store message in a custom field with preserved newlines
+                            contact_message: `Sujet : ${subject}\n\nMessage :\n${message}`.substring(0, 500),
                         },
+                        status: "active",
                     }),
                 });
+
+                const mlData = await mlResp.json();
+                if (mlResp.ok || mlResp.status === 200 || mlResp.status === 201) {
+                    console.log("MailerLite subscriber added/updated:", mlData.data?.id);
+                } else {
+                    console.error("MailerLite error:", JSON.stringify(mlData));
+                    errors.push(`MailerLite: ${mlData.message || mlResp.status}`);
+                }
             } catch (e) {
-                console.error("MailerLite error:", e.message);
+                console.error("MailerLite exception:", e.message);
+                errors.push(`MailerLite exception: ${e.message}`);
+            }
+        }
+
+        // ── Step 2: Send webhook to Make.com for email notification ──
+        if (env.MAKECOM_WEBHOOK_URL) {
+            try {
+                const webhookResp = await fetch(env.MAKECOM_WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        type: "contact_form",
+                        from_name: name,
+                        from_email: email,
+                        subject: subject,
+                        message: message,
+                        timestamp: new Date().toISOString(),
+                        site: "littlesmartgenius.com",
+                    }),
+                });
+                console.log("Webhook sent:", webhookResp.status);
+            } catch (e) {
+                console.error("Webhook error:", e.message);
+                // Non-blocking, continue
+            }
+        }
+
+        // ── Step 3: Send admin notification via MailerLite campaign API ──
+        // As a fallback, we create a subscriber-level event that triggers automation
+        if (env.MAILERLITE_API_KEY) {
+            try {
+                // Use the MailerLite "batch" endpoint to update subscriber with event
+                const adminEmail = env.ADMIN_EMAIL || "contact@littlesmartgenius.com";
+
+                // Add admin as subscriber too (if not already) with the contact data
+                await fetch(`${ML_BASE}/subscribers`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Authorization": `Bearer ${env.MAILERLITE_API_KEY}`,
+                    },
+                    body: JSON.stringify({
+                        email: adminEmail,
+                        fields: {
+                            name: "Admin",
+                            contact_message: `Sujet : ${subject}\nDe : ${name} <${email}>\n\nMessage :\n${message}\n\nDate : ${new Date().toISOString()}`.substring(0, 500),
+                        },
+                        status: "active",
+                    }),
+                });
+                console.log("Admin subscriber updated with contact message");
+            } catch (e) {
+                console.error("Admin notification error:", e.message);
             }
         }
 
@@ -103,25 +154,6 @@ export default {
         }), { status: 200, headers: corsHeaders });
     },
 };
-
-// ── MailChannels Email Sender ──
-async function sendEmail({ to, from, fromName, subject, html }) {
-    const res = await fetch("https://api.mailchannels.net/tx/v1/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            personalizations: [{ to: [{ email: to }] }],
-            from: { email: from, name: fromName },
-            subject,
-            content: [{ type: "text/html", value: html }],
-        }),
-    });
-    if (!res.ok) {
-        const text = await res.text();
-        throw new Error(`MailChannels error ${res.status}: ${text.substring(0, 200)}`);
-    }
-    return res;
-}
 
 function escapeHtml(str) {
     return String(str)

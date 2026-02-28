@@ -235,32 +235,66 @@ def rebuild_articles_sidebar(articles):
     for filepath in html_files:
         with open(filepath, 'r', encoding='utf-8') as f:
             soup = BeautifulSoup(f.read(), 'html.parser')
-            
-        h3_tags = soup.find_all(['h3', 'h4'])
-        like_heading = next((h for h in h3_tags if 'You Might Also Like' in h.text), None)
+
+        # ── 1. Remove ALL existing "You Might Also Like" blocks ──────────
+        # They live inside a div that contains an h3 with that text.
+        removed = 0
+        for h_tag in soup.find_all(['h3', 'h4']):
+            if 'You Might Also Like' in h_tag.text:
+                # Walk up to the containing block-level div and remove it
+                container = h_tag.find_parent('div')
+                if container:
+                    container.decompose()
+                    removed += 1
+
+        # ── 2. Remove cover image erroneously duplicated inside article content ─
+        article_content = soup.find('div', class_='article-content')
+        if article_content:
+            first_img = article_content.find('img')
+            if first_img and '-cover-' in (first_img.get('src', '') or ''):
+                # Remove the surrounding figure/div wrapper if present, else just the img
+                parent = first_img.parent
+                if parent and parent.name in ('figure', 'div'):
+                    parent.decompose()
+                else:
+                    first_img.decompose()
+
+        # ── 3. Inject a single, fresh "You Might Also Like" block ────────
+        # Find the placeholder comment or the CTA section to insert before it
+        placeholder = soup.find(string=lambda t: t and 'RELATED ARTICLES' in t and 'injected' in t)
         
-        if like_heading:
-            # Reconstruct the grid
-            grid = like_heading.parent.find_next_sibling('div', class_='grid')
-            if grid:
-                grid.clear()
-                
-                # Find current slug to avoid recommending itself
-                current_slug = os.path.basename(filepath).replace('.html', '')
-                curr_category = next((a['category'] for a in articles if a['slug'] == current_slug), None)
-                
-                # Recommend 3 items from same category, fallback to latest
-                recommendations = [a for a in articles if a['category'] == curr_category and a['slug'] != current_slug]
-                if len(recommendations) < 3:
-                    recommendations += [a for a in articles if a['slug'] != current_slug and a['slug'] not in [r['slug'] for r in recommendations]]
-                
-                for art in recommendations[:3]:
-                    card_html = generate_sidebar_card(art)
-                    grid.append(BeautifulSoup(card_html, 'html.parser'))
-                    
-                with open(filepath, 'w', encoding='utf-8') as f:
-                    f.write(str(soup))
+        current_slug = os.path.basename(filepath).replace('.html', '')
+        curr_category = next((a['category'] for a in articles if a['slug'] == current_slug), None)
+
+        recommendations = [a for a in articles if a['category'] == curr_category and a['slug'] != current_slug]
+        if len(recommendations) < 3:
+            recommendations += [a for a in articles if a['slug'] != current_slug and a['slug'] not in [r['slug'] for r in recommendations]]
+
+        cards_html = ''.join(generate_sidebar_card(art) for art in recommendations[:3])
+        related_block_html = f'''<div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">{cards_html}</div>
+        </div>'''
+
+        if placeholder:
+            placeholder.replace_with(BeautifulSoup(related_block_html + '\n<!-- RELATED ARTICLES — injected by _post_process.py only -->', 'html.parser'))
+        else:
+            # Fallback: insert before the CTA section if no placeholder found
+            cta = soup.find('div', class_=lambda c: c and 'mt-16' in c and 'pt-10' in c)
+            if cta:
+                cta.insert_before(BeautifulSoup(related_block_html, 'html.parser'))
+
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(str(soup))
+
+        if removed > 0:
+            print(f"  Fixed {filepath}: removed {removed} duplicate block(s)")
+
     print("Article sidebars updated.")
+
     
 def rebuild_sitemap(articles):
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\\n'
