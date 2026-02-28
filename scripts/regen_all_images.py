@@ -129,6 +129,12 @@ async def fetch_image_v6(session, prompt, out_path, idx, attempt_offset=0):
     return None
 
 
+# Strict no-text suffix appended to every prompt (same as V6)
+NO_TEXT_SUFFIX = (
+    ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, "
+    "watermarks, or UI overlays in the image, pure visual storytelling only"
+)
+
 def build_image_prompt(concept, slug, preset_idx):
     """Build a rich prompt like V6 Art Director generates."""
     preset = IMAGE_STYLE_PRESETS[preset_idx % len(IMAGE_STYLE_PRESETS)]
@@ -139,7 +145,9 @@ def build_image_prompt(concept, slug, preset_idx):
         f"palette: {preset['palette']}, "
         f"lighting: {preset['lighting']}, "
         f"children aged 4-12, educational, child-safe, family-friendly, "
-        f"no text no watermarks, no brand logos, diverse children, joyful and engaged"
+        f"no text no watermarks, no brand logos, no written words or numbers, "
+        f"diverse children, joyful and engaged"
+        + NO_TEXT_SUFFIX
     )
 
 
@@ -161,7 +169,7 @@ async def regenerate_article_images(session, pf):
     cover_out_name = f"{slug}-cover-{ts}.webp"
     cover_out_path = os.path.join(IMAGES_DIR, cover_out_name)
     cover_prompt = build_image_prompt(cover_concept, slug, 0)
-    print(f"  [img 1/5] cover...")
+    print(f"  [img 1/6] cover...")
     cover_result = await fetch_image_v6(session, cover_prompt, cover_out_path, 0)
     
     if not cover_result:
@@ -170,16 +178,16 @@ async def regenerate_article_images(session, pf):
 
     await asyncio.sleep(2)
 
-    # === 4 CONTENT IMAGES ===
+    # === 5 CONTENT IMAGES ===
     content_results = []
-    for i in range(1, 5):
+    for i in range(1, 6):
         content_prompt = build_image_prompt(
             f"Educational activity scene {i} related to '{title}', engaging children",
             slug, i
         )
         out_name = f"{slug}-img{i}-{ts}.webp"
         out_path = os.path.join(IMAGES_DIR, out_name)
-        print(f"  [img {i+1}/5] content img{i}...")
+        print(f"  [img {i+1}/6] content img{i}...")
         result = await fetch_image_v6(session, content_prompt, out_path, i)
         content_results.append((i, result))
         await asyncio.sleep(2)
@@ -220,7 +228,7 @@ async def regenerate_article_images(session, pf):
         json.dump(d, f, indent=2, ensure_ascii=False)
 
     ok_count = 1 + sum(1 for _, r in content_results if r)
-    print(f"  SAVED ({ok_count}/5 images ok): {os.path.basename(pf)}")
+    print(f"  SAVED ({ok_count}/6 images ok): {os.path.basename(pf)}")
 
 
 async def main():
