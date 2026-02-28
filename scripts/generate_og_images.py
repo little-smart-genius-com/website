@@ -132,7 +132,7 @@ def _cat_palette(category: str) -> tuple:
     return (ORANGE, (255, 180, 80))
 
 # ─── HIGH CONVERTING HOOK ─────────────────────────────────────────────────
-HOOK_TEXT = "✨ Give your child the edge they need! Download this highly engaging, premium printable activity today. Perfectly designed to boost cognitive skills, focus, and creativity while having fun! 🚀"
+HOOK_TEXT = "Give your child the edge they need! Download this premium printable activity today. Perfectly designed to boost cognitive skills and focus while having fun!"
 
 # ─── BACKGROUND & OVERLAYS ────────────────────────────────────────────────
 def _make_background(slug: str) -> Image.Image:
@@ -176,10 +176,10 @@ def _apply_overlays(base: Image.Image, cat_color1: tuple) -> Image.Image:
 
     draw = ImageDraw.Draw(result)
 
-    # Elegant White Frame
-    draw.rectangle([24, 24, W-24, H-24], outline=(255, 255, 255, 180), width=3)
+    # Elegant White Frame (12px inset as requested)
+    draw.rectangle([12, 12, W-12, H-12], outline=(255, 255, 255, 180), width=3)
     # Inner elegant border
-    draw.rectangle([32, 32, W-32, H-32], outline=(255, 255, 255, 60), width=1)
+    draw.rectangle([22, 22, W-22, H-22], outline=(255, 255, 255, 60), width=1)
 
     # Glow in center where text is
     glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -194,12 +194,12 @@ def _apply_overlays(base: Image.Image, cat_color1: tuple) -> Image.Image:
 
 # ─── ELEMENTS ─────────────────────────────────────────────────────────────
 def _draw_logo(img: Image.Image) -> int:
-    if not LOGO_PATH.exists(): return 40
+    if not LOGO_PATH.exists(): return 50
     try:
         logo = Image.open(LOGO_PATH).convert("RGBA")
         logo.thumbnail((72, 72), Image.LANCZOS)
-        img.paste(logo, ((W - logo.width) // 2, 28), logo)
-        return 28 + logo.height + 15
+        img.paste(logo, ((W - logo.width) // 2, 40), logo)  # Logo moved up slightly compared to previous, down from original
+        return 40 + logo.height + 10
     except Exception:
         return 40
 
@@ -275,7 +275,7 @@ def _draw_badge(draw: ImageDraw.Draw, img: Image.Image, text: str, color1: tuple
     draw.text((current_x + 1, by + offset_y + 1), text_up, fill=(0, 0, 0, 60), font=font)
     draw.text((current_x, by + offset_y), text_up, fill=WHITE, font=font)
 
-    return by + bh + 24
+    return by + bh + 15
 
 def _text_center(draw: ImageDraw.Draw, text: str, y: int, font, fill=(255, 255, 255)) -> int:
     try:
@@ -319,14 +319,14 @@ def _draw_dynamic_title(draw: ImageDraw.Draw, title: str, start_y: int, max_h: i
     return current_y
 
 def _draw_bottom(draw: ImageDraw.Draw, img: Image.Image, fonts: dict, color1: tuple):
-    y_bar = H - 85
+    y_bar = H - 90  # Moved back down since frame is at 12px
     _draw_rule(draw, img, y_bar, color1)
     
-    brand_text = "✦  Little Smart Genius  ✦"
-    _text_center(draw, brand_text, y_bar + 16, fonts["brand"], fill=ORANGE)
+    brand_text = "LITTLE SMART GENIUS"
+    _text_center(draw, brand_text, y_bar + 20, fonts["brand"], fill=ORANGE)
     
     url_text = "www.LittleSmartGenius.com"
-    _text_center(draw, url_text, y_bar + 42, fonts["url"], fill=(*GRAY, 220))
+    _text_center(draw, url_text, y_bar + 48, fonts["url"], fill=WHITE)  # Bright white for maximum visibility
 
 
 # ─── MAIN PROCESS ─────────────────────────────────────────────────────────
@@ -351,18 +351,18 @@ def create_og_image(article: dict, fonts: dict, force: bool = False) -> str | No
     y = _draw_logo(canvas)
     
     # Rule with emoji
-    _draw_rule(draw, canvas, y + 16, WHITE, emoji_img=emoji_img)
+    _draw_rule(draw, canvas, y + 10, WHITE, emoji_img=emoji_img)
     
     # 2. Category badge with EMOJI
-    y += 40
+    y += 30
     y = _draw_badge(draw, canvas, category, color1, color2, fonts["badge"], y, emoji_img=emoji_img)
 
-    # 3. Dynamic Title (allocate ~170px of vertical space)
-    y = _draw_dynamic_title(draw, title, y + 5, max_h=170)
+    # 3. Dynamic Title (allocate ~150px of vertical space, tight to category)
+    y = _draw_dynamic_title(draw, title, y + 5, max_h=150)
 
-    # 4. High-Converting Hook (fixed 2 lines, gray)
-    y += 24
-    lines = textwrap.wrap(HOOK_TEXT, width=70)[:2]
+    # 4. High-Converting Hook (No cuts, cleanly fits in two lines)
+    y += 15
+    lines = textwrap.wrap(HOOK_TEXT, width=80)
     for line in lines:
         _text_center(draw, line, y, fonts["excerpt"], fill=(230, 235, 255))
         y += 34
