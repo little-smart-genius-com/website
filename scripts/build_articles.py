@@ -1736,6 +1736,13 @@ def inject_internal_links(content: str, link_targets: list, max_links=12) -> str
             h_closes = len(re.findall(r'</h[1-3]>', before, re.IGNORECASE))
             if h_opens > h_closes:
                 continue  # Inside a heading
+                
+            # SAFETY CHECK: Do not inject inside any HTML tag (e.g. <img alt="...phrase...">)
+            # Find the most recent '<' and '>'
+            last_open = before.rfind('<')
+            last_close = before.rfind('>')
+            if last_open > last_close:
+                continue
             
             # Check if inside <strong> already linked (we want to keep bold + add link)
             # Build the replacement
@@ -2311,10 +2318,14 @@ def build_all():
         try:
             title = data.get('title', 'Untitled')
             
-            # Determine prev/next articles in date-sorted order
+            # Determine prev/next articles in date-sorted order (with wrap-around)
             sorted_idx = slug_to_sorted_idx.get(slug)
-            prev_art = all_articles[sorted_idx - 1] if sorted_idx is not None and sorted_idx > 0 else None
-            next_art = all_articles[sorted_idx + 1] if sorted_idx is not None and sorted_idx < len(all_articles) - 1 else None
+            if sorted_idx is not None and len(all_articles) > 1:
+                prev_art = all_articles[sorted_idx - 1] if sorted_idx > 0 else all_articles[-1]
+                next_art = all_articles[sorted_idx + 1] if sorted_idx < len(all_articles) - 1 else all_articles[0]
+            else:
+                prev_art = None
+                next_art = None
             
             # Generate HTML (now with related articles + prev/next nav)
             html = generate_article_html(data, slug, all_articles=all_articles, prev_article=prev_art, next_article=next_art, tpt_products=tpt_products, freebies=freebies)
