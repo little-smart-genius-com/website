@@ -33,12 +33,17 @@ os.makedirs(ARTICLES_DIR, exist_ok=True)
 # ═══════════════════════════════════════════════════════════════
 
 def normalize_image_path(path):
-    """Convert absolute server paths to relative web paths."""
+    """Convert absolute server paths to relative web paths and enforce .webp format."""
     if not path or path.startswith('http'):
         return path
     # Extract just the filename from any absolute path
     basename = os.path.basename(path)
     if basename:
+        # Enforce .webp extension for all images
+        if basename.lower().endswith('.jpg') or basename.lower().endswith('.jpeg'):
+            basename = basename.rsplit('.', 1)[0] + '.webp'
+        elif basename.lower().endswith('.png'):
+            basename = basename.rsplit('.', 1)[0] + '.webp'
         return f"images/{basename}"
     return path
 
