@@ -163,7 +163,7 @@ ARTICLE TYPE: Informational SEO pillar content (2000+ words)
 ═══ MANDATORY REQUIREMENTS ═══
 - 6 main sections (H2) — each with a keyword variation or LSI keyword
 - 3 subsections (H3) per H2 = 18 total subsections
-- 4 UNIQUE image concepts (different scenes, compositions, dominant colors)
+- 5 UNIQUE image concepts (different scenes, compositions, dominant colors)
 - 5 FAQ questions targeting Google's "People Also Ask"
 - Internal link opportunities in at least 3 sections
 - Cover concept must be specific enough to generate a premium image
@@ -237,7 +237,7 @@ Article Type: SEO Informational — must rank on Google for "{keyword}"
 - Each H2 must contain a keyword variation or LSI keyword
 - Include at least 2 numbered lists (<ol>) and 2 bulleted lists (<ul>)
 - Bold the keyword with <strong> 3-5 times across different sections
-- Insert [IMAGE_1], [IMAGE_2], [IMAGE_3], [IMAGE_4] placed in different sections (after the first paragraph of sections 1, 2, 4, and 5)
+- Insert [IMAGE_1], [IMAGE_2], [IMAGE_3], [IMAGE_4], [IMAGE_5] placed in different sections evenly spaced (roughly every 400 words), each after a paragraph ending — NEVER two images in succession
 - Include internal link anchors naturally: "free worksheets", "free printables", "premium resources", "educational activities"
 - Include 1 external authority reference (mention a study, organization, or expert)
 
@@ -600,13 +600,15 @@ TARGET: Parents and teachers of children aged 4-12
 - Lighting: {preset['lighting']}
 - Color Palette: {preset['palette']}
 
-═══ RULES ═══
-- NO text, words, or letters in the image
-- NO brand logos or watermarks
+═══ RULES (NON-NEGOTIABLE) ═══
+- ABSOLUTELY NO text, letters, words, numbers, labels, captions, or symbols inside the image
+- NO brand logos, watermarks, or UI overlays of any kind
+- If the scene includes papers, worksheets, or screens — they must be blank or filled with abstract patterns ONLY (no readable text)
 - Children depicted should be diverse (mix ethnicities)
 - Keep it child-safe and family-friendly
 - Include educational elements (books, puzzles, worksheets visible)
 - Subjects should show JOY and ENGAGEMENT
+- Pure visual storytelling only — communicate emotion and action, not text
 
 ═══ OUTPUT ═══
 Return ONLY the enhanced prompt as 1-2 sentences. Include specific details about:

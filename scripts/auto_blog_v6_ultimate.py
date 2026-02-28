@@ -97,8 +97,8 @@ TARGET_WORD_COUNT = 2000
 MIN_WORD_COUNT = 1600
 MAX_RETRIES = 3
 IMAGE_RETRY_MAX = 8
-TOTAL_IMAGES = 5
-NUM_CONTENT_IMAGES = 4
+TOTAL_IMAGES = 6    # 1 cover + 5 content images
+NUM_CONTENT_IMAGES = 5
 SITE_BASE_URL = "https://littlesmartgenius.com"
 
 # Batch config
@@ -790,7 +790,9 @@ Return ONLY the enhanced prompt as 1-2 sentences with scene, subjects, action, e
     async def fetch_and_save_image(self, session, prompt, idx):
         width, height = 1200, 675  # Consistent landscape 16:9 for all images (cover + content)
         seed = int(time.time()) + idx * 100
-        clean_prompt = re.sub(r'[^a-zA-Z0-9 ,.-]', '', prompt)
+        # Append strict no-text instruction to every prompt
+        no_text_suffix = ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, watermarks, or UI overlays in the image, pure visual storytelling only"
+        clean_prompt = re.sub(r'[^a-zA-Z0-9 ,.-]', '', prompt + no_text_suffix)
         encoded_prompt = urllib.parse.quote(clean_prompt)
 
         slug = SEOUtils.optimize_slug(self.plan.get('title', self.topic_name))
@@ -853,7 +855,7 @@ Return ONLY the enhanced prompt as 1-2 sentences with scene, subjects, action, e
         raw_html = "\n".join(self.html_sections)
 
         images_info = f"Cover Image: <img src='../{self.image_paths[0]}' alt='Cover' class='w-full rounded-2xl mb-8'>\n"
-        for i in range(1, 5):
+        for i in range(1, 6):  # indices 1..5 = 5 content images (index 0 is cover)
             path = self.image_paths[i] if i < len(self.image_paths) else "images/placeholder.webp"
             alt = SEOUtils.generate_seo_alt_text(
                 self.image_prompts[i][:50] if i < len(self.image_prompts) else "",
@@ -867,11 +869,12 @@ Your job is to take raw drafted sections and merge them into a single, cohesive,
 RULES:
 1. Harmonize the tone so it sounds like ONE single passionate human author.
 2. Ensure transitions between sections are smooth and natural.
-3. Replace the placeholders [IMAGE_1], [IMAGE_2], [IMAGE_3], [IMAGE_4] with the provided image paths INSIDE the body content, one after each major section.
-4. DO NOT change the core meaning or remove keywords.
-5. Provide ONLY the inner HTML elements (e.g. <h2>, <p>, <ul>). NEVER output <!DOCTYPE html>, <html>, <head>, <style>, or <body> tags.
-6. DO NOT include the cover image — it is already displayed separately above the article. Only use [IMAGE_1] through [IMAGE_4] for inline content images.
-7. DO NOT include a 'You Might Also Like', related articles, or FAQ section — these are injected separately."""
+3. Replace the 5 placeholders [IMAGE_1] through [IMAGE_5] with the provided image tags INSIDE the body content.
+4. SPACING RULE: Place images EVENLY across the article — roughly every 300-400 words. NEVER place two images back-to-back or adjacent without text in between. There must be at least one full paragraph (≥3 sentences) separating any two images.
+5. DO NOT change the core meaning or remove keywords.
+6. Provide ONLY the inner HTML elements (e.g. <h2>, <p>, <ul>). NEVER output <!DOCTYPE html>, <html>, <head>, <style>, or <body> tags.
+7. DO NOT include the cover image — it is already displayed separately above the article. Only use [IMAGE_1] through [IMAGE_5] for inline content images.
+8. DO NOT include a 'You Might Also Like', related articles, or FAQ section — these are injected separately."""
 
         user_prompt = f"""IMAGES TO INJECT:
 {images_info}
@@ -893,7 +896,7 @@ Please assemble the final HTML article now. Ensure all [IMAGE_X] placeholders ar
         if img_count == 0 and self.image_paths:
             self.logger.warning("No images detected -- force-injecting at H2 boundaries", 2)
             h2_positions = [m.start() for m in re.finditer(r'<h2[^>]*>', self.final_content)]
-            for idx in range(min(NUM_CONTENT_IMAGES, len(h2_positions), len(self.image_paths)-1)):
+            for idx in range(min(5, len(h2_positions), len(self.image_paths)-1)): # 5 content images
                 img_path = self.image_paths[idx+1]
                 img_tag = f'<figure class="article-image"><img src="../{img_path}" alt="educational illustration" loading="lazy" width="1200" height="675"></figure>\n'
                 pos = h2_positions[idx]
@@ -901,7 +904,7 @@ Please assemble the final HTML article now. Ensure all [IMAGE_X] placeholders ar
                 h2_positions = [m.start() for m in re.finditer(r'<h2[^>]*>', self.final_content)]
 
         self.final_content = re.sub(r'\[IMAGE_\d+\]', '', self.final_content)
-        self.logger.success("Assembly complete -- HTML unified and images injected", 2)
+        self.logger.success("Assembly complete — HTML unified and 6 images injected", 2)
 
     # --- PHASE 5: POST-PROCESSING ---
     def post_process(self):
