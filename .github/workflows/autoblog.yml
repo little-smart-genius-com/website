@@ -192,7 +192,9 @@ jobs:
 
       # ── MAINTENANCE ──
       - name: Run maintenance
-        run: python scripts/maintenance.py --stats
+        run: |
+          python scripts/maintenance.py --stats
+          python scripts/clean_og_images.py
 
       # ── COMMIT & PUSH ──
       - name: Commit and push changes
