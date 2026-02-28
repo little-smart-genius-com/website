@@ -335,7 +335,7 @@ def create_og_image(article: dict, fonts: dict, force: bool = False) -> str | No
     title    = article.get("title", "Little Smart Genius")
     category = article.get("category", "Education")
 
-    out_path = OUTPUT_DIR / f"{slug}.webp"
+    out_path = OUTPUT_DIR / f"{slug}.jpg"
     if out_path.exists() and not force:
         return str(out_path)
 
@@ -370,9 +370,9 @@ def create_og_image(article: dict, fonts: dict, force: bool = False) -> str | No
     # 5. Bottom Brand & URL
     _draw_bottom(draw, canvas, fonts, color1)
 
-    # Save format WebP
+    # Save format JPEG for maximum social media compatibility
     final = canvas.convert("RGB")
-    final.save(str(out_path), "WEBP", quality=85, method=6)
+    final.save(str(out_path), "JPEG", quality=85)
     return str(out_path)
 
 def main():
