@@ -162,24 +162,24 @@ def _make_background(slug: str) -> Image.Image:
     top  = (new_h - H) // 2
     img  = img.crop((left, top, left + W, top + H))
     
-    # Very heavy blur for artistic, moody background
-    img = img.filter(ImageFilter.GaussianBlur(radius=25))
+    # Less heavy blur for artistic, moody background but keeping it visible
+    img = img.filter(ImageFilter.GaussianBlur(radius=10))
     return img.convert("RGBA")
 
 def _apply_overlays(base: Image.Image, cat_color1: tuple) -> Image.Image:
     result = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     result.paste(base, (0, 0))
 
-    # Darker base overlay (80% opacity for maximum text readability)
-    overlay = Image.new("RGBA", (W, H), DARK + (210,))
+    # Darker base overlay (lighter opacity 140 for background visibility)
+    overlay = Image.new("RGBA", (W, H), DARK + (140,))
     result = Image.alpha_composite(result, overlay)
 
     draw = ImageDraw.Draw(result)
 
-    # Vignette
-    for i in range(120, 0, -1):
-        alpha = int(115 * (1 - i / 120) ** 2.5)
-        draw.rectangle([0, 0, W, H], outline=(0, 0, 0, alpha), width=3) # Approximated vignette
+    # Elegant White Frame
+    draw.rectangle([24, 24, W-24, H-24], outline=(255, 255, 255, 180), width=3)
+    # Inner elegant border
+    draw.rectangle([32, 32, W-32, H-32], outline=(255, 255, 255, 60), width=1)
 
     # Glow in center where text is
     glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -203,27 +203,41 @@ def _draw_logo(img: Image.Image) -> int:
     except Exception:
         return 40
 
-def _draw_rule(draw: ImageDraw.Draw, y: int, color: tuple):
-    line_w = 320
+def _draw_rule(draw: ImageDraw.Draw, img: Image.Image, y: int, color: tuple, emoji_img: Image.Image = None):
+    line_w = 400
     x1 = (W - line_w) // 2
     x2 = x1 + line_w
-    draw.line([(x1, y), (W//2 - 24, y)], fill=(*color, 160), width=1)
-    draw.polygon([(W//2, y - 4), (W//2 + 6, y), (W//2, y + 4), (W//2 - 6, y)], fill=(*color, 240))
-    draw.line([(W//2 + 24, y), (x2, y)], fill=(*color, 160), width=1)
+    
+    if emoji_img:
+        em = emoji_img.copy()
+        em.thumbnail((24, 24), Image.LANCZOS)
+        em_w, em_h = em.size
+        # Draw lines around emoji
+        draw.line([(x1, y), (W//2 - em_w//2 - 16, y)], fill=(*color, 160), width=1)
+        draw.line([(W//2 + em_w//2 + 16, y), (x2, y)], fill=(*color, 160), width=1)
+        # Paste emoji in center
+        img.paste(em, (W//2 - em_w//2, y - em_h//2), em)
+    else:
+        draw.line([(x1, y), (W//2 - 24, y)], fill=(*color, 160), width=1)
+        draw.polygon([(W//2, y - 4), (W//2 + 6, y), (W//2, y + 4), (W//2 - 6, y)], fill=(*color, 240))
+        draw.line([(W//2 + 24, y), (x2, y)], fill=(*color, 160), width=1)
 
 def _draw_badge(draw: ImageDraw.Draw, img: Image.Image, text: str, color1: tuple, color2: tuple, font, y: int, emoji_img: Image.Image = None) -> int:
     text_up = text.upper()
     try:
-        tw = draw.textlength(text_up, font=font)
+        bbox = draw.textbbox((0,0), text_up, font=font)
+        tw = bbox[2] - bbox[0]
+        th = bbox[3] - bbox[1]
     except AttributeError:
-        tw = len(text_up) * 10
+        tw = len(text_up) * 11
+        th = 18
 
-    pad_x, pad_y = 24, 8
+    pad_x, pad_y = 26, 10
     bw = int(tw + pad_x * 2)
     if emoji_img:
-        bw += 30 # space for emoji inside badge
+        bw += 32 # space for emoji plus gap
         
-    bh = 38
+    bh = int(th + pad_y * 2 + 4) # make pill slightly taller
     bx = (W - bw) // 2
     by = y
 
@@ -237,7 +251,8 @@ def _draw_badge(draw: ImageDraw.Draw, img: Image.Image, text: str, color1: tuple
         rc = int(color1[0] + (color2[0] - color1[0]) * t)
         gc = int(color1[1] + (color2[1] - color1[1]) * t)
         bc = int(color1[2] + (color2[2] - color1[2]) * t)
-        pd.rounded_rectangle([xi, 0, xi+1, bh], radius=0, fill=(rc, gc, bc, 240))
+        pd.rounded_rectangle([xi, 0, xi+1, bh], radius=0, fill=(rc, gc, bc, 255))
+        
     # Clip corners to round shape
     mask = Image.new("L", (bw, bh), 0)
     md = ImageDraw.Draw(mask)
@@ -246,17 +261,19 @@ def _draw_badge(draw: ImageDraw.Draw, img: Image.Image, text: str, color1: tuple
     
     img.paste(pill, (bx, by), pill)
     
-    # Optionally paste emoji inside pill
-    text_start_x = bx + pad_x
+    # Layout content inside pill
+    current_x = bx + pad_x
     if emoji_img:
         em = emoji_img.copy()
         em.thumbnail((22, 22), Image.LANCZOS)
-        img.paste(em, (bx + 14, by + 8), em)
-        text_start_x += 26
+        em_w, em_h = em.size
+        img.paste(em, (current_x, by + (bh - em_h)//2), em)
+        current_x += em_w + 10 # 10px gap between emoji and text
 
-    # Text
-    draw.text((text_start_x + 1, by + pad_y + 1), text_up, fill=(0, 0, 0, 80), font=font)
-    draw.text((text_start_x, by + pad_y), text_up, fill=WHITE, font=font)
+    # Text exact vertical centering offset
+    offset_y = (bh - th) // 2 - bbox[1]
+    draw.text((current_x + 1, by + offset_y + 1), text_up, fill=(0, 0, 0, 60), font=font)
+    draw.text((current_x, by + offset_y), text_up, fill=WHITE, font=font)
 
     return by + bh + 24
 
@@ -301,9 +318,9 @@ def _draw_dynamic_title(draw: ImageDraw.Draw, title: str, start_y: int, max_h: i
         current_y += int(36 * 1.25)
     return current_y
 
-def _draw_bottom(draw: ImageDraw.Draw, fonts: dict, color1: tuple):
+def _draw_bottom(draw: ImageDraw.Draw, img: Image.Image, fonts: dict, color1: tuple):
     y_bar = H - 85
-    _draw_rule(draw, y_bar, color1)
+    _draw_rule(draw, img, y_bar, color1)
     
     brand_text = "✦  Little Smart Genius  ✦"
     _text_center(draw, brand_text, y_bar + 16, fonts["brand"], fill=ORANGE)
@@ -318,7 +335,7 @@ def create_og_image(article: dict, fonts: dict, force: bool = False) -> str | No
     title    = article.get("title", "Little Smart Genius")
     category = article.get("category", "Education")
 
-    out_path = OUTPUT_DIR / f"{slug}.jpg"
+    out_path = OUTPUT_DIR / f"{slug}.webp"
     if out_path.exists() and not force:
         return str(out_path)
 
@@ -332,28 +349,30 @@ def create_og_image(article: dict, fonts: dict, force: bool = False) -> str | No
 
     # 1. Logo
     y = _draw_logo(canvas)
-    _draw_rule(draw, y + 8, ORANGE)
+    
+    # Rule with emoji
+    _draw_rule(draw, canvas, y + 16, WHITE, emoji_img=emoji_img)
     
     # 2. Category badge with EMOJI
-    y += 24
+    y += 40
     y = _draw_badge(draw, canvas, category, color1, color2, fonts["badge"], y, emoji_img=emoji_img)
 
-    # 3. Dynamic Title (we allocate ~180px of vertical space for the title)
-    y = _draw_dynamic_title(draw, title, y, max_h=180)
+    # 3. Dynamic Title (allocate ~170px of vertical space)
+    y = _draw_dynamic_title(draw, title, y + 5, max_h=170)
 
     # 4. High-Converting Hook (fixed 2 lines, gray)
-    y += 18
+    y += 24
     lines = textwrap.wrap(HOOK_TEXT, width=70)[:2]
     for line in lines:
-        _text_center(draw, line, y, fonts["excerpt"], fill=GRAY)
+        _text_center(draw, line, y, fonts["excerpt"], fill=(230, 235, 255))
         y += 34
 
     # 5. Bottom Brand & URL
-    _draw_bottom(draw, fonts, color1)
+    _draw_bottom(draw, canvas, fonts, color1)
 
-    # Save
+    # Save format WebP
     final = canvas.convert("RGB")
-    final.save(str(out_path), "JPEG", quality=94, optimize=True, progressive=True)
+    final.save(str(out_path), "WEBP", quality=85, method=6)
     return str(out_path)
 
 def main():
