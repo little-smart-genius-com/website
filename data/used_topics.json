@@ -56,7 +56,8 @@
     "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.4",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.6",
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.2"
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.2",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.3"
   ],
   "freebie": [
     "Four In A Row",
@@ -389,6 +390,11 @@
       "slot": "keyword",
       "topic": "Ultimate Printable Logic Puzzles for Kids 6-10",
       "date": "2026-03-01T08:32:53.250362"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.3",
+      "date": "2026-03-01T15:02:43.147691"
     }
   ]
 }
