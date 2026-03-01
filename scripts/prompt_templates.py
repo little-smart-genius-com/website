@@ -238,8 +238,11 @@ Article Type: SEO Informational — must rank on Google for "{keyword}"
 - Include at least 2 numbered lists (<ol>) and 2 bulleted lists (<ul>)
 - Bold the keyword with <strong> 3-5 times across different sections
 - Insert [IMAGE_1], [IMAGE_2], [IMAGE_3], [IMAGE_4], [IMAGE_5] placed in different sections evenly spaced (roughly every 400 words), each after a paragraph ending — NEVER two images in succession
-- Include internal link anchors naturally: "free worksheets", "free printables", "premium resources", "educational activities"
-- Include 1 external authority reference (mention a study, organization, or expert)
+- MANDATORY LINKING (CRITICAL FOR DASHBOARD SCORE):
+  1. Exactly 1 internal link to <a href="../freebies.html"> (for Links to Freebies)
+  2. Exactly 1 internal link to <a href="../products.html"> (for Links to Paid Products)
+  3. Exactly 2 internal links to <a href="another-topic.html"> (for Links to Other Articles)
+  4. Exactly 2 external authority links to <a href="https://..."> (for Total External Links)
 
 ═══ HTML FORMAT ═══
 - Use: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <em>, <figure>, <blockquote>
@@ -333,7 +336,7 @@ AUDIENCE: Parents and teachers of children aged 4-12
         spotlight = plan.get("product_spotlight", {})
 
         return f"""You are {persona['role']} writing an educational guide with product recommendation.
-Write like a REAL HUMAN — passionate educator, NOT a salesperson.
+Write like a REAL HUMAN - passionate educator, NOT a salesperson.
 
 ═══ ARTICLE SPECS ═══
 Title: {plan.get('title', product_name)}
@@ -385,8 +388,11 @@ RATIO: 80% educational value, 20% product recommendation
 - 2 numbered lists + 2 bulleted lists
 - Bold keyword 3-5 times with <strong>
 - [IMAGE_1] to [IMAGE_4] in different sections
-- Internal link anchors: "free worksheets", "premium resources"
-- Product link appears 2 times max (natural, not forced)
+- MANDATORY LINKING (CRITICAL FOR DASHBOARD SCORE):
+  1. Exactly 1 internal link to <a href="../freebies.html"> (for Links to Freebies)
+  2. Exactly 1 internal link to <a href="../products.html"> (for Links to Paid Products)
+  3. Exactly 2 internal links to <a href="another-topic.html"> (for Links to Other Articles)
+  4. Exactly 2 external authority links to <a href="https://..."> (for Total External Links)
 - HTML only: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <em>, <blockquote>
 - NO <html>, <head>, <body> tags"""
 
@@ -534,8 +540,11 @@ TONE: Enthusiastic friend explaining their favorite activity
 - 2 numbered lists + 2 bulleted lists
 - Bold keyword 3-5 times with <strong>
 - [IMAGE_1] to [IMAGE_4] in different sections
-- Internal links: "free worksheets", "premium resources"
-- Download link appears 2-3 times (intro + CTA section + conclusion)
+- MANDATORY LINKING (CRITICAL FOR DASHBOARD SCORE):
+  1. Exactly 1 internal link to <a href="../freebies.html"> (for Links to Freebies)
+  2. Exactly 1 internal link to <a href="../products.html"> (for Links to Paid Products)
+  3. Exactly 2 internal links to <a href="another-topic.html"> (for Links to Other Articles)
+  4. Exactly 2 external authority links to <a href="https://..."> (for Total External Links)
 - HTML only: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <em>
 - NO <html>, <head>, <body> tags"""
 

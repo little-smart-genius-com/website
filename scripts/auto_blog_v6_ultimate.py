@@ -33,12 +33,7 @@ from datetime import datetime
 from io import BytesIO
 from typing import Dict, List, Optional, Tuple
 
-# Fix Windows terminal encoding
-try:
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
-except Exception:
-    pass
+# No manual stdout encoding forced - handled by Python automatically.
 
 from dotenv import load_dotenv
 from PIL import Image
@@ -1058,9 +1053,6 @@ PASS if score >= 900, otherwise REJECT."""
         # 1. Title length (30-60 chars) — 5 pts
         if 30 <= len(title) <= 60:
             score += 5
-        elif 20 <= len(title) <= 70:
-            score += 3
-            suggestions.append(f"Title: {len(title)} chars (optimal: 30-60)")
         else:
             suggestions.append(f"Title: {len(title)} chars (optimal: 30-60)")
 
@@ -1080,9 +1072,6 @@ PASS if score >= 900, otherwise REJECT."""
         # 3. Meta description length (120-155 chars) — 5 pts
         if 120 <= len(meta) <= 155:
             score += 5
-        elif 100 <= len(meta) <= 170:
-            score += 3
-            suggestions.append(f"Meta: {len(meta)} chars (optimal: 120-155)")
         else:
             suggestions.append(f"Meta: {len(meta)} chars (optimal: 120-155)")
 
@@ -1140,9 +1129,6 @@ PASS if score >= 900, otherwise REJECT."""
             density = (kw_count * kw_words_n / word_count) * 100
             if 1.0 <= density <= 3.0:
                 score += 5
-            elif 0.5 <= density <= 4.0:
-                score += 3
-                suggestions.append(f"Keyword density: {density:.1f}% (optimal: 1-3%)")
             else:
                 suggestions.append(f"Keyword density: {density:.1f}% (optimal: 1-3%)")
 
@@ -1249,9 +1235,6 @@ PASS if score >= 900, otherwise REJECT."""
         ai_phrases_found = [p for p in AI_DETECTION_PHRASES if p.lower() in plain]
         if len(ai_phrases_found) == 0:
             score += 5
-        elif len(ai_phrases_found) <= 2:
-            score += 2
-            suggestions.append(f"AI phrases detected ({len(ai_phrases_found)}): {', '.join(ai_phrases_found[:3])}")
         else:
             suggestions.append(f"AI phrases detected ({len(ai_phrases_found)}): {', '.join(ai_phrases_found[:5])}")
 
@@ -1267,18 +1250,18 @@ PASS if score >= 900, otherwise REJECT."""
         meta = self.plan.get('meta_description', '')
         kw = self.plan.get('primary_keyword', '')
 
-        # Fix 1: Title too long
-        if len(title) > 60:
+        # Fix 1: Title too long/short or contains ellipses
+        if len(title) > 60 or len(title) < 30 or "..." in title:
             corrected = call_deepseek_sync(
-                f"Fix this title to be 50 characters max:\n\"{title}\"\nReturn ONLY the corrected title.",
+                f"Fix this title to be exactly 30-60 characters, with NO ellipses (...):\n\"{title}\"\nReturn ONLY the corrected title.",
                 self.logger, "TITLE FIX", "seo"
             )
-            if corrected and 20 <= len(corrected.strip().strip('"').strip("'")) <= 60:
+            if corrected and 30 <= len(corrected.strip().strip('"').strip("'")) <= 60:
                 self.plan['title'] = corrected.strip().strip('"').strip("'")
                 self.logger.correction_applied(f"Title: {len(title)}c -> {len(self.plan['title'])}c", self.plan['title'][:50])
             else:
-                self.plan['title'] = title[:57] + '...'
-                self.logger.correction_applied("Title force-truncated", self.plan['title'][:50])
+                self.plan['title'] = title[:57]
+                self.logger.correction_applied("Title forced hard cut", self.plan['title'][:50])
 
         # Fix 2: Meta description — try DeepSeek correction first (like V4), then extraction fallback
         if not (120 <= len(meta) <= 155):
@@ -1356,12 +1339,12 @@ PASS if score >= 900, otherwise REJECT."""
         meta = self.plan.get('meta_description', '')
         word_count = len(re.sub(r'<[^>]+>', '', content).split())
 
-        self.logger.verification_result("Title (20-70 chars)", 20 <= len(title) <= 70, f"{len(title)} chars")
-        self.logger.verification_result("Meta desc (100-170 chars)", 100 <= len(meta) <= 170, f"{len(meta)} chars")
-        self.logger.verification_result(f"Words (>={MIN_WORD_COUNT})", word_count >= MIN_WORD_COUNT, f"{word_count} words")
+        self.logger.verification_result("Title (30-60 chars)", 30 <= len(title) <= 60, f"{len(title)} chars")
+        self.logger.verification_result("Meta desc (120-155 chars)", 120 <= len(meta) <= 155, f"{len(meta)} chars")
+        self.logger.verification_result(f"Words (>=1600)", word_count >= 1600, f"{word_count} words")
         h2_count = len(re.findall(r'<h2', content))
-        self.logger.verification_result(f"Sections H2 (>=5)", h2_count >= 5, f"{h2_count} H2")
-        self.logger.verification_result("Images (>=1)", len(re.findall(r'<img', content)) >= 1)
+        self.logger.verification_result(f"Sections H2 (>=6)", h2_count >= 6, f"{h2_count} H2")
+        self.logger.verification_result("Images (>=5)", len(re.findall(r'<img', content)) >= 5)
 
     # ===============================================================
     # PHASE 7: COMPILE & SAVE + INSTAGRAM

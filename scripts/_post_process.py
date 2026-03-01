@@ -146,7 +146,16 @@ def find_matching_tpt_product(article_category: str, article_title: str,
             best_score = score
             best = product
     
-    return best if best_score > 5 else None
+    # If no product scored above 5, return the first one with good reviews, or just the first product as a fallback
+    if best_score > 5:
+        return best
+    
+    # Fallback to a reliable product
+    for product in products:
+        if product.get("reviews", "") not in ("", "0"):
+            return product
+            
+    return products[0] if products else None
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -388,7 +397,7 @@ def inject_into_article(filepath: str, all_articles: List[Dict], tpt_products: L
         content = f.read()
     
     # Skip if already injected
-    if "RELATED ARTICLES" in content and "TPT PRODUCT" in content:
+    if "<!-- ═══ RELATED ARTICLES ═══ -->" in content:
         return False
     
     # Remove any old related-articles div if exists
