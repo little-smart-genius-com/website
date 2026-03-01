@@ -51,12 +51,12 @@ print(f"Pollinations backup keys loaded: {len(ALL_KEYS)}")
 
 # Image presets per position (matching V6 style)
 IMAGE_PRESETS = [
-    {"name": "Hero Cover", "style": "3D Pixar-style, vibrant, ultra-detailed, colorful educational scene"},
-    {"name": "Activity Close-up", "style": "Close-up overhead shot, warm natural lighting, child hands with educational materials"},
-    {"name": "Interactive Scene", "style": "Isometric view, diverse children joyfully engaged in learning activity"},
-    {"name": "Detailed Tutorial", "style": "Child's eye view looking down at hands working on educational activity"},
-    {"name": "Group Activity", "style": "Top-down flat lay of diverse children in modern classroom, bright colorful"},
-    {"name": "Results & Joy", "style": "Wide shot of excited diverse children proudly showing completed work"},
+    {"name": "Hero Cover", "style": "3D Pixar-style character illustration, vibrant, ultra-detailed, colorful educational scene"},
+    {"name": "Activity Close-up", "style": "3D Pixar-style character illustration, close-up overhead shot, warm natural lighting, cute child hands with educational materials"},
+    {"name": "Interactive Scene", "style": "3D Pixar-style character illustration, isometric view, diverse cute children joyfully engaged in learning activity"},
+    {"name": "Detailed Tutorial", "style": "3D Pixar-style character illustration, child's eye view looking down at hands working on educational activity"},
+    {"name": "Group Activity", "style": "3D Pixar-style character illustration, top-down flat lay of diverse cute children in modern classroom, bright colorful"},
+    {"name": "Results & Joy", "style": "3D Pixar-style character illustration, wide shot of excited diverse cute children proudly showing completed work"},
 ]
 
 NO_TEXT_SUFFIX = (
