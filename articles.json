@@ -1,12 +1,32 @@
 {
-<<<<<<< HEAD
-  "generated_at": "2026-03-01T08:33:08.252372",
-  "total_articles": 27,
-=======
-  "generated_at": "2026-03-01T09:57:44.772566",
-  "total_articles": 29,
->>>>>>> 0b28f68d7009b6a9dd57da74ef641cedeb79ae52
+  "generated_at": "2026-03-01T15:02:50.159941",
+  "total_articles": 28,
   "articles": [
+    {
+      "title": "How Spot the Difference Boosts Kids' Visual Perception",
+      "slug": "how-spot-the-difference-boosts-kids-visual-perception",
+      "date": "March 01, 2026",
+      "iso_date": "2026-03-01T15:02:42.170753",
+      "category": "Spot the Difference (Photorealistic)",
+      "excerpt": "Boost children's observation and cognitive skills with fun spot-the-difference puzzles for ages 4-12. Get expert tips and resources now!",
+      "image": "images/how-spot-the-difference-activities-boost-visual-perception-in-kids-cover-1772376820.webp",
+      "reading_time": 11,
+      "url": "articles/how-spot-the-difference-boosts-kids-visual-perception.html",
+      "keywords": [
+        "difference",
+        "spot",
+        "visual",
+        "what",
+        "just",
+        "their",
+        "learning",
+        "kids",
+        "about",
+        "child"
+      ],
+      "word_count": 2329,
+      "slot": "product"
+    },
     {
       "title": "Best Printable Logic Puzzles for Kids 6-10",
       "slug": "best-printable-logic-puzzles-for-kids-6-10",
