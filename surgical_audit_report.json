@@ -197,7 +197,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2896 words"
+        "detail": "2849 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -207,12 +207,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "579 words/img"
+        "detail": "570 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -252,7 +252,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "12"
+        "detail": "9"
       },
       {
         "name": "External Links >= 2",
@@ -262,7 +262,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "58"
+        "detail": "55"
       },
       {
         "name": "H2 >= 5",
@@ -272,7 +272,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -364,7 +364,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2578 words"
+        "detail": "2535 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -374,12 +374,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "516 words/img"
+        "detail": "507 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -419,7 +419,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "14"
+        "detail": "11"
       },
       {
         "name": "External Links >= 2",
@@ -429,7 +429,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "61"
+        "detail": "58"
       },
       {
         "name": "H2 >= 5",
@@ -439,7 +439,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -698,7 +698,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2692 words"
+        "detail": "2648 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -708,12 +708,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "538 words/img"
+        "detail": "530 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -723,7 +723,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.59%"
+        "detail": "0.53%"
       },
       {
         "name": "KW in first 100 words",
@@ -753,7 +753,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "14"
+        "detail": "11"
       },
       {
         "name": "External Links >= 2",
@@ -763,7 +763,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "67"
+        "detail": "64"
       },
       {
         "name": "H2 >= 5",
@@ -773,7 +773,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -865,7 +865,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2834 words"
+        "detail": "2790 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -875,12 +875,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "567 words/img"
+        "detail": "558 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -890,7 +890,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.42%"
+        "detail": "0.43%"
       },
       {
         "name": "KW in first 100 words",
@@ -920,7 +920,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "12"
+        "detail": "9"
       },
       {
         "name": "External Links >= 2",
@@ -930,7 +930,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "56"
+        "detail": "53"
       },
       {
         "name": "H2 >= 5",
@@ -940,7 +940,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -1533,7 +1533,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2899 words"
+        "detail": "2855 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -1543,12 +1543,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "580 words/img"
+        "detail": "571 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -1558,7 +1558,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.76%"
+        "detail": "0.77%"
       },
       {
         "name": "KW in first 100 words",
@@ -1588,7 +1588,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "14"
+        "detail": "11"
       },
       {
         "name": "External Links >= 2",
@@ -1598,7 +1598,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "58"
+        "detail": "55"
       },
       {
         "name": "H2 >= 5",
@@ -1608,7 +1608,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -1700,7 +1700,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2819 words"
+        "detail": "2775 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -1710,12 +1710,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "564 words/img"
+        "detail": "555 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -1725,7 +1725,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.64%"
+        "detail": "0.65%"
       },
       {
         "name": "KW in first 100 words",
@@ -1755,7 +1755,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "12"
+        "detail": "9"
       },
       {
         "name": "External Links >= 2",
@@ -1765,7 +1765,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "62"
+        "detail": "59"
       },
       {
         "name": "H2 >= 5",
@@ -1775,7 +1775,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -1867,7 +1867,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "3106 words"
+        "detail": "3060 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -1877,12 +1877,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "621 words/img"
+        "detail": "612 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -1892,7 +1892,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.64%"
+        "detail": "0.65%"
       },
       {
         "name": "KW in first 100 words",
@@ -1922,7 +1922,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "15"
+        "detail": "12"
       },
       {
         "name": "External Links >= 2",
@@ -1932,7 +1932,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "63"
+        "detail": "60"
       },
       {
         "name": "H2 >= 5",
@@ -1942,7 +1942,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -2034,7 +2034,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2776 words"
+        "detail": "2736 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -2044,12 +2044,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "555 words/img"
+        "detail": "547 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -2059,7 +2059,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.29%"
+        "detail": "0.37%"
       },
       {
         "name": "KW in first 100 words",
@@ -2089,7 +2089,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "12"
+        "detail": "9"
       },
       {
         "name": "External Links >= 2",
@@ -2099,7 +2099,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "65"
+        "detail": "62"
       },
       {
         "name": "H2 >= 5",
@@ -2109,7 +2109,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -2130,6 +2130,173 @@
         "name": "UL >= 2",
         "status": "PASS",
         "detail": "2"
+      },
+      {
+        "name": "Blockquote",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Scroll Top btn",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Prev btn",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Next btn",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Related Articles",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "TPT Product",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Anti-AI: 0 phrases",
+        "status": "PASS",
+        "detail": "Clean"
+      }
+    ],
+    "pass_count": 32,
+    "fail_count": 0
+  },
+  {
+    "slug": "how-spot-the-difference-boosts-kids-visual-perception",
+    "checks": [
+      {
+        "name": "Title: 30-60 chars",
+        "status": "PASS",
+        "detail": "54 chars"
+      },
+      {
+        "name": "Title: No truncation",
+        "status": "PASS",
+        "detail": "How Spot the Difference Boosts Kids' Visual Perception"
+      },
+      {
+        "name": "Title: KW in first 3 words",
+        "status": "PASS",
+        "detail": "Title: 'how spot the difference boosts' | KW: 'spot the'"
+      },
+      {
+        "name": "Meta Desc: 120-155 chars",
+        "status": "PASS",
+        "detail": "149 chars"
+      },
+      {
+        "name": "Meta Desc: Contains KW",
+        "status": "PASS",
+        "detail": "KW short: 'spot the'"
+      },
+      {
+        "name": "Word Count >= 1600",
+        "status": "PASS",
+        "detail": "2419 words"
+      },
+      {
+        "name": "Images: 5 inline body images",
+        "status": "PASS",
+        "detail": "5 inline images"
+      },
+      {
+        "name": "Images: All have alt text",
+        "status": "PASS",
+        "detail": "10 with alt"
+      },
+      {
+        "name": "Images: Avg spacing adequate",
+        "status": "PASS",
+        "detail": "484 words/img"
+      },
+      {
+        "name": "Focus KW: 3+ words",
+        "status": "PASS",
+        "detail": "'spot the difference (photorealistic) act' = 7 words"
+      },
+      {
+        "name": "KW Density: 0.1-4%",
+        "status": "PASS",
+        "detail": "1.74%"
+      },
+      {
+        "name": "KW in first 100 words",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "Strong tags: >= 3",
+        "status": "PASS",
+        "detail": "23 <strong>"
+      },
+      {
+        "name": "Meta KW: All long-tail",
+        "status": "PASS",
+        "detail": "OK"
+      },
+      {
+        "name": "Links to Freebies >= 1",
+        "status": "PASS",
+        "detail": "7"
+      },
+      {
+        "name": "Links to Products >= 1",
+        "status": "PASS",
+        "detail": "5"
+      },
+      {
+        "name": "Links to Articles >= 2",
+        "status": "PASS",
+        "detail": "10"
+      },
+      {
+        "name": "External Links >= 2",
+        "status": "PASS",
+        "detail": "2 found: ['https://en.wikipedia.org/wiki/Visual_perception', 'https://www.psychologytoday"
+      },
+      {
+        "name": "Total Internal >= 4",
+        "status": "PASS",
+        "detail": "51"
+      },
+      {
+        "name": "H2 >= 5",
+        "status": "PASS",
+        "detail": "6"
+      },
+      {
+        "name": "H3 present",
+        "status": "PASS",
+        "detail": "24"
+      },
+      {
+        "name": "FAQ present",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "TOC present",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "name": "OL >= 2",
+        "status": "PASS",
+        "detail": "3"
+      },
+      {
+        "name": "UL >= 2",
+        "status": "PASS",
+        "detail": "4"
       },
       {
         "name": "Blockquote",
@@ -2201,7 +2368,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2952 words"
+        "detail": "2911 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -2211,12 +2378,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "590 words/img"
+        "detail": "582 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -2226,7 +2393,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.68%"
+        "detail": "0.62%"
       },
       {
         "name": "KW in first 100 words",
@@ -2256,7 +2423,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "14"
+        "detail": "11"
       },
       {
         "name": "External Links >= 2",
@@ -2266,7 +2433,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "59"
+        "detail": "56"
       },
       {
         "name": "H2 >= 5",
@@ -2276,7 +2443,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -2535,7 +2702,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2810 words"
+        "detail": "2762 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -2545,12 +2712,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "562 words/img"
+        "detail": "552 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -2560,7 +2727,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.50%"
+        "detail": "0.51%"
       },
       {
         "name": "KW in first 100 words",
@@ -2590,7 +2757,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "13"
+        "detail": "10"
       },
       {
         "name": "External Links >= 2",
@@ -2600,7 +2767,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "61"
+        "detail": "58"
       },
       {
         "name": "H2 >= 5",
@@ -2610,7 +2777,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -2702,7 +2869,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2826 words"
+        "detail": "2785 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -2712,12 +2879,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "565 words/img"
+        "detail": "557 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -2757,7 +2924,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "11"
+        "detail": "8"
       },
       {
         "name": "External Links >= 2",
@@ -2767,7 +2934,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "61"
+        "detail": "58"
       },
       {
         "name": "H2 >= 5",
@@ -2777,7 +2944,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -3203,7 +3370,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2965 words"
+        "detail": "2922 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -3213,12 +3380,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "593 words/img"
+        "detail": "584 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -3228,7 +3395,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.20%"
+        "detail": "0.21%"
       },
       {
         "name": "KW in first 100 words",
@@ -3258,7 +3425,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "12"
+        "detail": "9"
       },
       {
         "name": "External Links >= 2",
@@ -3268,7 +3435,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "59"
+        "detail": "56"
       },
       {
         "name": "H2 >= 5",
@@ -3278,7 +3445,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -3380,7 +3547,7 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
@@ -3425,7 +3592,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "13"
+        "detail": "10"
       },
       {
         "name": "External Links >= 2",
@@ -3435,7 +3602,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "63"
+        "detail": "60"
       },
       {
         "name": "H2 >= 5",
@@ -3445,7 +3612,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -3537,7 +3704,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2594 words"
+        "detail": "2551 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -3547,12 +3714,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "519 words/img"
+        "detail": "510 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -3562,7 +3729,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.69%"
+        "detail": "0.71%"
       },
       {
         "name": "KW in first 100 words",
@@ -3592,7 +3759,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "15"
+        "detail": "12"
       },
       {
         "name": "External Links >= 2",
@@ -3602,7 +3769,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "59"
+        "detail": "56"
       },
       {
         "name": "H2 >= 5",
@@ -3612,7 +3779,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -3704,7 +3871,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2752 words"
+        "detail": "2705 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -3714,12 +3881,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "550 words/img"
+        "detail": "541 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -3759,7 +3926,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "12"
+        "detail": "9"
       },
       {
         "name": "External Links >= 2",
@@ -3769,7 +3936,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "60"
+        "detail": "57"
       },
       {
         "name": "H2 >= 5",
@@ -3779,7 +3946,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -3881,7 +4048,7 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
@@ -3926,7 +4093,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "11"
+        "detail": "8"
       },
       {
         "name": "External Links >= 2",
@@ -3936,7 +4103,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "59"
+        "detail": "56"
       },
       {
         "name": "H2 >= 5",
@@ -3946,7 +4113,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -4038,7 +4205,7 @@
       {
         "name": "Word Count >= 1600",
         "status": "PASS",
-        "detail": "2751 words"
+        "detail": "2708 words"
       },
       {
         "name": "Images: 5 inline body images",
@@ -4048,12 +4215,12 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
         "status": "PASS",
-        "detail": "550 words/img"
+        "detail": "542 words/img"
       },
       {
         "name": "Focus KW: 3+ words",
@@ -4063,7 +4230,7 @@
       {
         "name": "KW Density: 0.1-4%",
         "status": "PASS",
-        "detail": "0.36%"
+        "detail": "0.37%"
       },
       {
         "name": "KW in first 100 words",
@@ -4093,7 +4260,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "15"
+        "detail": "12"
       },
       {
         "name": "External Links >= 2",
@@ -4103,7 +4270,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "64"
+        "detail": "61"
       },
       {
         "name": "H2 >= 5",
@@ -4113,7 +4280,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
@@ -4549,7 +4716,7 @@
       {
         "name": "Images: All have alt text",
         "status": "PASS",
-        "detail": "13 with alt"
+        "detail": "10 with alt"
       },
       {
         "name": "Images: Avg spacing adequate",
@@ -4594,7 +4761,7 @@
       {
         "name": "Links to Articles >= 2",
         "status": "PASS",
-        "detail": "13"
+        "detail": "10"
       },
       {
         "name": "External Links >= 2",
@@ -4604,7 +4771,7 @@
       {
         "name": "Total Internal >= 4",
         "status": "PASS",
-        "detail": "60"
+        "detail": "57"
       },
       {
         "name": "H2 >= 5",
@@ -4614,7 +4781,7 @@
       {
         "name": "H3 present",
         "status": "PASS",
-        "detail": "28"
+        "detail": "27"
       },
       {
         "name": "FAQ present",
