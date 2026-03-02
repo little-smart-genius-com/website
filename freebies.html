@@ -592,8 +592,12 @@
                 </p>
                 <input autocomplete="off" class="hp-field" id="website-honeypot" tabindex="-1" type="text" />
                 <input
-                    class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-brand mb-4 transition"
+                    class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-brand mb-2 transition"
                     id="user-email" placeholder="your@email.com" type="email" />
+                <p id="form-error-msg"
+                    class="text-[11px] text-red-500 font-bold mb-4 hidden px-3 py-2 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800 text-left">
+                </p>
+
                 <div class="flex items-start gap-3 mb-6 text-left px-1">
                     <input class="custom-checkbox mt-1" id="consent-check" type="checkbox" />
                     <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="consent-check">
@@ -655,7 +659,7 @@
         </div>
     </div>
     <!-- SEEDED BY WORKER - NO MORE download_links.js -->
-    <script src="social_proof.js"></script>
+    <script src="sp_module.js"></script>
     <script>
         // --- DATA STRUCTURE (UI) ---
         const activitiesData = [
@@ -848,6 +852,11 @@
                 document.getElementById('modal-new-user').classList.add('hidden');
                 document.getElementById('modal-returning-user').classList.remove('hidden');
             } else {
+                // Clear errors on fresh load
+                const errorMsgEl = document.getElementById('form-error-msg');
+                if (errorMsgEl) errorMsgEl.classList.add('hidden');
+                document.getElementById('user-email').classList.remove('input-error');
+
                 document.getElementById('modal-new-user').classList.remove('hidden');
                 document.getElementById('modal-returning-user').classList.add('hidden');
             }
@@ -859,31 +868,60 @@
             const email = emailInput.value.trim();
             const consent = document.getElementById('consent-check').checked;
             const honeypot = document.getElementById('website-honeypot').value;
+            const errorMsgEl = document.getElementById('form-error-msg');
+
+            errorMsgEl.classList.add('hidden');
+            emailInput.classList.remove('input-error');
 
             if (honeypot) return;
 
-            if (!consent) {
-                alert("Please check the box to confirm you agree to our Terms & Conditions.");
+            if (!email) {
+                emailInput.classList.add('input-error');
+                errorMsgEl.innerText = "Please enter your email address.";
+                errorMsgEl.classList.remove('hidden');
                 return;
             }
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (emailRegex.test(email)) {
-                setStoredData(email);
-                await callFreebieAPI(email);
-                // Social proof toast (real)
-                if (typeof showRealSocialProof === 'function') {
-                    showRealSocialProof(currentItem ? currentItem.name : 'Freebie', 'email', email, 1500);
-                }
-                // GA4: track new email submission
-                if (typeof gtag === 'function') {
-                    gtag('event', 'freebie_email_submit', {
-                        'event_category': 'freebies',
-                        'event_label': currentItem ? currentItem.name : 'unknown'
-                    });
-                }
-            } else {
+            if (!emailRegex.test(email)) {
                 emailInput.classList.add('input-error');
+                errorMsgEl.innerText = "Please enter a valid email address.";
+                errorMsgEl.classList.remove('hidden');
+                return;
+            }
+
+            if (!consent) {
+                errorMsgEl.innerText = "⚠️ Please check the box to confirm you agree to our Terms & Conditions.";
+                errorMsgEl.classList.remove('hidden');
+                return;
+            }
+
+            setStoredData(email);
+
+            // Show loading state on button
+            const submitBtn = document.querySelector('#modal-new-user button[onclick="submitEmail()"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+            await callFreebieAPI(email);
+
+            // Reset button state (though usually the view changes to success anyway)
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+
+            // Social proof toast (real)
+            if (typeof showRealSocialProof === 'function') {
+                showRealSocialProof(currentItem ? currentItem.name : 'Freebie', 'email', email, 1500);
+            }
+            // GA4: track new email submission
+            if (typeof gtag === 'function') {
+                gtag('event', 'freebie_email_submit', {
+                    'event_category': 'freebies',
+                    'event_label': currentItem ? currentItem.name : 'unknown'
+                });
             }
         }
 
