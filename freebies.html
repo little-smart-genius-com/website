@@ -976,7 +976,6 @@
         }
 
         async function callFreebieAPI(email) {
-            showSuccessView();
             const resendBtn = document.getElementById('resend-btn');
             resendBtn.innerText = "Sending...";
             resendBtn.classList.add('opacity-50');
@@ -990,6 +989,7 @@
                 const data = await resp.json();
 
                 if (data.success) {
+                    showSuccessView();
                     resendBtn.innerText = "📧 Email sent! Check your inbox.";
                     resendBtn.classList.remove('opacity-50');
                     if (data.downloadLink) lastDownloadLink = data.downloadLink;
