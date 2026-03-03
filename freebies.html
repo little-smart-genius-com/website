@@ -638,12 +638,13 @@
             <div class="text-center hidden" id="modal-success">
                 <div class="text-4xl mb-4">🚀</div>
                 <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
-                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <p class="text-sm text-slate-500 mb-6">The message has been sent. Please check your inbox, promotions,
+                    or spam folder. Your freebie is on the way!</p>
                 <div id="resend-container">
                     <button
                         class="text-xs font-bold text-slate-400 hover:text-brand underline decoration-dotted transition"
                         id="resend-btn" onclick="handleResend()">
-                        Didn't receive it? Click to resend.
+                        Didn't receive it? Click here to resend.
                     </button>
                 </div>
                 <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700"
@@ -990,7 +991,7 @@
 
                 if (data.success) {
                     showSuccessView();
-                    resendBtn.innerText = "📧 Email sent! Check your inbox.";
+                    resendBtn.innerText = "Didn't receive it? Click here to resend.";
                     resendBtn.classList.remove('opacity-50');
                     if (data.downloadLink) lastDownloadLink = data.downloadLink;
                     // GA4: track successful email send

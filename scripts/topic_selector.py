@@ -214,7 +214,9 @@ class TopicSelector:
         if topic_name not in self.used[slot]:
             self.used[slot].append(topic_name)
 
-        # Log to daily_log
+        # Log to daily_log (ensure key exists)
+        if "daily_log" not in self.used:
+            self.used["daily_log"] = []
         self.used["daily_log"].append({
             "slot": slot,
             "topic": topic_name,

@@ -241,26 +241,32 @@ export default {
     const downloadLink = info.link;
     const productDesc = info.desc;
 
-    // ── Send email via MailChannels ──
+    const directOnly = body.directOnly === true;
+
+    // ── Send email via Resend ──
     const siteUrl = env.SITE_URL || "https://littlesmartgenius.com";
     const emailHtml = buildFreebieEmail({ productName, productDesc, downloadLink, siteUrl });
 
     let emailSent = false;
     let error = null;
 
-    try {
-      await sendEmail({
-        to: email,
-        from: "freebies@littlesmartgenius.com",
-        fromName: "Little Smart Genius",
-        subject: `🎁 Your Free Download: ${productName}`,
-        html: emailHtml,
-        apiKey: env.RESEND_API_KEY,
-      });
-      emailSent = true;
-    } catch (e) {
-      console.error("Email error:", e.message);
-      error = e.message;
+    if (!directOnly) {
+      try {
+        await sendEmail({
+          to: email,
+          from: "freebies@littlesmartgenius.com",
+          fromName: "Little Smart Genius",
+          subject: `🎁 Your Free Download: ${productName}`,
+          html: emailHtml,
+          apiKey: env.RESEND_API_KEY,
+        });
+        emailSent = true;
+      } catch (e) {
+        console.error("Email error:", e.message);
+        error = e.message;
+      }
+    } else {
+      emailSent = true; // Treat as successful to return the download link seamlessly
     }
 
     // ── Add/Update MailerLite ──

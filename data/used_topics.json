@@ -1,400 +1,118 @@
 {
   "keyword": [
-    "fun math activities for kindergarten at home",
-    "critical thinking activities for kindergarten",
-    "fine motor skills worksheets for preschoolers",
-    "benefits of puzzles for child brain development",
-    "printable math worksheets for first graders",
-    "counting exercises for preschoolers printable",
-    "shadow matching worksheets for toddlers",
-    "engaging classroom activities for early learners",
-    "best educational printables for homeschool families",
-    "spelling practice worksheets for elementary students",
-    "cryptogram puzzles for kids beginners",
-    "spot the difference puzzles for kids printable",
-    "how to make learning fun for reluctant learners",
     "printable logic puzzles for kids ages 6-10",
+    "critical thinking activities for kindergarten",
     "sudoku puzzles for beginners kids",
-    "how to teach logical reasoning to kids",
-    "Best Coloring Activities for Elementary Kids' Development",
-    "Best Educational Printables for Homeschool: Ultimate Guide",
-    "Best Fine Motor Skills Worksheets for Preschoolers: The U...",
-    "Best Printable Math Worksheets for First Graders: Ultimat...",
-    "Best Fine Motor Skills Worksheets for Preschoolers",
-    "Best Homeschool Printables: Ultimate Guide",
-    "Best Sudoku Puzzles for Beginners Kids: Ultimate Guide",
-    "Developmental Coloring Guide for Elementary Kids",
-    "Engaging Classroom Activities: Top Early Learner Essentials",
-    "Essential Shadow Matching Worksheets for Toddlers & Kids",
-    "How Coloring Activities Build Cognitive Skills in Children",
-    "How Photorealistic Spot the Difference Puzzles Build Focu...",
-    "How Photorealistic Spot the Difference Puzzles Sharpen a ...",
-    "How Spot the Difference Activities Boost Observation Skil...",
-    "Spot the Difference (Photorealistic) Build Focus in Kids",
-    "How to Teach Logical Reasoning to Kids: The Ultimate Guide",
-    "How to Use a Freebie Pack to Boost Essential Learning Skills",
-    "How to Use Cooking Activities to Boost Executive Function...",
-    "How to Use Creative Clip Art to Boost Fine Motor & Cognit...",
-    "How to Use Four In A Row to Unlock Your Child's Strategic...",
-    "How to Use Kids Math Equations to Supercharge Number Sense",
-    "How to Use Mazes to Unlock Your Child's Problem-Solving S...",
-    "How to Use Skyscraper to Boost Your Child's Logic Skills",
-    "How to Use Stickers to Boost Fine Motor & Cognitive Skills",
-    "How to Use This Activity Book to Boost Your Child's Criti...",
-    "How Word Search Activities Boost Reading Skills in Children",
-    "How Word Search Activities Build Vocabulary & Focus in Kids",
-    "Ultimate Counting Exercises for Preschoolers Printable",
-    "Ultimate Critical Thinking Activities for Kindergarten",
-    "Ultimate Guide to Printable 1st Grade Math Sheets",
-    "Ultimate Printable Logic Puzzles for Kids 6-10"
+    "counting exercises for preschoolers printable",
+    "spelling practice worksheets for elementary students",
+    "best educational printables for homeschool families",
+    "benefits of puzzles for child brain development",
+    "fine motor skills worksheets for preschoolers",
+    "engaging classroom activities for early learners",
+    "shadow matching worksheets for toddlers",
+    "word search puzzles for kids vocabulary building",
+    "spot the difference puzzles for kids printable"
   ],
   "product": [
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7",
-    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.3",
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.1",
-    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2",
-    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.4",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.6",
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.2",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.3"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.1",
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection",
+    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1"
   ],
   "freebie": [
-    "Four In A Row",
     "Maze for Kids",
-    "Kids Math Equations",
-    "Clip Art Set",
-    "Cookbook for Kids",
-    "Activity Book",
-    "Full Freebie Pack",
-    "Stickers Pack",
-    "Skyscraper"
+    "Word Search",
+    "Sudoku"
   ],
   "daily_log": [
     {
       "slot": "keyword",
-      "topic": "fun math activities for kindergarten at home",
-      "date": "2026-02-20T23:23:01.487294"
+      "topic": "printable logic puzzles for kids ages 6-10",
+      "date": "2026-03-02T22:55:25.347875"
     },
     {
       "slot": "keyword",
       "topic": "critical thinking activities for kindergarten",
-      "date": "2026-02-21T00:03:33.197236"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7",
-      "date": "2026-02-21T00:12:14.808178"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Four In A Row",
-      "date": "2026-02-21T00:19:53.743914"
-    },
-    {
-      "slot": "keyword",
-      "topic": "fine motor skills worksheets for preschoolers",
-      "date": "2026-02-21T00:26:19.369666"
-    },
-    {
-      "slot": "product",
-      "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.3",
-      "date": "2026-02-21T00:29:39.885601"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Maze for Kids",
-      "date": "2026-02-21T00:33:20.132159"
-    },
-    {
-      "slot": "keyword",
-      "topic": "benefits of puzzles for child brain development",
-      "date": "2026-02-21T00:36:54.752295"
-    },
-    {
-      "slot": "product",
-      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.1",
-      "date": "2026-02-21T00:39:59.276874"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Kids Math Equations",
-      "date": "2026-02-21T00:44:54.779121"
-    },
-    {
-      "slot": "product",
-      "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2",
-      "date": "2026-02-21T00:49:08.918573"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Clip Art Set",
-      "date": "2026-02-21T00:58:31.536954"
-    },
-    {
-      "slot": "keyword",
-      "topic": "printable math worksheets for first graders",
-      "date": "2026-02-21T01:06:15.524040"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.4",
-      "date": "2026-02-21T01:15:52.179761"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Cookbook for Kids",
-      "date": "2026-02-21T01:24:08.901817"
-    },
-    {
-      "slot": "keyword",
-      "topic": "counting exercises for preschoolers printable",
-      "date": "2026-02-21T01:28:13.295252"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
-      "date": "2026-02-21T01:32:43.469068"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Activity Book",
-      "date": "2026-02-21T01:42:19.444878"
-    },
-    {
-      "slot": "keyword",
-      "topic": "shadow matching worksheets for toddlers",
-      "date": "2026-02-21T14:49:41.973819"
-    },
-    {
-      "slot": "keyword",
-      "topic": "engaging classroom activities for early learners",
-      "date": "2026-02-22T07:48:04.582731"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.6",
-      "date": "2026-02-22T07:52:59.336271"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Full Freebie Pack",
-      "date": "2026-02-22T07:56:03.985514"
-    },
-    {
-      "slot": "keyword",
-      "topic": "best educational printables for homeschool families",
-      "date": "2026-02-22T09:05:15.261420"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Stickers Pack",
-      "date": "2026-02-22T09:10:51.180767"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Skyscraper",
-      "date": "2026-02-22T20:58:50.462868"
-    },
-    {
-      "slot": "keyword",
-      "topic": "spelling practice worksheets for elementary students",
-      "date": "2026-02-23T22:38:33.511548"
-    },
-    {
-      "slot": "keyword",
-      "topic": "cryptogram puzzles for kids beginners",
-      "date": "2026-02-27T15:55:55.617144"
-    },
-    {
-      "slot": "keyword",
-      "topic": "spot the difference puzzles for kids printable",
-      "date": "2026-02-27T16:51:54.470176"
-    },
-    {
-      "slot": "keyword",
-      "topic": "how to make learning fun for reluctant learners",
-      "date": "2026-02-27T18:46:28.688766"
-    },
-    {
-      "slot": "keyword",
-      "topic": "printable logic puzzles for kids ages 6-10",
-      "date": "2026-02-27T20:24:45.844958"
+      "date": "2026-03-02T23:03:06.905365"
     },
     {
       "slot": "keyword",
       "topic": "sudoku puzzles for beginners kids",
-      "date": "2026-02-27T20:40:36.952560"
+      "date": "2026-03-02T23:11:29.786152"
     },
     {
       "slot": "keyword",
-      "topic": "how to teach logical reasoning to kids",
-      "date": "2026-02-28T09:02:53.698505"
+      "topic": "counting exercises for preschoolers printable",
+      "date": "2026-03-02T23:16:59.808642"
+    },
+    {
+      "slot": "keyword",
+      "topic": "spelling practice worksheets for elementary students",
+      "date": "2026-03-02T23:29:47.460309"
+    },
+    {
+      "slot": "keyword",
+      "topic": "best educational printables for homeschool families",
+      "date": "2026-03-02T23:35:21.047311"
+    },
+    {
+      "slot": "keyword",
+      "topic": "benefits of puzzles for child brain development",
+      "date": "2026-03-02T23:39:40.635797"
+    },
+    {
+      "slot": "keyword",
+      "topic": "fine motor skills worksheets for preschoolers",
+      "date": "2026-03-02T23:44:31.191381"
+    },
+    {
+      "slot": "keyword",
+      "topic": "engaging classroom activities for early learners",
+      "date": "2026-03-02T23:52:20.795345"
     },
     {
       "slot": "product",
-      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.2",
-      "date": "2026-02-28T14:54:54.449117"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Best Coloring Activities for Elementary Kids' Development",
-      "date": "2026-03-01T03:51:05.692538"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Best Educational Printables for Homeschool: Ultimate Guide",
-      "date": "2026-03-01T03:55:31.120160"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Best Fine Motor Skills Worksheets for Preschoolers: The U...",
-      "date": "2026-03-01T04:02:56.905737"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Best Printable Math Worksheets for First Graders: Ultimat...",
-      "date": "2026-03-01T04:11:16.860650"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Best Fine Motor Skills Worksheets for Preschoolers",
-      "date": "2026-03-01T04:44:27.796032"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Best Homeschool Printables: Ultimate Guide",
-      "date": "2026-03-01T04:50:03.078329"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Best Sudoku Puzzles for Beginners Kids: Ultimate Guide",
-      "date": "2026-03-01T04:53:44.449101"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Developmental Coloring Guide for Elementary Kids",
-      "date": "2026-03-01T05:00:23.358306"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Engaging Classroom Activities: Top Early Learner Essentials",
-      "date": "2026-03-01T05:09:08.863946"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Essential Shadow Matching Worksheets for Toddlers & Kids",
-      "date": "2026-03-01T05:15:10.833933"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How Coloring Activities Build Cognitive Skills in Children",
-      "date": "2026-03-01T05:24:41.776494"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How Photorealistic Spot the Difference Puzzles Build Focu...",
-      "date": "2026-03-01T05:32:39.992771"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How Photorealistic Spot the Difference Puzzles Sharpen a ...",
-      "date": "2026-03-01T05:41:41.798477"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How Spot the Difference Activities Boost Observation Skil...",
-      "date": "2026-03-01T05:52:21.541119"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Spot the Difference (Photorealistic) Build Focus in Kids",
-      "date": "2026-03-01T06:06:36.736945"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Teach Logical Reasoning to Kids: The Ultimate Guide",
-      "date": "2026-03-01T06:14:06.342191"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Use a Freebie Pack to Boost Essential Learning Skills",
-      "date": "2026-03-01T06:23:29.130257"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Use Cooking Activities to Boost Executive Function...",
-      "date": "2026-03-01T06:33:45.252881"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Use Creative Clip Art to Boost Fine Motor & Cognit...",
-      "date": "2026-03-01T06:40:47.070857"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Use Four In A Row to Unlock Your Child's Strategic...",
-      "date": "2026-03-01T06:50:08.612859"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Use Kids Math Equations to Supercharge Number Sense",
-      "date": "2026-03-01T06:57:42.291750"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Use Mazes to Unlock Your Child's Problem-Solving S...",
-      "date": "2026-03-01T07:05:01.470328"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Use Skyscraper to Boost Your Child's Logic Skills",
-      "date": "2026-03-01T07:15:05.913514"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Use Stickers to Boost Fine Motor & Cognitive Skills",
-      "date": "2026-03-01T07:26:14.548156"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How to Use This Activity Book to Boost Your Child's Criti...",
-      "date": "2026-03-01T07:34:43.138850"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How Word Search Activities Boost Reading Skills in Children",
-      "date": "2026-03-01T07:41:36.164316"
-    },
-    {
-      "slot": "keyword",
-      "topic": "How Word Search Activities Build Vocabulary & Focus in Kids",
-      "date": "2026-03-01T07:53:28.946424"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Ultimate Counting Exercises for Preschoolers Printable",
-      "date": "2026-03-01T08:01:33.800211"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Ultimate Critical Thinking Activities for Kindergarten",
-      "date": "2026-03-01T08:14:03.255546"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Ultimate Guide to Printable 1st Grade Math Sheets",
-      "date": "2026-03-01T08:24:57.439061"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Ultimate Printable Logic Puzzles for Kids 6-10",
-      "date": "2026-03-01T08:32:53.250362"
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.1",
+      "date": "2026-03-02T23:59:52.776638"
     },
     {
       "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.3",
-      "date": "2026-03-01T15:02:43.147691"
+      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection",
+      "date": "2026-03-03T00:03:59.491531"
+    },
+    {
+      "slot": "product",
+      "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
+      "date": "2026-03-03T00:09:36.512190"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Maze for Kids",
+      "date": "2026-03-03T00:13:59.735183"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Word Search",
+      "date": "2026-03-03T00:19:36.196561"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Sudoku",
+      "date": "2026-03-03T00:25:18.852578"
+    },
+    {
+      "slot": "keyword",
+      "topic": "shadow matching worksheets for toddlers",
+      "date": "2026-03-03T09:03:25.299585"
+    },
+    {
+      "slot": "keyword",
+      "topic": "word search puzzles for kids vocabulary building",
+      "date": "2026-03-03T09:09:41.259836"
+    },
+    {
+      "slot": "keyword",
+      "topic": "spot the difference puzzles for kids printable",
+      "date": "2026-03-03T09:43:29.621271"
     }
   ]
 }

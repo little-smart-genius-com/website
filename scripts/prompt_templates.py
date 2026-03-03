@@ -161,6 +161,7 @@ ARTICLE TYPE: Informational SEO pillar content (2000+ words)
 }}
 
 ═══ MANDATORY REQUIREMENTS ═══
+STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
 - 6 main sections (H2) — each with a keyword variation or LSI keyword
 - 3 subsections (H3) per H2 = 18 total subsections
 - 5 UNIQUE image concepts (different scenes, compositions, dominant colors)
@@ -286,6 +287,8 @@ PRICE: {product_price}
 URL: {product_url}
 LSI KEYWORDS: {lsi_str}
 AUDIENCE: Parents and teachers of children aged 4-12
+
+STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
 
 ═══ OUTPUT FORMAT (JSON ONLY) ═══
 {{
@@ -429,6 +432,8 @@ DESCRIPTION: {freebie_desc}
 DOWNLOAD: {freebie_url}
 LSI KEYWORDS: {lsi_str}
 AUDIENCE: Parents and teachers of children aged 4-12
+
+STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
 
 ═══ OUTPUT FORMAT (JSON ONLY) ═══
 1. INTENT & E-E-A-T FOCUS (CRITICAL)

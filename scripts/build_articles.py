@@ -1356,10 +1356,10 @@ def build_lead_magnet_html(category: str, freebies: list) -> str:
             <div class="text-center hidden" id="lm-success">
                 <div class="text-4xl mb-4">🚀</div>
                 <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
-                <p class="text-sm text-slate-500 mb-6">Check your inbox. Your freebie is on the way.</p>
+                <p class="text-sm text-slate-500 mb-6">The message has been sent. Please check your inbox, promotions, or spam folder. Your freebie is on the way!</p>
                 <div>
                     <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
-                        Didn't receive it? Click to resend.
+                        Didn't receive it? Click here to resend.
                     </button>
                 </div>
                 <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
@@ -1399,7 +1399,7 @@ def build_lead_magnet_html(category: str, freebies: list) -> str:
                 lmResendCount = 0;
                 document.getElementById('lm-direct-dl-container').classList.add('hidden');
                 var rb = document.getElementById('lm-resend-btn');
-                rb.innerText = "Didn't receive it? Click to resend.";
+                rb.innerText = "Didn't receive it? Click here to resend.";
                 rb.style.display = "inline-block";
                 document.getElementById('lm-success').classList.add('hidden');
                 
@@ -1442,7 +1442,7 @@ def build_lead_magnet_html(category: str, freebies: list) -> str:
                     }});
                     var data = await resp.json();
                     if (data.success) {{
-                        rb.innerText = "📧 Email sent! Check your inbox.";
+                        rb.innerText = "Didn't receive it? Click here to resend.";
                         if (data.downloadLink) lmLastLink = data.downloadLink;
                     }} else {{
                         rb.innerText = "Oops! Something went wrong.";

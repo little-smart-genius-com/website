@@ -325,17 +325,36 @@ def _draw_bottom_bar(draw: ImageDraw.Draw, palette: dict, title_bottom: int):
     )
 
 
-def _draw_top_icon(draw: ImageDraw.Draw, palette: dict):
-    """Draw a small category icon/emoji at the top center."""
-    icon_font = _get_font(50, bold=True)
-    icon_text = palette.get("icon", "⭐")
-    # For multi-byte emoji, this might not render — fallback to category initial
-    try:
-        bbox = draw.textbbox((0, 0), icon_text, font=icon_font)
-        w = bbox[2] - bbox[0]
-        draw.text(((IG_SIZE[0] - w) // 2, 50), icon_text, fill="#ffffff", font=icon_font)
-    except Exception:
-        pass
+def _draw_top_icon(img: Image.Image, palette: dict):
+    """Draw the brand logo at the top center."""
+    logo_path = os.path.join(BASE_DIR, "images", "logo.webp")
+    if not os.path.exists(logo_path):
+        logo_path = os.path.join(BASE_DIR, "images", "logo.png")
+    
+    if os.path.exists(logo_path):
+        try:
+            logo = Image.open(logo_path).convert("RGBA")
+            target_h = 80
+            aspect = logo.width / logo.height
+            target_w = int(target_h * aspect)
+            logo = logo.resize((target_w, target_h), Image.LANCZOS)
+            
+            x = (IG_SIZE[0] - target_w) // 2
+            y = 40
+            img.paste(logo, (x, y), mask=logo)
+        except Exception as e:
+            print(f"Error drawing logo: {e}")
+    else:
+        # Fallback to text icon if no logo found
+        draw = ImageDraw.Draw(img)
+        icon_font = _get_font(50, bold=True)
+        icon_text = palette.get("icon", "⭐")
+        try:
+            bbox = draw.textbbox((0, 0), icon_text, font=icon_font)
+            w = bbox[2] - bbox[0]
+            draw.text(((IG_SIZE[0] - w) // 2, 50), icon_text, fill="#ffffff", font=icon_font)
+        except Exception:
+            pass
 
 
 # ═══════════════════════════════════════════════════════════
@@ -387,8 +406,8 @@ def _create_post_image(title: str, category: str, cover_path: str = None) -> Ima
     # Decorative circles
     _draw_decorative_circles(draw, palette)
 
-    # Top icon
-    _draw_top_icon(draw, palette)
+    # Top icon/logo
+    _draw_top_icon(img, palette)
 
     # Category badge
     _draw_category_badge(draw, category, palette, y_pos=170)

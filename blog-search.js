@@ -125,6 +125,12 @@
         allArticles.forEach(a => {
             if (a.category) cats.add(a.category);
         });
+
+        // Clear existing options except the first one ("All Categories")
+        while (categorySelect.options.length > 1) {
+            categorySelect.remove(1);
+        }
+
         const sorted = [...cats].sort();
         sorted.forEach(cat => {
             const opt = document.createElement('option');
