@@ -512,6 +512,7 @@ class SEOUtils:
 
     @staticmethod
     def extract_keywords(title: str, content: str) -> List[str]:
+<<<<<<< HEAD
         text = re.sub(r'<[^>]+>', ' ', f"{title} {content}").lower()
         text = re.sub(r'[^a-z\s]', ' ', text)
         words = [w for w in text.split() if w]
@@ -556,6 +557,62 @@ class SEOUtils:
             final_kw = [w for w, _ in sorted(single_words.items(), key=lambda x: x[1], reverse=True)[:5]]
             
         return final_kw
+=======
+        """Extract meaningful 2-3 word long-tail keyword phrases (bigrams + trigrams)."""
+        text = re.sub(r'<[^>]+>', '', f"{title} {content}").lower()
+        words = re.findall(r'\b[a-z]{3,}\b', text)
+        
+        # Extensive stop words — filter out all generic/common terms
+        stop = {
+            'the', 'and', 'for', 'that', 'this', 'with', 'from', 'have', 'been',
+            'your', 'they', 'them', 'when', 'will', 'more', 'each', 'also', 'about',
+            'into', 'like', 'make', 'some', 'very', 'than', 'even', 'most', 'much',
+            'such', 'only', 'many', 'over', 'well', 'here', 'then', 'right', 'look',
+            'every', 'good', 'give', 'keep', 'help', 'think', 'just', 'what', 'their',
+            'first', 'where', 'could', 'would', 'should', 'which', 'there', 'other',
+            'after', 'before', 'still', 'while', 'really', 'great', 'these', 'those',
+            'start', 'things', 'being', 'does', 'doesn', 'didn', 'aren', 'isn', 'was',
+            'were', 'are', 'has', 'had', 'not', 'but', 'can', 'all', 'one', 'two',
+            'you', 'our', 'how', 'its', 'get', 'got', 'let', 'say', 'see', 'way',
+            'new', 'now', 'use', 'may', 'try', 'too', 'own', 'why', 'put', 'old',
+            'big', 'few', 'end', 'ask', 'run', 'need', 'know', 'want', 'come', 'take',
+            'work', 'going', 'using', 'because', 'through', 'between', 'different',
+            'another', 'something', 'anything', 'everything', 'without', 'during',
+        }
+        
+        filtered = [w for w in words if w not in stop and len(w) >= 3]
+        
+        # Build bigrams and trigrams
+        from collections import Counter
+        bigrams = [f"{filtered[i]} {filtered[i+1]}" for i in range(len(filtered)-1)]
+        trigrams = [f"{filtered[i]} {filtered[i+1]} {filtered[i+2]}" for i in range(len(filtered)-2)]
+        
+        # Count frequencies
+        bi_freq = Counter(bigrams)
+        tri_freq = Counter(trigrams)
+        
+        # Combine and sort by frequency
+        all_phrases = {}
+        for phrase, count in tri_freq.items():
+            if count >= 2:
+                all_phrases[phrase] = count * 1.5  # Boost trigrams
+        for phrase, count in bi_freq.items():
+            if count >= 2 and phrase not in all_phrases:
+                all_phrases[phrase] = count
+        
+        sorted_phrases = sorted(all_phrases.items(), key=lambda x: x[1], reverse=True)
+        result = [phrase for phrase, _ in sorted_phrases[:10]]
+        
+        # Fallback: if not enough phrases found, use best bigrams regardless of frequency
+        if len(result) < 5:
+            for phrase, count in bi_freq.most_common(20):
+                if phrase not in result:
+                    result.append(phrase)
+                if len(result) >= 10:
+                    break
+        
+        return result[:10]
+>>>>>>> c9eb0efddd03f54b622c0f39f1d9490073bc50a3
 
     @staticmethod
     def generate_meta_description(content: str, max_length: int = 155) -> str:

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog | Little Smart Genius</title>
+<meta content="Expert advice on child development, logic puzzles, and homeschooling tips." name="description"/>
+<link href="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg" rel="icon" type="image/jpeg"/>
+<!-- Open Graph -->
+<meta content="Blog | Little Smart Genius" property="og:title"/>
+<meta content="Expert advice on child development, logic puzzles, and homeschooling tips." property="og:description"/>
+<meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg" property="og:image"/>
+<meta content="https://littlesmartgenius.com/blog.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Blog | Little Smart Genius" name="twitter:title"/>
+<meta content="Expert advice on child development, logic puzzles, and homeschooling tips." name="twitter:description"/>
+<meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg" name="twitter:image"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { brand: '#F48C06' } } }
+        }
+    </script>
+<style>
+        /* --- VOS VARIABLES EXACTES --- */
+        :root {
+            --bg: #FAFAFA;
+            --text: #1E293B;
+            --card: #FFFFFF;
+            --head: rgba(255, 255, 255, 0.95);
+            --bord: #E2E8F0;
+        }
+
+        .dark {
+            --bg: #0F172A;
+            --text: #F8FAFC;
+            --card: #1E293B;
+            --head: rgba(15, 23, 42, 0.95);
+            --bord: #334155;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            transition: 0.3s;
+        }
+
+        /* HEADER - VOTRE STYLE */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--head);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--bord);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px md:padding-0-40px;
+            transition: 0.3s;
+        }
+
+        /* LOGO */
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #F48C06;
+            object-fit: cover;
+        }
+
+        /* NAV LINK */
+        .nav-link {
+            font-weight: 700;
+            color: #64748B;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #F48C06;
+        }
+
+        /* MOBILE MENU */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-bottom: 1px solid var(--bord);
+            flex-direction: column;
+            padding: 20px;
+            z-index: 49;
+        }
+
+        /* TITRE HERO (Pour garder le style) */
+        .hero-title {
+            background: linear-gradient(135deg, #1E293B 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .hero-title {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 1024px) {
+            .top-header {
+                padding: 0 20px;
+            }
+        }
+
+        /* Fade-in animation for dynamic cards */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.35s ease-out;
+        }
+    </style>
+<!-- Google Analytics GA4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1S8G205JX2');
+    </script>
+<style>
+    .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }
+    .social-footer-bar a {
+        width: 40px; height: 40px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(244, 140, 6, 0.1); color: #F48C06;
+        transition: all 0.3s; text-decoration: none;
+    }
+    .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+    .social-footer-bar svg { width: 20px; height: 20px; }
+    .site-footer { text-align: center; padding: 15px 20px 25px; color: #94A3B8; font-size: 0.75rem; }
+    .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+    .site-footer a:hover { color: #F48C06; }
+</style>
+</head>
+
+<body>
+<header class="top-header px-5 md:px-10">
+<a class="flex items-center gap-3 no-underline" href="index.html">
+<img alt="Logo" class="logo-img" src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"/>
+<span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span class="text-brand">.</span></span>
+</a>
+<nav class="hidden lg:flex gap-8">
+<a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="products.html">Store</a>
+<a class="nav-link" href="freebies.html">Freebies</a>
+<a class="nav-link active" href="blog.html">Blog</a>
+<a class="nav-link" href="about.html">About</a>
+<a class="nav-link" href="contact.html">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 mr-3">
+<a class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300" href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg>
+</a>
+<a class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 transition-all duration-300" href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"></path></svg>
+</a>
+<a class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-300" href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"></path></svg>
+</a>
+</div>
+<a class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition" href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank">TpT
+                Store</a>
+<div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition" onclick="toggleTheme()"><span id="theme-icon">🌙</span></div>
+<button class="block lg:hidden text-2xl" onclick="toggleMobileMenu()" style="color:var(--text)">☰</button>
+</div>
+</header>
+<div id="mobile-menu">
+<a class="py-3 border-b border-gray-200 font-bold" href="index.html" style="color:var(--text)">Home</a>
+<a class="py-3 border-b border-gray-200 font-bold" href="products.html" style="color:var(--text)">Store</a>
+<a class="py-3 border-b border-gray-200 font-bold" href="freebies.html" style="color:var(--text)">Freebies</a>
+<a class="py-3 border-b border-gray-200 font-bold text-brand" href="blog.html">Blog</a>
+<a class="py-3 border-b border-gray-200 font-bold" href="about.html" style="color:var(--text)">About</a>
+<a class="py-3 font-bold" href="contact.html" style="color:var(--text)">Contact</a>
+<a class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg hover:bg-brand transition" href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank">Visit
+            TpT Store</a>
+</div>
+<main class="pt-[100px] pb-20 px-5 md:px-10 max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h1 class="text-4xl md:text-5xl font-extrabold mb-4 hero-title">Our Blog</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                Insights, activities, and tips for raising smart kids.
+            </p>
+<p class="text-sm text-slate-500 mt-2">29 articles • Page 4/4</p>
+</div>
+<!-- SEARCH & FILTER TOOLBAR -->
+<div class="max-w-4xl mx-auto mb-10" id="blog-toolbar">
+<div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+<!-- Search Input -->
+<div class="relative flex-1">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg">🔍</span>
+<input class="w-full pl-11 pr-4 py-3 rounded-xl border font-medium text-sm focus:outline-none focus:ring-2 focus:ring-brand transition" id="blog-search-input" placeholder="Search articles..." style="background: var(--card); border-color: var(--bord); color: var(--text);" type="text"/>
+</div>
+<!-- Category Dropdown -->
+<select class="px-4 py-3 rounded-xl border font-bold text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand transition" id="blog-category-select" style="background: var(--card); border-color: var(--bord); color: var(--text);">
+<option value="">All Categories</option>
+</select>
+<!-- Sort Dropdown -->
+<select class="px-4 py-3 rounded-xl border font-bold text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand transition" id="blog-sort-select" style="background: var(--card); border-color: var(--bord); color: var(--text);">
+<option value="newest">Newest First</option>
+<option value="oldest">Oldest First</option>
+<option value="az">A → Z</option>
+<option value="za">Z → A</option>
+</select>
+<!-- Clear Button -->
+<button class="hidden px-4 py-3 rounded-xl font-bold text-sm bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40 transition cursor-pointer" id="blog-clear-filters">
+                    ✕ Clear
+                </button>
+</div>
+<p class="hidden text-sm font-bold text-brand mt-3" id="blog-result-count"></p>
+</div>
+<!-- STATIC GRID (server-rendered, visible by default) -->
+        <div id="blog-static-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border" style="background: var(--card); border-color: var(--bord);">
+            <a href="articles/homeschool-printables-ultimate-guide-for-parents-teachers.html" class="block">
+                <div class="aspect-video overflow-hidden rounded-t-2xl">
+                    <img src="images/best-homeschool-printables-ultimate-guide-for-parents-teachers-cover-1772340369.webp" alt="Homeschool Printables: Ultimate Guide for Parents &amp; Teachers" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-1 rounded-full">Education</span>
+                        <span class="text-xs text-slate-500">📖 13 min</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold mb-3 hover:text-brand transition leading-snug" style="color: var(--text);">
+                        Homeschool Printables: Ultimate Guide for Parents &amp; Teachers
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
+                        Discover expert-curated homeschool printables for children 4-12. Enhance learning with fun worksheets and activities. Download your PDF resources today!
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-500">March 01, 2026 at 04:50 AM</span>
+                        <span class="text-brand font-bold text-sm">Read More →</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+        <article class="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border" style="background: var(--card); border-color: var(--bord);">
+            <a href="articles/ultimate-guide-to-fine-motor-skills-worksheets-for-preschool.html" class="block">
+                <div class="aspect-video overflow-hidden rounded-t-2xl">
+                    <img src="images/best-fine-motor-skills-worksheets-for-preschoolers-ultimate-guide-cover-1772339904.webp" alt="Ultimate Guide to Fine Motor Skills Worksheets for Preschool" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-1 rounded-full">Creative Arts</span>
+                        <span class="text-xs text-slate-500">📖 12 min</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold mb-3 hover:text-brand transition leading-snug" style="color: var(--text);">
+                        Ultimate Guide to Fine Motor Skills Worksheets for Preschool
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
+                        Boost your preschooler&#x27;s development with our fine motor skills worksheets. Download age-appropriate, hands-on learning activities today!
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-500">March 01, 2026 at 04:44 AM</span>
+                        <span class="text-brand font-bold text-sm">Read More →</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+        </div>
+
+        <!-- DYNAMIC GRID (JS-rendered, hidden by default) -->
+        <div id="blog-dynamic-grid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+        <!-- INFINITE SCROLL SENTINEL -->
+        <div id="blog-scroll-sentinel" class="hidden h-10"></div>
+
+        <!-- PAGINATION NAV -->
+        <div id="blog-pagination-nav">
+<div class="flex items-center justify-center gap-2 mt-12 mb-8 flex-wrap"><a href="blog-3.html" class="px-5 py-3 rounded-xl font-bold text-sm transition bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white" style="color:var(--text)">&larr; Previous</a><a href="blog.html" class="px-4 py-3 rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white transition" style="color:var(--text)">1</a><a href="blog-2.html" class="px-4 py-3 rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white transition" style="color:var(--text)">2</a><a href="blog-3.html" class="px-4 py-3 rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white transition" style="color:var(--text)">3</a><span class="px-4 py-3 rounded-xl font-bold text-sm bg-brand text-white">4</span><span class="px-5 py-3 rounded-xl font-bold text-sm bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 cursor-default">Next &rarr;</span></div>
+</div>
+
+    </main>
+
+<div class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0" id="cookie-banner">
+<div class="flex items-start gap-4">
+<div class="text-3xl">🍪</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                    We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
+                    our <a class="text-brand font-bold hover:underline" href="privacy.html">Privacy Policy</a>.
+                </p>
+<div class="flex gap-3">
+<button class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md" onclick="acceptCookies()">
+                        Accept
+                    </button>
+<button class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition" onclick="closeCookies()">
+                        Decline
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // --- THEME & MENU ---
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').innerHTML = '☀️';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').innerHTML = '🌙';
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').innerHTML = isDark ? '☀️' : '🌙';
+        }
+
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // --- COOKIES ---
+        function acceptCookies() { localStorage.setItem('cookieConsent', 'true'); hideBanner(); }
+        function closeCookies() { hideBanner(); }
+        function hideBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-20', 'opacity-0');
+            setTimeout(() => banner.classList.add('hidden'), 500);
+        }
+
+        // --- INIT ---
+        window.onload = function () {
+            initTheme();
+            // Cookie Check
+            if (!localStorage.getItem('cookieConsent')) {
+                const banner = document.getElementById('cookie-banner');
+                banner.classList.remove('hidden');
+                setTimeout(() => banner.classList.remove('translate-y-20', 'opacity-0'), 100);
+            }
+        };
+    </script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+</body>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+
+    <script>window.__SEARCH_INDEX__={"generated_at": "2026-03-03T13:24:44.001379", "total_articles": 29, "articles": [{"title": "Best Printable Logic Puzzles for Kids 6-10", "slug": "best-printable-logic-puzzles-for-kids-6-10", "date": "March 03, 2026", "iso_date": "2026-03-03T13:09:42.265607", "category": "Critical Thinking", "excerpt": "Fun printable logic puzzles for kids 6-10! Boost problem-solving & critical thinking. Download free worksheets for home or classroom.", "image": "images/best-printable-logic-puzzles-for-kids-6-10-cover-1772542779.webp", "reading_time": 19, "url": "articles/best-printable-logic-puzzles-for-kids-6-10.html", "keywords": ["logic puzzles", "printable logic puzzles", "printable logic", "best printable logic", "logic puzzles kids", "puzzles kids", "critical thinking", "best printable", "problem solving", "logic puzzle"], "word_count": 3906, "slot": "keyword"}, {"title": "How Spot the Difference Boosts Kids' Visual Perception", "slug": "how-spot-the-difference-boosts-kids-visual-perception", "date": "March 01, 2026", "iso_date": "2026-03-01T15:02:42.170753", "category": "Spot the Difference (Photorealistic)", "excerpt": "Boost children's observation and cognitive skills with fun spot-the-difference puzzles for ages 4-12. Get expert tips and resources now!", "image": "images/how-spot-the-difference-activities-boost-visual-perception-in-kids-cover-1772376820.webp", "reading_time": 11, "url": "articles/how-spot-the-difference-boosts-kids-visual-perception.html", "keywords": ["spot difference", "spot difference photorealistic", "difference photorealistic", "difference photorealistic activities", "photorealistic activities kids", "activities kids", "spot difference activities", "especially helpful spot", "helpful spot difference", "found works best"], "word_count": 2368, "slot": "product"}, {"title": "Best Printable Logic Puzzles for Kids 6-10", "slug": "best-printable-logic-puzzles-for-kids-6-10", "date": "March 01, 2026", "iso_date": "2026-03-01T08:32:50.443963", "category": "Critical Thinking", "excerpt": "Get free logic puzzle PDFs for kids 6-10! Printable worksheets make learning fun. Perfect for classroom or homeschool. Download now!", "image": "images/ultimate-printable-logic-puzzles-for-kids-6-10-best-educational-activities-cover-1772353614.webp", "reading_time": 13, "url": "articles/best-printable-logic-puzzles-for-kids-6-10.html", "keywords": ["logic puzzles", "printable logic puzzles", "logic puzzles kids", "ultimate printable logic", "printable logic", "puzzles kids", "ultimate printable", "logic puzzle", "especially helpful ultimate", "helpful ultimate printable"], "word_count": 2781, "slot": "keyword"}, {"title": "Ultimate Guide to Printable 1st Grade Math Sheets", "slug": "ultimate-guide-to-printable-1st-grade-math-sheets", "date": "March 01, 2026", "iso_date": "2026-03-01T08:24:54.272153", "category": "Math Skills", "excerpt": "Free printable 1st grade math worksheets for parents & teachers. Download PDFs to boost learning success and make math fun today!", "image": "images/ultimate-guide-to-printable-1st-grade-math-sheets-best-resources-cover-1772352952.webp", "reading_time": 12, "url": "articles/ultimate-guide-to-printable-1st-grade-math-sheets.html", "keywords": ["printable grade math", "grade math sheets", "grade math", "math sheets", "ultimate guide printable", "guide printable grade", "printable grade", "ultimate guide", "guide printable", "especially helpful ultimate"], "word_count": 2444, "slot": "keyword"}, {"title": "Critical Thinking Games for Kindergarten", "slug": "critical-thinking-games-for-kindergarten", "date": "March 01, 2026", "iso_date": "2026-03-01T08:13:59.941867", "category": "Critical Thinking", "excerpt": "Explore science-backed critical thinking activities for kindergarten. Build logic, reasoning, problem-solving skills with brain-building play. Start now!", "image": "images/ultimate-critical-thinking-activities-for-kindergarten-best-brain-boosting-games-cover-1772352204.webp", "reading_time": 13, "url": "articles/critical-thinking-games-for-kindergarten.html", "keywords": ["critical thinking", "critical thinking activities", "thinking activities kindergarten", "problem solving", "analytical thinking", "ultimate critical thinking", "thinking activities", "activities kindergarten", "logic puzzles", "strategic thinking"], "word_count": 2670, "slot": "keyword"}, {"title": "Printable Counting Worksheets for Preschoolers", "slug": "printable-counting-worksheets-for-preschoolers", "date": "March 01, 2026", "iso_date": "2026-03-01T08:01:29.865594", "category": "Math Skills", "excerpt": "Enhance early math skills with our free preschool counting worksheets. Ideal for homeschool or classroom use. Download printable PDF activities now!", "image": "images/ultimate-counting-exercises-for-preschoolers-printable-best-worksheets-cover-1772351726.webp", "reading_time": 13, "url": "articles/printable-counting-worksheets-for-preschoolers.html", "keywords": ["counting exercises preschoolers", "exercises preschoolers printable", "ultimate counting exercises", "preschoolers printable", "counting exercises", "exercises preschoolers", "ultimate counting", "especially helpful ultimate", "helpful ultimate counting", "counting worksheets"], "word_count": 2799, "slot": "keyword"}, {"title": "Word Search Activities Build Vocabulary & Focus in Kids", "slug": "word-search-activities-build-vocabulary-focus-in-kids", "date": "March 01, 2026", "iso_date": "2026-03-01T07:53:25.890353", "category": "Word Search Activity Worksheet", "excerpt": "Discover how word searches enhance kids' vocabulary, focus, and spelling. Get tips for parents and educators to boost reading skills today!", "image": "images/how-word-search-activities-build-vocabulary-focus-in-kids-the-ultimate-guide-cover-1772351007.webp", "reading_time": 13, "url": "articles/word-search-activities-build-vocabulary-focus-in-kids.html", "keywords": ["word search", "word search activities", "search activities build", "activities build vocabulary", "build vocabulary focus", "vocabulary focus kids", "word searches", "search activities", "activities build", "build vocabulary"], "word_count": 2601, "slot": "keyword"}, {"title": "Boost Reading Skills with Word Searches", "slug": "boost-reading-skills-with-word-searches", "date": "March 01, 2026", "iso_date": "2026-03-01T07:41:33.092546", "category": "Word Search Activity Worksheet", "excerpt": "Boost kids' reading skills with word searches: vocabulary, letter recognition, spelling. Get actionable tips for parents and educators now!", "image": "images/how-word-search-activities-boost-reading-skills-the-ultimate-guide-cover-1772350605.webp", "reading_time": 15, "url": "articles/boost-reading-skills-with-word-searches.html", "keywords": ["word search", "word searches", "boost reading skills", "word search activities", "reading skills", "search activities boost", "activities boost reading", "reading skills children", "boost reading", "search activities"], "word_count": 3056, "slot": "keyword"}, {"title": "Boost Your Child's Critical Thinking with This Activity Book", "slug": "boost-your-childs-critical-thinking-with-this-activity-book", "date": "March 01, 2026", "iso_date": "2026-03-01T07:34:40.081651", "category": "Education", "excerpt": "Boost critical thinking in kids 4-12! Our activity book uses proven, age-specific techniques to develop young minds. Download your copy today!", "image": "images/how-to-use-this-activity-book-to-boost-your-childs-critical-thinking-skills-cover-1772350082.webp", "reading_time": 12, "url": "articles/boost-your-childs-critical-thinking-with-this-activity-book.html", "keywords": ["activity book", "activity book boost", "book boost child", "boost child", "critical thinking", "book boost", "boost child critical", "child critical thinking", "boost child criti", "especially helpful activity"], "word_count": 2569, "slot": "keyword"}, {"title": "Using Stickers to Boost Fine Motor & Cognitive Skills", "slug": "using-stickers-to-boost-fine-motor-cognitive-skills", "date": "March 01, 2026", "iso_date": "2026-03-01T07:26:11.397325", "category": "Creative Arts", "excerpt": "Discover sticker activities that boost fine motor and cognitive skills in kids 4-12. Get age-appropriate strategies for parents and educators.", "image": "images/best-ways-to-use-stickers-to-boost-fine-motor-cognitive-skills-cover-1772349423.webp", "reading_time": 14, "url": "articles/using-stickers-to-boost-fine-motor-cognitive-skills.html", "keywords": ["fine motor", "fine motor cognitive", "motor cognitive skills", "cognitive skills", "stickers boost fine", "boost fine motor", "motor cognitive", "stickers boost", "boost fine", "especially helpful stickers"], "word_count": 2925, "slot": "keyword"}, {"title": "Boost Your Child's Logic Skills with Skyscraper", "slug": "boost-your-childs-logic-skills-with-skyscraper", "date": "March 01, 2026", "iso_date": "2026-03-01T07:15:02.750443", "category": "Critical Thinking", "excerpt": "Use Montessori skyscraper activities to boost logic and fine motor skills. Get age-appropriate cognitive strategies. Start building smarter thinkers today!", "image": "images/how-to-use-skyscraper-to-boost-your-childs-logic-skills-the-ultimate-guide-cover-1772348811.webp", "reading_time": 13, "url": "articles/boost-your-childs-logic-skills-with-skyscraper.html", "keywords": ["boost child logic", "child logic skills", "skyscraper boost child", "boost child", "child logic", "logic skills", "skyscraper boost", "problem solving", "little smart genius", "learning activities"], "word_count": 2706, "slot": "keyword"}, {"title": "Mazes: The Ultimate Problem-Solving Guide for Kids", "slug": "mazes-the-ultimate-problem-solving-guide-for-kids", "date": "March 01, 2026", "iso_date": "2026-03-01T07:04:58.654349", "category": "Problem Solving", "excerpt": "Discover how mazes boost cognitive and motor skills in kids. Get age-appropriate activities and expert tips for parents and educators.", "image": "images/how-to-use-mazes-to-unlock-your-childs-problem-solving-skills-the-ultimate-guide-cover-1772348377.webp", "reading_time": 12, "url": "articles/mazes-the-ultimate-problem-solving-guide-for-kids.html", "keywords": ["problem solving", "mazes unlock child", "unlock child problem", "child problem solving", "problem solving skills", "mazes unlock", "unlock child", "child problem", "maze activities", "solving skills"], "word_count": 2515, "slot": "keyword"}, {"title": "How to Use Kids Math Equations: Ultimate Number Sense Guide", "slug": "how-to-use-kids-math-equations-ultimate-number-sense-guide", "date": "March 01, 2026", "iso_date": "2026-03-01T06:57:39.300162", "category": "Math Skills", "excerpt": "Transform math learning for ages 4-12 with proven kids math equation strategies. Boost number sense and arithmetic skills. Start today!", "image": "images/how-to-use-kids-math-equations-ultimate-number-sense-guide-cover-1772347938.webp", "reading_time": 15, "url": "articles/how-to-use-kids-math-equations-ultimate-number-sense-guide.html", "keywords": ["number sense", "kids math equations", "math equations", "math equations supercharge", "equations supercharge number", "supercharge number sense", "kids math", "mathematical thinking", "little smart genius", "equations supercharge"], "word_count": 3185, "slot": "keyword"}, {"title": "Unlock Your Child's Strategic Thinking with Four In A Row", "slug": "unlock-your-childs-strategic-thinking-with-four-in-a-row", "date": "March 01, 2026", "iso_date": "2026-03-01T06:50:05.519796", "category": "Critical Thinking", "excerpt": "Boost your child's cognitive skills and fine motor development with Four In A Row! Get expert tips and activities from Little Smart Genius.", "image": "images/how-to-use-four-in-a-row-to-unlock-your-childs-strategic-thinking-cover-1772347349.webp", "reading_time": 12, "url": "articles/unlock-your-childs-strategic-thinking-with-four-in-a-row.html", "keywords": ["four row", "unlock child strategic", "unlock child", "four row unlock", "row unlock child", "fine motor skills", "child strategic", "fine motor", "especially helpful four", "helpful four row"], "word_count": 2559, "slot": "keyword"}, {"title": "Creative Clip Art Boosts Fine Motor & Cognitive Skills", "slug": "creative-clip-art-boosts-fine-motor-cognitive-skills", "date": "March 01, 2026", "iso_date": "2026-03-01T06:40:44.079996", "category": "Education", "excerpt": "Fun clip art activities boost fine motor & cognitive skills in kids 4-12. Proven methods for parents & educators. Start enhancing learning today!", "image": "images/best-ways-to-use-creative-clip-art-to-boost-fine-motor-cognitive-skills-cover-1772346932.webp", "reading_time": 15, "url": "articles/creative-clip-art-boosts-fine-motor-cognitive-skills.html", "keywords": ["clip art", "creative clip art", "fine motor", "boost fine motor", "creative clip", "clip art boost", "art boost fine", "boost fine", "fine motor cognitive", "motor cognitive skills"], "word_count": 3130, "slot": "keyword"}, {"title": "Cooking Activities to Boost Executive Function", "slug": "cooking-activities-to-boost-executive-function", "date": "March 01, 2026", "iso_date": "2026-03-01T06:33:42.261551", "category": "Creative Arts", "excerpt": "Boost executive function in kids 4-12 with fun cooking activities. Learn recipes and strategies from an educator. Build life skills today!", "image": "images/how-to-use-cooking-activities-to-boost-executive-function-the-ultimate-guide-cover-1772346329.webp", "reading_time": 12, "url": "articles/cooking-activities-to-boost-executive-function.html", "keywords": ["executive function", "cooking activities boost", "activities boost executive", "boost executive function", "cooking activities", "activities boost", "boost executive", "working memory", "especially helpful cooking", "helpful cooking activities"], "word_count": 2597, "slot": "keyword"}, {"title": "Use a Freebie Pack to Boost Learning Skills: Ultimate Guide", "slug": "use-a-freebie-pack-to-boost-learning-skills-ultimate-guide", "date": "March 01, 2026", "iso_date": "2026-03-01T06:23:26.026464", "category": "Education", "excerpt": "Enhance learning for kids 4-12 with our freebie pack! Get age-appropriate activities, cognitive tips, and hands-on strategies from an experienced teacher.", "image": "images/how-to-use-a-freebie-pack-to-boost-essential-learning-skills-the-ultimate-guide-cover-1772345756.webp", "reading_time": 14, "url": "articles/use-a-freebie-pack-to-boost-learning-skills-ultimate-guide.html", "keywords": ["freebie pack", "freebie pack boost", "essential learning skills", "pack boost essential", "boost essential learning", "learning skills", "pack boost", "essential learning", "freebie packs", "boost essential"], "word_count": 2834, "slot": "keyword"}, {"title": "How to Teach Logical Reasoning to Kids: The Ultimate Guide", "slug": "how-to-teach-logical-reasoning-to-kids-the-ultimate-guide", "date": "March 01, 2026", "iso_date": "2026-03-01T06:14:03.379871", "category": "Critical Thinking", "excerpt": "Discover proven ways to teach logical reasoning to kids 4-12. Boost cognitive skills with fun activities. Start building critical thinkers today!", "image": "images/how-to-teach-logical-reasoning-to-kids-the-ultimate-guide-cover-1772345309.webp", "reading_time": 13, "url": "articles/how-to-teach-logical-reasoning-to-kids-the-ultimate-guide.html", "keywords": ["logical reasoning", "teach logical reasoning", "logical reasoning kids", "reasoning kids ultimate", "kids ultimate guide", "teach logical", "reasoning kids", "ultimate guide", "kids ultimate", "especially helpful teach"], "word_count": 2778, "slot": "keyword"}, {"title": "Photorealistic Spot the Difference: Build Focus in Kids", "slug": "photorealistic-spot-the-difference-build-focus-in-kids", "date": "March 01, 2026", "iso_date": "2026-03-01T06:06:33.616242", "category": "Spot the Difference (Photorealistic)", "excerpt": "Boost your child's focus & observation skills with photorealistic spot the difference! Fun, proven activities for ages 4-12. Try it now!", "image": "images/spot-the-difference-photorealistic-build-focus-in-kids-ultimate-guide-cover-1772344457.webp", "reading_time": 16, "url": "articles/photorealistic-spot-the-difference-build-focus-in-kids.html", "keywords": ["spot difference", "build focus kids", "spot difference photorealistic", "difference photorealistic build", "photorealistic build focus", "focus kids", "build focus", "difference photorealistic", "photorealistic build", "visual discrimination"], "word_count": 3239, "slot": "keyword"}, {"title": "How Spot the Difference Activities Boost Observation Skills", "slug": "how-spot-the-difference-activities-boost-observation-skills", "date": "March 01, 2026", "iso_date": "2026-03-01T05:52:18.588497", "category": "Spot the Difference (Photorealistic)", "excerpt": "Fun spot the difference games boost observation & cognitive skills in kids 4-12. Discover proven strategies to enhance visual perception. Read now!", "image": "images/how-spot-the-difference-activities-boost-observation-skills-the-ultimate-guide-cover-1772343803.webp", "reading_time": 13, "url": "articles/how-spot-the-difference-activities-boost-observation-skills.html", "keywords": ["spot difference", "spot difference activities", "activities boost observation", "observation skills", "difference activities", "activities boost", "difference activities boost", "boost observation skil", "boost observation", "visual discrimination"], "word_count": 2663, "slot": "keyword"}, {"title": "Photorealistic Spot Difference Puzzles Sharpen Child's Mind", "slug": "photorealistic-spot-difference-puzzles-sharpen-childs-mind", "date": "March 01, 2026", "iso_date": "2026-03-01T05:41:38.662717", "category": "Spot the Difference (Photorealistic)", "excerpt": "Enhance your child's observation and critical thinking with our photorealistic puzzles! Perfect for ages 4-12. Explore our educational puzzles now!", "image": "images/how-photorealistic-spot-the-difference-puzzles-sharpen-a-childs-mind-cover-1772343259.webp", "reading_time": 13, "url": "articles/photorealistic-spot-difference-puzzles-sharpen-childs-mind.html", "keywords": ["photorealistic spot difference", "spot difference puzzles", "difference puzzles sharpen", "spot difference", "photorealistic puzzles", "photorealistic spot", "difference puzzles", "puzzles sharpen", "working memory", "especially helpful photorealistic"], "word_count": 2664, "slot": "keyword"}, {"title": "Photorealistic Spot the Difference: Build Focus Guide", "slug": "photorealistic-spot-the-difference-build-focus-guide", "date": "March 01, 2026", "iso_date": "2026-03-01T05:32:37.003068", "category": "Spot the Difference (Photorealistic)", "excerpt": "Boost observation skills in kids 4-12 with photorealistic spot the difference puzzles. Build focus & visual perception. Try free brain games now!", "image": "images/how-photorealistic-spot-the-difference-puzzles-build-focus-the-ultimate-guide-cover-1772342786.webp", "reading_time": 14, "url": "articles/photorealistic-spot-the-difference-build-focus-guide.html", "keywords": ["photorealistic spot difference", "spot difference puzzles", "spot difference", "difference puzzles build", "photorealistic spot", "difference puzzles", "puzzles build focu", "puzzles build", "visual discrimination", "especially helpful photorealistic"], "word_count": 2952, "slot": "keyword"}, {"title": "How Coloring Builds Cognitive Skills: The Ultimate Guide", "slug": "how-coloring-builds-cognitive-skills-the-ultimate-guide", "date": "March 01, 2026", "iso_date": "2026-03-01T05:24:38.906413", "category": "Coloring Book", "excerpt": "Boost kids' cognitive skills with coloring: fine motor, creativity & problem-solving. Get age-specific tips & free resources for parents & educators.", "image": "images/how-coloring-activities-build-cognitive-skills-the-ultimate-guide-cover-1772342221.webp", "reading_time": 14, "url": "articles/how-coloring-builds-cognitive-skills-the-ultimate-guide.html", "keywords": ["coloring activities build", "activities build cognitive", "build cognitive skills", "cognitive skills", "coloring activities", "cognitive skills children", "activities build", "build cognitive", "coloring pages", "coloring page"], "word_count": 2964, "slot": "keyword"}, {"title": "Shadow Matching Worksheets for Toddlers & Kids", "slug": "shadow-matching-worksheets-for-toddlers-kids", "date": "March 01, 2026", "iso_date": "2026-03-01T05:15:07.493290", "category": "Visual Skills", "excerpt": "Boost cognitive & fine motor skills with fun shadow matching worksheets for ages 4-12. Get printable resources & teacher tips. Download now!", "image": "images/essential-shadow-matching-worksheets-best-activities-for-toddlers-kids-cover-1772341859.webp", "reading_time": 15, "url": "articles/shadow-matching-worksheets-for-toddlers-kids.html", "keywords": ["shadow matching worksheets", "shadow matching", "matching worksheets toddlers", "worksheets toddlers kids", "essential shadow matching", "matching worksheets", "worksheets toddlers", "toddlers kids", "essential shadow", "especially helpful essential"], "word_count": 3005, "slot": "keyword"}, {"title": "Engaging Classroom Activities: Ultimate Early Learner Ess", "slug": "engaging-classroom-activities-ultimate-early-learner-ess", "date": "March 01, 2026", "iso_date": "2026-03-01T05:09:02.279964", "category": "Education", "excerpt": "Discover engaging classroom activities that boost child development and enhance cognitive & fine motor skills. Transform your classroom today!", "image": "images/engaging-classroom-activities-ultimate-early-learner-essentials-guide-cover-1772341330.webp", "reading_time": 13, "url": "articles/engaging-classroom-activities-ultimate-early-learner-ess.html", "keywords": ["engaging classroom activities", "classroom activities", "engaging classroom", "classroom activities top", "activities top early", "top early learner", "early learner essentials", "early learner", "especially helpful engaging", "helpful engaging classroom"], "word_count": 2740, "slot": "keyword"}, {"title": "Ultimate Developmental Coloring Guide for Elementary Kids", "slug": "ultimate-developmental-coloring-guide-for-elementary-kids", "date": "March 01, 2026", "iso_date": "2026-03-01T05:00:20.174968", "category": "Coloring Book", "excerpt": "Coloring boosts fine motor skills, creativity & color recognition in kids 4-12. Get tips, printables & Montessori activities. Start the fun today!", "image": "images/ultimate-developmental-coloring-guide-for-elementary-kids-cover-1772340932.webp", "reading_time": 11, "url": "articles/ultimate-developmental-coloring-guide-for-elementary-kids.html", "keywords": ["developmental coloring guide", "developmental coloring", "coloring guide", "coloring guide elementary", "guide elementary kids", "hand eye coordination", "guide elementary", "elementary kids", "especially helpful developmental", "helpful developmental coloring"], "word_count": 2380, "slot": "keyword"}, {"title": "Best Sudoku Puzzles for Beginners Kids: Ultimate Guide", "slug": "best-sudoku-puzzles-for-beginners-kids-ultimate-guide", "date": "March 01, 2026", "iso_date": "2026-03-01T04:53:41.385248", "category": "Math Skills", "excerpt": "Discover fun Sudoku puzzles for kids 4-12. Boost logic & focus with our expert beginner's guide. Explore our top puzzles now!", "image": "images/best-sudoku-puzzles-for-beginners-kids-ultimate-guide-cover-1772340690.webp", "reading_time": 12, "url": "articles/best-sudoku-puzzles-for-beginners-kids-ultimate-guide.html", "keywords": ["best sudoku puzzles", "sudoku puzzles beginners", "puzzles beginners kids", "kids ultimate guide", "sudoku puzzles", "beginners kids ultimate", "best sudoku", "puzzles beginners", "beginners kids", "kids ultimate"], "word_count": 2487, "slot": "keyword"}, {"title": "Homeschool Printables: Ultimate Guide for Parents & Teachers", "slug": "homeschool-printables-ultimate-guide-for-parents-teachers", "date": "March 01, 2026", "iso_date": "2026-03-01T04:50:00.097686", "category": "Education", "excerpt": "Discover expert-curated homeschool printables for children 4-12. Enhance learning with fun worksheets and activities. Download your PDF resources today!", "image": "images/best-homeschool-printables-ultimate-guide-for-parents-teachers-cover-1772340369.webp", "reading_time": 13, "url": "articles/homeschool-printables-ultimate-guide-for-parents-teachers.html", "keywords": ["homeschool printables", "ultimate guide", "homeschool printables ultimate", "printables ultimate guide", "best homeschool printables", "printables ultimate", "especially helpful best", "helpful best homeschool", "little smart genius", "best homeschool"], "word_count": 2681, "slot": "keyword"}, {"title": "Ultimate Guide to Fine Motor Skills Worksheets for Preschool", "slug": "ultimate-guide-to-fine-motor-skills-worksheets-for-preschool", "date": "March 01, 2026", "iso_date": "2026-03-01T04:44:23.906303", "category": "Creative Arts", "excerpt": "Boost your preschooler's development with our fine motor skills worksheets. Download age-appropriate, hands-on learning activities today!", "image": "images/best-fine-motor-skills-worksheets-for-preschoolers-ultimate-guide-cover-1772339904.webp", "reading_time": 12, "url": "articles/ultimate-guide-to-fine-motor-skills-worksheets-for-preschool.html", "keywords": ["fine motor", "fine motor skills", "motor skills", "motor skills worksheets", "pincer grasp", "best fine motor", "skills worksheets preschoolers", "skills worksheets", "especially helpful best", "helpful best fine"], "word_count": 2542, "slot": "keyword"}]};</script>
+    <script src="blog-search.js" defer></script>
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0);">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer" style="text-align: center;">
+            <div style="margin-bottom: 6px;">
+                <a href="terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+<script src="exit-intent.js"></script>
+</body>
+
+</html>

@@ -31,6 +31,7 @@
     <priority>0.7</priority>
   </url>
   <url>
+<<<<<<< HEAD
     <loc>https://littlesmartgenius.com/articles/printable-spot-the-difference-puzzles-for-kids.html</loc>
     <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -74,6 +75,9 @@
   </url>
   <url>
     <loc>https://littlesmartgenius.com/articles/how-word-search-activities-boost-reading-skills-in-children.html</loc>
+=======
+    <loc>https://littlesmartgenius.com/articles/best-printable-logic-puzzles-for-kids-6-10.html</loc>
+>>>>>>> c9eb0efddd03f54b622c0f39f1d9490073bc50a3
     <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -133,8 +137,13 @@
     <priority>0.8</priority>
   </url>
   <url>
+<<<<<<< HEAD
     <loc>https://littlesmartgenius.com/articles/printable-logic-puzzles-for-kids-ages-6-10.html</loc>
     <lastmod>2026-03-02</lastmod>
+=======
+    <loc>https://littlesmartgenius.com/articles/ultimate-guide-to-fine-motor-skills-worksheets-for-preschool.html</loc>
+    <lastmod>2026-03-01</lastmod>
+>>>>>>> c9eb0efddd03f54b622c0f39f1d9490073bc50a3
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
