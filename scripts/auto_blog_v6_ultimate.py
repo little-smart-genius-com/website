@@ -512,52 +512,6 @@ class SEOUtils:
 
     @staticmethod
     def extract_keywords(title: str, content: str) -> List[str]:
-<<<<<<< HEAD
-        text = re.sub(r'<[^>]+>', ' ', f"{title} {content}").lower()
-        text = re.sub(r'[^a-z\s]', ' ', text)
-        words = [w for w in text.split() if w]
-        
-        stop_words = {
-            "this", "that", "with", "from", "have", "been", "your", "they", "them", 
-            "what", "when", "where", "which", "who", "why", "how", "these", "those", 
-            "then", "than", "here", "there", "very", "just", "best", "more", "most", 
-            "also", "some", "such", "only", "same", "their", "will", "would", "could",
-            "should", "much", "many", "every", "each", "and", "the", "a", "an", "in",
-            "of", "to", "for", "is", "are", "on", "at", "by", "it", "as", "or", "be",
-            "can", "we", "you", "our", "not", "but", "all", "any", "no", "yes",
-            "do", "does", "did", "has", "had", "was", "were", "am", "if", "so",
-            "can", "get", "like", "make", "about", "into", "through", "during", "before", 
-            "after", "above", "below", "down", "out", "over", "under", "again", "further", 
-            "once", "there", "when"
-        }
-        
-        phrases = {}
-        for i in range(len(words) - 1):
-            w1, w2 = words[i], words[i+1]
-            if w1 not in stop_words and w2 not in stop_words and len(w1) > 2 and len(w2) > 2:
-                phrase = f"{w1} {w2}"
-                phrases[phrase] = phrases.get(phrase, 0) + 1
-                
-        for i in range(len(words) - 2):
-            w1, w2, w3 = words[i], words[i+1], words[i+2]
-            if w1 not in stop_words and w3 not in stop_words and len(w1) > 2 and len(w3) > 2:
-                structural_stops = {"this", "that", "they", "them", "these", "those", "their", "and", "the"}
-                if w2 not in structural_stops:
-                    phrase = f"{w1} {w2} {w3}"
-                    phrases[phrase] = phrases.get(phrase, 0) + 1.5
-
-        sorted_kw = sorted(phrases.items(), key=lambda x: x[1], reverse=True)
-        final_kw = [phrase for phrase, _ in sorted_kw[:8]]
-        
-        if not final_kw:
-            single_words = {}
-            for w in words:
-                if w.isalpha() and w not in stop_words and len(w) > 4:
-                    single_words[w] = single_words.get(w, 0) + 1
-            final_kw = [w for w, _ in sorted(single_words.items(), key=lambda x: x[1], reverse=True)[:5]]
-            
-        return final_kw
-=======
         """Extract meaningful 2-3 word long-tail keyword phrases (bigrams + trigrams)."""
         text = re.sub(r'<[^>]+>', '', f"{title} {content}").lower()
         words = re.findall(r'\b[a-z]{3,}\b', text)
@@ -612,7 +566,6 @@ class SEOUtils:
                     break
         
         return result[:10]
->>>>>>> c9eb0efddd03f54b622c0f39f1d9490073bc50a3
 
     @staticmethod
     def generate_meta_description(content: str, max_length: int = 155) -> str:
