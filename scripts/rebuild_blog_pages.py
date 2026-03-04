@@ -90,7 +90,7 @@ def generate_pagination(current_page, total_pages, base_name="blog"):
         next_file = f"{base_name}-{current_page + 1}.html"
         parts.append(f'<a href="{next_file}" class="px-5 py-3 rounded-xl font-bold text-sm transition bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white" style="color:var(--text)">Next &rarr;</a>')
     
-    return '<div class="flex items-center justify-center gap-2 mt-12 mb-8 flex-wrap">' + ''.join(parts) + '</div>'
+    return '<div class="flex items-center justify-center gap-2 mt-12 mb-0 flex-wrap">' + ''.join(parts) + '</div>'
 
 
 
