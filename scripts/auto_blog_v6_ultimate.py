@@ -1040,13 +1040,13 @@ Please assemble the final HTML article now. Ensure all [IMAGE_X] placeholders ar
         combined_score = ai_score_100 + local_score
         self.logger.quality_score("Combined SEO Score", combined_score, 200)
 
-        # --- STEP C: Auto-Corrections (2 rounds max) ---
-        for correction_round in range(2):
-            if combined_score >= 170:  # 85% of 200
+        # --- STEP C: Auto-Corrections (5 rounds max) ---
+        for correction_round in range(5):
+            if combined_score >= 184:  # 92% of 200
                 self.logger.success(f"SEO target reached: {combined_score}/200", 2)
                 break
 
-            self.logger.info(f"Correction Round {correction_round + 1}/2 (score: {combined_score}/200)", 2)
+            self.logger.info(f"Correction Round {correction_round + 1}/5 (score: {combined_score}/200)", 2)
             self.apply_seo_corrections()
 
             # Re-check local score
