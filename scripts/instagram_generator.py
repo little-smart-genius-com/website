@@ -219,16 +219,15 @@ def _draw_glassmorphism_card(img: Image.Image, draw: ImageDraw.Draw,
 
 def _draw_category_badge(draw: ImageDraw.Draw, category: str, palette: dict, y_pos: int = 120):
     """Draw a modern category badge/pill."""
-    font = _get_font(26, bold=True)
+    font = _get_font(28, bold=True)
     cat_text = category.upper()
 
-    bbox = draw.textbbox((0, 0), cat_text, font=font)
+    bbox = draw.textbbox((0, 0), cat_text, font=font, anchor="mm")
     text_w = bbox[2] - bbox[0]
-    text_h = bbox[3] - bbox[1]
 
     # Center the pill
-    pill_w = text_w + 50
-    pill_h = text_h + 24
+    pill_w = text_w + 60
+    pill_h = 48
     pill_x = (IG_SIZE[0] - pill_w) // 2
     pill_y = y_pos
 
@@ -240,62 +239,40 @@ def _draw_category_badge(draw: ImageDraw.Draw, category: str, palette: dict, y_p
         fill=accent,
     )
 
-    # Text on pill (dark for contrast)
-    text_x = pill_x + 25
-    text_y = pill_y + 10
+    # Text on pill perfectly centered using mm anchor
+    pill_cx = IG_SIZE[0] // 2
+    pill_cy = pill_y + pill_h // 2
+    
     # Determine text color based on accent brightness
     brightness = (accent[0] * 299 + accent[1] * 587 + accent[2] * 114) / 1000
     text_color = "#1a1a2e" if brightness > 128 else "#ffffff"
-    draw.text((text_x, text_y), cat_text, fill=text_color, font=font)
+    draw.text((pill_cx, pill_cy - 1), cat_text, fill=text_color, font=font, anchor="mm")
 
 
-def _draw_title_centered(draw: ImageDraw.Draw, title: str, y_start: int) -> int:
-    """Draw the article title — large, bold, centered, multi-line with shadow."""
-    font = _get_font(56, bold=True)
-
-    # Word wrap for 1080px with good padding
-    wrapped = textwrap.fill(title, width=20)
-    lines = wrapped.split("\n")[:4]  # Max 4 lines
-
-    line_height = 74
-    total_height = len(lines) * line_height
+def _draw_title_centered(draw: ImageDraw.Draw, lines: list, y_start: int, line_height: int):
+    """Draw the article title — large, bold, perfectly centered, with shadow."""
+    font = _get_font(64, bold=True)
 
     for i, line in enumerate(lines):
-        bbox = draw.textbbox((0, 0), line, font=font)
-        text_w = bbox[2] - bbox[0]
-        x = (IG_SIZE[0] - text_w) // 2
-        y = y_start + i * line_height
+        y = y_start + i * line_height + line_height // 2
 
         # Drop shadow
-        draw.text((x + 3, y + 3), line, fill=(0, 0, 0, 120), font=font)
+        draw.text((IG_SIZE[0] // 2 + 3, y + 3), line, fill=(0, 0, 0, 160), font=font, anchor="mm")
         # Main text
-        draw.text((x, y), line, fill="#ffffff", font=font)
-
-    return y_start + total_height
+        draw.text((IG_SIZE[0] // 2, y), line, fill="#ffffff", font=font, anchor="mm")
 
 
-def _draw_description(draw: ImageDraw.Draw, description: str, y_start: int) -> int:
-    """Draw the meta description paragraph below the title — lighter italic style."""
-    font = _get_font(24, bold=False)
-
-    wrapped = textwrap.fill(description, width=42)
-    lines = wrapped.split("\n")[:4]  # Max 4 lines
-
-    line_height = 34
-    total_height = len(lines) * line_height
-    y = y_start + 20  # Gap after title
+def _draw_description(draw: ImageDraw.Draw, lines: list, y_start: int, line_height: int):
+    """Draw the meta description paragraph below the title — perfectly centered."""
+    font = _get_font(34, bold=False)
 
     for i, line in enumerate(lines):
-        bbox = draw.textbbox((0, 0), line, font=font)
-        text_w = bbox[2] - bbox[0]
-        x = (IG_SIZE[0] - text_w) // 2
+        y = y_start + i * line_height + line_height // 2
 
         # Shadow
-        draw.text((x + 2, y + i * line_height + 2), line, fill=(0, 0, 0, 80), font=font)
+        draw.text((IG_SIZE[0] // 2 + 2, y + 2), line, fill=(0, 0, 0, 140), font=font, anchor="mm")
         # Text in soft white
-        draw.text((x, y + i * line_height), line, fill=(255, 255, 255, 210), font=font)
-
-    return y + total_height
+        draw.text((IG_SIZE[0] // 2, y), line, fill=(255, 255, 255, 230), font=font, anchor="mm")
 
 
 def _draw_bottom_bar(draw: ImageDraw.Draw, palette: dict):
@@ -447,20 +424,47 @@ def _create_post_image(title: str, category: str, description: str = "",
         fill=(255, 255, 255, 80), width=2
     )
 
+    # ── Text layout calculation to perfectly center vertically ──
+    def _wrap_text(text: str, width: int, max_lines: int = 4) -> list:
+        wrapped = textwrap.fill(text, width=width)
+        return wrapped.split("\n")[:max_lines]
+
+    title_lines = _wrap_text(title, width=19, max_lines=4)
+    desc_lines = _wrap_text(description, width=42, max_lines=4) if description else []
+
+    title_line_height = 84
+    desc_line_height = 46
+    
+    title_total_h = len(title_lines) * title_line_height
+    desc_total_h = len(desc_lines) * desc_line_height
+    
+    badge_h = 48
+    gap_badge_title = 35
+    gap_title_desc = 35
+    
+    content_h = badge_h + gap_badge_title + title_total_h
+    if desc_lines:
+        content_h += gap_title_desc + desc_total_h
+        
+    # Vertical bounds (between top decorative line and bottom bar)
+    top_limit = line_y + 10
+    bottom_limit = IG_SIZE[1] - 155
+    
+    # Vertically aligned starting Y
+    start_y = top_limit + (bottom_limit - top_limit - content_h) // 2
+    
     # ── Step 5: Category badge ──
-    badge_y = line_y + 18
+    badge_y = start_y
     _draw_category_badge(draw, category, palette, y_pos=badge_y)
-    badge_font = _get_font(26, bold=True)
-    badge_bbox = draw.textbbox((0, 0), category.upper(), font=badge_font)
-    badge_bottom = badge_y + (badge_bbox[3] - badge_bbox[1]) + 30
-
+    
     # ── Step 6: Title — centered ──
-    title_y = badge_bottom + 20
-    title_bottom = _draw_title_centered(draw, title, title_y)
-
+    title_y = badge_y + badge_h + gap_badge_title
+    _draw_title_centered(draw, title_lines, title_y, line_height=title_line_height)
+    
     # ── Step 7: Meta description paragraph ──
-    if description:
-        _draw_description(draw, description, title_bottom)
+    if desc_lines:
+        desc_y = title_y + title_total_h + gap_title_desc
+        _draw_description(draw, desc_lines, desc_y, line_height=desc_line_height)
 
     # ── Step 8: Bottom branded bar ──
     _draw_bottom_bar(draw, palette)
