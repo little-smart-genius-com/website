@@ -249,17 +249,16 @@ def _draw_category_badge(draw: ImageDraw.Draw, category: str, palette: dict, y_p
     draw.text((text_x, text_y), cat_text, fill=text_color, font=font)
 
 
-def _draw_title_centered(draw: ImageDraw.Draw, title: str, palette: dict):
-    """Draw the article title with premium styling — centered, multi-line, shadow."""
-    font = _get_font(52, bold=True)
+def _draw_title_centered(draw: ImageDraw.Draw, title: str, y_start: int) -> int:
+    """Draw the article title — large, bold, centered, multi-line with shadow."""
+    font = _get_font(56, bold=True)
 
-    # Word wrap for 1080px with padding
-    wrapped = textwrap.fill(title, width=22)
+    # Word wrap for 1080px with good padding
+    wrapped = textwrap.fill(title, width=20)
     lines = wrapped.split("\n")[:4]  # Max 4 lines
 
-    line_height = 72
+    line_height = 74
     total_height = len(lines) * line_height
-    y_start = (IG_SIZE[1] - total_height) // 2 - 20  # Slightly above center
 
     for i, line in enumerate(lines):
         bbox = draw.textbbox((0, 0), line, font=font)
@@ -267,158 +266,206 @@ def _draw_title_centered(draw: ImageDraw.Draw, title: str, palette: dict):
         x = (IG_SIZE[0] - text_w) // 2
         y = y_start + i * line_height
 
-        # Drop shadow (offset)
-        draw.text((x + 3, y + 3), line, fill="#00000055", font=font)
+        # Drop shadow
+        draw.text((x + 3, y + 3), line, fill=(0, 0, 0, 120), font=font)
         # Main text
         draw.text((x, y), line, fill="#ffffff", font=font)
 
     return y_start + total_height
 
 
-def _draw_bottom_bar(draw: ImageDraw.Draw, palette: dict, title_bottom: int):
-    """Draw the branded bottom section with name, URL, and decorative line."""
+def _draw_description(draw: ImageDraw.Draw, description: str, y_start: int) -> int:
+    """Draw the meta description paragraph below the title — lighter italic style."""
+    font = _get_font(24, bold=False)
+
+    wrapped = textwrap.fill(description, width=42)
+    lines = wrapped.split("\n")[:4]  # Max 4 lines
+
+    line_height = 34
+    total_height = len(lines) * line_height
+    y = y_start + 20  # Gap after title
+
+    for i, line in enumerate(lines):
+        bbox = draw.textbbox((0, 0), line, font=font)
+        text_w = bbox[2] - bbox[0]
+        x = (IG_SIZE[0] - text_w) // 2
+
+        # Shadow
+        draw.text((x + 2, y + i * line_height + 2), line, fill=(0, 0, 0, 80), font=font)
+        # Text in soft white
+        draw.text((x, y + i * line_height), line, fill=(255, 255, 255, 210), font=font)
+
+    return y + total_height
+
+
+def _draw_bottom_bar(draw: ImageDraw.Draw, palette: dict):
+    """Draw the branded bottom section: horizontal line + brand name + URL."""
     accent = palette["accent"]
 
     # Horizontal decorative line
-    line_y = IG_SIZE[1] - 200
-    line_margin = 200
+    line_y = IG_SIZE[1] - 155
+    line_margin = 260
     draw.line(
         [(line_margin, line_y), (IG_SIZE[0] - line_margin, line_y)],
-        fill=accent, width=3
+        fill=(255, 255, 255, 100), width=2
     )
 
-    # Small diamond accents on line ends
-    diamond_size = 8
-    for dx in [line_margin, IG_SIZE[0] - line_margin]:
-        draw.polygon([
-            (dx, line_y - diamond_size),
-            (dx + diamond_size, line_y),
-            (dx, line_y + diamond_size),
-            (dx - diamond_size, line_y),
-        ], fill=accent)
-
-    # Brand name
-    brand_font = _get_font(32, bold=True)
-    brand_bbox = draw.textbbox((0, 0), BRAND_NAME, font=brand_font)
+    # Brand name — bold, uppercase style
+    brand_font = _get_font(28, bold=True)
+    brand_text = BRAND_NAME.upper()
+    brand_bbox = draw.textbbox((0, 0), brand_text, font=brand_font)
     brand_w = brand_bbox[2] - brand_bbox[0]
     draw.text(
-        ((IG_SIZE[0] - brand_w) // 2, IG_SIZE[1] - 160),
-        BRAND_NAME, fill=accent, font=brand_font
+        ((IG_SIZE[0] - brand_w) // 2, IG_SIZE[1] - 120),
+        brand_text, fill=accent, font=brand_font
     )
 
-    # Tagline
-    tag_font = _get_font(22, bold=False)
-    tag_bbox = draw.textbbox((0, 0), BRAND_TAGLINE, font=tag_font)
-    tag_w = tag_bbox[2] - tag_bbox[0]
-    draw.text(
-        ((IG_SIZE[0] - tag_w) // 2, IG_SIZE[1] - 118),
-        BRAND_TAGLINE, fill="#ffffffbb", font=tag_font
-    )
-
-    # URL
+    # URL below brand name
     url_font = _get_font(20, bold=False)
-    url_bbox = draw.textbbox((0, 0), BRAND_URL, font=url_font)
+    url_text = f"www.{BRAND_URL}"
+    url_bbox = draw.textbbox((0, 0), url_text, font=url_font)
     url_w = url_bbox[2] - url_bbox[0]
     draw.text(
         ((IG_SIZE[0] - url_w) // 2, IG_SIZE[1] - 80),
-        BRAND_URL, fill="#ffffff88", font=url_font
+        url_text, fill=(255, 255, 255, 160), font=url_font
     )
 
 
-def _draw_top_icon(img: Image.Image, palette: dict):
-    """Draw the brand logo at the top center."""
+def _draw_top_icon(img: Image.Image, palette: dict) -> int:
+    """Draw the brand logo at the top center. Returns the bottom Y position."""
     logo_path = os.path.join(BASE_DIR, "images", "banners", "Little_Smart_Genius_Logo.webp")
     if not os.path.exists(logo_path):
         logo_path = os.path.join(BASE_DIR, "images", "logo.png")
     
+    logo_bottom = 120  # default
     if os.path.exists(logo_path):
         try:
             logo = Image.open(logo_path).convert("RGBA")
-            target_h = 80
+            target_h = 90
             aspect = logo.width / logo.height
             target_w = int(target_h * aspect)
             logo = logo.resize((target_w, target_h), Image.LANCZOS)
             
             x = (IG_SIZE[0] - target_w) // 2
-            y = 40
+            y = 35
             img.paste(logo, (x, y), mask=logo)
+            logo_bottom = y + target_h
         except Exception as e:
             print(f"Error drawing logo: {e}")
     else:
-        # Fallback to text icon if no logo found
+        # Fallback to text icon
         draw = ImageDraw.Draw(img)
         icon_font = _get_font(50, bold=True)
         icon_text = palette.get("icon", "⭐")
         try:
             bbox = draw.textbbox((0, 0), icon_text, font=icon_font)
             w = bbox[2] - bbox[0]
-            draw.text(((IG_SIZE[0] - w) // 2, 50), icon_text, fill="#ffffff", font=icon_font)
+            draw.text(((IG_SIZE[0] - w) // 2, 45), icon_text, fill="#ffffff", font=icon_font)
+            logo_bottom = 100
         except Exception:
             pass
+    return logo_bottom
+
+
+def _draw_frame_border(draw: ImageDraw.Draw):
+    """Draw a subtle thin frame border around the image edges."""
+    margin = 22
+    draw.rounded_rectangle(
+        [margin, margin, IG_SIZE[0] - margin, IG_SIZE[1] - margin],
+        radius=4,
+        outline=(255, 255, 255, 60),
+        width=2
+    )
 
 
 # ═══════════════════════════════════════════════════════════
 # MAIN POST CREATION
 # ═══════════════════════════════════════════════════════════
 
-def _create_post_image(title: str, category: str, cover_path: str = None) -> Image.Image:
-    """Create a premium 1080x1080 Instagram post image."""
+def _create_post_image(title: str, category: str, description: str = "",
+                       cover_path: str = None) -> Image.Image:
+    """
+    Create a premium 1080x1080 Instagram post image.
+    
+    Design: Cover image as lightly blurred background (still visible),
+    semi-transparent overlay, logo, category badge, title, description, brand footer.
+    """
     palette = _get_palette(category)
 
+    # ── Step 1: Background ──
     if cover_path and os.path.exists(cover_path):
-        # Use cover image as background
-        img = Image.open(cover_path).convert("RGB")
-        w, h = img.size
+        # Use cover image as background with LIGHT blur
+        bg = Image.open(cover_path).convert("RGB")
+        w, h = bg.size
         min_dim = min(w, h)
         left = (w - min_dim) // 2
         top = (h - min_dim) // 2
-        img = img.crop((left, top, left + min_dim, top + min_dim))
-        img = img.resize(IG_SIZE, Image.LANCZOS)
+        bg = bg.crop((left, top, left + min_dim, top + min_dim))
+        bg = bg.resize(IG_SIZE, Image.LANCZOS)
 
-        # Strong dark overlay for readability + brand feel
+        # Light Gaussian blur — cover remains visible
+        bg = bg.filter(ImageFilter.GaussianBlur(radius=10))
+
+        # Semi-transparent dark overlay with category tint
         overlay = Image.new("RGBA", IG_SIZE, (0, 0, 0, 0))
         overlay_draw = ImageDraw.Draw(overlay)
-
-        # Gradient overlay: transparent at top, dark at bottom
+        gs = palette["gradient_start"]
+        # Uniform darkening overlay — not too heavy so cover shows through
         for y in range(IG_SIZE[1]):
             ratio = y / IG_SIZE[1]
-            alpha = int(80 + 140 * ratio)  # 80 at top, 220 at bottom
-            gs = palette["gradient_start"]
-            overlay_draw.line([(0, y), (IG_SIZE[0], y)], fill=(gs[0]//3, gs[1]//3, gs[2]//3, alpha))
-
-        img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
-
-        # Add glassmorphism title card
-        card_margin = 80
-        card_top = 280
-        card_bottom = IG_SIZE[1] - 240
-        img = _draw_glassmorphism_card(
-            img, ImageDraw.Draw(img),
-            (card_margin, card_top, IG_SIZE[0] - card_margin, card_bottom),
-            radius=25, opacity=50
-        )
+            # Darker at top and bottom, lighter in the middle
+            if ratio < 0.15:
+                alpha = int(160 - ratio * 400)
+            elif ratio > 0.85:
+                alpha = int(80 + (ratio - 0.85) * 600)
+            else:
+                alpha = 110
+            overlay_draw.line(
+                [(0, y), (IG_SIZE[0], y)],
+                fill=(gs[0] // 4, gs[1] // 4, gs[2] // 4, alpha)
+            )
+        img = Image.alpha_composite(bg.convert("RGBA"), overlay).convert("RGB")
     else:
-        # Premium gradient background
+        # Fallback: premium gradient background
         img = _create_premium_gradient(palette)
 
+    # Convert to RGBA for all compositing
+    img = img.convert("RGBA")
     draw = ImageDraw.Draw(img)
 
-    # Decorative circles
-    _draw_decorative_circles(draw, palette)
+    # ── Step 2: Subtle frame border ──
+    _draw_frame_border(draw)
 
-    # Top icon/logo
-    _draw_top_icon(img, palette)
+    # ── Step 3: Logo at top center ──
+    logo_bottom = _draw_top_icon(img, palette)
 
-    # Category badge
-    _draw_category_badge(draw, category, palette, y_pos=170)
+    # ── Step 4: Decorative line below logo ──
+    line_y = logo_bottom + 12
+    line_margin = 340
+    draw.line(
+        [(line_margin, line_y), (IG_SIZE[0] - line_margin, line_y)],
+        fill=(255, 255, 255, 80), width=2
+    )
 
-    # Title
-    title_bottom = _draw_title_centered(draw, title, palette)
+    # ── Step 5: Category badge ──
+    badge_y = line_y + 18
+    _draw_category_badge(draw, category, palette, y_pos=badge_y)
+    badge_font = _get_font(26, bold=True)
+    badge_bbox = draw.textbbox((0, 0), category.upper(), font=badge_font)
+    badge_bottom = badge_y + (badge_bbox[3] - badge_bbox[1]) + 30
 
-    # Bottom branded bar
-    _draw_bottom_bar(draw, palette, title_bottom)
+    # ── Step 6: Title — centered ──
+    title_y = badge_bottom + 20
+    title_bottom = _draw_title_centered(draw, title, title_y)
 
-    return img
+    # ── Step 7: Meta description paragraph ──
+    if description:
+        _draw_description(draw, description, title_bottom)
+
+    # ── Step 8: Bottom branded bar ──
+    _draw_bottom_bar(draw, palette)
+
+    return img.convert("RGB")
 
 
 # ═══════════════════════════════════════════════════════════
@@ -541,9 +588,16 @@ def generate_instagram_post(
     category = article_data.get("category", "Education")
     keyword = article_data.get("primary_keyword", "")
     excerpt = article_data.get("excerpt", "")[:140]
+    description = article_data.get("meta_description", excerpt)[:160]
+
+    # Resolve cover image path from article data if not explicitly provided
+    if not cover_image_path:
+        cover_rel = article_data.get("image", "")
+        if cover_rel and os.path.exists(cover_rel):
+            cover_image_path = cover_rel
 
     # --- Create premium image ---
-    img = _create_post_image(title, category, cover_image_path)
+    img = _create_post_image(title, category, description, cover_image_path)
 
     # Save as high-quality JPEG
     ts = int(datetime.now().timestamp())
