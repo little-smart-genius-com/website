@@ -896,6 +896,18 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
                             img = Image.open(BytesIO(data)).convert("RGB")
                             img.thumbnail((1200, 1200))  # cap size like V4
                             img.save(out_path, "WEBP", quality=85, optimize=True, method=6)
+                            
+                            # Auto-generate lightweight thumbnail for cover images only
+                            if idx == 0:
+                                thumb_path = out_path.replace(".webp", "-thumb.webp")
+                                if img.width > 600:
+                                    aspect_ratio = img.height / img.width
+                                    new_height = int(600 * aspect_ratio)
+                                    thumb_img = img.resize((600, new_height), Image.LANCZOS)
+                                else:
+                                    thumb_img = img.copy()
+                                thumb_img.save(thumb_path, "WEBP", quality=80, optimize=True)
+                                
                             size_kb = os.path.getsize(out_path) // 1024
                             self.logger.image_saved(out_name, size_kb)
                             self.logger.success(f"Image {idx+1} saved ({size_kb}KB) attempt {attempt+1}", 3)

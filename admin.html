@@ -1109,6 +1109,9 @@
             <div class="tab" data-tab="runs" data-tip="Historique des exécutions GitHub Actions">📋 Runs</div>
             <div class="tab" data-tab="apikeys" data-tip="Gérer et tester les clés API Pollinations">🔑 API Keys</div>
             <div class="tab" data-tab="guide" data-tip="Guide complet d'utilisation du dashboard">📚 Guide</div>
+            <div class="tab" data-tab="media" data-tip="Instagram & Thumbnails generation">📸 Media</div>
+            <div class="tab" data-tab="gallery" data-tip="Voir et regénérer les images de chaque article">🖼️ Gallery
+            </div>
         </div>
 
         <!-- ═══════ OVERVIEW ═══════ -->
@@ -1815,6 +1818,58 @@
 
     </div>
 
+    <!-- ═══════ MEDIA PANEL ═══════ -->
+    <div class="panel" id="panel-media">
+        <div class="panel-header">
+            <h2>📸 Media — Instagram & Thumbnails</h2>
+        </div>
+
+        <div class="stats-grid" style="margin-bottom:24px">
+            <div class="stat-card pink">
+                <div class="stat-label">Instagram Posts</div>
+                <div class="stat-value" id="igCount">—</div>
+                <div class="stat-sub">Images générées</div>
+            </div>
+            <div class="stat-card cyan">
+                <div class="stat-label">Thumbnails</div>
+                <div class="stat-value" id="thumbCount">—</div>
+                <div class="stat-sub">Cover thumbnails</div>
+            </div>
+        </div>
+
+        <div class="action-grid">
+            <div class="action-card">
+                <div class="icon">📸</div>
+                <h3>Générer Instagram</h3>
+                <p>Regénère TOUS les posts Instagram (24 articles) avec le nouveau logo.</p>
+                <button class="btn btn-brand" onclick="runMediaAction('instagram')" id="btnIg">🚀 Lancer</button>
+            </div>
+            <div class="action-card">
+                <div class="icon">🖼️</div>
+                <h3>Générer Thumbnails</h3>
+                <p>Crée les miniatures (-thumb.webp) pour toutes les covers existantes.</p>
+                <button class="btn btn-cyan" onclick="runMediaAction('thumbnails')" id="btnThumb">🚀 Lancer</button>
+            </div>
+        </div>
+
+        <div id="mediaLog"
+            style="margin-top:20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-size:.78rem;color:var(--text-dim);max-height:300px;overflow-y:auto;display:none">
+        </div>
+    </div>
+
+    <!-- ═══════ GALLERY PANEL ═══════ -->
+    <div class="panel" id="panel-gallery">
+        <div class="panel-header">
+            <h2>🖼️ Gallery — Images par Article</h2>
+            <button class="btn btn-brand btn-sm" onclick="loadGallery()">🔄 Rafraîchir</button>
+        </div>
+        <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:16px">
+            Cliquez sur un article pour voir ses images (cover + contenu). Utilisez le bouton <strong>Regénérer</strong>
+            pour recréer une image via l'IA.
+        </p>
+        <div id="galleryList" style="display:flex;flex-direction:column;gap:12px"></div>
+    </div>
+
     <!-- ═══════ MODALS ═══════ -->
     <div class="modal-overlay" id="deleteModal">
         <div class="modal">
@@ -1908,7 +1963,7 @@
         async function api(action, params = {}, method = "GET") { const qs = new URLSearchParams({ action, ...params }).toString(); const res = await fetch(`${API}?${qs}`, { method, headers: { Authorization: `Bearer ${TOKEN}` } }); if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error || `HTTP ${res.status}`) } return res.json() }
 
         // ═══════ TABS ═══════
-        document.getElementById("tabsBar").addEventListener("click", e => { const tab = e.target.closest(".tab"); if (!tab) return; const name = tab.dataset.tab; document.querySelectorAll(".tab").forEach(t => t.classList.remove("active")); document.querySelectorAll(".panel").forEach(p => p.classList.remove("active")); tab.classList.add("active"); document.getElementById(`panel-${name}`).classList.add("active"); const loads = { articles: loadArticles, health: loadHealth, topics: () => { loadTopics(); loadKeywordsEditor() }, backups: loadSnapshots, runs: loadRuns, apikeys: renderApiKeysManager }; if (loads[name] && !document.getElementById(`panel-${name}`).dataset.loaded) { loads[name](); document.getElementById(`panel-${name}`).dataset.loaded = "1" } });
+        document.getElementById("tabsBar").addEventListener("click", e => { const tab = e.target.closest(".tab"); if (!tab) return; const name = tab.dataset.tab; document.querySelectorAll(".tab").forEach(t => t.classList.remove("active")); document.querySelectorAll(".panel").forEach(p => p.classList.remove("active")); tab.classList.add("active"); document.getElementById(`panel-${name}`).classList.add("active"); const loads = { articles: loadArticles, health: loadHealth, topics: () => { loadTopics(); loadKeywordsEditor() }, backups: loadSnapshots, runs: loadRuns, apikeys: renderApiKeysManager, media: loadMediaStats, gallery: loadGallery }; if (loads[name] && !document.getElementById(`panel-${name}`).dataset.loaded) { loads[name](); document.getElementById(`panel-${name}`).dataset.loaded = "1" } });
 
         // ═══════ REFRESH ALL ═══════
         async function refreshAll() { try { const [stats, health] = await Promise.all([api("stats"), api("health")]); renderStats(stats); renderHealthOverview(health) } catch (e) { toast("Erreur: " + e.message, "error") } }
@@ -2423,6 +2478,126 @@
         // ═══════ UTILS ═══════
         function esc(s) { if (!s) return ""; const d = document.createElement("div"); d.textContent = s; return d.innerHTML }
         function toast(msg, type = "success") { const t = document.getElementById("toast"); t.textContent = msg; t.className = `toast show ${type}`; setTimeout(() => t.className = "toast", 4000) }
+
+        // ═══════ MEDIA PANEL ═══════
+        async function loadMediaStats() {
+            try {
+                const r = await api("stats");
+                const articles = r.articles || [];
+                // Count instagram files
+                document.getElementById("igCount").textContent = articles.length;
+                // Count thumbnails (based on articles that have cover images)
+                const thumbs = articles.filter(a => a.image && a.image.endsWith('.webp')).length;
+                document.getElementById("thumbCount").textContent = thumbs;
+            } catch (e) {
+                document.getElementById("igCount").textContent = "?";
+                document.getElementById("thumbCount").textContent = "?";
+            }
+        }
+
+        async function runMediaAction(type) {
+            const btn = document.getElementById(type === 'instagram' ? 'btnIg' : 'btnThumb');
+            const log = document.getElementById('mediaLog');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> En cours...';
+            log.style.display = 'block';
+            log.innerHTML = `<p>⏳ Lancement de la génération ${type}...</p>`;
+
+            try {
+                const r = await api("run_script", { script: type === 'instagram' ? 'instagram_generator' : 'optimize_thumbnails' });
+                log.innerHTML += `<p style="color:var(--green)">✅ ${r.message || 'Terminé avec succès!'}</p>`;
+                toast(`${type === 'instagram' ? 'Instagram' : 'Thumbnails'} générés!`, "success");
+                loadMediaStats();
+            } catch (e) {
+                log.innerHTML += `<p style="color:var(--red)">❌ Erreur: ${e.message}</p>`;
+                toast("Erreur: " + e.message, "error");
+            }
+            btn.disabled = false;
+            btn.innerHTML = '🚀 Lancer';
+        }
+
+        // ═══════ GALLERY PANEL ═══════
+        async function loadGallery() {
+            const container = document.getElementById('galleryList');
+            container.innerHTML = '<p style="text-align:center"><span class="spinner"></span> Chargement...</p>';
+
+            try {
+                const r = await api("stats");
+                const articles = r.articles || [];
+                if (!articles.length) { container.innerHTML = '<p>Aucun article trouvé.</p>'; return }
+
+                container.innerHTML = '';
+                articles.forEach((art, idx) => {
+                    const slug = art.slug || '';
+                    const title = esc(art.title || 'Sans titre');
+                    const cover = art.image || '';
+                    // Extract inline images from content HTML
+                    const content = art.content || '';
+                    const imgRegex = /src=['"]\.\.\/([^'"]+)['"]/g;
+                    const inlineImages = [];
+                    let m;
+                    while ((m = imgRegex.exec(content)) !== null) {
+                        if (!m[1].includes('-cover-')) inlineImages.push(m[1]);
+                    }
+
+                    const card = document.createElement('div');
+                    card.className = 'scan-card';
+                    card.style.cursor = 'pointer';
+
+                    // Header (collapsed by default)
+                    card.innerHTML = `
+                        <div class="scan-header" onclick="this.parentElement.querySelector('.gallery-detail').classList.toggle('show')">
+                            <h4>${idx + 1}. ${title}</h4>
+                            <span class="badge badge-info">${1 + inlineImages.length} images</span>
+                        </div>
+                        <div class="gallery-detail" style="display:none;padding-top:12px">
+                            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
+                                <div style="text-align:center">
+                                    <img src="${cover}" style="width:100%;border-radius:10px;border:2px solid var(--brand)" loading="lazy">
+                                    <div style="font-size:.72rem;margin-top:4px;color:var(--brand);font-weight:700">COVER</div>
+                                    <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','cover',0)">🎨 Regénérer</button>
+                                </div>
+                                ${inlineImages.map((img, i) => `
+                                    <div style="text-align:center">
+                                        <img src="${img}" style="width:100%;border-radius:10px;border:1px solid var(--border)" loading="lazy">
+                                        <div style="font-size:.72rem;margin-top:4px;color:var(--text-dim)">Image ${i + 1}</div>
+                                        <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','img${i + 1}',${i + 1})">🎨 Regénérer</button>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+                // Add show/hide CSS
+                if (!document.getElementById('galleryToggleCSS')) {
+                    const style = document.createElement('style');
+                    style.id = 'galleryToggleCSS';
+                    style.textContent = '.gallery-detail.show { display: block !important }';
+                    document.head.appendChild(style);
+                }
+            } catch (e) {
+                container.innerHTML = `<p style="color:var(--red)">Erreur: ${e.message}</p>`;
+            }
+        }
+
+        async function regenerateImage(slug, type, idx) {
+            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" via l'IA Art Director ?\n\nCette action va lancer la pipeline de génération d'image.`);
+            if (!confirmed) return;
+
+            toast(`🎨 Régénération de ${type} pour ${slug}...`, "success");
+            try {
+                const r = await api("regenerate_image", { slug, image_type: type, image_index: idx });
+                toast(`✅ Image ${type} regénérée pour ${slug}!`, "success");
+                // Refresh gallery
+                document.getElementById('panel-gallery').dataset.loaded = '';
+                loadGallery();
+            } catch (e) {
+                toast(`❌ Erreur: ${e.message}`, "error");
+            }
+        }
+
     </script>
 </body>
 

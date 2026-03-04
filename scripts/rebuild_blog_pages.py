@@ -20,6 +20,8 @@ def generate_article_card(article):
     slug = article.get("slug", "")
     url = f'articles/{slug}.html'
     image = esc(article.get("image", ""))
+    if image.endswith(".webp") and not image.endswith("-thumb.webp"):
+        image = image.replace(".webp", "-thumb.webp")
     category = esc(article.get("category", ""))
     excerpt = esc(article.get("excerpt", ""))
     reading_time = article.get("reading_time", 5)

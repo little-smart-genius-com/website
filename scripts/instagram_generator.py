@@ -29,7 +29,7 @@ IG_SIZE = (1080, 1080)
 # ═══════════════════════════════════════════════════════════
 
 BRAND_NAME = "Little Smart Genius"
-BRAND_URL = "littlesmartgenius.com"
+BRAND_URL = "LittleSmartGenius.com"
 BRAND_TAGLINE = "Learning Made Fun!"
 
 # Category-specific color palettes (gradient pairs + accent)
@@ -327,7 +327,7 @@ def _draw_bottom_bar(draw: ImageDraw.Draw, palette: dict, title_bottom: int):
 
 def _draw_top_icon(img: Image.Image, palette: dict):
     """Draw the brand logo at the top center."""
-    logo_path = os.path.join(BASE_DIR, "images", "logo.webp")
+    logo_path = os.path.join(BASE_DIR, "images", "banners", "Little_Smart_Genius_Logo.webp")
     if not os.path.exists(logo_path):
         logo_path = os.path.join(BASE_DIR, "images", "logo.png")
     

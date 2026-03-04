@@ -1914,7 +1914,7 @@ def build_related_articles_html(current_slug, current_category, current_keywords
         url = art.get('url', '#')
         image = art.get('image', '')
         # Thumbnail path for srcset (mobile)
-        thumb_image = image.replace('images/', 'images/thumbs/', 1) if image.startswith('images/') else image
+        thumb_image = image.replace('.webp', '-thumb.webp') if image.endswith('.webp') and not image.endswith('-thumb.webp') else image
         category = art.get('category', '')
         reading_time = art.get('reading_time', 5)
         date = art.get('date', '')
@@ -2167,7 +2167,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     # Image
     image = normalize_image_path(json_data.get('image', 'images/placeholder.webp'))
     # Thumbnail path for srcset (mobile-optimised, ~14KB vs ~80KB)
-    thumb_image = image.replace('images/', 'images/thumbs/', 1) if image.startswith('images/') else image
+    thumb_image = image.replace('.webp', '-thumb.webp') if image.endswith('.webp') and not image.endswith('-thumb.webp') else image
     
     # Custom OpenGraph image
     og_image = f"{SITE_URL}/images/og/{slug}.jpg"
