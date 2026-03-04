@@ -1178,7 +1178,7 @@
             
             window.lmSubmitEmail = function() {
                 var hp = document.getElementById('lm-honeypot').value;
-                if (hp) return;
+                // if (hp) return; // Disabled because aggressive browser autofill triggers this for real users
                 var c = document.getElementById('lm-consent').checked;
                 if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
                 var email = document.getElementById('lm-email').value.trim();

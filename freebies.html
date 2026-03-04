@@ -874,7 +874,7 @@
             errorMsgEl.classList.add('hidden');
             emailInput.classList.remove('input-error');
 
-            if (honeypot) return;
+            // if (honeypot) return; // Disabled because aggressive browser autofills trigger this for real users
 
             if (!email) {
                 emailInput.classList.add('input-error');
