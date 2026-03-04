@@ -445,7 +445,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
             TpT Store</a>
     </div>
 
-    <main class="pt-[100px] pb-20 px-5 md:px-10">
+    <main class="pt-[100px] pb-10 px-5 md:px-10">
 
         <div class="max-w-4xl mx-auto mb-8">
             {breadcrumb_html}
