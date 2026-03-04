@@ -251,60 +251,93 @@ def _draw_category_badge(draw: ImageDraw.Draw, category: str, palette: dict, y_p
 
 def _draw_title_centered(draw: ImageDraw.Draw, lines: list, y_start: int, line_height: int):
     """Draw the article title — large, bold, perfectly centered, with shadow."""
-    font = _get_font(64, bold=True)
+    font = _get_font(76, bold=True)
 
     for i, line in enumerate(lines):
         y = y_start + i * line_height + line_height // 2
 
-        # Drop shadow
-        draw.text((IG_SIZE[0] // 2 + 3, y + 3), line, fill=(0, 0, 0, 160), font=font, anchor="mm")
-        # Main text
+        # Strong drop shadow
+        draw.text((IG_SIZE[0] // 2 + 4, y + 4), line, fill=(0, 0, 0, 200), font=font, anchor="mm")
+        # Pure white text
         draw.text((IG_SIZE[0] // 2, y), line, fill="#ffffff", font=font, anchor="mm")
 
 
 def _draw_description(draw: ImageDraw.Draw, lines: list, y_start: int, line_height: int):
     """Draw the meta description paragraph below the title — perfectly centered."""
-    font = _get_font(34, bold=False)
+    font = _get_font(42, bold=False)
 
     for i, line in enumerate(lines):
         y = y_start + i * line_height + line_height // 2
 
-        # Shadow
-        draw.text((IG_SIZE[0] // 2 + 2, y + 2), line, fill=(0, 0, 0, 140), font=font, anchor="mm")
-        # Text in soft white
-        draw.text((IG_SIZE[0] // 2, y), line, fill=(255, 255, 255, 230), font=font, anchor="mm")
+        # Strong shadow
+        draw.text((IG_SIZE[0] // 2 + 3, y + 3), line, fill=(0, 0, 0, 180), font=font, anchor="mm")
+        # Pure white text
+        draw.text((IG_SIZE[0] // 2, y), line, fill=(255, 255, 255, 255), font=font, anchor="mm")
 
 
-def _draw_bottom_bar(draw: ImageDraw.Draw, palette: dict):
-    """Draw the branded bottom section: horizontal line + brand name + URL."""
+def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict):
+    """Draw the branded bottom section: line + social handles + brand + URL."""
     accent = palette["accent"]
 
-    # Horizontal decorative line
-    line_y = IG_SIZE[1] - 155
-    line_margin = 260
-    draw.line(
-        [(line_margin, line_y), (IG_SIZE[0] - line_margin, line_y)],
-        fill=(255, 255, 255, 100), width=2
-    )
-
     # Brand name — bold, uppercase style
-    brand_font = _get_font(28, bold=True)
+    brand_font = _get_font(30, bold=True)
     brand_text = BRAND_NAME.upper()
     brand_bbox = draw.textbbox((0, 0), brand_text, font=brand_font)
     brand_w = brand_bbox[2] - brand_bbox[0]
     draw.text(
-        ((IG_SIZE[0] - brand_w) // 2, IG_SIZE[1] - 120),
+        ((IG_SIZE[0] - brand_w) // 2, IG_SIZE[1] - 100),
         brand_text, fill=accent, font=brand_font
     )
 
     # URL below brand name
-    url_font = _get_font(20, bold=False)
+    url_font = _get_font(24, bold=False)
     url_text = f"www.{BRAND_URL}"
     url_bbox = draw.textbbox((0, 0), url_text, font=url_font)
     url_w = url_bbox[2] - url_bbox[0]
     draw.text(
-        ((IG_SIZE[0] - url_w) // 2, IG_SIZE[1] - 80),
-        url_text, fill=(255, 255, 255, 160), font=url_font
+        ((IG_SIZE[0] - url_w) // 2, IG_SIZE[1] - 60),
+        url_text, fill=(255, 255, 255, 200), font=url_font
+    )
+
+    # ── Social Handles ──
+    social_font = _get_font(24, bold=False)
+    ig_text = "LittleSmartGenius_com"
+    pin_text = "LittleSmartGenius_com"
+    
+    ig_bbox = draw.textbbox((0, 0), ig_text, font=social_font)
+    pin_bbox = draw.textbbox((0, 0), pin_text, font=social_font)
+    ig_text_w = ig_bbox[2] - ig_bbox[0]
+    pin_text_w = pin_bbox[2] - pin_bbox[0]
+    
+    icon_size = 32
+    spacing = 10
+    block_gap = 60
+    
+    total_social_w = (icon_size + spacing + ig_text_w) + block_gap + (icon_size + spacing + pin_text_w)
+    start_x = (IG_SIZE[0] - total_social_w) // 2
+    social_y = IG_SIZE[1] - 150
+    
+    # Instagram
+    ig_path = os.path.join(BASE_DIR, "images", "banners", "ig_icon.png")
+    if os.path.exists(ig_path):
+        ig_icon = Image.open(ig_path).convert("RGBA").resize((icon_size, icon_size), Image.LANCZOS)
+        img.paste(ig_icon, (start_x, social_y - 4), mask=ig_icon)
+    draw.text((start_x + icon_size + spacing, social_y), ig_text, fill=(255, 255, 255, 240), font=social_font)
+    
+    # Pinterest
+    pin_x = start_x + (icon_size + spacing + ig_text_w) + block_gap
+    pin_path = os.path.join(BASE_DIR, "images", "banners", "pin_icon.png")
+    if os.path.exists(pin_path):
+        pin_icon = Image.open(pin_path).convert("RGBA").resize((icon_size, icon_size), Image.LANCZOS)
+        img.paste(pin_icon, (pin_x, social_y - 4), mask=pin_icon)
+    draw.text((pin_x + icon_size + spacing, social_y), pin_text, fill=(255, 255, 255, 240), font=social_font)
+
+    # Horizontal decorative line
+    line_y = IG_SIZE[1] - 190
+    line_margin = 200
+    draw.line(
+        [(line_margin, line_y), (IG_SIZE[0] - line_margin, line_y)],
+        fill=(255, 255, 255, 120), width=2
     )
 
 
@@ -430,44 +463,51 @@ def _create_post_image(title: str, category: str, description: str = "",
         return wrapped.split("\n")[:max_lines]
 
     title_lines = _wrap_text(title, width=19, max_lines=4)
-    desc_lines = _wrap_text(description, width=42, max_lines=4) if description else []
+    desc_lines = _wrap_text(description, width=38, max_lines=4) if description else []
 
-    title_line_height = 84
-    desc_line_height = 46
+    title_line_height = 92
+    desc_line_height = 54
     
     title_total_h = len(title_lines) * title_line_height
     desc_total_h = len(desc_lines) * desc_line_height
     
     badge_h = 48
-    gap_badge_title = 35
-    gap_title_desc = 35
+    gap_badge_title = 40
+    gap_title_desc = 40
     
     content_h = badge_h + gap_badge_title + title_total_h
     if desc_lines:
         content_h += gap_title_desc + desc_total_h
         
-    # Vertical bounds (between top decorative line and bottom bar)
+    # Vertical bounds (between top decorative line and bottom bar line)
     top_limit = line_y + 10
-    bottom_limit = IG_SIZE[1] - 155
+    bottom_limit = IG_SIZE[1] - 190
     
     # Vertically aligned starting Y
     start_y = top_limit + (bottom_limit - top_limit - content_h) // 2
     
-    # ── Step 5: Category badge ──
+    # ── Step 5: Glassmorphism Card Behind Text ──
+    card_margin = 60
+    card_top = start_y - 40
+    card_bottom = start_y + content_h + 40
+    img = _draw_glassmorphism_card(img, draw, (card_margin, card_top, IG_SIZE[0] - card_margin, card_bottom), radius=30, opacity=60)
+    draw = ImageDraw.Draw(img) # Refresh drawing context after alpha composite
+    
+    # ── Step 6: Category badge ──
     badge_y = start_y
     _draw_category_badge(draw, category, palette, y_pos=badge_y)
     
-    # ── Step 6: Title — centered ──
+    # ── Step 7: Title — centered ──
     title_y = badge_y + badge_h + gap_badge_title
     _draw_title_centered(draw, title_lines, title_y, line_height=title_line_height)
     
-    # ── Step 7: Meta description paragraph ──
+    # ── Step 8: Meta description paragraph ──
     if desc_lines:
         desc_y = title_y + title_total_h + gap_title_desc
         _draw_description(draw, desc_lines, desc_y, line_height=desc_line_height)
 
-    # ── Step 8: Bottom branded bar ──
-    _draw_bottom_bar(draw, palette)
+    # ── Step 9: Bottom branded bar ──
+    _draw_bottom_bar(img, draw, palette)
 
     return img.convert("RGB")
 
