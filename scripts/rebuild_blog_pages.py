@@ -146,7 +146,12 @@ def rebuild_blog_pages():
     else:
         # Fallback if the footer regex fails
         footer_fallback = re.search(r'(</main>.*)</html>', template, re.DOTALL)
-        body_after = footer_fallback.group(1) if footer_fallback else '</main></body>'
+        body_after = footer_fallback.group(1) if footer_fallback else '</main>'
+        
+    # Clean up recursive junk
+    body_after = re.sub(r'</?(body|html)>', '', body_after, flags=re.IGNORECASE)
+    body_after = re.sub(r'<script src="[^"]*(exit-intent|blog-search)\.js"[^>]*></script>', '', body_after, flags=re.IGNORECASE)
+
     
     # Build search index inline data
     search_index_path = os.path.join(PROJECT_ROOT, "search_index.json")
