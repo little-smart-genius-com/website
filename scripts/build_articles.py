@@ -352,7 +352,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         .share-btn.cp:hover {{ background: #64748B; color: #fff; border-color: #64748B; }}
 
         /* SOCIAL FOOTER ICONS */
-        .social-footer-bar {{ display: flex; justify-content: center; gap: 16px; padding: 20px 0 10px; }}
+        .social-footer-bar {{ display: flex; justify-content: center; gap: 16px; padding: 5px 0 5px; }}
         .social-footer-bar a {{
             width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -365,7 +365,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         /* SITE FOOTER TEXT */
         .site-footer {{
             text-align: center;
-            padding: 15px 20px 25px;
+            padding: 5px 0 5px;
             color: #94A3B8;
             font-size: 0.75rem;
         }}
