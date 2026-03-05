@@ -322,7 +322,7 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     draw.rounded_rectangle([lx1, box_y, lx2, box_y+box_h], radius=8, fill=(35, 25, 35, 230))
     draw.rounded_rectangle([lx1+2, box_y+2, lx2-2, box_y+box_h-2], radius=6, outline=(255, 255, 255, 180), width=1)
     
-    draw.text((lx1 + panel_w//2, box_y + box_h//2), f"www.{BRAND_URL}", fill="#FFFFFF", font=_get_font(26, bold=False), anchor="mm")
+    draw.text((lx1 + panel_w//2, box_y + box_h//2), f"www.{BRAND_URL}", fill="#FFFFFF", font=_get_font(26, bold=True), anchor="mm")
     
     # Right Pill
     rx2 = IG_SIZE[0] - margin_x
@@ -345,7 +345,7 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     icon_size = 32
     spacing = 15
     handle = "LittleSmartGenius_com"
-    handle_font = _get_font(26, bold=False)
+    handle_font = _get_font(26, bold=True)
     
     temp_bbox = draw.textbbox((0, 0), handle, font=handle_font)
     handle_w = temp_bbox[2] - temp_bbox[0]
@@ -485,7 +485,8 @@ def _create_post_image(title: str, category: str, description: str = "",
     logo_bottom = _draw_top_icon(img, palette)
 
     # ── Step 4: Decorative line below logo ──
-    line_y = logo_bottom + 12
+    # Create empty margin between logo and brand block
+    line_y = logo_bottom + 35
     line_margin = 340
     draw.line(
         [(line_margin, line_y), (IG_SIZE[0] - line_margin, line_y)],
@@ -548,7 +549,7 @@ def _create_post_image(title: str, category: str, description: str = "",
     temp_bbox = draw.textbbox((0, 0), brand_text, font=brand_font, anchor="mm")
     brand_w = temp_bbox[2] - temp_bbox[0]
     bx, by = IG_SIZE[0] // 2, line_y
-    draw.rectangle([bx - brand_w//2 - 20, by - 16, bx + brand_w//2 + 20, by + 18], fill=(30, 20, 30, 150))
+    draw.rectangle([bx - brand_w//2 - 20, by - 16, bx + brand_w//2 + 20, by + 18], fill=(30, 20, 30, 150), outline=(255, 255, 255, 230), width=2)
     draw.text((bx+2, by+2), brand_text, fill=(0,0,0,180), font=brand_font, anchor="mm")
     draw.text((bx, by), brand_text, fill=palette.get("accent", "#E69A0B"), font=brand_font, anchor="mm")
 
