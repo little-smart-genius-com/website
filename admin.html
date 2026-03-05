@@ -2674,27 +2674,30 @@
                     const health = art.health;
                     const viewUrl = art.viewUrl || '#';
 
-                    // Construct cover URL from slug pattern (GitHub raw URL)
-                    const coverUrl = coverCount > 0
-                        ? `https://littlesmartgenius.com/images/${slug}-cover.webp`
+                    // Use ACTUAL filenames from API (includes timestamps)
+                    const coverFiles = art.coverFiles || [];
+                    const contentImgFiles = art.contentImgFiles || [];
+                    const coverUrl = coverFiles.length > 0
+                        ? `https://littlesmartgenius.com/images/${coverFiles[0]}`
                         : '';
 
                     const card = document.createElement('div');
                     card.className = 'scan-card';
                     card.style.cursor = 'pointer';
 
-                    // Build content image grid
+                    // Build content image grid using ACTUAL filenames
                     let contentImgsHtml = '';
-                    for (let i = 1; i <= contentImgCount; i++) {
-                        const imgUrl = `https://littlesmartgenius.com/images/${slug}-img${i}.webp`;
+                    contentImgFiles.forEach((fileName, i) => {
+                        const imgUrl = `https://littlesmartgenius.com/images/${fileName}`;
+                        const imgIdx = (fileName.match(/-img(\d+)/) || [0, i + 1])[1];
                         contentImgsHtml += `
                             <div style="text-align:center">
                                 <img src="${imgUrl}" style="width:100%;border-radius:10px;border:1px solid var(--border)" loading="lazy" onerror="this.style.opacity='0.3';this.alt='Non trouvée'">
-                                <div style="font-size:.72rem;margin-top:4px;color:var(--text-dim)">Image ${i}</div>
-                                <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','img${i}',${i})">🎨 Regénérer</button>
+                                <div style="font-size:.72rem;margin-top:4px;color:var(--text-dim)">Image ${imgIdx}</div>
+                                <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','img${imgIdx}',${imgIdx})">🎨 Regénérer</button>
                             </div>
                         `;
-                    }
+                    });
 
                     card.innerHTML = `
                         <div class="scan-header" onclick="this.parentElement.querySelector('.gallery-detail').classList.toggle('show')">

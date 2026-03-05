@@ -419,8 +419,14 @@ async function listArticles(env) {
         const slug = a.slug || "";
         const hasHtml = htmlSet.has(`${slug}.html`);
         const hasPost = postSlugs.has(slug);
-        const coverImgs = imgFiles.filter(f => f.name.startsWith(slug) && f.name.includes("-cover"));
+        const coverImgs = imgFiles.filter(f => f.name.startsWith(slug) && f.name.includes("-cover") && !f.name.includes("-thumb"));
         const contentImgs = imgFiles.filter(f => f.name.startsWith(slug) && f.name.includes("-img"));
+        // Sort content images by index (img1, img2, img3...)
+        contentImgs.sort((a, b) => {
+            const idxA = parseInt((a.name.match(/-img(\d+)/) || [0, 0])[1]);
+            const idxB = parseInt((b.name.match(/-img(\d+)/) || [0, 0])[1]);
+            return idxA - idxB;
+        });
         const igPost = igFiles.filter(f => f.name.startsWith(slug));
         let health = "ok";
         if (!hasHtml) health = "error";
@@ -429,6 +435,8 @@ async function listArticles(env) {
         return {
             ...a, hasHtml, hasPost,
             coverCount: coverImgs.length, contentImgCount: contentImgs.length,
+            coverFiles: coverImgs.map(f => f.name),
+            contentImgFiles: contentImgs.map(f => f.name),
             imageCount: coverImgs.length + contentImgs.length,
             hasInstagram: igPost.length > 0, igCount: igPost.length,
             health, viewUrl: `${SITE_URL}/articles/${slug}.html`,
