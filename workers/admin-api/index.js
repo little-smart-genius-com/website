@@ -252,34 +252,59 @@ async function fetchGa4Realtime(env) {
         const token = await getGoogleAccessToken(env);
         if (!token) return { activeUsers: 0 };
 
-        const payload = {
+        // Query 1: Total active users
+        const totalPayload = {
             metrics: [{ name: "activeUsers" }]
         };
 
-        const res = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runRealtimeReport`, {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-        });
+        // Query 2: Active users by country + city (real-time geo)
+        const geoPayload = {
+            dimensions: [{ name: "country" }, { name: "city" }],
+            metrics: [{ name: "activeUsers" }],
+            orderBys: [{ metric: { metricName: "activeUsers" }, desc: true }],
+            limit: 20
+        };
 
-        if (!res.ok) {
-            const errText = await res.text();
-            throw new Error(`GA4 Realtime API Error: ${errText}`);
+        const [totalRes, geoRes] = await Promise.all([
+            fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runRealtimeReport`, {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(totalPayload)
+            }),
+            fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runRealtimeReport`, {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(geoPayload)
+            })
+        ]);
+
+        let activeUsers = 0;
+        if (totalRes.ok) {
+            const data = await totalRes.json();
+            if (data.rows && data.rows.length > 0) {
+                activeUsers = parseInt(data.rows[0].metricValues[0].value, 10);
+            }
         }
 
-        const data = await res.json();
-        if (data.rows && data.rows.length > 0) {
-            return {
-                activeUsers: parseInt(data.rows[0].metricValues[0].value, 10)
-            };
+        const liveVisitors = [];
+        if (geoRes.ok) {
+            const data = await geoRes.json();
+            if (data.rows) {
+                data.rows.forEach(row => {
+                    const country = row.dimensionValues[0].value;
+                    const city = row.dimensionValues[1].value;
+                    const users = parseInt(row.metricValues[0].value, 10);
+                    if (country && country !== '(not set)') {
+                        liveVisitors.push({ country, city: city === '(not set)' ? '' : city, users });
+                    }
+                });
+            }
         }
-        return { activeUsers: 0 };
+
+        return { activeUsers, liveVisitors };
     } catch (e) {
         console.error("GA4 Realtime Fetch Error:", e);
-        return { activeUsers: 0 };
+        return { activeUsers: 0, liveVisitors: [] };
     }
 }
 
