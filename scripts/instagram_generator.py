@@ -189,157 +189,161 @@ def _draw_decorative_circles(draw: ImageDraw.Draw, palette: dict):
         )
 
 
-
-def _draw_complex_outer_frame(draw):
-    '''Draws the dark teal border with gold accents.'''
-    # Outer dark teal border
-    draw.rectangle([15, 15, 1065, 1065], outline="#2B3A41", width=12)
-    # Inner gold secondary border
-    draw.rectangle([35, 35, 1045, 1045], outline="#C2A57A", width=4)
-    # Corner circles
-    r = 8
-    for x in [35, 1045]:
-        for y in [35, 1045]:
-            draw.ellipse([x-r, y-r, x+r, y+r], fill="#C2A57A")
-            draw.ellipse([x-r/2, y-r/2, x+r/2, y+r/2], fill="#2B3A41")
-
-def _draw_solid_creamy_card(img, draw, bbox, radius=40):
+def _draw_glassmorphism_card(img: Image.Image, draw: ImageDraw.Draw,
+                              bbox: Tuple[int, int, int, int],
+                              radius: int = 30, opacity: int = 70):
+    """Draw a frosted glass card effect (light tinted)."""
     x1, y1, x2, y2 = bbox
-    # Flat structural shadow matching the reference
-    shadow_offset = 14
-    sh_color = "#3C2E25" # Dark brown robust shadow
-    draw.rounded_rectangle([x1+shadow_offset, y1+shadow_offset, x2+shadow_offset, y2+shadow_offset], radius=radius, fill=sh_color)
-        
-    # Main creamy card
-    draw.rounded_rectangle([x1, y1, x2, y2], radius=radius, fill="#FDF6EB")
-    
-    # Inner brown border
-    draw.rounded_rectangle([x1, y1, x2, y2], radius=radius, outline="#8D6E63", width=4)
-    draw.rounded_rectangle([x1+6, y1+6, x2-6, y2-6], radius=radius-6, outline=(141, 110, 99, 100), width=2)
-    return img
 
-def _draw_category_badge_top(draw, category, palette, center_x, top_y):
+    # Create glass overlay
+    glass = Image.new("RGBA", IG_SIZE, (0, 0, 0, 0))
+    glass_draw = ImageDraw.Draw(glass)
+    
+    # White glass backing
+    glass_draw.rounded_rectangle(
+        [x1, y1, x2, y2],
+        radius=radius,
+        fill=(255, 255, 255, opacity)
+    )
+
+    # Subtle bright border for the glass effect
+    glass_draw.rounded_rectangle(
+        [x1, y1, x2, y2],
+        radius=radius,
+        outline=(255, 255, 255, 120),
+        width=3
+    )
+
+    img_rgba = img.convert("RGBA")
+    composite = Image.alpha_composite(img_rgba, glass)
+    return composite.convert("RGB")
+
+
+def _draw_category_badge(draw: ImageDraw.Draw, category: str, palette: dict, y_pos: int = 120):
+    """Draw a modern category badge/pill."""
     font = _get_font(28, bold=True)
     cat_text = category.upper()
+
     bbox = draw.textbbox((0, 0), cat_text, font=font, anchor="mm")
     text_w = bbox[2] - bbox[0]
-    
+
+    # Center the pill
     pill_w = text_w + 60
     pill_h = 48
-    pill_x = center_x - pill_w // 2
-    # The badge sits exactly overlapping the top border line
-    pill_y = top_y - pill_h // 2
-    
-    # Colors matching reference image (mostly goldish badge with dark text)
-    badge_fill = "#E1AE45" 
-    
-    # Outer gold rim, slightly larger
-    draw.rounded_rectangle([pill_x-4, pill_y-4, pill_x+pill_w+4, pill_y+pill_h+4], radius=pill_h//2+4, fill="#C49A45")
-    draw.rounded_rectangle([pill_x, pill_y, pill_x+pill_w, pill_y+pill_h], radius=pill_h//2, fill=badge_fill)
-    
+    pill_x = (IG_SIZE[0] - pill_w) // 2
+    pill_y = y_pos
+
+    # Draw pill with accent color
+    accent = palette["accent"]
+    draw.rounded_rectangle(
+        [pill_x, pill_y, pill_x + pill_w, pill_y + pill_h],
+        radius=pill_h // 2,  # Full round corners
+        fill=accent,
+    )
+
+    # Text on pill perfectly centered using mm anchor
+    pill_cx = IG_SIZE[0] // 2
     pill_cy = pill_y + pill_h // 2
-    draw.text((center_x, pill_cy - 1), cat_text, fill="#2E1C0F", font=font, anchor="mm")
+    
+    # Determine text color based on accent brightness
+    brightness = (accent[0] * 299 + accent[1] * 587 + accent[2] * 114) / 1000
+    text_color = "#1a1a2e" if brightness > 128 else "#ffffff"
+    draw.text((pill_cx, pill_cy - 1), cat_text, fill=text_color, font=font, anchor="mm")
 
-def _draw_title_dark(draw, lines, y_start, line_height):
+
+def _draw_title_centered(draw: ImageDraw.Draw, lines: list, y_start: int, line_height: int):
+    """Draw the article title — large, bold, perfectly centered, with shadow."""
     font = _get_font(76, bold=True)
+
     for i, line in enumerate(lines):
         y = y_start + i * line_height + line_height // 2
-        # No heavy shadow, just a subtle depth effect for realism
-        draw.text((1080 // 2 + 1, y + 1), line, fill="#D7CCC8", font=font, anchor="mm")
-        draw.text((1080 // 2, y), line, fill="#3E2723", font=font, anchor="mm")
 
-def _draw_description_dark(draw, lines, y_start, line_height):
+        # Strong double drop shadow for intense white background
+        draw.text((IG_SIZE[0] // 2 + 5, y + 5), line, fill=(0, 0, 0, 220), font=font, anchor="mm")
+        draw.text((IG_SIZE[0] // 2 + 2, y + 2), line, fill=(0, 0, 0, 180), font=font, anchor="mm")
+        
+        # Pure white text
+        draw.text((IG_SIZE[0] // 2, y), line, fill="#ffffff", font=font, anchor="mm")
+
+
+def _draw_description(draw: ImageDraw.Draw, lines: list, y_start: int, line_height: int):
+    """Draw the meta description paragraph below the title — perfectly centered."""
     font = _get_font(42, bold=False)
+
     for i, line in enumerate(lines):
         y = y_start + i * line_height + line_height // 2
-        draw.text((1080 // 2, y), line, fill="#4E342E", font=font, anchor="mm")
 
-def _draw_top_brand_header(img, draw, y_center):
-    """Draw the logo and brand text at the very top of the post."""
-    import os
-    BASE_DIR = 'C:/Users/Omar/Desktop/little-smart-genius-site/Nouveau dossier/online/Little_Smart_Genius'
-    BRAND_NAME = "Little Smart Genius"
-    
-    # Logo
-    logo_path = os.path.join(BASE_DIR, "images", "banners", "Little_Smart_Genius_Logo.webp")
-    if not os.path.exists(logo_path):
-        logo_path = os.path.join(BASE_DIR, "images", "logo.png")
-    
-    target_h = 75
-    logo_w = target_h
-    if os.path.exists(logo_path):
-        try:
-            from PIL import Image
-            logo = Image.open(logo_path).convert("RGBA")
-            aspect = logo.width / logo.height
-            logo_w = int(target_h * aspect)
-            logo = logo.resize((logo_w, target_h), Image.LANCZOS)
-            x = (1080 - logo_w) // 2
-            y = 30
-            img.paste(logo, (x, y), mask=logo)
-        except Exception:
-            pass
+        # Strong shadow
+        draw.text((IG_SIZE[0] // 2 + 3, y + 3), line, fill=(0, 0, 0, 200), font=font, anchor="mm")
+        draw.text((IG_SIZE[0] // 2 + 1, y + 1), line, fill=(0, 0, 0, 120), font=font, anchor="mm")
+        
+        # Pure white text
+        draw.text((IG_SIZE[0] // 2, y), line, fill=(255, 255, 255, 255), font=font, anchor="mm")
 
-    # Brand Text below logo
-    brand_font = _get_font(34, bold=True)
-    brand_text = BRAND_NAME.upper()
-    try:
-        draw.text((1080 // 2 + 2, 137), brand_text, fill="#D7CCC8", font=brand_font, anchor="mm")
-        draw.text((1080 // 2, 135), brand_text, fill="#5D4037", font=brand_font, anchor="mm")
-    except Exception:
-        pass
 
-def _draw_bottom_split_panels(img, draw, card_bottom_y):
-    """Draw the two distinct white panels with rounded corners at the bottom."""
+def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card_bottom_y: int):
+    """Draw the new Hybrid V8 double pill footer with dark URL/social boxes."""
     import os
     BASE_DIR = 'C:/Users/Omar/Desktop/little-smart-genius-site/Nouveau dossier/online/Little_Smart_Genius'
     
     panel_y = card_bottom_y + 25
-    panel_h = 135
-    panel_w = 445
-    margin_x = 75
+    panel_h = 75 # Pill height
+    panel_w = 460
+    margin_x = 65
     
-    sh_color = "#3C2E25"
-    s_off = 10
+    # Adaptive border using category accent color, or a fallback gold
+    border_color = palette.get("accent", "#E69A0B")
     
-    # Left Panel (CTA & URL)
+    # Left Pill
     lx1 = margin_x
     lx2 = lx1 + panel_w
-    # Flat structural shadow
-    draw.rounded_rectangle([lx1+s_off, panel_y+s_off, lx2+s_off, panel_y+panel_h+s_off], radius=20, fill=sh_color)
+    
+    # Pill background
     draw.rounded_rectangle([lx1, panel_y, lx2, panel_y+panel_h], radius=20, fill="#FFFFFF")
-    draw.rounded_rectangle([lx1, panel_y, lx2, panel_y+panel_h], radius=20, outline="#E0E0E0", width=2)
+    draw.rounded_rectangle([lx1, panel_y, lx2, panel_y+panel_h], radius=20, outline=border_color, width=4)
     
     font_small = _get_font(22, bold=False)
     font_bold = _get_font(26, bold=True)
     
-    # CTA Top Line
-    draw.text((lx1 + panel_w//2, panel_y + 35), "+40 FREE Educational Printables", fill="#B71C1C", font=font_bold, anchor="mm")
-    draw.text((lx1 + panel_w//2, panel_y + 65), "Waiting for You", fill="#424242", font=font_small, anchor="mm")
+    draw.text((lx1 + panel_w//2, panel_y + 25), "+40 FREE Educational Printables", fill="#D32F2F", font=font_bold, anchor="mm")
+    draw.text((lx1 + panel_w//2, panel_y + 55), "Waiting for You", fill="#212121", font=font_small, anchor="mm")
     
-    # Fancy Arrows instead of text
-    arr_y = panel_y + 90
-    draw.line([(lx1 + panel_w//2 - 60, arr_y), (lx1 + panel_w//2 + 60, arr_y)], fill="#C2A57A", width=2)
-    draw.polygon([(lx1 + panel_w//2 + 60, arr_y), (lx1 + panel_w//2 + 50, arr_y - 6), (lx1 + panel_w//2 + 50, arr_y + 6)], fill="#C2A57A")
-    draw.polygon([(lx1 + panel_w//2 - 60, arr_y), (lx1 + panel_w//2 - 50, arr_y - 6), (lx1 + panel_w//2 - 50, arr_y + 6)], fill="#C2A57A")
-
-    draw.text((lx1 + panel_w//2, panel_y + 115), "www.LittleSmartGenius.com", fill="#212121", font=_get_font(26, bold=False), anchor="mm")
+    # Red Arrow Pointing Down
+    arrow_y = panel_y + panel_h + 5
+    cx = lx1 + panel_w//2
+    # Simple downward arrow
+    draw.polygon([(cx-10, arrow_y), (cx+10, arrow_y), (cx+10, arrow_y+15), (cx+20, arrow_y+15), (cx, arrow_y+30), (cx-20, arrow_y+15), (cx-10, arrow_y+15)], fill="#D32F2F", outline="#FFFFFF", width=2)
     
-    # Right Panel (Socials)
-    rx2 = 1080 - margin_x
+    # Dark URL box
+    box_y = arrow_y + 35
+    box_h = 55
+    # Dark purple/black semi-transparent footer block
+    draw.rounded_rectangle([lx1, box_y, lx2, box_y+box_h], radius=8, fill=(35, 25, 35, 230))
+    draw.rounded_rectangle([lx1+2, box_y+2, lx2-2, box_y+box_h-2], radius=6, outline=(255, 255, 255, 180), width=1)
+    
+    draw.text((lx1 + panel_w//2, box_y + box_h//2), f"www.{BRAND_URL}", fill="#FFFFFF", font=_get_font(26, bold=False), anchor="mm")
+    
+    # Right Pill
+    rx2 = IG_SIZE[0] - margin_x
     rx1 = rx2 - panel_w
-    # Flat structural shadow
-    draw.rounded_rectangle([rx1+s_off, panel_y+s_off, rx2+s_off, panel_y+panel_h+s_off], radius=20, fill=sh_color)
-    draw.rounded_rectangle([rx1, panel_y, rx2, panel_y+panel_h], radius=20, fill="#F7F7F7")
-    draw.rounded_rectangle([rx1, panel_y, rx2, panel_y+panel_h], radius=20, outline="#D6D6D6", width=2)
     
-    draw.text((rx1 + panel_w//2, panel_y + 35), "Share & Follow", fill="#B71C1C", font=font_bold, anchor="mm")
-    draw.text((rx1 + panel_w//2, panel_y + 65), "for more Freebies", fill="#212121", font=_get_font(24, bold=True), anchor="mm")
+    draw.rounded_rectangle([rx1, panel_y, rx2, panel_y+panel_h], radius=20, fill="#FFFFFF")
+    draw.rounded_rectangle([rx1, panel_y, rx2, panel_y+panel_h], radius=20, outline=border_color, width=4)
     
-    # Social Icons
-    icon_size = 36
+    draw.text((rx1 + panel_w//2, panel_y + 25), "Share & Follow", fill="#D32F2F", font=font_bold, anchor="mm")
+    draw.text((rx1 + panel_w//2, panel_y + 55), "for more Freebies", fill="#D32F2F", font=font_bold, anchor="mm")
+    
+    # Red Arrow Pointing Down
+    cx_r = rx1 + panel_w//2
+    draw.polygon([(cx_r-10, arrow_y), (cx_r+10, arrow_y), (cx_r+10, arrow_y+15), (cx_r+20, arrow_y+15), (cx_r, arrow_y+30), (cx_r-20, arrow_y+15), (cx_r-10, arrow_y+15)], fill="#D32F2F", outline="#FFFFFF", width=2)
+
+    # Dark Social box
+    draw.rounded_rectangle([rx1, box_y, rx2, box_y+box_h], radius=8, fill=(35, 25, 35, 230))
+    draw.rounded_rectangle([rx1+2, box_y+2, rx2-2, box_y+box_h-2], radius=6, outline=(255, 255, 255, 180), width=1)
+    
+    icon_size = 32
     spacing = 15
-    handle = "@LittleSmartGenius"
+    handle = "LittleSmartGenius_com"
     handle_font = _get_font(26, bold=False)
     
     temp_bbox = draw.textbbox((0, 0), handle, font=handle_font)
@@ -347,79 +351,147 @@ def _draw_bottom_split_panels(img, draw, card_bottom_y):
     total_social_w = icon_size + spacing + icon_size + spacing + handle_w
     
     sx = rx1 + (panel_w - total_social_w) // 2
-    sy = panel_y + 95
+    sy = box_y + box_h//2
     
     from PIL import Image
-    # Ig - USING USER'S DOWNLOADED FILE
+    # Ig
     ig_path = os.path.join(BASE_DIR, "images", "banners", "instagram-new.png")
     if os.path.exists(ig_path):
         ig_icon = Image.open(ig_path).convert("RGBA").resize((icon_size, icon_size), Image.LANCZOS)
-        # Tint to #212121 by keeping alpha and replacing RGB
-        r, g, b, alpha = ig_icon.split()
-        dark_ig = Image.merge("RGBA", (
-            Image.new("L", ig_icon.size, 33),
-            Image.new("L", ig_icon.size, 33),
-            Image.new("L", ig_icon.size, 33),
-            alpha
-        ))
-        img.paste(dark_ig, (sx, sy - icon_size//2), mask=dark_ig)
+        # Paste white icon since it's on a dark background
+        white_fill = Image.new("RGBA", (icon_size, icon_size), "#FFFFFF")
+        img.paste(white_fill, (sx, sy - icon_size//2), mask=ig_icon)
     
     sx += icon_size + spacing
     
-    # Pin - USING USER'S DOWNLOADED FILE
+    # Pin
     pin_path = os.path.join(BASE_DIR, "images", "banners", "pinterest.png")
     if os.path.exists(pin_path):
         pin_icon = Image.open(pin_path).convert("RGBA").resize((icon_size, icon_size), Image.LANCZOS)
-        r, g, b, alpha = pin_icon.split()
-        dark_pin = Image.merge("RGBA", (
-            Image.new("L", pin_icon.size, 33),
-            Image.new("L", pin_icon.size, 33),
-            Image.new("L", pin_icon.size, 33),
-            alpha
-        ))
-        img.paste(dark_pin, (sx, sy - icon_size//2), mask=dark_pin)
+        white_fill = Image.new("RGBA", (icon_size, icon_size), "#FFFFFF")
+        img.paste(white_fill, (sx, sy - icon_size//2), mask=pin_icon)
         
     sx += icon_size + spacing
-    draw.text((sx, sy), handle, fill="#212121", font=handle_font, anchor="lm")
+    draw.text((sx, sy), handle, fill="#FFFFFF", font=handle_font, anchor="lm")
 
 
-# 
+def _draw_top_icon(img: Image.Image, palette: dict) -> int:
+    """Draw the brand logo at the top center. Returns the bottom Y position."""
+    logo_path = os.path.join(BASE_DIR, "images", "banners", "Little_Smart_Genius_Logo.webp")
+    if not os.path.exists(logo_path):
+        logo_path = os.path.join(BASE_DIR, "images", "logo.png")
+    
+    logo_bottom = 120  # default
+    if os.path.exists(logo_path):
+        try:
+            logo = Image.open(logo_path).convert("RGBA")
+            target_h = 90
+            aspect = logo.width / logo.height
+            target_w = int(target_h * aspect)
+            logo = logo.resize((target_w, target_h), Image.LANCZOS)
+            
+            x = (IG_SIZE[0] - target_w) // 2
+            y = 35
+            img.paste(logo, (x, y), mask=logo)
+            logo_bottom = y + target_h
+        except Exception as e:
+            print(f"Error drawing logo: {e}")
+    else:
+        # Fallback to text icon
+        draw = ImageDraw.Draw(img)
+        icon_font = _get_font(50, bold=True)
+        icon_text = palette.get("icon", "⭐")
+        try:
+            bbox = draw.textbbox((0, 0), icon_text, font=icon_font)
+            w = bbox[2] - bbox[0]
+            draw.text(((IG_SIZE[0] - w) // 2, 45), icon_text, fill="#ffffff", font=icon_font)
+            logo_bottom = 100
+        except Exception:
+            pass
+    return logo_bottom
+
+
+def _draw_frame_border(draw: ImageDraw.Draw):
+    """Draw a subtle thin frame border around the image edges."""
+    margin = 22
+    draw.rounded_rectangle(
+        [margin, margin, IG_SIZE[0] - margin, IG_SIZE[1] - margin],
+        radius=4,
+        outline=(255, 255, 255, 60),
+        width=2
+    )
+
+
+# ═══════════════════════════════════════════════════════════
 # MAIN POST CREATION
-# 
+# ═══════════════════════════════════════════════════════════
 
 def _create_post_image(title: str, category: str, description: str = "",
-                       cover_path: str = None) -> 'Image.Image':
-    palette = _get_palette(category)
-    import textwrap
-    from PIL import Image, ImageDraw, ImageFilter
+                       cover_path: str = None) -> Image.Image:
+    """
+    Create a premium 1080x1080 Instagram post image.
     
-    #  Step 1: Background 
+    Design: Cover image as lightly blurred background (still visible),
+    semi-transparent overlay, logo, category badge, title, description, brand footer.
+    """
+    palette = _get_palette(category)
+
+    # ── Step 1: Background ──
     if cover_path and os.path.exists(cover_path):
+        # Use cover image as background with LIGHT blur
         bg = Image.open(cover_path).convert("RGB")
         w, h = bg.size
         min_dim = min(w, h)
         left = (w - min_dim) // 2
         top = (h - min_dim) // 2
         bg = bg.crop((left, top, left + min_dim, top + min_dim))
-        bg = bg.resize((1080, 1080), Image.LANCZOS)
-        bg = bg.filter(ImageFilter.GaussianBlur(radius=15))
+        bg = bg.resize(IG_SIZE, Image.LANCZOS)
 
-        # Light semi-transparent overlay to soften the blurred background towards cream
-        overlay = Image.new("RGBA", (1080, 1080), (253, 247, 235, 140))
+        # Light Gaussian blur — cover remains visible
+        bg = bg.filter(ImageFilter.GaussianBlur(radius=10))
+
+        # Semi-transparent dark overlay with category tint
+        overlay = Image.new("RGBA", IG_SIZE, (0, 0, 0, 0))
+        overlay_draw = ImageDraw.Draw(overlay)
+        gs = palette["gradient_start"]
+        # Uniform darkening overlay — not too heavy so cover shows through
+        for y in range(IG_SIZE[1]):
+            ratio = y / IG_SIZE[1]
+            # Darker at top and bottom, lighter in the middle
+            if ratio < 0.15:
+                alpha = int(160 - ratio * 400)
+            elif ratio > 0.85:
+                alpha = int(80 + (ratio - 0.85) * 600)
+            else:
+                alpha = 110
+            overlay_draw.line(
+                [(0, y), (IG_SIZE[0], y)],
+                fill=(gs[0] // 4, gs[1] // 4, gs[2] // 4, alpha)
+            )
         img = Image.alpha_composite(bg.convert("RGBA"), overlay).convert("RGB")
     else:
+        # Fallback: premium gradient background
         img = _create_premium_gradient(palette)
 
+    # Convert to RGBA for all compositing
     img = img.convert("RGBA")
     draw = ImageDraw.Draw(img)
 
-    # Outer complex frame
-    _draw_complex_outer_frame(draw)
-    
-    # Top Brand Header
-    _draw_top_brand_header(img, draw, 0)
-    
-    # Text layout calculation
+    # ── Step 2: Subtle frame border ──
+    _draw_frame_border(draw)
+
+    # ── Step 3: Logo at top center ──
+    logo_bottom = _draw_top_icon(img, palette)
+
+    # ── Step 4: Decorative line below logo ──
+    line_y = logo_bottom + 12
+    line_margin = 340
+    draw.line(
+        [(line_margin, line_y), (IG_SIZE[0] - line_margin, line_y)],
+        fill=(255, 255, 255, 80), width=2
+    )
+
+    # ── Text layout calculation to perfectly center vertically ──
     def _wrap_text(text: str, width: int, max_lines: int = 4) -> list:
         wrapped = textwrap.fill(text, width=width)
         return wrapped.split("\n")[:max_lines]
@@ -433,43 +505,77 @@ def _create_post_image(title: str, category: str, description: str = "",
     title_total_h = len(title_lines) * title_line_height
     desc_total_h = len(desc_lines) * desc_line_height
     
-    gap_badge_title = 50
-    gap_title_desc = 45
+    badge_h = 48
+    gap_badge_title = 40
+    gap_title_desc = 40
     
+    # We want the content inside the card to feel balanced.
     inner_content_h = title_total_h
     if desc_lines:
         inner_content_h += gap_title_desc + desc_total_h
         
-    top_limit = 170  
-    bottom_limit = 1080 - 180  
+    # Vertical bounds (between top decorative line and social handles)
+    top_limit = line_y + 10
+    bottom_limit = IG_SIZE[1] - 225
     
-    card_padding_top = 55
-    card_padding_bottom = 45
-    total_footprint = card_padding_top + inner_content_h + card_padding_bottom
+    # total footprint is badge (top overlaps card) + card padding + inner content + card padding
+    card_padding_top = 40
+    card_padding_bottom = 30
+    total_footprint = (badge_h // 2) + card_padding_top + inner_content_h + card_padding_bottom
     
-    card_top = top_limit + (bottom_limit - top_limit - total_footprint) // 2
-    card_bottom = card_top + total_footprint
-    card_margin = 85
+    # Center the entire footprint in available space
+    start_y = top_limit + (bottom_limit - top_limit - total_footprint) // 2
     
-    # Draw Main Card
-    _draw_solid_creamy_card(img, draw, (card_margin, card_top, 1080 - card_margin, card_bottom), radius=35)
+    # ── Step 5: Glassmorphism Card Behind Text ──
+    card_margin = 55
+    card_top = start_y + badge_h // 2
+    card_bottom = card_top + card_padding_top + inner_content_h + card_padding_bottom
+    img = _draw_glassmorphism_card(img, draw, (card_margin, card_top, IG_SIZE[0] - card_margin, card_bottom), radius=35, opacity=45)
+    draw = ImageDraw.Draw(img) # Refresh drawing context after alpha composite
     
-    # Category badge intersecting top line
-    _draw_category_badge_top(draw, category, palette, center_x=1080//2, top_y=card_top)
+    # White border around the card
+    draw.rounded_rectangle([card_margin, card_top, IG_SIZE[0] - card_margin, card_bottom], radius=35, outline=(255, 255, 255, 180), width=2)
     
-    # Title
+    # Brand Title ABOVE the card
+    brand_font = _get_font(28, bold=True)
+    brand_text = BRAND_NAME.upper()
+    temp_bbox = draw.textbbox((0, 0), brand_text, font=brand_font, anchor="mm")
+    brand_w = temp_bbox[2] - temp_bbox[0]
+    bx, by = IG_SIZE[0] // 2, card_top - 38
+    draw.rectangle([bx - brand_w//2 - 20, by - 16, bx + brand_w//2 + 20, by + 18], fill=(30, 20, 30, 150))
+    draw.text((bx+2, by+2), brand_text, fill=(0,0,0,180), font=brand_font, anchor="mm")
+    draw.text((bx, by), brand_text, fill=palette.get("accent", "#E69A0B"), font=brand_font, anchor="mm")
+
+    # ── Step 6: Category badge (overlaps top edge of card) ──
+    badge_y = start_y
+    _draw_category_badge(draw, category, palette, y_pos=badge_y)
+    
+    # ── Step 7: Title — centered ──
     title_y = card_top + card_padding_top
-    _draw_title_dark(draw, title_lines, title_y, line_height=title_line_height)
+    _draw_title_centered(draw, title_lines, title_y, line_height=title_line_height)
     
-    # Description
+    # ── Step 8: Meta description paragraph ──
     if desc_lines:
         desc_y = title_y + title_total_h + gap_title_desc
-        _draw_description_dark(draw, desc_lines, desc_y, line_height=desc_line_height)
+        _draw_description(draw, desc_lines, desc_y, line_height=desc_line_height)
+        
+    # ── Horizontal line BELOW description inside the card ──
+    line_bot_y = card_bottom - 20
+    draw.line(
+        [(card_margin + 40, line_bot_y), (IG_SIZE[0] - card_margin - 40, line_bot_y)],
+        fill=(255, 255, 255, 120), width=2
+    )
 
-    # Bottom Split Panels
-    _draw_bottom_split_panels(img, draw, card_bottom)
-    
+    # ── Step 9: Bottom branded bar ──
+    _draw_bottom_bar(img, draw, palette, card_bottom)
+
     return img.convert("RGB")
+
+
+# ═══════════════════════════════════════════════════════════
+# CAPTION & HASHTAGS
+# ═══════════════════════════════════════════════════════════
+
 def _generate_caption(title: str, category: str, keyword: str, excerpt: str) -> str:
     """Generate an engaging Instagram caption with emojis and CTA."""
     palette = _get_palette(category)
