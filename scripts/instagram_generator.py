@@ -306,8 +306,8 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     font_small = _get_font(22, bold=False)
     font_bold = _get_font(26, bold=True)
     
-    draw.text((lx1 + panel_w//2, panel_y + 25), "+40 FREE Educational Printables", fill="#D32F2F", font=font_bold, anchor="mm")
-    draw.text((lx1 + panel_w//2, panel_y + 55), "Waiting for You", fill="#212121", font=font_small, anchor="mm")
+    draw.text((lx1 + panel_w//2, panel_y + 24), "+40 FREE Educational Printables", fill="#D32F2F", font=font_bold, anchor="mm")
+    draw.text((lx1 + panel_w//2, panel_y + 51), "Waiting for You", fill="#212121", font=font_small, anchor="mm")
     
     # Red Arrow Pointing Down
     arrow_y = panel_y + panel_h + 5
@@ -331,8 +331,8 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     draw.rounded_rectangle([rx1, panel_y, rx2, panel_y+panel_h], radius=20, fill="#FFFFFF")
     draw.rounded_rectangle([rx1, panel_y, rx2, panel_y+panel_h], radius=20, outline=border_color, width=4)
     
-    draw.text((rx1 + panel_w//2, panel_y + 25), "Share & Follow", fill="#D32F2F", font=font_bold, anchor="mm")
-    draw.text((rx1 + panel_w//2, panel_y + 55), "for more Freebies", fill="#D32F2F", font=font_bold, anchor="mm")
+    draw.text((rx1 + panel_w//2, panel_y + 24), "Share & Follow", fill="#D32F2F", font=font_bold, anchor="mm")
+    draw.text((rx1 + panel_w//2, panel_y + 51), "for more Freebies", fill="#D32F2F", font=font_bold, anchor="mm")
     
     # Red Arrow Pointing Down
     cx_r = rx1 + panel_w//2
@@ -521,9 +521,9 @@ def _create_post_image(title: str, category: str, description: str = "",
     # Inner content is hardcoded to the maximum boundary so the card size never changes
     inner_content_h = max_title_h + gap_title_desc + max_desc_h
         
-    # Vertical bounds (between top decorative line and social handles)
-    top_limit = line_y + 10
-    bottom_limit = IG_SIZE[1] - 225
+    # Vertical bounds (between top brand tag bottom-edge and social handles top-edge)
+    top_limit = line_y + 43
+    bottom_limit = IG_SIZE[1] - 220
     
     # total footprint is badge (top overlaps card) + card padding + inner content + card padding
     card_padding_top = 40
