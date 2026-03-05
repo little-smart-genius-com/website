@@ -419,8 +419,15 @@ async function listArticles(env) {
         const slug = a.slug || "";
         const hasHtml = htmlSet.has(`${slug}.html`);
         const hasPost = postSlugs.has(slug);
-        const coverImgs = imgFiles.filter(f => f.name.startsWith(slug) && f.name.includes("-cover") && !f.name.includes("-thumb"));
-        const contentImgs = imgFiles.filter(f => f.name.startsWith(slug) && f.name.includes("-img"));
+
+        // the 'image' field has the exact cover filename, e.g. 'images/long-seo-slug-cover-1234.webp'
+        let imageSlug = slug;
+        if (a.image && a.image.includes('-cover')) {
+            imageSlug = a.image.replace('images/', '').split('-cover')[0];
+        }
+
+        const coverImgs = imgFiles.filter(f => f.name.startsWith(imageSlug) && f.name.includes("-cover") && !f.name.includes("-thumb"));
+        const contentImgs = imgFiles.filter(f => f.name.startsWith(imageSlug) && f.name.includes("-img"));
         // Sort content images by index (img1, img2, img3...)
         contentImgs.sort((a, b) => {
             const idxA = parseInt((a.name.match(/-img(\d+)/) || [0, 0])[1]);
