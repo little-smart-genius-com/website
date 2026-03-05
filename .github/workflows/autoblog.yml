@@ -82,9 +82,11 @@ jobs:
         run: |
           ACTION="${{ github.event.inputs.action || 'schedule' }}"
           SLUG="${{ github.event.inputs.slug || '' }}"
+          CRON="${{ github.event.schedule || '' }}"
           echo "action=$ACTION" >> $GITHUB_OUTPUT
           echo "slug=$SLUG" >> $GITHUB_OUTPUT
-          echo "Running action: $ACTION (slug: $SLUG)"
+          echo "cron=$CRON" >> $GITHUB_OUTPUT
+          echo "Running action: $ACTION (slug: $SLUG, cron: $CRON)"
 
       # ── GENERATE ARTICLES (V6 Ultimate) ──
       - name: Generate articles
@@ -120,7 +122,7 @@ jobs:
             generate-product)  python scripts/auto_blog_v6_ultimate.py --slot product ;;
             generate-freebie)  python scripts/auto_blog_v6_ultimate.py --slot freebie ;;
             generate-batch)    python scripts/auto_blog_v6_ultimate.py --batch ;;
-            schedule)          python scripts/auto_blog_v6_ultimate.py --schedule ;;
+            schedule)          python scripts/auto_blog_v6_ultimate.py --schedule --cron "${{ steps.action.outputs.cron }}" ;;
           esac
 
       # ── REGENERATE SINGLE ARTICLE ──

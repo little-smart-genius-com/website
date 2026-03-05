@@ -101,14 +101,22 @@ SITE_BASE_URL = "https://littlesmartgenius.com"
 DAILY_SLOTS = ["keyword", "product", "freebie"]
 PAUSE_BETWEEN_ARTICLES = 30
 
-# Escalating Schedule
-SCHEDULE_SLOTS = {
-    (8, 9):   ("keyword", 1),
-    (9, 10):  ("product", 7),
-    (14, 15): ("product", 1),
-    (15, 16): ("keyword", 4),
-    (20, 21): ("freebie", 1),
-    (21, 22): ("keyword", 10),
+# Escalating Schedule — cron expression → slot mapping
+# Used when GitHub Actions passes the exact cron that fired via --cron
+CRON_TO_SLOT = {
+    "0 8 * * *":   ("keyword", 1),     # Matin slot 1 — always
+    "30 9 * * *":  ("product", 7),     # Matin slot 2 — week 7+
+    "0 14 * * *":  ("product", 1),     # Après-midi slot 1 — always
+    "30 15 * * *": ("keyword", 4),     # Après-midi slot 2 — week 4+
+    "0 20 * * *":  ("freebie", 1),     # Soir slot 1 — always
+    "30 21 * * *": ("keyword", 10),    # Soir slot 2 — week 10+
+}
+
+# Fallback: wide time windows (for manual --schedule without --cron)
+SCHEDULE_SLOTS_FALLBACK = {
+    (6, 13):  ("keyword", 1),     # Morning block
+    (13, 19): ("product", 1),     # Afternoon block
+    (19, 24): ("freebie", 1),     # Evening block
 }
 
 # 6 Personas (weighted)
@@ -1627,22 +1635,29 @@ def get_current_week():
     return max(1, (delta.days // 7) + 1)
 
 
-def run_schedule():
+def run_schedule(cron_expr=None):
     current_hour = datetime.utcnow().hour
     current_week = get_current_week()
 
     print(f"\n{'=' * 80}")
     print(f"  AUTO BLOG V6 ULTIMATE -- SCHEDULE MODE")
-    print(f"  Week: {current_week} | UTC Hour: {current_hour}")
+    print(f"  Week: {current_week} | UTC Hour: {current_hour} | Cron: {cron_expr or 'manual'}")
     print(f"{'=' * 80}")
 
     matched_slot = None
     matched_min_week = None
-    for (h_start, h_end), (slot_type, min_week) in SCHEDULE_SLOTS.items():
-        if h_start <= current_hour < h_end:
-            matched_slot = slot_type
-            matched_min_week = min_week
-            break
+
+    # Method 1: Use exact cron expression (reliable, no delay issues)
+    if cron_expr and cron_expr.strip() in CRON_TO_SLOT:
+        matched_slot, matched_min_week = CRON_TO_SLOT[cron_expr.strip()]
+        print(f"[SCHEDULE] Matched cron '{cron_expr.strip()}' → slot '{matched_slot}' (min week {matched_min_week})")
+    else:
+        # Method 2: Fallback — wide time windows for manual runs
+        for (h_start, h_end), (slot_type, min_week) in SCHEDULE_SLOTS_FALLBACK.items():
+            if h_start <= current_hour < h_end:
+                matched_slot = slot_type
+                matched_min_week = min_week
+                break
 
     if not matched_slot:
         print(f"[SCHEDULE] No slot for hour {current_hour}. Skipping.")
@@ -1674,6 +1689,7 @@ Examples:
     )
     parser.add_argument("--batch", action="store_true", help="Run daily batch (3 articles)")
     parser.add_argument("--schedule", action="store_true", help="Schedule-aware generation")
+    parser.add_argument("--cron", metavar="EXPR", help="Cron expression that triggered this run (from github.event.schedule)")
     parser.add_argument("--slot", choices=["keyword", "product", "freebie"], help="Single article slot")
     parser.add_argument("--regenerate", metavar="SLUG", help="Regenerate article by slug")
     parser.add_argument("--stats", action="store_true", help="Show topic pool statistics")
@@ -1692,7 +1708,7 @@ Examples:
     if args.regenerate:
         run_regenerate(args.regenerate)
     elif args.schedule:
-        run_schedule()
+        run_schedule(args.cron)
     elif args.batch:
         run_daily_batch()
     elif args.slot:
