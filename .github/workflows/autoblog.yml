@@ -31,6 +31,10 @@ on:
           - fix-images
           - maintenance-scan
           - regenerate-article
+          - comprehensive-repair
+          - humanize
+          - regen-all-images
+          - instagram-batch
       slug:
         description: 'Article slug (for regenerate-article or fix-images on a single article)'
         required: false
@@ -155,9 +159,30 @@ jobs:
           POLLINATIONS_API_KEY_3: ${{ secrets.POLLINATIONS_API_KEY_3 }}
           POLLINATIONS_API_KEY_4: ${{ secrets.POLLINATIONS_API_KEY_4 }}
           POLLINATIONS_API_KEY_5: ${{ secrets.POLLINATIONS_API_KEY_5 }}
+          POLLINATIONS_API_KEY_BCK_1: ${{ secrets.POLLINATIONS_API_KEY_BCK_1 }}
+          POLLINATIONS_API_KEY_BCK_2: ${{ secrets.POLLINATIONS_API_KEY_BCK_2 }}
+          POLLINATIONS_API_KEY_BCK_3: ${{ secrets.POLLINATIONS_API_KEY_BCK_3 }}
+          POLLINATIONS_API_KEY_BCK_4: ${{ secrets.POLLINATIONS_API_KEY_BCK_4 }}
+          POLLINATIONS_API_KEY_BCK_5: ${{ secrets.POLLINATIONS_API_KEY_BCK_5 }}
           PYTHONIOENCODING: utf-8
           SLUG: ${{ steps.action.outputs.slug }}
-        run: python scripts/fix_images.py ${{ steps.action.outputs.slug && format('--slug {0}', steps.action.outputs.slug) || '' }}
+        run: |
+          RAW_SLUG="${{ steps.action.outputs.slug }}"
+          # Parse slug field: slug::force::image-type (e.g. my-article::force::cover)
+          SLUG_PART=$(echo "$RAW_SLUG" | cut -d'::' -f1 2>/dev/null || echo "$RAW_SLUG")
+          ARGS=""
+          if [ -n "$SLUG_PART" ] && [ "$SLUG_PART" != "" ]; then
+            ARGS="--slug $SLUG_PART"
+          fi
+          if echo "$RAW_SLUG" | grep -q "::force"; then
+            ARGS="$ARGS --force"
+          fi
+          IMG_TYPE=$(echo "$RAW_SLUG" | grep -oP '::force::(\K[^:]+)' || true)
+          if [ -n "$IMG_TYPE" ]; then
+            ARGS="$ARGS --image-type $IMG_TYPE"
+          fi
+          echo "Running: python scripts/fix_images.py $ARGS"
+          python scripts/fix_images.py $ARGS
 
       # ── BUILD PIPELINE ──
       - name: Build articles (JSON → HTML)
@@ -189,6 +214,44 @@ jobs:
         env:
           PYTHONIOENCODING: utf-8
         run: python scripts/_inject_search.py
+
+      # ── COMPREHENSIVE REPAIR ──
+      - name: Comprehensive SEO repair
+        if: steps.action.outputs.action == 'comprehensive-repair'
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/comprehensive_repair.py
+
+      # ── HUMANIZE ──
+      - name: Humanize articles (remove AI phrases)
+        if: steps.action.outputs.action == 'humanize'
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/humanize_existing_posts.py
+
+      # ── REGEN ALL IMAGES ──
+      - name: Regenerate all article images
+        if: steps.action.outputs.action == 'regen-all-images'
+        env:
+          POLLINATIONS_API_KEY_1: ${{ secrets.POLLINATIONS_API_KEY_1 }}
+          POLLINATIONS_API_KEY_2: ${{ secrets.POLLINATIONS_API_KEY_2 }}
+          POLLINATIONS_API_KEY_3: ${{ secrets.POLLINATIONS_API_KEY_3 }}
+          POLLINATIONS_API_KEY_4: ${{ secrets.POLLINATIONS_API_KEY_4 }}
+          POLLINATIONS_API_KEY_5: ${{ secrets.POLLINATIONS_API_KEY_5 }}
+          POLLINATIONS_API_KEY_BCK_1: ${{ secrets.POLLINATIONS_API_KEY_BCK_1 }}
+          POLLINATIONS_API_KEY_BCK_2: ${{ secrets.POLLINATIONS_API_KEY_BCK_2 }}
+          POLLINATIONS_API_KEY_BCK_3: ${{ secrets.POLLINATIONS_API_KEY_BCK_3 }}
+          POLLINATIONS_API_KEY_BCK_4: ${{ secrets.POLLINATIONS_API_KEY_BCK_4 }}
+          POLLINATIONS_API_KEY_BCK_5: ${{ secrets.POLLINATIONS_API_KEY_BCK_5 }}
+          PYTHONIOENCODING: utf-8
+        run: python scripts/regen_all_images.py
+
+      # ── INSTAGRAM BATCH ──
+      - name: Generate all Instagram posts
+        if: steps.action.outputs.action == 'instagram-batch'
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/instagram_generator.py
 
       # ── MAINTENANCE ──
       - name: Run maintenance

@@ -283,6 +283,88 @@ async function fetchGa4Realtime(env) {
     }
 }
 
+async function fetchGa4Geo(env) {
+    const propertyId = env.GA_PROPERTY_ID;
+    if (!propertyId) return { countries: [], cities: [] };
+
+    try {
+        const token = await getGoogleAccessToken(env);
+        if (!token) return { countries: [], cities: [] };
+
+        const countryPayload = {
+            dateRanges: [{ startDate: "30daysAgo", endDate: "today" }],
+            dimensions: [{ name: "country" }],
+            metrics: [
+                { name: "activeUsers" },
+                { name: "screenPageViews" }
+            ],
+            orderBys: [{ metric: { metricName: "activeUsers" }, desc: true }],
+            limit: 20
+        };
+
+        const cityPayload = {
+            dateRanges: [{ startDate: "30daysAgo", endDate: "today" }],
+            dimensions: [{ name: "city" }, { name: "country" }],
+            metrics: [
+                { name: "activeUsers" },
+                { name: "screenPageViews" }
+            ],
+            orderBys: [{ metric: { metricName: "activeUsers" }, desc: true }],
+            limit: 15
+        };
+
+        const [countryRes, cityRes] = await Promise.all([
+            fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`, {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(countryPayload)
+            }),
+            fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`, {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(cityPayload)
+            })
+        ]);
+
+        const countries = [];
+        if (countryRes.ok) {
+            const data = await countryRes.json();
+            if (data.rows) {
+                data.rows.forEach(row => {
+                    countries.push({
+                        country: row.dimensionValues[0].value,
+                        users: parseInt(row.metricValues[0].value, 10),
+                        views: parseInt(row.metricValues[1].value, 10)
+                    });
+                });
+            }
+        }
+
+        const cities = [];
+        if (cityRes.ok) {
+            const data = await cityRes.json();
+            if (data.rows) {
+                data.rows.forEach(row => {
+                    const city = row.dimensionValues[0].value;
+                    if (city && city !== '(not set)') {
+                        cities.push({
+                            city,
+                            country: row.dimensionValues[1].value,
+                            users: parseInt(row.metricValues[0].value, 10),
+                            views: parseInt(row.metricValues[1].value, 10)
+                        });
+                    }
+                });
+            }
+        }
+
+        return { countries, cities };
+    } catch (e) {
+        console.error("GA4 Geo Error:", e);
+        return { countries: [], cities: [], error: e.message };
+    }
+}
+
 // ═══════════════════════════════════════════════════════════
 // LIST ARTICLES
 // ═══════════════════════════════════════════════════════════
@@ -531,11 +613,12 @@ async function deepScan(targetSlug, env) {
 // ═══════════════════════════════════════════════════════════
 
 async function getStats(env) {
-    const [htmlFiles, postFiles, imgFiles, igFiles, ga4Metrics, ga4Realtime] = await Promise.all([
+    const [htmlFiles, postFiles, imgFiles, igFiles, ga4Metrics, ga4Realtime, ga4Geo] = await Promise.all([
         ghListDir("articles", env), ghListDir("posts", env),
         ghListDir("images", env), ghListDir("instagram", env),
         fetchGa4Metrics(env),
-        fetchGa4Realtime(env)
+        fetchGa4Realtime(env),
+        fetchGa4Geo(env)
     ]);
     const { content: ajContent } = await ghFileContent("articles.json", env);
     const ajData = ajContent ? JSON.parse(ajContent) : { articles: [] };
@@ -560,7 +643,8 @@ async function getStats(env) {
         categories, blogPages, topics: { keyword: { used: (topics.keyword || []).length, total: totalKeywords }, product: { used: (topics.product || []).length }, freebie: { used: (topics.freebie || []).length } },
         schedule: { week: weekNum, articlesPerDay, launchDate: "2026-02-22" },
         analytics: ga4Metrics,
-        realtime: ga4Realtime
+        realtime: ga4Realtime,
+        geo: ga4Geo
     };
 }
 
@@ -680,7 +764,7 @@ async function pushInstagram(slug, env) {
 // ═══════════════════════════════════════════════════════════
 
 async function triggerWorkflow(action, slug, env) {
-    const validActions = ["generate-batch", "generate-keyword", "generate-product", "generate-freebie", "build-site", "full-rebuild", "fix-images", "maintenance-scan", "regenerate-article"];
+    const validActions = ["generate-batch", "generate-keyword", "generate-product", "generate-freebie", "build-site", "full-rebuild", "fix-images", "maintenance-scan", "regenerate-article", "comprehensive-repair", "humanize", "regen-all-images", "instagram-batch"];
     if (!validActions.includes(action)) throw new Error(`Invalid action: ${action}`);
     const inputs = { action };
     if (slug) inputs.slug = slug;

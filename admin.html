@@ -1251,6 +1251,26 @@
             </div>
             <div class="section-title" style="margin-top:24px;">📁 Categories</div>
             <div id="categoriesGrid" class="stats-grid"></div>
+
+            <!-- GEO SECTION -->
+            <div class="section-title" style="margin-top:24px;">🌍 Géolocalisation des Visiteurs <span
+                    style="font-size:.72rem;color:var(--text-dim);font-weight:400">(30 derniers jours)</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px" id="geoGridContainer">
+                <!-- Countries Chart -->
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px">
+                    <h4 style="font-size:.85rem;font-weight:700;margin-bottom:14px">🏳️ Top Pays</h4>
+                    <div id="geoCountries">
+                        <p style="color:var(--text-dim);font-size:.78rem">Chargement...</p>
+                    </div>
+                </div>
+                <!-- Cities Table -->
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px">
+                    <h4 style="font-size:.85rem;font-weight:700;margin-bottom:14px">🏙️ Top Villes</h4>
+                    <div id="geoCities">
+                        <p style="color:var(--text-dim);font-size:.78rem">Chargement...</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- ═══════ ARTICLES ═══════ -->
@@ -1301,6 +1321,13 @@
                         data-tip="Régénère les images manquantes via Pollinations AI">🖼️ Fix Images</button>
                     <button class="btn btn-blue btn-sm" onclick="triggerAction('build-site')"
                         data-tip="Reconstruit blog.html, blog-2.html avec les articles">🏗️ Rebuild Blog</button>
+                    <button class="btn btn-sm" style="background:#E1306C;color:#fff"
+                        onclick="triggerAction('comprehensive-repair')"
+                        data-tip="Répare SEO, keywords, phrases AI, images placeholder (comprehensive_repair.py)">🔧
+                        Deep Repair</button>
+                    <button class="btn btn-sm" style="background:#06B6D4;color:#fff" onclick="triggerAction('humanize')"
+                        data-tip="Remplace les phrases détectées comme AI par des alternatives naturelles (humanize_existing_posts.py)">🤖→🧑
+                        Humanize</button>
                 </div>
             </div>
 
@@ -1414,6 +1441,14 @@
                         onclick="scanTptStore()"
                         data-tip="Lance le scraper TPT pour actualiser products_tpt.js et featured_products.js">🔍 Scan
                         TPT</button>
+                </div>
+                <div class="action-card">
+                    <div class="icon">🎨</div>
+                    <h3>Regen ALL Images</h3>
+                    <p>Régénère TOUTES les images de TOUS les articles via Pollinations AI</p><button
+                        class="btn btn-red" onclick="triggerAction('regen-all-images')"
+                        data-tip="⚠️ Régénère les 6 images (cover + 5 content) de chaque article — long!">🎨 Regen
+                        ALL</button>
                 </div>
             </div>
             <div class="section-title" style="margin-top:20px">📋 Pipeline de Build</div>
@@ -1578,6 +1613,8 @@
                 <p style="color:var(--text-dim); font-size:0.85rem; margin-bottom: 24px; line-height:1.6">
                     Testez vos clés API Pollinations gratuitement ici. Si une génération échoue, une clé a pu expirer
                     (erreur 429).<br>
+                    <span style="color:var(--orange);font-weight:600">⚠️ Les clés sont stockées uniquement dans le
+                        localStorage de ce navigateur. Elles ne sont pas synchronisées avec GitHub Secrets.</span>
                     <strong>Note:</strong> Mettez à jour les clés dans vos Secrets GitHub (POLLINATIONS_API_KEY_1 à 5).
                 </p>
                 <div id="apiKeysList"></div>
@@ -1598,12 +1635,14 @@
                 <ul>
                     <li><strong>GitHub Actions</strong> — Execute les scripts Python automatiquement (generation, build,
                         maintenance)</li>
-                    <li><strong>auto_blog_v4.py</strong> — Genere les articles avec DeepSeek AI + images via
-                        Pollinations</li>
+                    <li><strong>auto_blog_v6_ultimate.py</strong> — Genere les articles avec 7 agents DeepSeek AI +
+                        images via
+                        Pollinations (klein-large)</li>
                     <li><strong>build_articles.py</strong> — Convertit les JSON en pages HTML + genere articles.json,
                         sitemap, search_index</li>
                     <li><strong>rebuild_blog_pages.py</strong> — Genere les pages blog.html, blog-2.html, etc.</li>
-                    <li><strong>Netlify</strong> — Heberge le site et les fonctions API (admin-api)</li>
+                    <li><strong>Cloudflare Workers + GitHub Pages</strong> — Heberge le site statique (GitHub Pages) et
+                        les fonctions API (Cloudflare Workers: admin-api, contact, freebie-email, subscribe)</li>
                 </ul>
             </div>
 
@@ -1842,13 +1881,13 @@
                 <div class="icon">📸</div>
                 <h3>Générer Instagram</h3>
                 <p>Regénère TOUS les posts Instagram (24 articles) avec le nouveau logo.</p>
-                <button class="btn btn-brand" onclick="runMediaAction('instagram')" id="btnIg">🚀 Lancer</button>
+                <button class="btn btn-brand" onclick="triggerAction('instagram-batch')" id="btnIg">🚀 Lancer</button>
             </div>
             <div class="action-card">
                 <div class="icon">🖼️</div>
-                <h3>Générer Thumbnails</h3>
-                <p>Crée les miniatures (-thumb.webp) pour toutes les covers existantes.</p>
-                <button class="btn btn-cyan" onclick="runMediaAction('thumbnails')" id="btnThumb">🚀 Lancer</button>
+                <h3>Fix Images Manquantes</h3>
+                <p>Scanne et régénère uniquement les images manquantes.</p>
+                <button class="btn btn-cyan" onclick="triggerAction('fix-images')" id="btnThumb">🚀 Lancer</button>
             </div>
         </div>
 
@@ -2040,6 +2079,84 @@
             const grid = document.getElementById("categoriesGrid"); grid.innerHTML = "";
             const colors = ["orange", "blue", "purple", "green", "cyan", "pink", "red"]; let i = 0;
             for (const [cat, n] of Object.entries(d.categories || {}).sort((a, b) => b[1] - a[1])) { grid.innerHTML += `<div class="stat-card ${colors[i % colors.length]}"><div class="stat-label">${esc(cat)}</div><div class="stat-value">${n}</div></div>`; i++ }
+
+            // === GEO DATA ===
+            if (d.geo) { renderGeoData(d.geo); }
+        }
+
+        // Country flag lookup (ISO 3166-1 name → flag emoji)
+        const COUNTRY_FLAGS = {
+            'United States': '🇺🇸', 'France': '🇫🇷', 'United Kingdom': '🇬🇧', 'Canada': '🇨🇦', 'Germany': '🇩🇪',
+            'India': '🇮🇳', 'Australia': '🇦🇺', 'Brazil': '🇧🇷', 'Spain': '🇪🇸', 'Italy': '🇮🇹',
+            'Mexico': '🇲🇽', 'Netherlands': '🇳🇱', 'Japan': '🇯🇵', 'South Korea': '🇰🇷', 'Morocco': '🇲🇦',
+            'Algeria': '🇩🇿', 'Tunisia': '🇹🇳', 'Egypt': '🇪🇬', 'Turkey': '🇹🇷', 'Saudi Arabia': '🇸🇦',
+            'UAE': '🇦🇪', 'Belgium': '🇧🇪', 'Switzerland': '🇨🇭', 'Portugal': '🇵🇹', 'Poland': '🇵🇱',
+            'Russia': '🇷🇺', 'China': '🇨🇳', 'Indonesia': '🇮🇩', 'Philippines': '🇵🇭', 'Nigeria': '🇳🇬',
+            'South Africa': '🇿🇦', 'Argentina': '🇦🇷', 'Colombia': '🇨🇴', 'Pakistan': '🇵🇰', 'Bangladesh': '🇧🇩',
+            'Vietnam': '🇻🇳', 'Thailand': '🇹🇭', 'Malaysia': '🇲🇾', 'Singapore': '🇸🇬', 'Ireland': '🇮🇪',
+            'Sweden': '🇸🇪', 'Norway': '🇳🇴', 'Denmark': '🇩🇰', 'Finland': '🇫🇮', 'Austria': '🇦🇹',
+            'Czechia': '🇨🇿', 'Romania': '🇷🇴', 'Greece': '🇬🇷', 'Israel': '🇮🇱', 'Chile': '🇨🇱',
+            'Peru': '🇵🇪', 'New Zealand': '🇳🇿', 'United Arab Emirates': '🇦🇪', 'Qatar': '🇶🇦', 'Kuwait': '🇰🇼',
+            'Lebanon': '🇱🇧', 'Jordan': '🇯🇴', 'Iraq': '🇮🇶', 'Libya': '🇱🇾', 'Sudan': '🇸🇩',
+            'Kenya': '🇰🇪', 'Ghana': '🇬🇭', 'Senegal': '🇸🇳', 'Cameroon': '🇨🇲', 'Ukraine': '🇺🇦',
+            'Hungary': '🇭🇺', 'Slovakia': '🇸🇰', 'Croatia': '🇭🇷', 'Serbia': '🇷🇸', 'Bulgaria': '🇧🇬'
+        };
+        function getFlag(country) { return COUNTRY_FLAGS[country] || '🌐'; }
+
+        function renderGeoData(geo) {
+            const countryEl = document.getElementById('geoCountries');
+            const cityEl = document.getElementById('geoCities');
+
+            // --- COUNTRIES BAR CHART ---
+            const countries = (geo.countries || []).slice(0, 10);
+            if (!countries.length) {
+                countryEl.innerHTML = '<p style="color:var(--text-dim);font-size:.78rem">Aucune donnée disponible</p>';
+            } else {
+                const maxUsers = countries[0].users || 1;
+                const barColors = ['#F48C06', '#3B82F6', '#8B5CF6', '#10B981', '#06B6D4', '#EC4899', '#EF4444', '#F59E0B', '#6366F1', '#84CC16'];
+                countryEl.innerHTML = countries.map((c, idx) => {
+                    const pct = Math.max(5, (c.users / maxUsers) * 100);
+                    return `
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                            <span style="font-size:1.1rem;width:24px;text-align:center">${getFlag(c.country)}</span>
+                            <div style="flex:1;min-width:0">
+                                <div style="display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:2px">
+                                    <span style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(c.country)}</span>
+                                    <span style="color:var(--text-dim)">${c.users} vis · ${c.views} vues</span>
+                                </div>
+                                <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden">
+                                    <div style="height:100%;width:${pct}%;background:${barColors[idx % barColors.length]};border-radius:3px;transition:width 0.6s ease"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // --- CITIES TABLE ---
+            const cities = (geo.cities || []).slice(0, 10);
+            if (!cities.length) {
+                cityEl.innerHTML = '<p style="color:var(--text-dim);font-size:.78rem">Aucune donnée disponible</p>';
+            } else {
+                cityEl.innerHTML = `
+                    <table style="width:100%;font-size:.78rem">
+                        <thead><tr>
+                            <th style="text-align:left;padding:4px 6px;color:var(--text-dim);font-weight:600">Ville</th>
+                            <th style="text-align:left;padding:4px 6px;color:var(--text-dim);font-weight:600">Pays</th>
+                            <th style="text-align:right;padding:4px 6px;color:var(--text-dim);font-weight:600">Visiteurs</th>
+                            <th style="text-align:right;padding:4px 6px;color:var(--text-dim);font-weight:600">Vues</th>
+                        </tr></thead>
+                        <tbody>${cities.map(c => `
+                            <tr style="border-bottom:1px solid var(--border)">
+                                <td style="padding:6px;font-weight:600">${esc(c.city)}</td>
+                                <td style="padding:6px">${getFlag(c.country)} ${esc(c.country)}</td>
+                                <td style="padding:6px;text-align:right;color:var(--green);font-weight:700">${c.users}</td>
+                                <td style="padding:6px;text-align:right;color:var(--blue)">${c.views}</td>
+                            </tr>
+                        `).join('')}</tbody>
+                    </table>
+                `;
+            }
         }
         function renderHealthOverview(d) { document.getElementById("s-health").textContent = d.score + "%"; document.getElementById("s-issues").textContent = d.issueCount }
 
@@ -2337,9 +2454,8 @@
         }
 
         function downloadSnapshot(tag) {
-            // Open GitHub zipball URL directly (requires auth via PAT in URL won't work, so use API proxy approach)
             toast("⬇️ Préparation du téléchargement...", "info");
-            window.open(`https://github.com/${document.querySelector('meta[name="repo"]')?.content || 'little-smart-genius-com/website'}/archive/refs/tags/${tag}.zip`, '_blank');
+            window.open(`https://github.com/little-smart-genius-com/website/archive/refs/tags/${tag}.zip`, '_blank');
         }
 
         async function restoreSnapshot(tag, name) {
@@ -2483,12 +2599,9 @@
         async function loadMediaStats() {
             try {
                 const r = await api("stats");
-                const articles = r.articles || [];
-                // Count instagram files
-                document.getElementById("igCount").textContent = articles.length;
-                // Count thumbnails (based on articles that have cover images)
-                const thumbs = articles.filter(a => a.image && a.image.endsWith('.webp')).length;
-                document.getElementById("thumbCount").textContent = thumbs;
+                // stats returns { instagram: N, images: N, articles: N }
+                document.getElementById("igCount").textContent = r.instagram || 0;
+                document.getElementById("thumbCount").textContent = r.images || 0;
             } catch (e) {
                 document.getElementById("igCount").textContent = "?";
                 document.getElementById("thumbCount").textContent = "?";
@@ -2501,13 +2614,14 @@
             btn.disabled = true;
             btn.innerHTML = '<span class="spinner"></span> En cours...';
             log.style.display = 'block';
-            log.innerHTML = `<p>⏳ Lancement de la génération ${type}...</p>`;
+            log.innerHTML = `<p>⏳ Lancement via GitHub Actions: ${type}...</p>`;
 
             try {
-                const r = await api("run_script", { script: type === 'instagram' ? 'instagram_generator' : 'optimize_thumbnails' });
-                log.innerHTML += `<p style="color:var(--green)">✅ ${r.message || 'Terminé avec succès!'}</p>`;
-                toast(`${type === 'instagram' ? 'Instagram' : 'Thumbnails'} générés!`, "success");
-                loadMediaStats();
+                // Trigger via GitHub Actions workflow (same as Build tab)
+                const action = type === 'instagram' ? 'fix-images' : 'build-site';
+                const r = await api("generate", { type: action }, "POST");
+                log.innerHTML += `<p style="color:var(--green)">✅ Workflow "${action}" déclenché ! Suivez dans l'onglet Runs.</p>`;
+                toast(`${type === 'instagram' ? 'Instagram / Images' : 'Build + Thumbnails'} workflow lancé!`, "success");
             } catch (e) {
                 log.innerHTML += `<p style="color:var(--red)">❌ Erreur: ${e.message}</p>`;
                 toast("Erreur: " + e.message, "error");
@@ -2522,48 +2636,67 @@
             container.innerHTML = '<p style="text-align:center"><span class="spinner"></span> Chargement...</p>';
 
             try {
-                const r = await api("stats");
+                // Use 'articles' API which returns enriched article objects
+                const r = await api("articles");
                 const articles = r.articles || [];
                 if (!articles.length) { container.innerHTML = '<p>Aucun article trouvé.</p>'; return }
 
                 container.innerHTML = '';
                 articles.forEach((art, idx) => {
                     const slug = art.slug || '';
-                    const title = esc(art.title || 'Sans titre');
-                    const cover = art.image || '';
-                    // Extract inline images from content HTML
-                    const content = art.content || '';
-                    const imgRegex = /src=['"]\.\.\/([^'"]+)['"]/g;
-                    const inlineImages = [];
-                    let m;
-                    while ((m = imgRegex.exec(content)) !== null) {
-                        if (!m[1].includes('-cover-')) inlineImages.push(m[1]);
-                    }
+                    const title = esc(art.title || art.slug || 'Sans titre');
+                    const coverCount = art.coverCount || 0;
+                    const contentImgCount = art.contentImgCount || 0;
+                    const totalImages = coverCount + contentImgCount;
+                    const hasIg = art.hasInstagram;
+                    const health = art.health;
+                    const viewUrl = art.viewUrl || '#';
+
+                    // Construct cover URL from slug pattern (GitHub raw URL)
+                    const coverUrl = coverCount > 0
+                        ? `https://littlesmartgenius.com/images/${slug}-cover.webp`
+                        : '';
 
                     const card = document.createElement('div');
                     card.className = 'scan-card';
                     card.style.cursor = 'pointer';
 
-                    // Header (collapsed by default)
+                    // Build content image grid
+                    let contentImgsHtml = '';
+                    for (let i = 1; i <= contentImgCount; i++) {
+                        const imgUrl = `https://littlesmartgenius.com/images/${slug}-img${i}.webp`;
+                        contentImgsHtml += `
+                            <div style="text-align:center">
+                                <img src="${imgUrl}" style="width:100%;border-radius:10px;border:1px solid var(--border)" loading="lazy" onerror="this.style.opacity='0.3';this.alt='Non trouvée'">
+                                <div style="font-size:.72rem;margin-top:4px;color:var(--text-dim)">Image ${i}</div>
+                                <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','img${i}',${i})">🎨 Regénérer</button>
+                            </div>
+                        `;
+                    }
+
                     card.innerHTML = `
                         <div class="scan-header" onclick="this.parentElement.querySelector('.gallery-detail').classList.toggle('show')">
                             <h4>${idx + 1}. ${title}</h4>
-                            <span class="badge badge-info">${1 + inlineImages.length} images</span>
+                            <div style="display:flex;gap:6px;align-items:center">
+                                <span class="badge badge-info">${totalImages} img</span>
+                                ${hasIg ? '<span class="badge badge-ok">📸 IG</span>' : ''}
+                                <span class="badge ${health === 'ok' ? 'badge-ok' : health === 'warning' ? 'badge-warn' : 'badge-error'}">${health}</span>
+                            </div>
                         </div>
                         <div class="gallery-detail" style="display:none;padding-top:12px">
                             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
+                                ${coverUrl ? `
                                 <div style="text-align:center">
-                                    <img src="${cover}" style="width:100%;border-radius:10px;border:2px solid var(--brand)" loading="lazy">
+                                    <img src="${coverUrl}" style="width:100%;border-radius:10px;border:2px solid var(--brand)" loading="lazy" onerror="this.style.opacity='0.3'">
                                     <div style="font-size:.72rem;margin-top:4px;color:var(--brand);font-weight:700">COVER</div>
                                     <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','cover',0)">🎨 Regénérer</button>
                                 </div>
-                                ${inlineImages.map((img, i) => `
-                                    <div style="text-align:center">
-                                        <img src="${img}" style="width:100%;border-radius:10px;border:1px solid var(--border)" loading="lazy">
-                                        <div style="font-size:.72rem;margin-top:4px;color:var(--text-dim)">Image ${i + 1}</div>
-                                        <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','img${i + 1}',${i + 1})">🎨 Regénérer</button>
-                                    </div>
-                                `).join('')}
+                                ` : '<div style="text-align:center;padding:20px;color:var(--red)">❌ Pas de cover</div>'}
+                                ${contentImgsHtml}
+                            </div>
+                            <div style="margin-top:12px;display:flex;gap:8px">
+                                <a href="${viewUrl}" target="_blank" class="btn btn-blue btn-sm">👁️ Voir article</a>
+                                <button class="btn btn-green btn-sm" onclick="event.stopPropagation();regenImages('${slug}')">🖼️ Regénérer toutes</button>
                             </div>
                         </div>
                     `;
@@ -2583,16 +2716,30 @@
         }
 
         async function regenerateImage(slug, type, idx) {
-            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" via l'IA Art Director ?\n\nCette action va lancer la pipeline de génération d'image.`);
+            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\n\nCette action va lancer fix-images --force --image-type ${type} via GitHub Actions.`);
             if (!confirmed) return;
 
-            toast(`🎨 Régénération de ${type} pour ${slug}...`, "success");
+            toast(`🎨 Régénération de ${type} pour ${slug}...`, "info");
             try {
-                const r = await api("regenerate_image", { slug, image_type: type, image_index: idx });
-                toast(`✅ Image ${type} regénérée pour ${slug}!`, "success");
-                // Refresh gallery
-                document.getElementById('panel-gallery').dataset.loaded = '';
-                loadGallery();
+                // Encode force + image-type in slug field: slug::force::image-type
+                const encodedSlug = `${slug}::force::${type}`;
+                await api("generate", { type: 'fix-images', slug: encodedSlug }, "POST");
+                toast(`✅ Workflow lancé: regen ${type} pour ${slug}. Voir onglet Runs.`, "success");
+            } catch (e) {
+                toast(`❌ Erreur: ${e.message}`, "error");
+            }
+        }
+
+        async function regenImages(slug) {
+            const confirmed = confirm(`Regénérer TOUTES les images pour "${slug}" ?\n\nCette action va régénérer le cover + les 5 images de contenu via GitHub Actions.\nCela peut prendre plusieurs minutes.`);
+            if (!confirmed) return;
+
+            toast(`🎨 Régénération de toutes les images pour ${slug}...`, "info");
+            try {
+                // Encode force in slug field (no image-type = all images)
+                const encodedSlug = `${slug}::force`;
+                await api("generate", { type: 'fix-images', slug: encodedSlug }, "POST");
+                toast(`✅ Workflow lancé: regen all images pour ${slug}. Voir onglet Runs.`, "success");
             } catch (e) {
                 toast(`❌ Erreur: ${e.message}`, "error");
             }
