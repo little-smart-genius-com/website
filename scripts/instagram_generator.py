@@ -191,25 +191,27 @@ def _draw_decorative_circles(draw: ImageDraw.Draw, palette: dict):
 
 def _draw_glassmorphism_card(img: Image.Image, draw: ImageDraw.Draw,
                               bbox: Tuple[int, int, int, int],
-                              radius: int = 30, opacity: int = 40):
-    """Draw a frosted glass card effect."""
+                              radius: int = 30, opacity: int = 70):
+    """Draw a frosted glass card effect (light tinted)."""
     x1, y1, x2, y2 = bbox
 
     # Create glass overlay
     glass = Image.new("RGBA", IG_SIZE, (0, 0, 0, 0))
     glass_draw = ImageDraw.Draw(glass)
+    
+    # White glass backing
     glass_draw.rounded_rectangle(
         [x1, y1, x2, y2],
         radius=radius,
         fill=(255, 255, 255, opacity)
     )
 
-    # Subtle border
+    # Subtle bright border for the glass effect
     glass_draw.rounded_rectangle(
         [x1, y1, x2, y2],
         radius=radius,
-        outline=(255, 255, 255, 70),
-        width=2
+        outline=(255, 255, 255, 120),
+        width=3
     )
 
     img_rgba = img.convert("RGBA")
@@ -256,8 +258,10 @@ def _draw_title_centered(draw: ImageDraw.Draw, lines: list, y_start: int, line_h
     for i, line in enumerate(lines):
         y = y_start + i * line_height + line_height // 2
 
-        # Strong drop shadow
-        draw.text((IG_SIZE[0] // 2 + 4, y + 4), line, fill=(0, 0, 0, 200), font=font, anchor="mm")
+        # Strong double drop shadow for intense white background
+        draw.text((IG_SIZE[0] // 2 + 5, y + 5), line, fill=(0, 0, 0, 220), font=font, anchor="mm")
+        draw.text((IG_SIZE[0] // 2 + 2, y + 2), line, fill=(0, 0, 0, 180), font=font, anchor="mm")
+        
         # Pure white text
         draw.text((IG_SIZE[0] // 2, y), line, fill="#ffffff", font=font, anchor="mm")
 
@@ -270,13 +274,15 @@ def _draw_description(draw: ImageDraw.Draw, lines: list, y_start: int, line_heig
         y = y_start + i * line_height + line_height // 2
 
         # Strong shadow
-        draw.text((IG_SIZE[0] // 2 + 3, y + 3), line, fill=(0, 0, 0, 180), font=font, anchor="mm")
+        draw.text((IG_SIZE[0] // 2 + 3, y + 3), line, fill=(0, 0, 0, 200), font=font, anchor="mm")
+        draw.text((IG_SIZE[0] // 2 + 1, y + 1), line, fill=(0, 0, 0, 120), font=font, anchor="mm")
+        
         # Pure white text
         draw.text((IG_SIZE[0] // 2, y), line, fill=(255, 255, 255, 255), font=font, anchor="mm")
 
 
-def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict):
-    """Draw the branded bottom section: line + social handles + brand + URL."""
+def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card_bottom_y: int):
+    """Draw the branded bottom section: social handles + brand + URL."""
     accent = palette["accent"]
 
     # Brand name — bold, uppercase style
@@ -285,7 +291,7 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict):
     brand_bbox = draw.textbbox((0, 0), brand_text, font=brand_font)
     brand_w = brand_bbox[2] - brand_bbox[0]
     draw.text(
-        ((IG_SIZE[0] - brand_w) // 2, IG_SIZE[1] - 100),
+        ((IG_SIZE[0] - brand_w) // 2, IG_SIZE[1] - 90),
         brand_text, fill=accent, font=brand_font
     )
 
@@ -295,12 +301,12 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict):
     url_bbox = draw.textbbox((0, 0), url_text, font=url_font)
     url_w = url_bbox[2] - url_bbox[0]
     draw.text(
-        ((IG_SIZE[0] - url_w) // 2, IG_SIZE[1] - 60),
-        url_text, fill=(255, 255, 255, 200), font=url_font
+        ((IG_SIZE[0] - url_w) // 2, IG_SIZE[1] - 50),
+        url_text, fill=(255, 255, 255, 230), font=url_font
     )
 
-    # ── Social Handles ──
-    social_font = _get_font(24, bold=False)
+    # ── Social Handles just below the glass card ──
+    social_font = _get_font(26, bold=False)
     ig_text = "LittleSmartGenius_com"
     pin_text = "LittleSmartGenius_com"
     
@@ -311,34 +317,33 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict):
     
     icon_size = 32
     spacing = 10
-    block_gap = 60
+    block_gap = 70
     
     total_social_w = (icon_size + spacing + ig_text_w) + block_gap + (icon_size + spacing + pin_text_w)
     start_x = (IG_SIZE[0] - total_social_w) // 2
-    social_y = IG_SIZE[1] - 150
+    
+    # Position gracefully between the card and the brand text
+    social_y = card_bottom_y + 35
+    
+    def _draw_shadowed_text(x, y, text, font):
+        draw.text((x+2, y+2), text, fill=(0, 0, 0, 160), font=font)
+        draw.text((x, y), text, fill=(255, 255, 255, 255), font=font)
     
     # Instagram
     ig_path = os.path.join(BASE_DIR, "images", "banners", "ig_icon.png")
     if os.path.exists(ig_path):
         ig_icon = Image.open(ig_path).convert("RGBA").resize((icon_size, icon_size), Image.LANCZOS)
-        img.paste(ig_icon, (start_x, social_y - 4), mask=ig_icon)
-    draw.text((start_x + icon_size + spacing, social_y), ig_text, fill=(255, 255, 255, 240), font=social_font)
+        # Paste using the icon's alpha channel as a mask
+        img.paste(ig_icon, (start_x, social_y - 2), mask=ig_icon)
+    _draw_shadowed_text(start_x + icon_size + spacing, social_y, ig_text, social_font)
     
     # Pinterest
     pin_x = start_x + (icon_size + spacing + ig_text_w) + block_gap
     pin_path = os.path.join(BASE_DIR, "images", "banners", "pin_icon.png")
     if os.path.exists(pin_path):
         pin_icon = Image.open(pin_path).convert("RGBA").resize((icon_size, icon_size), Image.LANCZOS)
-        img.paste(pin_icon, (pin_x, social_y - 4), mask=pin_icon)
-    draw.text((pin_x + icon_size + spacing, social_y), pin_text, fill=(255, 255, 255, 240), font=social_font)
-
-    # Horizontal decorative line
-    line_y = IG_SIZE[1] - 190
-    line_margin = 200
-    draw.line(
-        [(line_margin, line_y), (IG_SIZE[0] - line_margin, line_y)],
-        fill=(255, 255, 255, 120), width=2
-    )
+        img.paste(pin_icon, (pin_x, social_y - 2), mask=pin_icon)
+    _draw_shadowed_text(pin_x + icon_size + spacing, social_y, pin_text, social_font)
 
 
 def _draw_top_icon(img: Image.Image, palette: dict) -> int:
@@ -475,39 +480,73 @@ def _create_post_image(title: str, category: str, description: str = "",
     gap_badge_title = 40
     gap_title_desc = 40
     
-    content_h = badge_h + gap_badge_title + title_total_h
+    # We want the content inside the card to feel balanced.
+    inner_content_h = title_total_h
     if desc_lines:
-        content_h += gap_title_desc + desc_total_h
+        inner_content_h += gap_title_desc + desc_total_h
         
-    # Vertical bounds (between top decorative line and bottom bar line)
+    # Vertical bounds (between top decorative line and social handles)
     top_limit = line_y + 10
-    bottom_limit = IG_SIZE[1] - 190
+    bottom_limit = IG_SIZE[1] - 180
     
-    # Vertically aligned starting Y
-    start_y = top_limit + (bottom_limit - top_limit - content_h) // 2
+    # total footprint is badge (top overlaps card) + card padding + inner content + card padding
+    card_padding_top = 40
+    card_padding_bottom = 30
+    total_footprint = (badge_h // 2) + card_padding_top + inner_content_h + card_padding_bottom
+    
+    # Center the entire footprint in available space
+    start_y = top_limit + (bottom_limit - top_limit - total_footprint) // 2
     
     # ── Step 5: Glassmorphism Card Behind Text ──
-    card_margin = 60
-    card_top = start_y - 40
-    card_bottom = start_y + content_h + 40
-    img = _draw_glassmorphism_card(img, draw, (card_margin, card_top, IG_SIZE[0] - card_margin, card_bottom), radius=30, opacity=60)
+    card_margin = 55
+    card_top = start_y + badge_h // 2
+    card_bottom = card_top + card_padding_top + inner_content_h + card_padding_bottom
+    img = _draw_glassmorphism_card(img, draw, (card_margin, card_top, IG_SIZE[0] - card_margin, card_bottom), radius=35, opacity=40)
     draw = ImageDraw.Draw(img) # Refresh drawing context after alpha composite
     
-    # ── Step 6: Category badge ──
+    # ── Horizontal line ABOVE the badge, cutting through the background ──
+    # The reference image has a subtle line right behind/above the badge
+    # We draw two segments so it doesn't intersect the actual rounded badge
+    line_top_y = start_y + badge_h // 2
+    
+    # Calculate approx text width to know where to stop the lines
+    # (Borrowing from badge drawing logic for width estimate)
+    badge_font = _get_font(28, bold=True)
+    temp_bbox = draw.textbbox((0, 0), category.upper(), font=badge_font, anchor="mm")
+    badge_w = (temp_bbox[2] - temp_bbox[0]) + 60
+    
+    line_gap = badge_w // 2 + 10 # gap from center
+    draw.line(
+        [(card_margin + 60, line_top_y), (IG_SIZE[0] // 2 - line_gap, line_top_y)],
+        fill=(255, 255, 255, 120), width=2
+    )
+    draw.line(
+        [(IG_SIZE[0] // 2 + line_gap, line_top_y), (IG_SIZE[0] - card_margin - 60, line_top_y)],
+        fill=(255, 255, 255, 120), width=2
+    )
+
+    # ── Step 6: Category badge (overlaps top edge of card) ──
     badge_y = start_y
     _draw_category_badge(draw, category, palette, y_pos=badge_y)
     
     # ── Step 7: Title — centered ──
-    title_y = badge_y + badge_h + gap_badge_title
+    title_y = card_top + card_padding_top
     _draw_title_centered(draw, title_lines, title_y, line_height=title_line_height)
     
     # ── Step 8: Meta description paragraph ──
     if desc_lines:
         desc_y = title_y + title_total_h + gap_title_desc
         _draw_description(draw, desc_lines, desc_y, line_height=desc_line_height)
+        
+    # ── Horizontal line BELOW description inside the card ──
+    line_bot_y = card_bottom - 20
+    draw.line(
+        [(card_margin + 40, line_bot_y), (IG_SIZE[0] - card_margin - 40, line_bot_y)],
+        fill=(255, 255, 255, 120), width=2
+    )
 
     # ── Step 9: Bottom branded bar ──
-    _draw_bottom_bar(img, draw, palette)
+    _draw_bottom_bar(img, draw, palette, card_bottom)
 
     return img.convert("RGB")
 
