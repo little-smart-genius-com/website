@@ -286,7 +286,8 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     import os
     BASE_DIR = 'C:/Users/Omar/Desktop/little-smart-genius-site/Nouveau dossier/online/Little_Smart_Genius'
     
-    panel_y = card_bottom_y + 25
+    # Force the dual pills to always be anchored at the absolute bottom
+    panel_y = IG_SIZE[1] - 195
     panel_h = 75 # Pill height
     panel_w = 460
     margin_x = 65
@@ -492,11 +493,12 @@ def _create_post_image(title: str, category: str, description: str = "",
     )
 
     # ── Text layout calculation to perfectly center vertically ──
-    def _wrap_text(text: str, width: int, max_lines: int = 4) -> list:
+    def _wrap_text(text: str, width: int, max_lines: int = 3) -> list:
         wrapped = textwrap.fill(text, width=width)
         return wrapped.split("\n")[:max_lines]
 
-    title_lines = _wrap_text(title, width=19, max_lines=4)
+    # Force up to 25 characters per line to keep it short vertically
+    title_lines = _wrap_text(title, width=25, max_lines=3)
     desc_lines = _wrap_text(description, width=38, max_lines=4) if description else []
 
     title_line_height = 92
@@ -558,13 +560,6 @@ def _create_post_image(title: str, category: str, description: str = "",
     if desc_lines:
         desc_y = title_y + title_total_h + gap_title_desc
         _draw_description(draw, desc_lines, desc_y, line_height=desc_line_height)
-        
-    # ── Horizontal line BELOW description inside the card ──
-    line_bot_y = card_bottom - 20
-    draw.line(
-        [(card_margin + 40, line_bot_y), (IG_SIZE[0] - card_margin - 40, line_bot_y)],
-        fill=(255, 255, 255, 120), width=2
-    )
 
     # ── Step 9: Bottom branded bar ──
     _draw_bottom_bar(img, draw, palette, card_bottom)
