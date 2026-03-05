@@ -511,10 +511,14 @@ def _create_post_image(title: str, category: str, description: str = "",
     gap_badge_title = 40
     gap_title_desc = 40
     
-    # We want the content inside the card to feel balanced.
-    inner_content_h = title_total_h
-    if desc_lines:
-        inner_content_h += gap_title_desc + desc_total_h
+    # FIX: Lock the structural height to maximums so the entire frame is uniformly sized
+    fixed_title_lines = 3
+    fixed_desc_lines = 4
+    max_title_h = fixed_title_lines * title_line_height
+    max_desc_h = fixed_desc_lines * desc_line_height
+    
+    # Inner content is hardcoded to the maximum boundary so the card size never changes
+    inner_content_h = max_title_h + gap_title_desc + max_desc_h
         
     # Vertical bounds (between top decorative line and social handles)
     top_limit = line_y + 10
@@ -538,12 +542,12 @@ def _create_post_image(title: str, category: str, description: str = "",
     # White border around the card
     draw.rounded_rectangle([card_margin, card_top, IG_SIZE[0] - card_margin, card_bottom], radius=35, outline=(255, 255, 255, 180), width=2)
     
-    # Brand Title ABOVE the card
+    # Brand Title ABOVE the card (centered perfectly on the white line)
     brand_font = _get_font(28, bold=True)
     brand_text = BRAND_NAME.upper()
     temp_bbox = draw.textbbox((0, 0), brand_text, font=brand_font, anchor="mm")
     brand_w = temp_bbox[2] - temp_bbox[0]
-    bx, by = IG_SIZE[0] // 2, card_top - 38
+    bx, by = IG_SIZE[0] // 2, line_y
     draw.rectangle([bx - brand_w//2 - 20, by - 16, bx + brand_w//2 + 20, by + 18], fill=(30, 20, 30, 150))
     draw.text((bx+2, by+2), brand_text, fill=(0,0,0,180), font=brand_font, anchor="mm")
     draw.text((bx, by), brand_text, fill=palette.get("accent", "#E69A0B"), font=brand_font, anchor="mm")
@@ -552,14 +556,16 @@ def _create_post_image(title: str, category: str, description: str = "",
     badge_y = start_y
     _draw_category_badge(draw, category, palette, y_pos=badge_y)
     
-    # ── Step 7: Title — centered ──
-    title_y = card_top + card_padding_top
-    _draw_title_centered(draw, title_lines, title_y, line_height=title_line_height)
+    # ── Step 7: Title — centered inside fixed boundary block ──
+    title_block_y = card_top + card_padding_top
+    title_y_offset = title_block_y + (max_title_h - title_total_h) // 2
+    _draw_title_centered(draw, title_lines, title_y_offset, line_height=title_line_height)
     
-    # ── Step 8: Meta description paragraph ──
+    # ── Step 8: Meta description paragraph inside fixed boundary block ──
     if desc_lines:
-        desc_y = title_y + title_total_h + gap_title_desc
-        _draw_description(draw, desc_lines, desc_y, line_height=desc_line_height)
+        desc_block_y = title_block_y + max_title_h + gap_title_desc
+        desc_y_offset = desc_block_y + (max_desc_h - desc_total_h) // 2
+        _draw_description(draw, desc_lines, desc_y_offset, line_height=desc_line_height)
 
     # ── Step 9: Bottom branded bar ──
     _draw_bottom_bar(img, draw, palette, card_bottom)
