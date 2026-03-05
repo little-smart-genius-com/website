@@ -17,12 +17,14 @@
     "best after school activities for brain development",
     "critical thinking activities for kindergarten",
     "fun homework alternatives for elementary students",
-    "shadow matching worksheets for toddlers"
+    "shadow matching worksheets for toddlers",
+    "printable logic puzzles for kids ages 6-10"
   ],
   "product": [
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.1",
     "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.5",
-    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.5"
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.5",
+    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.1"
   ],
   "freebie": [
     "ABC Path",
@@ -149,6 +151,16 @@
       "slot": "keyword",
       "topic": "shadow matching worksheets for toddlers",
       "date": "2026-03-03T23:12:46.295896"
+    },
+    {
+      "slot": "keyword",
+      "topic": "printable logic puzzles for kids ages 6-10",
+      "date": "2026-03-05T14:24:30.834321"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.1",
+      "date": "2026-03-05T14:37:42.994604"
     }
   ]
 }
