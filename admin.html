@@ -2889,20 +2889,35 @@
 
                 toast(`📤 3/3: Sauvegarde de l'image WebP sur GitHub...`, "info");
 
-                // Step 3: Commit to GitHub
-                const commitRes = await api("regen-image-commit", {
-                    slug,
-                    imageType: type,
-                    filename,
-                    existingSha,
-                    base64Webp,
-                    thumbFilename,
-                    thumbSha,
-                    base64ThumbWebp
-                });
+                // Step 3: Commit to GitHub (may timeout but still succeed)
+                let commitOk = false;
+                try {
+                    const commitRes = await api("regen-image-commit", {
+                        slug,
+                        imageType: type,
+                        filename,
+                        existingSha,
+                        base64Webp,
+                        thumbFilename,
+                        thumbSha,
+                        base64ThumbWebp
+                    });
+                    commitOk = true;
+                    toast(`✅ ${commitRes.message || 'Image WebP régénérée !'}`, "success");
+                } catch (commitErr) {
+                    // If we get "Failed to fetch" during commit, the image was probably
+                    // already uploaded to GitHub. Treat as likely success.
+                    if (commitErr.message && commitErr.message.includes('fetch')) {
+                        toast(`⚠️ L'image a été générée et probablement sauvegardée. Rechargement...`, "info");
+                        commitOk = true; // still reload gallery to verify
+                    } else {
+                        throw commitErr; // re-throw real errors
+                    }
+                }
 
-                toast(`✅ ${commitRes.message || 'Image WebP régénérée !'}`, "success");
-                setTimeout(() => loadGallery(), 2000);
+                if (commitOk) {
+                    setTimeout(() => loadGallery(), 3000);
+                }
             } catch (e) {
                 toast(`❌ Erreur: ${e.message}`, "error");
             }
