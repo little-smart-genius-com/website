@@ -2741,15 +2741,15 @@
         }
 
         async function regenerateImage(slug, type, idx) {
-            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\n\nCette action va lancer fix-images --force --image-type ${type} via GitHub Actions.`);
+            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\n\nL'image sera régénérée directement (Art Director + Pollinations) et remplacera l'actuelle avec le même fichier.`);
             if (!confirmed) return;
 
-            toast(`🎨 Régénération de ${type} pour ${slug}...`, "info");
+            toast(`🎨 Génération de ${type} pour ${slug} en cours... (30-60 secondes)`, "info");
             try {
-                // Encode force + image-type in slug field: slug::force::image-type
-                const encodedSlug = `${slug}::force::${type}`;
-                await api("generate", { type: 'fix-images', slug: encodedSlug }, "POST");
-                toast(`✅ Workflow lancé: regen ${type} pour ${slug}. Voir onglet Runs.`, "success");
+                const r = await api("regen-image", { slug, imageType: type });
+                toast(`✅ ${r.message || 'Image régénérée !'}`, "success");
+                // Reload gallery to show updated image
+                setTimeout(() => loadGallery(), 2000);
             } catch (e) {
                 toast(`❌ Erreur: ${e.message}`, "error");
             }

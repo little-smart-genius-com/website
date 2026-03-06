@@ -907,6 +907,189 @@ async function scanTpt(env) {
 }
 
 // ═══════════════════════════════════════════════════════════
+// DIRECT IMAGE REGENERATION (Pollinations + GitHub commit)
+// ═══════════════════════════════════════════════════════════
+
+// V8 Master Prompt templates (exact copy from scripts/master_prompt.py)
+const MASTER_PROMPTS = [
+    // Cover (idx 0): Intense Golden Hour
+    `A feature-film quality 3D CGI render in the distinct modern Pixar/Disney animation style, featuring [SUJET]. The scene utilizes dramatic golden hour cinematography with intense, warm backlighting creating prominent rim lights on subjects and volumetric sun rays. The atmosphere is glowing and highly textured with a shallow depth of field. 8K resolution masterpiece with photorealistic rendering engine details; the entire image is rendered explicitly without containing any text, letters, words, numbers, watermarks, signatures, deformed anatomy, distorted faces, ugly features, poorly drawn hands, missing limbs, extra fingers, mutated shapes, blurry artifacts, low resolution areas, bad proportions, crossed eyes, creepy expressions, or floating objects.`,
+    // img1 (idx 1): Bright & Airy Morning
+    `A pristine 3D CGI animated render in the modern Pixar/Disney style, featuring [SUJET], focused on clean geometry and soft, inviting textures. The lighting setup is high-key and airy, simulating clean morning daylight with balanced exposure, soft diffused shadows, and a fresh, cheerful color grading. The background is smoothly blurred. 8K resolution, highly detailed render; the entire image is rendered explicitly without containing any text, letters, words, numbers, watermarks, signatures, deformed anatomy, distorted faces, ugly features, poorly drawn hands, missing limbs, extra fingers, mutated shapes, blurry artifacts, low resolution areas, bad proportions, crossed eyes, creepy expressions, or floating objects.`,
+    // img2 (idx 2): Cozy Evening Intimacy
+    `A highly detailed 3D animated render in the modern Pixar production style, featuring [SUJET]. The lighting is a low-key interior setup, characterized by deep, warm tones from practical light sources creating an intimate and tranquil mood. Emphasis on rich texture details, warm highlights, and significant bokeh depth of field. 8K masterpiece render; the entire image is rendered explicitly without containing any text, letters, words, numbers, watermarks, signatures, deformed anatomy, distorted faces, ugly features, poorly drawn hands, missing limbs, extra fingers, mutated shapes, blurry artifacts, low resolution areas, bad proportions, crossed eyes, creepy expressions, or floating objects.`,
+    // img3 (idx 3): Soft Dappled Natural Light
+    `A high-quality 3D CGI render displaying modern Disney/Pixar animation aesthetics, featuring [SUJET] with gentle, rounded character designs. The lighting is naturalistic and tranquil, utilizing a dappled sunlight effect through off-camera foliage to create soft, organic light and shadow patterns across the scene. 8K resolution, photorealistic texture rendering; the entire image is rendered explicitly without containing any text, letters, words, numbers, watermarks, signatures, deformed anatomy, distorted faces, ugly features, poorly drawn hands, missing limbs, extra fingers, mutated shapes, blurry artifacts, low resolution areas, bad proportions, crossed eyes, creepy expressions, or floating objects.`,
+    // img4 (idx 4): Vibrant & Joyful Daytime
+    `A vibrant 3D animated CGI render in the professional style of modern Pixar, featuring [SUJET]. The art direction emphasizes a highly saturated color palette, soft expressive textures, and clean forms. The illumination is bright, even daytime lighting, optimizing color pop and creating an energetic atmosphere with a clean focus fall-off in the background. 8K masterpiece quality; the entire image is rendered explicitly without containing any text, letters, words, numbers, watermarks, signatures, deformed anatomy, distorted faces, ugly features, poorly drawn hands, missing limbs, extra fingers, mutated shapes, blurry artifacts, low resolution areas, bad proportions, crossed eyes, creepy expressions, or floating objects.`,
+    // img5 (idx 5): Soft Overcast Diffused Light
+    `A high-fidelity 3D animated CGI render in the modern Pixar/Disney animation style, featuring [SUJET]. The lighting scenario is soft, diffused daylight typical of an overcast sky, resulting in ultra-soft, nearly invisible shadows and a peaceful, comforting interior ambiance. Emphasis on tactile material textures and a warmly blurred background with shallow depth of field. 8K resolution masterpiece; the entire image is rendered explicitly without containing any text, letters, words, numbers, watermarks, signatures, deformed anatomy, distorted faces, ugly features, poorly drawn hands, missing limbs, extra fingers, mutated shapes, blurry artifacts, low resolution areas, bad proportions, crossed eyes, creepy expressions, or floating objects.`,
+];
+
+const NO_TEXT_SUFFIX = ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, watermarks, or UI overlays in the image, pure visual storytelling only";
+
+function buildArtDirectorSubject(title, concept, imageIndex) {
+    if (imageIndex === 0) {
+        return `a group of joyful, diverse children and a smiling teacher engaged in ${concept} activities together, carefully placing pieces and smiling, in a warm cozy classroom with sunlight streaming in`;
+    } else if (imageIndex === 1) {
+        return `an overhead flat-lay view of small hands carefully working on colorful worksheets about ${concept}, with colored pencils, stickers, and a magnifying glass scattered around on a warm wooden table in soft morning light`;
+    } else if (imageIndex === 2) {
+        return `multiple children's hands reaching across a large shared activity page about ${concept}, collaborating together, with markers, glue sticks, and craft materials, on a bright classroom table with sunlight streaming through windows`;
+    } else if (imageIndex === 3) {
+        return `a detail shot of beautifully designed educational materials about ${concept}, surrounded by colorful art supplies like scissors, colored pencils, glitter glue, and stickers on a neat desk with a plant in the background`;
+    } else if (imageIndex === 4) {
+        return `a close-up of a child's small hands joyfully interacting with a puzzle piece related to ${concept}, with a parent's hands gently guiding nearby, in a cozy home setting with warm natural light`;
+    } else {
+        return `a wide shot of a warm, inviting learning environment where children and a teacher sit around a table covered with worksheets about ${concept}, all smiling and engaged, with educational posters on the walls and sunlight through large windows`;
+    }
+}
+
+function buildFullPrompt(subject, imageIndex) {
+    const template = MASTER_PROMPTS[Math.min(imageIndex, MASTER_PROMPTS.length - 1)];
+    return template.replace("[SUJET]", subject);
+}
+
+function getImageIndex(imageType) {
+    if (imageType === "cover") return 0;
+    const m = imageType.match(/img(\d+)/);
+    return m ? parseInt(m[1]) : 0;
+}
+
+async function regenImage(slug, imageType, env) {
+    if (!slug) throw new Error("slug required");
+    if (!imageType) throw new Error("imageType required (cover, img1, img2, img3, img4, img5)");
+
+    const imageIndex = getImageIndex(imageType);
+
+    // 1. Find the post JSON to get article info + existing image filenames
+    const postFiles = await ghListDir("posts", env);
+    const postFile = postFiles.find(f => f.name.startsWith(slug) && f.name.endsWith(".json"));
+    if (!postFile) throw new Error(`Post JSON not found for slug: ${slug}`);
+
+    const { content: postContent } = await ghFileContent(`posts/${postFile.name}`, env);
+    if (!postContent) throw new Error(`Could not read post JSON: ${postFile.name}`);
+    const postData = JSON.parse(postContent);
+
+    const title = postData.title || slug.replace(/-/g, " ");
+    const concept = title.replace(/-/g, " ");
+
+    // 2. Find the existing image filename to overwrite
+    let existingFilename = "";
+    if (imageType === "cover") {
+        // Cover from the 'image' field
+        existingFilename = (postData.image || "").replace("images/", "");
+    } else {
+        // Content image: scan the 'content' field for -imgN- references
+        const content = postData.content || "";
+        const imgPattern = new RegExp(`(\\S*-${imageType}-\\d+\\.webp)`, "i");
+        const match = content.match(imgPattern);
+        if (match) {
+            existingFilename = match[1].replace(/^.*\//, ""); // strip path prefix
+        }
+    }
+
+    if (!existingFilename) {
+        throw new Error(`Image filename not found in post JSON for ${imageType}. Available references may be missing.`);
+    }
+
+    // 3. Get SHA of existing image file on GitHub
+    const imgFiles = await ghListDir("images", env);
+    const existingFile = imgFiles.find(f => f.name === existingFilename);
+    const existingSha = existingFile ? existingFile.sha : null;
+
+    // 4. Build Art Director subject + Master Prompt
+    const subject = buildArtDirectorSubject(title, concept, imageIndex);
+    const fullPrompt = buildFullPrompt(subject, imageIndex);
+    const cleanPrompt = (fullPrompt + NO_TEXT_SUFFIX).replace(/[^a-zA-Z0-9 ,.\-]/g, "");
+    const encodedPrompt = encodeURIComponent(cleanPrompt);
+    const seed = Math.floor(Date.now() / 1000) + imageIndex * 100;
+
+    // 5. Call Pollinations API
+    const pollinationsUrl = `https://gen.pollinations.ai/image/${encodedPrompt}?width=1200&height=900&seed=${seed}&model=flux-pro&nologo=true&enhance=true`;
+
+    let imageData = null;
+    for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+            const imgRes = await fetch(pollinationsUrl, {
+                headers: { "User-Agent": "Mozilla/5.0 (LittleSmartGenius-Admin)" },
+            });
+            if (imgRes.ok) {
+                const arrayBuf = await imgRes.arrayBuffer();
+                if (arrayBuf.byteLength > 1024) {
+                    imageData = arrayBuf;
+                    break;
+                }
+            }
+        } catch (e) {
+            // retry
+        }
+        await new Promise(r => setTimeout(r, 3000));
+    }
+
+    if (!imageData) {
+        throw new Error("Failed to generate image from Pollinations after 3 attempts");
+    }
+
+    // 6. Convert to base64 for GitHub API
+    const bytes = new Uint8Array(imageData);
+    let binary = "";
+    for (let i = 0; i < bytes.length; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    const base64Content = btoa(binary);
+
+    // 7. Upload to GitHub (overwrite existing file)
+    const REPO = env.GITHUB_REPO || "little-smart-genius-com/website";
+    const putBody = {
+        message: `Dashboard: regen ${imageType} for ${slug}`,
+        content: base64Content,
+        branch: BRANCH,
+    };
+    if (existingSha) putBody.sha = existingSha;
+
+    const putRes = await ghFetch(`contents/images/${existingFilename}`, {
+        method: "PUT",
+        body: JSON.stringify(putBody),
+    }, env);
+
+    if (!putRes.ok) {
+        const errText = await putRes.text();
+        throw new Error(`GitHub upload failed (${putRes.status}): ${errText.substring(0, 200)}`);
+    }
+
+    // 8. If cover image, also regenerate thumbnail
+    if (imageType === "cover") {
+        const thumbFilename = existingFilename.replace(".webp", "-thumb.webp");
+        const thumbFile = imgFiles.find(f => f.name === thumbFilename);
+        const thumbSha = thumbFile ? thumbFile.sha : null;
+
+        // Upload same image as thumbnail (Pollinations already returns good quality)
+        const thumbBody = {
+            message: `Dashboard: regen cover thumb for ${slug}`,
+            content: base64Content,
+            branch: BRANCH,
+        };
+        if (thumbSha) thumbBody.sha = thumbSha;
+
+        await ghFetch(`contents/images/${thumbFilename}`, {
+            method: "PUT",
+            body: JSON.stringify(thumbBody),
+        }, env);
+    }
+
+    const sizeKB = Math.round(imageData.byteLength / 1024);
+    return {
+        success: true,
+        slug,
+        imageType,
+        filename: existingFilename,
+        sizeKB,
+        imageUrl: `https://littlesmartgenius.com/images/${existingFilename}`,
+        message: `✅ ${imageType} régénérée (${sizeKB}KB) — même fichier, même lien`,
+    };
+}
+
+// ═══════════════════════════════════════════════════════════
 // CLEANUP INSTAGRAM (delete files > 24h old)
 // ═══════════════════════════════════════════════════════════
 
@@ -1008,10 +1191,11 @@ export default {
                 case "runs": result = await getWorkflowRuns(env); break;
                 case "scan-tpt": result = await scanTpt(env); break;
                 case "cleanup-instagram": result = await cleanupInstagram(env); break;
+                case "regen-image": result = await regenImage(params.slug, params.imageType, env); break;
                 default:
                     return new Response(JSON.stringify({
                         error: "Unknown action",
-                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs", "scan-tpt", "cleanup-instagram"],
+                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs", "scan-tpt", "cleanup-instagram", "regen-image"],
                     }), { status: 400, headers: corsHeaders });
             }
             return new Response(JSON.stringify(result), { status: 200, headers: corsHeaders });
