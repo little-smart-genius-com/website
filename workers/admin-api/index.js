@@ -1292,13 +1292,13 @@ export default {
                 case "scan-tpt": result = await scanTpt(env); break;
                 case "cleanup-instagram": result = await cleanupInstagram(env); break;
                 case "regen-image-fetch":
-                    result = await regenImageFetch(body.slug, body.imageType, env);
+                    result = await regenImageFetch(params.slug, params.imageType, env);
                     break;
                 case "regen-image-commit-main":
-                    result = await regenImageCommitMain(body, env);
+                    result = await regenImageCommitMain(params, env);
                     break;
                 case "regen-image-commit-thumb":
-                    result = await regenImageCommitThumb(body, env);
+                    result = await regenImageCommitThumb(params, env);
                     break;
                 default:
                     return new Response(JSON.stringify({
