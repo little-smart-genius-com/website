@@ -2677,8 +2677,10 @@
                     // Use ACTUAL filenames from API (includes timestamps)
                     const coverFiles = art.coverFiles || [];
                     const contentImgFiles = art.contentImgFiles || [];
+                    const cacheBuster = `?v=${Date.now()}`;
+                    const rawGitUrl = "https://raw.githubusercontent.com/little-smart-genius-com/website/main/images/";
                     const coverUrl = coverFiles.length > 0
-                        ? `https://littlesmartgenius.com/images/${coverFiles[0]}`
+                        ? `${rawGitUrl}${coverFiles[0]}${cacheBuster}`
                         : '';
 
                     const card = document.createElement('div');
@@ -2688,7 +2690,7 @@
                     // Build content image grid using ACTUAL filenames
                     let contentImgsHtml = '';
                     contentImgFiles.forEach((fileName, i) => {
-                        const imgUrl = `https://littlesmartgenius.com/images/${fileName}`;
+                        const imgUrl = `${rawGitUrl}${fileName}${cacheBuster}`;
                         const imgIdx = (fileName.match(/-img(\d+)/) || [0, i + 1])[1];
                         contentImgsHtml += `
                             <div style="text-align:center">
