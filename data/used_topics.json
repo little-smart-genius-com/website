@@ -26,7 +26,8 @@
     "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.5",
     "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.5",
     "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.1",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Beach Vol.1"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Beach Vol.1",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3"
   ],
   "freebie": [
     "ABC Path",
@@ -173,6 +174,11 @@
       "slot": "keyword",
       "topic": "alphabet activities for preschool at home",
       "date": "2026-03-06T10:12:02.115766"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3",
+      "date": "2026-03-06T16:08:52.610627"
     }
   ]
 }
