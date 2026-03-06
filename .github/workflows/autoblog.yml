@@ -171,7 +171,8 @@ jobs:
         run: |
           RAW_SLUG="${{ steps.action.outputs.slug }}"
           # Parse slug field: slug::force::image-type (e.g. my-article::force::cover)
-          SLUG_PART=$(echo "$RAW_SLUG" | cut -d'::' -f1 2>/dev/null || echo "$RAW_SLUG")
+          # Extract slug part (everything before first ::)
+          SLUG_PART="${RAW_SLUG%%::*}"
           ARGS=""
           if [ -n "$SLUG_PART" ] && [ "$SLUG_PART" != "" ]; then
             ARGS="--slug $SLUG_PART"
@@ -179,9 +180,12 @@ jobs:
           if echo "$RAW_SLUG" | grep -q "::force"; then
             ARGS="$ARGS --force"
           fi
-          IMG_TYPE=$(echo "$RAW_SLUG" | grep -oP '::force::(\K[^:]+)' || true)
-          if [ -n "$IMG_TYPE" ]; then
-            ARGS="$ARGS --image-type $IMG_TYPE"
+          # Extract image type after ::force:: (e.g. cover, img1, img2...)
+          if echo "$RAW_SLUG" | grep -q "::force::"; then
+            IMG_TYPE="${RAW_SLUG##*::force::}"
+            if [ -n "$IMG_TYPE" ] && [ "$IMG_TYPE" != "$RAW_SLUG" ]; then
+              ARGS="$ARGS --image-type $IMG_TYPE"
+            fi
           fi
           echo "Running: python scripts/fix_images.py $ARGS"
           python scripts/fix_images.py $ARGS
