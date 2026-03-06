@@ -1013,7 +1013,7 @@ async function regenImage(slug, imageType, env) {
 
     let imageData = null;
     let lastError = null;
-    for (let attempt = 0; attempt < 3; attempt++) {
+    for (let attempt = 0; attempt < 12; attempt++) {
         const seedValue = seed + attempt; // varies per attempt
         let currentKey = "";
         if (apiKeys.length > 0) {
@@ -1045,11 +1045,11 @@ async function regenImage(slug, imageType, env) {
         } catch (e) {
             lastError = e.message;
         }
-        await new Promise(r => setTimeout(r, 3000));
+        await new Promise(r => setTimeout(r, 2000));
     }
 
     if (!imageData) {
-        throw new Error(`Failed to generate image from Pollinations (${modelName}) after 3 attempts. Last error: ${lastError}`);
+        throw new Error(`Failed to generate image from Pollinations (${modelName}) after 12 attempts. Last error: ${lastError}`);
     }
 
     // 6. Convert to base64 for GitHub API
