@@ -2776,7 +2776,7 @@
                     // Use ACTUAL filenames from API (includes timestamps)
                     const coverFiles = art.coverFiles || [];
                     const contentImgFiles = art.contentImgFiles || [];
-                    const cacheBuster = `?v=${Date.now()}`;
+                    const cacheBuster = `?t=${Date.now()}_${Math.random().toString(36).substring(7)}`;
                     const rawGitUrl = "https://raw.githubusercontent.com/little-smart-genius-com/website/main/images/";
                     const coverUrl = coverFiles.length > 0
                         ? `${rawGitUrl}${coverFiles[0]}${cacheBuster}`
@@ -2947,6 +2947,19 @@
 
                 if (commitOk) {
                     toast(`✅ Image WebP (${type}) régénérée et sauvegardée !`, "success");
+
+                    // Pre-warm the browser cache to bypass aggressively cached old images on raw.githubusercontent.com
+                    try {
+                        const bustUrl = `https://raw.githubusercontent.com/little-smart-genius-com/website/main/images/${filename}?t=${Date.now()}`;
+                        await fetch(bustUrl, { cache: 'reload', mode: 'no-cors' });
+                        if (type === 'cover' && base64ThumbWebp) {
+                            const bustThumbUrl = `https://raw.githubusercontent.com/little-smart-genius-com/website/main/images/${thumbFilename}?t=${Date.now()}`;
+                            await fetch(bustThumbUrl, { cache: 'reload', mode: 'no-cors' });
+                        }
+                    } catch (e) {
+                        // Ignore pre-warm errors
+                    }
+
                     setTimeout(() => loadGallery(), 3000);
                 }
             } catch (e) {
