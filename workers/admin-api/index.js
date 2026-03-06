@@ -10,6 +10,10 @@
 //   MAKECOM_WEBHOOK_URL — Make.com webhook URL
 // ============================================================
 
+// Global set to keep track of Pollinations keys that return 402/429.
+// This persists across requests within the same Cloudflare Worker isolate.
+const deadPollinationsKeys = new Set();
+
 const GITHUB_API = "https://api.github.com";
 const BRANCH = "main";
 
@@ -1012,12 +1016,22 @@ async function regenImageFetch(slug, imageType, env) {
 
     // 5. Call Pollinations
     const modelName = env.POLLINATIONS_MODEL_NAME || "klein-large";
-    const apiKeys = env.POLLINATIONS_KEYS_LIST ? env.POLLINATIONS_KEYS_LIST.split(",") : [];
+    const allKeys = env.POLLINATIONS_KEYS_LIST ? env.POLLINATIONS_KEYS_LIST.split(",") : [];
+
+    // Filter out dead keys to avoid wasting time
+    const apiKeys = allKeys.filter(k => !deadPollinationsKeys.has(k));
+
+    // If all keys are dead, clear the set to try again (maybe quotas reset)
+    if (apiKeys.length === 0 && allKeys.length > 0) {
+        deadPollinationsKeys.clear();
+        apiKeys.push(...allKeys);
+    }
+
     const baseUrl = `https://gen.pollinations.ai/image/${encodedPrompt}`;
 
     let imageData = null;
     let lastError = null;
-    const MAX_RETRIES = 3;
+    const MAX_RETRIES = Math.min(8, Math.max(3, apiKeys.length)); // Try up to 8 times to skip dead keys
     const TIMEOUT_MS = 8000; // 8 seconds max per request to avoid CF 30s limit
 
     for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
@@ -1051,6 +1065,11 @@ async function regenImageFetch(slug, imageType, env) {
                 } else {
                     lastError = `Image too small: ${arrayBuf.byteLength} bytes`;
                 }
+            } else if (imgRes.status === 402 || imgRes.status === 429) {
+                if (currentKey) deadPollinationsKeys.add(currentKey);
+                lastError = `HTTP ${imgRes.status} (Key blacklisted)`;
+                // Retry immediately without waiting
+                continue;
             } else {
                 lastError = `HTTP ${imgRes.status} ${imgRes.statusText}`;
             }
@@ -1059,7 +1078,7 @@ async function regenImageFetch(slug, imageType, env) {
         }
 
         if (attempt < MAX_RETRIES - 1) {
-            await new Promise(r => setTimeout(r, 1000));
+            await new Promise(r => setTimeout(r, 800)); // slightly faster sleep
         }
     }
 
