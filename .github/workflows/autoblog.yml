@@ -248,9 +248,9 @@ jobs:
           PYTHONIOENCODING: utf-8
         run: python scripts/regen_all_images.py
 
-      # ── INSTAGRAM BATCH ──
-      - name: Generate all Instagram posts
-        if: steps.action.outputs.action == 'instagram-batch'
+      # ── INSTAGRAM ──
+      - name: Generate Instagram posts
+        if: steps.action.outputs.action != 'maintenance-scan'
         env:
           PYTHONIOENCODING: utf-8
         run: python scripts/instagram_generator.py
