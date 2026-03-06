@@ -1005,29 +1005,51 @@ async function regenImage(slug, imageType, env) {
     const seed = Math.floor(Date.now() / 1000) + imageIndex * 100;
 
     // 5. Call Pollinations API
-    const pollinationsUrl = `https://gen.pollinations.ai/image/${encodedPrompt}?width=1200&height=900&seed=${seed}&model=flux-pro&nologo=true&enhance=true`;
+    const modelName = env.POLLINATIONS_MODEL_NAME || "klein-large";
+    const apiKeys = env.POLLINATIONS_KEYS_LIST ? env.POLLINATIONS_KEYS_LIST.split(",") : [];
+
+    // Base URL without model, we'll append query params
+    const baseUrl = `https://gen.pollinations.ai/image/${encodedPrompt}`;
 
     let imageData = null;
+    let lastError = null;
     for (let attempt = 0; attempt < 3; attempt++) {
+        const seedValue = seed + attempt; // varies per attempt
+        let currentKey = "";
+        if (apiKeys.length > 0) {
+            // Rotate through keys based on seed/attempt
+            const keyIndex = (imageIndex + attempt + Math.floor(Date.now() / 1000)) % apiKeys.length;
+            currentKey = apiKeys[keyIndex];
+        }
+
+        const pollinationsUrl = `${baseUrl}?width=1200&height=900&seed=${seedValue}&model=${modelName}&nologo=true&enhance=true`;
+
         try {
-            const imgRes = await fetch(pollinationsUrl, {
-                headers: { "User-Agent": "Mozilla/5.0 (LittleSmartGenius-Admin)" },
-            });
+            const headers = { "User-Agent": "Mozilla/5.0 (LittleSmartGenius-Admin)" };
+            if (currentKey) {
+                headers["Authorization"] = `Bearer ${currentKey}`;
+            }
+
+            const imgRes = await fetch(pollinationsUrl, { headers });
             if (imgRes.ok) {
                 const arrayBuf = await imgRes.arrayBuffer();
                 if (arrayBuf.byteLength > 1024) {
                     imageData = arrayBuf;
                     break;
+                } else {
+                    lastError = `Image too small: ${arrayBuf.byteLength} bytes`;
                 }
+            } else {
+                lastError = `HTTP ${imgRes.status} ${imgRes.statusText}`;
             }
         } catch (e) {
-            // retry
+            lastError = e.message;
         }
         await new Promise(r => setTimeout(r, 3000));
     }
 
     if (!imageData) {
-        throw new Error("Failed to generate image from Pollinations after 3 attempts");
+        throw new Error(`Failed to generate image from Pollinations (${modelName}) after 3 attempts. Last error: ${lastError}`);
     }
 
     // 6. Convert to base64 for GitHub API
