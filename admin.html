@@ -1113,6 +1113,33 @@
             transform: scale(1.03);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 50px;
+            cursor: pointer;
+            padding: 20px;
+            user-select: none;
+            transition: 0.2s;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(0, 0, 0, 0.6);
+            color: var(--brand);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
     </style>
 </head>
 
@@ -2738,6 +2765,12 @@
                         ? `${rawGitUrl}${coverFiles[0]}${cacheBuster}`
                         : '';
 
+                    // Build image array for Lightbox navigation
+                    const articleImages = [];
+                    if (coverUrl) {
+                        articleImages.push({ url: coverUrl.replace('-thumb', ''), title: title.replace(/`/g, "'") + ' - Cover' });
+                    }
+
                     const card = document.createElement('div');
                     card.className = 'scan-card';
                     card.style.cursor = 'pointer';
@@ -2747,14 +2780,21 @@
                     contentImgFiles.forEach((fileName, i) => {
                         const imgUrl = `${rawGitUrl}${fileName}${cacheBuster}`;
                         const imgIdx = (fileName.match(/-img(\d+)/) || [0, i + 1])[1];
+
+                        articleImages.push({ url: imgUrl, title: title.replace(/`/g, "'") + ` - Image ${imgIdx}` });
+                        const lightboxIdx = coverUrl ? i + 1 : i;
+
                         contentImgsHtml += `
                             <div style="text-align:center">
-                                <img src="${imgUrl}" class="gallery-img" onclick="event.stopPropagation();openLightbox('${imgUrl}', \`${title.replace(/`/g, "'")} - Image ${imgIdx}\`)" style="width:100%;border-radius:10px;border:1px solid var(--border)" loading="lazy" onerror="this.style.opacity='0.3';this.alt='Non trouvée'">
+                                <img src="${imgUrl}" class="gallery-img" onclick="event.stopPropagation();openLightboxGallery('${slug}', ${lightboxIdx})" style="width:100%;border-radius:10px;border:1px solid var(--border)" loading="lazy" onerror="this.style.opacity='0.3';this.alt='Non trouvée'">
                                 <div style="font-size:.72rem;margin-top:4px;color:var(--text-dim)">Image ${imgIdx}</div>
                                 <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','img${imgIdx}',${imgIdx})">🎨 Regénérer</button>
                             </div>
                         `;
                     });
+
+                    if (!window.galleryImagesMap) window.galleryImagesMap = {};
+                    window.galleryImagesMap[slug] = articleImages;
 
                     card.innerHTML = `
                         <div class="scan-header" onclick="this.parentElement.querySelector('.gallery-detail').classList.toggle('show')">
@@ -2769,7 +2809,7 @@
                             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
                                 ${coverUrl ? `
                                 <div style="text-align:center">
-                                    <img src="${coverUrl}" class="gallery-img" onclick="event.stopPropagation();openLightbox('${coverUrl.replace('-thumb', '')}', \`${title.replace(/`/g, "'")} - Cover\`)" style="width:100%;border-radius:10px;border:2px solid var(--brand)" loading="lazy" onerror="this.style.opacity='0.3'">
+                                    <img src="${coverUrl}" class="gallery-img" onclick="event.stopPropagation();openLightboxGallery('${slug}', 0)" style="width:100%;border-radius:10px;border:2px solid var(--brand)" loading="lazy" onerror="this.style.opacity='0.3'">
                                     <div style="font-size:.72rem;margin-top:4px;color:var(--brand);font-weight:700">COVER</div>
                                     <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','cover',0)">🎨 Regénérer</button>
                                 </div>
@@ -2888,28 +2928,65 @@
     <!-- ═══════ LIGHTBOX MODAL ═══════ -->
     <div id="lightboxModal" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
+        <div class="lightbox-nav lightbox-prev" onclick="lightboxPrev(event)">&#10094;</div>
         <img id="lightboxImg" src="" onclick="event.stopPropagation()">
+        <div class="lightbox-nav lightbox-next" onclick="lightboxNext(event)">&#10095;</div>
         <div id="lightboxTitle" class="lightbox-title"></div>
     </div>
 
     <script>
-        function openLightbox(url, title) {
-            document.getElementById('lightboxImg').src = url;
-            document.getElementById('lightboxTitle').textContent = title || '';
-            document.getElementById('lightboxModal').classList.add('active');
+        let currentLightboxSlug = null;
+        let currentLightboxIndex = 0;
 
-            // Allow closing with Escape key
-            document.addEventListener('keydown', handleEsc);
+        function openLightboxGallery(slug, index) {
+            currentLightboxSlug = slug;
+            currentLightboxIndex = index;
+            updateLightboxView();
+            document.getElementById('lightboxModal').classList.add('active');
+            document.addEventListener('keydown', handleLightboxKeys);
+        }
+
+        function updateLightboxView() {
+            if (!currentLightboxSlug || !window.galleryImagesMap) return;
+            const images = window.galleryImagesMap[currentLightboxSlug];
+            if (!images || !images.length) return;
+
+            const imgData = images[currentLightboxIndex];
+            document.getElementById('lightboxImg').src = imgData.url;
+            document.getElementById('lightboxTitle').textContent = `${imgData.title} (${currentLightboxIndex + 1}/${images.length})`;
+
+            // Show/hide arrows based on index
+            document.querySelector('.lightbox-prev').style.display = currentLightboxIndex > 0 ? 'block' : 'none';
+            document.querySelector('.lightbox-next').style.display = currentLightboxIndex < images.length - 1 ? 'block' : 'none';
+        }
+
+        function lightboxPrev(e) {
+            if (e) e.stopPropagation();
+            if (currentLightboxIndex > 0) {
+                currentLightboxIndex--;
+                updateLightboxView();
+            }
+        }
+
+        function lightboxNext(e) {
+            if (e) e.stopPropagation();
+            const images = window.galleryImagesMap[currentLightboxSlug] || [];
+            if (currentLightboxIndex < images.length - 1) {
+                currentLightboxIndex++;
+                updateLightboxView();
+            }
         }
 
         function closeLightbox() {
             document.getElementById('lightboxModal').classList.remove('active');
             document.getElementById('lightboxImg').src = '';
-            document.removeEventListener('keydown', handleEsc);
+            document.removeEventListener('keydown', handleLightboxKeys);
         }
 
-        function handleEsc(e) {
+        function handleLightboxKeys(e) {
             if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lightboxPrev();
+            if (e.key === 'ArrowRight') lightboxNext();
         }
     </script>
 </body>
