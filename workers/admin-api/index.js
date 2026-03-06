@@ -1017,7 +1017,10 @@ async function regenImageFetch(slug, imageType, env) {
 
     let imageData = null;
     let lastError = null;
-    for (let attempt = 0; attempt < 12; attempt++) {
+    const MAX_RETRIES = 3;
+    const TIMEOUT_MS = 8000; // 8 seconds max per request to avoid CF 30s limit
+
+    for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
         const seedValue = seed + attempt;
         let currentKey = "";
         if (apiKeys.length > 0) {
@@ -1031,7 +1034,15 @@ async function regenImageFetch(slug, imageType, env) {
             const headers = { "User-Agent": "Mozilla/5.0 (LittleSmartGenius-Admin)" };
             if (currentKey) headers["Authorization"] = `Bearer ${currentKey}`;
 
-            const imgRes = await fetch(pollinationsUrl, { headers });
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+            const imgRes = await fetch(pollinationsUrl, {
+                headers,
+                signal: controller.signal
+            });
+            clearTimeout(timeoutId);
+
             if (imgRes.ok) {
                 const arrayBuf = await imgRes.arrayBuffer();
                 if (arrayBuf.byteLength > 1024) {
@@ -1044,13 +1055,16 @@ async function regenImageFetch(slug, imageType, env) {
                 lastError = `HTTP ${imgRes.status} ${imgRes.statusText}`;
             }
         } catch (e) {
-            lastError = e.message;
+            lastError = e.name === 'AbortError' ? 'Request timed out after 8s' : e.message;
         }
-        await new Promise(r => setTimeout(r, 2000));
+
+        if (attempt < MAX_RETRIES - 1) {
+            await new Promise(r => setTimeout(r, 1000));
+        }
     }
 
     if (!imageData) {
-        throw new Error(`Failed to generate image from Pollinations (${modelName}) after 12 attempts. Last error: ${lastError}`);
+        throw new Error(`Failed to generate image from Pollinations (${modelName}) after ${MAX_RETRIES} attempts. Last error: ${lastError}`);
     }
 
     // 6. Convert to base64 to send to browser for WEBP compression
