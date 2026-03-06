@@ -10,9 +10,11 @@
 //   MAKECOM_WEBHOOK_URL — Make.com webhook URL
 // ============================================================
 
-// Global set to keep track of Pollinations keys that return 402/429.
-// This persists across requests within the same Cloudflare Worker isolate.
-const deadPollinationsKeys = new Set();
+// Global map to keep track of Pollinations keys that return 402/429.
+// Maps key -> timestamp of when it was blacklisted.
+// Keys are automatically recycled after KEY_COOLDOWN_MS (1 hour).
+const deadPollinationsKeys = new Map();
+const KEY_COOLDOWN_MS = 60 * 60 * 1000; // 1 hour TTL
 
 const GITHUB_API = "https://api.github.com";
 const BRANCH = "main";
@@ -1018,10 +1020,19 @@ async function regenImageFetch(slug, imageType, env) {
     const modelName = env.POLLINATIONS_MODEL_NAME || "klein-large";
     const allKeys = env.POLLINATIONS_KEYS_LIST ? env.POLLINATIONS_KEYS_LIST.split(",") : [];
 
-    // Filter out dead keys to avoid wasting time
-    const apiKeys = allKeys.filter(k => !deadPollinationsKeys.has(k));
+    // Filter out dead keys (skip keys blacklisted less than 1 hour ago)
+    const now = Date.now();
+    const apiKeys = allKeys.filter(k => {
+        const blockedAt = deadPollinationsKeys.get(k);
+        if (!blockedAt) return true; // not blacklisted
+        if (now - blockedAt > KEY_COOLDOWN_MS) {
+            deadPollinationsKeys.delete(k); // TTL expired, recycle the key
+            return true;
+        }
+        return false; // still in cooldown
+    });
 
-    // If all keys are dead, clear the set to try again (maybe quotas reset)
+    // If all keys are in cooldown, clear all and retry everything
     if (apiKeys.length === 0 && allKeys.length > 0) {
         deadPollinationsKeys.clear();
         apiKeys.push(...allKeys);
@@ -1066,7 +1077,7 @@ async function regenImageFetch(slug, imageType, env) {
                     lastError = `Image too small: ${arrayBuf.byteLength} bytes`;
                 }
             } else if (imgRes.status === 402 || imgRes.status === 429) {
-                if (currentKey) deadPollinationsKeys.add(currentKey);
+                if (currentKey) deadPollinationsKeys.set(currentKey, Date.now());
                 lastError = `HTTP ${imgRes.status} (Key blacklisted)`;
                 // Retry immediately without waiting
                 continue;
