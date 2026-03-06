@@ -1058,6 +1058,61 @@
             background: rgba(59, 130, 246, 0.15);
             color: var(--blue);
         }
+
+        /* ═══════ LIGHTBOX ═══════ */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .lightbox-title {
+            color: #fff;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .gallery-img {
+            cursor: zoom-in;
+            transition: transform 0.2s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
@@ -2694,7 +2749,7 @@
                         const imgIdx = (fileName.match(/-img(\d+)/) || [0, i + 1])[1];
                         contentImgsHtml += `
                             <div style="text-align:center">
-                                <img src="${imgUrl}" style="width:100%;border-radius:10px;border:1px solid var(--border)" loading="lazy" onerror="this.style.opacity='0.3';this.alt='Non trouvée'">
+                                <img src="${imgUrl}" class="gallery-img" onclick="event.stopPropagation();openLightbox('${imgUrl}', \`${title.replace(/`/g, "'")} - Image ${imgIdx}\`)" style="width:100%;border-radius:10px;border:1px solid var(--border)" loading="lazy" onerror="this.style.opacity='0.3';this.alt='Non trouvée'">
                                 <div style="font-size:.72rem;margin-top:4px;color:var(--text-dim)">Image ${imgIdx}</div>
                                 <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','img${imgIdx}',${imgIdx})">🎨 Regénérer</button>
                             </div>
@@ -2714,7 +2769,7 @@
                             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
                                 ${coverUrl ? `
                                 <div style="text-align:center">
-                                    <img src="${coverUrl}" style="width:100%;border-radius:10px;border:2px solid var(--brand)" loading="lazy" onerror="this.style.opacity='0.3'">
+                                    <img src="${coverUrl}" class="gallery-img" onclick="event.stopPropagation();openLightbox('${coverUrl.replace('-thumb', '')}', \`${title.replace(/`/g, "'")} - Cover\`)" style="width:100%;border-radius:10px;border:2px solid var(--brand)" loading="lazy" onerror="this.style.opacity='0.3'">
                                     <div style="font-size:.72rem;margin-top:4px;color:var(--brand);font-weight:700">COVER</div>
                                     <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','cover',0)">🎨 Regénérer</button>
                                 </div>
@@ -2828,6 +2883,34 @@
             }
         }
 
+    </script>
+
+    <!-- ═══════ LIGHTBOX MODAL ═══════ -->
+    <div id="lightboxModal" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightboxImg" src="" onclick="event.stopPropagation()">
+        <div id="lightboxTitle" class="lightbox-title"></div>
+    </div>
+
+    <script>
+        function openLightbox(url, title) {
+            document.getElementById('lightboxImg').src = url;
+            document.getElementById('lightboxTitle').textContent = title || '';
+            document.getElementById('lightboxModal').classList.add('active');
+
+            // Allow closing with Escape key
+            document.addEventListener('keydown', handleEsc);
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.remove('active');
+            document.getElementById('lightboxImg').src = '';
+            document.removeEventListener('keydown', handleEsc);
+        }
+
+        function handleEsc(e) {
+            if (e.key === 'Escape') closeLightbox();
+        }
     </script>
 </body>
 
