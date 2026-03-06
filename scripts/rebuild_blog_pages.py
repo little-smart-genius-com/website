@@ -180,9 +180,17 @@ def rebuild_blog_pages():
             page_head = head_section
             
             # Adjust meta title and canonical for category pages
+            canonical_url = f"https://littlesmartgenius.com/{base_name}.html" if page_num == 1 else f"https://littlesmartgenius.com/{base_name}-{page_num}.html"
+            
+            if '<link rel="canonical"' in page_head:
+                page_head = re.sub(r'<link rel="canonical" href=".*?">', f'<link rel="canonical" href="{canonical_url}">', page_head)
+            else:
+                page_head = page_head.replace('</head>', f'    <link rel="canonical" href="{canonical_url}">\n</head>')
+
             if category_title:
                 page_head = re.sub(r'<title>.*?</title>', f'<title>{category_title} Articles | Little Smart Genius</title>', page_head)
                 page_head = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{category_title} Articles | Little Smart Genius">', page_head)
+                page_head = re.sub(r'<meta content="https://littlesmartgenius.com/blog.html" property="og:url" />', f'<meta content="{canonical_url}" property="og:url" />', page_head)
             
             page_body_before = body_before
             

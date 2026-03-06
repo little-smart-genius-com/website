@@ -396,7 +396,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 <body>
 
     <header class="top-header px-5 md:px-10">
-        <a href="../index.html" class="flex items-center gap-3 no-underline">
+        <a href="/" class="flex items-center gap-3 no-underline">
             <img src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
                 class="logo-img" alt="Logo">
             <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span
@@ -404,7 +404,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         </a>
 
         <nav class="hidden lg:flex gap-8">
-            <a href="../index.html" class="nav-link">Home</a>
+            <a href="/" class="nav-link">Home</a>
             <a href="../products.html" class="nav-link">Store</a>
             <a href="../freebies.html" class="nav-link">Freebies</a>
             <a href="../blog.html" class="nav-link active">Blog</a>
@@ -434,7 +434,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     </header>
 
     <div id="mobile-menu">
-        <a href="../index.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
+        <a href="/" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
         <a href="../products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
         <a href="../freebies.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Freebies</a>
         <a href="../blog.html" class="py-3 border-b border-gray-200 font-bold text-brand">Blog</a>
