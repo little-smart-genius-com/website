@@ -1025,7 +1025,7 @@ async function regenImageFetch(slug, imageType, env) {
             currentKey = apiKeys[keyIndex];
         }
 
-        const pollinationsUrl = `${baseUrl}?width=1200&height=900&seed=${seedValue}&model=${modelName}&nologo=true&enhance=true`;
+        const pollinationsUrl = `${baseUrl}?width=1200&height=675&seed=${seedValue}&model=${modelName}&nologo=true&enhance=true`;
 
         try {
             const headers = { "User-Agent": "Mozilla/5.0 (LittleSmartGenius-Admin)" };

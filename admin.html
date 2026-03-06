@@ -2762,21 +2762,15 @@
                     const img = new Image();
                     img.onload = () => {
                         const canvas = document.createElement('canvas');
-                        let w = img.width;
-                        let h = img.height;
 
+                        // Enforce exact 16:9 dimensions from Python V6 script
+                        let w = 1200;
+                        let h = 675;
+
+                        // Thumbnail is half size
                         if (isThumb) {
-                            if (w > 600) {
-                                h = Math.floor(600 * (h / w));
-                                w = 600;
-                            }
-                        } else {
-                            // Max 1200x1200 thumbnail logic (maintains aspect ratio)
-                            if (w > 1200 || h > 1200) {
-                                const ratio = Math.min(1200 / w, 1200 / h);
-                                w = Math.floor(w * ratio);
-                                h = Math.floor(h * ratio);
-                            }
+                            w = 600;
+                            h = 338; // 675 / 2 = 337.5 ~ 338
                         }
 
                         canvas.width = w;
