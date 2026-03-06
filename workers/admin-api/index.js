@@ -955,13 +955,13 @@ function getImageIndex(imageType) {
     return m ? parseInt(m[1]) : 0;
 }
 
-async function regenImage(slug, imageType, env) {
+async function regenImageFetch(slug, imageType, env) {
     if (!slug) throw new Error("slug required");
     if (!imageType) throw new Error("imageType required (cover, img1, img2, img3, img4, img5)");
 
     const imageIndex = getImageIndex(imageType);
 
-    // 1. Find the post JSON to get article info + existing image filenames
+    // 1. Find the post JSON
     const postFiles = await ghListDir("posts", env);
     const postFile = postFiles.find(f => f.name.startsWith(slug) && f.name.endsWith(".json"));
     if (!postFile) throw new Error(`Post JSON not found for slug: ${slug}`);
@@ -973,51 +973,54 @@ async function regenImage(slug, imageType, env) {
     const title = postData.title || slug.replace(/-/g, " ");
     const concept = title.replace(/-/g, " ");
 
-    // 2. Find the existing image filename to overwrite
+    // 2. Find existing filenames
     let existingFilename = "";
     if (imageType === "cover") {
-        // Cover from the 'image' field
         existingFilename = (postData.image || "").replace("images/", "");
     } else {
-        // Content image: scan the 'content' field for -imgN- references
         const content = postData.content || "";
         const imgPattern = new RegExp(`(\\S*-${imageType}-\\d+\\.webp)`, "i");
         const match = content.match(imgPattern);
         if (match) {
-            existingFilename = match[1].replace(/^.*\//, ""); // strip path prefix
+            existingFilename = match[1].replace(/^.*\//, "");
         }
     }
 
     if (!existingFilename) {
-        throw new Error(`Image filename not found in post JSON for ${imageType}. Available references may be missing.`);
+        throw new Error(`Image filename not found in post JSON for ${imageType}.`);
     }
 
-    // 3. Get SHA of existing image file on GitHub
+    // 3. Get existing SHAs
     const imgFiles = await ghListDir("images", env);
     const existingFile = imgFiles.find(f => f.name === existingFilename);
     const existingSha = existingFile ? existingFile.sha : null;
 
-    // 4. Build Art Director subject + Master Prompt
+    let thumbFilename = null;
+    let thumbSha = null;
+    if (imageType === "cover") {
+        thumbFilename = existingFilename.replace(".webp", "-thumb.webp");
+        const thumbFile = imgFiles.find(f => f.name === thumbFilename);
+        thumbSha = thumbFile ? thumbFile.sha : null;
+    }
+
+    // 4. Build Prompts
     const subject = buildArtDirectorSubject(title, concept, imageIndex);
     const fullPrompt = buildFullPrompt(subject, imageIndex);
     const cleanPrompt = (fullPrompt + NO_TEXT_SUFFIX).replace(/[^a-zA-Z0-9 ,.\-]/g, "");
     const encodedPrompt = encodeURIComponent(cleanPrompt);
     const seed = Math.floor(Date.now() / 1000) + imageIndex * 100;
 
-    // 5. Call Pollinations API
+    // 5. Call Pollinations
     const modelName = env.POLLINATIONS_MODEL_NAME || "klein-large";
     const apiKeys = env.POLLINATIONS_KEYS_LIST ? env.POLLINATIONS_KEYS_LIST.split(",") : [];
-
-    // Base URL without model, we'll append query params
     const baseUrl = `https://gen.pollinations.ai/image/${encodedPrompt}`;
 
     let imageData = null;
     let lastError = null;
     for (let attempt = 0; attempt < 12; attempt++) {
-        const seedValue = seed + attempt; // varies per attempt
+        const seedValue = seed + attempt;
         let currentKey = "";
         if (apiKeys.length > 0) {
-            // Rotate through keys based on seed/attempt
             const keyIndex = (imageIndex + attempt + Math.floor(Date.now() / 1000)) % apiKeys.length;
             currentKey = apiKeys[keyIndex];
         }
@@ -1026,9 +1029,7 @@ async function regenImage(slug, imageType, env) {
 
         try {
             const headers = { "User-Agent": "Mozilla/5.0 (LittleSmartGenius-Admin)" };
-            if (currentKey) {
-                headers["Authorization"] = `Bearer ${currentKey}`;
-            }
+            if (currentKey) headers["Authorization"] = `Bearer ${currentKey}`;
 
             const imgRes = await fetch(pollinationsUrl, { headers });
             if (imgRes.ok) {
@@ -1052,24 +1053,36 @@ async function regenImage(slug, imageType, env) {
         throw new Error(`Failed to generate image from Pollinations (${modelName}) after 12 attempts. Last error: ${lastError}`);
     }
 
-    // 6. Convert to base64 for GitHub API
+    // 6. Convert to base64 to send to browser for WEBP compression
     const bytes = new Uint8Array(imageData);
     let binary = "";
-    for (let i = 0; i < bytes.length; i++) {
-        binary += String.fromCharCode(bytes[i]);
-    }
-    const base64Content = btoa(binary);
+    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+    const rawBase64 = btoa(binary);
 
-    // 7. Upload to GitHub (overwrite existing file)
-    const REPO = env.GITHUB_REPO || "little-smart-genius-com/website";
+    return {
+        success: true,
+        slug,
+        imageType,
+        filename: existingFilename,
+        existingSha,
+        thumbFilename,
+        thumbSha,
+        rawBase64
+    };
+}
+
+async function regenImageCommit(params, env) {
+    const { slug, imageType, filename, existingSha, base64Webp, thumbFilename, thumbSha, base64ThumbWebp } = params;
+
+    // 1. Upload main optimized WEBP
     const putBody = {
-        message: `Dashboard: regen ${imageType} for ${slug}`,
-        content: base64Content,
+        message: `Dashboard: regen ${imageType} for ${slug} (WebP optimized)`,
+        content: base64Webp,
         branch: BRANCH,
     };
     if (existingSha) putBody.sha = existingSha;
 
-    const putRes = await ghFetch(`contents/images/${existingFilename}`, {
+    const putRes = await ghFetch(`contents/images/${filename}`, {
         method: "PUT",
         body: JSON.stringify(putBody),
     }, env);
@@ -1079,16 +1092,11 @@ async function regenImage(slug, imageType, env) {
         throw new Error(`GitHub upload failed (${putRes.status}): ${errText.substring(0, 200)}`);
     }
 
-    // 8. If cover image, also regenerate thumbnail
-    if (imageType === "cover") {
-        const thumbFilename = existingFilename.replace(".webp", "-thumb.webp");
-        const thumbFile = imgFiles.find(f => f.name === thumbFilename);
-        const thumbSha = thumbFile ? thumbFile.sha : null;
-
-        // Upload same image as thumbnail (Pollinations already returns good quality)
+    // 2. Upload thumbnail if provided (cover image)
+    if (thumbFilename && base64ThumbWebp) {
         const thumbBody = {
-            message: `Dashboard: regen cover thumb for ${slug}`,
-            content: base64Content,
+            message: `Dashboard: regen cover thumb for ${slug} (WebP optimized)`,
+            content: base64ThumbWebp,
             branch: BRANCH,
         };
         if (thumbSha) thumbBody.sha = thumbSha;
@@ -1099,15 +1107,9 @@ async function regenImage(slug, imageType, env) {
         }, env);
     }
 
-    const sizeKB = Math.round(imageData.byteLength / 1024);
     return {
         success: true,
-        slug,
-        imageType,
-        filename: existingFilename,
-        sizeKB,
-        imageUrl: `https://littlesmartgenius.com/images/${existingFilename}`,
-        message: `✅ ${imageType} régénérée (${sizeKB}KB) — même fichier, même lien`,
+        message: `✅ Image ${imageType} regénérée en WebP optimisé !`,
     };
 }
 
@@ -1213,11 +1215,12 @@ export default {
                 case "runs": result = await getWorkflowRuns(env); break;
                 case "scan-tpt": result = await scanTpt(env); break;
                 case "cleanup-instagram": result = await cleanupInstagram(env); break;
-                case "regen-image": result = await regenImage(params.slug, params.imageType, env); break;
+                case "regen-image-fetch": result = await regenImageFetch(params.slug, params.imageType, env); break;
+                case "regen-image-commit": result = await regenImageCommit(params, env); break;
                 default:
                     return new Response(JSON.stringify({
                         error: "Unknown action",
-                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs", "scan-tpt", "cleanup-instagram", "regen-image"],
+                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs", "scan-tpt", "cleanup-instagram", "regen-image-fetch", "regen-image-commit"],
                     }), { status: 400, headers: corsHeaders });
             }
             return new Response(JSON.stringify(result), { status: 200, headers: corsHeaders });

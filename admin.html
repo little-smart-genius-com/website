@@ -2743,14 +2743,76 @@
         }
 
         async function regenerateImage(slug, type, idx) {
-            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\n\nL'image sera régénérée directement (Art Director + Pollinations) et remplacera l'actuelle avec le même fichier.`);
+            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\n\nL'image sera générée (exactement comme le script V6), reconvertie en WebP optimisé, puis uploadée sur GitHub.`);
             if (!confirmed) return;
 
-            toast(`🎨 Génération de ${type} pour ${slug} en cours... (30-60 secondes)`, "info");
+            toast(`🎨 1/3: Génération de ${type}... (via modèle exact & rotation de 24 clés)`, "info");
             try {
-                const r = await api("regen-image", { slug, imageType: type });
-                toast(`✅ ${r.message || 'Image régénérée !'}`, "success");
-                // Reload gallery to show updated image
+                // Step 1: Fetch raw image from Pollinations (via worker)
+                const fetchRes = await api("regen-image-fetch", { slug, imageType: type });
+                if (!fetchRes.rawBase64) throw new Error("Pas d'image retournée");
+
+                toast(`⚙️ 2/3: Conversion de l'image au format WebP optimisé...`, "info");
+                const { filename, existingSha, thumbFilename, thumbSha, rawBase64 } = fetchRes;
+
+                // Step 2: Convert to WebP in browser (simulates Python PIL.Image)
+                const srcBase64 = "data:image/jpeg;base64," + rawBase64;
+
+                const processImage = (src, isThumb) => new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let w = img.width;
+                        let h = img.height;
+
+                        if (isThumb) {
+                            if (w > 600) {
+                                h = Math.floor(600 * (h / w));
+                                w = 600;
+                            }
+                        } else {
+                            // Max 1200x1200 thumbnail logic (maintains aspect ratio)
+                            if (w > 1200 || h > 1200) {
+                                const ratio = Math.min(1200 / w, 1200 / h);
+                                w = Math.floor(w * ratio);
+                                h = Math.floor(h * ratio);
+                            }
+                        }
+
+                        canvas.width = w;
+                        canvas.height = h;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, w, h);
+
+                        const quality = isThumb ? 0.80 : 0.85;
+                        const result = canvas.toDataURL("image/webp", quality).split(",")[1];
+                        resolve(result);
+                    };
+                    img.onerror = () => reject(new Error("Erreur de chargement de l'image pour conversion"));
+                    img.src = src;
+                });
+
+                const base64Webp = await processImage(srcBase64, false);
+                let base64ThumbWebp = null;
+                if (type === 'cover' && thumbFilename) {
+                    base64ThumbWebp = await processImage(srcBase64, true);
+                }
+
+                toast(`📤 3/3: Sauvegarde de l'image WebP sur GitHub...`, "info");
+
+                // Step 3: Commit to GitHub
+                const commitRes = await api("regen-image-commit", {
+                    slug,
+                    imageType: type,
+                    filename,
+                    existingSha,
+                    base64Webp,
+                    thumbFilename,
+                    thumbSha,
+                    base64ThumbWebp
+                });
+
+                toast(`✅ ${commitRes.message || 'Image WebP régénérée !'}`, "success");
                 setTimeout(() => loadGallery(), 2000);
             } catch (e) {
                 toast(`❌ Erreur: ${e.message}`, "error");
