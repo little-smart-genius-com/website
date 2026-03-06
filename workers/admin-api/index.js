@@ -400,7 +400,12 @@ async function listArticles(env) {
     if (!content) return { articles: [], total: 0 };
 
     const data = JSON.parse(content);
-    const articles = data.articles || [];
+    let articles = data.articles || [];
+
+    // ── Deduplicate by slug: keep the LAST (most recent) entry ──
+    const slugMap = new Map();
+    articles.forEach(a => { if (a.slug) slugMap.set(a.slug, a); });
+    articles = Array.from(slugMap.values());
 
     const [htmlFiles, imgFiles, igFiles, postFiles] = await Promise.all([
         ghListDir("articles", env),
@@ -422,12 +427,27 @@ async function listArticles(env) {
 
         // the 'image' field has the exact cover filename, e.g. 'images/long-seo-slug-cover-1234.webp'
         let imageSlug = slug;
+        let imageTimestamp = "";
         if (a.image && a.image.includes('-cover')) {
-            imageSlug = a.image.replace('images/', '').split('-cover')[0];
+            const coverName = a.image.replace('images/', '');
+            imageSlug = coverName.split('-cover')[0];
+            // Extract the timestamp from the cover filename (e.g. '-cover-1772737299.webp' → '1772737299')
+            const tsMatch = coverName.match(/-cover-(\d+)/);
+            if (tsMatch) imageTimestamp = tsMatch[1];
         }
 
-        const coverImgs = imgFiles.filter(f => f.name.startsWith(imageSlug) && f.name.includes("-cover") && !f.name.includes("-thumb"));
-        const contentImgs = imgFiles.filter(f => f.name.startsWith(imageSlug) && f.name.includes("-img"));
+        // Filter images: if we have a timestamp, only match files with THAT timestamp
+        // This prevents showing stale images from previous regenerations
+        let coverImgs, contentImgs;
+        if (imageTimestamp) {
+            coverImgs = imgFiles.filter(f => f.name.startsWith(imageSlug) && f.name.includes("-cover") && f.name.includes(imageTimestamp) && !f.name.includes("-thumb"));
+            contentImgs = imgFiles.filter(f => f.name.startsWith(imageSlug) && f.name.includes("-img") && f.name.includes(imageTimestamp));
+        } else {
+            // Fallback: no timestamp found, use original broad matching
+            coverImgs = imgFiles.filter(f => f.name.startsWith(imageSlug) && f.name.includes("-cover") && !f.name.includes("-thumb"));
+            contentImgs = imgFiles.filter(f => f.name.startsWith(imageSlug) && f.name.includes("-img"));
+        }
+
         // Sort content images by index (img1, img2, img3...)
         contentImgs.sort((a, b) => {
             const idxA = parseInt((a.name.match(/-img(\d+)/) || [0, 0])[1]);
