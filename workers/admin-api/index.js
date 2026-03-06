@@ -14,7 +14,7 @@
 // Maps key -> timestamp of when it was blacklisted.
 // Keys are automatically recycled after KEY_COOLDOWN_MS (1 hour).
 const deadPollinationsKeys = new Map();
-const KEY_COOLDOWN_MS = 60 * 60 * 1000; // 1 hour TTL
+const KEY_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 1 week TTL
 
 const GITHUB_API = "https://api.github.com";
 const BRANCH = "main";
@@ -1042,15 +1042,24 @@ async function regenImageFetch(slug, imageType, env) {
 
     let imageData = null;
     let lastError = null;
-    const MAX_RETRIES = Math.min(8, Math.max(3, apiKeys.length)); // Try up to 8 times to skip dead keys
-    const TIMEOUT_MS = 8000; // 8 seconds max per request to avoid CF 30s limit
+    const WALL_CLOCK_BUDGET = 28000; // 28s total max to stay under CF limits
+    const PER_REQUEST_TIMEOUT = 20000; // 20s per request (image gen needs time!)
+    const startTime = Date.now();
+    const maxAttempts = Math.max(3, apiKeys.length + 2);
+    const triedKeys = new Set();
 
-    for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        // Check wall-clock budget
+        const elapsed = Date.now() - startTime;
+        if (elapsed > WALL_CLOCK_BUDGET - 3000) break; // stop 3s before limit
+
         const seedValue = seed + attempt;
         let currentKey = "";
         if (apiKeys.length > 0) {
-            const keyIndex = (imageIndex + attempt + Math.floor(Date.now() / 1000)) % apiKeys.length;
+            const keyIndex = attempt % apiKeys.length;
             currentKey = apiKeys[keyIndex];
+            // Skip keys already blacklisted during this run
+            if (triedKeys.has(currentKey)) continue;
         }
 
         const pollinationsUrl = `${baseUrl}?width=1200&height=675&seed=${seedValue}&model=${modelName}&nologo=true&enhance=true`;
@@ -1059,8 +1068,13 @@ async function regenImageFetch(slug, imageType, env) {
             const headers = { "User-Agent": "Mozilla/5.0 (LittleSmartGenius-Admin)" };
             if (currentKey) headers["Authorization"] = `Bearer ${currentKey}`;
 
+            // Timeout = remaining budget or per-request limit, whichever is smaller
+            const remaining = WALL_CLOCK_BUDGET - (Date.now() - startTime) - 1000;
+            const timeoutMs = Math.min(PER_REQUEST_TIMEOUT, remaining);
+            if (timeoutMs < 3000) break; // not enough time left
+
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
+            const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
             const imgRes = await fetch(pollinationsUrl, {
                 headers,
@@ -1077,24 +1091,28 @@ async function regenImageFetch(slug, imageType, env) {
                     lastError = `Image too small: ${arrayBuf.byteLength} bytes`;
                 }
             } else if (imgRes.status === 402 || imgRes.status === 429) {
-                if (currentKey) deadPollinationsKeys.set(currentKey, Date.now());
-                lastError = `HTTP ${imgRes.status} (Key blacklisted)`;
-                // Retry immediately without waiting
-                continue;
+                if (currentKey) {
+                    deadPollinationsKeys.set(currentKey, Date.now());
+                    triedKeys.add(currentKey);
+                }
+                lastError = `HTTP ${imgRes.status} (clé bloquée, rotation...)`;
+                continue; // instant skip, no sleep
             } else {
                 lastError = `HTTP ${imgRes.status} ${imgRes.statusText}`;
             }
         } catch (e) {
-            lastError = e.name === 'AbortError' ? 'Request timed out after 8s' : e.message;
+            lastError = e.name === 'AbortError' ? `Timeout (${Math.round((Date.now() - startTime) / 1000)}s)` : e.message;
         }
 
-        if (attempt < MAX_RETRIES - 1) {
-            await new Promise(r => setTimeout(r, 800)); // slightly faster sleep
+        // Small sleep between real attempts (not 402 skips)
+        const remainingAfter = WALL_CLOCK_BUDGET - (Date.now() - startTime);
+        if (remainingAfter > 4000) {
+            await new Promise(r => setTimeout(r, 500));
         }
     }
 
     if (!imageData) {
-        throw new Error(`Failed to generate image from Pollinations (${modelName}) after ${MAX_RETRIES} attempts. Last error: ${lastError}`);
+        throw new Error(`Échec après ${Math.round((Date.now() - startTime) / 1000)}s. Dernière erreur: ${lastError}`);
     }
 
     // 6. Convert to base64 to send to browser for WEBP compression
