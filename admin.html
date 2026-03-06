@@ -2887,35 +2887,49 @@
                     base64ThumbWebp = await processImage(srcBase64, true);
                 }
 
-                toast(`📤 3/3: Sauvegarde de l'image WebP sur GitHub...`, "info");
+                toast(`📤 3/4: Sauvegarde de l'image WebP sur GitHub...`, "info");
 
-                // Step 3: Commit to GitHub (may timeout but still succeed)
+                // Step 3: Commit MAIN image to GitHub
                 let commitOk = false;
                 try {
-                    const commitRes = await api("regen-image-commit", {
+                    const commitRes = await api("regen-image-commit-main", {
                         slug,
                         imageType: type,
                         filename,
                         existingSha,
-                        base64Webp,
-                        thumbFilename,
-                        thumbSha,
-                        base64ThumbWebp
+                        base64Webp
                     });
                     commitOk = true;
-                    toast(`✅ ${commitRes.message || 'Image WebP régénérée !'}`, "success");
                 } catch (commitErr) {
-                    // If we get "Failed to fetch" during commit, the image was probably
-                    // already uploaded to GitHub. Treat as likely success.
                     if (commitErr.message && commitErr.message.includes('fetch')) {
-                        toast(`⚠️ L'image a été générée et probablement sauvegardée. Rechargement...`, "info");
-                        commitOk = true; // still reload gallery to verify
+                        toast(`⚠️ Image envoyée, mais connexion lente. On continue...`, "info");
+                        commitOk = true;
                     } else {
-                        throw commitErr; // re-throw real errors
+                        throw commitErr;
+                    }
+                }
+
+                // Step 4: Commit THUMBNAIL image to GitHub (if cover)
+                if (commitOk && type === 'cover' && base64ThumbWebp) {
+                    toast(`📤 4/4: Sauvegarde de la miniature (Thumbnail)...`, "info");
+                    try {
+                        await api("regen-image-commit-thumb", {
+                            slug,
+                            thumbFilename,
+                            thumbSha,
+                            base64ThumbWebp
+                        });
+                    } catch (thumbErr) {
+                        if (thumbErr.message && thumbErr.message.includes('fetch')) {
+                            // ignore timeout on thumb
+                        } else {
+                            throw thumbErr;
+                        }
                     }
                 }
 
                 if (commitOk) {
+                    toast(`✅ Image WebP (${type}) régénérée et sauvegardée !`, "success");
                     setTimeout(() => loadGallery(), 3000);
                 }
             } catch (e) {

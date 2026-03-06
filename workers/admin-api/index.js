@@ -1133,10 +1133,9 @@ async function regenImageFetch(slug, imageType, env) {
     };
 }
 
-async function regenImageCommit(params, env) {
-    const { slug, imageType, filename, existingSha, base64Webp, thumbFilename, thumbSha, base64ThumbWebp } = params;
+async function regenImageCommitMain(params, env) {
+    const { slug, imageType, filename, existingSha, base64Webp } = params;
 
-    // 1. Upload main optimized WEBP
     const putBody = {
         message: `Dashboard: regen ${imageType} for ${slug} (WebP optimized)`,
         content: base64Webp,
@@ -1154,24 +1153,39 @@ async function regenImageCommit(params, env) {
         throw new Error(`GitHub upload failed (${putRes.status}): ${errText.substring(0, 200)}`);
     }
 
-    // 2. Upload thumbnail if provided (cover image)
-    if (thumbFilename && base64ThumbWebp) {
-        const thumbBody = {
-            message: `Dashboard: regen cover thumb for ${slug} (WebP optimized)`,
-            content: base64ThumbWebp,
-            branch: BRANCH,
-        };
-        if (thumbSha) thumbBody.sha = thumbSha;
+    return {
+        success: true,
+        message: `✅ Image ${imageType} principale sauvegardée sur GitHub !`,
+    };
+}
 
-        await ghFetch(`contents/images/${thumbFilename}`, {
-            method: "PUT",
-            body: JSON.stringify(thumbBody),
-        }, env);
+async function regenImageCommitThumb(params, env) {
+    const { slug, thumbFilename, thumbSha, base64ThumbWebp } = params;
+
+    if (!thumbFilename || !base64ThumbWebp) {
+        return { success: true, message: "No thumbnail to commit." };
+    }
+
+    const thumbBody = {
+        message: `Dashboard: regen cover thumb for ${slug} (WebP optimized)`,
+        content: base64ThumbWebp,
+        branch: BRANCH,
+    };
+    if (thumbSha) thumbBody.sha = thumbSha;
+
+    const putRes = await ghFetch(`contents/images/${thumbFilename}`, {
+        method: "PUT",
+        body: JSON.stringify(thumbBody),
+    }, env);
+
+    if (!putRes.ok) {
+        const errText = await putRes.text();
+        throw new Error(`GitHub thumb upload failed (${putRes.status}): ${errText.substring(0, 200)}`);
     }
 
     return {
         success: true,
-        message: `✅ Image ${imageType} regénérée en WebP optimisé !`,
+        message: `✅ Thumbnail sauvegardé sur GitHub !`,
     };
 }
 
@@ -1277,12 +1291,19 @@ export default {
                 case "runs": result = await getWorkflowRuns(env); break;
                 case "scan-tpt": result = await scanTpt(env); break;
                 case "cleanup-instagram": result = await cleanupInstagram(env); break;
-                case "regen-image-fetch": result = await regenImageFetch(params.slug, params.imageType, env); break;
-                case "regen-image-commit": result = await regenImageCommit(params, env); break;
+                case "regen-image-fetch":
+                    result = await regenImageFetch(body.slug, body.imageType, env);
+                    break;
+                case "regen-image-commit-main":
+                    result = await regenImageCommitMain(body, env);
+                    break;
+                case "regen-image-commit-thumb":
+                    result = await regenImageCommitThumb(body, env);
+                    break;
                 default:
                     return new Response(JSON.stringify({
                         error: "Unknown action",
-                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs", "scan-tpt", "cleanup-instagram", "regen-image-fetch", "regen-image-commit"],
+                        available: ["articles", "delete", "health", "deep-scan", "stats", "topics", "save-keywords", "fix-seo", "push-instagram", "snapshots", "create-snapshot", "restore-snapshot", "delete-snapshot", "generate", "runs", "scan-tpt", "cleanup-instagram", "regen-image-fetch", "regen-image-commit-main", "regen-image-commit-thumb"],
                     }), { status: 400, headers: corsHeaders });
             }
             return new Response(JSON.stringify(result), { status: 200, headers: corsHeaders });
