@@ -1259,7 +1259,17 @@ export default {
         if (authErr) return authErr;
 
         const url = new URL(request.url);
-        const params = Object.fromEntries(url.searchParams.entries());
+        let params = Object.fromEntries(url.searchParams.entries());
+
+        if (request.method !== "GET" && request.method !== "OPTIONS") {
+            try {
+                const bodyJson = await request.json();
+                params = { ...params, ...bodyJson };
+            } catch (e) {
+                // Ignore parsing errors for empty bodies
+            }
+        }
+
         const action = params.action || "";
 
         try {

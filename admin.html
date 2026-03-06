@@ -2088,7 +2088,24 @@
         })();
 
         // ═══════ API ═══════
-        async function api(action, params = {}, method = "GET") { const qs = new URLSearchParams({ action, ...params }).toString(); const res = await fetch(`${API}?${qs}`, { method, headers: { Authorization: `Bearer ${TOKEN}` } }); if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error || `HTTP ${res.status}`) } return res.json() }
+        async function api(action, params = {}, method = "GET") {
+            const urlArgs = new URLSearchParams({ action });
+            const options = { method, headers: { Authorization: `Bearer ${TOKEN}` } };
+
+            if (method === "GET") {
+                Object.keys(params).forEach(k => urlArgs.append(k, params[k]));
+            } else {
+                options.headers["Content-Type"] = "application/json";
+                options.body = JSON.stringify(params);
+            }
+
+            const res = await fetch(`${API}?${urlArgs.toString()}`, options);
+            if (!res.ok) {
+                const e = await res.json().catch(() => ({}));
+                throw new Error(e.error || `HTTP ${res.status}`);
+            }
+            return res.json();
+        }
 
         // ═══════ TABS ═══════
         document.getElementById("tabsBar").addEventListener("click", e => { const tab = e.target.closest(".tab"); if (!tab) return; const name = tab.dataset.tab; document.querySelectorAll(".tab").forEach(t => t.classList.remove("active")); document.querySelectorAll(".panel").forEach(p => p.classList.remove("active")); tab.classList.add("active"); document.getElementById(`panel-${name}`).classList.add("active"); const loads = { articles: loadArticles, health: loadHealth, topics: () => { loadTopics(); loadKeywordsEditor() }, backups: loadSnapshots, runs: loadRuns, apikeys: renderApiKeysManager, media: loadMediaStats, gallery: loadGallery }; if (loads[name] && !document.getElementById(`panel-${name}`).dataset.loaded) { loads[name](); document.getElementById(`panel-${name}`).dataset.loaded = "1" } });
@@ -2898,7 +2915,7 @@
                         filename,
                         existingSha,
                         base64Webp
-                    });
+                    }, "POST");
                     commitOk = true;
                 } catch (commitErr) {
                     if (commitErr.message && commitErr.message.includes('fetch')) {
@@ -2918,7 +2935,7 @@
                             thumbFilename,
                             thumbSha,
                             base64ThumbWebp
-                        });
+                        }, "POST");
                     } catch (thumbErr) {
                         if (thumbErr.message && thumbErr.message.includes('fetch')) {
                             // ignore timeout on thumb
