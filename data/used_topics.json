@@ -18,7 +18,8 @@
     "critical thinking activities for kindergarten",
     "fun homework alternatives for elementary students",
     "shadow matching worksheets for toddlers",
-    "printable logic puzzles for kids ages 6-10"
+    "printable logic puzzles for kids ages 6-10",
+    "alphabet activities for preschool at home"
   ],
   "product": [
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.1",
@@ -167,6 +168,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Beach Vol.1",
       "date": "2026-03-05T19:11:57.660614"
+    },
+    {
+      "slot": "keyword",
+      "topic": "alphabet activities for preschool at home",
+      "date": "2026-03-06T10:12:02.115766"
     }
   ]
 }
