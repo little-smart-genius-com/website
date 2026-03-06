@@ -291,3 +291,22 @@ jobs:
           else
             echo "No changes to commit"
           fi
+
+      # ── INDEXNOW — Notify search engines immediately ──
+      - name: Submit to IndexNow
+        if: steps.action.outputs.action != 'maintenance-scan'
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          if [ -z "$INDEXNOW_KEY" ]; then
+            echo "⚠️ INDEXNOW_KEY not set, skipping"
+            exit 0
+          fi
+          echo "📡 Submitting sitemap to IndexNow..."
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://api.indexnow.org/indexnow?url=https://littlesmartgenius.com/sitemap.xml&key=${INDEXNOW_KEY}")
+          if [ "$RESPONSE" = "200" ] || [ "$RESPONSE" = "202" ]; then
+            echo "✅ IndexNow accepted (HTTP $RESPONSE)"
+          else
+            echo "⚠️ IndexNow returned HTTP $RESPONSE (non-critical)"
+          fi
