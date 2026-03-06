@@ -270,7 +270,7 @@ jobs:
             DATE=$(date +%Y-%m-%d)
             HOUR=$(date +%H)
             ACTION="${{ steps.action.outputs.action }}"
-            git commit -m "Auto-blog V6: ${DATE} ${HOUR}h — ${ACTION} [skip ci]"
+            git commit -m "Auto-blog V6: ${DATE} ${HOUR}h — ${ACTION}"
             # Pull any remote changes before pushing (handles concurrent pushes)
             for i in 1 2 3 4 5; do
               echo "Attempt $i..."
