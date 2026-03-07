@@ -2267,6 +2267,12 @@ def build_all():
     post_files = sorted(glob.glob(os.path.join(POSTS_DIR, "*.json")))
     print(f"\n  Found {len(post_files)} post JSONs in posts/")
     
+    # ── EARLY EXIT: No new posts — preserve existing indexes ──
+    if not post_files:
+        print("\n  No new posts to build. Existing articles.json and indexes are preserved.")
+        print("=" * 80)
+        return
+    
     all_articles = []
     all_post_data = []  # Store raw data for second pass
     errors = []
