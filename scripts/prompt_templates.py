@@ -149,7 +149,10 @@ ARTICLE TYPE: Informational SEO pillar content (2000+ words)
       "h3_subsections": ["Subsection 1 (specific, actionable)", "Subsection 2", "Subsection 3"],
       "key_points": ["Detailed point with example", "Point with statistic or research reference", "Actionable tip with age-specific advice"],
       "image_concept": "UNIQUE visual concept for this section — different composition, subject, and dominant color from other sections. Format: [SCENE] + [SUBJECTS] + [ACTION] + [STYLE]",
-      "internal_link_opportunity": "Phrase that could naturally link to freebies.html, products.html, or blog.html"
+      "internal_link_opportunity": "Phrase that could naturally link to freebies.html, products.html, or blog.html",
+      "anecdote_seed": "A concrete mini-scenario the writer should develop (e.g., 'A 6-year-old girl completing a puzzle in 10 minutes and asking for more')",
+      "rhetorical_question": "A natural question to include in this section (e.g., 'But what makes this different from regular worksheets?')",
+      "tone_note": "Brief rhythm/style note for the writer (e.g., 'Start with a punchy 3-word sentence', 'Use an em-dash aside here', 'Take a strong opinionated stance')"
     }}
   ],
   "faq": [
@@ -167,6 +170,16 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
 - Cover concept must be specific enough to generate a premium image
 - Title MUST start with the keyword or a very close variation
 
+═══ HUMANIZATION PLANNING (CRITICAL — plan the human voice) ═══
+- Each section MUST have an "anecdote_seed" — a SPECIFIC mini-scenario with concrete details (child's age, reaction, time, result). The writer will develop this into a natural anecdote.
+- Each section MUST have a "rhetorical_question" — a question a real reader would think. Make it conversational, not generic.
+- Each section MUST have a "tone_note" — vary these across sections:
+  • At least 2 sections should start with a punchy short sentence
+  • At least 1 section should use an em-dash aside
+  • At least 1 section should take a strong opinionated stance
+  • At least 1 section should open with a rhetorical question
+- Make the anecdotes DIVERSE: different children's ages, settings (home, classroom, car ride), and emotions across sections.
+
 ═══ STYLE RULES ═══
 - H2 titles should use power words: "Best", "Ultimate", "Essential", "How to", "Why", "Top"
 - FAQ answers should be direct (start with the answer, not filler)
@@ -177,7 +190,10 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
         sections_json = json.dumps(
             [{"h2": s.get("h2"), "h3": s.get("h3_subsections", []),
               "points": s.get("key_points", []),
-              "link_opportunity": s.get("internal_link_opportunity", "")}
+              "link_opportunity": s.get("internal_link_opportunity", ""),
+              "anecdote_seed": s.get("anecdote_seed", ""),
+              "rhetorical_question": s.get("rhetorical_question", ""),
+              "tone_note": s.get("tone_note", "")}
              for s in plan.get("sections", [])],
             indent=2
         )
@@ -333,7 +349,10 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
       "h3_subsections": ["Sub 1", "Sub 2", "Sub 3"],
       "key_points": ["Point 1", "Point 2", "Point 3"],
       "image_concept": "Unique visual concept — different from other sections",
-      "internal_link_opportunity": "Natural anchor text for internal link"
+      "internal_link_opportunity": "Natural anchor text for internal link",
+      "anecdote_seed": "Concrete mini-scenario for the writer (child's age, specific reaction, activity detail)",
+      "rhetorical_question": "Natural conversational question for this section",
+      "tone_note": "Rhythm/style note (e.g., 'Start punchy', 'Use em-dash aside', 'Take a strong stance')"
     }}
   ],
   "product_spotlight": {{
@@ -346,6 +365,12 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
     {{"q": "Question about this activity type?", "a": "Helpful answer"}}
   ]
 }}
+
+═══ HUMANIZATION PLANNING (CRITICAL — plan the human voice) ═══
+- Each section MUST have an "anecdote_seed" with SPECIFIC details (child's age, setting, reaction).
+- Each section MUST have a "rhetorical_question" — conversational, not generic.
+- Each section MUST have a "tone_note" — vary these: 2+ punchy openers, 1+ em-dash, 1+ strong opinion, 1+ opening question.
+- Make anecdotes DIVERSE: different ages, settings (home, classroom), and emotions.
 
 ═══ SECTION PLAN ═══
 - Section 1: Why [activity type] matters for child development (research-backed)
@@ -361,7 +386,10 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
         import json
         sections_json = json.dumps(
             [{"h2": s.get("h2"), "h3": s.get("h3_subsections", []),
-              "points": s.get("key_points", [])}
+              "points": s.get("key_points", []),
+              "anecdote_seed": s.get("anecdote_seed", ""),
+              "rhetorical_question": s.get("rhetorical_question", ""),
+              "tone_note": s.get("tone_note", "")}
              for s in plan.get("sections", [])],
             indent=2
         )
@@ -513,15 +541,23 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
     {{
       "h2": "Pedagogical Goal & Why This Works",
       "h3s": ["Cognitive Benefits", "Ideal Age Group"],
-      "image_concept": "Vector illustration showing..."
+      "image_concept": "Vector illustration showing...",
+      "anecdote_seed": "Concrete scenario for the writer (child's age, specific action, result)",
+      "rhetorical_question": "Natural question for this section",
+      "tone_note": "Rhythm/style note (e.g., 'Start punchy', 'Use em-dash', 'Strong opinion')"
     }},
     {{
       "h2": "Materials Needed & Preparation",
-      "h3s": []
+      "h3s": [],
+      "anecdote_seed": "Short practical scenario",
+      "tone_note": "Keep it casual and list-heavy"
     }},
     {{
       "h2": "Step-by-Step Activity Instructions",
-      "h3s": ["Step 1: Setup", "Step 2: Execution", "Variations for Older/Younger Kids"]
+      "h3s": ["Step 1: Setup", "Step 2: Execution", "Variations for Older/Younger Kids"],
+      "anecdote_seed": "What happened when a specific child tried this",
+      "rhetorical_question": "Question about common concerns",
+      "tone_note": "Conversational step-by-step, not robotic"
     }}
   ],
   "faq_schema": [
@@ -529,6 +565,12 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
     {{"q": "Real teacher question?", "a": "Detailed answer."}}
   ]
 }}
+
+═══ HUMANIZATION PLANNING (CRITICAL — plan the human voice) ═══
+- Each section MUST have an "anecdote_seed" with SPECIFIC details (child's age, setting, reaction).
+- Each section MUST have a "rhetorical_question" — conversational, not generic.
+- Each section MUST have a "tone_note" — vary these: 2+ punchy openers, 1+ em-dash, 1+ strong opinion.
+- Make anecdotes DIVERSE: different ages, settings, and emotions.
 
 ═══ SECTION PLAN ═══
 - Section 1: What is {freebie_name} and why kids love it
@@ -544,7 +586,10 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
         import json
         sections_json = json.dumps(
             [{"h2": s.get("h2"), "h3": s.get("h3_subsections", []),
-              "points": s.get("key_points", [])}
+              "points": s.get("key_points", []),
+              "anecdote_seed": s.get("anecdote_seed", ""),
+              "rhetorical_question": s.get("rhetorical_question", ""),
+              "tone_note": s.get("tone_note", "")}
              for s in plan.get("sections", [])],
             indent=2
         )

@@ -958,7 +958,7 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
         sys_prompt = """You are Agent 6, the Chief Editor and Assembler.
 Your job is to take raw drafted sections and merge them into a single, cohesive, perfectly flowing article in HTML.
 
-RULES:
+ASSEMBLY RULES:
 1. Harmonize the tone so it sounds like ONE single passionate human author.
 2. Ensure transitions between sections are smooth and natural.
 3. Replace the 5 placeholders [IMAGE_1] through [IMAGE_5] with the provided image tags INSIDE the body content.
@@ -966,7 +966,15 @@ RULES:
 5. DO NOT change the core meaning or remove keywords.
 6. Provide ONLY the inner HTML elements (e.g. <h2>, <p>, <ul>). NEVER output <!DOCTYPE html>, <html>, <head>, <style>, or <body> tags.
 7. DO NOT include the cover image — it is already displayed separately above the article. Only use [IMAGE_1] through [IMAGE_5] for inline content images.
-8. DO NOT include a 'You Might Also Like', related articles, or FAQ section — these are injected separately."""
+8. DO NOT include a 'You Might Also Like', related articles, or FAQ section — these are injected separately.
+
+HUMANIZATION RULES (CRITICAL — check during assembly):
+9. VOICE CONSISTENCY: The entire article must sound like ONE real person talking. If sections have different tones (one formal, one casual), normalize to the more conversational one.
+10. CONTRACTIONS: Ensure contractions are used throughout (you'll, it's, don't, they're). Replace any "it is", "do not", "you will" with contractions.
+11. SENTENCE RHYTHM: Check that no paragraph has 3+ sentences of similar length. If found, break a long one or merge two short ones.
+12. RHETORICAL QUESTIONS: Ensure the article has at least 3 rhetorical questions across all sections (outside FAQ). If missing, add 1-2 natural ones.
+13. EM-DASH ASIDES: Ensure at least 2 em-dash asides exist (– like this –). If missing, add them where natural.
+14. PARAGRAPH VARIETY: Vary paragraph lengths — some should be 1-2 sentences, others 4-5. Never make all paragraphs the same length."""
 
         user_prompt = f"""IMAGES TO INJECT:
 {images_info}
