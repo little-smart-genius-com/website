@@ -19,7 +19,8 @@
     "fun homework alternatives for elementary students",
     "shadow matching worksheets for toddlers",
     "printable logic puzzles for kids ages 6-10",
-    "alphabet activities for preschool at home"
+    "alphabet activities for preschool at home",
+    "spelling practice worksheets for elementary students"
   ],
   "product": [
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.1",
@@ -179,6 +180,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3",
       "date": "2026-03-06T16:08:52.610627"
+    },
+    {
+      "slot": "keyword",
+      "topic": "spelling practice worksheets for elementary students",
+      "date": "2026-03-07T09:11:39.079524"
     }
   ]
 }
