@@ -2382,7 +2382,37 @@ def build_all():
             print(f"  [{i:>2}] ERR {slug}: {str(e)[:60]}")
             traceback.print_exc()
     
-    # Build search_index.json
+    # ── MERGE with existing articles.json ──
+    # Load existing index so we don't lose previously built articles
+    articles_json_path = os.path.join(BASE_DIR, "articles.json")
+    existing_articles = []
+    if os.path.exists(articles_json_path):
+        try:
+            with open(articles_json_path, 'r', encoding='utf-8') as f:
+                existing_data = json.load(f)
+            existing_articles = existing_data.get('articles', [])
+            print(f"\n  Loaded {len(existing_articles)} existing articles from articles.json")
+        except Exception:
+            pass
+
+    # Build a slug map: existing articles first, then overwrite with new ones
+    slug_map = {}
+    for art in existing_articles:
+        slug_map[art['slug']] = art
+    new_count = 0
+    updated_count = 0
+    for art in all_articles:
+        if art['slug'] in slug_map:
+            updated_count += 1
+        else:
+            new_count += 1
+        slug_map[art['slug']] = art  # New/updated articles overwrite existing
+
+    # Combined sorted list (newest first)
+    all_articles = sorted(slug_map.values(), key=lambda a: a.get('iso_date', ''), reverse=True)
+    print(f"  Merged index: {len(all_articles)} total ({new_count} new, {updated_count} updated, {len(existing_articles)} previously existing)")
+
+    # Write search_index.json
     index_data = {
         "generated_at": datetime.now().isoformat(),
         "total_articles": len(all_articles),
@@ -2392,10 +2422,9 @@ def build_all():
     search_index_path = os.path.join(BASE_DIR, "search_index.json")
     with open(search_index_path, 'w', encoding='utf-8') as f:
         json.dump(index_data, f, indent=2, ensure_ascii=False)
-    print(f"\n  search_index.json: {len(all_articles)} articles")
+    print(f"  search_index.json: {len(all_articles)} articles")
     
-    # Build articles.json (backward compat)
-    articles_json_path = os.path.join(BASE_DIR, "articles.json")
+    # Write articles.json
     with open(articles_json_path, 'w', encoding='utf-8') as f:
         json.dump(index_data, f, indent=2, ensure_ascii=False)
     print(f"  articles.json: {len(all_articles)} articles")
