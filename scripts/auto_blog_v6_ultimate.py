@@ -21,6 +21,7 @@ import os
 import sys
 import io
 import json
+import glob
 import random
 import re
 import time
@@ -1444,6 +1445,22 @@ PASS if score >= 900, otherwise REJECT."""
     def compile_and_save(self):
         slug = SEOUtils.optimize_slug(self.plan['title'])
         ts = int(time.time())
+
+        # ── DUPLICATE SLUG CHECK ──
+        # Prevent creating a second article with the same slug
+        os.makedirs(POSTS_DIR, exist_ok=True)
+        existing_posts = glob.glob(os.path.join(POSTS_DIR, f"{slug}-*.json"))
+        if existing_posts:
+            self.logger.warning(f"DUPLICATE BLOCKED: slug '{slug}' already exists → {os.path.basename(existing_posts[0])}", 2)
+            self.logger.warning("Skipping save to prevent duplicate article.", 2)
+            # Return minimal data so topic is still marked as used
+            return {
+                "title": self.plan['title'],
+                "slug": slug,
+                "word_count": 0,
+                "skipped_duplicate": True
+            }
+
         meta_desc = self.plan.get('meta_description') or SEOUtils.generate_meta_description(self.final_content)
         kw_list = SEOUtils.extract_keywords(self.plan['title'], self.final_content)
         word_count = len(re.findall(r'\w+', re.sub(r'<[^>]+>', '', self.final_content)))
@@ -1472,7 +1489,6 @@ PASS if score >= 900, otherwise REJECT."""
         }
 
         # Save JSON
-        os.makedirs(POSTS_DIR, exist_ok=True)
         output_file = os.path.join(POSTS_DIR, f"{slug}-{ts}.json")
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(final_data, f, indent=2, ensure_ascii=False)
@@ -1589,10 +1605,18 @@ def run_single(slot: str = None):
     ts = TopicSelector()
     if not slot:
         slot = random.choice(DAILY_SLOTS)
+
+    # Debug: show topic pool stats
+    stats = ts.get_stats()
+    print(f"[SINGLE] Topic Pool: kw={stats.get('keywords_remaining',0)}/{stats.get('keywords_total',0)} "
+          f"prod={stats.get('products_remaining',0)}/{stats.get('products_total',0)} "
+          f"free={stats.get('freebies_remaining',0)}/{stats.get('freebies_total',0)}")
+
     topic = ts.get_next_topic(slot)
     if not topic:
         print(f"[ERROR] No available topics for slot '{slot}'")
         return None
+    print(f"[SINGLE] Selected topic: '{topic['topic_name'][:60]}' for slot '{slot}'")
     return generate_article_v6(slot, topic, ts)
 
 
@@ -1641,22 +1665,30 @@ def run_schedule(cron_expr=None):
 
     print(f"\n{'=' * 80}")
     print(f"  AUTO BLOG V6 ULTIMATE -- SCHEDULE MODE")
-    print(f"  Week: {current_week} | UTC Hour: {current_hour} | Cron: {cron_expr or 'manual'}")
+    print(f"  Week: {current_week} | UTC Hour: {current_hour} | Cron: '{cron_expr or 'none'}'")
     print(f"{'=' * 80}")
 
     matched_slot = None
     matched_min_week = None
 
     # Method 1: Use exact cron expression (reliable, no delay issues)
-    if cron_expr and cron_expr.strip() in CRON_TO_SLOT:
-        matched_slot, matched_min_week = CRON_TO_SLOT[cron_expr.strip()]
-        print(f"[SCHEDULE] Matched cron '{cron_expr.strip()}' → slot '{matched_slot}' (min week {matched_min_week})")
-    else:
-        # Method 2: Fallback — wide time windows for manual runs
+    if cron_expr and cron_expr.strip():
+        clean_cron = cron_expr.strip()
+        if clean_cron in CRON_TO_SLOT:
+            matched_slot, matched_min_week = CRON_TO_SLOT[clean_cron]
+            print(f"[SCHEDULE] Matched cron '{clean_cron}' → slot '{matched_slot}' (min week {matched_min_week})")
+        else:
+            print(f"[SCHEDULE] WARNING: Cron '{clean_cron}' not found in CRON_TO_SLOT!")
+            print(f"[SCHEDULE] Available crons: {list(CRON_TO_SLOT.keys())}")
+            print(f"[SCHEDULE] Falling back to time-based slot selection...")
+
+    # Method 2: Fallback — wide time windows (if cron didn't match or not provided)
+    if not matched_slot:
         for (h_start, h_end), (slot_type, min_week) in SCHEDULE_SLOTS_FALLBACK.items():
             if h_start <= current_hour < h_end:
                 matched_slot = slot_type
                 matched_min_week = min_week
+                print(f"[SCHEDULE] Fallback matched: hour {current_hour} → slot '{matched_slot}' (min week {matched_min_week})")
                 break
 
     if not matched_slot:

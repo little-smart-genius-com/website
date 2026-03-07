@@ -2303,6 +2303,29 @@ def build_all():
             errors.append((pf, str(e)))
             print(f"  [{i:>2}] ERR {os.path.basename(pf)}: {str(e)[:60]}")
     
+    # ── DEDUP: Keep only newest article per slug ──
+    slug_map = {}
+    for idx, meta in enumerate(all_articles):
+        s = meta['slug']
+        if s in slug_map:
+            existing_idx = slug_map[s]
+            existing_date = all_articles[existing_idx].get('iso_date', '')
+            new_date = meta.get('iso_date', '')
+            if new_date > existing_date:
+                print(f"  [DEDUP] Duplicate slug '{s}': keeping newer ({new_date[:19]}), dropping ({existing_date[:19]})")
+                slug_map[s] = idx
+            else:
+                print(f"  [DEDUP] Duplicate slug '{s}': keeping ({existing_date[:19]}), dropping newer ({new_date[:19]})")
+        else:
+            slug_map[s] = idx
+
+    if len(slug_map) < len(all_articles):
+        kept_indices = set(slug_map.values())
+        dropped = len(all_articles) - len(kept_indices)
+        all_articles = [all_articles[i] for i in range(len(all_articles)) if i in kept_indices]
+        all_post_data = [all_post_data[i] for i in range(len(all_post_data)) if i in kept_indices]
+        print(f"  [DEDUP] Removed {dropped} duplicate(s), {len(all_articles)} unique articles remain")
+
     # Sort articles by date (newest first)
     all_articles.sort(key=lambda a: a.get('iso_date', ''), reverse=True)
     
