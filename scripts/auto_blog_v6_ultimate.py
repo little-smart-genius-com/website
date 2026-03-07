@@ -626,12 +626,12 @@ class AutoBlogV6:
 
         async with aiohttp.ClientSession() as session:
             # === PHASE 1: ARCHITECT (sequential) ===
-            self.logger.step_start("PHASE 1/7: ARCHITECT", "Agent 1 builds JSON plan")
+            self.logger.step_start("PHASE 1/8: ARCHITECT", "Agent 1 builds JSON plan")
             await self.agent_1_architect(session)
-            self.logger.step_end("PHASE 1/7: ARCHITECT")
+            self.logger.step_end("PHASE 1/8: ARCHITECT")
 
             # === PHASE 2: WRITERS + ART DIRECTOR (parallel) ===
-            self.logger.step_start("PHASE 2/7: WRITERS + ART DIRECTOR",
+            self.logger.step_start("PHASE 2/8: WRITERS + ART DIRECTOR",
                                     "3 Writers + 1 Art Director in parallel")
 
             total_sections = len(self.plan.get('sections', []))
@@ -662,34 +662,39 @@ class AutoBlogV6:
 
             self.logger.metric("Writers completed", len(writer_results))
             self.logger.metric("Image prompts", len(self.image_prompts))
-            self.logger.step_end("PHASE 2/7: WRITERS + ART DIRECTOR")
+            self.logger.step_end("PHASE 2/8: WRITERS + ART DIRECTOR")
 
             # === PHASE 3: IMAGES (parallel) ===
-            self.logger.step_start("PHASE 3/7: IMAGE GENERATION",
+            self.logger.step_start("PHASE 3/8: IMAGE GENERATION",
                                     f"5 images, 8 attempts each, {len(POLLINATIONS_KEYS)} primary + {len(POLLINATIONS_BACKUP_KEYS)} backup keys")
             self.image_paths = await self.artists_generate_images(session)
-            self.logger.step_end("PHASE 3/7: IMAGE GENERATION")
+            self.logger.step_end("PHASE 3/8: IMAGE GENERATION")
 
             # === PHASE 4: ASSEMBLER (sequential) ===
-            self.logger.step_start("PHASE 4/7: ASSEMBLER", "Agent 6 merges + harmonizes")
+            self.logger.step_start("PHASE 4/8: ASSEMBLER", "Agent 6 merges + harmonizes")
             await self.agent_6_assembler(session)
-            self.logger.step_end("PHASE 4/7: ASSEMBLER")
+            self.logger.step_end("PHASE 4/8: ASSEMBLER")
 
-            # === PHASE 5: POST-PROCESSING (V4 ecosystem) ===
-            self.logger.step_start("PHASE 5/7: POST-PROCESSING", "SmartLinker + FAQ + CTA")
+            # === PHASE 5: HUMANIZER (self-review pass) ===
+            self.logger.step_start("PHASE 5/8: HUMANIZER", "Agent 8 — human self-review pass")
+            await self.agent_8_humanizer(session)
+            self.logger.step_end("PHASE 5/8: HUMANIZER")
+
+            # === PHASE 6: POST-PROCESSING (V4 ecosystem) ===
+            self.logger.step_start("PHASE 6/8: POST-PROCESSING", "SmartLinker + FAQ + CTA")
             self.post_process()
-            self.logger.step_end("PHASE 5/7: POST-PROCESSING")
+            self.logger.step_end("PHASE 6/8: POST-PROCESSING")
 
-            # === PHASE 6: SEO AUDIT (60 criteria) ===
-            self.logger.step_start("PHASE 6/7: SEO AUDIT (60 criteria)",
+            # === PHASE 7: SEO AUDIT (60 criteria) ===
+            self.logger.step_start("PHASE 7/8: SEO AUDIT (60 criteria)",
                                     "Agent 7 (50 AI) + 10 local checks + corrections")
             seo_score = await self.phase_6_seo_audit(session)
-            self.logger.step_end("PHASE 6/7: SEO AUDIT (60 criteria)")
+            self.logger.step_end("PHASE 7/8: SEO AUDIT (60 criteria)")
 
-            # === PHASE 7: SAVE + INSTAGRAM ===
-            self.logger.step_start("PHASE 7/7: SAVE + SYNDICATION", "JSON + Instagram + Webhook")
+            # === PHASE 8: SAVE + INSTAGRAM ===
+            self.logger.step_start("PHASE 8/8: SAVE + SYNDICATION", "JSON + Instagram + Webhook")
             final_data = self.compile_and_save()
-            self.logger.step_end("PHASE 7/7: SAVE + SYNDICATION")
+            self.logger.step_end("PHASE 8/8: SAVE + SYNDICATION")
 
             self.logger.save()
             return final_data
@@ -992,6 +997,105 @@ Please assemble the final HTML article now. Ensure all [IMAGE_X] placeholders ar
 
         self.final_content = re.sub(r'\[IMAGE_\d+\]', '', self.final_content)
         self.logger.success("Assembly complete — HTML unified and 6 images injected", 2)
+
+    # ===============================================================
+    # AGENT 8: HUMANIZER — Self-Review Humanization Pass
+    # ===============================================================
+
+    async def agent_8_humanizer(self, session):
+        """Agent 8: Make the article sound more human. Second-pass rewrite focused on
+        sentence rhythm, syntactic variety, and natural voice — without changing facts."""
+
+        self.logger.step_start("AGENT 8: HUMANIZER", "Self-review humanization pass")
+
+        content_preview = self.final_content[:12000]
+        word_count = len(re.sub(r'<[^>]+>', '', self.final_content).split())
+
+        prompt = f"""You are a HUMAN EDITOR reviewing a blog article. Your ONLY job is to make this text sound
+MORE like a real human blogger wrote it. You must NOT change the facts, structure, keywords, HTML tags, links, or images.
+
+═══ YOUR REVIEW CHECKLIST ═══
+
+1. SENTENCE RHYTHM:
+   - Scan every paragraph. If you see 3+ sentences in a row with similar length (±5 words), 
+     break one long sentence into two, or merge two short ones.
+   - Ensure each paragraph has a MIX of short (3-7 words), medium (10-18 words), 
+     and occasional long sentences (20-30+ words).
+
+2. SENTENCE OPENINGS:
+   - Scan for paragraphs where 2+ sentences start the same way (e.g., "This...", "The...", "It...").
+   - Rewrite one of them to start differently (gerund, question, prepositional phrase, fragment).
+
+3. CONVERSATIONAL TONE:
+   - Replace any stiff or academic phrasing with casual equivalents.
+     "It is recommended that" → "You'll want to"
+     "Children tend to" → "Most kids"
+     "This can be beneficial" → "This really helps"
+     "It is advisable to" → "Try to"
+   - Add contractions where natural (it is → it's, you will → you'll, do not → don't).
+
+4. MICRO-ANECDOTES:
+   - Where the text feels generic or reads like a textbook, add a quick personal comment
+     (1 sentence max). Example: "I've seen this work wonders with my 6-year-old."
+   - Do NOT add more than 3-4 new micro-comments total. Keep them short.
+
+5. RHETORICAL QUESTIONS:
+   - If the article has fewer than 3 rhetorical questions total, add 1-2 natural ones.
+     Example: "So what makes this different?" or "Sound familiar?"
+
+6. NATURAL TOUCHES:
+   - Ensure at least 2 em-dash asides exist (– like this –).
+   - Ensure at least 2 informal expressions exist ("no-brainer", "this one's a keeper", etc.).
+   - Vary paragraph lengths: short (1-2 sentences) mixed with longer (4-5 sentences).
+
+═══ STRICT RULES ═══
+- Do NOT add or remove any <h2>, <h3>, <img>, <a>, <div> tags.
+- Do NOT change any URLs, image paths, or link text.
+- Do NOT remove keywords or change keyword density significantly.
+- Do NOT add any <html>, <head>, <body>, <style>, or <!DOCTYPE> tags.
+- Do NOT shorten the article. Keep the word count within ±5% of {word_count} words.
+- Return ONLY the revised HTML content. No explanations, no markdown.
+
+═══ ARTICLE TO HUMANIZE ═══
+{content_preview}"""
+
+        if len(self.final_content) > 12000:
+            prompt += f"\n\n... [CONTINUED — full article is {word_count} words] ...\n"
+            prompt += f"\n{self.final_content[12000:]}"
+
+        try:
+            result = await call_deepseek(
+                session, prompt, self.logger,
+                "AGENT 8: HUMANIZER", "humanize",
+                model=MODEL_CHAT, temperature=0.75
+            )
+
+            if result and len(result) > len(self.final_content) * 0.8:
+                # Verify the humanized version still has essential elements
+                original_h2s = len(re.findall(r'<h2[^>]*>', self.final_content))
+                new_h2s = len(re.findall(r'<h2[^>]*>', result))
+                original_imgs = len(re.findall(r'<img[^>]*>', self.final_content))
+                new_imgs = len(re.findall(r'<img[^>]*>', result))
+
+                if new_h2s >= original_h2s - 1 and new_imgs >= original_imgs - 1:
+                    self.final_content = result.strip()
+                    new_word_count = len(re.sub(r'<[^>]+>', '', self.final_content).split())
+                    self.logger.success(
+                        f"Humanization pass complete: {word_count} → {new_word_count} words, "
+                        f"{new_h2s} H2s, {new_imgs} images preserved", 2
+                    )
+                else:
+                    self.logger.warning(
+                        f"Humanizer output rejected: lost structure (H2: {original_h2s}→{new_h2s}, "
+                        f"imgs: {original_imgs}→{new_imgs}). Keeping original.", 2
+                    )
+            else:
+                self.logger.warning("Humanizer returned insufficient content. Keeping original.", 2)
+
+        except Exception as e:
+            self.logger.warning(f"Humanizer failed: {str(e)[:60]}. Keeping original.", 2)
+
+        self.logger.step_end("AGENT 8: HUMANIZER")
 
     # --- PHASE 5: POST-PROCESSING ---
     def post_process(self):
@@ -1329,6 +1433,55 @@ PASS if score >= 900, otherwise REJECT."""
             score += 5
         else:
             suggestions.append(f"AI phrases detected ({len(ai_phrases_found)}): {', '.join(ai_phrases_found[:5])}")
+
+        # ── HUMANIZATION CHECKS (bonus 20 pts) ──
+
+        # 21. Sentence length variance — 5 pts
+        sentences = re.findall(r'[^.!?]+[.!?]', plain)
+        if len(sentences) >= 10:
+            lengths = [len(s.split()) for s in sentences]
+            avg_len = sum(lengths) / len(lengths)
+            variance = sum((l - avg_len) ** 2 for l in lengths) / len(lengths)
+            std_dev = variance ** 0.5
+            if std_dev >= 6:
+                score += 5  # Good variety
+            elif std_dev >= 4:
+                score += 3
+            else:
+                suggestions.append(f"Sentence length variety low: std_dev={std_dev:.1f} (target: 6+)")
+        else:
+            score += 3
+
+        # 22. Contractions present (3+) — 5 pts
+        contractions = re.findall(r"(?:don't|won't|can't|you'll|it's|they're|we're|I'm|I've|isn't|aren't|doesn't|weren't|shouldn't|couldn't|wouldn't|he's|she's|that's|there's|here's|what's|who's|let's)", plain)
+        if len(contractions) >= 5:
+            score += 5
+        elif len(contractions) >= 2:
+            score += 3
+        else:
+            suggestions.append(f"Contractions: {len(contractions)} (target: 5+ for natural voice)")
+
+        # 23. Rhetorical questions (2+) — 5 pts
+        # Count question marks NOT inside FAQ section
+        content_no_faq = re.sub(r'<div class="faq.*?</div>', '', content, flags=re.DOTALL)
+        questions = re.findall(r'\?', content_no_faq)
+        if len(questions) >= 3:
+            score += 5
+        elif len(questions) >= 1:
+            score += 3
+        else:
+            suggestions.append(f"Rhetorical questions: {len(questions)} (target: 3+ outside FAQ)")
+
+        # 24. Informal markers: em-dashes + fragments — 5 pts
+        em_dashes = len(re.findall(r'[–—]', content))
+        fragments = len(re.findall(r'<p[^>]*>[^<]{3,30}\.</p>', content))
+        informal_score = min(em_dashes, 3) + min(fragments, 2)
+        if informal_score >= 4:
+            score += 5
+        elif informal_score >= 2:
+            score += 3
+        else:
+            suggestions.append(f"Informal markers low: {em_dashes} em-dashes, {fragments} fragments (target: 2+ each)")
 
         for s in suggestions:
             self.logger.verification_result(s, False)

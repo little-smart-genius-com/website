@@ -195,14 +195,47 @@ LSI Keywords (weave naturally): {lsi_plan_str}
 Target: {target_words} words MINIMUM (aim for 2000-2200)
 Article Type: SEO Informational — must rank on Google for "{keyword}"
 
-═══ WRITING PERSONALITY & RHYTHM (CRITICAL ANTI-AI) ═══
-- Write like a REAL HUMAN writing to a friend: authentic, slightly informal, nuanced.
-- VARY YOUR RHYTHM (Burstiness): Mix very short, punchy sentences (2-5 words) with longer, flowing ones.
-- NO SYMMETRY: Do NOT use a perfectly balanced "H2 -> intro paragraph -> bullet list -> conclusion" format in every section. Break the pattern.
-- Be concrete: Use real-world examples, not theoretical fluff.
-- Include transitions naturally: "Here's the thing", "Honestly", "Plus".
+═══ WRITING PERSONALITY & VOICE (CRITICAL ANTI-AI) ═══
+- Write like you're chatting with a smart friend over coffee. Use contractions naturally (you'll, it's, don't, can't, they're).
+- Balance friendly and professional: relaxed but still trustworthy.
+- Use "you" a lot, and "I" or "we" when sharing opinions or experience.
 - NEVER start an introduction with "In this article..." or "Today we will discover...".
 - Use ACTIVE VOICE exclusively.
+
+═══ SENTENCE RHYTHM (MOST IMPORTANT FOR HUMAN DETECTION) ═══
+- In EVERY paragraph, you MUST mix:
+  • Short sentences (3–7 words). For punch and emphasis.
+  • Medium sentences (10–18 words). The backbone of your writing.
+  • Occasional longer sentences (20–30+ words) when going deeper.
+- NEVER write 3+ consecutive sentences of similar length (±5 words).
+- Start at least 2 sections with a very short punchy sentence (3-5 words). Then explain.
+  Example: "This one's huge. Most parents completely overlook..."
+
+═══ SYNTACTIC VARIETY (CRITICAL) ═══
+- Vary how sentences begin — NOT always Subject-Verb-Object.
+- Mix declarative sentences with:
+  • Rhetorical questions (at least 1 per H2 section). Example: "But does this actually work?"
+  • Short fragments for emphasis (3-5 across article). Example: "Exactly what you need." or "Total game-changer for this age."
+  • Parenthetical asides using em-dashes (at least 2 in article). Example: "My daughter – she's 6 – figured it out in minutes."
+- Avoid the same section template repeating: do NOT use "H2 → intro paragraph → bullet list → conclusion" in every section. Break the pattern.
+
+═══ ANECDOTES & PERSONAL VOICE (MANDATORY) ═══
+- Each H2 section MUST contain at least ONE mini-anecdote or concrete scenario with specific details (a child's age, a real reaction, a specific result).
+- Take at least 2 strong opinionated stances across the article.
+  Example: "Honestly, I'd skip flashcards entirely and go straight to puzzles for this age group."
+- Mention specific numbers/ages/times — NOT round generalities.
+  Use: "my 7-year-old", "after about 15 minutes", "3-4 colored pencils"
+  NOT: "young children", "after some time", "a few supplies"
+
+═══ NATURAL IMPERFECTIONS (ANTI-AI) ═══
+- Vary paragraph lengths deliberately: some 1-2 sentences, others 4-5. NEVER make all paragraphs the same length.
+- Include at least 2 informal English idioms or expressions (e.g., "this one's a keeper", "it's a no-brainer", "the real kicker").
+- It's okay to repeat a key phrase once for natural emphasis — humans do that.
+- After every actionable tip, add ONE sentence explaining WHY it works.
+
+═══ TRANSITIONS (use at least 5 DIFFERENT ones, NEVER repeat the same) ═══
+"Here's the thing", "Honestly", "Plus", "Here's the tricky part", "Here's the fun part",
+"On top of that", "But here's the catch", "Real talk", "Pro tip", "The best part?"
 
 ═══ BANNED PHRASES (AI detection — NEVER use these) ═══
 "It's important to note", "Moreover", "Furthermore", "In conclusion", "Delve into",
@@ -346,15 +379,44 @@ Product Link: {product_url}
 Target: {target_words} words MINIMUM
 RATIO: 80% educational value, 20% product recommendation
 
-═══ WRITING PERSONALITY & RHYTHM (CRITICAL ANTI-AI) ═══
-- Write as a passionate, real educator, not a salesperson or encyclopedia.
-- Share a classroom/parenting experience (1-2 sentences in intro). MUST feel authentic.
-- VARY YOUR RHYTHM (Burstiness): Mix very short, spontaneous sentences (2-5 words) with longer explanations.
-- NO SYMMETRY: Do NOT use the exact same paragraph-list structure in every section. 
-- Break the pattern. Add a 1-sentence paragraph for emphasis.
+═══ WRITING PERSONALITY & VOICE (CRITICAL ANTI-AI) ═══
+- Write as a passionate, real educator, NOT a salesperson. Use contractions naturally (you'll, it's, don't, they're).
 - Include tips that work even WITHOUT buying the product.
-- Use transitions like: "Let's be real", "What I've found works best", "One thing I love about".
+- Use "you" a lot. Share personal teaching/parenting experiences.
 - NEVER start an introduction with "In this article..." or "Today we will explore...".
+- Use ACTIVE VOICE exclusively.
+
+═══ SENTENCE RHYTHM (MOST IMPORTANT FOR HUMAN DETECTION) ═══
+- In EVERY paragraph, you MUST mix:
+  • Short sentences (3–7 words). For punch.
+  • Medium sentences (10–18 words). The backbone.
+  • Occasional longer sentences (20–30+ words) when going deeper.
+- NEVER write 3+ consecutive sentences of similar length (±5 words).
+- Start at least 2 sections with a very short punchy sentence. Then explain.
+  Example: "This changed everything. The moment I introduced this in my classroom..."
+
+═══ SYNTACTIC VARIETY (CRITICAL) ═══
+- Vary how sentences begin — NOT always Subject-Verb-Object.
+- Include at least 1 rhetorical question per H2. Example: "But does this actually help at age 5?"
+- Use 3-5 short fragments across the article. Example: "A total must-have."
+- Use em-dashes for asides at least twice. Example: "This activity – and I've tried dozens – is the one that sticks."
+- Do NOT use the same section template repeating. Break the pattern.
+
+═══ ANECDOTES & OPINIONS (MANDATORY) ═══
+- Each H2 section MUST contain at least ONE mini-anecdote with concrete details.
+  Example: "I watched a group of 6-year-olds spend 40 minutes on this without a single complaint."
+- Take at least 2 strong opinionated stances across the article.
+  Example: "Honestly, I'd pick this over any screen-based learning app."
+- Use specific numbers: "my 7-year-old", "after 15 minutes", "3 colored pencils" — NOT vague "young children".
+
+═══ NATURAL IMPERFECTIONS (ANTI-AI) ═══
+- Vary paragraph lengths: some 1-2 sentences, others 4-5. NEVER uniform.
+- Include at least 2 informal idioms ("this one's a keeper", "it's a no-brainer").
+- After every tip, add ONE sentence explaining WHY it works in practice.
+
+═══ TRANSITIONS (use at least 5 DIFFERENT ones, NEVER repeat) ═══
+"Let's be real", "What I've found works best", "One thing I love about",
+"Here's the fun part", "On top of that", "But here's the catch", "Pro tip", "The best part?"
 
 ═══ BANNED PHRASES (AI detection — NEVER use these) ═══
 "It's important to note", "Moreover", "Furthermore", "In conclusion", "Delve into",
@@ -500,14 +562,43 @@ Download Link: {freebie_url}
 Target: {target_words} words MINIMUM
 TONE: Enthusiastic friend explaining their favorite activity
 
-═══ WRITING PERSONALITY & RHYTHM (CRITICAL ANTI-AI) ═══
-- Write like a REAL HUMAN excitedly sharing a find with a friend.
-- Include a quick personal anecdote about using this activity.
-- VARY YOUR RHYTHM (Burstiness): Mix very short, punchy sentences (2-5 words) with longer explanations.
-- NO SYMMETRY: Break the mold. Don't use the exact same format for every section.
+═══ WRITING PERSONALITY & VOICE (CRITICAL ANTI-AI) ═══
+- Write like you're excitedly sharing a discovery with a friend. Use contractions (you'll, it's, don't, they're).
 - Be step-by-step practical (number your instructions), but keep the tone conversational.
-- Use transitions like: "Here's the fun part", "What I love about this", "Pro tip from experience".
+- Use "you" a lot. Share your own experience with this activity.
 - NEVER start an introduction with "In this article..." or "Today we will discover...".
+- Use ACTIVE VOICE exclusively.
+
+═══ SENTENCE RHYTHM (MOST IMPORTANT FOR HUMAN DETECTION) ═══
+- In EVERY paragraph, mix:
+  • Short sentences (3–7 words). For punch.
+  • Medium sentences (10–18 words). The backbone.
+  • Occasional longer sentences (20–30+ words) when going deeper.
+- NEVER write 3+ consecutive sentences of similar length (±5 words).
+- Start at least 2 sections with a short punchy opener. Then explain.
+  Example: "Kids love this one. The first time I tried it with my daughter..."
+
+═══ SYNTACTIC VARIETY (CRITICAL) ═══
+- Vary sentence beginnings — NOT always Subject-Verb-Object.
+- Include at least 1 rhetorical question per H2. Example: "Want to know the best part?"
+- Use 3-5 short fragments across the article. Example: "Pure magic." or "Exactly what you need."
+- Use em-dashes for asides at least twice. Example: "My son – he's 5 – couldn't put it down."
+- Do NOT use the same format for every section. Break the pattern.
+
+═══ ANECDOTES & PERSONAL VOICE (MANDATORY) ═══
+- Each H2 section MUST contain at least ONE mini-anecdote with specifics.
+  Example: "I printed 4 copies and within 20 minutes, all of them were covered in crayon."
+- Take at least 2 opinionated stances. Example: "This beats any store-bought worksheet, hands down."
+- Use specific numbers: "my 6-year-old", "about 10 minutes", "2-3 pages" — NOT vague language.
+
+═══ NATURAL IMPERFECTIONS (ANTI-AI) ═══
+- Vary paragraph lengths: some 1-2 sentences, others 4-5. NEVER uniform.
+- Include at least 2 informal idioms ("this one's a keeper", "it's a no-brainer").
+- After every tip, explain WHY it works in one sentence.
+
+═══ TRANSITIONS (use at least 5 DIFFERENT ones, NEVER repeat) ═══
+"Here's the fun part", "What I love about this", "Pro tip from experience",
+"On top of that", "But here's the catch", "The best part?", "Honestly", "Real talk"
 
 ═══ BANNED PHRASES (AI detection — NEVER use these) ═══
 "It's important to note", "Moreover", "Furthermore", "In conclusion", "Delve into",
