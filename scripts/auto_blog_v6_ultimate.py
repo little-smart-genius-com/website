@@ -1457,13 +1457,79 @@ PASS if score >= 900, otherwise REJECT."""
             source = os.path.basename(existing_posts[0]) if existing_posts else f"{slug}.html"
             self.logger.warning(f"DUPLICATE BLOCKED: slug '{slug}' already exists → {source}", 2)
             self.logger.warning("Skipping save to prevent duplicate article.", 2)
-            # Return minimal data so topic is still marked as used
             return {
                 "title": self.plan['title'],
                 "slug": slug,
                 "word_count": 0,
                 "skipped_duplicate": True
             }
+
+        # ── SEMANTIC TITLE DEDUP ──
+        # Prevent near-duplicate articles (same topic, different slug)
+        # by comparing title word overlap against all existing articles
+        TITLE_STOP_WORDS = {
+            'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
+            'of', 'with', 'by', 'from', 'is', 'are', 'was', 'were', 'be', 'been',
+            'has', 'have', 'had', 'do', 'does', 'did', 'will', 'would', 'could',
+            'should', 'may', 'might', 'can', 'shall', 'not', 'no', 'so', 'if',
+            'how', 'what', 'why', 'when', 'where', 'who', 'which', 'that', 'this',
+            'it', 'its', 'your', 'our', 'their', 'my', 'his', 'her', 'best',
+            'top', 'ultimate', 'guide', 'tips', 'essential',
+        }
+
+        def _basic_stem(word):
+            """Lightweight stemmer: strip common suffixes for comparison."""
+            for suffix in ['tion', 'sion', 'ment', 'ness', 'ious', 'eous', 'ical',
+                           'ting', 'ing', 'ies', 'ful', 'ous', 'ive', 'led', 'ted',
+                           'ers', 'est', 'als', 'ble', 'ity', 'ent', 'ant',
+                           'ed', 'es', 'ly', 'er', 'al', 'en']:
+                if word.endswith(suffix) and len(word) - len(suffix) >= 3:
+                    return word[:-len(suffix)]
+            if word.endswith('s') and len(word) > 4:
+                return word[:-1]
+            return word
+
+        def _title_words(title):
+            words = set(re.findall(r'[a-z]{3,}', title.lower()))
+            return {_basic_stem(w) for w in words - TITLE_STOP_WORDS}
+
+        new_words = _title_words(self.plan['title'])
+        if new_words:
+            # Collect existing titles from articles.json + pending posts
+            existing_titles = []
+            articles_json = os.path.join(PROJECT_ROOT, "articles.json")
+            if os.path.exists(articles_json):
+                try:
+                    with open(articles_json, 'r', encoding='utf-8') as f:
+                        idx = json.load(f)
+                    for a in idx.get('articles', []):
+                        existing_titles.append(a.get('title', ''))
+                except Exception:
+                    pass
+            # Also scan pending posts
+            for pf in glob.glob(os.path.join(POSTS_DIR, "*.json")):
+                try:
+                    with open(pf, 'r', encoding='utf-8') as f:
+                        existing_titles.append(json.load(f).get('title', ''))
+                except Exception:
+                    pass
+
+            for existing_title in existing_titles:
+                existing_words = _title_words(existing_title)
+                if not existing_words:
+                    continue
+                overlap = new_words & existing_words
+                smaller = min(len(new_words), len(existing_words))
+                similarity = len(overlap) / smaller if smaller > 0 else 0
+                if similarity >= 0.6:
+                    self.logger.warning(f"SEMANTIC DUPLICATE BLOCKED: '{self.plan['title'][:50]}' is too similar ({similarity:.0%}) to '{existing_title[:50]}'", 2)
+                    self.logger.warning("Skipping save to prevent near-duplicate article.", 2)
+                    return {
+                        "title": self.plan['title'],
+                        "slug": slug,
+                        "word_count": 0,
+                        "skipped_duplicate": True
+                    }
 
         meta_desc = self.plan.get('meta_description') or SEOUtils.generate_meta_description(self.final_content)
         kw_list = SEOUtils.extract_keywords(self.plan['title'], self.final_content)
