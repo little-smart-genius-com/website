@@ -12,8 +12,6 @@ Each returns plan_prompt + content_prompt_builder for the 2-step generation pipe
 
 AI_DETECTION_PHRASES = [
     # Intros / Outros
-    "dans cet article", "nous allons découvrir", "il est important de noter", 
-    "en conclusion", "pour conclure", "en résumé", "aujourd'hui", "de nos jours",
     "it's important to note", "it is important to note", "in this article",
     "in today's world", "in today's fast-paced", "without further ado",
     "in a nutshell", "at the end of the day", "it goes without saying",
@@ -21,7 +19,6 @@ AI_DETECTION_PHRASES = [
     # Transitions
     "moreover", "furthermore", "additionally", "subsequently", "consequently",
     "needless to say", "as a matter of fact", "last but not least",
-    "notablement", "cependant", "néanmoins", "par ailleurs", "en outre",
     
     # Vocabulary & Verbs
     "delve into", "delve deeper", "let's delve", "dive into", "deep dive",
@@ -212,7 +209,7 @@ Article Type: SEO Informational — must rank on Google for "{keyword}"
 "Dive into", "In today's world", "Comprehensive guide", "Embark on", "Navigate the",
 "Leverage", "Utilize", "Facilitate", "Game-changer", "Unlock the potential",
 "Without further ado", "Needless to say", "Plethora of", "Tapestry of", "Testament to",
-"Crucial", "Pivotal", "Dans cet article", "Nous allons", "Il est important de"
+"Crucial", "Pivotal", "In the realm of", "Cornerstone", "Beacon of"
 
 ═══ STRUCTURE ═══
 1. INTRODUCTION (150-200 words):
@@ -364,7 +361,7 @@ RATIO: 80% educational value, 20% product recommendation
 "Dive into", "In today's world", "Comprehensive guide", "Embark on", "Navigate the",
 "Leverage", "Utilize", "Facilitate", "Game-changer", "Unlock the potential",
 "Without further ado", "Needless to say", "Plethora of", "Tapestry of", "Testament to",
-"Crucial", "Pivotal", "Dans cet article", "Nous allons", "Il est important de"
+"Crucial", "Pivotal", "In the realm of", "Cornerstone", "Beacon of"
 
 ═══ STRUCTURE ═══
 1. INTRODUCTION (150-200 words):
@@ -517,7 +514,7 @@ TONE: Enthusiastic friend explaining their favorite activity
 "Dive into", "In today's world", "Comprehensive guide", "Embark on", "Navigate the",
 "Leverage", "Utilize", "Facilitate", "Game-changer", "Unlock the potential",
 "Without further ado", "Needless to say", "Plethora of", "Tapestry of", "Testament to",
-"Crucial", "Pivotal", "Dans cet article", "Nous allons", "Il est important de"
+"Crucial", "Pivotal", "In the realm of", "Cornerstone", "Beacon of"
 
 ═══ STRUCTURE ═══
 1. INTRODUCTION (150-200 words):
