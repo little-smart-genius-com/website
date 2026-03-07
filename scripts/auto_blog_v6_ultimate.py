@@ -1521,7 +1521,7 @@ PASS if score >= 900, otherwise REJECT."""
                 overlap = new_words & existing_words
                 smaller = min(len(new_words), len(existing_words))
                 similarity = len(overlap) / smaller if smaller > 0 else 0
-                if similarity >= 0.6:
+                if similarity >= 0.9:
                     self.logger.warning(f"SEMANTIC DUPLICATE BLOCKED: '{self.plan['title'][:50]}' is too similar ({similarity:.0%}) to '{existing_title[:50]}'", 2)
                     self.logger.warning("Skipping save to prevent near-duplicate article.", 2)
                     return {
