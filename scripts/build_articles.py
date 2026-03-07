@@ -2297,7 +2297,7 @@ def build_all():
                 "slot": data.get('slot', ''),
             }
             all_articles.append(article_meta)
-            all_post_data.append((data, slug))
+            all_post_data.append((data, slug, pf))  # pf = source JSON path
             
         except Exception as e:
             errors.append((pf, str(e)))
@@ -2322,9 +2322,17 @@ def build_all():
     if len(slug_map) < len(all_articles):
         kept_indices = set(slug_map.values())
         dropped = len(all_articles) - len(kept_indices)
+        dropped_paths = [all_post_data[i][2] for i in range(len(all_post_data)) if i not in kept_indices]
         all_articles = [all_articles[i] for i in range(len(all_articles)) if i in kept_indices]
         all_post_data = [all_post_data[i] for i in range(len(all_post_data)) if i in kept_indices]
         print(f"  [DEDUP] Removed {dropped} duplicate(s), {len(all_articles)} unique articles remain")
+        # Delete deduplicated JSON files
+        for dp in dropped_paths:
+            try:
+                os.remove(dp)
+                print(f"  [DEDUP] Deleted duplicate: {os.path.basename(dp)}")
+            except OSError:
+                pass
 
     # Sort articles by date (newest first)
     all_articles.sort(key=lambda a: a.get('iso_date', ''), reverse=True)
@@ -2337,7 +2345,8 @@ def build_all():
     slug_to_sorted_idx = {a['slug']: idx for idx, a in enumerate(all_articles)}
     
     print(f"  Pass 2: Generating {len(all_post_data)} HTML pages with related articles...")
-    for i, (data, slug) in enumerate(all_post_data, 1):
+    built_json_paths = []  # Track successfully built JSONs for cleanup
+    for i, (data, slug, source_json_path) in enumerate(all_post_data, 1):
         try:
             title = data.get('title', 'Untitled')
             
@@ -2361,7 +2370,7 @@ def build_all():
             html_size = os.path.getsize(html_path) // 1024
             
             print(f"  [{i:>2}] OK  {html_size:>3}KB  {title[:60]}")
-            
+            built_json_paths.append(source_json_path)
         except Exception as e:
             errors.append((slug, str(e)))
             print(f"  [{i:>2}] ERR {slug}: {str(e)[:60]}")
@@ -2437,6 +2446,16 @@ def build_all():
             print(f"    {os.path.basename(pf)}: {err}")
     else:
         print(f"  No errors!")
+
+    # ── CLEANUP: Delete successfully built post JSONs ──
+    if built_json_paths:
+        print(f"\n  Cleanup: Removing {len(built_json_paths)} built post JSONs from posts/...")
+        for jp in built_json_paths:
+            try:
+                os.remove(jp)
+            except OSError:
+                pass
+        print(f"  Cleanup complete: {len(built_json_paths)} JSONs removed")
         
     print(f"\n{'=' * 80}")
     print(f"  RUNNING POST-PROCESSOR (Related Articles & TPT Products)")

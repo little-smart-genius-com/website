@@ -1448,10 +1448,14 @@ PASS if score >= 900, otherwise REJECT."""
 
         # ── DUPLICATE SLUG CHECK ──
         # Prevent creating a second article with the same slug
+        # Check both posts/ (pending JSONs) and articles/ (already built HTML)
         os.makedirs(POSTS_DIR, exist_ok=True)
+        articles_dir = os.path.join(PROJECT_ROOT, "articles")
         existing_posts = glob.glob(os.path.join(POSTS_DIR, f"{slug}-*.json"))
-        if existing_posts:
-            self.logger.warning(f"DUPLICATE BLOCKED: slug '{slug}' already exists → {os.path.basename(existing_posts[0])}", 2)
+        existing_html = os.path.exists(os.path.join(articles_dir, f"{slug}.html"))
+        if existing_posts or existing_html:
+            source = os.path.basename(existing_posts[0]) if existing_posts else f"{slug}.html"
+            self.logger.warning(f"DUPLICATE BLOCKED: slug '{slug}' already exists → {source}", 2)
             self.logger.warning("Skipping save to prevent duplicate article.", 2)
             # Return minimal data so topic is still marked as used
             return {
