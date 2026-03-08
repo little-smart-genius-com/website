@@ -114,20 +114,26 @@ class TopicSelector:
 
         keyword = random.choice(available)
 
-        # Derive category from keyword content
+        # Derive category from keyword to ensure strict adherence to blog pillars
         kw_lower = keyword.lower()
-        if any(w in kw_lower for w in ["math", "number", "count", "sudoku"]):
+        if "coloring" in kw_lower:
+            category = "Coloring Book"
+        elif any(w in kw_lower for w in ["math", "number", "count", "sudoku", "addition"]):
             category = "Math Skills"
-        elif any(w in kw_lower for w in ["word", "spell", "vocabulary", "alphabet", "letter"]):
+        elif any(w in kw_lower for w in ["word", "spell", "vocabulary", "alphabet", "letter", "read"]):
             category = "Language Arts"
-        elif any(w in kw_lower for w in ["logic", "brain", "critical", "problem"]):
+        elif any(w in kw_lower for w in ["logic", "brain", "critical", "reasoning"]):
             category = "Critical Thinking"
-        elif any(w in kw_lower for w in ["color", "creative", "art", "motor"]):
+        elif any(w in kw_lower for w in ["problem", "maze", "puzzle"]):
+            category = "Problem Solving"
+        elif any(w in kw_lower for w in ["creative", "art", "craft", "paint", "draw"]):
             category = "Creative Arts"
-        elif any(w in kw_lower for w in ["spot", "visual", "maze", "shadow", "picture"]):
+        elif any(w in kw_lower for w in ["visual", "spot", "shadow", "picture", "matching"]):
             category = "Visual Skills"
+        elif any(w in kw_lower for w in ["motor", "trace", "cut", "scissors", "handwriting"]):
+            category = "Fine Motor Skills"
         else:
-            category = "Education"
+            category = random.choice(["Critical Thinking", "Language Arts", "Math Skills", "Creative Arts", "Visual Skills", "Problem Solving", "Fine Motor Skills", "Coloring Book"])
 
         return {
             "slot": "keyword",
