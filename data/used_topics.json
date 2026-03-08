@@ -20,7 +20,8 @@
     "shadow matching worksheets for toddlers",
     "printable logic puzzles for kids ages 6-10",
     "alphabet activities for preschool at home",
-    "spelling practice worksheets for elementary students"
+    "spelling practice worksheets for elementary students",
+    "fun math activities for kindergarten at home"
   ],
   "product": [
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.1",
@@ -191,6 +192,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.7",
       "date": "2026-03-07T15:06:37.755815"
+    },
+    {
+      "slot": "keyword",
+      "topic": "fun math activities for kindergarten at home",
+      "date": "2026-03-08T09:07:20.332890"
     }
   ]
 }
