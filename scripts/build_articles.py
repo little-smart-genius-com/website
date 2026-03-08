@@ -11,6 +11,7 @@ import json
 import re
 import glob
 import urllib.parse
+import shutil
 from datetime import datetime
 
 # Fix Windows terminal encoding
@@ -27,6 +28,8 @@ ARTICLES_DIR = os.path.join(PROJECT_ROOT, "articles")
 SITE_URL = "https://littlesmartgenius.com"
 
 os.makedirs(ARTICLES_DIR, exist_ok=True)
+ARCHIVE_DIR = os.path.join(PROJECT_ROOT, "data", "archive_posts")
+os.makedirs(ARCHIVE_DIR, exist_ok=True)
 
 # ═══════════════════════════════════════════════════════════════
 # ARTICLE HTML TEMPLATE — matches index.html design system
@@ -2332,11 +2335,12 @@ def build_all():
         all_articles = [all_articles[i] for i in range(len(all_articles)) if i in kept_indices]
         all_post_data = [all_post_data[i] for i in range(len(all_post_data)) if i in kept_indices]
         print(f"  [DEDUP] Removed {dropped} duplicate(s), {len(all_articles)} unique articles remain")
-        # Delete deduplicated JSON files
+        # Archive deduplicated JSON files
         for dp in dropped_paths:
             try:
-                os.remove(dp)
-                print(f"  [DEDUP] Deleted duplicate: {os.path.basename(dp)}")
+                archive_path = os.path.join(ARCHIVE_DIR, os.path.basename(dp))
+                shutil.move(dp, archive_path)
+                print(f"  [DEDUP] Archived duplicate: {os.path.basename(dp)}")
             except OSError:
                 pass
 
@@ -2482,15 +2486,16 @@ def build_all():
     else:
         print(f"  No errors!")
 
-    # ── CLEANUP: Delete successfully built post JSONs ──
+    # ── CLEANUP: Archive successfully built post JSONs ──
     if built_json_paths:
-        print(f"\n  Cleanup: Removing {len(built_json_paths)} built post JSONs from posts/...")
+        print(f"\n  Cleanup: Archiving {len(built_json_paths)} built post JSONs to data/archive_posts/...")
         for jp in built_json_paths:
             try:
-                os.remove(jp)
+                archive_path = os.path.join(ARCHIVE_DIR, os.path.basename(jp))
+                shutil.move(jp, archive_path)
             except OSError:
                 pass
-        print(f"  Cleanup complete: {len(built_json_paths)} JSONs removed")
+        print(f"  Cleanup complete: {len(built_json_paths)} JSONs archived")
         
     print(f"\n{'=' * 80}")
     print(f"  RUNNING POST-PROCESSOR (Related Articles & TPT Products)")
