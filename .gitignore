@@ -38,7 +38,6 @@ _publish_all_ig.py
 _test_single_post.py
 
 # Sensitive / Internal data
-download_links.js
 logs/
 backups/
 reports/

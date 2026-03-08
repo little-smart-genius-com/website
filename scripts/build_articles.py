@@ -1833,7 +1833,7 @@ def add_table_of_contents(content: str) -> str:
     toc_html = f"""
     <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
         <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
-            <span>📑</span> Table of Contents
+            <span>&#128209;</span> Table of Contents
         </h3>
         <ul class="space-y-1 list-none p-0 m-0">
             {''.join(lis)}
