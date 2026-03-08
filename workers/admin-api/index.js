@@ -968,12 +968,33 @@ async function regenImageFetch(slug, imageType, env) {
     const imageIndex = getImageIndex(imageType);
 
     // 1. Find the post JSON
+    let postContent = null;
+    let postFilename = "";
+
+    // First try the active posts/ directory
     const postFiles = await ghListDir("posts", env);
     const postFile = postFiles.find(f => f.name.startsWith(slug) && f.name.endsWith(".json"));
-    if (!postFile) throw new Error(`Post JSON not found for slug: ${slug}`);
 
-    const { content: postContent } = await ghFileContent(`posts/${postFile.name}`, env);
-    if (!postContent) throw new Error(`Could not read post JSON: ${postFile.name}`);
+    if (postFile) {
+        const { content } = await ghFileContent(`posts/${postFile.name}`, env);
+        postContent = content;
+        postFilename = postFile.name;
+    } else {
+        // Fallback: check the archive directory
+        try {
+            const archiveFiles = await ghListDir("data/archive_posts", env);
+            const archiveFile = archiveFiles.find(f => f.name.startsWith(slug) && f.name.endsWith(".json"));
+            if (archiveFile) {
+                const { content } = await ghFileContent(`data/archive_posts/${archiveFile.name}`, env);
+                postContent = content;
+                postFilename = archiveFile.name;
+            }
+        } catch (e) {
+            // Archive folder might not exist or be empty on GitHub yet
+        }
+    }
+
+    if (!postContent) throw new Error(`Post JSON not found for slug: ${slug} (checked posts/ and data/archive_posts/)`);
     const postData = JSON.parse(postContent);
 
     const title = postData.title || slug.replace(/-/g, " ");
