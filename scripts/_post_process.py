@@ -397,7 +397,7 @@ def inject_into_article(filepath: str, all_articles: List[Dict], tpt_products: L
         content = f.read()
     
     # Skip if already injected
-    if "<!-- ═══ RELATED ARTICLES ═══ -->" in content:
+    if "<!-- ═══ RELATED ARTICLES ═══ -->" in content or "<!-- ═══ TPT PRODUCT RECOMMENDATION & SCHEMA ═══ -->" in content:
         return False
     
     # Remove any old related-articles div if exists

@@ -2346,9 +2346,39 @@ def build_all():
     tpt_products = load_tpt_products()
     freebies = load_freebies()
     
+    # ── MERGE with existing articles.json ──
+    # Load existing index so we don't lose previously built articles
+    articles_json_path = os.path.join(BASE_DIR, "articles.json")
+    existing_articles = []
+    if os.path.exists(articles_json_path):
+        try:
+            with open(articles_json_path, 'r', encoding='utf-8') as f:
+                existing_data = json.load(f)
+            existing_articles = existing_data.get('articles', [])
+            print(f"\n  Loaded {len(existing_articles)} existing articles from articles.json")
+        except Exception:
+            pass
+
+    # Build a slug map: existing articles first, then overwrite with new ones
+    slug_map_full = {}
+    for art in existing_articles:
+        slug_map_full[art['slug']] = art
+    new_count = 0
+    updated_count = 0
+    for art in all_articles:
+        if art['slug'] in slug_map_full:
+            updated_count += 1
+        else:
+            new_count += 1
+        slug_map_full[art['slug']] = art  # New/updated articles overwrite existing
+
+    # Combined sorted list (newest first)
+    full_articles_list = sorted(slug_map_full.values(), key=lambda a: a.get('iso_date', ''), reverse=True)
+    print(f"  Merged index: {len(full_articles_list)} total ({new_count} new, {updated_count} updated, {len(existing_articles)} previously existing)")
+
     # ── PASS 2: Generate HTML with related articles + prev/next nav ──
     # Build a slug-to-index mapping in sorted order for prev/next
-    slug_to_sorted_idx = {a['slug']: idx for idx, a in enumerate(all_articles)}
+    slug_to_sorted_idx = {a['slug']: idx for idx, a in enumerate(full_articles_list)}
     
     print(f"  Pass 2: Generating {len(all_post_data)} HTML pages with related articles...")
     built_json_paths = []  # Track successfully built JSONs for cleanup
@@ -2358,15 +2388,15 @@ def build_all():
             
             # Determine prev/next articles in date-sorted order (with wrap-around)
             sorted_idx = slug_to_sorted_idx.get(slug)
-            if sorted_idx is not None and len(all_articles) > 1:
-                prev_art = all_articles[sorted_idx - 1] if sorted_idx > 0 else all_articles[-1]
-                next_art = all_articles[sorted_idx + 1] if sorted_idx < len(all_articles) - 1 else all_articles[0]
+            if sorted_idx is not None and len(full_articles_list) > 1:
+                prev_art = full_articles_list[sorted_idx - 1] if sorted_idx > 0 else full_articles_list[-1]
+                next_art = full_articles_list[sorted_idx + 1] if sorted_idx < len(full_articles_list) - 1 else full_articles_list[0]
             else:
                 prev_art = None
                 next_art = None
             
             # Generate HTML (now with related articles + prev/next nav)
-            html = generate_article_html(data, slug, all_articles=all_articles, prev_article=prev_art, next_article=next_art, tpt_products=tpt_products, freebies=freebies)
+            html = generate_article_html(data, slug, all_articles=full_articles_list, prev_article=prev_art, next_article=next_art, tpt_products=tpt_products, freebies=freebies)
             
             # Save HTML file
             html_path = os.path.join(ARTICLES_DIR, f"{slug}.html")
@@ -2382,52 +2412,22 @@ def build_all():
             print(f"  [{i:>2}] ERR {slug}: {str(e)[:60]}")
             traceback.print_exc()
     
-    # ── MERGE with existing articles.json ──
-    # Load existing index so we don't lose previously built articles
-    articles_json_path = os.path.join(BASE_DIR, "articles.json")
-    existing_articles = []
-    if os.path.exists(articles_json_path):
-        try:
-            with open(articles_json_path, 'r', encoding='utf-8') as f:
-                existing_data = json.load(f)
-            existing_articles = existing_data.get('articles', [])
-            print(f"\n  Loaded {len(existing_articles)} existing articles from articles.json")
-        except Exception:
-            pass
-
-    # Build a slug map: existing articles first, then overwrite with new ones
-    slug_map = {}
-    for art in existing_articles:
-        slug_map[art['slug']] = art
-    new_count = 0
-    updated_count = 0
-    for art in all_articles:
-        if art['slug'] in slug_map:
-            updated_count += 1
-        else:
-            new_count += 1
-        slug_map[art['slug']] = art  # New/updated articles overwrite existing
-
-    # Combined sorted list (newest first)
-    all_articles = sorted(slug_map.values(), key=lambda a: a.get('iso_date', ''), reverse=True)
-    print(f"  Merged index: {len(all_articles)} total ({new_count} new, {updated_count} updated, {len(existing_articles)} previously existing)")
-
     # Write search_index.json
     index_data = {
         "generated_at": datetime.now().isoformat(),
-        "total_articles": len(all_articles),
-        "articles": all_articles
+        "total_articles": len(full_articles_list),
+        "articles": full_articles_list
     }
     
     search_index_path = os.path.join(BASE_DIR, "search_index.json")
     with open(search_index_path, 'w', encoding='utf-8') as f:
         json.dump(index_data, f, indent=2, ensure_ascii=False)
-    print(f"  search_index.json: {len(all_articles)} articles")
+    print(f"  search_index.json: {len(full_articles_list)} articles")
     
     # Write articles.json
     with open(articles_json_path, 'w', encoding='utf-8') as f:
         json.dump(index_data, f, indent=2, ensure_ascii=False)
-    print(f"  articles.json: {len(all_articles)} articles")
+    print(f"  articles.json: {len(full_articles_list)} articles")
     
     # Build sitemap.xml
     sitemap_entries = []
