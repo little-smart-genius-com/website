@@ -30,7 +30,33 @@ AI_DETECTION_PHRASES = [
     "tapestry of", "plethora of", "symphony of", "myriad of", "cornucopia of",
     "paradigm shift", "game-changer", "testament to", "crucial", "pivotal",
     "comprehensive guide", "comprehensive overview", "in the realm of",
-    "in the world of", "landscape", "beacon of", "cornerstone"
+    "in the world of", "landscape", "beacon of", "cornerstone",
+    
+    # DeepSeek-specific patterns
+    "it's worth noting", "it's worth mentioning", "it is worth noting",
+    "this is particularly", "this is especially",
+    "plays a vital role", "plays a crucial role", "plays an important role",
+    "when it comes to", "in terms of",
+    "let's explore", "let's take a look", "let's examine",
+    "in essence", "to sum up", "to summarize",
+    "it should be noted", "it is essential", "it is imperative",
+    "serves as a", "acts as a", "functions as a",
+    "in light of", "with regard to", "with respect to",
+    "a wide range of", "a variety of", "a wealth of",
+    "in order to", "for the purpose of", "with the aim of",
+    "on the other hand", "in contrast", "by the same token",
+    "it can be said", "one might argue", "it is widely recognized",
+    "not only", "but also", "as well as",  # when used as formulaic connectors
+    "undeniably", "undoubtedly", "unquestionably",
+    "stands as a", "remains a", "continues to be",
+    "in today's digital", "in today's modern", "in the modern era",
+    "holistic approach", "seamless integration", "cutting-edge",
+    "enhance the", "enrich the", "empower the",
+    "in an ever-changing", "ever-evolving", "rapidly evolving",
+    "it is no secret", "it comes as no surprise",
+    "this comprehensive", "this in-depth", "this thorough",
+    "boasts a", "prides itself", "is renowned for",
+    "a testament to", "a beacon of", "a pillar of",
 ]
 
 # Transition words that signal human writing
@@ -169,6 +195,7 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
 - Internal link opportunities in at least 3 sections
 - Cover concept must be specific enough to generate a premium image
 - Title MUST start with the keyword or a very close variation
+- H2 titles MUST be under 60 characters each (for Google Featured Snippets)
 
 ═══ HUMANIZATION PLANNING (CRITICAL — plan the human voice) ═══
 - Each section MUST have an "anecdote_seed" — a SPECIFIC mini-scenario with concrete details (child's age, reaction, time, result). The writer will develop this into a natural anecdote.
@@ -289,7 +316,12 @@ Article Type: SEO Informational — must rank on Google for "{keyword}"
   1. Exactly 1 internal link to <a href="../freebies.html"> (for Links to Freebies)
   2. Exactly 1 internal link to <a href="../products.html"> (for Links to Paid Products)
   3. Exactly 2 internal links to <a href="another-topic.html"> (for Links to Other Articles)
-  4. Exactly 2 external authority links to <a href="https://..."> (for Total External Links)
+  4. Exactly 1 external authority link to <a href="https://..."> (post-processing adds a 2nd diversified one automatically)
+
+═══ GEO OPTIMIZATION (for AI Search Engines like Perplexity, Google SGE) ═══
+- Include at least 1 statistic with a structured source attribution.
+  Example: "According to a 2023 study from the National Institute for Early Education Research, children who engage in hands-on activities retain 40% more information."
+- This citation format helps AI search engines cite YOUR article as an authoritative source.
 
 ═══ HTML FORMAT ═══
 - Use: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <em>, <figure>, <blockquote>
@@ -482,7 +514,12 @@ RATIO: 80% educational value, 20% product recommendation
   1. Exactly 1 internal link to <a href="../freebies.html"> (for Links to Freebies)
   2. Exactly 1 internal link to <a href="../products.html"> (for Links to Paid Products)
   3. Exactly 2 internal links to <a href="another-topic.html"> (for Links to Other Articles)
-  4. Exactly 2 external authority links to <a href="https://..."> (for Total External Links)
+  4. Exactly 1 external authority link to <a href="https://..."> (post-processing adds a 2nd diversified one automatically)
+
+═══ GEO OPTIMIZATION (for AI Search Engines like Perplexity, Google SGE) ═══
+- Include at least 1 statistic with a structured source attribution.
+  Example: "According to a 2023 study from the National Institute for Early Education Research, children who engage in hands-on activities retain 40% more information."
+- This citation format helps AI search engines cite YOUR article as an authoritative source.
 - HTML only: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <em>, <blockquote>
 - NO <html>, <head>, <body> tags"""
 
@@ -682,7 +719,12 @@ TONE: Enthusiastic friend explaining their favorite activity
   1. Exactly 1 internal link to <a href="../freebies.html"> (for Links to Freebies)
   2. Exactly 1 internal link to <a href="../products.html"> (for Links to Paid Products)
   3. Exactly 2 internal links to <a href="another-topic.html"> (for Links to Other Articles)
-  4. Exactly 2 external authority links to <a href="https://..."> (for Total External Links)
+  4. Exactly 1 external authority link to <a href="https://..."> (post-processing adds a 2nd diversified one automatically)
+
+═══ GEO OPTIMIZATION (for AI Search Engines like Perplexity, Google SGE) ═══
+- Include at least 1 statistic with a structured source attribution.
+  Example: "According to a 2023 study from the National Institute for Early Education Research, children who engage in hands-on activities retain 40% more information."
+- This citation format helps AI search engines cite YOUR article as an authoritative source.
 - HTML only: <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <em>
 - NO <html>, <head>, <body> tags"""
 

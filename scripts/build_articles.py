@@ -466,7 +466,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
                     <span>{author_display}</span>
                     <span>&bull;</span>
-                    <span>{date}</span>
+                    <time datetime="{iso_date}">{date}</time>
                     {category_display}
                 </div>
 
@@ -1874,6 +1874,38 @@ def build_faq_schema_json(faq_schema, title, canonical_url):
     return f'\n<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>'
 
 
+def build_article_schema_json(title, author_name, iso_date, excerpt, canonical_url, image_url):
+    """Build JSON-LD Article schema for rich results and GEO."""
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": title[:110],
+        "author": {
+            "@type": "Person",
+            "name": author_name
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Little Smart Genius",
+            "url": "https://littlesmartgenius.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://littlesmartgenius.com/images/logo.png"
+            }
+        },
+        "datePublished": iso_date,
+        "dateModified": iso_date,
+        "description": excerpt[:200],
+        "image": image_url,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": canonical_url
+        },
+        "inLanguage": "en-US"
+    }
+    return f'\n<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>'
+
+
 def build_related_articles_html(current_slug, current_category, current_keywords, all_articles, max_related=3):
     """Build related articles HTML section based on category and keyword matching."""
     if not all_articles:
@@ -2252,9 +2284,20 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     
     # Add schemas before </head>
     faq_schema_json = build_faq_schema_json(faq_schema, title, canonical_url)
-    all_schemas = breadcrumb_schema_json + (faq_schema_json if faq_schema_json else "")
-    if all_schemas:
-        html = html.replace('</head>', f'{all_schemas}\n</head>')
+    article_schema_json = build_article_schema_json(title, author_name, iso_date, excerpt, canonical_url, f"{SITE_URL}/{image}")
+    all_schemas = breadcrumb_schema_json + (faq_schema_json if faq_schema_json else "") + article_schema_json
+    
+    # GEO: Add citation meta tags for AI search engines
+    citation_meta = f"""
+    <meta name="citation_title" content="{title}">
+    <meta name="citation_author" content="{author_name}">
+    <meta name="citation_date" content="{iso_date[:10]}">
+    <meta name="citation_online_date" content="{iso_date[:10]}">
+    <meta name="citation_publisher" content="Little Smart Genius">
+    <meta name="citation_public_url" content="{canonical_url}">"""
+    
+    if all_schemas or citation_meta:
+        html = html.replace('</head>', f'{citation_meta}\n{all_schemas}\n</head>')
     
     return html
 
