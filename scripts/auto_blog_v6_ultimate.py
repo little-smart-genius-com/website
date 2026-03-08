@@ -767,7 +767,7 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
         agent_id = writer_id + 1
         html_output = await call_deepseek_async(
             session, system_prompt, user_prompt,
-            agent_id=agent_id, temperature=0.7, logger=self.logger
+            agent_id=agent_id, temperature=0.75, logger=self.logger
         )
 
         html_output = re.sub(r'```html|```', '', html_output).strip()
@@ -954,10 +954,10 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
         for i in range(1, 6):  # indices 1..5 = 5 content images (index 0 is cover)
             path = self.image_paths[i] if i < len(self.image_paths) else "images/placeholder.webp"
             alt = SEOUtils.generate_seo_alt_text(
-                self.image_prompts[i][:50] if i < len(self.image_prompts) else "",
+                self.image_prompts[i][:100] if i < len(self.image_prompts) else "",
                 self.topic_name
             )
-            images_info += f"[IMAGE_{i}]: <figure class='my-8'><img src='../{path}' alt='{alt}' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md'></figure>\n"
+            images_info += f"[IMAGE_{i}]: <figure class='my-8'><img src='../{path}' alt='{alt} - {self.plan.get("primary_keyword", self.topic_name)}' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md'></figure>\n"
 
         sys_prompt = """You are Agent 6, the Chief Editor and Assembler.
 Your job is to take raw drafted sections and merge them into a single, cohesive, perfectly flowing article in HTML.
@@ -978,7 +978,8 @@ HUMANIZATION RULES (CRITICAL — check during assembly):
 11. SENTENCE RHYTHM: Check that no paragraph has 3+ sentences of similar length. If found, break a long one or merge two short ones.
 12. RHETORICAL QUESTIONS: Ensure the article has at least 3 rhetorical questions across all sections (outside FAQ). If missing, add 1-2 natural ones.
 13. EM-DASH ASIDES: Ensure at least 2 em-dash asides exist (– like this –). If missing, add them where natural.
-14. PARAGRAPH VARIETY: Vary paragraph lengths — some should be 1-2 sentences, others 4-5. Never make all paragraphs the same length."""
+14. PARAGRAPH VARIETY: Vary paragraph lengths — some should be 1-2 sentences, others 4-5. Never make all paragraphs the same length.
+15. BANNED AI PHRASES: NEVER use any of these phrases anywhere in the output, and REPLACE them if found in the draft sections: 'Moreover', 'Furthermore', 'Additionally', 'It's worth noting', 'It's worth mentioning', 'When it comes to', 'In terms of', 'This is particularly', 'This is especially', 'Plays a crucial role', 'Plays a vital role', 'It should be noted', 'It is essential', 'In order to', 'A wide range of', 'Undoubtedly', 'Undeniably', 'Holistic approach', 'Seamless integration', 'In today's world', 'Let's explore', 'Let's take a look', 'In essence', 'Cornerstone', 'Beacon of', 'Testament to'. Replace with natural human transitions like 'Plus', 'On top of that', 'Here's the thing', 'The best part?', 'Honestly', 'Real talk'."""
 
         user_prompt = f"""IMAGES TO INJECT:
 {images_info}
@@ -990,7 +991,7 @@ Please assemble the final HTML article now. Ensure all [IMAGE_X] placeholders ar
 
         self.final_content = await call_deepseek_async(
             session, sys_prompt, user_prompt,
-            agent_id=6, temperature=0.3, logger=self.logger
+            agent_id=6, temperature=0.45, logger=self.logger
         )
 
         self.final_content = re.sub(r'```html|```', '', self.final_content).strip()
@@ -1630,7 +1631,13 @@ PASS if score >= 900, otherwise REJECT."""
             first_p = re.search(r'<p[^>]*>(.*?)</p>', self.final_content, re.DOTALL)
             if first_p and kw.lower() not in first_p.group(1).lower():
                 original_p = first_p.group(0)
-                kw_sentence = f" When it comes to <strong>{kw}</strong>, parents have many great options."
+                # Pool of natural keyword introductions (no AI-detectable patterns)
+                kw_intro_pool = [
+                    f" If you've been looking into <strong>{kw}</strong>, you're in the right place.",
+                    f" That's exactly why <strong>{kw}</strong> has become such a hot topic among parents.",
+                    f" And honestly, <strong>{kw}</strong> is one of the best ways to get started.",
+                ]
+                kw_sentence = random.choice(kw_intro_pool)
                 new_p = original_p.replace('</p>', f'{kw_sentence}</p>', 1)
                 self.final_content = self.final_content.replace(original_p, new_p, 1)
                 self.logger.correction_applied("Keyword added to first paragraph", kw[:40])
