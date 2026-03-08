@@ -75,10 +75,14 @@ MODEL_REASONER = "deepseek-reasoner"
 MODEL_CHAT = "deepseek-chat"
 
 # Pollinations keys (primary + backup)
-POLLINATIONS_KEYS = [os.getenv(f"POLLINATIONS_API_KEY_{i}") for i in range(1, 6)]
-POLLINATIONS_KEYS = [k for k in POLLINATIONS_KEYS if k and len(k) > 5]
-POLLINATIONS_BACKUP_KEYS = [os.getenv(f"POLLINATIONS_API_KEY_BCK_{i}") for i in range(1, 6)]
-POLLINATIONS_BACKUP_KEYS = [k for k in POLLINATIONS_BACKUP_KEYS if k and len(k) > 5]
+POLLINATIONS_KEYS = []
+POLLINATIONS_BACKUP_KEYS = []
+for k, v in os.environ.items():
+    if k.startswith("POLLINATIONS_API_KEY_BCK_") and v and len(v) > 5:
+        POLLINATIONS_BACKUP_KEYS.append(v)
+    elif k.startswith("POLLINATIONS_API_KEY_") and v and len(v) > 5:
+        POLLINATIONS_KEYS.append(v)
+
 POLLINATIONS_MODEL = "klein-large"
 
 if not POLLINATIONS_KEYS:
