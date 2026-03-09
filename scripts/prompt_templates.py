@@ -139,20 +139,32 @@ def _get_lsi_keywords(topic: str) -> list:
 # 1. KEYWORD ARTICLE PROMPTS (SEO Informational)
 # ═══════════════════════════════════════════════════════════════
 
-def build_keyword_prompt(keyword: str, persona: dict) -> dict:
+def build_keyword_prompt(keyword: str, persona: dict, angle: str = "", series_context: str = "") -> dict:
     """
     Build premium prompts for a pure SEO informational article.
     V5.0: Enhanced with LSI keywords, keyword density targets, and anti-AI instructions.
+    V6.1: Added angle + series_context for content diversification.
     """
     lsi_keywords = _get_lsi_keywords(keyword)
     lsi_str = ", ".join(lsi_keywords[:8])
+
+    # Build diversification block
+    diversification_block = ""
+    if angle:
+        diversification_block += f"""\n═══ MANDATORY CONTENT ANGLE (you MUST follow this thematic lens) ═══
+THEMATIC LENS: {angle}
+You MUST filter EVERY section, title, anecdote, and example through this specific angle.
+This angle determines the ENTIRE personality and structure of your article.
+Do NOT write a generic article — make this angle obvious from the title to the conclusion.\n"""
+    if series_context:
+        diversification_block += series_context
 
     plan_prompt = f"""You are a Senior SEO Content Strategist with 10+ years experience ranking 500+ articles on Google page 1 for educational niches.
 
 IDENTITY: {persona['role']}
 EXPERTISE: {persona['expertise']}
 VOICE: {persona['tone']}
-
+{diversification_block}
 ═══ MISSION ═══
 Create a DETAILED article blueprint for "Little Smart Genius" blog that WILL rank on Google for:
 
@@ -230,6 +242,12 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
 
         return f"""You are {persona['role']} writing for the "Little Smart Genius" educational blog.
 You write like a REAL HUMAN — warm, personal, slightly informal. You are NOT an AI.
+
+═══ UNIQUE ANGLE FOR THIS ARTICLE (CRITICAL — follow this lens) ═══
+Thematic lens: {angle if angle else 'General educational perspective'}
+You MUST filter every section, example, and anecdote through this angle.
+This ensures this article is fundamentally different from any other article on the same topic.
+Make the angle VISIBLE in your writing — a reader should immediately sense the unique perspective.
 
 ═══ ARTICLE SPECS ═══
 Title: {plan.get('title', keyword)}
@@ -337,10 +355,11 @@ Article Type: SEO Informational — must rank on Google for "{keyword}"
 # 2. PRODUCT REVIEW PROMPTS
 # ═══════════════════════════════════════════════════════════════
 
-def build_product_prompt(product_data: dict, persona: dict) -> dict:
+def build_product_prompt(product_data: dict, persona: dict, angle: str = "", series_context: str = "") -> dict:
     """
     Build premium prompts for a product review/showcase article.
     V5.0: Educational value first, product recommendation second.
+    V6.1: Added angle + series_context for content diversification.
     """
     product_name = product_data.get("name", "Educational Worksheet")
     product_url = product_data.get("url", "")
@@ -349,11 +368,23 @@ def build_product_prompt(product_data: dict, persona: dict) -> dict:
     lsi_keywords = _get_lsi_keywords(product_category)
     lsi_str = ", ".join(lsi_keywords[:8])
 
+    # Build diversification block
+    diversification_block = ""
+    if angle:
+        diversification_block += f"""\n═══ MANDATORY CONTENT ANGLE (you MUST follow this thematic lens) ═══
+THEMATIC LENS: {angle}
+You MUST filter EVERY section, title, anecdote, and example through this specific angle.
+This angle determines the ENTIRE personality and structure of your article.
+Do NOT write a generic product review — make this angle obvious from the title to the conclusion.\n"""
+    if series_context:
+        diversification_block += series_context
+
     plan_prompt = f"""You are a Senior SEO Content Strategist specializing in educational product reviews.
 
 IDENTITY: {persona['role']}
 EXPERTISE: {persona['expertise']}
 VOICE: {persona['tone']}
+{diversification_block}
 
 ═══ MISSION ═══
 Create an article blueprint that EDUCATES first and RECOMMENDS second.
@@ -430,6 +461,12 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
 
         return f"""You are {persona['role']} writing an educational guide with product recommendation.
 Write like a REAL HUMAN - passionate educator, NOT a salesperson.
+
+═══ UNIQUE ANGLE FOR THIS ARTICLE (CRITICAL — follow this lens) ═══
+Thematic lens: {angle if angle else 'General educational perspective'}
+You MUST filter every section, example, and anecdote through this angle.
+This ensures this article is fundamentally different from any other article on a similar product.
+Make the angle VISIBLE — a reader should immediately sense the unique perspective.
 
 ═══ ARTICLE SPECS ═══
 Title: {plan.get('title', product_name)}
@@ -530,10 +567,11 @@ RATIO: 80% educational value, 20% product recommendation
 # 3. FREEBIE TUTORIAL PROMPTS
 # ═══════════════════════════════════════════════════════════════
 
-def build_freebie_prompt(freebie_data: dict, persona: dict) -> dict:
+def build_freebie_prompt(freebie_data: dict, persona: dict, angle: str = "", series_context: str = "") -> dict:
     """
     Build premium prompts for a freebie tutorial/activity guide.
     V5.0: Step-by-step tutorial with free download CTA.
+    V6.1: Added angle + series_context for content diversification.
     """
     freebie_name = freebie_data.get("name", "Educational Activity")
     freebie_url = freebie_data.get("url", "")
@@ -541,11 +579,23 @@ def build_freebie_prompt(freebie_data: dict, persona: dict) -> dict:
     lsi_keywords = _get_lsi_keywords(freebie_name)
     lsi_str = ", ".join(lsi_keywords[:8])
 
+    # Build diversification block
+    diversification_block = ""
+    if angle:
+        diversification_block += f"""\n═══ MANDATORY CONTENT ANGLE (you MUST follow this thematic lens) ═══
+THEMATIC LENS: {angle}
+You MUST filter EVERY section, title, anecdote, and example through this specific angle.
+This angle determines the ENTIRE personality and structure of your article.
+Do NOT write a generic tutorial — make this angle obvious from the title to the conclusion.\n"""
+    if series_context:
+        diversification_block += series_context
+
     plan_prompt = f"""You are a Senior SEO Content Strategist specializing in educational tutorial content.
 
 IDENTITY: {persona['role']}
 EXPERTISE: {persona['expertise']}
 VOICE: {persona['tone']}
+{diversification_block}
 
 ═══ MISSION ═══
 Create a TUTORIAL article blueprint that teaches parents how to use a free activity with their children.
@@ -635,6 +685,12 @@ STRUCTURE: You MUST create exactly 6 sections (H2 headings). No fewer than 6.
 
         return f"""You are {persona['role']} writing a tutorial guide for a free educational resource.
 Write like a REAL HUMAN — enthusiastic, helpful friend, NOT an AI.
+
+═══ UNIQUE ANGLE FOR THIS ARTICLE (CRITICAL — follow this lens) ═══
+Thematic lens: {angle if angle else 'General educational perspective'}
+You MUST filter every section, example, and anecdote through this angle.
+This ensures this article is fundamentally different from any other article on a similar freebie.
+Make the angle VISIBLE — a reader should immediately sense the unique perspective.
 
 ═══ ARTICLE SPECS ═══
 Title: {plan.get('title', freebie_name)}

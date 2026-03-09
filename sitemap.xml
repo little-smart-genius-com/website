@@ -31,7 +31,35 @@
     <priority>0.7</priority>
   </url>
   <url>
+<<<<<<< Updated upstream
     <loc>https://littlesmartgenius.com/articles/how-word-search-activities-boost-reading-skills-in-children.html</loc>
+=======
+    <loc>https://littlesmartgenius.com/articles/how-thanksgiving-coloring-boosts-nd-kids-focus-creativity.html</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://littlesmartgenius.com/articles/word-searches-build-thanksgiving-vocabulary-for-kids.html</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://littlesmartgenius.com/articles/word-searches-boost-kids-vocabulary-cognitive-skills.html</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://littlesmartgenius.com/articles/how-spot-the-difference-puzzles-build-focus.html</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://littlesmartgenius.com/articles/spot-the-difference-builds-executive-function-in-kids.html</loc>
+>>>>>>> Stashed changes
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

@@ -106,6 +106,32 @@ SITE_BASE_URL = "https://littlesmartgenius.com"
 DAILY_SLOTS = ["keyword", "product", "freebie"]
 PAUSE_BETWEEN_ARTICLES = 30
 
+# ── CONTENT DIVERSIFICATION ANGLES ──────────────────────────────────
+# One angle is randomly injected into every article prompt to force
+# a fundamentally different perspective, even on the same topic/series.
+CONTENT_ANGLES = [
+    "Focus on ONE specific age (pick randomly: 4, 5, 6, 7, 8, or 9) and tailor every tip, example, and anecdote exclusively to that age",
+    "Structure the entire article around a 'Day in the Life' narrative — follow one family's morning-to-evening routine using this activity",
+    "Compare-and-contrast angle: pit this activity against 2 alternative approaches and argue why this one wins",
+    "Seasonal/holiday angle — tie every section to a specific season or upcoming holiday (pick one: summer, back-to-school, winter break, spring)",
+    "Mistakes-first structure: open with the 5 biggest mistakes parents make with this activity, then solve each one",
+    "Science-backed deep dive — cite 3+ different research studies throughout and make data the backbone of the article",
+    "Budget-conscious angle — emphasize free and DIY alternatives alongside the resource, target cost-aware families",
+    "Classroom teacher perspective — focus entirely on group activities, classroom management tips, and teacher workflows",
+    "Reluctant learner angle — every single tip specifically targets kids who resist learning or get frustrated easily",
+    "Multi-sensory approach — organize sections by sense (sight, touch, sound, movement) and tie each to a learning benefit",
+    "Progress tracking angle — show parents exactly how to measure and celebrate growth over 4-6 weeks with concrete milestones",
+    "Sibling/multi-age angle — every activity variation is designed for mixed age groups (e.g., 4-year-old + 8-year-old together)",
+    "Travel and on-the-go — position every activity as portable: car rides, waiting rooms, restaurants, airplane trips",
+    "Screen-time replacement — frame each section as a specific screen-free alternative to popular apps/games kids use",
+    "Gift guide angle — frame the resource as a creative gift idea with wrapping, presentation, and surprise reveal tips",
+    "Storytelling angle — weave a continuous fictional narrative of a child character throughout the entire article",
+    "Challenge/gamification angle — turn every activity into a scored challenge, competition, or achievement system",
+    "Parent-child bonding focus — emphasize togetherness, quality time, and emotional connection over pure academics",
+    "Neurodiversity-inclusive angle — include specific adaptations for ADHD, dyslexia, and autism spectrum in every section",
+    "Before-and-after transformation — structure around dramatic skill improvement stories with measurable results",
+]
+
 # Escalating Schedule — cron expression → slot mapping
 # Used when GitHub Actions passes the exact cron that fired via --cron
 CRON_TO_SLOT = {
@@ -604,7 +630,7 @@ class SEOUtils:
 class AutoBlogV6:
     """V6 Ultimate Multi-Agent Engine."""
 
-    def __init__(self, slot, topic, persona, logger):
+    def __init__(self, slot, topic, persona, logger, used_topics_ref=None):
         self.slot = slot
         self.topic_name = topic["topic_name"]
         self.category = topic["category"]
@@ -612,6 +638,7 @@ class AutoBlogV6:
         self.product_data = topic.get("product_data")
         self.persona = persona
         self.logger = logger
+        self.used_topics_ref = used_topics_ref or {}  # For series-aware diversification
         self.plan = None
         self.content_builder_fn = None
         self.html_sections = []
@@ -705,18 +732,42 @@ class AutoBlogV6:
 
     # --- AGENT 1: ARCHITECT ---
     async def agent_1_architect(self, session):
+        # ── Select random content angle for diversification ──
+        angle = random.choice(CONTENT_ANGLES)
+        self.logger.info(f"Content angle selected: {angle[:80]}...")
+
+        # ── Build series context (same-series product awareness) ──
+        series_context = ""
+        if self.slot == "product" and self.used_topics_ref:
+            base_name = re.sub(r'\|.*$', '', self.topic_name).strip()
+            used_products = self.used_topics_ref.get("product", [])
+            same_series = [p for p in used_products if base_name in p and p != self.topic_name]
+            if same_series:
+                series_context = (
+                    "\n\n⚠️ CRITICAL DIVERSIFICATION — SAME SERIES ALERT:\n"
+                    "Articles ALREADY EXIST for these products in the same series:\n"
+                    + "\n".join(f"  • {p}" for p in same_series)
+                    + "\n\nYou MUST create a COMPLETELY DIFFERENT article:\n"
+                    "- Use a DIFFERENT title structure and angle\n"
+                    "- Use DIFFERENT H2 section topics and ordering\n"
+                    "- Use DIFFERENT intro scenarios, anecdotes, and FAQ questions\n"
+                    "- Target at least 70% unique content vs what those articles would contain\n"
+                    "- Pick a DIFFERENT primary educational benefit to emphasize"
+                )
+                self.logger.info(f"Series context: {len(same_series)} same-series articles detected")
+
         prompt_builder = get_prompt_builder(self.slot)
         if self.slot == "product" or self.slot == "freebie":
-            prompts = prompt_builder(self.product_data, self.persona)
+            prompts = prompt_builder(self.product_data, self.persona, angle=angle, series_context=series_context)
         else:
-            prompts = prompt_builder(self.topic_name, self.persona)
+            prompts = prompt_builder(self.topic_name, self.persona, angle=angle, series_context=series_context)
 
         self.content_builder_fn = prompts['content_prompt_builder']
 
         system_prompt = "You are Agent 1, the Master Architect. Return ONLY valid JSON."
         self.plan = await call_deepseek_async(
             session, system_prompt, prompts['plan_prompt'],
-            agent_id=1, temperature=0.3, require_json=True, logger=self.logger
+            agent_id=1, temperature=1.0, require_json=True, logger=self.logger
         )
 
         if 'primary_keyword' not in self.plan:
@@ -767,7 +818,7 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
         agent_id = writer_id + 1
         html_output = await call_deepseek_async(
             session, system_prompt, user_prompt,
-            agent_id=agent_id, temperature=0.75, logger=self.logger
+            agent_id=agent_id, temperature=1.5, logger=self.logger
         )
 
         html_output = re.sub(r'```html|```', '', html_output).strip()
@@ -834,7 +885,7 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
             )
             tasks.append(call_deepseek_async(
                 session, ART_DIRECTOR_SYSTEM_V8, user_prompt,
-                agent_id=5, temperature=0.8, logger=self.logger
+                agent_id=5, temperature=1.5, logger=self.logger
             ))
 
         raw_prompts = await asyncio.gather(*tasks, return_exceptions=True)
@@ -991,7 +1042,7 @@ Please assemble the final HTML article now. Ensure all [IMAGE_X] placeholders ar
 
         self.final_content = await call_deepseek_async(
             session, sys_prompt, user_prompt,
-            agent_id=6, temperature=0.45, logger=self.logger
+            agent_id=6, temperature=1.3, logger=self.logger
         )
 
         self.final_content = re.sub(r'```html|```', '', self.final_content).strip()
@@ -1080,7 +1131,7 @@ MORE like a real human blogger wrote it. You must NOT change the facts, structur
             system_prompt = "You are Agent 8, the Humanizer. Your job is to rewrite this article to sound indistinguishable from a human-written piece. Follow the rules exactly. Return ONLY the revised HTML."
             result = await call_deepseek_async(
                 session, system_prompt, prompt,
-                agent_id=8, temperature=0.85, logger=self.logger
+                agent_id=8, temperature=1.5, logger=self.logger
             )
 
             if result and len(result) > len(self.final_content) * 0.8:
@@ -1241,7 +1292,7 @@ PASS if score >= 900, otherwise REJECT."""
         try:
             audit = await call_deepseek_async(
                 session, sys_prompt, user_prompt,
-                agent_id=7, temperature=0.1, require_json=True, logger=self.logger
+                agent_id=7, temperature=1.0, require_json=True, logger=self.logger
             )
             return audit
         except Exception as e:
@@ -1712,7 +1763,10 @@ PASS if score >= 900, otherwise REJECT."""
             return {_basic_stem(w) for w in words - TITLE_STOP_WORDS}
 
         new_words = _title_words(self.plan['title'])
-        if new_words:
+        # Skip semantic dedup for product-slot articles — they are intentionally
+        # similar series (e.g. "Spot the Difference Vol.1", Vol.2, Vol.3…)
+        is_product_slot = getattr(self, 'slot', '') == 'product'
+        if new_words and not is_product_slot:
             # Collect existing titles from articles.json + pending posts
             existing_titles = []
             articles_json = os.path.join(PROJECT_ROOT, "articles.json")
@@ -1827,7 +1881,7 @@ def generate_article_v6(slot: str, topic: dict, topic_selector: TopicSelector) -
     temp_slug = SEOUtils.optimize_slug(f"{topic['topic_name']}-{int(time.time())}")
     logger = DetailedLogger(temp_slug)
 
-    engine = AutoBlogV6(slot, topic, persona, logger)
+    engine = AutoBlogV6(slot, topic, persona, logger, used_topics_ref=topic_selector.used)
 
     try:
         result = asyncio.run(engine.run_pipeline())
@@ -1875,7 +1929,12 @@ def run_daily_batch():
 
         result = generate_article_v6(slot, topic, ts)
         if result:
-            results.append({"slot": slot, "title": result["title"], "slug": result["slug"], "word_count": result["word_count"]})
+            # Detect silently blocked articles (duplicate or 0-word)
+            if result.get('skipped_duplicate') or result.get('word_count', 0) == 0:
+                print(f"\n  [WARNING] Article '{result.get('title', 'Unknown')[:50]}' was BLOCKED (duplicate or 0 words). NOT counted as success.")
+                print(f"  [WARNING] Slug: {result.get('slug', 'N/A')}, word_count: {result.get('word_count', 0)}")
+            else:
+                results.append({"slot": slot, "title": result["title"], "slug": result["slug"], "word_count": result["word_count"]})
 
         if i < len(DAILY_SLOTS) - 1:
             print(f"\n[PAUSE] Waiting {PAUSE_BETWEEN_ARTICLES}s...")

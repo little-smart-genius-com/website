@@ -1,5 +1,6 @@
 {
   "keyword": [
+<<<<<<< Updated upstream
     "shadow matching worksheets for toddlers"
   ],
   "product": [
@@ -16,6 +17,187 @@
       "slot": "product",
       "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.10",
       "date": "2026-03-09T17:23:37.899230"
+=======
+    "number puzzles for kids to improve math skills",
+    "engaging classroom activities for early learners",
+    "reading comprehension activities for 2nd graders",
+    "step by step problem solving worksheets for kids",
+    "best educational printables for homeschool families",
+    "threading and lacing activities for fine motor",
+    "easy art projects for kids with household supplies",
+    "therapeutic coloring pages for anxious children"
+  ],
+  "product": [
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3",
+    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D1",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.6",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D1",
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.2",
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.3",
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.7",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.1",
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.1",
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.5",
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.1",
+    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1"
+  ],
+  "freebie": [
+    "Coloring Page (Kids)",
+    "Stickers Pack",
+    "Mine Finder",
+    "Word Scramble",
+    "Logic Pack",
+    "Word Search",
+    "Range Puzzle",
+    "Crossword"
+  ],
+  "daily_log": [
+    {
+      "slot": "keyword",
+      "topic": "number puzzles for kids to improve math skills",
+      "date": "2026-03-09T00:06:23.076510"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
+      "date": "2026-03-09T00:13:38.899221"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Coloring Page (Kids)",
+      "date": "2026-03-09T00:22:34.612503"
+    },
+    {
+      "slot": "keyword",
+      "topic": "engaging classroom activities for early learners",
+      "date": "2026-03-09T00:53:36.987035"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3",
+      "date": "2026-03-09T01:03:12.250484"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Stickers Pack",
+      "date": "2026-03-09T01:12:18.507581"
+    },
+    {
+      "slot": "keyword",
+      "topic": "reading comprehension activities for 2nd graders",
+      "date": "2026-03-09T01:29:32.385491"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D1",
+      "date": "2026-03-09T01:40:35.549912"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Mine Finder",
+      "date": "2026-03-09T01:53:55.717817"
+    },
+    {
+      "slot": "keyword",
+      "topic": "step by step problem solving worksheets for kids",
+      "date": "2026-03-09T03:03:11.859513"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.6",
+      "date": "2026-03-09T03:18:16.948841"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Word Scramble",
+      "date": "2026-03-09T03:29:32.509030"
+    },
+    {
+      "slot": "keyword",
+      "topic": "best educational printables for homeschool families",
+      "date": "2026-03-09T03:46:54.215887"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D1",
+      "date": "2026-03-09T04:04:37.488867"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Logic Pack",
+      "date": "2026-03-09T04:21:16.553559"
+    },
+    {
+      "slot": "keyword",
+      "topic": "threading and lacing activities for fine motor",
+      "date": "2026-03-09T04:32:18.940472"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.2",
+      "date": "2026-03-09T04:48:27.909829"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Word Search",
+      "date": "2026-03-09T05:02:28.653608"
+    },
+    {
+      "slot": "keyword",
+      "topic": "easy art projects for kids with household supplies",
+      "date": "2026-03-09T05:14:12.227588"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.3",
+      "date": "2026-03-09T05:29:51.752230"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Range Puzzle",
+      "date": "2026-03-09T05:39:56.928526"
+    },
+    {
+      "slot": "keyword",
+      "topic": "therapeutic coloring pages for anxious children",
+      "date": "2026-03-09T06:07:34.438445"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.7",
+      "date": "2026-03-09T06:17:07.706878"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Crossword",
+      "date": "2026-03-09T06:29:10.269154"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.1",
+      "date": "2026-03-09T13:02:40.122233"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.1",
+      "date": "2026-03-09T13:13:51.200570"
+    },
+    {
+      "slot": "product",
+      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.5",
+      "date": "2026-03-09T13:38:06.286383"
+    },
+    {
+      "slot": "product",
+      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.1",
+      "date": "2026-03-09T14:03:40.413291"
+    },
+    {
+      "slot": "product",
+      "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
+      "date": "2026-03-09T14:29:30.233094"
+>>>>>>> Stashed changes
     }
   ]
 }
