@@ -1,203 +1,154 @@
 {
-  "keyword": [
-<<<<<<< Updated upstream
-    "shadow matching worksheets for toddlers"
-  ],
-  "product": [
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.10"
-  ],
-  "freebie": [],
-  "daily_log": [
-    {
-      "slot": "keyword",
-      "topic": "shadow matching worksheets for toddlers",
-      "date": "2026-03-09T10:44:21.063252"
-    },
-    {
-      "slot": "product",
-      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.10",
-      "date": "2026-03-09T17:23:37.899230"
-=======
-    "number puzzles for kids to improve math skills",
-    "engaging classroom activities for early learners",
-    "reading comprehension activities for 2nd graders",
-    "step by step problem solving worksheets for kids",
-    "best educational printables for homeschool families",
-    "threading and lacing activities for fine motor",
-    "easy art projects for kids with household supplies",
-    "therapeutic coloring pages for anxious children"
-  ],
-  "product": [
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3",
-    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D1",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.6",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D1",
-    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.2",
-    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.3",
-    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.7",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.1",
-    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.1",
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.5",
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.1",
-    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1"
-  ],
-  "freebie": [
-    "Coloring Page (Kids)",
-    "Stickers Pack",
-    "Mine Finder",
-    "Word Scramble",
-    "Logic Pack",
-    "Word Search",
-    "Range Puzzle",
-    "Crossword"
-  ],
-  "daily_log": [
-    {
-      "slot": "keyword",
-      "topic": "number puzzles for kids to improve math skills",
-      "date": "2026-03-09T00:06:23.076510"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
-      "date": "2026-03-09T00:13:38.899221"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Coloring Page (Kids)",
-      "date": "2026-03-09T00:22:34.612503"
-    },
-    {
-      "slot": "keyword",
-      "topic": "engaging classroom activities for early learners",
-      "date": "2026-03-09T00:53:36.987035"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3",
-      "date": "2026-03-09T01:03:12.250484"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Stickers Pack",
-      "date": "2026-03-09T01:12:18.507581"
-    },
-    {
-      "slot": "keyword",
-      "topic": "reading comprehension activities for 2nd graders",
-      "date": "2026-03-09T01:29:32.385491"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D1",
-      "date": "2026-03-09T01:40:35.549912"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Mine Finder",
-      "date": "2026-03-09T01:53:55.717817"
-    },
-    {
-      "slot": "keyword",
-      "topic": "step by step problem solving worksheets for kids",
-      "date": "2026-03-09T03:03:11.859513"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.6",
-      "date": "2026-03-09T03:18:16.948841"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Word Scramble",
-      "date": "2026-03-09T03:29:32.509030"
-    },
-    {
-      "slot": "keyword",
-      "topic": "best educational printables for homeschool families",
-      "date": "2026-03-09T03:46:54.215887"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D1",
-      "date": "2026-03-09T04:04:37.488867"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Logic Pack",
-      "date": "2026-03-09T04:21:16.553559"
-    },
-    {
-      "slot": "keyword",
-      "topic": "threading and lacing activities for fine motor",
-      "date": "2026-03-09T04:32:18.940472"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.2",
-      "date": "2026-03-09T04:48:27.909829"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Word Search",
-      "date": "2026-03-09T05:02:28.653608"
-    },
-    {
-      "slot": "keyword",
-      "topic": "easy art projects for kids with household supplies",
-      "date": "2026-03-09T05:14:12.227588"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.3",
-      "date": "2026-03-09T05:29:51.752230"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Range Puzzle",
-      "date": "2026-03-09T05:39:56.928526"
-    },
-    {
-      "slot": "keyword",
-      "topic": "therapeutic coloring pages for anxious children",
-      "date": "2026-03-09T06:07:34.438445"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.7",
-      "date": "2026-03-09T06:17:07.706878"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Crossword",
-      "date": "2026-03-09T06:29:10.269154"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.1",
-      "date": "2026-03-09T13:02:40.122233"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.1",
-      "date": "2026-03-09T13:13:51.200570"
-    },
-    {
-      "slot": "product",
-      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.5",
-      "date": "2026-03-09T13:38:06.286383"
-    },
-    {
-      "slot": "product",
-      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.1",
-      "date": "2026-03-09T14:03:40.413291"
-    },
-    {
-      "slot": "product",
-      "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
-      "date": "2026-03-09T14:29:30.233094"
->>>>>>> Stashed changes
-    }
-  ]
+    "keyword": [
+        "Shadow Matching Sheets for Toddlers: Boost Cognitive Skills",
+        "Therapeutic Coloring Pages for Anxious Kids: Ultimate Guide",
+        "Best Easy Art Projects for Kids with Household Supplies",
+        "Threading and Lacing for Fine Motor Skills",
+        "Best Educational Printables for Homeschool Families: The ",
+        "Step-by-Step Problem Solving Worksheets for Kids",
+        "Best Reading Comprehension Activities for 2nd Graders",
+        "Best Engaging Classroom Activities for Early Learners"
+    ],
+    "product": [
+        "How Word Search Activities Boost Reading Skills in Children",
+        "How Thanksgiving Coloring Boosts ND Kids' Focus & Creativity",
+        "Word Searches Build Thanksgiving Vocabulary for Kids",
+        "Word Searches Boost Kids' Vocabulary & Cognitive Skills",
+        "How Spot-the-Difference Puzzles Build Focus",
+        "Spot the Difference Builds Executive Function in Kids",
+        "Spot-the-Difference Games Boost Visual Perception",
+        "How Spot the Difference Activities Boost Visual Perceptio"
+    ],
+    "freebie": [
+        "Free Crossword for Kids: Fun Learning That Sticks",
+        "Unlock Your Child's Logic: Range Puzzle Guide for Parents",
+        "Word Search for Kids: Vocabulary Building Fun",
+        "The Ultimate Logic Pack Guide for Parents & Teachers",
+        "Boost Your Child's Brainpower with Word Scrambles",
+        "Mine Finder: Free Game to Boost Critical Thinking",
+        "Unlock Your Child's Potential with Free Stickers",
+        "Unlock Creativity with Educational Coloring Pages for Kids"
+    ],
+    "daily_log": [
+        {
+            "slot": "product",
+            "topic": "How Word Search Activities Boost Reading Skills in Children",
+            "date": "2026-03-09T17:23:37.105290"
+        },
+        {
+            "slot": "product",
+            "topic": "How Thanksgiving Coloring Boosts ND Kids' Focus & Creativity",
+            "date": "2026-03-09T14:29:18.426829"
+        },
+        {
+            "slot": "product",
+            "topic": "Word Searches Build Thanksgiving Vocabulary for Kids",
+            "date": "2026-03-09T14:03:27.551253"
+        },
+        {
+            "slot": "product",
+            "topic": "Word Searches Boost Kids' Vocabulary & Cognitive Skills",
+            "date": "2026-03-09T13:37:52.530238"
+        },
+        {
+            "slot": "product",
+            "topic": "How Spot-the-Difference Puzzles Build Focus",
+            "date": "2026-03-09T13:13:43.420768"
+        },
+        {
+            "slot": "product",
+            "topic": "Spot the Difference Builds Executive Function in Kids",
+            "date": "2026-03-09T13:01:54.215316"
+        },
+        {
+            "slot": "product",
+            "topic": "Spot-the-Difference Games Boost Visual Perception",
+            "date": "2026-03-09T06:17:04.309325"
+        },
+        {
+            "slot": "product",
+            "topic": "How Spot the Difference Activities Boost Visual Perceptio",
+            "date": "2026-03-09T01:03:08.649678"
+        },
+        {
+            "slot": "keyword",
+            "topic": "Shadow Matching Sheets for Toddlers: Boost Cognitive Skills",
+            "date": "2026-03-09T10:44:20.178239"
+        },
+        {
+            "slot": "keyword",
+            "topic": "Therapeutic Coloring Pages for Anxious Kids: Ultimate Guide",
+            "date": "2026-03-09T06:07:30.372853"
+        },
+        {
+            "slot": "keyword",
+            "topic": "Best Easy Art Projects for Kids with Household Supplies",
+            "date": "2026-03-09T05:14:09.374160"
+        },
+        {
+            "slot": "keyword",
+            "topic": "Threading and Lacing for Fine Motor Skills",
+            "date": "2026-03-09T04:32:15.616933"
+        },
+        {
+            "slot": "keyword",
+            "topic": "Best Educational Printables for Homeschool Families: The ",
+            "date": "2026-03-09T03:46:50.725880"
+        },
+        {
+            "slot": "keyword",
+            "topic": "Step-by-Step Problem Solving Worksheets for Kids",
+            "date": "2026-03-09T03:03:08.209756"
+        },
+        {
+            "slot": "keyword",
+            "topic": "Best Reading Comprehension Activities for 2nd Graders",
+            "date": "2026-03-09T01:29:24.472223"
+        },
+        {
+            "slot": "keyword",
+            "topic": "Best Engaging Classroom Activities for Early Learners",
+            "date": "2026-03-09T00:53:32.991044"
+        },
+        {
+            "slot": "freebie",
+            "topic": "Free Crossword for Kids: Fun Learning That Sticks",
+            "date": "2026-03-09T06:29:07.368866"
+        },
+        {
+            "slot": "freebie",
+            "topic": "Unlock Your Child's Logic: Range Puzzle Guide for Parents",
+            "date": "2026-03-09T05:39:53.819654"
+        },
+        {
+            "slot": "freebie",
+            "topic": "Word Search for Kids: Vocabulary Building Fun",
+            "date": "2026-03-09T05:02:25.596630"
+        },
+        {
+            "slot": "freebie",
+            "topic": "The Ultimate Logic Pack Guide for Parents & Teachers",
+            "date": "2026-03-09T04:21:12.748520"
+        },
+        {
+            "slot": "freebie",
+            "topic": "Boost Your Child's Brainpower with Word Scrambles",
+            "date": "2026-03-09T03:29:28.556876"
+        },
+        {
+            "slot": "freebie",
+            "topic": "Mine Finder: Free Game to Boost Critical Thinking",
+            "date": "2026-03-09T01:53:52.427839"
+        },
+        {
+            "slot": "freebie",
+            "topic": "Unlock Your Child's Potential with Free Stickers",
+            "date": "2026-03-09T01:12:15.131825"
+        },
+        {
+            "slot": "freebie",
+            "topic": "Unlock Creativity with Educational Coloring Pages for Kids",
+            "date": "2026-03-09T00:22:31.972732"
+        }
+    ]
 }
