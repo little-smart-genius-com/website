@@ -1077,10 +1077,10 @@ MORE like a real human blogger wrote it. You must NOT change the facts, structur
             prompt += f"\n{self.final_content[12000:]}"
 
         try:
-            result = await call_deepseek(
-                session, prompt, self.logger,
-                "AGENT 8: HUMANIZER", "humanize",
-                model=MODEL_CHAT, temperature=0.85
+            system_prompt = "You are Agent 8, the Humanizer. Your job is to rewrite this article to sound indistinguishable from a human-written piece. Follow the rules exactly. Return ONLY the revised HTML."
+            result = await call_deepseek_async(
+                session, system_prompt, prompt,
+                agent_id=8, temperature=0.85, logger=self.logger
             )
 
             if result and len(result) > len(self.final_content) * 0.8:
