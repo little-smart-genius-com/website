@@ -1,148 +1,83 @@
 {
+  "used": [],
   "keyword": [
-    "Shadow Matching Sheets for Toddlers: Boost Cognitive Skills",
-    "Therapeutic Coloring Pages for Anxious Kids: Ultimate Guide",
-    "Best Easy Art Projects for Kids with Household Supplies",
-    "Threading and Lacing for Fine Motor Skills",
-    "Best Educational Printables for Homeschool Families: The ",
-    "Step-by-Step Problem Solving Worksheets for Kids",
-    "Best Reading Comprehension Activities for 2nd Graders",
-    "Best Engaging Classroom Activities for Early Learners"
-  ],
-  "product": [
-    "How Word Search Activities Boost Reading Skills in Children",
-    "How Thanksgiving Coloring Boosts ND Kids' Focus & Creativity",
-    "Word Searches Build Thanksgiving Vocabulary for Kids",
-    "Word Searches Boost Kids' Vocabulary & Cognitive Skills",
-    "How Spot-the-Difference Puzzles Build Focus",
-    "Spot the Difference Builds Executive Function in Kids",
-    "Spot-the-Difference Games Boost Visual Perception",
-    "How Spot the Difference Activities Boost Visual Perceptio"
-  ],
-  "freebie": [
-    "Free Crossword for Kids: Fun Learning That Sticks",
-    "Unlock Your Child's Logic: Range Puzzle Guide for Parents",
-    "Word Search for Kids: Vocabulary Building Fun",
-    "The Ultimate Logic Pack Guide for Parents & Teachers",
-    "Boost Your Child's Brainpower with Word Scrambles",
-    "Unlock Your Child's Potential with Free Stickers",
-    "Unlock Creativity with Educational Coloring Pages for Kids"
+    "phonics worksheets for struggling readers",
+    "shadow matching worksheets for toddlers",
+    "printable math worksheets for first graders",
+    "color by number activities for kindergarten",
+    "sequencing activities for kindergarten printable"
   ],
   "daily_log": [
     {
-      "slot": "product",
-      "topic": "How Word Search Activities Boost Reading Skills in Children",
-      "date": "2026-03-09T17:23:37.105290"
-    },
-    {
-      "slot": "product",
-      "topic": "How Thanksgiving Coloring Boosts ND Kids' Focus & Creativity",
-      "date": "2026-03-09T14:29:18.426829"
-    },
-    {
-      "slot": "product",
-      "topic": "Word Searches Build Thanksgiving Vocabulary for Kids",
-      "date": "2026-03-09T14:03:27.551253"
-    },
-    {
-      "slot": "product",
-      "topic": "Word Searches Boost Kids' Vocabulary & Cognitive Skills",
-      "date": "2026-03-09T13:37:52.530238"
-    },
-    {
-      "slot": "product",
-      "topic": "How Spot-the-Difference Puzzles Build Focus",
-      "date": "2026-03-09T13:13:43.420768"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot the Difference Builds Executive Function in Kids",
-      "date": "2026-03-09T13:01:54.215316"
-    },
-    {
-      "slot": "product",
-      "topic": "Spot-the-Difference Games Boost Visual Perception",
-      "date": "2026-03-09T06:17:04.309325"
-    },
-    {
-      "slot": "product",
-      "topic": "How Spot the Difference Activities Boost Visual Perceptio",
-      "date": "2026-03-09T01:03:08.649678"
+      "slot": "keyword",
+      "topic": "phonics worksheets for struggling readers",
+      "date": "2026-03-10T13:15:07.920099"
     },
     {
       "slot": "keyword",
-      "topic": "Shadow Matching Sheets for Toddlers: Boost Cognitive Skills",
-      "date": "2026-03-09T10:44:20.178239"
+      "topic": "shadow matching worksheets for toddlers",
+      "date": "2026-03-10T13:32:20.863233"
     },
     {
       "slot": "keyword",
-      "topic": "Therapeutic Coloring Pages for Anxious Kids: Ultimate Guide",
-      "date": "2026-03-09T06:07:30.372853"
+      "topic": "printable math worksheets for first graders",
+      "date": "2026-03-10T13:43:20.798383"
     },
     {
       "slot": "keyword",
-      "topic": "Best Easy Art Projects for Kids with Household Supplies",
-      "date": "2026-03-09T05:14:09.374160"
+      "topic": "color by number activities for kindergarten",
+      "date": "2026-03-10T14:02:15.638990"
     },
     {
       "slot": "keyword",
-      "topic": "Threading and Lacing for Fine Motor Skills",
-      "date": "2026-03-09T04:32:15.616933"
+      "topic": "sequencing activities for kindergarten printable",
+      "date": "2026-03-10T14:10:22.410760"
     },
     {
-      "slot": "keyword",
-      "topic": "Best Educational Printables for Homeschool Families: The ",
-      "date": "2026-03-09T03:46:50.725880"
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.5",
+      "date": "2026-03-10T14:17:27.548236"
     },
     {
-      "slot": "keyword",
-      "topic": "Step-by-Step Problem Solving Worksheets for Kids",
-      "date": "2026-03-09T03:03:08.209756"
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.2",
+      "date": "2026-03-10T14:27:40.610489"
     },
     {
-      "slot": "keyword",
-      "topic": "Best Reading Comprehension Activities for 2nd Graders",
-      "date": "2026-03-09T01:29:24.472223"
-    },
-    {
-      "slot": "keyword",
-      "topic": "Best Engaging Classroom Activities for Early Learners",
-      "date": "2026-03-09T00:53:32.991044"
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.3",
+      "date": "2026-03-10T14:39:23.553487"
     },
     {
       "slot": "freebie",
-      "topic": "Free Crossword for Kids: Fun Learning That Sticks",
-      "date": "2026-03-09T06:29:07.368866"
+      "topic": "Logic Puzzle (Adult)",
+      "date": "2026-03-10T18:09:22.451151"
     },
     {
       "slot": "freebie",
-      "topic": "Unlock Your Child's Logic: Range Puzzle Guide for Parents",
-      "date": "2026-03-09T05:39:53.819654"
+      "topic": "Shikaku",
+      "date": "2026-03-10T18:14:53.399053"
     },
     {
       "slot": "freebie",
-      "topic": "Word Search for Kids: Vocabulary Building Fun",
-      "date": "2026-03-09T05:02:25.596630"
+      "topic": "Word Scramble",
+      "date": "2026-03-10T18:42:19.603437"
     },
     {
       "slot": "freebie",
-      "topic": "The Ultimate Logic Pack Guide for Parents & Teachers",
-      "date": "2026-03-09T04:21:12.748520"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Boost Your Child's Brainpower with Word Scrambles",
-      "date": "2026-03-09T03:29:28.556876"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Unlock Your Child's Potential with Free Stickers",
-      "date": "2026-03-09T01:12:15.131825"
-    },
-    {
-      "slot": "freebie",
-      "topic": "Unlock Creativity with Educational Coloring Pages for Kids",
-      "date": "2026-03-09T00:22:31.972732"
+      "topic": "Word Pack",
+      "date": "2026-03-10T18:48:39.450890"
     }
+  ],
+  "product": [
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.5",
+    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.2",
+    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.3"
+  ],
+  "freebie": [
+    "Logic Puzzle (Adult)",
+    "Shikaku",
+    "Word Scramble",
+    "Word Pack"
   ]
 }
