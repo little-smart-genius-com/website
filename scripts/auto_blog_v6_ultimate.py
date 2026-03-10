@@ -968,7 +968,9 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
                             
                             # Auto-generate lightweight thumbnail for cover images only
                             if idx == 0:
-                                thumb_path = out_path.replace(".webp", "-thumb.webp")
+                                thumbs_dir = os.path.join(os.path.dirname(out_path), "thumbs")
+                                os.makedirs(thumbs_dir, exist_ok=True)
+                                thumb_path = os.path.join(thumbs_dir, os.path.basename(out_path))
                                 if img.width > 600:
                                     aspect_ratio = img.height / img.width
                                     new_height = int(600 * aspect_ratio)
