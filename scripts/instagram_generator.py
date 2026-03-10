@@ -251,9 +251,29 @@ def _draw_category_badge(draw: ImageDraw.Draw, category: str, palette: dict, y_p
     draw.text((pill_cx, pill_cy - 1), cat_text, fill=text_color, font=font, anchor="mm")
 
 
-def _draw_title_centered(draw: ImageDraw.Draw, lines: list, y_start: int, line_height: int):
-    """Draw the article title — large, bold, perfectly centered, with shadow."""
-    font = _get_font(76, bold=True)
+def _draw_title_centered(draw: ImageDraw.Draw, lines: list, y_start: int, line_height: int,
+                         max_text_width: int = 0):
+    """Draw the article title — large, bold, perfectly centered, with shadow.
+    max_text_width: if >0, dynamically reduce font size so text fits within this pixel width.
+    """
+    base_size = 76
+    font = _get_font(base_size, bold=True)
+
+    # Dynamic font sizing: shrink if any line exceeds the allowed width
+    if max_text_width > 0:
+        for attempt_size in range(base_size, 40, -2):
+            font = _get_font(attempt_size, bold=True)
+            fits = True
+            for line in lines:
+                bbox = draw.textbbox((0, 0), line, font=font, anchor="mm")
+                tw = bbox[2] - bbox[0]
+                if tw > max_text_width:
+                    fits = False
+                    break
+            if fits:
+                break
+        # Recalculate line_height proportionally
+        line_height = int(attempt_size * 1.22)
 
     for i, line in enumerate(lines):
         y = y_start + i * line_height + line_height // 2
@@ -284,7 +304,7 @@ def _draw_description(draw: ImageDraw.Draw, lines: list, y_start: int, line_heig
 def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card_bottom_y: int):
     """Draw the new Hybrid V8 double pill footer with dark URL/social boxes."""
     import os
-    BASE_DIR = 'C:/Users/Omar/Desktop/little-smart-genius-site/Nouveau dossier/online/Little_Smart_Genius'
+    _base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
     # Force the dual pills to always be anchored at the absolute bottom
     panel_y = IG_SIZE[1] - 195
@@ -356,7 +376,7 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     
     from PIL import Image
     # Ig
-    ig_path = os.path.join(BASE_DIR, "images", "banners", "instagram-new.png")
+    ig_path = os.path.join(_base, "images", "banners", "instagram-new.png")
     if os.path.exists(ig_path):
         ig_icon = Image.open(ig_path).convert("RGBA").resize((icon_size, icon_size), Image.LANCZOS)
         # Paste white icon since it's on a dark background
@@ -366,7 +386,7 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     sx += icon_size + spacing
     
     # Pin
-    pin_path = os.path.join(BASE_DIR, "images", "banners", "pinterest.png")
+    pin_path = os.path.join(_base, "images", "banners", "pinterest.png")
     if os.path.exists(pin_path):
         pin_icon = Image.open(pin_path).convert("RGBA").resize((icon_size, icon_size), Image.LANCZOS)
         white_fill = Image.new("RGBA", (icon_size, icon_size), "#FFFFFF")
@@ -560,7 +580,11 @@ def _create_post_image(title: str, category: str, description: str = "",
     # ── Step 7: Title — centered inside fixed boundary block ──
     title_block_y = card_top + card_padding_top
     title_y_offset = title_block_y + (max_title_h - title_total_h) // 2
-    _draw_title_centered(draw, title_lines, title_y_offset, line_height=title_line_height)
+    # Calculate the max text width respecting card margins (80px padding each side)
+    card_text_margin = 80
+    max_title_px = (IG_SIZE[0] - 2 * card_margin) - 2 * card_text_margin
+    _draw_title_centered(draw, title_lines, title_y_offset, line_height=title_line_height,
+                         max_text_width=max_title_px)
     
     # ── Step 8: Meta description paragraph inside fixed boundary block ──
     if desc_lines:
