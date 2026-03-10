@@ -323,11 +323,11 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     draw.rounded_rectangle([lx1, panel_y, lx2, panel_y+panel_h], radius=20, fill="#FFFFFF")
     draw.rounded_rectangle([lx1, panel_y, lx2, panel_y+panel_h], radius=20, outline=border_color, width=4)
     
-    font_small = _get_font(22, bold=False)
-    font_bold = _get_font(26, bold=True)
+    font_small = _get_font(24, bold=False)
+    font_bold = _get_font(28, bold=True)
     
     draw.text((lx1 + panel_w//2, panel_y + 24), "+40 FREE Educational Printables", fill="#D32F2F", font=font_bold, anchor="mm")
-    draw.text((lx1 + panel_w//2, panel_y + 51), "Waiting for You", fill="#212121", font=font_small, anchor="mm")
+    draw.text((lx1 + panel_w//2, panel_y + 53), "Waiting for You", fill="#212121", font=font_small, anchor="mm")
     
     # Red Arrow Pointing Down
     arrow_y = panel_y + panel_h + 5
@@ -342,7 +342,7 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     draw.rounded_rectangle([lx1, box_y, lx2, box_y+box_h], radius=8, fill=(35, 25, 35, 230))
     draw.rounded_rectangle([lx1+2, box_y+2, lx2-2, box_y+box_h-2], radius=6, outline=(255, 255, 255, 180), width=1)
     
-    draw.text((lx1 + panel_w//2, box_y + box_h//2), f"www.{BRAND_URL}", fill="#FFFFFF", font=_get_font(26, bold=True), anchor="mm")
+    draw.text((lx1 + panel_w//2, box_y + box_h//2), f"www.{BRAND_URL}", fill="#FFFFFF", font=_get_font(28, bold=True), anchor="mm")
     
     # Right Pill
     rx2 = IG_SIZE[0] - margin_x
@@ -351,8 +351,8 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     draw.rounded_rectangle([rx1, panel_y, rx2, panel_y+panel_h], radius=20, fill="#FFFFFF")
     draw.rounded_rectangle([rx1, panel_y, rx2, panel_y+panel_h], radius=20, outline=border_color, width=4)
     
-    draw.text((rx1 + panel_w//2, panel_y + 24), "Share & Follow", fill="#D32F2F", font=font_bold, anchor="mm")
-    draw.text((rx1 + panel_w//2, panel_y + 51), "for more Freebies", fill="#D32F2F", font=font_bold, anchor="mm")
+    draw.text((rx1 + panel_w//2, panel_y + 24), "Share & Follow for more Freebies", fill="#D32F2F", font=font_bold, anchor="mm")
+    draw.text((rx1 + panel_w//2, panel_y + 53), "Renewable Every Sunday", fill="#212121", font=font_small, anchor="mm")
     
     # Red Arrow Pointing Down
     cx_r = rx1 + panel_w//2
