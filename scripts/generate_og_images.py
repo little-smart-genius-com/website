@@ -135,15 +135,27 @@ def _cat_palette(category: str) -> tuple:
 HOOK_TEXT = "Give your child the edge they need! Download this premium printable activity today. Perfectly designed to boost cognitive skills and focus while having fun!"
 
 # ─── BACKGROUND & OVERLAYS ────────────────────────────────────────────────
-def _make_background(slug: str) -> Image.Image:
+def _make_background(slug: str, cover_path: str = None) -> Image.Image:
     img = None
-    for f in IMAGES_DIR.iterdir():
-        if f.is_file() and slug in f.name and "cover" in f.name:
+
+    # Priority 1: Use the direct cover image path from articles.json
+    if cover_path:
+        full_path = BASE_DIR / cover_path
+        if full_path.exists():
             try:
-                img = Image.open(f).convert("RGBA")
-                break
+                img = Image.open(full_path).convert("RGBA")
             except Exception:
-                continue
+                pass
+
+    # Priority 2: Fallback — search by slug in filenames
+    if img is None:
+        for f in IMAGES_DIR.iterdir():
+            if f.is_file() and slug in f.name and "cover" in f.name:
+                try:
+                    img = Image.open(f).convert("RGBA")
+                    break
+                except Exception:
+                    continue
 
     if img is None:
         return Image.new("RGBA", (W, H), DARK + (255,))
@@ -331,16 +343,17 @@ def _draw_bottom(draw: ImageDraw.Draw, img: Image.Image, fonts: dict, color1: tu
 
 # ─── MAIN PROCESS ─────────────────────────────────────────────────────────
 def create_og_image(article: dict, fonts: dict, force: bool = False) -> str | None:
-    slug     = article.get("slug", "default")
-    title    = article.get("title", "Little Smart Genius")
-    category = article.get("category", "Education")
+    slug       = article.get("slug", "default")
+    title      = article.get("title", "Little Smart Genius")
+    category   = article.get("category", "Education")
+    cover_path = article.get("image", "")  # e.g. "images/xxx-cover-xxx.webp"
 
     out_path = OUTPUT_DIR / f"{slug}.jpg"
     if out_path.exists() and not force:
         return str(out_path)
 
     color1, color2 = _cat_palette(category)
-    bg = _make_background(slug)
+    bg = _make_background(slug, cover_path=cover_path)
     canvas = _apply_overlays(bg, color1)
     draw = ImageDraw.Draw(canvas)
 
