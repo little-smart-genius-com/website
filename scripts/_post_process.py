@@ -108,7 +108,20 @@ def find_related_articles(current_slug: str, current_category: str,
             scored.append((score, article))
     
     scored.sort(key=lambda x: x[0], reverse=True)
-    return [item[1] for item in scored[:max_results]]
+    results = [item[1] for item in scored[:max_results]]
+    
+    # Fill remaining slots with other articles if we didn't find enough
+    if len(results) < max_results:
+        existing_slugs = {a.get('slug', '') for a in results}
+        existing_slugs.add(current_slug)
+        for article in all_articles:
+            if article.get('slug', '') not in existing_slugs:
+                results.append(article)
+                existing_slugs.add(article.get('slug', ''))
+                if len(results) >= max_results:
+                    break
+                    
+    return results
 
 def find_matching_tpt_product(article_category: str, article_title: str,
                                products: List[Dict]) -> Dict:
