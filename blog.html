@@ -298,6 +298,13 @@
                     id="blog-category-select"
                     style="background: var(--card); border-color: var(--bord); color: var(--text);">
                     <option value="">All Categories</option>
+                    <option value="Education">Education</option>
+                    <option value="Creative Arts">Creative Arts</option>
+                    <option value="Critical Thinking">Critical Thinking</option>
+                    <option value="Language Arts">Language Arts</option>
+                    <option value="Math Skills">Math Skills</option>
+                    <option value="Visual Skills">Visual Skills</option>
+                    <option value="Spot the Difference">Spot the Difference</option>
                 </select>
                 <!-- Sort Dropdown -->
                 <select
@@ -317,6 +324,17 @@
                 </button>
             </div>
             <p class="hidden text-sm font-bold text-brand mt-3" id="blog-result-count"></p>
+            <!-- CATEGORY NAVIGATION -->
+            <div class="flex flex-wrap gap-2 mt-4 justify-center">
+                <a href="blog.html" class="px-4 py-2 rounded-full text-xs font-bold bg-brand text-white shadow transition hover:shadow-lg">All</a>
+                <a href="blog-education.html" class="px-4 py-2 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-700 hover:border-brand hover:text-brand transition" style="color:var(--text)">📚 Education</a>
+                <a href="blog-creative-arts.html" class="px-4 py-2 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-700 hover:border-brand hover:text-brand transition" style="color:var(--text)">🎨 Creative Arts</a>
+                <a href="blog-critical-thinking.html" class="px-4 py-2 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-700 hover:border-brand hover:text-brand transition" style="color:var(--text)">🧠 Critical Thinking</a>
+                <a href="blog-language-arts.html" class="px-4 py-2 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-700 hover:border-brand hover:text-brand transition" style="color:var(--text)">✍️ Language Arts</a>
+                <a href="blog-math-skills.html" class="px-4 py-2 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-700 hover:border-brand hover:text-brand transition" style="color:var(--text)">🔢 Math Skills</a>
+                <a href="blog-visual-skills.html" class="px-4 py-2 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-700 hover:border-brand hover:text-brand transition" style="color:var(--text)">👀 Visual Skills</a>
+                <a href="blog-spot-the-difference-for-kids.html" class="px-4 py-2 rounded-full text-xs font-bold border border-slate-200 dark:border-slate-700 hover:border-brand hover:text-brand transition" style="color:var(--text)">🔍 Spot the Difference</a>
+            </div>
         </div>
         <!-- STATIC GRID (server-rendered, visible by default) -->
         <div id="blog-static-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -645,6 +663,10 @@
                 <a href="terms.html">Terms of Service</a>
                 <span style="margin: 0 8px;">•</span>
                 <a href="privacy.html">Privacy Policy</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="education.html">Education</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="legal.html">Legal</a>
             </div>
             © 2026 Little Smart Genius. All rights reserved.
         </div>
