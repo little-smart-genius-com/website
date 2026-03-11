@@ -40,6 +40,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.5",
       "date": "2026-03-11T16:45:19.923425"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Four In A Row",
+      "date": "2026-03-11T21:11:55.253754"
     }
   ],
   "product": [
@@ -54,6 +59,7 @@
     "Shikaku",
     "Word Scramble",
     "Word Pack",
-    "Word Search"
+    "Word Search",
+    "Four In A Row"
   ]
 }
