@@ -695,6 +695,11 @@ class AutoBlogV6:
             self.logger.metric("Image prompts", len(self.image_prompts))
             self.logger.step_end("PHASE 2/8: WRITERS + ART DIRECTOR")
 
+            # === PHASE 2.5: KEY VALIDATION ===
+            self.logger.step_start("PHASE 2.5/8: KEY VALIDATION", "Checking balances to prioritize keys with most pollen")
+            await self.validate_and_sort_image_keys(session)
+            self.logger.step_end("PHASE 2.5/8: KEY VALIDATION")
+
             # === PHASE 3: IMAGES (parallel) ===
             self.logger.step_start("PHASE 3/8: IMAGE GENERATION",
                                     f"5 images, 8 attempts each, {len(POLLINATIONS_KEYS)} primary + {len(POLLINATIONS_BACKUP_KEYS)} backup keys")
@@ -993,6 +998,38 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
         # HYBRID FALLBACK: placeholder instead of abort
         self.logger.warning(f"Image {idx+1}: all {IMAGE_RETRY_MAX} attempts failed -- using placeholder", 2)
         return "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius"
+
+    async def validate_and_sort_image_keys(self, session):
+        global POLLINATIONS_KEYS, POLLINATIONS_BACKUP_KEYS
+        all_keys = list(set(POLLINATIONS_KEYS + POLLINATIONS_BACKUP_KEYS))
+        if not all_keys or all_keys == [""]:
+            return
+        
+        async def check_balance(key):
+            try:
+                url = "https://gen.pollinations.ai/account/balance"
+                headers = {"User-Agent": "Mozilla/5.0", "Authorization": f"Bearer {key}"}
+                async with session.get(url, headers=headers, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+                    if resp.status == 200:
+                        data = await resp.json()
+                        return key, float(data.get("balance", 0.0))
+            except Exception:
+                pass
+            return key, 0.0
+
+        tasks = [check_balance(k) for k in all_keys]
+        results = await asyncio.gather(*tasks)
+        
+        valid_keys = [(k, bal) for k, bal in results if bal > 0]
+        valid_keys.sort(key=lambda x: x[1], reverse=True)
+        
+        if valid_keys:
+            sorted_keys = [k for k, bal in valid_keys]
+            POLLINATIONS_KEYS = sorted_keys[:5]
+            POLLINATIONS_BACKUP_KEYS = sorted_keys[5:]
+            self.logger.success(f"Validated {len(valid_keys)} keys with pollen. Top balance: {valid_keys[0][1]:.2f}", 2)
+        else:
+            self.logger.warning("No Pollinations keys with pollen balance found (all 0). HTTP 402 likely.", 2)
 
     async def artists_generate_images(self, session):
         # Generate all images (6: 1 cover + 5 inline) — prompts already wrapped with master templates
