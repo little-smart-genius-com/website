@@ -2014,11 +2014,11 @@ def run_regenerate(slug: str):
 # ===================================================================
 
 def get_current_week():
-    launch_str = os.environ.get("LAUNCH_DATE", "2026-02-22")
+    launch_str = os.environ.get("LAUNCH_DATE", "2026-03-10")
     try:
         launch = datetime.strptime(launch_str, "%Y-%m-%d")
     except ValueError:
-        launch = datetime(2026, 2, 22)
+        launch = datetime(2026, 3, 10)
     delta = datetime.utcnow() - launch
     return max(1, (delta.days // 7) + 1)
 

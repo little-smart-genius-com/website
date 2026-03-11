@@ -127,7 +127,7 @@ jobs:
           POLLINATIONS_API_KEY_33: ${{ secrets.POLLINATIONS_API_KEY_33 }}
           # Other
           MAKECOM_WEBHOOK_URL: ${{ secrets.MAKECOM_WEBHOOK_URL }}
-          LAUNCH_DATE: '2026-02-22'
+          LAUNCH_DATE: '2026-03-10'
           PYTHONIOENCODING: utf-8
         run: |
           ACTION="${{ steps.action.outputs.action }}"
@@ -175,7 +175,7 @@ jobs:
           POLLINATIONS_API_KEY_32: ${{ secrets.POLLINATIONS_API_KEY_32 }}
           POLLINATIONS_API_KEY_33: ${{ secrets.POLLINATIONS_API_KEY_33 }}
           MAKECOM_WEBHOOK_URL: ${{ secrets.MAKECOM_WEBHOOK_URL }}
-          LAUNCH_DATE: '2026-02-22'
+          LAUNCH_DATE: '2026-03-10'
           PYTHONIOENCODING: utf-8
           SLUG: ${{ steps.action.outputs.slug }}
         run: python scripts/auto_blog_v6_ultimate.py --regenerate "$SLUG"
