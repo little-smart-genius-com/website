@@ -1,7 +1,32 @@
 {
-  "generated_at": "2026-03-12T17:31:03.306398",
-  "total_articles": 23,
+  "generated_at": "2026-03-12T21:59:45.134340",
+  "total_articles": 24,
   "articles": [
+    {
+      "title": "Nurikabe for Kids: A Smarter Screen Time Alternative",
+      "slug": "nurikabe-for-kids-a-smarter-screen-time-alternative",
+      "date": "March 12, 2026",
+      "iso_date": "2026-03-12T21:59:42.995717",
+      "category": "Education",
+      "excerpt": "Nurikabe puzzles boost concentration, patience & problem-solving in kids 4-12. Outperform worksheets & digital games. Download free today!",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 13,
+      "url": "articles/nurikabe-for-kids-a-smarter-screen-time-alternative.html",
+      "keywords": [
+        "nurikabe kids",
+        "little smart genius",
+        "screen time",
+        "grows grid move",
+        "pro tip experience",
+        "logic puzzles",
+        "problem solving",
+        "fun part",
+        "pure magic",
+        "real talk"
+      ],
+      "word_count": 2765,
+      "slot": "freebie"
+    },
     {
       "title": "Word Search Activities Build Vocabulary Skills",
       "slug": "word-search-activities-build-vocabulary-skills",

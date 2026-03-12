@@ -72,6 +72,11 @@
       "slot": "product",
       "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.3",
       "date": "2026-03-12T17:31:02.787672"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Nurikabe",
+      "date": "2026-03-12T21:59:44.713033"
     }
   ],
   "product": [
@@ -90,6 +95,7 @@
     "Word Pack",
     "Word Search",
     "Four In A Row",
-    "Joke Book for Kids"
+    "Joke Book for Kids",
+    "Nurikabe"
   ]
 }
