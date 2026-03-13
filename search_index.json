@@ -1,80 +1,180 @@
 {
-  "generated_at": "2026-03-13T11:03:00.004677",
-  "total_articles": 22,
+  "generated_at": "2026-03-13T10:20:30.315061",
+  "total_articles": 25,
   "articles": [
     {
-      "title": "Our Cookbook Builds Lifelong Skills in 7-Year-Olds",
-      "slug": "our-cookbook-builds-lifelong-skills-in-7-year-olds",
+      "title": "Benefits of Puzzles for Child Brain Development Across Ages",
+      "slug": "benefits-of-puzzles-for-child-brain-development-across-ages",
       "date": "March 13, 2026",
-      "iso_date": "2026-03-13T03:49:38.357151",
-      "category": "Creative Arts",
-      "excerpt": "Boost your child's reading, math & confidence through cooking! Get expert teacher tips & a free kids' cookbook. Download now.",
-      "image": "images/our-cookbook-builds-lifelong-skills-in-7-year-olds-cover-1773398153.webp",
-      "reading_time": 11,
-      "url": "articles/our-cookbook-builds-lifelong-skills-in-7-year-olds.html",
+      "iso_date": "2026-03-13T10:20:27.486191",
+      "category": "Critical Thinking",
+      "excerpt": "Puzzles boost brain development for mixed-age siblings (4-12). Learn cognitive benefits, motor skills & activities. Start your family's puzzle journey!",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 15,
+      "url": "articles/benefits-of-puzzles-for-child-brain-development-across-ages.html",
       "keywords": [
-        "cookbook kids",
-        "year olds",
-        "cookbook kids kids",
-        "pro tip experience",
-        "free cookbook kids",
-        "little smart genius",
-        "pure magic",
-        "kids kids",
-        "seven year",
-        "following multi step"
+        "older child",
+        "younger child",
+        "puzzles child brain",
+        "child brain development",
+        "brain development",
+        "benefits puzzles child",
+        "puzzles child",
+        "child brain",
+        "benefits puzzles",
+        "mixed age"
       ],
-      "word_count": 2272,
+      "word_count": 3021,
+      "slot": "keyword"
+    },
+    {
+      "title": "Nurikabe for Kids: A Smarter Screen Time Alternative",
+      "slug": "nurikabe-for-kids-a-smarter-screen-time-alternative",
+      "date": "March 12, 2026",
+      "iso_date": "2026-03-12T21:59:42.995717",
+      "category": "Education",
+      "excerpt": "Nurikabe puzzles boost concentration, patience & problem-solving in kids 4-12. Outperform worksheets & digital games. Download free today!",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 13,
+      "url": "articles/nurikabe-for-kids-a-smarter-screen-time-alternative.html",
+      "keywords": [
+        "nurikabe kids",
+        "little smart genius",
+        "screen time",
+        "grows grid move",
+        "pro tip experience",
+        "logic puzzles",
+        "problem solving",
+        "fun part",
+        "pure magic",
+        "real talk"
+      ],
+      "word_count": 2765,
       "slot": "freebie"
     },
     {
-      "title": "Spot the Difference Builds Visual Skills in Children",
-      "slug": "spot-the-difference-builds-visual-skills-in-children",
-      "date": "March 13, 2026",
-      "iso_date": "2026-03-13T03:37:12.746574",
-      "category": "Spot the Difference (Photorealistic)",
-      "excerpt": "Discover how spot the difference puzzles enhance kids' observation and cognitive skills. Get practical tips for home and classroom. Learn more!",
-      "image": "images/spot-the-difference-builds-visual-skills-in-children-cover-1773398277.webp",
+      "title": "Word Search Activities Build Vocabulary Skills",
+      "slug": "word-search-activities-build-vocabulary-skills",
+      "date": "March 12, 2026",
+      "iso_date": "2026-03-12T17:31:00.885989",
+      "category": "Word Search Activity Worksheet",
+      "excerpt": "Boost literacy skills with engaging Thanksgiving word searches for children 4-12. Download our recommended worksheets today!",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
       "reading_time": 13,
-      "url": "articles/spot-the-difference-builds-visual-skills-in-children.html",
+      "url": "articles/word-search-activities-build-vocabulary-skills.html",
       "keywords": [
-        "spot difference",
-        "visual perception",
-        "spot difference visual",
-        "difference visual perception",
-        "visual perception activities",
-        "perception activities children",
-        "difference visual",
-        "visual perception activity",
-        "spot difference picture",
-        "difference picture puzzle"
+        "word search",
+        "word search activity",
+        "search activity",
+        "thanksgiving word search",
+        "activity worksheet",
+        "search activity worksheets",
+        "activity worksheets kids",
+        "search activity worksheet",
+        "word search adventure",
+        "search adventure fun"
       ],
-      "word_count": 2776,
+      "word_count": 2792,
       "slot": "product"
     },
     {
-      "title": "Best Picture Puzzles to Improve Attention in Children",
-      "slug": "best-picture-puzzles-to-improve-attention-in-children",
-      "date": "March 13, 2026",
-      "iso_date": "2026-03-13T03:26:32.748848",
+      "title": "Spot the Difference Puzzles: Kids Printable Challenge Guide",
+      "slug": "spot-the-difference-puzzles-kids-printable-challenge-guide",
+      "date": "March 12, 2026",
+      "iso_date": "2026-03-12T10:28:21.090923",
       "category": "Problem Solving",
-      "excerpt": "Boost your child's attention with picture puzzles. Avoid 5 common parenting mistakes and unlock cognitive benefits. Get expert strategies now!",
-      "image": "images/best-picture-puzzles-to-improve-attention-in-children-cover-1773398114.webp",
-      "reading_time": 15,
-      "url": "articles/best-picture-puzzles-to-improve-attention-in-children.html",
+      "excerpt": "Free printable spot the difference puzzles to boost kids' observation skills! Download and track achievements with our fun scoring system.",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 14,
+      "url": "articles/spot-the-difference-puzzles-kids-printable-challenge-guide.html",
       "keywords": [
-        "picture puzzles improve",
-        "puzzles improve attention",
-        "improve attention children",
-        "picture puzzles",
-        "puzzles improve",
-        "improve attention",
-        "attention children",
+        "spot difference puzzles",
+        "difference puzzles",
+        "difference puzzles kids",
+        "puzzles kids printable",
+        "spot difference",
+        "puzzles kids",
+        "kids printable",
+        "observation skills",
         "little smart genius",
-        "puzzle time",
-        "working memory"
+        "cognitive development"
       ],
-      "word_count": 3115,
+      "word_count": 2912,
+      "slot": "keyword"
+    },
+    {
+      "title": "Free Joke Book Transforms Shy Kids into Confident Learners",
+      "slug": "free-joke-book-transforms-shy-kids-into-confident-learners",
+      "date": "March 12, 2026",
+      "iso_date": "2026-03-12T09:42:10.541353",
+      "category": "Education",
+      "excerpt": "Boost reading confidence with joke-telling! Dr. Emily Carter reveals how it builds executive function & social skills. Download your free joke book.",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 13,
+      "url": "articles/free-joke-book-transforms-shy-kids-into-confident-learners.html",
+      "keywords": [
+        "joke book kids",
+        "joke book",
+        "book kids",
+        "free joke book",
+        "book kids kids",
+        "pro tip experience",
+        "little smart genius",
+        "free joke",
+        "kids kids",
+        "introduced joke book"
+      ],
+      "word_count": 2690,
+      "slot": "freebie"
+    },
+    {
+      "title": "How Coloring Activities Boost Fine Motor Skills in Children",
+      "slug": "how-coloring-activities-boost-fine-motor-skills-in-children",
+      "date": "March 12, 2026",
+      "iso_date": "2026-03-12T09:23:17.111198",
+      "category": "Coloring Book",
+      "excerpt": "Boost your child's creativity & motor skills with Thanksgiving coloring pages. Download our free printables and science-backed tips here!",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 15,
+      "url": "articles/how-coloring-activities-boost-fine-motor-skills-in-children.html",
+      "keywords": [
+        "coloring activities child",
+        "activities child development",
+        "coloring activities",
+        "fine motor",
+        "child development",
+        "activities child",
+        "coloring page",
+        "happy thanksgiving coloring",
+        "thanksgiving coloring page",
+        "coloring page coloring"
+      ],
+      "word_count": 3138,
+      "slot": "product"
+    },
+    {
+      "title": "Spring Logic Puzzles for Kids Ages 6-10",
+      "slug": "spring-logic-puzzles-for-kids-ages-6-10",
+      "date": "March 12, 2026",
+      "iso_date": "2026-03-12T09:11:32.397665",
+      "category": "Critical Thinking",
+      "excerpt": "Spark learning this spring! Download our fun printable logic puzzles for kids 6-10. Perfect for homeschool or classroom brain-building activities.",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 13,
+      "url": "articles/spring-logic-puzzles-for-kids-ages-6-10.html",
+      "keywords": [
+        "printable logic puzzles",
+        "logic puzzles kids",
+        "logic puzzles",
+        "puzzles kids ages",
+        "puzzles kids",
+        "printable logic",
+        "year olds",
+        "kids ages",
+        "little smart genius",
+        "spring logic"
+      ],
+      "word_count": 2738,
       "slot": "keyword"
     },
     {
@@ -100,7 +200,8 @@
         "any store bought"
       ],
       "word_count": 2421,
-      "slot": "freebie"
+      "slot": "freebie",
+      "thumb_image": "images/thumbs/fix-parents-four-in-a-row-mistakes-for-smarter-play-cover-1773399583.webp"
     },
     {
       "title": "Photorealistic Spot Difference Puzzles Build Visual Skills",
@@ -125,7 +226,8 @@
         "year olds"
       ],
       "word_count": 2618,
-      "slot": "product"
+      "slot": "product",
+      "thumb_image": "images/thumbs/photorealistic-spot-difference-puzzles-build-visual-skills-cover-1773398386.webp"
     },
     {
       "title": "Word Search Boosts Reading Confidence for 6-Year-Olds",
@@ -150,7 +252,8 @@
         "beats any store"
       ],
       "word_count": 2385,
-      "slot": "freebie"
+      "slot": "freebie",
+      "thumb_image": "images/thumbs/word-search-boosts-reading-confidence-for-6-year-olds-cover-1773399620.webp"
     },
     {
       "title": "Spot the Difference Builds Siblings' Visual Discrimination",
@@ -175,7 +278,8 @@
         "difference activities"
       ],
       "word_count": 2780,
-      "slot": "product"
+      "slot": "product",
+      "thumb_image": "images/thumbs/spot-the-difference-builds-siblings-visual-discrimination-cover-1773398426.webp"
     },
     {
       "title": "Proven Montessori Inspired Worksheets for Toddlers That Work",
@@ -200,7 +304,8 @@
         "study university washington"
       ],
       "word_count": 2912,
-      "slot": "keyword"
+      "slot": "keyword",
+      "thumb_image": "images/thumbs/proven-montessori-inspired-worksheets-for-toddlers-that-work-cover-1773399664.webp"
     },
     {
       "title": "Budget-Friendly Guide to Teach Kids Logic",
@@ -225,32 +330,8 @@
         "activities ages ready"
       ],
       "word_count": 2924,
-      "slot": "keyword"
-    },
-    {
-      "title": "Best Age Appropriate Painting Activities for Preschoolers",
-      "slug": "best-age-appropriate-painting-activities-for-preschoolers",
-      "date": "March 11, 2026",
-      "iso_date": "2026-03-11T10:11:22.203274",
-      "category": "Creative Arts",
-      "excerpt": "Boost fine motor skills and cognitive development with age-appropriate painting activities. Avoid common mistakes—read our expert guide now!",
-      "image": "images/best-age-appropriate-painting-activities-for-preschoolers-cover-1773398313.webp",
-      "reading_time": 17,
-      "url": "articles/best-age-appropriate-painting-activities-for-preschoolers.html",
-      "keywords": [
-        "age appropriate painting",
-        "appropriate painting activities",
-        "painting activities preschoolers",
-        "age appropriate",
-        "appropriate painting",
-        "painting activities",
-        "activities preschoolers",
-        "year olds",
-        "activities year olds",
-        "problem solving"
-      ],
-      "word_count": 3457,
-      "slot": "keyword"
+      "slot": "keyword",
+      "thumb_image": "images/thumbs/budget-friendly-guide-to-teach-kids-logic-cover-1773399708.webp"
     },
     {
       "title": "Free Science-Backed Word Pack Boosts Child Development",
@@ -359,7 +440,7 @@
       "iso_date": "2026-03-10T14:39:19.739403",
       "category": "Spot the Difference (Photorealistic)",
       "excerpt": "Boost focus for reluctant learners with engaging, photorealistic puzzles. Try our free spot-the-difference activities today!",
-      "image": "images/spot-the-difference-builds-focus-in-reluctant-learners-cover-1773398351.webp",
+      "image": "images/how-spot-the-difference-activities-build-focus-in-reluctant-learners-cover-1773152945.webp",
       "reading_time": 14,
       "url": "articles/spot-the-difference-builds-focus-in-reluctant-learners.html",
       "keywords": [

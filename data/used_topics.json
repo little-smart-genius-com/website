@@ -8,7 +8,10 @@
     "sequencing activities for kindergarten printable",
     "how to teach logical reasoning to kids",
     "age appropriate painting activities for preschoolers",
-    "montessori inspired worksheets for toddlers"
+    "montessori inspired worksheets for toddlers",
+    "printable logic puzzles for kids ages 6-10",
+    "spot the difference puzzles for kids printable",
+    "benefits of puzzles for child brain development"
   ],
   "daily_log": [
     {
@@ -45,6 +48,41 @@
       "slot": "freebie",
       "topic": "Four In A Row",
       "date": "2026-03-11T21:11:55.253754"
+    },
+    {
+      "slot": "keyword",
+      "topic": "printable logic puzzles for kids ages 6-10",
+      "date": "2026-03-12T09:11:34.295343"
+    },
+    {
+      "slot": "product",
+      "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2",
+      "date": "2026-03-12T09:23:18.986653"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Joke Book for Kids",
+      "date": "2026-03-12T09:42:12.403417"
+    },
+    {
+      "slot": "keyword",
+      "topic": "spot the difference puzzles for kids printable",
+      "date": "2026-03-12T10:28:22.737644"
+    },
+    {
+      "slot": "product",
+      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.3",
+      "date": "2026-03-12T17:31:02.787672"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Nurikabe",
+      "date": "2026-03-12T21:59:44.713033"
+    },
+    {
+      "slot": "keyword",
+      "topic": "benefits of puzzles for child brain development",
+      "date": "2026-03-13T10:20:29.723122"
     }
   ],
   "product": [
@@ -52,7 +90,9 @@
     "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.2",
     "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.3",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.6",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.5"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.5",
+    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.2",
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.3"
   ],
   "freebie": [
     "Logic Puzzle (Adult)",
@@ -60,6 +100,8 @@
     "Word Scramble",
     "Word Pack",
     "Word Search",
-    "Four In A Row"
+    "Four In A Row",
+    "Joke Book for Kids",
+    "Nurikabe"
   ]
 }
