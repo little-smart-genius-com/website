@@ -298,10 +298,13 @@ async def process_article(session, json_path, all_valid_keys):
 
 async def main():
     target_slugs = [
-        "fix-parents-four-in-a-row-mistakes-for-smarter-play",
-        "word-search-boosts-reading-confidence-for-6-year-olds",
-        "proven-montessori-inspired-worksheets-for-toddlers-that-work",
-        "budget-friendly-guide-to-teach-kids-logic"
+        "benefits-of-puzzles-for-child-brain-development-across-ages",
+        "nurikabe-for-kids-a-smarter-screen-time-alternative",
+        "word-search-activities-build-vocabulary-skills",
+        "spot-the-difference-puzzles-kids-printable-challenge-guide",
+        "free-joke-book-transforms-shy-kids-into-confident-learners",
+        "how-coloring-activities-boost-fine-motor-skills-in-children",
+        "spring-logic-puzzles-for-kids-ages-6-10",
     ]
     
     # 1. Bring files from archive to posts/
