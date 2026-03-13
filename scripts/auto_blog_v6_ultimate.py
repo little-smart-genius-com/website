@@ -83,8 +83,7 @@ for k, v in os.environ.items():
     elif k.startswith("POLLINATIONS_API_KEY_") and v and len(v) > 5:
         POLLINATIONS_KEYS.append(v)
 
-POLLINATIONS_MODEL = "klein-large"
-POLLINATIONS_FALLBACK_MODEL = "klein"
+POLLINATIONS_MODELS = ["gptimage", "zimage", "flux"]
 
 if not POLLINATIONS_KEYS:
     POLLINATIONS_KEYS = [""]
@@ -231,7 +230,7 @@ class DetailedLogger:
                 "text_model": MODEL_REASONER,
                 "text_endpoint": DEEPSEEK_API_URL,
                 "image_provider": "Pollinations",
-                "image_model": POLLINATIONS_MODEL,
+                "image_model": "gptimage/zimage/flux",
                 "image_keys": f"{len(POLLINATIONS_KEYS)}/5 primary + {len(POLLINATIONS_BACKUP_KEYS)}/5 backup",
                 "deepseek_keys": f"{len(DEEPSEEK_KEYS)}/7 active",
                 "architecture": "7 AI Agents (parallel)"
@@ -954,10 +953,18 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
 
             # Use V4's working URL format: gen.pollinations.ai/image/
             url = f"https://gen.pollinations.ai/image/{encoded_prompt}"
-            # Primary model for first half of attempts, fallback for second half
-            current_model = POLLINATIONS_MODEL if attempt < (IMAGE_RETRY_MAX // 2) else POLLINATIONS_FALLBACK_MODEL
-            if attempt == (IMAGE_RETRY_MAX // 2):
-                self.logger.warning(f"Image {idx+1}: switching to fallback model '{POLLINATIONS_FALLBACK_MODEL}'", 3)
+            
+            # Cascade models: gptimage -> zimage -> flux
+            if attempt < 3:
+                current_model = "gptimage"
+            elif attempt < 6:
+                current_model = "zimage"
+            else:
+                current_model = "flux"
+                
+            if attempt in (3, 6):
+                self.logger.warning(f"Image {idx+1}: switching to fallback model '{current_model}'", 3)
+                
             params = {
                 "width": width, "height": height, "seed": seed,
                 "model": current_model, "nologo": "true", "enhance": "true"
