@@ -565,7 +565,7 @@ async function healthCheck(env) {
         const hasCover = imgFiles.some(f => f.name.startsWith(slug) && (f.name.includes("-cover") || f.name.includes("cover")));
         if (!hasCover) { issues.push({ type: "error", cat: "image", msg: `Image cover manquante: ${slug}` }); score -= 5; }
         const contentImgs = imgFiles.filter(f => f.name.startsWith(slug) && f.name.includes("-img"));
-        if (contentImgs.length < 4) { issues.push({ type: "warning", cat: "image", msg: `Images contenu: ${contentImgs.length}/4 pour ${slug}` }); score -= 1; }
+        if (contentImgs.length < 5) { issues.push({ type: "warning", cat: "image", msg: `Images contenu: ${contentImgs.length}/5 pour ${slug}` }); score -= 1; }
     });
     const { content: smContent } = await ghFileContent("sitemap.xml", env);
     if (smContent) { htmlSlugs.forEach(slug => { if (!smContent.includes(slug)) { issues.push({ type: "warning", cat: "sitemap", msg: `Absent du sitemap: ${slug}` }); score -= 1; } }); }

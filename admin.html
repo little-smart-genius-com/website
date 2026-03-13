@@ -2296,7 +2296,7 @@
             <td style="max-width:300px"><strong>${esc(a.title || a.slug)}</strong></td>
             <td><span class="badge badge-cat">${esc(a.category || "—")}</span></td>
             <td style="white-space:nowrap;font-size:.72rem">${dt}</td>
-            <td>${a.coverCount || 0}</td><td>${a.contentImgCount || 0}/4</td>
+            <td>${a.coverCount || 0}</td><td>${a.contentImgCount || 0}/5</td>
             <td>${a.hasInstagram ? "✅" : "❌"}</td><td>${a.hasPost ? "✅" : "❌"}</td>
             <td><span class="badge ${sc}">${st}</span></td>
             <td style="white-space:nowrap">
@@ -2835,7 +2835,7 @@
                             </div>
                             <div style="margin-top:12px;display:flex;gap:8px">
                                 <a href="${viewUrl}" target="_blank" class="btn btn-blue btn-sm">👁️ Voir article</a>
-                                <button class="btn btn-green btn-sm" onclick="event.stopPropagation();regenImages('${slug}')">🖼️ Regénérer toutes</button>
+                                <button class="btn btn-green btn-sm" onclick="event.stopPropagation();regenGalleryImages('${slug}')">🖼️ Regénérer toutes</button>
                             </div>
                         </div>
                     `;
@@ -2967,7 +2967,7 @@
             }
         }
 
-        async function regenImages(slug) {
+        async function regenGalleryImages(slug) {
             const confirmed = confirm(`Regénérer TOUTES les images pour "${slug}" ?\n\nCette action va régénérer le cover + les 5 images de contenu via GitHub Actions.\nCela peut prendre plusieurs minutes.`);
             if (!confirmed) return;
 
