@@ -1,10 +1,6 @@
 """
-Fix/regenerate images for articles.
-Supports CLI arguments for use from GitHub Actions:
-  --slug <slug>        Target a specific article by slug
-  --force              Force regeneration of all images (not just placeholders)
-  --image-type <type>  Regenerate only a specific image (cover, img1, img2, ...)
-Without arguments, processes ALL articles that have placeholder images.
+Fix/regenerate images for articles using DeepSeek Art Director + Master Prompts.
+Supports CLI arguments for use from GitHub Actions.
 """
 import os
 import sys
@@ -14,10 +10,15 @@ import glob
 import argparse
 import requests
 import time
+import asyncio
+import aiohttp
 from urllib.parse import quote
 from io import BytesIO
 from PIL import Image
 from dotenv import load_dotenv
+
+# Use the master prompt templates
+from master_prompt import build_prompt as master_build_prompt
 
 # Cross-platform: works both locally and on GitHub Actions
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -29,28 +30,100 @@ ARCHIVE_DIR = os.path.join(DATA_DIR, "archive_posts")
 POSTS_DIR = "posts"
 IMAGES_DIR = "images"
 
+DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
+MODEL_CHAT = "deepseek-chat"
+deepseek_key = os.getenv("DEEPSEEK_API_KEY")
+if not deepseek_key:
+    for i in range(1, 10):
+        k = os.getenv(f"DEEPSEEK_API_KEY_{i}")
+        if k:
+            deepseek_key = k
+            break
+
 # ── Collect API keys ──
-keys = []
+POLLINATIONS_KEYS = []
 for k, v in os.environ.items():
     if k.startswith("POLLINATIONS_API_KEY") and v and len(v) > 5:
-        keys.append(v)
+        POLLINATIONS_KEYS.append(v)
 
-api_key = None
-for key in keys:
-    try:
-        res = requests.get("https://gen.pollinations.ai/account/balance",
-                           headers={"Authorization": f"Bearer {key}"}, timeout=10)
-        if res.status_code == 200 and res.json().get("balance", 0) > 0:
-            api_key = key
-            break
-    except Exception:
-        continue
+def get_working_pollinations_key():
+    for key in POLLINATIONS_KEYS:
+        try:
+            res = requests.get("https://gen.pollinations.ai/account/balance",
+                               headers={"Authorization": f"Bearer {key}"}, timeout=10)
+            if res.status_code == 200 and res.json().get("balance", 0) > 0:
+                print(f"Using Pollinations key starting with {key[:15]}...")
+                return key
+        except Exception:
+            continue
+    return None
 
+api_key = get_working_pollinations_key()
 headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
 
 
+# ── DEEPSEEK ART DIRECTOR ──
+async def agent_5_art_director_single(session, title, concept, image_index):
+    IMAGE_ROLES = [
+        "Image 1 (Cover): Wide shot of children/parents engaged in activity (current style)",
+        "Image 2: CLOSE-UP flat-lay of hands working on the worksheet/puzzle (bird's-eye angle, focus on hands and materials)",
+        "Image 3: OVERHEAD shot of multiple children's hands collaborating on a shared activity page",
+        "Image 4: DETAIL SHOT of the actual educational material with art supplies around (colored pencils, scissors)",
+        "Image 5: Close-up of a child's hands interacting with a specific prop (puzzle piece, game board, coloring page)",
+        "Image 6: Wide or medium shot showing the learning environment with visible worksheets on the table",
+    ]
+    role = IMAGE_ROLES[image_index % len(IMAGE_ROLES)]
+    
+    SYSTEM_PROMPT = (
+        "You are an expert Art Director for educational children's content. "
+        "Your ONLY job is to return a highly descriptive, unique, and highly creative subject text (around 60 to 90 words). "
+        "This text will replace the [SUJET] placeholder in a film-grade Pixar template. "
+        "You MUST be extremely creative. Each image in the article must have a completely distinct scene, action, "
+        "and materials. "
+        "CRITICAL REQUIREMENTS:\n"
+        "1. All characters (children AND adults) MUST be explicitly described as having a natural, gentle, realistic smile.\n"
+        "2. NO characters should have their mouths wide open, no exaggerated expressions, and no tongues sticking out (mouths MUST be closed or gently smiling naturally).\n"
+        "3. IMPORTANT: Include a mix of characters. Do not only feature children. Frequently include a parent or a teacher actively enthusiastically playing, guiding, or cooperating with the kids.\n"
+        "4. Detail specific, tangible, interactive educational props (e.g., holding a shiny magnifying glass, assembling large colorful floor puzzles, moving pieces on a board game, coloring on vibrant worksheets).\n"
+        "5. Emphasize a warm, cozy, highly detailed classroom or home environment with sunlight streaming in.\n"
+        "6. DO NOT output full prompts, lighting terminology, or style formatting. DO NOT include 'Pixar', '3D', 'Golden hour', etc.\n"
+        "7. DIVERSIFY compositions based on your assigned 'Role'. If assigned a wide shot, show the environment AND people. If assigned a flat-lay or detailed shot, focus tightly on HANDS and MATERIALS from an overhead/bird's-eye or close-up perspective, explicitly mentioning hands holding tools.\n"
+        "Just describe the specific unique characters (or just hands), their activity with props, and their surroundings."
+    )
+    
+    user_prompt = (
+        f"Article Title: {title}\n"
+        f"Context: {concept}\n"
+        f"Role: {role}\n\n"
+        f"Write the ~60-90 word unique children's activity description:"
+    )
+    
+    payload = {
+        "model": MODEL_CHAT,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": user_prompt}
+        ],
+        "temperature": 1.2
+    }
+    
+    auth_headers = {"Authorization": f"Bearer {deepseek_key}", "Content-Type": "application/json"}
+    for attempt in range(3):
+        try:
+            async with session.post(DEEPSEEK_API_URL, json=payload, headers=auth_headers, timeout=aiohttp.ClientTimeout(total=60)) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                    return data["choices"][0]["message"]["content"].strip().strip('"').strip("'")
+        except Exception:
+            await asyncio.sleep(2)
+            
+    # Fallback
+    return (f"a group of joyful, diverse children and a smiling teacher "
+            f"engaged in {concept[:20]} activities together, carefully placing "
+            f"pieces and smiling, in a warm cozy classroom with sunlight streaming in")
+
+
 def center_crop_resize(img, target_w, target_h):
-    """Resize and center-crop an image to exact target dimensions."""
     src_w, src_h = img.size
     target_ratio = target_w / target_h
     src_ratio = src_w / src_h
@@ -67,15 +140,17 @@ def center_crop_resize(img, target_w, target_h):
     return img.resize((target_w, target_h), Image.LANCZOS)
 
 
-def generate_image(prompt, filename, retries=3):
-    """Generate an image via Pollinations, enforce 1200x675, save as WebP."""
+def generate_image(prompt, filename, model="zimage", retries=3):
     safe_prompt = quote(re.sub(r'[^a-zA-Z0-9 ,.-]', '', prompt))
-    models = ["zimage", "flux", "gptimage"]
-
+    fallback_models = ["zimage", "flux", "gptimage"]
+    
+    if model not in fallback_models:
+        model = "zimage"
+        
     for attempt in range(retries):
-        model = models[attempt % len(models)]
-        url = f"https://gen.pollinations.ai/image/{safe_prompt}?model={model}&width=1200&height=675&nologo=true&enhance=true"
-        print(f"  🎨 Attempt {attempt+1}/{retries} with model={model}: {prompt[:60]}...")
+        current_model = model if attempt == 0 else fallback_models[attempt % len(fallback_models)]
+        url = f"https://gen.pollinations.ai/image/{safe_prompt}?model={current_model}&width=1200&height=675&nologo=true&enhance=true"
+        print(f"  🎨 Attempt {attempt+1}/{retries} with model={current_model}:\n    {prompt[:100]}...")
         try:
             res = requests.get(url, headers=headers, timeout=90)
             if res.status_code == 200 and len(res.content) > 1024:
@@ -86,19 +161,13 @@ def generate_image(prompt, filename, retries=3):
                 size_kb = os.path.getsize(out_path) // 1024
                 print(f"  ✅ Created {filename} ({size_kb}KB)")
                 return f"images/{filename}"
-            else:
-                print(f"  ⚠️ HTTP {res.status_code}, size={len(res.content)}")
         except Exception as e:
             print(f"  ❌ Error: {e}")
         time.sleep(2)
 
-    print(f"  ❌ Failed to generate {filename} after {retries} attempts")
     return None
 
-
 def find_post_file(slug):
-    """Find the JSON file for a given slug across all possible directories."""
-    # Search in posts/, data/archive_posts/, data/
     for search_dir in [POSTS_DIR, ARCHIVE_DIR, DATA_DIR]:
         if not os.path.isdir(search_dir):
             continue
@@ -107,9 +176,7 @@ def find_post_file(slug):
                 return os.path.join(search_dir, f)
     return None
 
-
-def process_article(post_path, force=False, image_type=None):
-    """Process a single article: regenerate missing or all images."""
+async def process_article(post_path, force=False, image_type=None, selected_model="zimage"):
     print(f"\n{'='*60}")
     print(f"📄 Processing: {os.path.basename(post_path)}")
 
@@ -118,74 +185,70 @@ def process_article(post_path, force=False, image_type=None):
 
     slug = data.get('slug', os.path.basename(post_path).rsplit('-', 1)[0])
     content = data.get('content', '')
-    title = data.get('title', slug)
+    title = data.get('title', slug.replace('-', ' '))
     timestamp = str(int(time.time()))
     changed = False
+    
+    # We need to gather all concepts to know context
+    cover_concept = data.get('cover_concept', f'Educational illustration about {title}')
+    
+    # Avoid duplicate tags by keeping track of the matches
+    images_in_content = []
+    simple_img_pattern = re.compile(r"<img[^>]+src=['\"]([^'\"]+)['\"][^>]+alt=['\"]([^'\"]*)['\"]", re.IGNORECASE)
+    for m in simple_img_pattern.finditer(content):
+        pre_text = content[:m.start()]
+        h2_match = list(re.finditer(r"<h2[^>]*>(.*?)</h2>", pre_text, re.IGNORECASE))
+        concept = h2_match[-1].group(1) if h2_match else f"Educational activity for {title}"
+        images_in_content.append((m.group(1), m.group(2), concept))
 
-    # ── Cover image ──
-    if image_type is None or image_type == 'cover':
-        current_cover = data.get('image', '')
-        needs_cover = force or 'placehold.co' in current_cover or not current_cover
-        if needs_cover:
-            print(f"  🖼️ Regenerating COVER...")
-            prompt = f"A high quality educational illustration for '{title}', vibrant colorful children's educational content, modern disney pixar style, no text no words"
-            cover_filename = f"{slug}-cover-{timestamp}.webp"
-            cover_path = generate_image(prompt, cover_filename, retries=6)
-            if cover_path:
-                data['image'] = cover_path
-                changed = True
+    async with aiohttp.ClientSession() as session:
+        # Cover
+        if image_type is None or image_type == 'cover':
+            current_cover = data.get('image', '')
+            needs_cover = force or 'placehold.co' in current_cover or not current_cover
+            if needs_cover:
+                print(f"  🖼️ Regenerating COVER...")
+                subject = await agent_5_art_director_single(session, title, cover_concept, 0)
+                full_prompt = master_build_prompt(subject, 0)
+                full_prompt += ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, watermarks, or UI overlays in the image, pure visual storytelling only"
+                
+                cover_filename = f"{slug}-cover-{timestamp}.webp"
+                cover_path = generate_image(full_prompt, cover_filename, model=selected_model, retries=6)
+                if cover_path:
+                    data['image'] = cover_path
+                    changed = True
+                    # Thumbnail
+                    try:
+                        img = Image.open(os.path.join(IMAGES_DIR, cover_filename))
+                        thumb = center_crop_resize(img, 600, 338)
+                        thumbs_dir = os.path.join(IMAGES_DIR, "thumbs")
+                        os.makedirs(thumbs_dir, exist_ok=True)
+                        thumb.save(os.path.join(thumbs_dir, cover_filename), "WEBP", quality=80)
+                        print(f"  ✅ Thumbnail created")
+                    except Exception as e:
+                        pass
 
-                # Also generate thumbnail
-                try:
-                    img = Image.open(os.path.join(IMAGES_DIR, cover_filename))
-                    thumb = center_crop_resize(img, 600, 338)
-                    thumbs_dir = os.path.join(IMAGES_DIR, "thumbs")
-                    os.makedirs(thumbs_dir, exist_ok=True)
-                    thumb.save(os.path.join(thumbs_dir, cover_filename), "WEBP", quality=80)
-                    print(f"  ✅ Thumbnail created")
-                except Exception as e:
-                    print(f"  ⚠️ Thumbnail error: {e}")
-
-    # ── Content images ──
-    if image_type is None:
-        # Process all content images
-        img_pattern = re.compile(
-            r"<img[^>]+src=['\"]([^'\"]+)['\"][^>]+alt=['\"]([^'\"]*)['\"]",
-            re.IGNORECASE
-        )
-        matches = img_pattern.findall(content)
-
+        # Content images
         idx = 1
-        for src, alt in matches:
-            is_placeholder = 'placehold.co' in src
-            if force or is_placeholder:
-                print(f"  🖼️ Regenerating img{idx} (alt: {alt[:50]}...)...")
-                prompt = alt if alt else f"educational illustration for {title}, vibrant colorful, no text"
+        for src, alt, concept in images_in_content:
+            is_target = False
+            if image_type is None:
+                is_target = force or 'placehold.co' in src
+            elif image_type == f'img{idx}':
+                is_target = True
+                
+            if is_target:
+                print(f"  🖼️ Regenerating img{idx} (Context: {concept[:40]}...)..")
+                subject = await agent_5_art_director_single(session, title, concept, idx)
+                full_prompt = master_build_prompt(subject, idx)
+                full_prompt += ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, watermarks, or UI overlays in the image, pure visual storytelling only"
+                
                 filename = f"{slug}-img{idx}-{timestamp}.webp"
-                img_path = generate_image(prompt, filename, retries=6)
+                img_path = generate_image(full_prompt, filename, model=selected_model, retries=6)
                 if img_path:
-                    # Replace src in content
                     content = content.replace(src, f"../images/{filename}")
                     changed = True
             idx += 1
-    elif image_type and image_type.startswith('img'):
-        # Process a specific content image
-        img_idx = int(image_type.replace('img', ''))
-        print(f"  🖼️ Regenerating {image_type}...")
-        # Extract alt text from the specific image
-        img_pattern = re.compile(
-            r"<img[^>]+src=['\"]([^'\"]+)['\"][^>]+alt=['\"]([^'\"]*)['\"]",
-            re.IGNORECASE
-        )
-        matches = img_pattern.findall(content)
-        if img_idx <= len(matches):
-            src, alt = matches[img_idx - 1]
-            prompt = alt if alt else f"educational illustration for {title}, vibrant colorful, no text"
-            filename = f"{slug}-{image_type}-{timestamp}.webp"
-            img_path = generate_image(prompt, filename, retries=6)
-            if img_path:
-                content = content.replace(src, f"../images/{filename}")
-                changed = True
 
     if changed:
         data['content'] = content
@@ -198,24 +261,15 @@ def process_article(post_path, force=False, image_type=None):
     return changed
 
 
-def main():
-    parser = argparse.ArgumentParser(description='Fix/regenerate article images')
-    parser.add_argument('--slug', type=str, default='', help='Target article slug')
-    parser.add_argument('--force', action='store_true', help='Force regeneration of all images')
-    parser.add_argument('--image-type', type=str, default=None, help='Specific image type (cover, img1, img2...)')
-    args = parser.parse_args()
-
+async def main_async(args):
     os.makedirs(IMAGES_DIR, exist_ok=True)
-
     if args.slug:
-        # Process a single article
         post_path = find_post_file(args.slug)
         if not post_path:
             print(f"❌ No JSON found for slug: {args.slug}")
             sys.exit(1)
-        process_article(post_path, force=args.force, image_type=args.image_type)
+        await process_article(post_path, force=args.force, image_type=args.image_type, selected_model=args.model)
     else:
-        # Process ALL articles with placeholder images
         print("🔍 Scanning all articles for placeholder images...")
         all_posts = []
         for search_dir in [POSTS_DIR, ARCHIVE_DIR]:
@@ -231,7 +285,7 @@ def main():
                     data = json.load(f)
                 has_placeholder = 'placehold.co' in data.get('image', '') or 'placehold.co' in data.get('content', '')
                 if has_placeholder or args.force:
-                    if process_article(post_path, force=args.force, image_type=args.image_type):
+                    if await process_article(post_path, force=args.force, image_type=args.image_type, selected_model=args.model):
                         processed += 1
             except Exception as e:
                 print(f"  ❌ Error processing {post_path}: {e}")
@@ -239,8 +293,14 @@ def main():
         print(f"\n{'='*60}")
         print(f"✅ Done! Processed {processed} articles.")
 
-    print("\nFinished updating images!")
-
+def main():
+    parser = argparse.ArgumentParser(description='Fix/regenerate article images with Art Director')
+    parser.add_argument('--slug', type=str, default='', help='Target article slug')
+    parser.add_argument('--force', action='store_true', help='Force regeneration of all images')
+    parser.add_argument('--image-type', type=str, default=None, help='Specific image type (cover, img1, img2...)')
+    parser.add_argument('--model', type=str, default='zimage', help='Image generation model (zimage, flux, gptimage)')
+    args = parser.parse_args()
+    asyncio.run(main_async(args))
 
 if __name__ == "__main__":
     main()

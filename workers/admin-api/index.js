@@ -840,11 +840,12 @@ async function pushInstagram(slug, env) {
 // WORKFLOW TRIGGER
 // ═══════════════════════════════════════════════════════════
 
-async function triggerWorkflow(action, slug, env) {
+async function triggerWorkflow(action, slug, model, env) {
     const validActions = ["generate-batch", "generate-keyword", "generate-product", "generate-freebie", "build-site", "full-rebuild", "fix-images", "maintenance-scan", "regenerate-article", "comprehensive-repair", "humanize", "regen-all-images", "instagram-batch"];
     if (!validActions.includes(action)) throw new Error(`Invalid action: ${action}`);
     const inputs = { action };
     if (slug) inputs.slug = slug;
+    if (model) inputs.model = model;
     const res = await ghFetch("actions/workflows/autoblog.yml/dispatches", {
         method: "POST", body: JSON.stringify({ ref: BRANCH, inputs }),
     }, env);
@@ -1329,7 +1330,7 @@ export default {
                 case "delete-snapshot":
                     if (!params.tag) return new Response(JSON.stringify({ error: "tag required" }), { status: 400, headers: corsHeaders });
                     result = await deleteSnapshot(params.tag, env); break;
-                case "generate": result = await triggerWorkflow(params.type || "generate-batch", params.slug || null, env); break;
+                case "generate": result = await triggerWorkflow(params.type || "generate-batch", params.slug || null, params.model || null, env); break;
                 case "runs": result = await getWorkflowRuns(env); break;
                 case "scan-tpt": result = await scanTpt(env); break;
                 case "cleanup-instagram": result = await cleanupInstagram(env); break;

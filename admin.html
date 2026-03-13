@@ -2884,8 +2884,13 @@
                                 ` : '<div style="text-align:center;padding:20px;color:var(--red)">❌ Pas de cover</div>'}
                                 ${contentImgsHtml}
                             </div>
-                            <div style="margin-top:12px;display:flex;gap:8px">
+                            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
                                 <a href="${viewUrl}" target="_blank" class="btn btn-blue btn-sm">👁️ Voir article</a>
+                                <select id="model-${slug}-all" style="font-size:.7rem;padding:2px 4px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text)" onclick="event.stopPropagation()">
+                                    <option value="zimage">zimage</option>
+                                    <option value="flux">flux</option>
+                                    <option value="gptimage">gptimage</option>
+                                </select>
                                 <button class="btn btn-green btn-sm" onclick="event.stopPropagation();regenGalleryImages('${slug}')">🖼️ Regénérer toutes</button>
                             </div>
                         </div>
@@ -3041,14 +3046,17 @@
         }
 
         async function regenGalleryImages(slug) {
-            const confirmed = confirm(`Regénérer TOUTES les images pour "${slug}" ?\n\nCette action va régénérer le cover + les 5 images de contenu via GitHub Actions.\nCela peut prendre plusieurs minutes.`);
+            const modelSelect = document.getElementById('model-' + slug + '-all');
+            const selectedModel = modelSelect ? modelSelect.value : 'zimage';
+            const confirmed = confirm(`Regénérer TOUTES les images pour "${slug}" avec le modèle ${selectedModel} ?\n\nCette action va régénérer le cover + les 5 images de contenu via GitHub Actions.\nCela peut prendre plusieurs minutes.`);
             if (!confirmed) return;
 
-            toast(`🎨 Régénération de toutes les images pour ${slug}...`, "info");
+            toast(`🎨 Régénération de toutes les images pour ${slug} (${selectedModel})...`, "info");
             try {
                 // Encode force in slug field (no image-type = all images)
                 const encodedSlug = `${slug}::force`;
-                await api("generate", { type: 'fix-images', slug: encodedSlug }, "POST");
+                // Pass the model down through the api
+                await api("generate", { type: 'fix-images', slug: encodedSlug, model: selectedModel }, "POST");
                 toast(`✅ Workflow lancé: regen all images pour ${slug}. Voir onglet Runs.`, "success");
             } catch (e) {
                 toast(`❌ Erreur: ${e.message}`, "error");

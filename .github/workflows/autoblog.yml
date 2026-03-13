@@ -40,6 +40,11 @@ on:
         required: false
         default: ''
         type: string
+      model:
+        description: 'Model for image regeneration (zimage, flux, gptimage)'
+        required: false
+        default: 'zimage'
+        type: string
   schedule:
     # Matin slot 1  — always
     - cron: '0 8 * * *'
@@ -85,10 +90,12 @@ jobs:
           ACTION="${{ github.event.inputs.action || 'schedule' }}"
           SLUG="${{ github.event.inputs.slug || '' }}"
           CRON="${{ github.event.schedule || '' }}"
+          MODEL="${{ github.event.inputs.model || 'zimage' }}"
           echo "action=$ACTION" >> $GITHUB_OUTPUT
           echo "slug=$SLUG" >> $GITHUB_OUTPUT
           echo "cron=$CRON" >> $GITHUB_OUTPUT
-          echo "Running action: $ACTION (slug: $SLUG, cron: $CRON)"
+          echo "model=$MODEL" >> $GITHUB_OUTPUT
+          echo "Running action: $ACTION (slug: $SLUG, cron: $CRON, model: $MODEL)"
 
       # ── GENERATE ARTICLES (V6 Ultimate) ──
       - name: Generate articles
@@ -212,12 +219,17 @@ jobs:
           POLLINATIONS_API_KEY_33: ${{ secrets.POLLINATIONS_API_KEY_33 }}
           PYTHONIOENCODING: utf-8
           SLUG: ${{ steps.action.outputs.slug }}
+          MODEL: ${{ steps.action.outputs.model }}
         run: |
           RAW_SLUG="${{ steps.action.outputs.slug }}"
           # Parse slug field: slug::force::image-type (e.g. my-article::force::cover)
           # Extract slug part (everything before first ::)
           SLUG_PART="${RAW_SLUG%%::*}"
-          ARGS=""
+          
+          # Pass the model (fallback to zimage if empty)
+          MODEL_VAL="${MODEL:-zimage}"
+          ARGS="--model $MODEL_VAL"
+          
           if [ -n "$SLUG_PART" ] && [ "$SLUG_PART" != "" ]; then
             ARGS="--slug $SLUG_PART"
           fi
