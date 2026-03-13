@@ -2805,7 +2805,14 @@
                             <div style="text-align:center">
                                 <img src="${imgUrl}" class="gallery-img" onclick="event.stopPropagation();openLightboxGallery('${slug}', ${lightboxIdx})" style="width:100%;border-radius:10px;border:1px solid var(--border)" loading="lazy" onerror="this.style.opacity='0.3';this.alt='Non trouvée'">
                                 <div style="font-size:.72rem;margin-top:4px;color:var(--text-dim)">Image ${imgIdx}</div>
-                                <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','img${imgIdx}',${imgIdx})">🎨 Regénérer</button>
+                                <div style="margin-top:6px;display:flex;gap:4px;align-items:center;justify-content:center;flex-wrap:wrap">
+                                    <select id="model-${slug}-img${imgIdx}" style="font-size:.7rem;padding:2px 4px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text)" onclick="event.stopPropagation()">
+                                        <option value="gptimage">gptimage</option>
+                                        <option value="zimage">zimage</option>
+                                        <option value="flux">flux</option>
+                                    </select>
+                                    <button class="btn btn-sm btn-purple" onclick="event.stopPropagation();regenerateImage('${slug}','img${imgIdx}',${imgIdx})">🎨 Regénérer</button>
+                                </div>
                             </div>
                         `;
                     });
@@ -2828,7 +2835,14 @@
                                 <div style="text-align:center">
                                     <img src="${coverUrl}" class="gallery-img" onclick="event.stopPropagation();openLightboxGallery('${slug}', 0)" style="width:100%;border-radius:10px;border:2px solid var(--brand)" loading="lazy" onerror="this.style.opacity='0.3'">
                                     <div style="font-size:.72rem;margin-top:4px;color:var(--brand);font-weight:700">COVER</div>
-                                    <button class="btn btn-sm btn-purple" style="margin-top:6px" onclick="event.stopPropagation();regenerateImage('${slug}','cover',0)">🎨 Regénérer</button>
+                                    <div style="margin-top:6px;display:flex;gap:4px;align-items:center;justify-content:center;flex-wrap:wrap">
+                                        <select id="model-${slug}-cover" style="font-size:.7rem;padding:2px 4px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text)" onclick="event.stopPropagation()">
+                                            <option value="gptimage">gptimage</option>
+                                            <option value="zimage">zimage</option>
+                                            <option value="flux">flux</option>
+                                        </select>
+                                        <button class="btn btn-sm btn-purple" onclick="event.stopPropagation();regenerateImage('${slug}','cover',0)">🎨 Regénérer</button>
+                                    </div>
                                 </div>
                                 ` : '<div style="text-align:center;padding:20px;color:var(--red)">❌ Pas de cover</div>'}
                                 ${contentImgsHtml}
@@ -2855,13 +2869,15 @@
         }
 
         async function regenerateImage(slug, type, idx) {
-            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\n\nL'image sera générée (exactement comme le script V6), reconvertie en WebP optimisé, puis uploadée sur GitHub.`);
+            const modelSelect = document.getElementById('model-' + slug + '-' + type);
+            const selectedModel = modelSelect ? modelSelect.value : 'gptimage';
+            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\nModèle: ${selectedModel}\n\nL'image sera générée (exactement comme le script V6), reconvertie en WebP optimisé, puis uploadée sur GitHub.`);
             if (!confirmed) return;
 
-            toast(`🎨 1/3: Génération de ${type}... (via modèle exact & rotation de 24 clés)`, "info");
+            toast(`🎨 1/3: Génération de ${type} avec ${selectedModel}... (via Art Director & rotation de clés)`, "info");
             try {
                 // Step 1: Fetch raw image from Pollinations (via worker)
-                const fetchRes = await api("regen-image-fetch", { slug, imageType: type });
+                const fetchRes = await api("regen-image-fetch", { slug, imageType: type, model: selectedModel });
                 if (!fetchRes.rawBase64) throw new Error("Pas d'image retournée");
 
                 toast(`⚙️ 2/3: Conversion de l'image au format WebP optimisé...`, "info");

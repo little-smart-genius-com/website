@@ -972,9 +972,9 @@ function getImageIndex(imageType) {
     return m ? parseInt(m[1]) : 0;
 }
 
-async function regenImageFetch(slug, imageType, env) {
+async function regenImageFetch(slug, imageType, model, env) {
     if (!slug) throw new Error("slug required");
-    if (!imageType) throw new Error("imageType required (cover, img1, img2, img3, img4, img5)");
+    if (!imageType) throw new Error("imageType required (cover, img1, img2, img3, img4, img5)");;
 
     const imageIndex = getImageIndex(imageType);
 
@@ -1049,7 +1049,7 @@ async function regenImageFetch(slug, imageType, env) {
     const seed = Math.floor(Date.now() / 1000) + imageIndex * 100;
 
     // 5. Call Pollinations
-    const modelName = env.POLLINATIONS_MODEL_NAME || "klein-large";
+    const modelName = model || env.POLLINATIONS_MODEL_NAME || "gptimage";
     const allKeys = env.POLLINATIONS_KEYS_LIST ? env.POLLINATIONS_KEYS_LIST.split(",") : [];
 
     // Filter out dead keys (skip keys blacklisted less than 1 hour ago)
@@ -1334,7 +1334,7 @@ export default {
                 case "scan-tpt": result = await scanTpt(env); break;
                 case "cleanup-instagram": result = await cleanupInstagram(env); break;
                 case "regen-image-fetch":
-                    result = await regenImageFetch(params.slug, params.imageType, env);
+                    result = await regenImageFetch(params.slug, params.imageType, params.model, env);
                     break;
                 case "regen-image-commit-main":
                     result = await regenImageCommitMain(params, env);
