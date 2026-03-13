@@ -1049,7 +1049,7 @@ async function regenImageFetch(slug, imageType, model, env) {
     const seed = Math.floor(Date.now() / 1000) + imageIndex * 100;
 
     // 5. Call Pollinations
-    const modelName = model || env.POLLINATIONS_MODEL_NAME || "gptimage";
+    const modelName = model || env.POLLINATIONS_MODEL_NAME || "zimage";
     const allKeys = env.POLLINATIONS_KEYS_LIST ? env.POLLINATIONS_KEYS_LIST.split(",") : [];
 
     // Filter out dead keys (skip keys blacklisted less than 1 hour ago)

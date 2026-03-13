@@ -2807,9 +2807,9 @@
                                 <div style="font-size:.72rem;margin-top:4px;color:var(--text-dim)">Image ${imgIdx}</div>
                                 <div style="margin-top:6px;display:flex;gap:4px;align-items:center;justify-content:center;flex-wrap:wrap">
                                     <select id="model-${slug}-img${imgIdx}" style="font-size:.7rem;padding:2px 4px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text)" onclick="event.stopPropagation()">
-                                        <option value="gptimage">gptimage</option>
                                         <option value="zimage">zimage</option>
                                         <option value="flux">flux</option>
+                                        <option value="gptimage">gptimage</option>
                                     </select>
                                     <button class="btn btn-sm btn-purple" onclick="event.stopPropagation();regenerateImage('${slug}','img${imgIdx}',${imgIdx})">🎨 Regénérer</button>
                                 </div>
@@ -2837,9 +2837,9 @@
                                     <div style="font-size:.72rem;margin-top:4px;color:var(--brand);font-weight:700">COVER</div>
                                     <div style="margin-top:6px;display:flex;gap:4px;align-items:center;justify-content:center;flex-wrap:wrap">
                                         <select id="model-${slug}-cover" style="font-size:.7rem;padding:2px 4px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text)" onclick="event.stopPropagation()">
-                                            <option value="gptimage">gptimage</option>
                                             <option value="zimage">zimage</option>
                                             <option value="flux">flux</option>
+                                            <option value="gptimage">gptimage</option>
                                         </select>
                                         <button class="btn btn-sm btn-purple" onclick="event.stopPropagation();regenerateImage('${slug}','cover',0)">🎨 Regénérer</button>
                                     </div>
@@ -2870,7 +2870,7 @@
 
         async function regenerateImage(slug, type, idx) {
             const modelSelect = document.getElementById('model-' + slug + '-' + type);
-            const selectedModel = modelSelect ? modelSelect.value : 'gptimage';
+            const selectedModel = modelSelect ? modelSelect.value : 'zimage';
             const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\nModèle: ${selectedModel}\n\nL'image sera générée (exactement comme le script V6), reconvertie en WebP optimisé, puis uploadée sur GitHub.`);
             if (!confirmed) return;
 
