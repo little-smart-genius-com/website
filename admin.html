@@ -2807,6 +2807,7 @@
                     const contentImgCount = art.contentImgCount || 0;
                     const totalImages = coverCount + contentImgCount;
                     const hasIg = art.hasInstagram;
+                    const hasOg = art.hasOg;
                     const health = art.health;
                     const viewUrl = art.viewUrl || '#';
 
@@ -2863,6 +2864,7 @@
                             <div style="display:flex;gap:6px;align-items:center">
                                 <span class="badge badge-info">${totalImages} img</span>
                                 ${hasIg ? '<span class="badge badge-ok">📸 IG</span>' : ''}
+                                ${hasOg ? '<span class="badge badge-ok">🪧 OG</span>' : ''}
                                 <span class="badge ${health === 'ok' ? 'badge-ok' : health === 'warning' ? 'badge-warn' : 'badge-error'}">${health}</span>
                             </div>
                         </div>

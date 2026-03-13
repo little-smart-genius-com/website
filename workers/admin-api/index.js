@@ -413,23 +413,27 @@ async function listArticles(env) {
     articles.forEach(a => { if (a.slug) slugMap.set(a.slug, a); });
     articles = Array.from(slugMap.values());
 
-    const [htmlFiles, imgFiles, igFiles, postFiles] = await Promise.all([
+    const [htmlFiles, imgFiles, igFiles, ogFiles] = await Promise.all([
         ghListDir("articles", env),
         ghListDir("images", env),
         ghListDir("instagram", env),
-        ghListDir("posts", env),
+        ghListDir("images/og", env),
     ]);
 
     const htmlSet = new Set(htmlFiles.map(f => f.name));
-    const postSlugs = new Set(postFiles.map(f => {
-        const m = f.name.match(/^(.+)-\d+\.json$/);
-        return m ? m[1] : f.name.replace(".json", "");
+    
+    // OG files typically look like: "my-article-slug-og.webp" optionally with a timestamp or extra suffix
+    // But we know they start with the slug.
+    const ogSlugs = new Set(ogFiles.map(f => {
+        // e.g., "slug-og.webp" -> extracted slug
+        const m = f.name.match(/^(.+)-og\.webp$/);
+        return m ? m[1] : f.name.replace("-og.webp", "");
     }));
 
     const enriched = articles.map(a => {
         const slug = a.slug || "";
         const hasHtml = htmlSet.has(`${slug}.html`);
-        const hasPost = postSlugs.has(slug);
+        const hasOg = ogSlugs.has(slug);
 
         // the 'image' field has the exact cover filename, e.g. 'images/long-seo-slug-cover-1234.webp'
         let imageSlug = slug;
@@ -464,9 +468,9 @@ async function listArticles(env) {
         let health = "ok";
         if (!hasHtml) health = "error";
         else if (coverImgs.length === 0) health = "error";
-        else if (!hasPost) health = "warning";
+        else if (!hasOg) health = "warning";
         return {
-            ...a, hasHtml, hasPost,
+            ...a, hasHtml, hasOg,
             coverCount: coverImgs.length, contentImgCount: contentImgs.length,
             coverFiles: coverImgs.map(f => f.name),
             contentImgFiles: contentImgs.map(f => f.name),
@@ -485,13 +489,13 @@ async function listArticles(env) {
 async function cascadeDelete(slug, env) {
     if (!slug) throw new Error("Missing slug parameter");
     const deleted = [], errors = [];
-    const [htmlFiles, postFiles, imgFiles, igFiles] = await Promise.all([
-        ghListDir("articles", env), ghListDir("posts", env),
+    const [htmlFiles, ogFiles, imgFiles, igFiles] = await Promise.all([
+        ghListDir("articles", env), ghListDir("images/og", env),
         ghListDir("images", env), ghListDir("instagram", env),
     ]);
     const toDelete = [];
     htmlFiles.filter(f => f.name === `${slug}.html`).forEach(f => toDelete.push({ path: `articles/${f.name}`, sha: f.sha }));
-    postFiles.filter(f => f.name.startsWith(slug)).forEach(f => toDelete.push({ path: `posts/${f.name}`, sha: f.sha }));
+    ogFiles.filter(f => f.name.startsWith(slug)).forEach(f => toDelete.push({ path: `images/og/${f.name}`, sha: f.sha }));
     imgFiles.filter(f => f.name.startsWith(slug)).forEach(f => toDelete.push({ path: `images/${f.name}`, sha: f.sha }));
     igFiles.filter(f => f.name.startsWith(slug)).forEach(f => toDelete.push({ path: `instagram/${f.name}`, sha: f.sha }));
 
