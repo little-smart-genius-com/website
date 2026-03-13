@@ -2344,7 +2344,7 @@
         // ═══════ DELETE ═══════
         function askDelete(slug) { pendingSlug = slug; document.getElementById("deleteSlugName").textContent = slug; document.getElementById("deleteModal").classList.add("show") }
         function closeModal() { document.getElementById("deleteModal").classList.remove("show"); pendingSlug = "" }
-        async function confirmDelete() { if (!pendingSlug) return; const btn = document.getElementById("confirmDeleteBtn"); btn.innerHTML = '<div class="spinner"></div>'; btn.disabled = true; try { const r = await api("delete", { slug: pendingSlug }, "DELETE"); toast(`✅ ${r.totalDeleted} fichiers supprimes`, "success"); closeModal(); loadArticles(); refreshAll() } catch (e) { toast("❌ " + e.message, "error") } btn.innerHTML = "🗑️ Supprimer"; btn.disabled = false }
+        async function confirmDelete() { if (!pendingSlug) return; const btn = document.getElementById("confirmDeleteBtn"); btn.innerHTML = '<div class="spinner"></div>'; btn.disabled = true; try { const r = await api("delete", { slug: pendingSlug }, "DELETE"); let msg = `✅ ${r.totalDeleted} fichiers supprimes.`; if (r.buildTriggered) msg += " Rebuild automatique lance !"; toast(msg, "success"); closeModal(); loadArticles(); refreshAll() } catch (e) { toast("❌ " + e.message, "error") } btn.innerHTML = "🗑️ Supprimer"; btn.disabled = false }
 
         // ═══════ REGENERATION ═══════
         async function regenArticle(slug) {

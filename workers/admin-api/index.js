@@ -534,7 +534,18 @@ async function cascadeDelete(slug, env) {
         }
     } catch (e) { errors.push({ path: "sitemap.xml", error: e.message }); }
 
-    return { slug, deleted, errors, totalDeleted: deleted.length };
+    let buildTriggered = false;
+    let buildError = null;
+    if (deleted.length > 0) {
+        try {
+            await triggerWorkflow("build-site", null, env);
+            buildTriggered = true;
+        } catch (e) {
+            buildError = e.message;
+        }
+    }
+
+    return { slug, deleted, errors, totalDeleted: deleted.length, buildTriggered, buildError };
 }
 
 // ═══════════════════════════════════════════════════════════
