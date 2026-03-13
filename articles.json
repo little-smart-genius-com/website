@@ -1,7 +1,82 @@
 {
-  "generated_at": "2026-03-11T21:11:55.658757",
-  "total_articles": 18,
+  "generated_at": "2026-03-13T11:03:00.004677",
+  "total_articles": 22,
   "articles": [
+    {
+      "title": "Our Cookbook Builds Lifelong Skills in 7-Year-Olds",
+      "slug": "our-cookbook-builds-lifelong-skills-in-7-year-olds",
+      "date": "March 13, 2026",
+      "iso_date": "2026-03-13T03:49:38.357151",
+      "category": "Creative Arts",
+      "excerpt": "Boost your child's reading, math & confidence through cooking! Get expert teacher tips & a free kids' cookbook. Download now.",
+      "image": "images/our-cookbook-builds-lifelong-skills-in-7-year-olds-cover-1773398153.webp",
+      "reading_time": 11,
+      "url": "articles/our-cookbook-builds-lifelong-skills-in-7-year-olds.html",
+      "keywords": [
+        "cookbook kids",
+        "year olds",
+        "cookbook kids kids",
+        "pro tip experience",
+        "free cookbook kids",
+        "little smart genius",
+        "pure magic",
+        "kids kids",
+        "seven year",
+        "following multi step"
+      ],
+      "word_count": 2272,
+      "slot": "freebie"
+    },
+    {
+      "title": "Spot the Difference Builds Visual Skills in Children",
+      "slug": "spot-the-difference-builds-visual-skills-in-children",
+      "date": "March 13, 2026",
+      "iso_date": "2026-03-13T03:37:12.746574",
+      "category": "Spot the Difference (Photorealistic)",
+      "excerpt": "Discover how spot the difference puzzles enhance kids' observation and cognitive skills. Get practical tips for home and classroom. Learn more!",
+      "image": "images/spot-the-difference-builds-visual-skills-in-children-cover-1773398277.webp",
+      "reading_time": 13,
+      "url": "articles/spot-the-difference-builds-visual-skills-in-children.html",
+      "keywords": [
+        "spot difference",
+        "visual perception",
+        "spot difference visual",
+        "difference visual perception",
+        "visual perception activities",
+        "perception activities children",
+        "difference visual",
+        "visual perception activity",
+        "spot difference picture",
+        "difference picture puzzle"
+      ],
+      "word_count": 2776,
+      "slot": "product"
+    },
+    {
+      "title": "Best Picture Puzzles to Improve Attention in Children",
+      "slug": "best-picture-puzzles-to-improve-attention-in-children",
+      "date": "March 13, 2026",
+      "iso_date": "2026-03-13T03:26:32.748848",
+      "category": "Problem Solving",
+      "excerpt": "Boost your child's attention with picture puzzles. Avoid 5 common parenting mistakes and unlock cognitive benefits. Get expert strategies now!",
+      "image": "images/best-picture-puzzles-to-improve-attention-in-children-cover-1773398114.webp",
+      "reading_time": 15,
+      "url": "articles/best-picture-puzzles-to-improve-attention-in-children.html",
+      "keywords": [
+        "picture puzzles improve",
+        "puzzles improve attention",
+        "improve attention children",
+        "picture puzzles",
+        "puzzles improve",
+        "improve attention",
+        "attention children",
+        "little smart genius",
+        "puzzle time",
+        "working memory"
+      ],
+      "word_count": 3115,
+      "slot": "keyword"
+    },
     {
       "title": "Fix Parents' Four in a Row Mistakes for Smarter Play",
       "slug": "fix-parents-four-in-a-row-mistakes-for-smarter-play",
@@ -9,7 +84,7 @@
       "iso_date": "2026-03-11T21:11:53.106888",
       "category": "Critical Thinking",
       "excerpt": "Avoid 5 common Four In A Row mistakes! Discover how this classic game builds strategic thinking and pattern recognition in kids 4-12.",
-      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "image": "images/fix-parents-four-in-a-row-mistakes-for-smarter-play-cover-1773399583.webp",
       "reading_time": 12,
       "url": "articles/fix-parents-four-in-a-row-mistakes-for-smarter-play.html",
       "keywords": [
@@ -34,7 +109,7 @@
       "iso_date": "2026-03-11T16:45:17.704950",
       "category": "Spot the Difference (Photorealistic)",
       "excerpt": "Discover how photorealistic spot-the-difference games boost observation & thinking skills in kids 4-12. Explore science-backed tips.",
-      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "image": "images/photorealistic-spot-difference-puzzles-build-visual-skills-cover-1773398386.webp",
       "reading_time": 13,
       "url": "articles/photorealistic-spot-difference-puzzles-build-visual-skills.html",
       "keywords": [
@@ -59,7 +134,7 @@
       "iso_date": "2026-03-11T13:04:46.957668",
       "category": "Language Arts",
       "excerpt": "Boost your 6-year-old's reading skills with a veteran teacher's word search strategy. Try a free printable activity today!",
-      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "image": "images/word-search-boosts-reading-confidence-for-6-year-olds-cover-1773399620.webp",
       "reading_time": 11,
       "url": "articles/word-search-boosts-reading-confidence-for-6-year-olds.html",
       "keywords": [
@@ -84,7 +159,7 @@
       "iso_date": "2026-03-11T12:56:06.166031",
       "category": "Spot the Difference (Photorealistic)",
       "excerpt": "Boost visual perception for siblings of all ages with photorealistic spot-the-difference puzzles. Explore fun multi-age learning strategies!",
-      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "image": "images/spot-the-difference-builds-siblings-visual-discrimination-cover-1773398426.webp",
       "reading_time": 13,
       "url": "articles/spot-the-difference-builds-siblings-visual-discrimination.html",
       "keywords": [
@@ -109,7 +184,7 @@
       "iso_date": "2026-03-11T12:43:49.833575",
       "category": "Critical Thinking",
       "excerpt": "Science-backed Montessori worksheets for toddlers: boost fine motor skills and self-directed learning. Get practical tips and insights now!",
-      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "image": "images/proven-montessori-inspired-worksheets-for-toddlers-that-work-cover-1773399664.webp",
       "reading_time": 14,
       "url": "articles/proven-montessori-inspired-worksheets-for-toddlers-that-work.html",
       "keywords": [
@@ -134,7 +209,7 @@
       "iso_date": "2026-03-11T10:18:12.024467",
       "category": "Critical Thinking",
       "excerpt": "Unlock your child's critical thinking! Get free, age-appropriate activities and low-cost strategies to teach logic to kids 4-12. Start now!",
-      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "image": "images/budget-friendly-guide-to-teach-kids-logic-cover-1773399708.webp",
       "reading_time": 14,
       "url": "articles/budget-friendly-guide-to-teach-kids-logic.html",
       "keywords": [
@@ -150,6 +225,31 @@
         "activities ages ready"
       ],
       "word_count": 2924,
+      "slot": "keyword"
+    },
+    {
+      "title": "Best Age Appropriate Painting Activities for Preschoolers",
+      "slug": "best-age-appropriate-painting-activities-for-preschoolers",
+      "date": "March 11, 2026",
+      "iso_date": "2026-03-11T10:11:22.203274",
+      "category": "Creative Arts",
+      "excerpt": "Boost fine motor skills and cognitive development with age-appropriate painting activities. Avoid common mistakes—read our expert guide now!",
+      "image": "images/best-age-appropriate-painting-activities-for-preschoolers-cover-1773398313.webp",
+      "reading_time": 17,
+      "url": "articles/best-age-appropriate-painting-activities-for-preschoolers.html",
+      "keywords": [
+        "age appropriate painting",
+        "appropriate painting activities",
+        "painting activities preschoolers",
+        "age appropriate",
+        "appropriate painting",
+        "painting activities",
+        "activities preschoolers",
+        "year olds",
+        "activities year olds",
+        "problem solving"
+      ],
+      "word_count": 3457,
       "slot": "keyword"
     },
     {
@@ -259,7 +359,7 @@
       "iso_date": "2026-03-10T14:39:19.739403",
       "category": "Spot the Difference (Photorealistic)",
       "excerpt": "Boost focus for reluctant learners with engaging, photorealistic puzzles. Try our free spot-the-difference activities today!",
-      "image": "images/how-spot-the-difference-activities-build-focus-in-reluctant-learners-cover-1773152945.webp",
+      "image": "images/spot-the-difference-builds-focus-in-reluctant-learners-cover-1773398351.webp",
       "reading_time": 14,
       "url": "articles/spot-the-difference-builds-focus-in-reluctant-learners.html",
       "keywords": [

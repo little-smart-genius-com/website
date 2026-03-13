@@ -192,6 +192,9 @@ def generate_related_articles_html(related: List[Dict]) -> str:
             thumb = image.replace("images/", "images/thumbs/", 1)
             thumb_path = f"../{thumb}"
             full_path  = f"../{image}"
+        else:
+            thumb_path = image
+            full_path = image
         
         url = article.get("url", "")
         if url and not url.startswith("http"):
