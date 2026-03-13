@@ -2603,14 +2603,51 @@
         // ═══════ RUNS ═══════
         async function loadRuns() {
             const c = document.getElementById("runsList"); c.innerHTML = '<div style="text-align:center;padding:30px"><div class="spinner"></div></div>';
+
+            // Display-friendly names for each workflow action
+            const actionLabels = {
+                'generate-batch': '📝 Génération batch',
+                'generate-keyword': '🔑 Génération par keyword',
+                'generate-product': '🛍️ Génération produit',
+                'generate-freebie': '🎁 Génération freebie',
+                'build-site': '🏗️ Build du site',
+                'full-rebuild': '🔄 Rebuild complet',
+                'fix-images': '🖼️ Fix / Regen images',
+                'maintenance-scan': '🔍 Maintenance scan',
+                'regenerate-article': '♻️ Regénérer article',
+                'comprehensive-repair': '🛠️ Réparation complète',
+                'humanize': '✍️ Humanisation articles',
+                'regen-all-images': '🎨 Regen toutes les images',
+                'instagram-batch': '📸 Instagram batch'
+            };
+            const eventLabels = {
+                'workflow_dispatch': '🖱️ Manuel',
+                'schedule': '🕐 Programmé',
+                'push': '📤 Push'
+            };
+
+            function getRunLabel(r) {
+                // Try to extract the action from display_title
+                const title = (r.display_title || '').toLowerCase();
+                for (const [key, label] of Object.entries(actionLabels)) {
+                    if (title.includes(key)) return label;
+                }
+                // Fallback: check event type
+                if (r.event === 'schedule') return '🕐 Exécution programmée (cron)';
+                if (r.event === 'push') return '📤 Déclenché par push';
+                return r.display_title || r.name || 'Inconnu';
+            }
+
             try {
                 const d = await api("runs");
                 if (!d.runs.length) { c.innerHTML = '<p style="color:var(--text-dim);text-align:center;padding:20px">Aucune execution</p>'; return }
-                let h = '<div class="tbl-wrap"><table><thead><tr><th></th><th>#</th><th>Date</th><th>Status</th><th>Resultat</th><th>Lien</th></tr></thead><tbody>';
+                let h = '<div class="tbl-wrap"><table><thead><tr><th></th><th>#</th><th>Nom</th><th>Événement</th><th>Date</th><th>Status</th><th>Résultat</th><th>Lien</th></tr></thead><tbody>';
                 d.runs.forEach(r => {
                     const cls = r.conclusion === "success" ? "success" : r.conclusion === "failure" ? "failure" : r.status === "in_progress" ? "in_progress" : "queued";
                     const dt = new Date(r.created_at).toLocaleString("fr-FR");
-                    h += `<tr><td><span class="run-status ${cls}"></span></td><td>#${r.run_number}</td><td style="white-space:nowrap;font-size:.72rem">${dt}</td><td><span class="badge badge-info">${r.status}</span></td><td><span class="badge ${r.conclusion === 'success' ? 'badge-ok' : r.conclusion === 'failure' ? 'badge-error' : 'badge-warn'}">${r.conclusion || '—'}</span></td><td><a href="${r.html_url}" target="_blank" class="btn btn-sm">↗</a></td></tr>`;
+                    const label = getRunLabel(r);
+                    const evtLabel = eventLabels[r.event] || r.event || '—';
+                    h += `<tr><td><span class="run-status ${cls}"></span></td><td>#${r.run_number}</td><td style="font-weight:600;font-size:.78rem;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(r.display_title || r.name || '')}">${esc(label)}</td><td><span class="badge badge-info" style="font-size:.65rem">${evtLabel}</span></td><td style="white-space:nowrap;font-size:.72rem">${dt}</td><td><span class="badge badge-info">${r.status}</span></td><td><span class="badge ${r.conclusion === 'success' ? 'badge-ok' : r.conclusion === 'failure' ? 'badge-error' : 'badge-warn'}">${r.conclusion || '—'}</span></td><td><a href="${r.html_url}" target="_blank" class="btn btn-sm">↗</a></td></tr>`;
                 });
                 h += '</tbody></table></div>'; c.innerHTML = h;
             } catch (e) { c.innerHTML = `<p style="color:var(--red)">${esc(e.message)}</p>` }

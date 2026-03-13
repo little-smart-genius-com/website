@@ -854,8 +854,8 @@ async function triggerWorkflow(action, slug, env) {
 
 async function getWorkflowRuns(env) {
     try {
-        const data = await ghJSON(`actions/runs?per_page=10&branch=${BRANCH}`, env);
-        return { runs: (data.workflow_runs || []).map(r => ({ id: r.id, name: r.name, status: r.status, conclusion: r.conclusion, created_at: r.created_at, updated_at: r.updated_at, html_url: r.html_url, run_number: r.run_number })) };
+        const data = await ghJSON(`actions/runs?per_page=20&branch=${BRANCH}`, env);
+        return { runs: (data.workflow_runs || []).map(r => ({ id: r.id, name: r.name, display_title: r.display_title || r.name, event: r.event, status: r.status, conclusion: r.conclusion, created_at: r.created_at, updated_at: r.updated_at, html_url: r.html_url, run_number: r.run_number })) };
     } catch { return { runs: [] }; }
 }
 
