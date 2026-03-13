@@ -1,7 +1,32 @@
 {
-  "generated_at": "2026-03-12T21:59:45.134340",
-  "total_articles": 24,
+  "generated_at": "2026-03-13T10:20:30.315061",
+  "total_articles": 25,
   "articles": [
+    {
+      "title": "Benefits of Puzzles for Child Brain Development Across Ages",
+      "slug": "benefits-of-puzzles-for-child-brain-development-across-ages",
+      "date": "March 13, 2026",
+      "iso_date": "2026-03-13T10:20:27.486191",
+      "category": "Critical Thinking",
+      "excerpt": "Puzzles boost brain development for mixed-age siblings (4-12). Learn cognitive benefits, motor skills & activities. Start your family's puzzle journey!",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 15,
+      "url": "articles/benefits-of-puzzles-for-child-brain-development-across-ages.html",
+      "keywords": [
+        "older child",
+        "younger child",
+        "puzzles child brain",
+        "child brain development",
+        "brain development",
+        "benefits puzzles child",
+        "puzzles child",
+        "child brain",
+        "benefits puzzles",
+        "mixed age"
+      ],
+      "word_count": 3021,
+      "slot": "keyword"
+    },
     {
       "title": "Nurikabe for Kids: A Smarter Screen Time Alternative",
       "slug": "nurikabe-for-kids-a-smarter-screen-time-alternative",
