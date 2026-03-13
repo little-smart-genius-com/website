@@ -2904,7 +2904,27 @@
                         canvas.width = w;
                         canvas.height = h;
                         const ctx = canvas.getContext('2d');
-                        ctx.drawImage(img, 0, 0, w, h);
+
+                        // Force exact 1200x675 (center-crop-to-fit)
+                        const targetRatio = w / h;
+                        const srcRatio = img.width / img.height;
+
+                        let sw, sh, sx, sy;
+                        if (srcRatio > targetRatio) {
+                            // Source is wider => crop width
+                            sw = img.height * targetRatio;
+                            sh = img.height;
+                            sx = (img.width - sw) / 2;
+                            sy = 0;
+                        } else {
+                            // Source is taller => crop height
+                            sh = img.width / targetRatio;
+                            sw = img.width;
+                            sx = 0;
+                            sy = (img.height - sh) / 2;
+                        }
+
+                        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, w, h);
 
                         const quality = isThumb ? 0.80 : 0.85;
                         const result = canvas.toDataURL("image/webp", quality).split(",")[1];

@@ -15,4 +15,4 @@ routes = [
 # MAKECOM_WEBHOOK_URL
 
 [vars]
-POLLINATIONS_MODEL_NAME = "flux"
+POLLINATIONS_MODEL_NAME = "zimage"

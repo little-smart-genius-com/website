@@ -4,6 +4,8 @@ import re
 import requests
 import time
 from urllib.parse import quote
+from io import BytesIO
+from PIL import Image
 from dotenv import load_dotenv
 
 os.chdir(r'c:\Users\Omar\Desktop\little-smart-genius-site\Nouveau dossier\online\Little_Smart_Genius')
@@ -34,15 +36,33 @@ slug = data['slug']
 content = data['content']
 timestamp = str(int(time.time()))
 
+def center_crop_resize(img, target_w, target_h):
+    """Resize and center-crop an image to exact target dimensions."""
+    src_w, src_h = img.size
+    target_ratio = target_w / target_h
+    src_ratio = src_w / src_h
+
+    if src_ratio > target_ratio:
+        new_w = int(src_h * target_ratio)
+        offset = (src_w - new_w) // 2
+        img = img.crop((offset, 0, offset + new_w, src_h))
+    elif src_ratio < target_ratio:
+        new_h = int(src_w / target_ratio)
+        offset = (src_h - new_h) // 2
+        img = img.crop((0, offset, src_w, offset + new_h))
+
+    return img.resize((target_w, target_h), Image.LANCZOS)
+
 def generate_image(prompt, filename):
     safe_prompt = quote(prompt)
-    url = f"https://gen.pollinations.ai/image/{safe_prompt}?model=flux&width=1200&height=675&nologo=true"
+    url = f"https://gen.pollinations.ai/image/{safe_prompt}?model=zimage&width=1200&height=675&nologo=true"
     print(f"Generating image for prompt: {prompt[:50]}...")
     try:
         res = requests.get(url, headers=headers, timeout=30)
         if res.status_code == 200 and len(res.content) > 1024:
-            with open(os.path.join('images', filename), "wb") as f:
-                f.write(res.content)
+            img = Image.open(BytesIO(res.content)).convert("RGB")
+            img = center_crop_resize(img, 1200, 675)
+            img.save(os.path.join('images', filename), "WEBP", quality=85)
             print(f"✅ Created {filename}")
             return f"images/{filename}"
     except Exception as e:

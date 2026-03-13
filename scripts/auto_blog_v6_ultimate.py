@@ -534,6 +534,24 @@ def call_deepseek_sync(prompt: str, logger: DetailedLogger, prompt_type: str = "
 # MODULE 4: AUTOBLOG V6 CLASS — 7 AGENTS PARALLEL PIPELINE
 # ===================================================================
 
+def center_crop_resize(img, target_w, target_h):
+    """Resize and center-crop an image to exact target dimensions."""
+    src_w, src_h = img.size
+    target_ratio = target_w / target_h
+    src_ratio = src_w / src_h
+
+    if src_ratio > target_ratio:
+        new_w = int(src_h * target_ratio)
+        offset = (src_w - new_w) // 2
+        img = img.crop((offset, 0, offset + new_w, src_h))
+    elif src_ratio < target_ratio:
+        new_h = int(src_w / target_ratio)
+        offset = (src_h - new_h) // 2
+        img = img.crop((0, offset, src_w, offset + new_h))
+
+    return img.resize((target_w, target_h), Image.LANCZOS)
+
+
 class SEOUtils:
     """Static SEO helper methods (from V4)."""
     @staticmethod
@@ -954,13 +972,13 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
             # Use V4's working URL format: gen.pollinations.ai/image/
             url = f"https://gen.pollinations.ai/image/{encoded_prompt}"
             
-            # Cascade models: gptimage -> zimage -> flux
+            # Cascade models: zimage -> flux -> gptimage
             if attempt < 3:
-                current_model = "gptimage"
-            elif attempt < 6:
                 current_model = "zimage"
-            else:
+            elif attempt < 6:
                 current_model = "flux"
+            else:
+                current_model = "gptimage"
                 
             if attempt in (3, 6):
                 self.logger.warning(f"Image {idx+1}: switching to fallback model '{current_model}'", 3)
@@ -980,7 +998,8 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
                         data = await resp.read()
                         if len(data) > 1024:
                             img = Image.open(BytesIO(data)).convert("RGB")
-                            img.thumbnail((1200, 1200))  # cap size like V4
+                            # Force exact 1200x675 for the main image
+                            img = center_crop_resize(img, 1200, 675)
                             img.save(out_path, "WEBP", quality=85, optimize=True, method=6)
                             
                             # Auto-generate lightweight thumbnail for cover images only
@@ -988,12 +1007,8 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
                                 thumbs_dir = os.path.join(os.path.dirname(out_path), "thumbs")
                                 os.makedirs(thumbs_dir, exist_ok=True)
                                 thumb_path = os.path.join(thumbs_dir, os.path.basename(out_path))
-                                if img.width > 600:
-                                    aspect_ratio = img.height / img.width
-                                    new_height = int(600 * aspect_ratio)
-                                    thumb_img = img.resize((600, new_height), Image.LANCZOS)
-                                else:
-                                    thumb_img = img.copy()
+                                # Force exact 600x338 for the thumbnail
+                                thumb_img = center_crop_resize(img, 600, 338)
                                 thumb_img.save(thumb_path, "WEBP", quality=80, optimize=True)
                                 
                             size_kb = os.path.getsize(out_path) // 1024

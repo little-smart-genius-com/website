@@ -14,6 +14,24 @@ from dotenv import load_dotenv
 os.chdir(r'c:\Users\Omar\Desktop\little-smart-genius-site\Nouveau dossier\online\Little_Smart_Genius')
 load_dotenv('.env')
 
+def center_crop_resize(img, target_w, target_h):
+    """Resize and center-crop an image to exact target dimensions."""
+    src_w, src_h = img.size
+    target_ratio = target_w / target_h
+    src_ratio = src_w / src_h
+
+    if src_ratio > target_ratio:
+        new_w = int(src_h * target_ratio)
+        offset = (src_w - new_w) // 2
+        img = img.crop((offset, 0, offset + new_w, src_h))
+    elif src_ratio < target_ratio:
+        new_h = int(src_w / target_ratio)
+        offset = (src_h - new_h) // 2
+        img = img.crop((0, offset, src_w, offset + new_h))
+
+    return img.resize((target_w, target_h), Image.LANCZOS)
+
+
 # Setup paths
 DATA_DIR = "data"
 ARCHIVE_DIR = os.path.join(DATA_DIR, "archive_posts")
@@ -199,11 +217,11 @@ async def fetch_and_save_image(session, prompt, idx, title, all_valid_keys):
         url = f"https://gen.pollinations.ai/image/{encoded_prompt}"
         
         if attempt < 3:
-            current_model = "gptimage"
-        elif attempt < 6:
             current_model = "zimage"
-        else:
+        elif attempt < 6:
             current_model = "flux"
+        else:
+            current_model = "gptimage"
             
         params = {
             "width": width, "height": height, "seed": seed,
@@ -219,19 +237,16 @@ async def fetch_and_save_image(session, prompt, idx, title, all_valid_keys):
                     data = await resp.read()
                     if len(data) > 1024:
                         img = Image.open(BytesIO(data)).convert("RGB")
-                        img.thumbnail((1200, 1200))
+                        # Force exact 1200x675 for the main image
+                        img = center_crop_resize(img, 1200, 675)
                         img.save(out_path, "WEBP", quality=85, optimize=True, method=6)
                         
                         if idx == 0:
                             thumbs_dir = os.path.join(os.path.dirname(out_path), "thumbs")
                             os.makedirs(thumbs_dir, exist_ok=True)
                             thumb_path = os.path.join(thumbs_dir, os.path.basename(out_path))
-                            if img.width > 600:
-                                aspect_ratio = img.height / img.width
-                                new_height = int(600 * aspect_ratio)
-                                thumb_img = img.resize((600, new_height), Image.LANCZOS)
-                            else:
-                                thumb_img = img.copy()
+                            # Force exact 600x338 for the thumbnail
+                            thumb_img = center_crop_resize(img, 600, 338)
                             thumb_img.save(thumb_path, "WEBP", quality=80, optimize=True)
                             
                         print(f"      ✅ Created {out_name} (Attempt {attempt+1})")
