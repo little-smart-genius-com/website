@@ -422,12 +422,11 @@ async function listArticles(env) {
 
     const htmlSet = new Set(htmlFiles.map(f => f.name));
     
-    // OG files typically look like: "my-article-slug-og.webp" optionally with a timestamp or extra suffix
-    // But we know they start with the slug.
+    // OG files are typically named literally: "my-article-slug.jpg"
     const ogSlugs = new Set(ogFiles.map(f => {
-        // e.g., "slug-og.webp" -> extracted slug
-        const m = f.name.match(/^(.+)-og\.webp$/);
-        return m ? m[1] : f.name.replace("-og.webp", "");
+        // e.g., "slug.jpg" -> extracted slug
+        const m = f.name.match(/^(.+)\.jpg$/);
+        return m ? m[1] : f.name.replace(".jpg", "");
     }));
 
     const enriched = articles.map(a => {
