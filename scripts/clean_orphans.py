@@ -31,13 +31,21 @@ referenced_images.update([
 ])
 
 # 3. Find candidates for deletion
+# PROTECTED: Never delete from these subdirectories
+PROTECTED_DIRS = {'products-thumbs', 'banners', 'thumbs', 'og'}
+
 to_delete = []
 for root, _, files in os.walk(images_dir):
+    # Skip any protected subdirectory entirely
+    dir_name = os.path.basename(root)
+    if dir_name in PROTECTED_DIRS:
+        continue
+
     for f in files:
         img_path = os.path.join(root, f)
         basename = os.path.basename(img_path)
         
-        # Don't delete from og/ unless it's orphaned
+        # Don't delete from og/ unless it's orphaned (legacy check)
         if 'og' in root:
             if basename.endswith('.jpg'):
                 slug = basename[:-4]
