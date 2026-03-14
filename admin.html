@@ -3011,10 +3011,24 @@
                         base64Webp
                     }, "POST");
                     commitOk = true;
+                    console.log('Commit main OK:', commitRes);
                 } catch (commitErr) {
-                    if (commitErr.message && commitErr.message.includes('fetch')) {
-                        toast(`⚠️ Image envoyée, mais connexion lente. On continue...`, "info");
-                        commitOk = true;
+                    // If it's a SHA conflict (409), retry once with fresh SHA
+                    if (commitErr.message && (commitErr.message.includes('409') || commitErr.message.includes('sha'))) {
+                        toast(`⚠️ Conflit SHA détecté, nouvelle tentative...`, "info");
+                        try {
+                            const retryRes = await api("regen-image-commit-main", {
+                                slug,
+                                imageType: type,
+                                filename,
+                                existingSha: null,  // Let the server fetch fresh SHA
+                                base64Webp
+                            }, "POST");
+                            commitOk = true;
+                            console.log('Commit main retry OK:', retryRes);
+                        } catch (retryErr) {
+                            throw retryErr;
+                        }
                     } else {
                         throw commitErr;
                     }
@@ -3030,19 +3044,17 @@
                             thumbSha,
                             base64ThumbWebp
                         }, "POST");
+                        console.log('Commit thumb OK');
                     } catch (thumbErr) {
-                        if (thumbErr.message && thumbErr.message.includes('fetch')) {
-                            // ignore timeout on thumb
-                        } else {
-                            throw thumbErr;
-                        }
+                        console.warn('Thumb commit error:', thumbErr.message);
+                        toast(`⚠️ Miniature non sauvegardée: ${thumbErr.message}`, "info");
                     }
                 }
 
                 if (commitOk) {
                     toast(`✅ Image WebP (${type}) régénérée et sauvegardée !`, "success");
 
-                    // Pre-warm the browser cache to bypass aggressively cached old images on raw.githubusercontent.com
+                    // Pre-warm the browser cache
                     try {
                         const bustUrl = `https://raw.githubusercontent.com/little-smart-genius-com/website/main/images/${filename}?t=${Date.now()}`;
                         await fetch(bustUrl, { cache: 'reload', mode: 'no-cors' });

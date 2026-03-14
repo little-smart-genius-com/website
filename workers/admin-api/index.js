@@ -1177,7 +1177,19 @@ async function regenImageFetch(slug, imageType, model, env) {
 }
 
 async function regenImageCommitMain(params, env) {
-    const { slug, imageType, filename, existingSha, base64Webp } = params;
+    const { slug, imageType, filename, base64Webp } = params;
+    let { existingSha } = params;
+
+    // If no SHA provided (retry scenario), fetch the current one from GitHub
+    if (!existingSha) {
+        try {
+            const imgFiles = await ghListDir("images", env);
+            const existing = imgFiles.find(f => f.name === filename);
+            if (existing) existingSha = existing.sha;
+        } catch (e) {
+            // Not critical, will try without SHA (creates new file)
+        }
+    }
 
     const putBody = {
         message: `Dashboard: regen ${imageType} for ${slug} (WebP optimized)`,
@@ -1198,6 +1210,7 @@ async function regenImageCommitMain(params, env) {
 
     return {
         success: true,
+        filename,
         message: `✅ Image ${imageType} principale sauvegardée sur GitHub !`,
     };
 }
