@@ -2753,6 +2753,20 @@
         function esc(s) { if (!s) return ""; const d = document.createElement("div"); d.textContent = s; return d.innerHTML }
         function toast(msg, type = "success") { const t = document.getElementById("toast"); t.textContent = msg; t.className = `toast show ${type}`; setTimeout(() => t.className = "toast", 4000) }
 
+        function customConfirm(msg) {
+            return new Promise((resolve) => {
+                const modal = document.getElementById('confirmModal');
+                const msgEl = document.getElementById('confirmMessage');
+                const btnOk = document.getElementById('confirmBtnOk');
+                const btnCancel = document.getElementById('confirmBtnCancel');
+                msgEl.innerHTML = esc(msg).replace(/\n/g, '<br>');
+                modal.style.display = 'flex';
+                const cleanup = () => { modal.style.display = 'none'; btnOk.onclick = null; btnCancel.onclick = null; };
+                btnOk.onclick = () => { cleanup(); resolve(true); };
+                btnCancel.onclick = () => { cleanup(); resolve(false); };
+            });
+        }
+
         // ═══════ MEDIA PANEL ═══════
         async function loadMediaStats() {
             try {
@@ -2915,7 +2929,7 @@
         async function regenerateImage(slug, type, idx) {
             const modelSelect = document.getElementById('model-' + slug + '-' + type);
             const selectedModel = modelSelect ? modelSelect.value : 'zimage';
-            const confirmed = confirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\nModèle: ${selectedModel}\n\nL'image sera générée (exactement comme le script V6), reconvertie en WebP optimisé, puis uploadée sur GitHub.`);
+            const confirmed = await customConfirm(`Regénérer l'image "${type}" pour l'article "${slug}" ?\nModèle: ${selectedModel}\n\nL'image sera générée (exactement comme le script V6), reconvertie en WebP optimisé, puis uploadée sur GitHub.`);
             if (!confirmed) return;
 
             toast(`🎨 1/3: Génération de ${type} avec ${selectedModel}... (via Art Director & rotation de clés)`, "info");
@@ -3050,7 +3064,7 @@
         async function regenGalleryImages(slug) {
             const modelSelect = document.getElementById('model-' + slug + '-all');
             const selectedModel = modelSelect ? modelSelect.value : 'zimage';
-            const confirmed = confirm(`Regénérer TOUTES les images pour "${slug}" avec le modèle ${selectedModel} ?\n\nCette action va régénérer le cover + les 5 images de contenu via GitHub Actions.\nCela peut prendre plusieurs minutes.`);
+            const confirmed = await customConfirm(`Regénérer TOUTES les images pour "${slug}" avec le modèle ${selectedModel} ?\n\nCette action va régénérer le cover + les 5 images de contenu via GitHub Actions.\nCela peut prendre plusieurs minutes.`);
             if (!confirmed) return;
 
             toast(`🎨 Régénération de toutes les images pour ${slug} (${selectedModel})...`, "info");
@@ -3066,6 +3080,18 @@
         }
 
     </script>
+
+    <!-- ═══════ CUSTOM CONFIRM MODAL ═══════ -->
+    <div id="confirmModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); align-items:center; justify-content:center;">
+        <div style="background:var(--card); color:var(--text); padding:24px; border-radius:12px; max-width:400px; width:90%; box-shadow:0 10px 30px rgba(0,0,0,0.3); text-align:center;">
+            <h3 style="margin-top:0; font-size:1.2rem; margin-bottom:12px">Confirmation</h3>
+            <p id="confirmMessage" style="font-size:0.9rem; margin-bottom:20px; color:var(--text-dim)"></p>
+            <div style="display:flex; justify-content:center; gap:12px">
+                <button id="confirmBtnCancel" class="btn" style="background:var(--bg); border:1px solid var(--border); color:var(--text)">Annuler</button>
+                <button id="confirmBtnOk" class="btn btn-purple">Confirmer</button>
+            </div>
+        </div>
+    </div>
 
     <!-- ═══════ LIGHTBOX MODAL ═══════ -->
     <div id="lightboxModal" class="lightbox" onclick="closeLightbox()">
