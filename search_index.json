@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-14T09:24:43.625706",
-  "total_articles": 31,
+  "generated_at": "2026-03-14T13:30:25.141189",
+  "total_articles": 35,
   "articles": [
     {
       "title": "Best Hands-On Math Activities for Visual Learners",
@@ -175,6 +175,81 @@
         "mixed age"
       ],
       "word_count": 3021,
+      "slot": "keyword"
+    },
+    {
+      "title": "Our Cookbook Builds Lifelong Skills in 7-Year-Olds",
+      "slug": "our-cookbook-builds-lifelong-skills-in-7-year-olds",
+      "date": "March 13, 2026",
+      "iso_date": "2026-03-13T03:49:38.357151",
+      "category": "Creative Arts",
+      "excerpt": "Boost your child's reading, math & confidence through cooking! Get expert teacher tips & a free kids' cookbook. Download now.",
+      "image": "images/our-cookbook-builds-lifelong-skills-in-7-year-olds-cover-1773398153.webp",
+      "reading_time": 11,
+      "url": "articles/our-cookbook-builds-lifelong-skills-in-7-year-olds.html",
+      "keywords": [
+        "cookbook kids",
+        "year olds",
+        "cookbook kids kids",
+        "pro tip experience",
+        "free cookbook kids",
+        "little smart genius",
+        "pure magic",
+        "kids kids",
+        "seven year",
+        "following multi step"
+      ],
+      "word_count": 2272,
+      "slot": "freebie"
+    },
+    {
+      "title": "Spot the Difference Builds Visual Skills in Children",
+      "slug": "spot-the-difference-builds-visual-skills-in-children",
+      "date": "March 13, 2026",
+      "iso_date": "2026-03-13T03:37:12.746574",
+      "category": "Spot the Difference (Photorealistic)",
+      "excerpt": "Discover how spot the difference puzzles enhance kids' observation and cognitive skills. Get practical tips for home and classroom. Learn more!",
+      "image": "images/spot-the-difference-builds-visual-skills-in-children-cover-1773398277.webp",
+      "reading_time": 13,
+      "url": "articles/spot-the-difference-builds-visual-skills-in-children.html",
+      "keywords": [
+        "spot difference",
+        "visual perception",
+        "spot difference visual",
+        "difference visual perception",
+        "visual perception activities",
+        "perception activities children",
+        "difference visual",
+        "visual perception activity",
+        "spot difference picture",
+        "difference picture puzzle"
+      ],
+      "word_count": 2776,
+      "slot": "product"
+    },
+    {
+      "title": "Best Picture Puzzles to Improve Attention in Children",
+      "slug": "best-picture-puzzles-to-improve-attention-in-children",
+      "date": "March 13, 2026",
+      "iso_date": "2026-03-13T03:26:32.748848",
+      "category": "Problem Solving",
+      "excerpt": "Boost your child's attention with picture puzzles. Avoid 5 common parenting mistakes and unlock cognitive benefits. Get expert strategies now!",
+      "image": "images/best-picture-puzzles-to-improve-attention-in-children-cover-1773398114.webp",
+      "reading_time": 15,
+      "url": "articles/best-picture-puzzles-to-improve-attention-in-children.html",
+      "keywords": [
+        "picture puzzles improve",
+        "puzzles improve attention",
+        "improve attention children",
+        "picture puzzles",
+        "puzzles improve",
+        "improve attention",
+        "attention children",
+        "little smart genius",
+        "puzzle time",
+        "working memory"
+      ],
+      "word_count": 3115,
       "slot": "keyword"
     },
     {
@@ -482,6 +557,31 @@
       "word_count": 2924,
       "slot": "keyword",
       "thumb_image": "images/thumbs/budget-friendly-guide-to-teach-kids-logic-cover-1773399708.webp"
+    },
+    {
+      "title": "Best Age Appropriate Painting Activities for Preschoolers",
+      "slug": "best-age-appropriate-painting-activities-for-preschoolers",
+      "date": "March 11, 2026",
+      "iso_date": "2026-03-11T10:11:22.203274",
+      "category": "Creative Arts",
+      "excerpt": "Boost fine motor skills and cognitive development with age-appropriate painting activities. Avoid common mistakes—read our expert guide now!",
+      "image": "images/best-age-appropriate-painting-activities-for-preschoolers-cover-1773398313.webp",
+      "reading_time": 17,
+      "url": "articles/best-age-appropriate-painting-activities-for-preschoolers.html",
+      "keywords": [
+        "age appropriate painting",
+        "appropriate painting activities",
+        "painting activities preschoolers",
+        "age appropriate",
+        "appropriate painting",
+        "painting activities",
+        "activities preschoolers",
+        "year olds",
+        "activities year olds",
+        "problem solving"
+      ],
+      "word_count": 3457,
+      "slot": "keyword"
     },
     {
       "title": "Free Science-Backed Word Pack Boosts Child Development",
