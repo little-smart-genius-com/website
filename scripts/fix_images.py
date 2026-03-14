@@ -212,12 +212,16 @@ async def process_article(post_path, force=False, image_type=None, selected_mode
                 full_prompt = master_build_prompt(subject, 0)
                 full_prompt += ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, watermarks, or UI overlays in the image, pure visual storytelling only"
                 
-                cover_filename = f"{slug}-cover-{timestamp}.webp"
+                # Reuse existing filename to avoid needing HTML rebuild
+                existing_cover = os.path.basename(current_cover) if current_cover else ''
+                cover_filename = existing_cover if existing_cover and existing_cover.endswith('.webp') else f"{slug}-cover-{timestamp}.webp"
+                print(f"  📁 Overwriting: {cover_filename}")
+                
                 cover_path = generate_image(full_prompt, cover_filename, model=selected_model, retries=6)
                 if cover_path:
                     data['image'] = cover_path
                     changed = True
-                    # Thumbnail
+                    # Thumbnail (same name as before)
                     try:
                         img = Image.open(os.path.join(IMAGES_DIR, cover_filename))
                         thumb = center_crop_resize(img, 600, 338)
@@ -243,10 +247,19 @@ async def process_article(post_path, force=False, image_type=None, selected_mode
                 full_prompt = master_build_prompt(subject, idx)
                 full_prompt += ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, watermarks, or UI overlays in the image, pure visual storytelling only"
                 
-                filename = f"{slug}-img{idx}-{timestamp}.webp"
+                # Reuse existing filename to avoid needing HTML rebuild
+                existing_basename = os.path.basename(src).split('?')[0]  # strip cache busters
+                if existing_basename and existing_basename.endswith('.webp') and 'placehold' not in existing_basename:
+                    filename = existing_basename
+                else:
+                    filename = f"{slug}-img{idx}-{timestamp}.webp"
+                print(f"  📁 Overwriting: {filename}")
+                
                 img_path = generate_image(full_prompt, filename, model=selected_model, retries=6)
                 if img_path:
-                    content = content.replace(src, f"../images/{filename}")
+                    # Only update content reference if the filename actually changed
+                    if filename != existing_basename:
+                        content = content.replace(src, f"../images/{filename}")
                     changed = True
             idx += 1
 
