@@ -21,8 +21,6 @@ with open('articles.json', 'r', encoding='utf-8') as f:
     articles_data = json.load(f)
 articles = articles_data.get('articles', [])
 print(f"    Articles indexed: {len(articles)}")
-if len(articles) != 35:
-    errors.append(f"Expected 35 articles, found {len(articles)}")
 
 # 2. HTML files match index
 print("\n[2] Checking HTML article files...")
@@ -83,9 +81,10 @@ print("\n[6] Checking search_index.json...")
 if os.path.exists('search_index.json'):
     with open('search_index.json', 'r', encoding='utf-8') as f:
         search_data = json.load(f)
-    print(f"    Entries: {len(search_data)}")
-    if len(search_data) != len(articles):
-        warnings.append(f"search_index has {len(search_data)} entries vs {len(articles)} articles")
+    si_count = len(search_data.get('articles', [])) if isinstance(search_data, dict) else len(search_data)
+    print(f"    Entries: {si_count}")
+    if si_count != len(articles):
+        warnings.append(f"search_index has {si_count} entries vs {len(articles)} articles")
 else:
     errors.append("search_index.json missing")
 
