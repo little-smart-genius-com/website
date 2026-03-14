@@ -345,10 +345,26 @@ jobs:
             HOUR=$(date +%H)
             ACTION="${{ steps.action.outputs.action }}"
             git commit -m "Auto-blog V6: ${DATE} ${HOUR}h — ${ACTION}"
-            # Pull any remote changes before pushing (handles concurrent pushes)
+            # Pull remote changes and auto-resolve conflicts in generated files
             for i in 1 2 3 4 5; do
               echo "Attempt $i..."
-              git pull --rebase origin main
+              if git pull --rebase origin main; then
+                echo "Rebase succeeded"
+              else
+                echo "Rebase conflict detected, auto-resolving generated files..."
+                # Accept OUR version for all generated/rebuilt files (they are always rebuilt from scratch)
+                git diff --name-only --diff-filter=U | while read conflicted; do
+                  echo "  Auto-resolving: $conflicted"
+                  git checkout --theirs "$conflicted" 2>/dev/null || git checkout --ours "$conflicted" 2>/dev/null || true
+                  git add "$conflicted" 2>/dev/null || true
+                done
+                # If there are still unmerged paths, accept ours for everything
+                if git diff --name-only --diff-filter=U | grep -q .; then
+                  git checkout --ours . 2>/dev/null || true
+                  git add -A
+                fi
+                git rebase --continue 2>/dev/null || git rebase --skip 2>/dev/null || true
+              fi
               if git push origin main; then
                 echo "Changes pushed successfully"
                 exit 0
