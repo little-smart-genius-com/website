@@ -38,7 +38,7 @@ jobs:
           mkdir -p _site
 
           # Copy only web-relevant files
-          cp -r articles images posts instagram _site/ 2>/dev/null || true
+          cp -r articles images posts instagram blog _site/ 2>/dev/null || true
           cp *.html *.js *.json *.css *.xml *.txt _site/ 2>/dev/null || true
           cp CNAME _site/ 2>/dev/null || true
           cp robots.txt _site/ 2>/dev/null || true
