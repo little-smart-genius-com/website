@@ -982,21 +982,18 @@ async function regenImageFetch(slug, imageType, model, env) {
 
     const imageIndex = getImageIndex(imageType);
 
-    // 1. Find the post JSON
+    // 1. Try to find the post JSON (metadata)
     let postContent = null;
     let postFilename = "";
 
-    // First try the active posts/ directory
-    const postFiles = await ghListDir("posts", env);
-    const postFile = postFiles.find(f => f.name.startsWith(slug) && f.name.endsWith(".json"));
-
-    if (postFile) {
-        const { content } = await ghFileContent(`posts/${postFile.name}`, env);
-        postContent = content;
-        postFilename = postFile.name;
-    } else {
-        // Fallback: check the archive directory
-        try {
+    try {
+        const postFiles = await ghListDir("posts", env);
+        const postFile = postFiles.find(f => f.name.startsWith(slug) && f.name.endsWith(".json"));
+        if (postFile) {
+            const { content } = await ghFileContent(`posts/${postFile.name}`, env);
+            postContent = content;
+            postFilename = postFile.name;
+        } else {
             const archiveFiles = await ghListDir("data/archive_posts", env);
             const archiveFile = archiveFiles.find(f => f.name.startsWith(slug) && f.name.endsWith(".json"));
             if (archiveFile) {
@@ -1004,36 +1001,46 @@ async function regenImageFetch(slug, imageType, model, env) {
                 postContent = content;
                 postFilename = archiveFile.name;
             }
-        } catch (e) {
-            // Archive folder might not exist or be empty on GitHub yet
         }
+    } catch (e) {
+        // Folders might not exist, that's okay, we'll use fallbacks
     }
 
-    if (!postContent) throw new Error(`Post JSON not found for slug: ${slug} (checked posts/ and data/archive_posts/)`);
-    const postData = JSON.parse(postContent);
-
+    const postData = postContent ? JSON.parse(postContent) : {};
     const title = postData.title || slug.replace(/-/g, " ");
     const concept = title.replace(/-/g, " ");
 
-    // 2. Find existing filenames
+    // 2. Find existing filename and SHAs
+    const imgFiles = await ghListDir("images", env);
     let existingFilename = "";
+
     if (imageType === "cover") {
         existingFilename = (postData.image || "").replace("images/", "");
+        if (!existingFilename) {
+            // Fallback: look for slug-cover-*.webp
+            const fallback = imgFiles.find(f => f.name.startsWith(`${slug}-cover`) && f.name.endsWith(".webp"));
+            if (fallback) existingFilename = fallback.name;
+        }
     } else {
         const content = postData.content || "";
+        const imgIdx = getImageIndex(imageType);
         const imgPattern = new RegExp(`(\\S*-${imageType}-\\d+\\.webp)`, "i");
         const match = content.match(imgPattern);
         if (match) {
             existingFilename = match[1].replace(/^.*\//, "");
+        } else {
+            // Fallback: look for slug-img1-*.webp
+            const fallback = imgFiles.find(f => f.name.startsWith(`${slug}-${imageType}`) && f.name.endsWith(".webp"));
+            if (fallback) existingFilename = fallback.name;
         }
     }
 
     if (!existingFilename) {
-        throw new Error(`Image filename not found in post JSON for ${imageType}.`);
+        // Last resort: if we can't find the original file, we'll generate a NEW filename
+        const ts = Math.floor(Date.now() / 1000);
+        existingFilename = `${slug}-${imageType}-${ts}.webp`;
     }
 
-    // 3. Get existing SHAs
-    const imgFiles = await ghListDir("images", env);
     const existingFile = imgFiles.find(f => f.name === existingFilename);
     const existingSha = existingFile ? existingFile.sha : null;
 
