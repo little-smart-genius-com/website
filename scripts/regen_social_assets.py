@@ -6,6 +6,7 @@ import sys
 # Import the Instagram generator
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from instagram_generator import generate_instagram_post
+from generate_og_images import create_og_image, _load_font
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IMAGES_DIR = os.path.join(PROJECT_ROOT, "images")
@@ -14,37 +15,6 @@ INSTAGRAM_DIR = os.path.join(PROJECT_ROOT, "instagram")
 
 os.makedirs(OG_DIR, exist_ok=True)
 os.makedirs(INSTAGRAM_DIR, exist_ok=True)
-
-def generate_og_image(slug, cover_path):
-    """Generate a 1200x630 OG image from the cover image by cropping the center."""
-    og_path = os.path.join(OG_DIR, f"{slug}.jpg")
-    try:
-        with Image.open(cover_path) as img:
-            img = img.convert("RGB")
-            # Covers are 1200x675. We need 1200x630.
-            width, height = img.size
-            target_width, target_height = 1200, 630
-            
-            if width == target_width and height == target_height:
-                img.save(og_path, "JPEG", quality=90)
-                return True
-                
-            # Resize exactly to 1200 width if not already
-            if width != target_width:
-                aspect = height / width
-                new_height = int(target_width * aspect)
-                img = img.resize((target_width, new_height), Image.LANCZOS)
-                width, height = img.size
-                
-            # Crop to 630 height
-            top = (height - target_height) // 2
-            bottom = top + target_height
-            img = img.crop((0, top, target_width, bottom))
-            img.save(og_path, "JPEG", quality=90)
-        return True
-    except Exception as e:
-        print(f"Error generating OG for {slug}: {e}")
-        return False
 
 def regenerate_all():
     print("="*60)
@@ -62,6 +32,14 @@ def regenerate_all():
     articles = data.get("articles", [])
     print(f"Found {len(articles)} active articles in search_index.json.\n")
     
+    # Load fonts for the OG Generator exactly as it expects
+    fonts = {
+        "badge":   _load_font("bold", 18),
+        "excerpt": _load_font("regular", 23),
+        "brand":   _load_font("semibold", 22),
+        "url":     _load_font("semibold", 20),
+    }
+
     og_count = 0
     ig_count = 0
     
@@ -81,10 +59,15 @@ def regenerate_all():
             print(f"  ❌ Cover image not found: {cover_path}")
             continue
             
-        # 1. Generate OG image
-        if generate_og_image(slug, cover_path):
-            og_count += 1
-            print("  ✅ OG Image Generated")
+        # 1. Generate OG image using the Premium V4 template
+        try:
+            # create_og_image handles its own saving inside the og/ folder and returns path
+            og_out = create_og_image(article, fonts, force=True)
+            if og_out:
+                og_count += 1
+                print("  ✅ OG Image Generated (Premium V4 Template)")
+        except Exception as e:
+            print(f"  ❌ Error generating OG: {e}")
             
         # 2. Generate Instagram Post
         try:
