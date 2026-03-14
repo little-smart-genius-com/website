@@ -1,0 +1,45 @@
+# ============================================================
+# TPT Store Scanner — Auto-update products every 2 days
+# ============================================================
+name: Scan TPT Store
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Every 2 days at midnight UTC
+    - cron: '0 0 */2 * *'
+
+permissions:
+  contents: write
+
+jobs:
+  scan-tpt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run TPT scanner
+        run: python scripts/update_site_master.py
+
+      - name: Check for changes
+        id: check
+        run: |
+          git diff --quiet products_tpt.js featured_products.js || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit & Push
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add products_tpt.js featured_products.js
+          git commit -m "Auto-update TPT products [$(date -u +%Y-%m-%d)]"
+          git push

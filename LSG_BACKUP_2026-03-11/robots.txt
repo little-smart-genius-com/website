@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://littlesmartgenius.com/sitemap.xml
+
+# Block non-public directories
+Disallow: /posts/
+Disallow: /logs/
+Disallow: /reports/
+Disallow: /backups/
+Disallow: /scripts/
+Disallow: /_legacy/
+Disallow: /data/
+Disallow: /instagram/
