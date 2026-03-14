@@ -218,11 +218,26 @@
             ? `<span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-1 rounded-full">${escHtml(article.category)}</span>`
             : '';
 
+        let linkUrl = article.url || '';
+        if (linkUrl && !linkUrl.startsWith('http') && !linkUrl.startsWith('../')) {
+            linkUrl = '../' + linkUrl;
+        }
+        
+        let imgUrl = article.image || '';
+        if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('../')) {
+            // Use thumbnail if available
+            if (imgUrl.startsWith("images/") && imgUrl.endsWith(".webp")) {
+                const thumbName = imgUrl.split('/').pop();
+                imgUrl = `images/thumbs/${thumbName}`;
+            }
+            imgUrl = '../' + imgUrl;
+        }
+
         return `
         <article class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border animate-fadeIn" style="background: var(--card); border-color: var(--bord);">
-            <a href="${escHtml(article.url)}" class="block">
+            <a href="${escHtml(linkUrl)}" class="block">
                 <div class="aspect-video overflow-hidden">
-                    <img src="${escHtml(article.image)}" alt="${escHtml(article.title)}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy">
+                    <img src="${escHtml(imgUrl)}" alt="${escHtml(article.title)}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy">
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-2 mb-3">

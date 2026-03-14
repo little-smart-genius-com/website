@@ -343,7 +343,7 @@ def generate_internal_links_html(current_slug: str, all_articles: List[Dict]) ->
                 {links_html}
             </ul>
             <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog.html" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
+                <a href="../blog/" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
             </div>
         </div>
 """

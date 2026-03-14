@@ -18,12 +18,16 @@ def generate_article_card(article):
     """Generate a single article card HTML."""
     title = esc(article.get("title", "Untitled"))
     slug = article.get("slug", "")
-    url = f'articles/{slug}.html'
+    url = f'../articles/{slug}.html'
     image = esc(article.get("image", ""))
     # Use thumbnails from images/thumbs/ directory
     if image.startswith("images/") and image.endswith(".webp"):
         thumb_name = os.path.basename(image)
-        image = f"images/thumbs/{thumb_name}"
+        image = f"../images/thumbs/{thumb_name}"
+    else:
+        # If it's a relative path starting with images/, prepend ../
+        if image.startswith("images/"):
+            image = f"../{image}"
     category = esc(article.get("category", ""))
     excerpt = esc(article.get("excerpt", ""))
     reading_time = article.get("reading_time", 5)
@@ -76,12 +80,12 @@ def generate_pagination(current_page, total_pages, base_name="blog"):
     if current_page == 1:
         parts.append('<span class="px-5 py-3 rounded-xl font-bold text-sm bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 cursor-default">&larr; Previous</span>')
     else:
-        prev_file = f"{base_name}.html" if current_page == 2 else f"{base_name}-{current_page - 1}.html"
+        prev_file = "index.html" if current_page == 2 else f"page-{current_page - 1}.html"
         parts.append(f'<a href="{prev_file}" class="px-5 py-3 rounded-xl font-bold text-sm transition bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white" style="color:var(--text)">&larr; Previous</a>')
     
     # Page numbers
     for p in range(1, total_pages + 1):
-        page_file = f"{base_name}.html" if p == 1 else f"{base_name}-{p}.html"
+        page_file = "index.html" if p == 1 else f"page-{p}.html"
         if p == current_page:
             parts.append(f'<span class="px-4 py-3 rounded-xl font-bold text-sm bg-brand text-white">{p}</span>')
         else:
@@ -91,7 +95,7 @@ def generate_pagination(current_page, total_pages, base_name="blog"):
     if current_page == total_pages:
         parts.append('<span class="px-5 py-3 rounded-xl font-bold text-sm bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 cursor-default">Next &rarr;</span>')
     else:
-        next_file = f"{base_name}-{current_page + 1}.html"
+        next_file = f"page-{current_page + 1}.html"
         parts.append(f'<a href="{next_file}" class="px-5 py-3 rounded-xl font-bold text-sm transition bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white" style="color:var(--text)">Next &rarr;</a>')
     
     return '<div class="flex items-center justify-center gap-2 mt-12 mb-0 flex-wrap">' + ''.join(parts) + '</div>'
@@ -118,13 +122,24 @@ def rebuild_blog_pages():
     
     # Read the existing blog.html as template
     blog_template_path = os.path.join(PROJECT_ROOT, "blog.html")
+    if not os.path.exists(blog_template_path):
+        blog_template_path = os.path.join(PROJECT_ROOT, "blog", "index.html")
     with open(blog_template_path, "r", encoding="utf-8") as f:
         template = f.read()
+    
+    # We are writing to blog/ instead of root. Need to adjust root-level links to ../
+    # Fix CSS/JS references, navigation, and images
+    template = re.sub(r'href="(?!http|mailto|tel|#|javascript)([^"]+)"', r'href="../\1"', template)
+    template = re.sub(r'src="(?!http|data:|#)([^"]+)"', r'src="../\1"', template)
+    # Fix the brand/links to be absolute or correct relative
+    template = template.replace('href="..//"', 'href="../"')
+    template = template.replace('href="../blog.html"', 'href="index.html"')
+    template = template.replace('href="blog.html"', 'href="blog/"')
     
     # Extract HEAD section (everything up to and including </head>)
     head_match = re.search(r'(<!DOCTYPE html>.*?</head>)', template, re.DOTALL)
     if not head_match:
-        print("  [ERROR] Could not find <head> section in blog.html")
+        print("  [ERROR] Could not find <head> section in template")
         return
     head_section = head_match.group(1)
     
@@ -182,7 +197,11 @@ def rebuild_blog_pages():
             page_head = head_section
             
             # Adjust meta title and canonical for category pages
-            canonical_url = f"https://littlesmartgenius.com/{base_name}.html" if page_num == 1 else f"https://littlesmartgenius.com/{base_name}-{page_num}.html"
+            page_slug = "index" if page_num == 1 else f"page-{page_num}"
+            if base_name != "blog":
+                page_slug = f"{base_name}" if page_num == 1 else f"{base_name}-{page_num}"
+            
+            canonical_url = f"https://littlesmartgenius.com/blog/{page_slug}.html" if page_slug != "index" else "https://littlesmartgenius.com/blog/"
             
             if '<link rel="canonical"' in page_head:
                 page_head = re.sub(r'<link rel="canonical" href=".*?">', f'<link rel="canonical" href="{canonical_url}">', page_head)
@@ -246,7 +265,7 @@ def rebuild_blog_pages():
         }});
     </script>
 """
-            full_html += '    <script src="blog-search.js" defer></script>\n' + script_add
+            full_html += '    <script src="../blog-search.js" defer></script>\n' + script_add
             
             # ADD STANDARD FOOTER
             full_html += """    <!-- SOCIAL MEDIA & FOOTER -->
@@ -288,14 +307,23 @@ def rebuild_blog_pages():
         </div>
     </div>
 """
-            full_html += '<script src="exit-intent.js"></script>\n</body>\n\n</html>'
+            full_html += '<script src="../exit-intent.js"></script>\n</body>\n\n</html>'
             
-            output_file = os.path.join(PROJECT_ROOT, f"{base_name}.html") if page_num == 1 else os.path.join(PROJECT_ROOT, f"{base_name}-{page_num}.html")
+            BLOG_DIR = os.path.join(PROJECT_ROOT, "blog")
+            os.makedirs(BLOG_DIR, exist_ok=True)
+            
+            if base_name == "blog":
+                file_name = "index.html" if page_num == 1 else f"page-{page_num}.html"
+            else:
+                cat_slug = base_name.replace("blog-", "")
+                file_name = f"{cat_slug}.html" if page_num == 1 else f"{cat_slug}-{page_num}.html"
+                
+            output_file = os.path.join(BLOG_DIR, file_name)
             with open(output_file, "w", encoding="utf-8") as f:
                 f.write(full_html)
             
             file_size = os.path.getsize(output_file) // 1024
-            print(f"  [{page_num}/{cat_total_pages}] OK  {file_size}KB  {os.path.basename(output_file)} ({len(page_articles)} articles)")
+            print(f"  [{page_num}/{cat_total_pages}] OK  {file_size}KB  blog/{os.path.basename(output_file)} ({len(page_articles)} articles)")
 
     # 1. Create main blog pages
     print("\n  Generating Main Blog Pages...")

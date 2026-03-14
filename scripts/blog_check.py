@@ -58,7 +58,7 @@ if broken_images:
 
 # 4. Blog listing pages
 print("\n[4] Checking blog listing pages...")
-blog_pages = ['blog.html', 'blog-2.html', 'blog-3.html', 'blog-4.html']
+blog_pages = ['blog/index.html', 'blog/page-2.html', 'blog/page-3.html', 'blog/page-4.html']
 for page in blog_pages:
     if os.path.exists(page):
         size = os.path.getsize(page)
@@ -69,8 +69,8 @@ for page in blog_pages:
 
 # 5. Category pages
 print("\n[5] Checking category pillar pages...")
-category_pages = glob.glob('blog-*.html')
-category_pages = [p for p in category_pages if p not in blog_pages]
+category_pages = glob.glob('blog/*.html')
+category_pages = [p for p in category_pages if p not in blog_pages and not p.endswith('index.html') and not 'page-' in p]
 print(f"    Category pages: {len(category_pages)}")
 for page in sorted(category_pages):
     size = os.path.getsize(page)

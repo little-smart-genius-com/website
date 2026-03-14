@@ -410,7 +410,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
             <a href="/" class="nav-link">Home</a>
             <a href="../products.html" class="nav-link">Store</a>
             <a href="../freebies.html" class="nav-link">Freebies</a>
-            <a href="../blog.html" class="nav-link active">Blog</a>
+            <a href="../blog/" class="nav-link active">Blog</a>
             <a href="../about.html" class="nav-link">About</a>
             <a href="../contact.html" class="nav-link">Contact</a>
         </nav>
@@ -440,7 +440,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         <a href="/" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
         <a href="../products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
         <a href="../freebies.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Freebies</a>
-        <a href="../blog.html" class="py-3 border-b border-gray-200 font-bold text-brand">Blog</a>
+        <a href="../blog/" class="py-3 border-b border-gray-200 font-bold text-brand">Blog</a>
         <a href="../about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">About</a>
         <a href="../contact.html" class="py-3 font-bold" style="color:var(--text)">Contact</a>
         <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
