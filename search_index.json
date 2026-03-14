@@ -1,7 +1,32 @@
 {
-  "generated_at": "2026-03-13T22:01:22.384255",
-  "total_articles": 30,
+  "generated_at": "2026-03-14T09:24:43.625706",
+  "total_articles": 31,
   "articles": [
+    {
+      "title": "Best Hands-On Math Activities for Visual Learners",
+      "slug": "best-hands-on-math-activities-for-visual-learners",
+      "date": "March 14, 2026",
+      "iso_date": "2026-03-14T09:24:41.857563",
+      "category": "Math Skills",
+      "excerpt": "Engage visual learners with Montessori math games! Hands-on activities boost number sense and problem-solving. Start the adventure now!",
+      "image": "images/best-hands-on-math-activities-for-visual-learners-leos-learning-journey-cover-1773479318.webp",
+      "reading_time": 15,
+      "url": "articles/best-hands-on-math-activities-for-visual-learners.html",
+      "keywords": [
+        "hands math activities",
+        "visual learners",
+        "math activities visual",
+        "activities visual learners",
+        "hands math",
+        "math activities",
+        "activities visual",
+        "problem solving",
+        "little smart genius",
+        "leo math"
+      ],
+      "word_count": 3128,
+      "slot": "keyword"
+    },
     {
       "title": "Hitori Puzzles Transform Math Frustration into Logic Triumph",
       "slug": "hitori-puzzles-transform-math-frustration-into-logic-triumph",
