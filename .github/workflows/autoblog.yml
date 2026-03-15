@@ -58,6 +58,8 @@ on:
     - cron: '0 20 * * *'
     # Soir slot 2 — week 10+
     - cron: '30 21 * * *'
+    # FINAL HANDS-OFF TEST (Current time ~03:55 UTC) -> Trigger at 04:05 UTC
+    - cron: '5 4 * * *'
 
 permissions:
   contents: write
