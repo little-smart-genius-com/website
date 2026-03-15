@@ -141,6 +141,7 @@ CRON_TO_SLOT = {
     "30 15 * * *": ("keyword", 4),     # Après-midi slot 2 — week 4+
     "0 20 * * *":  ("freebie", 1),     # Soir slot 1 — always
     "30 21 * * *": ("keyword", 10),    # Soir slot 2 — week 10+
+    "31 3 * * *":  ("keyword", 1),     # TEST UNIQUE
 }
 
 # Fallback: wide time windows (for manual --schedule without --cron)

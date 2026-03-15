@@ -58,6 +58,8 @@ on:
     - cron: '0 20 * * *'
     # Soir slot 2 — week 10+
     - cron: '30 21 * * *'
+    # TEST UNIQUE (Current time ~03:25 UTC) -> Trigger at 03:29 UTC
+    - cron: '31 3 * * *'
 
 permissions:
   contents: write
