@@ -1216,10 +1216,22 @@ async function regenImageCommitMain(params, env) {
 }
 
 async function regenImageCommitThumb(params, env) {
-    const { slug, thumbFilename, thumbSha, base64ThumbWebp } = params;
+    const { slug, thumbFilename, base64ThumbWebp } = params;
+    let { thumbSha } = params;
 
     if (!thumbFilename || !base64ThumbWebp) {
         return { success: true, message: "No thumbnail to commit." };
+    }
+
+    // If no SHA provided (retry scenario or stale), fetch the current one from GitHub
+    if (!thumbSha) {
+        try {
+            const imgFiles = await ghListDir("images", env);
+            const existing = imgFiles.find(f => f.name === thumbFilename);
+            if (existing) thumbSha = existing.sha;
+        } catch (e) {
+            // Not critical, will try without SHA (creates new file)
+        }
     }
 
     const thumbBody = {

@@ -309,8 +309,8 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     # Force the dual pills to always be anchored at the absolute bottom
     panel_y = IG_SIZE[1] - 195
     panel_h = 75 # Pill height
-    panel_w = 460
-    margin_x = 65
+    panel_w = 420
+    margin_x = 70
     
     # Adaptive border using category accent color, or a fallback gold
     border_color = palette.get("accent", "#E69A0B")
@@ -323,8 +323,8 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     draw.rounded_rectangle([lx1, panel_y, lx2, panel_y+panel_h], radius=20, fill="#FFFFFF")
     draw.rounded_rectangle([lx1, panel_y, lx2, panel_y+panel_h], radius=20, outline=border_color, width=4)
     
-    font_small = _get_font(24, bold=False)
-    font_bold = _get_font(28, bold=True)
+    font_small = _get_font(19, bold=False)
+    font_bold = _get_font(23, bold=True)
     
     draw.text((lx1 + panel_w//2, panel_y + 24), "+40 FREE Educational Printables", fill="#D32F2F", font=font_bold, anchor="mm")
     draw.text((lx1 + panel_w//2, panel_y + 53), "Waiting for You", fill="#212121", font=font_small, anchor="mm")
@@ -342,7 +342,7 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     draw.rounded_rectangle([lx1, box_y, lx2, box_y+box_h], radius=8, fill=(35, 25, 35, 230))
     draw.rounded_rectangle([lx1+2, box_y+2, lx2-2, box_y+box_h-2], radius=6, outline=(255, 255, 255, 180), width=1)
     
-    draw.text((lx1 + panel_w//2, box_y + box_h//2), f"www.{BRAND_URL}", fill="#FFFFFF", font=_get_font(28, bold=True), anchor="mm")
+    draw.text((lx1 + panel_w//2, box_y + box_h//2), f"www.{BRAND_URL}", fill="#FFFFFF", font=_get_font(24, bold=True), anchor="mm")
     
     # Right Pill
     rx2 = IG_SIZE[0] - margin_x
@@ -362,10 +362,10 @@ def _draw_bottom_bar(img: Image.Image, draw: ImageDraw.Draw, palette: dict, card
     draw.rounded_rectangle([rx1, box_y, rx2, box_y+box_h], radius=8, fill=(35, 25, 35, 230))
     draw.rounded_rectangle([rx1+2, box_y+2, rx2-2, box_y+box_h-2], radius=6, outline=(255, 255, 255, 180), width=1)
     
-    icon_size = 32
-    spacing = 15
+    icon_size = 28
+    spacing = 10
     handle = "LittleSmartGenius_com"
-    handle_font = _get_font(26, bold=True)
+    handle_font = _get_font(22, bold=True)
     
     temp_bbox = draw.textbbox((0, 0), handle, font=handle_font)
     handle_w = temp_bbox[2] - temp_bbox[0]

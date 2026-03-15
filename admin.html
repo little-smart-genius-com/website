@@ -3046,8 +3046,25 @@
                         }, "POST");
                         console.log('Commit thumb OK');
                     } catch (thumbErr) {
-                        console.warn('Thumb commit error:', thumbErr.message);
-                        toast(`⚠️ Miniature non sauvegardée: ${thumbErr.message}`, "info");
+                        // If it's a SHA conflict (409/422), retry once with fresh SHA
+                        if (thumbErr.message && (thumbErr.message.includes('409') || thumbErr.message.includes('422') || thumbErr.message.includes('sha'))) {
+                            toast(`⚠️ Conflit SHA miniature, nouvelle tentative...`, "info");
+                            try {
+                                await api("regen-image-commit-thumb", {
+                                    slug,
+                                    thumbFilename,
+                                    thumbSha: null,  // Let the server fetch fresh SHA
+                                    base64ThumbWebp
+                                }, "POST");
+                                console.log('Commit thumb retry OK');
+                            } catch (retryErr) {
+                                console.warn('Thumb commit retry error:', retryErr.message);
+                                toast(`⚠️ Miniature non sauvegardée: ${retryErr.message}`, "info");
+                            }
+                        } else {
+                            console.warn('Thumb commit error:', thumbErr.message);
+                            toast(`⚠️ Miniature non sauvegardée: ${thumbErr.message}`, "info");
+                        }
                     }
                 }
 
