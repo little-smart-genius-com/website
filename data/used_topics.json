@@ -143,6 +143,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.4",
       "date": "2026-03-15T15:14:35.913578"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Clip Art Set",
+      "date": "2026-03-15T21:11:20.939399"
     }
   ],
   "product": [
@@ -168,6 +173,7 @@
     "Joke Book for Kids",
     "Nurikabe",
     "Coloring Page (Adult)",
-    "Hitori"
+    "Hitori",
+    "Clip Art Set"
   ]
 }
