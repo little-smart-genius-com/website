@@ -114,12 +114,17 @@ def _get_font(size: int, bold: bool = False) -> 'ImageFont.FreeTypeFont':
     if cache_key in _FONT_CACHE:
         return _FONT_CACHE[cache_key]
 
+    # Local embedded fonts to ensure identical rendering on GitHub Actions (Ubuntu) and Local (Windows)
+    local_fonts_dir = os.path.join(SCRIPT_DIR, "fonts")
+    
     font_paths_bold = [
+        os.path.join(local_fonts_dir, "SegoeUI-Bold.ttf"),
         "C:/Windows/Fonts/segoeuib.ttf",
         "C:/Windows/Fonts/arialbd.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
     ]
     font_paths_regular = [
+        os.path.join(local_fonts_dir, "SegoeUI.ttf"),
         "C:/Windows/Fonts/segoeui.ttf",
         "C:/Windows/Fonts/arial.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
