@@ -165,6 +165,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.2",
       "date": "2026-03-16T17:44:39.393010"
+    },
+    {
+      "slot": "freebie",
+      "topic": "ABC Path",
+      "date": "2026-03-16T22:03:33.787468"
     }
   ],
   "product": [
@@ -192,6 +197,7 @@
     "Nurikabe",
     "Coloring Page (Adult)",
     "Hitori",
-    "Clip Art Set"
+    "Clip Art Set",
+    "ABC Path"
   ]
 }
