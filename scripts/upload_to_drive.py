@@ -11,7 +11,7 @@ def upload_to_drive(file_path, folder_id, credentials_json):
         creds_dict = json.loads(credentials_json)
         creds = service_account.Credentials.from_service_account_info(
             creds_dict,
-            scopes=["https://www.googleapis.com/auth/drive.file"]
+            scopes=["https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
         )
     except Exception as e:
         print(f"Error loading credentials: {e}")
@@ -31,8 +31,15 @@ def upload_to_drive(file_path, folder_id, credentials_json):
 
     try:
         # pylint: disable=no-member
+        # To avoid the "Service Accounts do not have storage quota" error when uploading
+        # to a folder owned by a regular user, use the `supportsAllDrives=True` parameter
         file = service.files().create(
-            body=file_metadata, media_body=media, fields='id', supportsAllDrives=True).execute()
+            body=file_metadata,
+            media_body=media,
+            fields='id',
+            supportsAllDrives=True
+        ).execute()
+        
         print(f"Success! File ID: {file.get('id')}")
     except Exception as e:
         print(f"An error occurred during upload: {e}")
@@ -46,7 +53,6 @@ if __name__ == '__main__':
     file_to_upload = sys.argv[1]
     drive_folder_id = sys.argv[2]
     
-    # Needs to be passed via environment variable in GitHub Actions
     gdrive_creds = os.environ.get("GDRIVE_CREDENTIALS")
     
     if not gdrive_creds:
