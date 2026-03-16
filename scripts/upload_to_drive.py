@@ -32,7 +32,7 @@ def upload_to_drive(file_path, folder_id, credentials_json):
     try:
         # pylint: disable=no-member
         file = service.files().create(
-            body=file_metadata, media_body=media, fields='id').execute()
+            body=file_metadata, media_body=media, fields='id', supportsAllDrives=True).execute()
         print(f"Success! File ID: {file.get('id')}")
     except Exception as e:
         print(f"An error occurred during upload: {e}")
