@@ -187,6 +187,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.1",
       "date": "2026-03-17T17:51:37.173858"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Complete the Word",
+      "date": "2026-03-17T22:08:16.370688"
     }
   ],
   "product": [
@@ -216,6 +221,7 @@
     "Coloring Page (Adult)",
     "Hitori",
     "Clip Art Set",
-    "ABC Path"
+    "ABC Path",
+    "Complete the Word"
   ]
 }
