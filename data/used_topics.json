@@ -231,6 +231,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7",
       "date": "2026-03-19T17:55:48.764365"
+    },
+    {
+      "slot": "freebie",
+      "topic": "One Hundred Puzzle",
+      "date": "2026-03-19T21:54:42.953579"
     }
   ],
   "product": [
@@ -264,6 +269,7 @@
     "Clip Art Set",
     "ABC Path",
     "Complete the Word",
-    "Activity Book"
+    "Activity Book",
+    "One Hundred Puzzle"
   ]
 }
