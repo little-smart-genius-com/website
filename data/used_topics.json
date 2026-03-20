@@ -253,6 +253,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.6",
       "date": "2026-03-20T16:11:42.901575"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Logic Pack",
+      "date": "2026-03-20T21:12:49.891525"
     }
   ],
   "product": [
@@ -288,6 +293,7 @@
     "ABC Path",
     "Complete the Word",
     "Activity Book",
-    "One Hundred Puzzle"
+    "One Hundred Puzzle",
+    "Logic Pack"
   ]
 }
