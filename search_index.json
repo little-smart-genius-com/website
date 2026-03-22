@@ -1,7 +1,32 @@
 {
-  "generated_at": "2026-03-22T15:04:19.008897",
-  "total_articles": 68,
+  "generated_at": "2026-03-22T21:05:00.575795",
+  "total_articles": 69,
   "articles": [
+    {
+      "title": "How Our Creative Pack Transformed a Family's Day",
+      "slug": "how-our-creative-pack-transformed-a-familys-day",
+      "date": "March 22, 2026",
+      "iso_date": "2026-03-22T21:04:58.556416",
+      "category": "Education",
+      "excerpt": "Discover how the Martinez family boosts kids' skills with our free Creative Pack. Transform learning at home with simple resources!",
+      "image": "images/a-day-in-the-life-how-our-creative-pack-transformed-one-familys-routine-from-mor-cover-1774213111.webp",
+      "reading_time": 11,
+      "url": "articles/how-our-creative-pack-transformed-a-familys-day.html",
+      "keywords": [
+        "creative pack",
+        "creative pack kids",
+        "pack kids",
+        "beats any store",
+        "any store bought",
+        "store bought worksheet",
+        "bought worksheet hands",
+        "worksheet hands down",
+        "pro tip experience",
+        "little smart genius"
+      ],
+      "word_count": 2224,
+      "slot": "freebie"
+    },
     {
       "title": "Spot the Difference Puzzles Build Focus Skills During Travel",
       "slug": "spot-the-difference-puzzles-build-focus-skills-during-travel",
