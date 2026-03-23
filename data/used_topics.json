@@ -31,7 +31,8 @@
     "addition and subtraction worksheets for grade 1",
     "sudoku puzzles for beginners kids",
     "screen free activities for kids that boost learning",
-    "logic games for gifted children at home"
+    "logic games for gifted children at home",
+    "how to create a learning routine for kids at home"
   ],
   "daily_log": [
     {
@@ -308,6 +309,11 @@
       "slot": "keyword",
       "topic": "logic games for gifted children at home",
       "date": "2026-03-23T05:52:03.675441"
+    },
+    {
+      "slot": "keyword",
+      "topic": "how to create a learning routine for kids at home",
+      "date": "2026-03-23T09:13:13.221842"
     }
   ],
   "product": [
