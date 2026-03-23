@@ -319,6 +319,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D2",
       "date": "2026-03-23T15:05:10.205257"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Shadow Matching",
+      "date": "2026-03-23T20:51:28.954462"
     }
   ],
   "product": [
@@ -360,6 +365,7 @@
     "One Hundred Puzzle",
     "Logic Pack",
     "Maze for Kids",
-    "Creative Pack"
+    "Creative Pack",
+    "Shadow Matching"
   ]
 }
