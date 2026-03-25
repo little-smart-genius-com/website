@@ -363,6 +363,11 @@
       "slot": "product",
       "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.8",
       "date": "2026-03-25T15:10:46.073726"
+    },
+    {
+      "slot": "freebie",
+      "topic": "CalcuDoku",
+      "date": "2026-03-25T20:55:34.617166"
     }
   ],
   "product": [
@@ -408,6 +413,7 @@
     "Maze for Kids",
     "Creative Pack",
     "Shadow Matching",
-    "Kids Math Equations"
+    "Kids Math Equations",
+    "CalcuDoku"
   ]
 }

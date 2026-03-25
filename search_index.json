@@ -1,7 +1,32 @@
 {
-  "generated_at": "2026-03-25T15:10:47.371567",
-  "total_articles": 80,
+  "generated_at": "2026-03-25T20:55:35.755107",
+  "total_articles": 81,
   "articles": [
+    {
+      "title": "CalcuDoku: Montessori Math Puzzle Adventure for 7-Year-Olds",
+      "slug": "calcudoku-montessori-math-puzzle-adventure-for-7-year-olds",
+      "date": "March 25, 2026",
+      "iso_date": "2026-03-25T20:55:32.990161",
+      "category": "Education",
+      "excerpt": "Transform math into joyful learning for your 7-year-old with CalcuDoku puzzles! Download our free printable and expert tips from Rachel Nguyen.",
+      "image": "images/unlock-your-7-year-olds-math-genius-with-calcudoku-a-montessori-inspired-puzzle--cover-1774471827.webp",
+      "reading_time": 13,
+      "url": "articles/calcudoku-montessori-math-puzzle-adventure-for-7-year-olds.html",
+      "keywords": [
+        "calcudoku kids",
+        "pro tip experience",
+        "little smart genius",
+        "thinking calculating asking",
+        "beats any store",
+        "any store bought",
+        "store bought worksheet",
+        "bought worksheet hands",
+        "worksheet hands down",
+        "learning calcudoku kids"
+      ],
+      "word_count": 2624,
+      "slot": "freebie"
+    },
     {
       "title": "Word Search Worksheets Build Vocabulary for All Ages",
       "slug": "word-search-worksheets-build-vocabulary-for-all-ages",
