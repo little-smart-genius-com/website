@@ -35,7 +35,8 @@
     "how to create a learning routine for kids at home",
     "fun homework alternatives for elementary students",
     "printable worksheets for summer learning loss prevention",
-    "escape room activities for kids at home printable"
+    "escape room activities for kids at home printable",
+    "step by step problem solving worksheets for kids"
   ],
   "daily_log": [
     {
@@ -352,6 +353,11 @@
       "slot": "keyword",
       "topic": "escape room activities for kids at home printable",
       "date": "2026-03-25T05:34:45.985624"
+    },
+    {
+      "slot": "keyword",
+      "topic": "step by step problem solving worksheets for kids",
+      "date": "2026-03-25T09:15:02.712109"
     }
   ],
   "product": [
