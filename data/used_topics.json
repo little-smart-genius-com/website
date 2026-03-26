@@ -385,6 +385,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.5",
       "date": "2026-03-26T15:14:16.581450"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Warships",
+      "date": "2026-03-26T20:53:34.857456"
     }
   ],
   "product": [
@@ -432,6 +437,7 @@
     "Creative Pack",
     "Shadow Matching",
     "Kids Math Equations",
-    "CalcuDoku"
+    "CalcuDoku",
+    "Warships"
   ]
 }
