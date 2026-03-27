@@ -407,6 +407,11 @@
       "slot": "product",
       "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.6",
       "date": "2026-03-27T14:56:28.234366"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Skyscraper",
+      "date": "2026-03-27T20:57:39.602501"
     }
   ],
   "product": [
@@ -456,6 +461,7 @@
     "Shadow Matching",
     "Kids Math Equations",
     "CalcuDoku",
-    "Warships"
+    "Warships",
+    "Skyscraper"
   ]
 }
