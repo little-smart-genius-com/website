@@ -451,6 +451,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.5",
       "date": "2026-03-29T14:44:09.192355"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Hangman",
+      "date": "2026-03-29T20:48:37.443421"
     }
   ],
   "product": [
@@ -504,6 +509,7 @@
     "CalcuDoku",
     "Warships",
     "Skyscraper",
-    "Cryptogram"
+    "Cryptogram",
+    "Hangman"
   ]
 }
