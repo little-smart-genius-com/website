@@ -473,6 +473,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.1",
       "date": "2026-03-30T15:14:36.885017"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Coloring Page (Kids)",
+      "date": "2026-03-30T20:59:23.434126"
     }
   ],
   "product": [
@@ -528,6 +533,7 @@
     "Warships",
     "Skyscraper",
     "Cryptogram",
-    "Hangman"
+    "Hangman",
+    "Coloring Page (Kids)"
   ]
 }
