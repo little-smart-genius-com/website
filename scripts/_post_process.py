@@ -190,15 +190,15 @@ def generate_related_articles_html(related: List[Dict]) -> str:
         if image and not image.startswith("http"):
             # Compute both paths: thumb for mobile, original for desktop
             thumb = image.replace("images/", "images/thumbs/", 1)
-            thumb_path = f"../{thumb}"
-            full_path  = f"../{image}"
+            thumb_path = f"/{thumb}"
+            full_path  = f"/{image}"
         else:
             thumb_path = image
             full_path = image
         
         url = article.get("url", "")
-        if url and not url.startswith("http"):
-            url = f"../{url}"
+        if url and not url.startswith("http") and not url.startswith("/"):
+            url = f"/{url}"
         
         category = esc(article.get("category", ""))
         reading_time = article.get("reading_time", 5)
@@ -326,8 +326,8 @@ def generate_internal_links_html(current_slug: str, all_articles: List[Dict]) ->
     links_html = ""
     for a in others:
         url = a.get("url", "")
-        if url and not url.startswith("http"):
-            url = f"../{url}"
+        if url and not url.startswith("http") and not url.startswith("/"):
+            url = f"/{url}"
         links_html += f"""
                     <li class="py-1.5">
                         <a href="{esc(url)}" class="text-sm hover:text-brand transition font-medium" style="color: var(--text);">
@@ -343,7 +343,7 @@ def generate_internal_links_html(current_slug: str, all_articles: List[Dict]) ->
                 {links_html}
             </ul>
             <div class="mt-4 pt-3 border-t" style="border-color: var(--bord);">
-                <a href="../blog/" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
+                <a href="/blog/" class="text-brand font-bold text-sm hover:underline">View All Articles →</a>
             </div>
         </div>
 """

@@ -227,15 +227,17 @@ def rebuild_blog_pages():
             # Update header info
             page_head = head_section
             
-            # Adjust meta title and canonical for category pages
-            page_slug = "index" if page_num == 1 else f"page-{page_num}"
-            if base_name != "blog":
-                page_slug = f"{base_name}" if page_num == 1 else f"{base_name}-{page_num}"
+            # Compute canonical URL matching actual output filename
+            if base_name == "blog":
+                canonical_slug = "index" if page_num == 1 else f"page-{page_num}"
+            else:
+                cat_slug_clean = base_name.replace("blog-", "")
+                canonical_slug = cat_slug_clean if page_num == 1 else f"{cat_slug_clean}-{page_num}"
             
-            canonical_url = f"https://littlesmartgenius.com/blog/{page_slug}.html" if page_slug != "index" else "https://littlesmartgenius.com/blog/"
+            canonical_url = f"https://littlesmartgenius.com/blog/{canonical_slug}.html" if canonical_slug != "index" else "https://littlesmartgenius.com/blog/"
             
             if '<link rel="canonical"' in page_head:
-                page_head = re.sub(r'<link rel="canonical" href=".*?">', f'<link rel="canonical" href="{canonical_url}">', page_head)
+                page_head = re.sub(r'<link rel="canonical" href=".*?"[^>]*/?\s*>', f'<link rel="canonical" href="{canonical_url}">', page_head)
             else:
                 page_head = page_head.replace('</head>', f'    <link rel="canonical" href="{canonical_url}">\n</head>')
 

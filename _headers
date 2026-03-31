@@ -1,0 +1,16 @@
+/favicon.ico
+  Content-Type: image/x-icon
+  Cache-Control: public, max-age=604800
+
+/favicon-32x32.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=604800
+
+/images/*
+  Cache-Control: public, max-age=2592000
+
+/*.css
+  Cache-Control: public, max-age=86400
+
+/*.js
+  Cache-Control: public, max-age=86400

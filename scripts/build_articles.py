@@ -60,6 +60,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <meta name="keywords" content="{keywords}">
     <link rel="canonical" href="{canonical_url}">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
     <!-- Open Graph -->
     <meta property="og:title" content="{title}">
@@ -2561,7 +2562,7 @@ def build_all():
     <priority>{priority}</priority>
   </url>""")
     
-    for article in all_articles:
+    for article in full_articles_list:
         url = article.get('url', '')
         iso_date = article.get('iso_date', datetime.now().isoformat())
         sitemap_entries.append(f"""  <url>
