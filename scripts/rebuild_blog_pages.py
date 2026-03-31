@@ -73,8 +73,7 @@ def generate_pagination(current_page, total_pages, base_name="blog"):
     """Generate pagination navigation HTML with a sliding window of max 5 pages."""
     if total_pages <= 1:
         return ''
-    
-    MAX_VISIBLE = 5  # Max page numbers to show at once
+    MAX_VISIBLE = 3  # Max page numbers to show at once
     
     parts = []
     
