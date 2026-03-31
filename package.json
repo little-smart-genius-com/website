@@ -1,0 +1,26 @@
+{
+  "name": "little_smart_genius",
+  "version": "1.0.0",
+  "description": "",
+  "main": "blog-search.js",
+  "scripts": {
+    "build:css": "npx tailwindcss -i src/input.css -o styles/tailwind.min.css --minify",
+    "watch:css": "npx tailwindcss -i src/input.css -o styles/tailwind.min.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/little-smart-genius-com/website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/little-smart-genius-com/website/issues"
+  },
+  "homepage": "https://github.com/little-smart-genius-com/website#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

@@ -21,6 +21,10 @@ selenium_logs/
 # Wrangler cache
 .wrangler/
 
+# Node.js
+node_modules/
+package-lock.json
+
 # Temporary / Build Files
 tmp/
 dist/

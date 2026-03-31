@@ -77,16 +77,9 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <meta name="twitter:description" content="{excerpt}">
     <meta name="twitter:image" content="{og_image}">
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind (Production Build) -->
+    <link rel="stylesheet" href="/styles/tailwind.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {{
-            darkMode: 'class',
-            theme: {{ extend: {{ colors: {{ brand: '#F48C06' }} }} }}
-        }}
-    </script>
 
     <style>
         :root {{
@@ -471,7 +464,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
                     {title}
                 </h1>
                 <div class="flex items-center justify-center gap-4 text-sm font-bold" style="color: #64748B;">
-                    <span>{author_display}</span>
+                    <a href="/authors/little-smart-genius.html" class="hover:text-brand transition" style="color: inherit; text-decoration: none;">{author_display}</a>
                     <span>&bull;</span>
                     <time datetime="{iso_date}">{date}</time>
                     {category_display}

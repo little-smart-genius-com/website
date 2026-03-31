@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Home | Little Smart Genius</title>
+    <link rel="stylesheet" href="/styles/tailwind.min.css">
+<title>Home | Little Smart Genius</title>
     <link rel="canonical" href="https://littlesmartgenius.com/">
     <meta content="High-quality, engaging educational materials designed to spark creativity and critical thinking."
         name="description" />
@@ -26,16 +27,17 @@
         name="twitter:description" />
     <meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
         name="twitter:image" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1S8G205JX2');
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&amp;display=swap"
         rel="stylesheet" />
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: { extend: { colors: { brand: '#F48C06' } } }
-        }
-    </script>
-    <style>
+<style>
         :root {
             --bg: #FAFAFA;
             --text: #1E293B;
@@ -475,7 +477,10 @@
             <!-- Slide 1: Banner 1 -->
             <div class="relative transition-opacity duration-1000 ease-in-out opacity-100 slider-slide">
                 <img alt="Little Smart Genius – Smart Resources for Growing Minds" class="w-full h-auto object-contain"
-                    src="images/banners/Little_Smart_Genius_Banner_1.webp" width="1200" height="630" />
+                    src="images/banners/Little_Smart_Genius_Banner_1.webp"
+                    srcset="images/banners/Little_Smart_Genius_Banner_1.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 900px"
+                    width="1200" height="630" fetchpriority="high" />
             </div>
 
             <!-- Slide 2: Banner 2 -->
@@ -937,6 +942,63 @@
         }
     </script>
     <script defer="" src="mailerlite.js"></script>
+
+    <!-- LATEST ARTICLES SECTION (SEO: internal linking to article pages) -->
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-extrabold mb-2" style="color: var(--text);">Latest Articles</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-sm">Expert advice on child development, puzzles, and learning activities</p>
+        </div>
+        <div id="latest-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div class="text-center mt-8">
+            <a href="blog/" class="inline-block px-8 py-3 bg-brand text-white font-bold rounded-xl hover:shadow-lg transition">Browse All Articles →</a>
+        </div>
+    </div>
+    <script>
+        (function(){
+            fetch('articles.json')
+                .then(r => r.json())
+                .then(data => {
+                    const articles = (data.articles || []).slice(0, 6);
+                    const grid = document.getElementById('latest-articles-grid');
+                    if(!grid || !articles.length) return;
+                    grid.innerHTML = articles.map(a => {
+                        const img = a.image && a.image.startsWith('images/') && a.image.endsWith('.webp')
+                            ? '/images/thumbs/' + a.image.split('/').pop()
+                            : '/' + (a.image || '');
+                        const cat = a.category || '';
+                        const time = a.reading_time || 5;
+                        const excerpt = (a.excerpt || '').substring(0, 120) + '...';
+                        return `
+                        <a href="/articles/${a.slug}.html" class="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border block" style="background: var(--card); border-color: var(--bord);">
+                            <div class="aspect-video overflow-hidden rounded-t-2xl">
+                                <img src="${img}" alt="${a.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">${cat}</span>
+                                    <span class="text-xs text-slate-500">📖 ${time} min</span>
+                                </div>
+                                <h3 class="text-base font-extrabold mb-2 leading-snug" style="color: var(--text);">${a.title}</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">${excerpt}</p>
+                            </div>
+                        </a>`;
+                    }).join('');
+                })
+                .catch(() => {});
+        })();
+    </script>
+    <noscript>
+        <ul style="max-width: 72rem; margin: 0 auto; padding: 1rem 1.5rem; list-style: disc inside;">
+            <li><a href="/articles/best-educational-activities-for-long-car-rides-with-kids.html">Best Educational Activities for Long Car Rides with Kids</a></li>
+            <li><a href="/articles/neurodiversity-inclusive-math-manipulatives-for-homeschool.html">Neurodiversity-Inclusive Math Manipulatives for Homeschool</a></li>
+            <li><a href="/articles/how-coloring-pages-build-skills-through-play.html">How Coloring Pages Build Skills Through Play</a></li>
+            <li><a href="/articles/shared-focus-in-puzzles-strengthens-parent-child-bonds.html">Shared Focus in Puzzles Strengthens Parent-Child Bonds</a></li>
+            <li><a href="/articles/best-printable-summer-word-games-for-kids-learning-english.html">Best Printable Summer Word Games for Kids Learning English</a></li>
+            <li><a href="/articles/multi-sensory-deduction-puzzles-for-first-graders.html">Multi-Sensory Deduction Puzzles for First Graders</a></li>
+        </ul>
+    </noscript>
+
     <!-- SOCIAL MEDIA & FOOTER -->
     <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0);">
         <div class="social-footer-bar">

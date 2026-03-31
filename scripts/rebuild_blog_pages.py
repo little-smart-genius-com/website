@@ -3,6 +3,7 @@ REBUILD BLOG PAGES — Regenerates blog.html, blog-2.html, etc.
 Uses the existing blog.html as a template and repopulates with current articles.json data.
 """
 import os, json, re, math, html
+from datetime import datetime, timezone
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
@@ -241,10 +242,48 @@ def rebuild_blog_pages():
             else:
                 page_head = page_head.replace('</head>', f'    <link rel="canonical" href="{canonical_url}">\n</head>')
 
+            # ── SEO FIX: Unique meta description per page ──
             if category_title:
-                page_head = re.sub(r'<title>.*?</title>', f'<title>{category_title} Articles | Little Smart Genius</title>', page_head)
-                page_head = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{category_title} Articles | Little Smart Genius">', page_head)
-                page_head = re.sub(r'<meta content="https://littlesmartgenius.com/blog.html" property="og:url" />', f'<meta content="{canonical_url}" property="og:url" />', page_head)
+                if cat_total_pages > 1:
+                    meta_desc = f"Browse {category_title} activities and worksheets for kids — page {page_num} of {cat_total_pages}. Free and premium printables by Little Smart Genius."
+                else:
+                    meta_desc = f"Explore all {category_title} activities, worksheets, and educational printables for kids. Expert-curated resources by Little Smart Genius."
+            else:
+                if page_num == 1:
+                    meta_desc = f"{len(articles_list)} expert articles on child development, logic puzzles, educational activities, and homeschooling tips for parents and teachers."
+                else:
+                    meta_desc = f"Educational articles for parents and teachers — page {page_num} of {cat_total_pages}. Expert advice on child development and learning activities."
+            page_head = re.sub(
+                r'<meta\s+content="[^"]*"\s+name="description"\s*/?>',
+                f'<meta content="{meta_desc}" name="description" />',
+                page_head
+            )
+            # Also fix name="description" content="..." format
+            page_head = re.sub(
+                r'<meta\s+name="description"\s+content="[^"]*"\s*/?>',
+                f'<meta name="description" content="{meta_desc}" />',
+                page_head
+            )
+
+            # ── SEO FIX: og:url must match canonical ──
+            page_head = re.sub(
+                r'<meta\s+content="[^"]*"\s+property="og:url"\s*/?>',
+                f'<meta content="{canonical_url}" property="og:url" />',
+                page_head
+            )
+
+            # ── SEO FIX: Fix favicon path (prevent //// accumulation) ──
+            page_head = re.sub(r'href="/+favicon', 'href="/favicon', page_head)
+
+            if category_title:
+                cat_page_suffix = f" — Page {page_num}" if page_num > 1 else ""
+                page_head = re.sub(r'<title>.*?</title>', f'<title>{category_title} Articles{cat_page_suffix} | Little Smart Genius</title>', page_head)
+                page_head = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{category_title} Articles{cat_page_suffix} | Little Smart Genius">', page_head)
+            else:
+                # Main blog pagination: add " — Page X of Y" for pages 2+
+                if page_num > 1:
+                    page_head = re.sub(r'<title>.*?</title>', f'<title>Blog — Page {page_num} of {cat_total_pages} | Little Smart Genius</title>', page_head)
+                    page_head = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="Blog — Page {page_num} of {cat_total_pages} | Little Smart Genius">', page_head)
             
             page_body_before = body_before
             
@@ -268,6 +307,31 @@ def rebuild_blog_pages():
                 page_body_before
             )
             
+            # ── SEO: CollectionPage Schema ──
+            schema_items = []
+            for idx, art in enumerate(page_articles):
+                art_url = f"https://littlesmartgenius.com/articles/{art.get('slug', '')}.html"
+                schema_items.append(json.dumps({
+                    "@type": "ListItem",
+                    "position": idx + 1,
+                    "url": art_url,
+                    "name": art.get("title", "")
+                }, ensure_ascii=False))
+            collection_schema = json.dumps({
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                "name": category_title + " Articles" if category_title else "Blog",
+                "description": meta_desc,
+                "url": canonical_url,
+                "mainEntity": {
+                    "@type": "ItemList",
+                    "numberOfItems": len(page_articles),
+                    "itemListElement": [json.loads(s) for s in schema_items]
+                }
+            }, ensure_ascii=False, indent=2)
+            schema_tag = f'<script type="application/ld+json">{collection_schema}</script>'
+            page_head = page_head.replace('</head>', f'    {schema_tag}\n</head>')
+
             # Assemble full page
             full_html = page_head + "\n\n"
             full_html += page_body_before

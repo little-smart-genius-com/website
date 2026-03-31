@@ -56,11 +56,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://littlesmartgenius.com/blog/creative-arts-2.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://littlesmartgenius.com/blog/creative-arts.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -96,11 +91,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://littlesmartgenius.com/blog/language-arts-3.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://littlesmartgenius.com/blog/language-arts.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -127,21 +117,6 @@
   </url>
   <url>
     <loc>https://littlesmartgenius.com/blog/page-12.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://littlesmartgenius.com/blog/page-13.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://littlesmartgenius.com/blog/page-14.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://littlesmartgenius.com/blog/page-15.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -197,11 +172,6 @@
   </url>
   <url>
     <loc>https://littlesmartgenius.com/blog/spot-the-difference-photorealistic-2.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://littlesmartgenius.com/blog/spot-the-difference-photorealistic-3.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -838,4 +808,47 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+    <url>
+        <loc>https://littlesmartgenius.com/authors/</loc>
+        <lastmod>2026-04-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://littlesmartgenius.com/authors/little-smart-genius.html</loc>
+        <lastmod>2026-04-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://littlesmartgenius.com/authors/sarah-mitchell.html</loc>
+        <lastmod>2026-04-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://littlesmartgenius.com/authors/dr-emily-carter.html</loc>
+        <lastmod>2026-04-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://littlesmartgenius.com/authors/rachel-nguyen.html</loc>
+        <lastmod>2026-04-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://littlesmartgenius.com/authors/david-moreau.html</loc>
+        <lastmod>2026-04-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://littlesmartgenius.com/authors/lina-bautista.html</loc>
+        <lastmod>2026-04-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
 </urlset>
