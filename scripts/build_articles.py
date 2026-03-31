@@ -59,7 +59,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <meta name="description" content="{excerpt}">
     <meta name="keywords" content="{keywords}">
     <link rel="canonical" href="{canonical_url}">
-    <link rel="icon" href="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg" type="image/jpeg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <!-- Open Graph -->
     <meta property="og:title" content="{title}">
