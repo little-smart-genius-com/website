@@ -40,6 +40,8 @@ jobs:
           # Copy only web-relevant files
           cp -r articles images posts instagram blog _site/ 2>/dev/null || true
           cp *.html *.js *.json *.css *.xml *.txt _site/ 2>/dev/null || true
+          cp favicon.ico favicon-32x32.png _site/ 2>/dev/null || true
+          cp _headers _site/ 2>/dev/null || true
           cp CNAME _site/ 2>/dev/null || true
           cp robots.txt _site/ 2>/dev/null || true
           cp sitemap.xml _site/ 2>/dev/null || true
