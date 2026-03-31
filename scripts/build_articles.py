@@ -70,6 +70,12 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <meta property="article:published_time" content="{iso_date}">
     <meta property="article:author" content="{author_name}">
 
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{title}">
+    <meta name="twitter:description" content="{excerpt}">
+    <meta name="twitter:image" content="{og_image}">
+
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -408,11 +414,11 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 
         <nav class="hidden lg:flex gap-8">
             <a href="/" class="nav-link">Home</a>
-            <a href="../products.html" class="nav-link">Store</a>
-            <a href="../freebies.html" class="nav-link">Freebies</a>
-            <a href="../blog/" class="nav-link active">Blog</a>
-            <a href="../about.html" class="nav-link">About</a>
-            <a href="../contact.html" class="nav-link">Contact</a>
+            <a href="/products.html" class="nav-link">Store</a>
+            <a href="/freebies.html" class="nav-link">Freebies</a>
+            <a href="/blog/" class="nav-link active">Blog</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/contact.html" class="nav-link">Contact</a>
         </nav>
 
         <div class="flex items-center gap-4">
@@ -438,11 +444,11 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 
     <div id="mobile-menu">
         <a href="/" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
-        <a href="../products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
-        <a href="../freebies.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Freebies</a>
-        <a href="../blog/" class="py-3 border-b border-gray-200 font-bold text-brand">Blog</a>
-        <a href="../about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">About</a>
-        <a href="../contact.html" class="py-3 font-bold" style="color:var(--text)">Contact</a>
+        <a href="/products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
+        <a href="/freebies.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Freebies</a>
+        <a href="/blog/" class="py-3 border-b border-gray-200 font-bold text-brand">Blog</a>
+        <a href="/about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">About</a>
+        <a href="/contact.html" class="py-3 font-bold" style="color:var(--text)">Contact</a>
         <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
             class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg hover:bg-brand transition">Visit
             TpT Store</a>
@@ -519,10 +525,10 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
                         Explore our free educational resources and premium printables.
                     </p>
                     <div class="flex gap-4 justify-center flex-wrap">
-                        <a href="../freebies.html" class="inline-block px-8 py-3.5 font-bold rounded-xl shadow-lg transition" style="background: #F48C06; color: #FFFFFF;">
+                        <a href="/freebies.html" class="inline-block px-8 py-3.5 font-bold rounded-xl shadow-lg transition" style="background: #F48C06; color: #FFFFFF;">
                             Browse Free Resources
                         </a>
-                        <a href="../products.html" class="inline-block px-8 py-3.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition">
+                        <a href="/products.html" class="inline-block px-8 py-3.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition">
                             Visit Store
                         </a>
                     </div>
@@ -543,7 +549,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
                 <h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
                 <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
                     We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
-                    our <a href="../privacy.html" class="text-brand font-bold hover:underline">Privacy Policy</a>.
+                    our <a href="/privacy.html" class="text-brand font-bold hover:underline">Privacy Policy</a>.
                 </p>
                 <div class="flex gap-3">
                     <button onclick="acceptCookies()"
@@ -671,13 +677,13 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         </div>
         <div class="site-footer">
             <div style="margin-bottom: 6px;">
-                <a href="../terms.html">Terms of Service</a>
+                <a href="/terms.html">Terms of Service</a>
                 <span style="margin: 0 8px;">•</span>
-                <a href="../privacy.html">Privacy Policy</a>
+                <a href="/privacy.html">Privacy Policy</a>
                 <span style="margin: 0 8px;">•</span>
-                <a href="../education.html">Education</a>
+                <a href="/education.html">Education</a>
                 <span style="margin: 0 8px;">•</span>
-                <a href="../legal.html">Legal</a>
+                <a href="/legal.html">Legal</a>
             </div>
             © 2026 Little Smart Genius. All rights reserved.
         </div>
@@ -685,7 +691,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 
     {lead_magnet_html}
 
-<script src="../exit-intent.js"></script>
+<script src="/exit-intent.js"></script>
 </body>
 </html>
 """
@@ -809,7 +815,7 @@ def convert_markdown_to_html(content: str) -> str:
     return '\n'.join(result)
 
 
-def fix_image_paths(content: str) -> str:
+def fix_image_paths(content: str, article_title: str = "") -> str:
     """Fix image paths to use ../ prefix for articles/ directory."""
     # Fix absolute server paths: src="..//home/runner/.../images/xxx.webp" → src="../images/xxx.webp"
     content = re.sub(r'src="\.\./(/.+?/images/([^"]+))"', r'src="../images/\2"', content)
@@ -829,6 +835,14 @@ def fix_image_paths(content: str) -> str:
         # Assume it's an auto-generated body image without dimensions
         if "data:image/svg+xml" in img_tag:
             return img_tag
+            
+        alt_match = re.search(r'alt="([^"]+)"', img_tag)
+        if alt_match:
+            alt_text = alt_match.group(1)
+            # If it's a long AI prompt or empty
+            if len(alt_text) > 80 or any(x in alt_text.lower() for x in ['pristine', 'cgi', 'render', 'illustration', '8k']):
+                clean_alt = f"{article_title} illustration" if article_title else "Educational illustration"
+                img_tag = img_tag.replace(f'alt="{alt_text}"', f'alt="{clean_alt}"')
             
         enhancements = []
         if 'loading=' not in img_tag:
@@ -876,23 +890,65 @@ def fix_domain_urls(content: str) -> str:
         flags=re.IGNORECASE
     )
     
-    # Convert all other domain links to ../path
+    # Convert all other domain links to absolute /path
     content = re.sub(
         r'https?://(?:www\.)?littlesmartgenius\.com/([^"\'>\s]*)',
-        r'../\1',
+        r'/\1',
         content,
         flags=re.IGNORECASE
     )
     
-    # Edge case: root domain with no path → ../index.html
+    # Edge case: root domain with no path → /
     content = re.sub(
         r'https?://(?:www\.)?littlesmartgenius\.com/?(["\'])',
-        r'../index.html\1',
+        r'/\1',
         content,
         flags=re.IGNORECASE
     )
     
     return content
+
+
+
+def fix_placeholder_links(content: str) -> str:
+    """Remove or fix AI-generated placeholder links that lead to 404s.
+    
+    The AI content generator sometimes produces links to non-existent pages like:
+      - another-topic.html
+      - placeholder.html
+    
+    Strategy: unwrap the <a> tag but keep the inner text visible.
+    """
+    PLACEHOLDER_PATTERNS = [
+        r'another-topic\.html',
+        r'placeholder\.html',
+        r'example-.*?\.html',
+        r'related-topic\.html',
+        r'sample-.*?\.html',
+        r'your-.*?\.html',
+        r'insert-.*?\.html',
+        r'link-to-.*?\.html',
+    ]
+    
+    for pattern in PLACEHOLDER_PATTERNS:
+        content = re.sub(
+            rf'<a\s+href="[^"]*{pattern}"[^>]*>(.*?)</a>',
+            r'\1',
+            content,
+            flags=re.IGNORECASE | re.DOTALL
+        )
+    
+    # Fix nested/malformed <a> tags (e.g. <a href="x"><a href="y">text</a>text</a>)
+    content = re.sub(
+        r'<a\s+href="[^"]*"[^>]*>\s*<a\s+href="([^"]*)"[^>]*>(.*?)</a>(.*?)</a>',
+        r'<a href="\1">\2\3</a>',
+        content,
+        flags=re.IGNORECASE | re.DOTALL
+    )
+    
+    return content
+
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONTENT POST-PROCESSORS
@@ -1333,7 +1389,7 @@ def build_lead_magnet_html(category: str, freebies: list) -> str:
                     <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
                     <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
                         By checking this box, I confirm I am the authorized owner of this email address. I agree to the
-                        <a class="text-[#F48C06] underline" href="../terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        <a class="text-[#F48C06] underline" href="/terms.html" target="_blank">Terms &amp; Conditions</a>,
                         and I accept to join the email database to receive this freebie and occasional educational updates.
                     </label>
                 </div>
@@ -2055,8 +2111,10 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     
     # Sanitize and fix paths
     content = sanitize_html(content)
-    content = fix_image_paths(content)
+    content = fix_image_paths(content, json_data.get('title', ''))
     content = fix_domain_urls(content)
+
+    content = fix_placeholder_links(content)
     
     # Strip embedded "You Might Also Like" / "You May Also Like" sections
     # (the template already adds a proper image-card version)
@@ -2157,7 +2215,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
         tags_list = []
         for kw in keywords:
             encoded_kw = urllib.parse.quote(kw.strip())
-            tags_list.append(f'<a href="../blog.html" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#{kw.strip()}</a>')
+            tags_list.append(f'<a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#{kw.strip()}</a>')
         
         tags_html = f"""
     <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
@@ -2244,7 +2302,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
             <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
                 <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
                 <li><span class="text-slate-300">/</span></li>
-                <li><a href="../blog/" class="hover:text-brand transition">Blog</a></li>
+                <li><a href="/blog/" class="hover:text-brand transition">Blog</a></li>
 """
     if category:
         breadcrumb_html += f"""
@@ -2485,11 +2543,15 @@ def build_all():
     
     static_pages = [
         ('index.html', '1.0', 'daily'),
-        ('blog.html', '0.9', 'daily'),
+        ('blog/', '0.9', 'daily'),
         ('products.html', '0.8', 'weekly'),
         ('freebies.html', '0.8', 'weekly'),
         ('about.html', '0.7', 'monthly'),
         ('contact.html', '0.7', 'monthly'),
+        ('terms.html', '0.5', 'yearly'),
+        ('privacy.html', '0.5', 'yearly'),
+        ('education.html', '0.6', 'monthly'),
+        ('legal.html', '0.5', 'yearly'),
     ]
     
     for page, priority, changefreq in static_pages:

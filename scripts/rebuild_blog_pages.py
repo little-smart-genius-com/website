@@ -70,10 +70,12 @@ def generate_article_card(article):
 
 
 def generate_pagination(current_page, total_pages, base_name="blog"):
-    """Generate pagination navigation HTML."""
+    """Generate pagination navigation HTML with a sliding window of max 5 pages."""
     if total_pages <= 1:
         return ''
-        
+    
+    MAX_VISIBLE = 5  # Max page numbers to show at once
+    
     parts = []
     
     # Previous button
@@ -83,13 +85,34 @@ def generate_pagination(current_page, total_pages, base_name="blog"):
         prev_file = "index.html" if current_page == 2 else f"page-{current_page - 1}.html"
         parts.append(f'<a href="{prev_file}" class="px-5 py-3 rounded-xl font-bold text-sm transition bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white" style="color:var(--text)">&larr; Previous</a>')
     
-    # Page numbers
-    for p in range(1, total_pages + 1):
+    # Calculate visible page range (sliding window)
+    half = MAX_VISIBLE // 2
+    start = max(1, current_page - half)
+    end = min(total_pages, start + MAX_VISIBLE - 1)
+    # Adjust start if we're near the end
+    if end - start + 1 < MAX_VISIBLE:
+        start = max(1, end - MAX_VISIBLE + 1)
+    
+    # Page 1 + ellipsis if window doesn't start at 1
+    if start > 1:
+        parts.append(f'<a href="index.html" class="px-4 py-3 rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white transition" style="color:var(--text)">1</a>')
+        if start > 2:
+            parts.append('<span class="px-2 py-3 text-slate-400 font-bold text-sm">&hellip;</span>')
+    
+    # Page numbers (visible window)
+    for p in range(start, end + 1):
         page_file = "index.html" if p == 1 else f"page-{p}.html"
         if p == current_page:
             parts.append(f'<span class="px-4 py-3 rounded-xl font-bold text-sm bg-brand text-white">{p}</span>')
         else:
             parts.append(f'<a href="{page_file}" class="px-4 py-3 rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white transition" style="color:var(--text)">{p}</a>')
+    
+    # Ellipsis + last page if window doesn't end at total
+    if end < total_pages:
+        if end < total_pages - 1:
+            parts.append('<span class="px-2 py-3 text-slate-400 font-bold text-sm">&hellip;</span>')
+        last_file = f"page-{total_pages}.html"
+        parts.append(f'<a href="{last_file}" class="px-4 py-3 rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 hover:bg-brand hover:text-white transition" style="color:var(--text)">{total_pages}</a>')
     
     # Next button
     if current_page == total_pages:
@@ -295,13 +318,13 @@ def rebuild_blog_pages():
         </div>
         <div class="site-footer" style="text-align: center;">
             <div style="margin-bottom: 6px;">
-                <a href="terms.html">Terms of Service</a>
+                <a href="/terms.html">Terms of Service</a>
                 <span style="margin: 0 8px;">•</span>
-                <a href="privacy.html">Privacy Policy</a>
+                <a href="/privacy.html">Privacy Policy</a>
                 <span style="margin: 0 8px;">•</span>
-                <a href="education.html">Education</a>
+                <a href="/education.html">Education</a>
                 <span style="margin: 0 8px;">•</span>
-                <a href="legal.html">Legal</a>
+                <a href="/legal.html">Legal</a>
             </div>
             © 2026 Little Smart Genius. All rights reserved.
         </div>
