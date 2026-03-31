@@ -503,7 +503,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
             <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
                 <img
                     src="/{image}"
-                    srcset="../{thumb_image} 480w, ../{image} 1200w"
+                    srcset="/{thumb_image} 480w, /{image} 1200w"
                     sizes="(max-width: 768px) 480px, 1200px"
                     alt="{title}"
                     class="w-full h-auto object-cover"
@@ -2022,7 +2022,7 @@ def build_related_articles_html(current_slug, current_category, current_keywords
                     <div class="aspect-video overflow-hidden">
                         <img
                             src="/{image}"
-                            srcset="../{thumb_image} 480w, ../{image} 1200w"
+                            srcset="/{thumb_image} 480w, /{image} 1200w"
                             sizes="(max-width: 768px) 480px, 800px"
                             alt="{title}"
                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"

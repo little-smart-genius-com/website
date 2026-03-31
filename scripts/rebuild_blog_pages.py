@@ -18,12 +18,12 @@ def generate_article_card(article):
     """Generate a single article card HTML."""
     title = esc(article.get("title", "Untitled"))
     slug = article.get("slug", "")
-    url = f'../articles/{slug}.html'
+    url = f'/articles/{slug}.html'
     image = esc(article.get("image", ""))
     # Use thumbnails from images/thumbs/ directory
     if image.startswith("images/") and image.endswith(".webp"):
         thumb_name = os.path.basename(image)
-        image = f"../images/thumbs/{thumb_name}"
+        image = f"/images/thumbs/{thumb_name}"
     else:
         # If it's a relative path starting with images/, prepend ../
         if image.startswith("images/"):
@@ -149,14 +149,23 @@ def rebuild_blog_pages():
     with open(blog_template_path, "r", encoding="utf-8") as f:
         template = f.read()
     
-    # We are writing to blog/ instead of root. Need to adjust root-level links to ../
-    # Fix CSS/JS references, navigation, and images
-    template = re.sub(r'href="(?!http|mailto|tel|#|javascript)([^"]+)"', r'href="/\1"', template)
-    template = re.sub(r'src="(?!http|data:|#)([^"]+)"', r'src="/\1"', template)
-    # Fix the brand/links to be absolute or correct relative
-    template = template.replace('href="//"', 'href="/"')
+    # ── CRITICAL PATH NORMALIZATION ──
+    # The template source is blog/index.html (our own previous output).
+    # Each run can accumulate ../ and // prefixes. We must strip ALL of them
+    # and rebuild clean absolute paths from scratch.
+    def clean_path(match):
+        attr = match.group(1)
+        path = match.group(2)
+        if any(path.startswith(p) for p in ['http', 'mailto:', 'tel:', '#', 'javascript:', 'data:']):
+            return f'{attr}="{path}"'
+        cleaned = re.sub(r'^[./]+', '', path)
+        if not cleaned:
+            return f'{attr}="/"'
+        return f'{attr}="/{cleaned}"'
+    template = re.sub(r'(href|src)="([^"]*)"', clean_path, template)
+    # Fix blog-specific navigation
     template = template.replace('href="/blog.html"', 'href="index.html"')
-    template = template.replace('href="blog.html"', 'href="blog/"')
+    template = template.replace('href="/blog/"', 'href="index.html"')
     
     # Extract HEAD section (everything up to and including </head>)
     head_match = re.search(r'(<!DOCTYPE html>.*?</head>)', template, re.DOTALL)
