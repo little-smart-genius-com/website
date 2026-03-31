@@ -27,7 +27,7 @@ def generate_article_card(article):
     else:
         # If it's a relative path starting with images/, prepend ../
         if image.startswith("images/"):
-            image = f"../{image}"
+            image = f"/{image}"
     category = esc(article.get("category", ""))
     excerpt = esc(article.get("excerpt", ""))
     reading_time = article.get("reading_time", 5)
@@ -152,11 +152,11 @@ def rebuild_blog_pages():
     
     # We are writing to blog/ instead of root. Need to adjust root-level links to ../
     # Fix CSS/JS references, navigation, and images
-    template = re.sub(r'href="(?!http|mailto|tel|#|javascript)([^"]+)"', r'href="../\1"', template)
-    template = re.sub(r'src="(?!http|data:|#)([^"]+)"', r'src="../\1"', template)
+    template = re.sub(r'href="(?!http|mailto|tel|#|javascript)([^"]+)"', r'href="/\1"', template)
+    template = re.sub(r'src="(?!http|data:|#)([^"]+)"', r'src="/\1"', template)
     # Fix the brand/links to be absolute or correct relative
-    template = template.replace('href="..//"', 'href="../"')
-    template = template.replace('href="../blog.html"', 'href="index.html"')
+    template = template.replace('href="//"', 'href="/"')
+    template = template.replace('href="/blog.html"', 'href="index.html"')
     template = template.replace('href="blog.html"', 'href="blog/"')
     
     # Extract HEAD section (everything up to and including </head>)
@@ -288,7 +288,7 @@ def rebuild_blog_pages():
         }});
     </script>
 """
-            full_html += '    <script src="../blog-search.js" defer></script>\n' + script_add
+            full_html += '    <script src="/blog-search.js" defer></script>\n' + script_add
             
             # ADD STANDARD FOOTER
             full_html += """    <!-- SOCIAL MEDIA & FOOTER -->
@@ -330,7 +330,7 @@ def rebuild_blog_pages():
         </div>
     </div>
 """
-            full_html += '<script src="../exit-intent.js"></script>\n</body>\n\n</html>'
+            full_html += '<script src="/exit-intent.js"></script>\n</body>\n\n</html>'
             
             BLOG_DIR = os.path.join(PROJECT_ROOT, "blog")
             os.makedirs(BLOG_DIR, exist_ok=True)

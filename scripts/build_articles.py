@@ -502,7 +502,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 
             <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
                 <img
-                    src="../{image}"
+                    src="/{image}"
                     srcset="../{thumb_image} 480w, ../{image} 1200w"
                     sizes="(max-width: 768px) 480px, 1200px"
                     alt="{title}"
@@ -817,14 +817,14 @@ def convert_markdown_to_html(content: str) -> str:
 
 def fix_image_paths(content: str, article_title: str = "") -> str:
     """Fix image paths to use ../ prefix for articles/ directory."""
-    # Fix absolute server paths: src="..//home/runner/.../images/xxx.webp" → src="../images/xxx.webp"
-    content = re.sub(r'src="\.\./(/.+?/images/([^"]+))"', r'src="../images/\2"', content)
+    # Fix absolute server paths: src="//home/runner/.../images/xxx.webp" → src="/images/xxx.webp"
+    content = re.sub(r'src="\.\./(/.+?/images/([^"]+))"', r'src="/images/\2"', content)
     # Fix absolute paths without ../ prefix: src="/home/runner/.../images/xxx.webp"
-    content = re.sub(r'src="(/[^"]*?/images/([^"]+))"', r'src="../images/\2"', content)
-    # Fix src="images/..." to src="../images/..."
-    content = re.sub(r'src="images/', 'src="../images/', content)
-    # Fix src="/images/..." to src="../images/..."
-    content = re.sub(r'src="/images/', 'src="../images/', content)
+    content = re.sub(r'src="(/[^"]*?/images/([^"]+))"', r'src="/images/\2"', content)
+    # Fix src="images/..." to src="/images/..."
+    content = re.sub(r'src="images/', 'src="/images/', content)
+    # Fix src="/images/..." to src="/images/..."
+    content = re.sub(r'src="/images/', 'src="/images/', content)
     
     # ── LCP Optimization: Add Base64 placeholder and dimensions to body images ──
     b64_placeholder = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4="
@@ -1270,7 +1270,7 @@ def load_freebies() -> list:
             icon = m[1]
             cat = m[2]
             encoded_fname = urllib.parse.quote(name)
-            url = f"../freebies.html?dl={encoded_fname}"
+            url = f"/freebies.html?dl={encoded_fname}"
             
             freebies.append({
                 "title": name,
@@ -1329,13 +1329,13 @@ def build_lead_magnet_html(category: str, freebies: list) -> str:
     target = candidates[hash_val % len(candidates)]
         
     title = target.get('title', 'Free Educational Resource')
-    url = target.get('url', '../freebies.html')
+    url = target.get('url', '/freebies.html')
     image = target.get('image', '')
     
     if image and not image.startswith('http') and not image.startswith('../'):
         # Check if it's an actual image path (contains . or /) or just an emoji
         if '/' in image or '.' in image:
-            image = f"../{image}"
+            image = f"/{image}"
         else:
             # It's an emoji, not a file path — use it as text
             pass
@@ -1612,7 +1612,7 @@ def build_link_targets(all_articles, current_slug='', tpt_products=None, freebie
         if art.get('slug') == current_slug:
             continue
         title = art.get('title', '')
-        url = f"../{art.get('url', '')}"
+        url = f"/{art.get('url', '')}"
         if title:
             targets.append((title, url, 10))
             # Also add shorter variations (remove "How to Use" prefix etc.)
@@ -1624,7 +1624,7 @@ def build_link_targets(all_articles, current_slug='', tpt_products=None, freebie
     for art in all_articles:
         if art.get('slug') == current_slug:
             continue
-        url = f"../{art.get('url', '')}"
+        url = f"/{art.get('url', '')}"
         keywords = art.get('keywords', [])
         for kw in keywords:
             # Link keywords of 2 or more words directly to this specific article
@@ -1638,7 +1638,7 @@ def build_link_targets(all_articles, current_slug='', tpt_products=None, freebie
         if cat and cat not in category_map:
             cat_slug = re.sub(r'[^a-z0-9]+', '-', cat.lower()).strip('-')
             if cat_slug:
-                category_map[cat] = f"../blog/{cat_slug}.html"
+                category_map[cat] = f"/blog/{cat_slug}.html"
     
     for cat, url in category_map.items():
         targets.append((cat, url, 8))
@@ -1687,34 +1687,34 @@ def build_link_targets(all_articles, current_slug='', tpt_products=None, freebie
             targets.append(('fine motor skills', url, 6))
     
     # 3. Link to key site pages
-    targets.append(('free printables', '../freebies.html', 6))
-    targets.append(('free worksheets', '../freebies.html', 6))
-    targets.append(('free resources', '../freebies.html', 6))
-    targets.append(('free educational resources', '../freebies.html', 6))
-    targets.append(('printable worksheets', '../freebies.html', 6))
-    targets.append(('printable activities', '../freebies.html', 6))
-    targets.append(('free printable worksheets', '../freebies.html', 6))
-    targets.append(('downloadable worksheets', '../freebies.html', 6))
-    targets.append(('premium resources', '../products.html', 6))
-    targets.append(('premium worksheets', '../products.html', 6))
-    targets.append(('our store', '../products.html', 6))
-    targets.append(('educational resources', '../products.html', 5))
-    targets.append(('activity book', '../products.html', 5))
-    targets.append(('counting exercises', '../products.html', 5))
-    targets.append(('educational printables', '../products.html', 5))
-    targets.append(('learning resources', '../products.html', 5))
-    targets.append(('classroom resources', '../products.html', 5))
+    targets.append(('free printables', '/freebies.html', 6))
+    targets.append(('free worksheets', '/freebies.html', 6))
+    targets.append(('free resources', '/freebies.html', 6))
+    targets.append(('free educational resources', '/freebies.html', 6))
+    targets.append(('printable worksheets', '/freebies.html', 6))
+    targets.append(('printable activities', '/freebies.html', 6))
+    targets.append(('free printable worksheets', '/freebies.html', 6))
+    targets.append(('downloadable worksheets', '/freebies.html', 6))
+    targets.append(('premium resources', '/products.html', 6))
+    targets.append(('premium worksheets', '/products.html', 6))
+    targets.append(('our store', '/products.html', 6))
+    targets.append(('educational resources', '/products.html', 5))
+    targets.append(('activity book', '/products.html', 5))
+    targets.append(('counting exercises', '/products.html', 5))
+    targets.append(('educational printables', '/products.html', 5))
+    targets.append(('learning resources', '/products.html', 5))
+    targets.append(('classroom resources', '/products.html', 5))
     targets.append(('teachers pay teachers', 'https://www.teacherspayteachers.com/store/little-smart-genius', 4))
     targets.append(('TpT store', 'https://www.teacherspayteachers.com/store/little-smart-genius', 4))
     
     # 4. Cross-topic educational phrases -> blog
-    targets.append(('cognitive development', '../blog/', 4))
-    targets.append(('brain development activities', '../blog/', 4))
-    targets.append(('executive function skills', '../blog/', 4))
-    targets.append(('observation skills', '../blog/', 4))
-    targets.append(('early childhood education', '../blog/', 4))
-    targets.append(('preschool learning activities', '../blog/', 4))
-    targets.append(('kindergarten activities', '../blog/', 4))
+    targets.append(('cognitive development', '/blog/', 4))
+    targets.append(('brain development activities', '/blog/', 4))
+    targets.append(('executive function skills', '/blog/', 4))
+    targets.append(('observation skills', '/blog/', 4))
+    targets.append(('early childhood education', '/blog/', 4))
+    targets.append(('preschool learning activities', '/blog/', 4))
+    targets.append(('kindergarten activities', '/blog/', 4))
     
     # 5. Link to Specific TPT Products
     if tpt_products:
@@ -1722,7 +1722,7 @@ def build_link_targets(all_articles, current_slug='', tpt_products=None, freebie
             title = product.get('title', '')
             if title:
                 encoded_title = urllib.parse.quote(title)
-                url = f"../products.html?product={encoded_title}"
+                url = f"/products.html?product={encoded_title}"
                 # Full title match (High priority)
                 targets.append((title, url, 9))
                 # Short title match (e.g. up to the first pipe)
@@ -1739,7 +1739,7 @@ def build_link_targets(all_articles, current_slug='', tpt_products=None, freebie
             if not fname: continue
             
             encoded_fname = urllib.parse.quote(fname)
-            url = f"../freebies.html?dl={encoded_fname}"
+            url = f"/freebies.html?dl={encoded_fname}"
             targets.append((fname, url, 9))
     
     # Sort by phrase length (longest first) to prevent partial matches
@@ -2018,10 +2018,10 @@ def build_related_articles_html(current_slug, current_category, current_keywords
             excerpt += '...'
         
         cards.append(f'''<article class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border" style="background: var(--card); border-color: var(--bord);">
-                <a href="../{url}" class="block">
+                <a href="/{url}" class="block">
                     <div class="aspect-video overflow-hidden">
                         <img
-                            src="../{image}"
+                            src="/{image}"
                             srcset="../{thumb_image} 480w, ../{image} 1200w"
                             sizes="(max-width: 768px) 480px, 800px"
                             alt="{title}"
@@ -2156,7 +2156,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     # Remove any remaining bare Drive URLs
     content = re.sub(
         r'https?://drive\.google\.com/[^\s<>"\')\]]*',
-        '../freebies.html',
+        '/freebies.html',
         content
     )
     
@@ -2295,12 +2295,12 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     
     # Build Breadcrumb UI HTML
     cat_slug = re.sub(r'[^a-z0-9]+', '-', category.lower()).strip('-') if category else ''
-    cat_url = f"../blog/{cat_slug}.html" if cat_slug else "../blog/"
+    cat_url = f"/blog/{cat_slug}.html" if cat_slug else "/blog/"
     
     breadcrumb_html = f"""
         <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
             <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
-                <li><a href="../index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><a href="/index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
                 <li><span class="text-slate-300">/</span></li>
                 <li><a href="/blog/" class="hover:text-brand transition">Blog</a></li>
 """
