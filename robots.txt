@@ -4,7 +4,8 @@ Allow: /
 # Sitemap
 Sitemap: https://littlesmartgenius.com/sitemap.xml
 
-# Block non-public directories
+# Block non-public pages & directories
+Disallow: /admin.html
 Disallow: /posts/
 Disallow: /logs/
 Disallow: /reports/
