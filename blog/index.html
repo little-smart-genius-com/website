@@ -26,6 +26,8 @@
         name="twitter:description" />
     <meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
         name="twitter:image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&amp;display=swap"
         rel="stylesheet" />
 <style>
@@ -68,7 +70,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 20px md:padding-0-40px;
+            padding: 0 20px;
             transition: 0.3s;
         }
 
@@ -112,7 +114,8 @@
         .hero-title {
             background: linear-gradient(135deg, #1E293B 0%, #F48C06 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
         }
 
         .dark .hero-title {
