@@ -660,14 +660,17 @@
 
     <!-- LATEST ARTICLES SECTION (SEO: internal linking to article pages) -->
     <div class="max-w-6xl mx-auto px-6 py-12">
-        <div class="text-center mb-8">
-            <h2 class="text-2xl md:text-3xl font-extrabold mb-2" style="color: var(--text);">Latest Articles</h2>
-            <p class="text-slate-500 dark:text-slate-400 text-sm">Expert advice on child development, puzzles, and learning activities</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 items-end mb-6 gap-4">
+            <div class="hidden md:block"></div>
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-1" style="color: var(--text);">Latest Articles</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-xs">Expert advice on child development, puzzles, and learning activities</p>
+            </div>
+            <div class="text-center md:text-right">
+                <a class="inline-block text-brand font-bold text-xs hover:underline" href="blog/">Browse All Articles -&gt;</a>
+            </div>
         </div>
         <div id="latest-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        <div class="text-center mt-8">
-            <a href="blog/" class="inline-block px-8 py-3 bg-brand text-white font-bold rounded-xl hover:shadow-lg transition">Browse All Articles →</a>
-        </div>
     </div>
     <script>
         (function(){
@@ -722,12 +725,12 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start" id="reviews-grid">
         </div>
     </div>
-    <div class="py-6 px-6 max-w-3xl mx-auto">
+    <div class="py-6 px-6 max-w-5xl mx-auto">
         <div class="text-center mb-6">
             <h2 class="text-2xl font-extrabold mb-1" style="color:var(--text)">Frequently Asked Questions 💬</h2>
             <p class="text-slate-500 dark:text-slate-400 text-xs">Got questions? We've got answers.</p>
         </div>
-        <div class="space-y-3" id="faq-container">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start" id="faq-container">
         </div>
     </div>
     <div class="px-6 py-6 max-w-3xl mx-auto">
@@ -866,15 +869,17 @@
         function renderFAQ() {
             const container = document.getElementById('faq-container');
             container.innerHTML = faqGroups.map(group => `
-                <h3 class="font-bold text-brand uppercase tracking-widest text-xs mt-4 mb-2 text-center">${group.title}</h3>
-                ${group.items.map(item => `
-                    <details class="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden transition-all duration-300">
-                        <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-3 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/50 text-xs md:text-sm">
-                            <span>${item.q}</span><span class="transition transform group-open:rotate-180">▼</span>
-                        </summary>
-                        <div class="text-slate-600 dark:text-slate-400 text-xs px-3 pb-3 leading-relaxed border-t border-slate-100 dark:border-slate-700/50 pt-2">${item.a}</div>
-                    </details>
-                `).join('')}
+                <div class="space-y-3">
+                    <h3 class="font-bold text-brand uppercase tracking-widest text-sm mt-0 mb-3 text-center">${group.title}</h3>
+                    ${group.items.map(item => `
+                        <details class="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden transition-all duration-300">
+                            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/50 text-sm md:text-base">
+                                <span>${item.q}</span><span class="transition transform group-open:rotate-180 text-brand">▼</span>
+                            </summary>
+                            <div class="text-slate-600 dark:text-slate-400 text-sm md:text-base px-4 pb-4 leading-relaxed border-t border-slate-100 dark:border-slate-700/50 pt-3">${item.a}</div>
+                        </details>
+                    `).join('')}
+                </div>
             `).join('');
         }
 
