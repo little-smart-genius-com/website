@@ -523,6 +523,11 @@
       "slot": "keyword",
       "topic": "best brain teasers worksheets for elementary students",
       "date": "2026-04-01T16:40:17.886603"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Stickers Pack",
+      "date": "2026-04-01T21:03:53.637722"
     }
   ],
   "product": [
@@ -582,6 +587,7 @@
     "Cryptogram",
     "Hangman",
     "Coloring Page (Kids)",
-    "Sudoku"
+    "Sudoku",
+    "Stickers Pack"
   ]
 }
