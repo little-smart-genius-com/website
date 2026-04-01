@@ -31,11 +31,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://littlesmartgenius.com/education.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://littlesmartgenius.com/terms.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -46,14 +41,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://littlesmartgenius.com/education.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://littlesmartgenius.com/legal.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://littlesmartgenius.com/blog/coloring-book.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://littlesmartgenius.com/articles/neurodiversity-inclusive-pattern-activities-for-preschoolers.html</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://littlesmartgenius.com/blog/creative-arts.html</loc>
