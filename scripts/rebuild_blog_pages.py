@@ -175,6 +175,9 @@ def rebuild_blog_pages():
         return
     head_section = head_match.group(1)
     
+    # ── FIX: Strip existing JSON-LD schema from template to prevent duplicates ──
+    head_section = re.sub(r'<script type="application/ld\+json">.*?</script>', '', head_section, flags=re.DOTALL)
+    
     # Extract BODY opening up to the article grid start
     body_before_match = re.search(r'(<body>.*?)<!-- STATIC GRID', template, re.DOTALL)
     if not body_before_match:

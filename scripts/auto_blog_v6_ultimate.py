@@ -160,7 +160,7 @@ PERSONAS = [
         "expertise": "Curriculum design, educational publishing, content strategy for parents & educators",
         "tone": "Warm, authoritative, brand-native -- writes as the voice of the Little Smart Genius platform",
         "img_style": "bright, colorful educational scenes, 3D Pixar style, brand orange accents",
-        "weight": 3
+        "weight": 5
     },
     {
         "id": "Sarah_Mitchell",

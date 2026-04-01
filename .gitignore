@@ -48,3 +48,5 @@ reports/
 
 # Keep these tracked
 !.gitignore
+
+build_log.txt

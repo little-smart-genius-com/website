@@ -1781,18 +1781,17 @@ def inject_internal_links(content: str, link_targets: list, max_links=12) -> str
             # Check if this match is inside an <a> tag or heading
             start = match.start()
             
-            # Look backward for unclosed <a> tag
+            # Use extremely fast string search instead of slow regexes
             before = content[:start]
-            a_opens = len(re.findall(r'<a\b', before, re.IGNORECASE))
-            a_closes = len(re.findall(r'</a>', before, re.IGNORECASE))
-            if a_opens > a_closes:
-                continue  # Inside an <a> tag
-            
-            # Check if inside heading
-            h_opens = len(re.findall(r'<h[1-3]\b', before, re.IGNORECASE))
-            h_closes = len(re.findall(r'</h[1-3]>', before, re.IGNORECASE))
-            if h_opens > h_closes:
-                continue  # Inside a heading
+            a_open = max(before.rfind('<a '), before.rfind('<a\t'), before.rfind('\n<a'), before.rfind('<a\r'))
+            a_close = before.rfind('</a>')
+            if a_open > a_close:
+                continue
+                
+            h_open = max(before.rfind('<h1'), before.rfind('<h2'), before.rfind('<h3'))
+            h_close = max(before.rfind('</h1'), before.rfind('</h2'), before.rfind('</h3'))
+            if h_open > h_close:
+                continue
                 
             # SAFETY CHECK: Do not inject inside any HTML tag (e.g. <img alt="...phrase...">)
             # Find the most recent '<' and '>'
@@ -2364,7 +2363,6 @@ def build_all():
     print("=" * 80)
     print("  BUILD ARTICLES — Converting post JSONs to HTML + indexes")
     print("=" * 80)
-    
     # Load all post JSONs
     post_files = sorted(glob.glob(os.path.join(POSTS_DIR, "*.json")))
     print(f"\n  Found {len(post_files)} post JSONs in posts/")
@@ -2396,6 +2394,8 @@ def build_all():
                 "date": data.get('date', ''),
                 "iso_date": data.get('iso_date', ''),
                 "category": data.get('category', ''),
+                "author": data.get('author', 'LSG_Admin'),
+                "author_name": data.get('author_name', 'Little Smart Genius'),
                 "excerpt": (data.get('excerpt') or data.get('meta_description', ''))[:200],
                 "image": normalize_image_path(data.get('image', '')),
                 "reading_time": data.get('reading_time', 5),

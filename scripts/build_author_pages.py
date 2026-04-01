@@ -331,16 +331,31 @@ def main():
     authors_dir = os.path.join(PROJECT_ROOT, "authors")
     os.makedirs(authors_dir, exist_ok=True)
     
-    # Since all articles currently have no author_name, assign them to the primary author
-    # In future, articles.json can specify author_slug to distribute across team
-    primary_author = AUTHORS[0]
-    
-    # Distribute articles roughly across team members for diversity
-    # Primary author gets all (they're the main content creator)
+    # Map article authors to their team slug
     author_articles = {a["slug"]: [] for a in AUTHORS}
     
-    # Assign all articles to primary author (truthful — they're all "Little Smart Genius Team")
-    author_articles[primary_author["slug"]] = all_articles
+    # Assign articles based on their author field
+    for art in all_articles:
+        # Assuming art["author"] holds the persona ID like "LSG_Admin", "Sarah_Mitchell", etc.
+        # We need to map those to the slugs defined in AUTHORS.
+        # LSG_Admin -> "little-smart-genius"
+        author_id = art.get("author", "LSG_Admin")
+        
+        # Mappings based on the personas IDs in auto_blog_v6_ultimate
+        slug_map = {
+            "LSG_Admin": "little-smart-genius",
+            "Sarah_Mitchell": "sarah-mitchell",
+            "Dr_Emily_Carter": "dr-emily-carter",
+            "Rachel_Nguyen": "rachel-nguyen",
+            "David_Moreau": "david-moreau",
+            "Lina_Bautista": "lina-bautista"
+        }
+        
+        author_slug = slug_map.get(author_id, "little-smart-genius")
+        if author_slug in author_articles:
+            author_articles[author_slug].append(art)
+        else:
+            author_articles["little-smart-genius"].append(art)
     
     # Generate pages
     for author in AUTHORS:
