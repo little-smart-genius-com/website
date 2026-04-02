@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://littlesmartgenius.com/index.html</loc>
+    <loc>https://littlesmartgenius.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -49,6 +49,12 @@
     <loc>https://littlesmartgenius.com/legal.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://littlesmartgenius.com/articles/portable-spot-the-difference-games-boost-focus-during-travel.html</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://littlesmartgenius.com/articles/mandala-coloring-pages-the-ultimate-kids-relaxation-tool.html</loc>
