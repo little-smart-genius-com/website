@@ -40,15 +40,16 @@ load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 MODEL_CHAT = "deepseek-chat"
 
-# Load first available DeepSeek key (same pattern as autoblog v6)
-DEEPSEEK_KEY = None
+# Load all DeepSeek keys for parallel processing
+DEEPSEEK_KEYS = []
 for i in range(1, 8):
     key = os.getenv(f"DEEPSEEK_API_KEY_{i}")
     if key:
-        DEEPSEEK_KEY = key
-        break
-if not DEEPSEEK_KEY:
-    DEEPSEEK_KEY = os.getenv("DEEPSEEK_API_KEY", "")
+        DEEPSEEK_KEYS.append(key)
+if not DEEPSEEK_KEYS:
+    key = os.getenv("DEEPSEEK_API_KEY", "")
+    if key:
+        DEEPSEEK_KEYS.append(key)
 
 # Medium Integration Token (optional — for future API publishing)
 MEDIUM_TOKEN = os.getenv("MEDIUM_INTEGRATION_TOKEN", "")
@@ -167,14 +168,17 @@ def extract_article_data(html_path: str) -> Dict:
 # ─── DEEPSEEK API (same pattern as autoblog v6) ─────────────────────
 
 def call_deepseek(system_prompt: str, user_prompt: str,
-                  temperature: float = 0.7) -> Optional[str]:
-    """Synchronous DeepSeek API call with key rotation fallback."""
-    if not DEEPSEEK_KEY:
+                  temperature: float = 0.7, api_key: str = None) -> Optional[str]:
+    """Synchronous DeepSeek API call with parallel key support."""
+    if not api_key and DEEPSEEK_KEYS:
+        api_key = DEEPSEEK_KEYS[0]
+        
+    if not api_key:
         print("  [ERROR] No DeepSeek API key configured")
         return None
 
     headers = {
-        "Authorization": f"Bearer {DEEPSEEK_KEY}",
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
 
@@ -218,7 +222,7 @@ Your writing style:
 - Use natural, human transitions
 - Write like a knowledgeable parent sharing tips with a friend
 - Include actionable takeaways
-- Keep it between 300-450 words (excluding the links section)
+- Keep it between 400-500 words (excluding the links section)
 
 Output format: Write ONLY the article body in clean Markdown.
 Do NOT include the title (it will be added separately).
@@ -252,7 +256,7 @@ INSTRUCTIONS:
 3. Highlight 2-3 specific actionable tips from the content
 4. End with a compelling reason to read the full article
 5. Write in Markdown format (use **bold** for emphasis, no headers)
-6. Keep it concise: 300-450 words
+6. MUST be at least 400-500 words (strictly respected)
 7. Do NOT include the title — it will be added separately
 8. Do NOT wrap your output in code fences"""
 
@@ -332,14 +336,24 @@ def mark_processed(tracker: Dict, slug: str, output_path: str):
 
 # ─── CORE PROCESSING ────────────────────────────────────────────────
 
-def process_article(html_path: str, tracker: Dict, force: bool = False) -> Optional[str]:
+import threading
+import concurrent.futures
+
+# Lock for writing to the tracker json file to prevent corruption
+tracker_lock = threading.Lock()
+
+def process_article(args) -> Optional[str]:
     """Process a single article: extract → summarize → save Markdown."""
+    html_path, tracker, force, api_key = args
     
     # 1. Extract article data
     article_data = extract_article_data(html_path)
     slug = article_data['slug']
     
-    if not force and is_processed(tracker, slug):
+    with tracker_lock:
+        already_processed = is_processed(tracker, slug)
+        
+    if not force and already_processed:
         print(f"  [SKIP] Already processed: {slug}")
         return None
     
@@ -347,17 +361,12 @@ def process_article(html_path: str, tracker: Dict, force: bool = False) -> Optio
         print(f"  [SKIP] Not enough H2 sections ({len(article_data['h2_sections'])}): {slug}")
         return None
     
-    print(f"\n{'─'*60}")
-    print(f"  📝 Processing: {article_data['title'][:60]}")
-    print(f"     Author: {article_data['author']}")
-    print(f"     H2 Sections: {len(article_data['h2_sections'])}")
-    print(f"     URL: {article_data['article_url']}")
+    print(f"\n  📝 Processing: {article_data['title'][:60]}")
 
     # 2. Generate abstract via DeepSeek
-    print(f"  [API] Calling DeepSeek ({MODEL_CHAT})...")
     t0 = time.time()
     
-    abstract = call_deepseek(SYSTEM_PROMPT, build_user_prompt(article_data))
+    abstract = call_deepseek(SYSTEM_PROMPT, build_user_prompt(article_data), api_key=api_key)
     
     if not abstract:
         print(f"  [ERROR] Failed to generate abstract for {slug}")
@@ -365,7 +374,7 @@ def process_article(html_path: str, tracker: Dict, force: bool = False) -> Optio
 
     elapsed = round(time.time() - t0, 1)
     word_count = len(abstract.split())
-    print(f"  [OK] Abstract generated: {word_count} words ({elapsed}s)")
+    print(f"  [OK] Abstract generated for {slug}: {word_count} words ({elapsed}s)")
     
     # Clean up any code fences the model might have added
     abstract = re.sub(r'^```(?:markdown|md)?\s*\n?', '', abstract)
@@ -380,12 +389,10 @@ def process_article(html_path: str, tracker: Dict, force: bool = False) -> Optio
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(markdown)
     
-    file_size = os.path.getsize(output_path)
-    print(f"  [SAVE] {output_path} ({file_size // 1024} KB)")
-    
     # 5. Track
-    mark_processed(tracker, slug, output_path)
-    save_tracker(tracker)
+    with tracker_lock:
+        mark_processed(tracker, slug, output_path)
+        save_tracker(tracker)
     
     return output_path
 
@@ -474,15 +481,25 @@ Examples:
 
     # ─── PROCESS ARTICLES ────────────────────────────────────
     results = []
+    
+    # Assign API keys rotationally to jobs
+    jobs = []
     for i, html_path in enumerate(to_process):
-        print(f"\n  [{i+1}/{len(to_process)}]", end="")
-        output = process_article(html_path, tracker, force=args.force)
-        if output:
-            results.append(output)
+        api_key = DEEPSEEK_KEYS[i % len(DEEPSEEK_KEYS)]
+        jobs.append((html_path, tracker, args.force, api_key))
         
-        # Rate limiting: 2s pause between API calls
-        if i < len(to_process) - 1 and output:
-            time.sleep(2)
+    print(f"\n  Running with {len(DEEPSEEK_KEYS)} parallel threads...")
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=len(DEEPSEEK_KEYS)) as executor:
+        futures = {executor.submit(process_article, job): job for job in jobs}
+        
+        for i, future in enumerate(concurrent.futures.as_completed(futures)):
+            try:
+                output = future.result()
+                if output:
+                    results.append(output)
+            except Exception as e:
+                print(f"  [THREAD ERROR] Exception: {str(e)}")
 
     # ─── SUMMARY ─────────────────────────────────────────────
     print(f"\n{'='*60}")
