@@ -1337,7 +1337,7 @@ def build_lead_magnet_html(category: str, freebies: list) -> str:
     # Determine if image is a file path or an emoji
     is_image_file = image and ('/' in image or '.' in image)
     if is_image_file:
-        img_html = f'<img src="{image}" alt="{title}" class="w-16 h-16 object-cover rounded shadow-sm border border-slate-200">'
+        img_html = f'<img src="{image}" alt="{title}" class="w-16 h-16 object-cover rounded shadow-sm border border-slate-200" width="64" height="64">'
     elif image:
         # It's an emoji icon — render as styled text
         img_html = f'<div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">{image}</div>'
@@ -2549,8 +2549,9 @@ def build_all():
     ]
     
     for page, priority, changefreq in static_pages:
+        url_path = f"{SITE_URL}/{page}" if page else f"{SITE_URL}/"
         sitemap_entries.append(f"""  <url>
-    <loc>{SITE_URL}/{page}</loc>
+    <loc>{url_path}</loc>
     <changefreq>{changefreq}</changefreq>
     <priority>{priority}</priority>
   </url>""")

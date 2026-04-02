@@ -224,6 +224,9 @@ Your writing style:
 - Include actionable takeaways
 - Keep it between 400-500 words (excluding the links section)
 
+Crucial SEO Rule:
+- ONLY reference or recommend internal Little Smart Genius resources, worksheets, or concepts. Do NOT recommend or mention any external domains, third-party apps, external psychologists, or outside publications. Limit all traffic direction exclusively internally.
+
 Output format: Write ONLY the article body in clean Markdown.
 Do NOT include the title (it will be added separately).
 Do NOT include any code blocks or fences around the output."""

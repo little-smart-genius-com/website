@@ -48,7 +48,7 @@ def generate_article_card(article):
     return f"""        <article class="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border" style="background: var(--card); border-color: var(--bord);">
             <a href="{url}" class="block">
                 <div class="aspect-video overflow-hidden rounded-t-2xl">
-                    <img src="{image}" alt="{title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy">
+                    <img src="{image}" alt="{title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" width="600" height="338">
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-2 mb-3">
