@@ -22,6 +22,7 @@ import re
 import glob
 import json
 import argparse
+import email.utils
 from datetime import datetime
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -30,6 +31,7 @@ PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 MEDIUM_MD_DIR = os.path.join(PROJECT_ROOT, "outputs", "medium")
 MEDIUM_HTML_DIR = os.path.join(PROJECT_ROOT, "medium")
 SITE_BASE = "https://littlesmartgenius.com"
+RSS_FEED_PATH = os.path.join(PROJECT_ROOT, "medium-feed.xml")
 
 
 # ─── MARKDOWN → HTML CONVERTER (lightweight, no dependencies) ───────
@@ -234,10 +236,64 @@ def parse_medium_md(md_path: str) -> dict:
     }
 
 
+# ─── BUILD RSS FEED ───────────────────────────────────────────────────
+
+def build_rss_feed(articles_data: list):
+    """Build a standard RSS 2.0 feed for Zapier automation."""
+    
+    # Sort articles by modification time (handled before passing but just to be sure)
+    
+    pub_date = email.utils.formatdate(localtime=False)
+    
+    rss_items = []
+    for data in articles_data:
+        # We need a proper RFC 822 date for RSS. We can use the file modification time.
+        md_path = os.path.join(MEDIUM_MD_DIR, f"{data['slug']}.md")
+        file_mtime = os.path.getmtime(md_path) if os.path.exists(md_path) else datetime.now().timestamp()
+        item_pub_date = email.utils.formatdate(file_mtime, localtime=False)
+        
+        # Get a short description (first paragraph of abstract)
+        desc_match = re.search(r'<p>(.*?)</p>', md_to_html(data['body_md']), re.IGNORECASE | re.DOTALL)
+        short_desc = desc_match.group(1).strip() if desc_match else data['title']
+        short_desc = re.sub(r'<[^>]+>', '', short_desc) # Strip any inner HTML tags
+        
+        item_url = f"{SITE_BASE}/medium/{data['slug']}.html"
+        
+        item = f"""
+        <item>
+            <title><![CDATA[{data['title']}]]></title>
+            <link>{item_url}</link>
+            <guid isPermaLink="true">{item_url}</guid>
+            <description><![CDATA[{short_desc}]]></description>
+            <pubDate>{item_pub_date}</pubDate>
+            <author><![CDATA[{data['author']}]]></author>
+        </item>"""
+        rss_items.append(item)
+        
+    rss_content = f"""<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Little Smart Genius - Medium Abstracts</title>
+    <link>{SITE_BASE}</link>
+    <description>Automated feed of article abstracts for Medium syndication via Zapier.</description>
+    <language>en-us</language>
+    <pubDate>{pub_date}</pubDate>
+    <lastBuildDate>{pub_date}</lastBuildDate>
+    <atom:link href="{SITE_BASE}/medium-feed.xml" rel="self" type="application/rss+xml" />
+    {''.join(rss_items)}
+</channel>
+</rss>"""
+
+    with open(RSS_FEED_PATH, 'w', encoding='utf-8') as f:
+        f.write(rss_content)
+    
+    return RSS_FEED_PATH
+
+
 # ─── BUILD SINGLE PAGE ──────────────────────────────────────────────
 
-def build_page(md_path: str) -> str:
-    """Convert a single Markdown abstract to an HTML page."""
+def build_page(md_path: str) -> dict:
+    """Convert a single Markdown abstract to an HTML page and return its data."""
     data = parse_medium_md(md_path)
 
     body_html = md_to_html(data['body_md'])
@@ -255,7 +311,7 @@ def build_page(md_path: str) -> str:
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html)
 
-    return output_path
+    return data
 
 
 # ─── CLI ─────────────────────────────────────────────────────────────
@@ -296,17 +352,26 @@ def main():
         md_files = [f for f in md_files if not os.path.basename(f).startswith('_')]
 
     print(f"\n  Markdown files found: {len(md_files)}")
+    
+    # Sort files by modification time (newest first)
+    md_files.sort(key=os.path.getmtime, reverse=True)
 
     results = []
-    for md_path in sorted(md_files):
+    articles_data = []
+    for md_path in md_files:
         slug = os.path.splitext(os.path.basename(md_path))[0]
         try:
-            output = build_page(md_path)
+            data = build_page(md_path)
+            articles_data.append(data)
             url = f"{SITE_BASE}/medium/{slug}.html"
             print(f"  ✅ {slug} → {url}")
             results.append(url)
         except Exception as e:
             print(f"  ❌ {slug}: {str(e)[:60]}")
+
+    # Build RSS feed
+    rss_path = build_rss_feed(articles_data)
+    print(f"  📡 Generated RSS Feed: {rss_path}")
 
     print(f"\n{'='*60}")
     print(f"  COMPLETE: {len(results)}/{len(md_files)} HTML pages built")
