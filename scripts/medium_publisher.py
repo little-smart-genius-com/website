@@ -260,9 +260,13 @@ INSTRUCTIONS:
 # ─── MEDIUM MARKDOWN BUILDER ────────────────────────────────────────
 
 def build_medium_markdown(article_data: Dict, abstract: str) -> str:
-    """Assemble the final Medium-ready Markdown with backlinks."""
+    """Assemble the final Medium-ready Markdown with backlinks and featured image."""
     
     article_url = article_data['article_url']
+    og_image = article_data.get('og_image', '')
+    
+    # Prepend image if it exists
+    image_md = f"![Featured Image]({og_image})\n\n" if og_image else ""
     
     md = f"""# {article_data['title']}
 
@@ -270,7 +274,7 @@ def build_medium_markdown(article_data: Dict, abstract: str) -> str:
 
 ---
 
-{abstract}
+{image_md}{abstract}
 
 ---
 

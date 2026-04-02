@@ -280,6 +280,24 @@ jobs:
           PYTHONIOENCODING: utf-8
         run: python scripts/_inject_search.py
 
+      # ── MEDIUM SYNDICATION ──
+      - name: Publish to Medium (Summarizer & RSS)
+        if: steps.action.outputs.action != 'maintenance-scan' && steps.action.outputs.action != 'comprehensive-repair'
+        env:
+          DEEPSEEK_API_KEY_1: ${{ secrets.DEEPSEEK_API_KEY_1 }}
+          DEEPSEEK_API_KEY_2: ${{ secrets.DEEPSEEK_API_KEY_2 }}
+          DEEPSEEK_API_KEY_3: ${{ secrets.DEEPSEEK_API_KEY_3 }}
+          DEEPSEEK_API_KEY_4: ${{ secrets.DEEPSEEK_API_KEY_4 }}
+          DEEPSEEK_API_KEY_5: ${{ secrets.DEEPSEEK_API_KEY_5 }}
+          DEEPSEEK_API_KEY_6: ${{ secrets.DEEPSEEK_API_KEY_6 }}
+          DEEPSEEK_API_KEY_7: ${{ secrets.DEEPSEEK_API_KEY_7 }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          echo "Generating new Medium abstracts via DeepSeek API..."
+          python scripts/medium_publisher.py
+          echo "Building Medium HTML pages and generating RSS payload for Zapier..."
+          python scripts/build_medium_pages.py
+
       # ── COMPREHENSIVE REPAIR ──
       - name: Comprehensive SEO repair
         if: steps.action.outputs.action == 'comprehensive-repair'

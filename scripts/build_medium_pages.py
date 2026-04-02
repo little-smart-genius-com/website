@@ -259,19 +259,23 @@ def build_rss_feed(articles_data: list):
         
         item_url = f"{SITE_BASE}/medium/{data['slug']}.html"
         
+        # We need the full HTML body for Zapier to push directly
+        full_html = md_to_html(data['body_md'])
+        
         item = f"""
         <item>
             <title><![CDATA[{data['title']}]]></title>
-            <link>{item_url}</link>
+            <link><![CDATA[{data['article_url']}]]></link>
             <guid isPermaLink="true">{item_url}</guid>
             <description><![CDATA[{short_desc}]]></description>
+            <content:encoded><![CDATA[{full_html}]]></content:encoded>
             <pubDate>{item_pub_date}</pubDate>
             <author><![CDATA[{data['author']}]]></author>
         </item>"""
         rss_items.append(item)
         
     rss_content = f"""<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
     <title>Little Smart Genius - Medium Abstracts</title>
     <link>{SITE_BASE}</link>
