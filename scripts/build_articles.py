@@ -2536,7 +2536,7 @@ def build_all():
     sitemap_entries = []
     
     static_pages = [
-        ('index.html', '1.0', 'daily'),
+        ('', '1.0', 'daily'),
         ('blog/', '0.9', 'daily'),
         ('products.html', '0.8', 'weekly'),
         ('freebies.html', '0.8', 'weekly'),

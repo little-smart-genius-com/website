@@ -205,6 +205,7 @@ def rebuild_blog_pages():
     # Clean up recursive junk
     body_after = re.sub(r'</?(body|html)>', '', body_after, flags=re.IGNORECASE)
     body_after = re.sub(r'<script src="[^"]*(exit-intent|blog-search)\.js"[^>]*></script>', '', body_after, flags=re.IGNORECASE)
+    body_after = body_after.replace('<!-- SOCIAL MEDIA & FOOTER -->', '')
 
     
     # Build search index inline data
