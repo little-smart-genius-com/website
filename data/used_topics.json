@@ -579,6 +579,11 @@
       "slot": "keyword",
       "topic": "how to improve your childs concentration with games",
       "date": "2026-04-03T16:08:19.405220"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Crossword",
+      "date": "2026-04-03T20:51:21.827428"
     }
   ],
   "product": [
@@ -642,6 +647,7 @@
     "Coloring Page (Kids)",
     "Sudoku",
     "Stickers Pack",
-    "Counting Numbers"
+    "Counting Numbers",
+    "Crossword"
   ]
 }

@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-04-03T16:08:21.323970",
-  "total_articles": 119,
+  "generated_at": "2026-04-03T20:51:23.292358",
+  "total_articles": 120,
   "articles": [
+    {
+      "title": "Montessori Crossword Fun for Kids",
+      "slug": "montessori-crossword-fun-for-kids",
+      "date": "April 03, 2026",
+      "iso_date": "2026-04-03T20:51:20.762149",
+      "category": "Education",
+      "author": "Rachel_Nguyen",
+      "author_name": "Rachel Nguyen",
+      "excerpt": "Boost your child's cognitive skills & fine motor development with a spring crossword. Download our FREE printable to make learning bloom!",
+      "image": "images/spring-into-learning-montessori-inspired-crossword-fun-for-curious-kids-cover-1775249223.webp",
+      "reading_time": 11,
+      "url": "articles/montessori-crossword-fun-for-kids.html",
+      "keywords": [
+        "crossword kids",
+        "pro tip experience",
+        "little smart genius",
+        "spring learning",
+        "real learning happens",
+        "last square filled",
+        "fun part",
+        "themed puzzle",
+        "spring crossword",
+        "pro tip"
+      ],
+      "word_count": 2395,
+      "slot": "freebie"
+    },
     {
       "title": "Proven Ways to Improve Your Child's Concentration with Games",
       "slug": "proven-ways-to-improve-your-childs-concentration-with-games",
