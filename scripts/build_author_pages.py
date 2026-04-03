@@ -515,32 +515,40 @@ def add_to_sitemap(authors_dir):
     today = datetime.now().strftime("%Y-%m-%d")
     new_urls = ""
     
-    # Index page
-    new_urls += f"""
-    <url>
-        <loc>{SITE_URL}/authors/</loc>
-        <lastmod>{today}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>"""
-    
-    # Individual author pages
-    for author in AUTHORS:
+    # Index page — only add if not already present
+    if f"{SITE_URL}/authors/" not in content:
         new_urls += f"""
-    <url>
-        <loc>{SITE_URL}/authors/{author['slug']}.html</loc>
-        <lastmod>{today}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>"""
+  <url>
+    <loc>{SITE_URL}/authors/</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>"""
     
-    # Insert before </urlset>
-    content = content.replace("</urlset>", f"{new_urls}\n</urlset>")
+    # Individual author pages — only add if not already present
+    added = 0
+    for author in AUTHORS:
+        author_url = f"{SITE_URL}/authors/{author['slug']}.html"
+        if author_url not in content:
+            new_urls += f"""
+  <url>
+    <loc>{author_url}</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>"""
+            added += 1
     
-    with open(sitemap_path, "w", encoding="utf-8") as f:
-        f.write(content)
-    
-    print(f"  ✓ Added {len(AUTHORS) + 1} URLs to sitemap.xml")
+    if new_urls:
+        # Insert before </urlset>
+        content = content.replace("</urlset>", f"{new_urls}\n</urlset>")
+        
+        with open(sitemap_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        
+        print(f"  ✓ Added {added + (1 if f'{SITE_URL}/authors/' not in content else 0)} new URLs to sitemap.xml")
+    else:
+        print(f"  ✓ Author URLs already in sitemap.xml — no duplicates added")
 
 
 if __name__ == "__main__":

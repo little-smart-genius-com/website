@@ -159,14 +159,20 @@ def rebuild_blog_pages():
         path = match.group(2)
         if any(path.startswith(p) for p in ['http', 'mailto:', 'tel:', '#', 'javascript:', 'data:']):
             return f'{attr}="{path}"'
+        # Preserve already-correct absolute paths like /blog/, /terms.html, etc.
+        if path.startswith('/') and not path.startswith('//'):
+            return f'{attr}="{path}"'
         cleaned = re.sub(r'^[./]+', '', path)
         if not cleaned:
             return f'{attr}="/"'
         return f'{attr}="/{cleaned}"'
     template = re.sub(r'(href|src)="([^"]*)"', clean_path, template)
-    # Fix blog-specific navigation
-    template = template.replace('href="/blog.html"', 'href="index.html"')
-    template = template.replace('href="/blog/"', 'href="index.html"')
+    # Fix legacy blog.html path only (NOT /blog/ which is the correct nav target)
+    template = template.replace('href="/blog.html"', 'href="/blog/"')
+    # ── SEO FIX: Repair corrupted Blog nav links from previous builds ──
+    # The template (blog/index.html) may already contain href="/index.html">Blog
+    # from prior buggy runs. This explicit fix ensures Blog always points to /blog/
+    template = re.sub(r'href="/index\.html"(>Blog</a>)', r'href="/blog/"\1', template)
     
     # Extract HEAD section (everything up to and including </head>)
     head_match = re.search(r'(<!DOCTYPE html>.*?</head>)', template, re.DOTALL)
@@ -177,6 +183,13 @@ def rebuild_blog_pages():
     
     # ── FIX: Strip existing JSON-LD schema from template to prevent duplicates ──
     head_section = re.sub(r'<script type="application/ld\+json">.*?</script>', '', head_section, flags=re.DOTALL)
+
+    # ── SEO FIX: Ensure font preconnect hints are present ──
+    if 'rel="preconnect" href="https://fonts.googleapis.com"' not in head_section:
+        head_section = head_section.replace(
+            '<link rel="stylesheet" href="/styles/tailwind.min.css">',
+            '<link rel="preconnect" href="https://fonts.googleapis.com">\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n    <link rel="stylesheet" href="/styles/tailwind.min.css">'
+        )
     
     # Extract BODY opening up to the article grid start
     body_before_match = re.search(r'(<body>.*?)<!-- STATIC GRID', template, re.DOTALL)

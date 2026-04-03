@@ -2053,7 +2053,7 @@ def build_breadcrumb_schema(title: str, category: str, canonical_url: str) -> st
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": f"{SITE_URL}/index.html"
+                "item": f"{SITE_URL}/"
             },
             {
                 "@type": "ListItem",
@@ -2293,7 +2293,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
     breadcrumb_html = f"""
         <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
             <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
-                <li><a href="/index.html" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><a href="/" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
                 <li><span class="text-slate-300">/</span></li>
                 <li><a href="/blog/" class="hover:text-brand transition">Blog</a></li>
 """
@@ -2548,10 +2548,12 @@ def build_all():
         ('legal.html', '0.5', 'yearly'),
     ]
     
+    today = datetime.now().strftime("%Y-%m-%d")
     for page, priority, changefreq in static_pages:
         url_path = f"{SITE_URL}/{page}" if page else f"{SITE_URL}/"
         sitemap_entries.append(f"""  <url>
     <loc>{url_path}</loc>
+    <lastmod>{today}</lastmod>
     <changefreq>{changefreq}</changefreq>
     <priority>{priority}</priority>
   </url>""")
@@ -2564,6 +2566,19 @@ def build_all():
     <lastmod>{iso_date.split('T')[0]}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>""")
+    
+    # ── SEO FIX: Add blog category & pagination pages to sitemap ──
+    blog_dir = os.path.join(BASE_DIR, "blog")
+    if os.path.isdir(blog_dir):
+        for blog_file in sorted(os.listdir(blog_dir)):
+            if blog_file.endswith('.html') and blog_file != 'index.html':
+                blog_url = f"{SITE_URL}/blog/{blog_file}"
+                sitemap_entries.append(f"""  <url>
+    <loc>{blog_url}</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>""")
     
     sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
