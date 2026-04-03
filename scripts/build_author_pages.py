@@ -168,8 +168,10 @@ def build_author_page(author, articles_list):
     <meta property="og:description" content="{author['bio'][:200]}">
     <meta property="og:url" content="{canonical}">
     <meta property="og:type" content="profile">
-    <!-- Tailwind (Production Build) -->
+    <!-- Tailwind CSS -->
     <link rel="stylesheet" href="/styles/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Person Schema -->
     <script type="application/ld+json">
@@ -412,6 +414,8 @@ def build_authors_index(authors_dir, author_articles):
     <meta property="og:url" content="{SITE_URL}/authors/">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="/styles/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {{ --bg: #FAFAFA; --text: #1E293B; --card: #FFFFFF; --head: rgba(255,255,255,0.95); --bord: #E2E8F0; }}
