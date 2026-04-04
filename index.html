@@ -29,16 +29,10 @@
         name="twitter:description" />
     <meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
         name="twitter:image" />
-    <!-- Google Analytics GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-1S8G205JX2');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&amp;display=swap"
-        rel="stylesheet" />
+    <!-- Google Fonts: non-render-blocking -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet"></noscript>
 <style>
         :root {
             --bg: #FAFAFA;
@@ -296,13 +290,22 @@
             }
         }
     </style>
-    <!-- Google Analytics GA4 -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
+    <!-- Google Analytics GA4 (deferred for performance) -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-1S8G205JX2');
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2';
+                s.async = true;
+                document.head.appendChild(s);
+                s.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-1S8G205JX2');
+                };
+            }, 2000);
+        });
     </script>
     <style>
         .social-footer-bar {
@@ -465,6 +468,7 @@
             href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank">Visit
             TpT Store</a>
     </div>
+    <main>
     <div class="pt-32 pb-4 px-6 text-center max-w-6xl mx-auto flex flex-col items-center">
         <div class="mb-4">
             <div
@@ -499,13 +503,13 @@
             </div>
 
             <!-- Left/Right Navigation Arrows -->
-            <button onclick="prevSlide()"
+            <button onclick="prevSlide()" aria-label="Previous slide"
                 class="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white/70 dark:bg-slate-900/70 hover:bg-brand hover:text-white text-slate-800 dark:text-white rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 shadow-md transform -translate-x-4 group-hover:translate-x-0">
                 <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                 </svg>
             </button>
-            <button onclick="nextSlide()"
+            <button onclick="nextSlide()" aria-label="Next slide"
                 class="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white/70 dark:bg-slate-900/70 hover:bg-brand hover:text-white text-slate-800 dark:text-white rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 shadow-md transform translate-x-4 group-hover:translate-x-0">
                 <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -514,13 +518,13 @@
 
             <!-- Slider Navigation Dots -->
             <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
-                <button
+                <button aria-label="Go to slide 1"
                     class="w-2.5 h-2.5 rounded-full bg-brand/60 dark:bg-white/80 slider-dot transition-all duration-300"
                     onclick="goToSlide(0)"></button>
-                <button
+                <button aria-label="Go to slide 2"
                     class="w-2.5 h-2.5 rounded-full bg-brand/20 dark:bg-white/30 hover:bg-brand/40 dark:hover:bg-white/50 slider-dot transition-all duration-300"
                     onclick="goToSlide(1)"></button>
-                <button
+                <button aria-label="Go to slide 3"
                     class="w-2.5 h-2.5 rounded-full bg-brand/20 dark:bg-white/30 hover:bg-brand/40 dark:hover:bg-white/50 slider-dot transition-all duration-300"
                     onclick="goToSlide(2)"></button>
             </div>
@@ -1007,8 +1011,9 @@
     </script>
     <script defer="" src="mailerlite.js"></script>
 
+    </main>
     <!-- SOCIAL MEDIA & FOOTER -->
-    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0);">
+    <footer class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0);">
         <div class="social-footer-bar">
             <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
                 <svg fill="currentColor" viewbox="0 0 24 24">
@@ -1044,7 +1049,7 @@
             </div>
             © 2026 Little Smart Genius. All rights reserved.
         </div>
-    </div>
+    </footer>
     <script src="exit-intent.js"></script>
 </body>
 

@@ -1,16 +1,58 @@
-/favicon.ico
-  Content-Type: image/x-icon
-  Cache-Control: public, max-age=604800
+# Cloudflare Pages custom headers
+# https://developers.cloudflare.com/pages/configuration/headers/
 
-/favicon-32x32.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=604800
+# Static assets: aggressive caching (1 year)
+/styles/*
+  Cache-Control: public, max-age=31536000, immutable
 
 /images/*
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
-/*.css
-  Cache-Control: public, max-age=86400
+/favicon.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon-32x32.png
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.js
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages: short cache with revalidation
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Blog pages
+/blog/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Articles
+/articles/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Author pages
+/authors/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# JSON data files: moderate cache
+/articles.json
+  Cache-Control: public, max-age=1800, must-revalidate
+
+/search_index.json
+  Cache-Control: public, max-age=1800, must-revalidate
+
+# Sitemap & robots
+/sitemap.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/robots.txt
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Security headers (all pages)
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

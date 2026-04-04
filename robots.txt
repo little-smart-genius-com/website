@@ -1,10 +1,33 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://littlesmartgenius.com/sitemap.xml
+# Block AI crawlers
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
 
 # Block non-public pages & directories
+User-agent: *
 Disallow: /admin.html
 Disallow: /posts/
 Disallow: /logs/
@@ -16,3 +39,7 @@ Disallow: /data/
 Disallow: /instagram/
 Disallow: /medium/
 Disallow: /outputs/
+Disallow: /testsprite_tests/
+
+# Sitemap
+Sitemap: https://littlesmartgenius.com/sitemap.xml
