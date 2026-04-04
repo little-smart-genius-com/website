@@ -607,6 +607,11 @@
       "slot": "keyword",
       "topic": "threading and lacing activities for fine motor",
       "date": "2026-04-04T16:02:16.671248"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Cookbook for Kids",
+      "date": "2026-04-04T20:47:14.705763"
     }
   ],
   "product": [
@@ -672,6 +677,7 @@
     "Sudoku",
     "Stickers Pack",
     "Counting Numbers",
-    "Crossword"
+    "Crossword",
+    "Cookbook for Kids"
   ]
 }
