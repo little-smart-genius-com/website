@@ -205,7 +205,7 @@ def build_author_page(author, articles_list):
 <body>
     <header class="top-header px-5 md:px-10">
         <a class="flex items-center gap-3 no-underline" href="/">
-            <img alt="Logo" class="logo-img" src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg">
+            <img alt="Logo" class="logo-img" src="/images/logo.webp">
             <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span class="text-brand">.</span></span>
         </a>
         <nav class="hidden lg:flex gap-8">
@@ -442,7 +442,7 @@ def build_authors_index(authors_dir, author_articles):
 <body>
     <header class="top-header px-5 md:px-10">
         <a class="flex items-center gap-3 no-underline" href="/">
-            <img alt="Logo" class="logo-img" src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg">
+            <img alt="Logo" class="logo-img" src="/images/logo.webp">
             <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span class="text-brand">.</span></span>
         </a>
         <nav class="hidden lg:flex gap-8">
