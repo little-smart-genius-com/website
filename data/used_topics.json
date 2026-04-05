@@ -61,7 +61,8 @@
     "sensory art activities for toddlers at home",
     "best tracing activities for toddlers handwriting",
     "threading and lacing activities for fine motor",
-    "picture puzzles to improve attention in children"
+    "picture puzzles to improve attention in children",
+    "observation skills games for kids at home"
   ],
   "daily_log": [
     {
@@ -618,6 +619,11 @@
       "slot": "keyword",
       "topic": "picture puzzles to improve attention in children",
       "date": "2026-04-05T05:58:03.313874"
+    },
+    {
+      "slot": "keyword",
+      "topic": "observation skills games for kids at home",
+      "date": "2026-04-05T09:02:32.182520"
     }
   ],
   "product": [
