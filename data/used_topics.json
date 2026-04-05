@@ -635,6 +635,11 @@
       "slot": "keyword",
       "topic": "word search puzzles for kids vocabulary building",
       "date": "2026-04-05T15:59:14.226436"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Range Puzzle",
+      "date": "2026-04-05T20:46:05.406339"
     }
   ],
   "product": [
@@ -702,6 +707,7 @@
     "Stickers Pack",
     "Counting Numbers",
     "Crossword",
-    "Cookbook for Kids"
+    "Cookbook for Kids",
+    "Range Puzzle"
   ]
 }
