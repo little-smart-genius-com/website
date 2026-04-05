@@ -247,7 +247,14 @@ def generate_homepage_js(all_products, freebies):
     # Formatage léger (juste ce dont l'index a besoin)
     js_products = []
     for p in selection:
-        full_img = f"https://ecdn.teacherspayteachers.com/thumbitem/{p['img_clean']}"
+        img_path = p['img_clean']
+        pid_match = re.search(r"-(\d{7,})-", img_path)
+        if pid_match:
+            pid = pid_match.group(1)
+            full_img = f"images/products-thumbs/{pid}.webp"
+        else:
+            full_img = f"https://ecdn.teacherspayteachers.com/thumbitem/{img_path}"
+
         js_products.append({
             "name": p["name"],
             "url": p["url"],

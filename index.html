@@ -7,8 +7,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Preload LCP image -->
-    <link rel="preload" as="image" href="images/banners/Little_Smart_Genius_Banner_1.webp" fetchpriority="high">
     <link rel="stylesheet" href="/styles/tailwind.min.css">
 <title>Home | Little Smart Genius</title>
     <link rel="canonical" href="https://littlesmartgenius.com/">
@@ -20,7 +18,7 @@
     <meta content="Little Smart Genius — Educational Printables for Kids" property="og:title" />
     <meta content="Free and Premium educational printables, logic puzzles, and visual perception activities for kids."
         property="og:description" />
-    <meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+    <meta content="https://littlesmartgenius.com/images/logo.webp"
         property="og:image" />
     <meta content="https://littlesmartgenius.com/" property="og:url" />
     <meta content="website" property="og:type" />
@@ -29,7 +27,7 @@
     <meta content="Little Smart Genius — Educational Printables for Kids" name="twitter:title" />
     <meta content="Free and Premium educational printables, logic puzzles, and visual perception activities for kids."
         name="twitter:description" />
-    <meta content="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg"
+    <meta content="https://littlesmartgenius.com/images/logo.webp"
         name="twitter:image" />
     <!-- Google Fonts: non-render-blocking -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap">
@@ -42,7 +40,6 @@
             --card: #FFFFFF;
             --head: rgba(255, 255, 255, 0.95);
             --bord: #E2E8F0;
-            --brand-text: #b45d00;
         }
 
         .dark {
@@ -58,25 +55,7 @@
             background: var(--bg);
             color: var(--text);
             margin: 0;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        /* Skip-to-content link for accessibility */
-        .skip-link {
-            position: absolute;
-            top: -100%;
-            left: 16px;
-            z-index: 999;
-            background: #0F172A;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 0 0 8px 8px;
-            font-weight: 700;
-            font-size: 14px;
-            text-decoration: none;
-        }
-        .skip-link:focus {
-            top: 0;
+            transition: 0.3s;
         }
 
         /* HEADER - IDENTIQUE A ABOUT/CONTACT (80px) */
@@ -213,21 +192,20 @@
             z-index: 49;
         }
 
-        /* ANIMATIONS - GPU composited */
+        /* ANIMATIONS */
         .fade-in-up {
             animation: fadeInUp 0.8s ease-out;
-            will-change: opacity, transform;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translate3d(0, 20px, 0);
+                transform: translateY(20px);
             }
 
             to {
                 opacity: 1;
-                transform: translate3d(0, 0, 0);
+                transform: translateY(0);
             }
         }
 
@@ -264,12 +242,9 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* CARDS HOVER - GPU composited */
-        .product-card {
-            will-change: transform;
-        }
+        /* CARDS HOVER */
         .product-card:hover {
-            transform: translate3d(0, -5px, 0);
+            transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
             border-color: #F48C06;
         }
@@ -401,7 +376,7 @@
       "@type": "Organization",
       "name": "Little Smart Genius",
       "url": "https://littlesmartgenius.com/",
-      "logo": "https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg",
+      "logo": "images/logo.webp",
       "sameAs": [
         "https://www.instagram.com/littlesmartgenius_com/",
         "https://www.pinterest.com/littlesmartgenius_com/"
@@ -412,29 +387,27 @@
 </head>
 
 <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Lightbox Element -->
     <div id="lightbox" onclick="if(event.target.id==='lightbox') closeLightbox()">
-        <button class="lb-close" onclick="closeLightbox()" aria-label="Close lightbox"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+        <div class="lb-close" onclick="closeLightbox()"><svg class="w-8 h-8" fill="none" stroke="currentColor"
                 viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg></button>
-        <button class="lb-nav lb-prev" onclick="switchLb(-1)" aria-label="Previous image"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+            </svg></div>
+        <div class="lb-nav lb-prev" onclick="switchLb(-1)"><svg class="w-8 h-8" fill="none" stroke="currentColor"
                 viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg></button>
-        <div class="flex flex-col items-center max-w-[90vw]"><img id="lb-img" src="" alt="Product image zoom view"
+            </svg></div>
+        <div class="flex flex-col items-center max-w-[90vw]"><img id="lb-img" src="" alt="Zoom"
                 class="transition-opacity duration-300"></div>
-        <button class="lb-nav lb-next" onclick="switchLb(1)" aria-label="Next image"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+        <div class="lb-nav lb-next" onclick="switchLb(1)"><svg class="w-8 h-8" fill="none" stroke="currentColor"
                 viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg></button>
+            </svg></div>
     </div>
 
     <header class="top-header px-5 md:px-10">
         <a class="flex items-center gap-3 no-underline" href="/">
-            <img alt="Logo" class="logo-img"
-                src="https://ecdn.teacherspayteachers.com/thumbuserhome/Little-Smart-Genius-1746813476/23416711.jpg" />
+            <img alt="Logo" class="logo-img" src="images/logo.webp" />
             <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span
                     class="text-brand">.</span></span>
         </a>
@@ -480,7 +453,7 @@
                 Store</a>
             <div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition"
                 onclick="toggleTheme()"><span id="theme-icon">🌙</span></div>
-            <button class="block lg:hidden text-2xl" onclick="toggleMobileMenu()" style="color:var(--text)" aria-label="Open navigation menu">☰</button>
+            <button class="block lg:hidden text-2xl" onclick="toggleMobileMenu()" style="color:var(--text)">☰</button>
         </div>
     </header>
     <div id="mobile-menu">
@@ -494,7 +467,7 @@
             href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank">Visit
             TpT Store</a>
     </div>
-    <main id="main-content">
+    <main>
     <div class="pt-32 pb-4 px-6 text-center max-w-6xl mx-auto flex flex-col items-center">
         <div class="mb-4">
             <div
@@ -545,13 +518,13 @@
             <!-- Slider Navigation Dots -->
             <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
                 <button aria-label="Go to slide 1"
-                    class="w-3.5 h-3.5 rounded-full bg-brand/60 dark:bg-white/80 slider-dot transition-all duration-300"
+                    class="w-2.5 h-2.5 rounded-full bg-brand/60 dark:bg-white/80 slider-dot transition-all duration-300"
                     onclick="goToSlide(0)"></button>
                 <button aria-label="Go to slide 2"
-                    class="w-3.5 h-3.5 rounded-full bg-brand/20 dark:bg-white/30 hover:bg-brand/40 dark:hover:bg-white/50 slider-dot transition-all duration-300"
+                    class="w-2.5 h-2.5 rounded-full bg-brand/20 dark:bg-white/30 hover:bg-brand/40 dark:hover:bg-white/50 slider-dot transition-all duration-300"
                     onclick="goToSlide(1)"></button>
                 <button aria-label="Go to slide 3"
-                    class="w-3.5 h-3.5 rounded-full bg-brand/20 dark:bg-white/30 hover:bg-brand/40 dark:hover:bg-white/50 slider-dot transition-all duration-300"
+                    class="w-2.5 h-2.5 rounded-full bg-brand/20 dark:bg-white/30 hover:bg-brand/40 dark:hover:bg-white/50 slider-dot transition-all duration-300"
                     onclick="goToSlide(2)"></button>
             </div>
 
@@ -630,30 +603,30 @@
             High-quality, engaging educational materials designed to spark creativity and critical thinking.
         </p>
         <div class="flex gap-3 flex-wrap justify-center fade-in-up" style="animation-delay: 0.2s;">
-            <a class="px-6 py-3 bg-brand text-white font-bold rounded-full hover:shadow-xl hover:scale-105 transition transform text-sm"
+            <a class="px-6 py-2 bg-brand text-white font-bold rounded-full hover:shadow-xl hover:scale-105 transition transform text-sm"
                 href="products.html">Browse
                 Store</a>
-            <a class="px-6 py-3 border-2 border-slate-300 dark:border-slate-600 font-bold rounded-full hover:border-brand hover:text-brand transition text-sm"
+            <a class="px-6 py-2 border-2 border-slate-300 dark:border-slate-600 font-bold rounded-full hover:border-brand hover:text-brand transition text-sm"
                 href="freebies.html" style="color:var(--text)">Get Freebies</a>
         </div>
     </div>
     <div class="bg-brand/5 py-4 border-y border-brand/10 mb-8">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
-                <p class="text-xl font-extrabold" style="color:var(--brand-text)">4.8</p>
-                <p class="text-[11px] uppercase font-bold text-slate-600">Average Rating</p>
+                <p class="text-xl font-extrabold text-brand">4.8</p>
+                <p class="text-[9px] uppercase font-bold text-slate-500">Average Rating</p>
             </div>
             <div>
-                <p class="text-xl font-extrabold" style="color:var(--brand-text)">PreK-12+</p>
-                <p class="text-[11px] uppercase font-bold text-slate-600">To Adult Ed</p>
+                <p class="text-xl font-extrabold text-brand">PreK-12+</p>
+                <p class="text-[9px] uppercase font-bold text-slate-500">To Adult Ed</p>
             </div>
             <div>
-                <p class="text-xl font-extrabold" style="color:var(--brand-text)">Included</p>
-                <p class="text-[11px] uppercase font-bold text-slate-600">Answer Keys</p>
+                <p class="text-xl font-extrabold text-brand">Included</p>
+                <p class="text-[9px] uppercase font-bold text-slate-500">Answer Keys</p>
             </div>
             <div>
-                <p class="text-xl font-extrabold" style="color:var(--brand-text)">Instant</p>
-                <p class="text-[11px] uppercase font-bold text-slate-600">Digital Access</p>
+                <p class="text-xl font-extrabold text-brand">Instant</p>
+                <p class="text-[9px] uppercase font-bold text-slate-500">Digital Access</p>
             </div>
         </div>
     </div>
@@ -838,7 +811,7 @@
             </div>
         </div>
     </div>
-    <script onerror="console.log('Script not found')" src="featured_products.js" defer></script>
+    <script onerror="console.log('Script not found')" src="featured_products.js"></script>
     <script>
         // --- DATA & RENDER ---
 

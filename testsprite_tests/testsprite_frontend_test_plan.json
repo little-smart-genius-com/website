@@ -1,0 +1,270 @@
+[
+  {
+    "id": "TC001",
+    "title": "Browse authors directory and open an author profile from the listings",
+    "description": "Verifies a reader can open the authors directory, select an author, and land on the author profile with a visible bio and article list.",
+    "category": "View Authors Directory",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /authors/"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the author listings"
+      },
+      {
+        "type": "action",
+        "description": "Click the author listing for Lina Bautista"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the author profile page to load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the author biography section is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a list of the author’s articles is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Direct-entry author profile loads without prior navigation",
+    "description": "Verifies a search/social visitor can land directly on an author profile page and see a bio and article list.",
+    "category": "View Author Profile",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /authors/rachel-nguyen.html"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the author profile page to load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the author biography section is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a list of the author’s articles is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Open Rachel Nguyen profile from the directory",
+    "description": "Verifies a reader can navigate from the authors directory to Rachel Nguyen’s profile and see a bio and article collection.",
+    "category": "View Authors Directory",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /authors/"
+      },
+      {
+        "type": "action",
+        "description": "Click the author listing for Rachel Nguyen"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the author profile page to load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the author biography section is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a list of the author’s articles is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Navigate from an author profile back to the authors directory and open another author",
+    "description": "Verifies a visitor can move from an author profile to the authors directory and continue browsing other author profiles.",
+    "category": "View Author Profile",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /authors/rachel-nguyen.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link back to the authors directory"
+      },
+      {
+        "type": "action",
+        "description": "Click the author listing for David Moreau"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the author profile page to load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the author biography section is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a list of the author’s articles is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Author profile page shows non-empty article collection",
+    "description": "Verifies an author profile page provides a browsable, non-empty collection of articles for that author.",
+    "category": "View Author Profile",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /authors/david-moreau.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the author profile page content"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a list of the author’s articles is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC006",
+    "title": "Directory coverage: every listed author opens a working profile page",
+    "description": "Verifies each author shown in the authors directory can be opened and each profile displays a bio and article list.",
+    "category": "View Authors Directory",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /authors/"
+      },
+      {
+        "type": "action",
+        "description": "Click the author listing for Little Smart Genius"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link back to the authors directory"
+      },
+      {
+        "type": "action",
+        "description": "Click the author listing for Dr. Emily Carter"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link back to the authors directory"
+      },
+      {
+        "type": "action",
+        "description": "Click the author listing for David Moreau"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link back to the authors directory"
+      },
+      {
+        "type": "action",
+        "description": "Click the author listing for Lina Bautista"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link back to the authors directory"
+      },
+      {
+        "type": "action",
+        "description": "Click the author listing for Rachel Nguyen"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link back to the authors directory"
+      },
+      {
+        "type": "action",
+        "description": "Click the author listing for Sarah Mitchell"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the opened author profile displays a biography section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the opened author profile displays an article collection"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC007",
+    "title": "Author profile pages are consistent across listed authors",
+    "description": "Verifies each author profile route loads and consistently includes a biography section and an article collection.",
+    "category": "View Author Profile",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /authors/little-smart-genius.html"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /authors/dr-emily-carter.html"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /authors/david-moreau.html"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /authors/lina-bautista.html"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /authors/rachel-nguyen.html"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /authors/sarah-mitchell.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the currently open author profile displays a biography section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the currently open author profile displays an article collection"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC008",
+    "title": "Directory page provides a scannable list of authors",
+    "description": "Verifies the authors directory renders a non-empty set of author listings that can be scanned and selected.",
+    "category": "View Authors Directory",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /authors/"
+      },
+      {
+        "type": "action",
+        "description": "Scroll from top to bottom of the directory page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple author listings are displayed"
+      }
+    ],
+    "priority": "Medium"
+  }
+]
