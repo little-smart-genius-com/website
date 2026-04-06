@@ -17,8 +17,8 @@ from io import BytesIO
 from PIL import Image
 from dotenv import load_dotenv
 
-# Use the master prompt templates
-from master_prompt import build_prompt as master_build_prompt
+# Use the V5 style templates
+from prompt_templates import build_art_director_prompt
 
 # Cross-platform: works both locally and on GitHub Actions
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -62,41 +62,10 @@ api_key = get_working_pollinations_key()
 headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
 
 
-# ── DEEPSEEK ART DIRECTOR ──
+# ── DEEPSEEK ART DIRECTOR (V5) ──
 async def agent_5_art_director_single(session, title, concept, image_index):
-    IMAGE_ROLES = [
-        "Image 1 (Cover): Wide shot of children/parents engaged in activity (current style)",
-        "Image 2: CLOSE-UP flat-lay of hands working on the worksheet/puzzle (bird's-eye angle, focus on hands and materials)",
-        "Image 3: OVERHEAD shot of multiple children's hands collaborating on a shared activity page",
-        "Image 4: DETAIL SHOT of the actual educational material with art supplies around (colored pencils, scissors)",
-        "Image 5: Close-up of a child's hands interacting with a specific prop (puzzle piece, game board, coloring page)",
-        "Image 6: Wide or medium shot showing the learning environment with visible worksheets on the table",
-    ]
-    role = IMAGE_ROLES[image_index % len(IMAGE_ROLES)]
-    
-    SYSTEM_PROMPT = (
-        "You are an expert Art Director for educational children's content. "
-        "Your ONLY job is to return a highly descriptive, unique, and highly creative subject text (around 60 to 90 words). "
-        "This text will replace the [SUJET] placeholder in a film-grade Pixar template. "
-        "You MUST be extremely creative. Each image in the article must have a completely distinct scene, action, "
-        "and materials. "
-        "CRITICAL REQUIREMENTS:\n"
-        "1. All characters (children AND adults) MUST be explicitly described as having a natural, gentle, realistic smile.\n"
-        "2. NO characters should have their mouths wide open, no exaggerated expressions, and no tongues sticking out (mouths MUST be closed or gently smiling naturally).\n"
-        "3. IMPORTANT: Include a mix of characters. Do not only feature children. Frequently include a parent or a teacher actively enthusiastically playing, guiding, or cooperating with the kids.\n"
-        "4. Detail specific, tangible, interactive educational props (e.g., holding a shiny magnifying glass, assembling large colorful floor puzzles, moving pieces on a board game, coloring on vibrant worksheets).\n"
-        "5. Emphasize a warm, cozy, highly detailed classroom or home environment with sunlight streaming in.\n"
-        "6. DO NOT output full prompts, lighting terminology, or style formatting. DO NOT include 'Pixar', '3D', 'Golden hour', etc.\n"
-        "7. DIVERSIFY compositions based on your assigned 'Role'. If assigned a wide shot, show the environment AND people. If assigned a flat-lay or detailed shot, focus tightly on HANDS and MATERIALS from an overhead/bird's-eye or close-up perspective, explicitly mentioning hands holding tools.\n"
-        "Just describe the specific unique characters (or just hands), their activity with props, and their surroundings."
-    )
-    
-    user_prompt = (
-        f"Article Title: {title}\n"
-        f"Context: {concept}\n"
-        f"Role: {role}\n\n"
-        f"Write the ~60-90 word unique children's activity description:"
-    )
+    SYSTEM_PROMPT = "You are Agent 5, the Expert Art Director. You MUST return ONLY the requested image prompt without any markdown, introductory text, or quotes."
+    user_prompt = build_art_director_prompt(concept, title, image_index)
     
     payload = {
         "model": MODEL_CHAT,
@@ -118,9 +87,7 @@ async def agent_5_art_director_single(session, title, concept, image_index):
             await asyncio.sleep(2)
             
     # Fallback
-    return (f"a group of joyful, diverse children and a smiling teacher "
-            f"engaged in {concept[:20]} activities together, carefully placing "
-            f"pieces and smiling, in a warm cozy classroom with sunlight streaming in")
+    return (f"a high-quality educational illustration of children engaged in {concept[:50]} activities")
 
 
 def center_crop_resize(img, target_w, target_h):
@@ -209,7 +176,7 @@ async def process_article(post_path, force=False, image_type=None, selected_mode
             if needs_cover:
                 print(f"  🖼️ Regenerating COVER...")
                 subject = await agent_5_art_director_single(session, title, cover_concept, 0)
-                full_prompt = master_build_prompt(subject, 0)
+                full_prompt = subject
                 full_prompt += ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, watermarks, or UI overlays in the image, pure visual storytelling only"
                 
                 # Reuse existing filename to avoid needing HTML rebuild
@@ -244,7 +211,7 @@ async def process_article(post_path, force=False, image_type=None, selected_mode
             if is_target:
                 print(f"  🖼️ Regenerating img{idx} (Context: {concept[:40]}...)..")
                 subject = await agent_5_art_director_single(session, title, concept, idx)
-                full_prompt = master_build_prompt(subject, idx)
+                full_prompt = subject
                 full_prompt += ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, watermarks, or UI overlays in the image, pure visual storytelling only"
                 
                 # Reuse existing filename to avoid needing HTML rebuild
