@@ -755,12 +755,15 @@ async function getTopics(env) {
 }
 
 async function saveKeywords(content, env) {
-    const REPO = env.GITHUB_REPO || "little-smart-genius-com/website";
     const { sha } = await ghFileContent("data/keywords.txt", env);
-    await ghFetch(`/repos/${REPO}/contents/data/keywords.txt`, {
+    const res = await ghFetch(`contents/data/keywords.txt`, {
         method: "PUT",
         body: JSON.stringify({ message: "Update keywords from admin dashboard", content: btoa(unescape(encodeURIComponent(content))), sha: sha || undefined }),
     }, env);
+    if (!res.ok) {
+        const errText = await res.text().catch(() => "");
+        throw new Error(`GitHub API error ${res.status}: ${errText.substring(0, 200)}`);
+    }
     const lines = content.split("\n").filter(l => l.trim() && !l.startsWith("#"));
     return { saved: lines.length, message: `${lines.length} keywords saved` };
 }
