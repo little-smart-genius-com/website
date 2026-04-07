@@ -49,7 +49,7 @@ from topic_selector import TopicSelector
 from prompt_templates import get_prompt_builder, AI_DETECTION_PHRASES, TRANSITION_WORDS, IMAGE_STYLE_PRESETS, build_art_director_prompt
 from smart_linker import SmartLinker
 from instagram_generator import generate_instagram_post, send_to_makecom
-
+from master_prompt import build_prompt as master_build_prompt  # V8 master prompts (6 lighting templates)
 
 load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
 
@@ -850,9 +850,42 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
         print(f"   [AGENT {writer_id+1}] Done! ({word_count} words)")
         return (writer_id, html_output)
 
-    # --- AGENT 5: ART DIRECTOR (V5 'Directeur Artistique' INTEGRATION) ---
+    # --- AGENT 5: ART DIRECTOR (V8 MASTER PROMPT INTEGRATION) ---
     async def agent_5_art_director(self, session):
-        print("   [AGENT 5] Art Director drafting 6 image prompts (V5 templates)...")
+        print("   [AGENT 5] Art Director drafting 6 image prompts (V8 master templates)...")
+
+        # V8 Art Director System Prompt — contains all user directives:
+        # - Joyful/happy/glowing smiles on ALL characters
+        # - No tongues sticking out
+        # - Mix of children AND parents/teachers
+        # - Specific tangible educational props
+        # - Warm cozy environment with sunlight
+        ART_DIRECTOR_SYSTEM_V8 = (
+            "You are an expert Art Director for educational children's content. "
+            "Your ONLY job is to return a highly descriptive, unique, and highly creative subject text (around 60 to 90 words). "
+            "This text will replace the [SUJET] placeholder in a film-grade Pixar template. "
+            "You MUST be extremely creative. Each image in the article must have a completely distinct scene, action, "
+            "and materials based specifically on the provided H2 Section Context. "
+            "CRITICAL REQUIREMENTS:\n"
+            "1. All characters (children AND adults) MUST be explicitly described as having a natural, gentle, realistic smile.\n"
+            "2. NO characters should have their mouths wide open, no exaggerated expressions, and no tongues sticking out (mouths MUST be closed or gently smiling naturally).\n"
+            "3. IMPORTANT: Include a mix of characters. Do not only feature children. Frequently include a parent or a teacher actively enthusiastically playing, guiding, or cooperating with the kids.\n"
+            "4. Detail specific, tangible, interactive educational props (e.g., holding a shiny magnifying glass, assembling large colorful floor puzzles, moving pieces on a board game, coloring on vibrant worksheets).\n"
+            "5. Emphasize a warm, cozy, highly detailed classroom or home environment with sunlight streaming in.\n"
+            "6. DO NOT output full prompts, lighting terminology, or style formatting. DO NOT include 'Pixar', '3D', 'Golden hour', etc.\n"
+            "7. DIVERSIFY compositions based on your assigned 'Role'. If assigned a wide shot, show the environment AND people. If assigned a flat-lay or detailed shot, focus tightly on HANDS and MATERIALS from an overhead/bird's-eye or close-up perspective, explicitly mentioning hands holding tools.\n"
+            "Just describe the specific unique characters (or just hands), their activity with props, and their surroundings."
+        )
+
+        # V8 Image Roles for variety (Updated for extreme composition diversity)
+        IMAGE_ROLES = [
+            "Image 1 (Cover): Wide shot of children/parents engaged in activity (current style)",
+            "Image 2: CLOSE-UP flat-lay of hands working on the worksheet/puzzle (bird's-eye angle, focus on hands and materials)",
+            "Image 3: OVERHEAD shot of multiple children's hands collaborating on a shared activity page",
+            "Image 4: DETAIL SHOT of the actual educational material with art supplies around (colored pencils, scissors)",
+            "Image 5: Close-up of a child's hands interacting with a specific prop (puzzle piece, game board, coloring page)",
+            "Image 6: Wide or medium shot showing the learning environment with visible worksheets on the table",
+        ]
 
         # Gather section contexts from the plan
         concepts = [self.plan.get('cover_concept', f'Educational illustration about {self.topic_name}')]
@@ -867,31 +900,48 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
 
         tasks = []
         for i, concept in enumerate(concepts):
-            context_str = self.plan.get('title', self.topic_name)
-            # Use V5's build_art_director_prompt (Directeur Artistique & Prompt Master)
-            prompt = build_art_director_prompt(concept, context_str, i)
-            system_prompt = "You are Agent 5, the Expert Art Director. You MUST return ONLY the requested image prompt without any markdown, introductory text, or quotes."
+            role = IMAGE_ROLES[i % len(IMAGE_ROLES)]
+            user_prompt = (
+                f"Article Title: {self.plan.get('title', self.topic_name)}\n"
+                f"Context: {concept}\n"
+                f"Role: {role}\n\n"
+                f"Write the ~60-90 word unique children's activity description:"
+            )
             tasks.append(call_deepseek_async(
-                session, system_prompt, prompt,
+                session, ART_DIRECTOR_SYSTEM_V8, user_prompt,
                 agent_id=5, temperature=1.5, logger=self.logger
             ))
 
         raw_prompts = await asyncio.gather(*tasks, return_exceptions=True)
 
+        # Validate and wrap each subject with the master prompt template
         validated_prompts = []
         for i, (subject, concept) in enumerate(zip(raw_prompts, concepts)):
             if isinstance(subject, Exception) or not subject or len(str(subject).strip()) < 20:
+                # Fallback subject if art director fails
                 fallback_subject = (
-                    f"a high-quality educational illustration of children engaged in {concept}"
+                    f"a group of joyful, diverse children and a smiling teacher "
+                    f"engaged in {concept} activities together, carefully placing "
+                    f"pieces and smiling, in a warm cozy classroom with sunlight streaming in"
                 )
                 self.logger.warning(f"Agent 5 prompt #{i+1} invalid -- using fallback", 3)
-                validated_prompts.append(fallback_subject)
+                subject_text = fallback_subject
             else:
-                validated_prompts.append(str(subject).strip().strip('"').strip("'"))
+                subject_text = str(subject).strip().strip('"').strip("'")
+                # Clean out any leaked instructions (Pixar, 3D, etc.)
+                import re as _re
+                for bad in ["3D", "Pixar", "Disney", "Golden hour", "lighting", "shadow"]:
+                    if bad.lower() in subject_text.lower():
+                        subject_text = _re.sub(_re.escape(bad), '', subject_text, flags=_re.IGNORECASE).strip()
+                subject_text = _re.sub(r'\s+', ' ', subject_text).strip(' ,.')
+
+            # Wrap with the master prompt template for this image index
+            full_prompt = master_build_prompt(subject_text, image_index=i)
+            validated_prompts.append(full_prompt)
 
         ai_ok = sum(1 for p in raw_prompts if not isinstance(p, Exception) and p and len(str(p)) >= 20)
         ai_fail = sum(1 for p in raw_prompts if isinstance(p, Exception) or not p or len(str(p)) < 20)
-        print(f"   [AGENT 5] 6 Prompts validated ({ai_ok} AI + {ai_fail} fallback). V5 templates applied.")
+        print(f"   [AGENT 5] 6 Prompts validated ({ai_ok} AI + {ai_fail} fallback). Master templates applied.")
         return validated_prompts
 
     # --- MODULE 6: IMAGE PIPELINE (8 attempts + hybrid fallback) ---

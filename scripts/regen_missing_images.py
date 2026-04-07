@@ -9,7 +9,7 @@ from PIL import Image
 from dotenv import load_dotenv
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from prompt_templates import build_art_director_prompt
+from master_prompt import build_prompt as master_build_prompt
 
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 load_dotenv('.env')
@@ -46,15 +46,45 @@ def get_working_pollinations_key():
 api_key = get_working_pollinations_key()
 poll_headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
 
-# ── Art Director (V5) ──
+# ── Art Director (same as fix_images.py) ──
+IMAGE_ROLES = [
+    "Image 1 (Cover): Wide shot of children/parents engaged in activity",
+    "Image 2: CLOSE-UP flat-lay of hands working on the worksheet/puzzle (bird's-eye angle)",
+    "Image 3: OVERHEAD shot of multiple children's hands collaborating on a shared activity page",
+    "Image 4: DETAIL SHOT of the actual educational material with art supplies around",
+    "Image 5: Close-up of a child's hands interacting with a specific prop (puzzle piece, game board)",
+    "Image 6: Wide or medium shot showing the learning environment with visible worksheets",
+]
+
+SYSTEM_PROMPT = (
+    "You are an expert Art Director for educational children's content. "
+    "Your ONLY job is to return a highly descriptive, unique, and highly creative subject text (around 60 to 90 words). "
+    "This text will replace the [SUJET] placeholder in a film-grade Pixar template. "
+    "You MUST be extremely creative. Each image in the article must have a completely distinct scene, action, "
+    "and materials. "
+    "CRITICAL REQUIREMENTS:\n"
+    "1. All characters (children AND adults) MUST be explicitly described as having a natural, gentle, realistic smile.\n"
+    "2. NO characters should have their mouths wide open, no exaggerated expressions, and no tongues sticking out.\n"
+    "3. Include a mix of characters. Frequently include a parent or teacher actively playing with the kids.\n"
+    "4. Detail specific, tangible, interactive educational props.\n"
+    "5. Emphasize a warm, cozy, highly detailed classroom or home environment with sunlight streaming in.\n"
+    "6. DO NOT output full prompts, lighting terminology, or style formatting.\n"
+    "7. DIVERSIFY compositions based on your assigned 'Role'.\n"
+    "Just describe the specific unique characters, their activity with props, and their surroundings."
+)
+
 async def art_director(session, title, concept, image_index):
-    SYSTEM_PROMPT_AGENT = "You are Agent 5, the Expert Art Director. You MUST return ONLY the requested image prompt without any markdown, introductory text, or quotes."
-    user_prompt = build_art_director_prompt(concept, title, image_index)
-    
+    role = IMAGE_ROLES[image_index % len(IMAGE_ROLES)]
+    user_prompt = (
+        f"Article Title: {title}\n"
+        f"Context: {concept}\n"
+        f"Role: {role}\n\n"
+        f"Write the ~60-90 word unique children's activity description:"
+    )
     payload = {
         "model": MODEL_CHAT,
         "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT_AGENT},
+            {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_prompt}
         ],
         "temperature": 1.2
@@ -68,7 +98,7 @@ async def art_director(session, title, concept, image_index):
                     return data["choices"][0]["message"]["content"].strip().strip('"').strip("'")
         except:
             await asyncio.sleep(2)
-    return f"a high-quality educational illustration of children engaged in {concept[:50]} activities"
+    return f"a group of joyful, diverse children and a smiling teacher engaged in {concept[:30]} activities together in a warm cozy classroom"
 
 
 def center_crop_resize(img, tw, th):
@@ -167,11 +197,12 @@ async def main():
                 concept = concepts.get(img_idx, f"Educational activity for {title}")
                 print(f"  🖼️  Generating img{img_idx} (Context: {concept[:50]}...)")
 
-                # Art Director generates creative image prompt
+                # Art Director generates creative subject description
                 subject = await art_director(session, title, concept, img_idx)
                 print(f"    📝 Art Director: {subject[:80]}...")
 
-                full_prompt = subject
+                # Master Prompt applies the Pixar template for this image slot
+                full_prompt = master_build_prompt(subject, img_idx)
                 full_prompt += ", ABSOLUTELY NO text, letters, words, numbers, titles, captions, labels, watermarks, or UI overlays in the image, pure visual storytelling only"
 
                 filename = f"{prefix}-img{img_idx}-{timestamp}.webp"
