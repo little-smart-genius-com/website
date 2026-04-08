@@ -1,0 +1,10 @@
+﻿On branch main
+Your branch is behind 'origin/main' by 3 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   scripts/auto_blog_v6_ultimate.py
+	modified:   scripts/fix_images.py
+	modified:   scripts/regen_missing_images.py
+

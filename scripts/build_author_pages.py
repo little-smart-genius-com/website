@@ -29,6 +29,9 @@ AUTHORS = [
         "extended_bio": "With over 18 years of classroom experience and a degree from Stanford University, Richard Dubois created Little Smart Genius to bridge the gap between fun and learning. Every worksheet, puzzle, and activity in our catalog is designed to make children think critically, build confidence, and discover that learning can be an adventure.",
         "credentials": ["B.A. English Literature, Stanford University", "18+ years classroom experience", "Educator of the Year Award"],
         "is_primary": True,
+        "image": "Richard Dubois.jpg",
+        "email": "Richard_Dubois@littlesmartgenius.com",
+        "linkedin": "https://www.linkedin.com/in/richard-dubois-smart/",
     },
     {
         "slug": "sarah-mitchell",
@@ -41,6 +44,9 @@ AUTHORS = [
         "bio": "After 15 years in K-5 classrooms, Sarah brings real-world teaching experience into every worksheet and guide. She specializes in differentiated instruction, literacy, and making math fun for reluctant learners.",
         "extended_bio": "Sarah Mitchell spent 15 years teaching elementary school before joining Little Smart Genius as Senior Content Creator. Her deep understanding of how young children learn — and struggle — informs every resource she develops. Sarah's worksheets are known for their scaffolded approach, making complex concepts accessible to learners of all levels.",
         "credentials": ["15 years K-5 teaching experience", "Differentiated Instruction Specialist", "Literacy & Math Curriculum Designer"],
+        "image": "Sarah Mitchell.jpg",
+        "email": "Sarah_Mitchell@littlesmartgenius.com",
+        "linkedin": "https://www.linkedin.com/in/sarah-mitchell-smart/",
     },
     {
         "slug": "dr-emily-carter",
@@ -53,6 +59,9 @@ AUTHORS = [
         "bio": "Dr. Carter translates the latest cognitive science research into parent-friendly language. She ensures our activities are backed by evidence and aligned with how children's brains actually learn.",
         "extended_bio": "With a PhD in Developmental Psychology, Dr. Emily Carter bridges the gap between academic research and practical parenting. She reviews every Little Smart Genius resource to ensure it aligns with current cognitive science — from attention span research to executive function development. Her articles translate complex studies into actionable advice that parents and teachers can use today.",
         "credentials": ["PhD in Developmental Psychology", "Published Researcher in Child Cognition", "Science Advisory Board Member"],
+        "image": "Emily Carter.jpg",
+        "email": "Emily_Carter@littlesmartgenius.com",
+        "linkedin": "https://www.linkedin.com/in/emily-carter-smart/",
     },
     {
         "slug": "rachel-nguyen",
@@ -65,6 +74,9 @@ AUTHORS = [
         "bio": "A Montessori mom who lives and breathes child-led learning. Rachel writes from the trenches of parenting — sharing hands-on sensory activities, nature play ideas, and practical tips that work in real homes with real kids.",
         "extended_bio": "Rachel Nguyen is a certified Montessori educator and mother of three. Her approach combines Montessori principles with the chaos of real family life — messy sensory bins, nature walks that turn into bug hunts, and learning moments that happen between dinner and bedtime. Her content resonates with parents who want evidence-based methods without the perfection pressure.",
         "credentials": ["Certified Montessori Educator", "Homeschool Parent (3 children)", "Nature-Based Learning Advocate"],
+        "image": "Rachel Nguyen.jpg",
+        "email": "Rachel_Nguyen@littlesmartgenius.com",
+        "linkedin": "https://www.linkedin.com/in/rachel_nguyen-smart/",
     },
     {
         "slug": "david-moreau",
@@ -77,6 +89,9 @@ AUTHORS = [
         "bio": "With a Master's in Education and 12 years of instructional design experience, David crafts structured, methodical learning strategies. He focuses on formative assessment, project-based learning, and making complex concepts accessible.",
         "extended_bio": "David Moreau holds a Master's in Education and has spent 12 years designing curriculum for schools and educational publishers. His structured, methodical approach ensures that every learning pathway has clear objectives, measurable outcomes, and engaging activities. David specializes in making abstract math and logic concepts tangible for young learners.",
         "credentials": ["M.Ed. in Curriculum & Instruction", "12 years Instructional Design", "Project-Based Learning Specialist"],
+        "image": "David Moreau.jpg",
+        "email": "David_Moreau@littlesmartgenius.com",
+        "linkedin": "https://www.linkedin.com/in/david-moreau-smart/",
     },
     {
         "slug": "lina-bautista",
@@ -89,6 +104,9 @@ AUTHORS = [
         "bio": "Lina combines graphic design expertise with educational theory. She designs every worksheet with color psychology, visual scaffolding, and gamification — because great learning materials need to look great too.",
         "extended_bio": "Lina Bautista is a graphic designer with a specialization in educational materials. She understands that children engage more deeply with visually appealing content — so every worksheet, coloring page, and activity book she creates uses intentional color palettes, clear visual hierarchies, and gamification elements that make learning feel like play.",
         "credentials": ["B.F.A. in Graphic Design", "Educational Materials Specialist", "Visual Learning & Gamification Expert"],
+        "image": "Lina Bautista.jpg",
+        "email": "Lina_Bautista@littlesmartgenius.com",
+        "linkedin": "https://www.linkedin.com/in/lina-bautista-smart/",
     },
 ]
 
@@ -111,6 +129,9 @@ def build_person_schema(author, articles):
             "name": author["name"],
             "jobTitle": author["role"],
             "url": f"{SITE_URL}/authors/{author['slug']}.html",
+            "image": f"{SITE_URL}/authors/{author.get('image', '')}",
+            "email": author.get("email", ""),
+            "sameAs": [url for url in [author.get("linkedin", "")] if url],
             "worksFor": {
                 "@type": "Organization",
                 "name": "Little Smart Genius",
@@ -198,9 +219,23 @@ def build_author_page(author, articles_list):
         .fade-in {{ animation: fadeIn 0.8s ease-out; }}
         @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(20px); }} to {{ opacity: 1; transform: translateY(0); }} }}
     </style>
-    <!-- GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','G-1S8G205JX2');</script>
+    <!-- GA4 (deferred for performance) -->
+    <script>
+        window.addEventListener('load', function() {{
+            setTimeout(function() {{
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2';
+                s.async = true;
+                document.head.appendChild(s);
+                s.onload = function() {{
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() {{ dataLayer.push(arguments); }}
+                    gtag('js', new Date());
+                    gtag('config', 'G-1S8G205JX2');
+                }};
+            }}, 2000);
+        }});
+    </script>
 </head>
 <body>
     <header class="top-header px-5 md:px-10">
@@ -244,11 +279,13 @@ def build_author_page(author, articles_list):
     <!-- AUTHOR PROFILE -->
     <div class="px-6 max-w-5xl mx-auto pb-12 fade-in">
         <div class="flex flex-col md:flex-row gap-8 items-start mb-12">
-            <!-- Avatar + Info -->
+            <!-- Avatar -->
             <div class="flex-shrink-0">
-                <div class="w-28 h-28 rounded-full {colors['bg']} flex items-center justify-center text-6xl border-4 {colors['border']} shadow-lg">
-                    {author['emoji']}
-                </div>
+                <img src="/authors/{author.get('image', '')}" 
+                     alt="{author['name']} — {author['role'].split('—')[0].strip()} at Little Smart Genius"
+                     class="w-28 h-28 rounded-full border-4 {colors['border']} shadow-lg object-cover"
+                     style="border-radius: 50%; aspect-ratio: 1/1; overflow: hidden;"
+                     width="112" height="112" loading="eager">
             </div>
             <div class="flex-1">
                 <h1 class="text-3xl md:text-4xl font-extrabold mb-2 hero-title">{author['name']}</h1>
@@ -260,8 +297,13 @@ def build_author_page(author, articles_list):
                     {"".join(f'<span class="text-xs font-bold px-3 py-1 rounded-full {colors["bg"]} {colors["text"]}">{e}</span>' for e in author['expertise'])}
                 </div>
                 <!-- Credentials -->
-                <div class="space-y-1">
+                <div class="space-y-1 mb-4">
                     {"".join(f'<div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="text-brand">✓</span> {c}</div>' for c in author.get('credentials', []))}
+                </div>
+                <!-- Contact Links -->
+                <div class="flex flex-wrap items-center gap-3 mt-4">
+                    {"<a href='" + author['linkedin'] + "' target='_blank' rel='noopener' class='inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold text-white transition hover:opacity-90' style='background: #0A66C2;'><svg class='w-4 h-4' fill='currentColor' viewBox='0 0 24 24'><path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'/></svg>LinkedIn</a>" if author.get('linkedin') else ""}
+                    {"<a href='mailto:" + author['email'] + "' class='inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold border transition hover:bg-slate-50 dark:hover:bg-slate-800' style='color: var(--text); border-color: var(--bord);'><svg class='w-4 h-4' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'/></svg>" + author['email'] + "</a>" if author.get('email') else ""}
                 </div>
             </div>
         </div>
@@ -386,7 +428,7 @@ def build_authors_index(authors_dir, author_articles):
         cards += f'''
         <a href="/authors/{a['slug']}.html" class="p-6 rounded-2xl border shadow-lg hover:shadow-2xl transition-all duration-300 block" style="background: var(--card); border-color: var(--bord);">
             <div class="flex items-center gap-4 mb-3">
-                <div class="w-16 h-16 rounded-full {colors['bg']} flex items-center justify-center text-3xl border-2 {colors['border']}">{a['emoji']}</div>
+                <img src="/authors/{a.get('image', '')}" alt="{a['name']}" class="w-16 h-16 rounded-full border-2 {colors['border']} object-cover shadow" style="border-radius: 50%; aspect-ratio: 1/1;" width="64" height="64" loading="lazy">
                 <div>
                     <h2 class="text-lg font-extrabold" style="color: var(--text);">{a['name']}</h2>
                     <p class="{colors['text']} text-sm font-bold">{a['role'].split('—')[0].strip()}</p>
@@ -436,8 +478,22 @@ def build_authors_index(authors_dir, author_articles):
         .site-footer a {{ color: #94A3B8; text-decoration: none; transition: 0.2s; }}
         .site-footer a:hover {{ color: #F48C06; }}
     </style>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','G-1S8G205JX2');</script>
+    <script>
+        window.addEventListener('load', function() {{
+            setTimeout(function() {{
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2';
+                s.async = true;
+                document.head.appendChild(s);
+                s.onload = function() {{
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() {{ dataLayer.push(arguments); }}
+                    gtag('js', new Date());
+                    gtag('config', 'G-1S8G205JX2');
+                }};
+            }}, 2000);
+        }});
+    </script>
 </head>
 <body>
     <header class="top-header px-5 md:px-10">
@@ -511,48 +567,9 @@ def build_authors_index(authors_dir, author_articles):
 
 
 def add_to_sitemap(authors_dir):
-    """Add author pages to the sitemap."""
-    sitemap_path = os.path.join(PROJECT_ROOT, "sitemap.xml")
-    with open(sitemap_path, "r", encoding="utf-8") as f:
-        content = f.read()
-    
-    today = datetime.now().strftime("%Y-%m-%d")
-    new_urls = ""
-    
-    # Index page — only add if not already present
-    if f"{SITE_URL}/authors/" not in content:
-        new_urls += f"""
-  <url>
-    <loc>{SITE_URL}/authors/</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>"""
-    
-    # Individual author pages — only add if not already present
-    added = 0
-    for author in AUTHORS:
-        author_url = f"{SITE_URL}/authors/{author['slug']}.html"
-        if author_url not in content:
-            new_urls += f"""
-  <url>
-    <loc>{author_url}</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>"""
-            added += 1
-    
-    if new_urls:
-        # Insert before </urlset>
-        content = content.replace("</urlset>", f"{new_urls}\n</urlset>")
-        
-        with open(sitemap_path, "w", encoding="utf-8") as f:
-            f.write(content)
-        
-        print(f"  ✓ Added {added + (1 if f'{SITE_URL}/authors/' not in content else 0)} new URLs to sitemap.xml")
-    else:
-        print(f"  ✓ Author URLs already in sitemap.xml — no duplicates added")
+    """No-op: generate_sitemap.py now automatically discovers and includes author pages.
+    Kept for backwards compatibility with existing calls."""
+    print(f"  ℹ Sitemap management delegated to generate_sitemap.py (run it separately)")
 
 
 if __name__ == "__main__":

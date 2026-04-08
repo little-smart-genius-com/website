@@ -143,7 +143,7 @@
         "@type": "Organization",
         "name": "Little Smart Genius",
         "url": "https://littlesmartgenius.com/",
-        "logo": "images/logo.webp"
+        "logo": "https://littlesmartgenius.com/images/logo.webp"
       },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -154,13 +154,22 @@
       }
     }
     </script>
-    <!-- Google Analytics GA4 -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2"></script>
+    <!-- Google Analytics GA4 (deferred for performance) -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-1S8G205JX2');
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2';
+                s.async = true;
+                document.head.appendChild(s);
+                s.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-1S8G205JX2');
+                };
+            }, 2000);
+        });
     </script>
     <style>
         .social-footer-bar {
@@ -351,8 +360,8 @@
                     class="p-6 rounded-3xl bg-white dark:bg-slate-800 border-2 border-brand shadow-lg hover:shadow-xl transition fade-in-up relative overflow-hidden">
                     <div class="absolute top-0 right-0 bg-brand text-white text-xs font-bold px-3 py-1 rounded-bl-xl">
                         Founder</div>
-                    <div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center text-3xl mb-4">🧠
-                    </div>
+                    <img src="/authors/Richard Dubois.jpg" alt="Richard Dubois — Founder of Little Smart Genius"
+                        class="w-16 h-16 rounded-full border-2 border-brand object-cover shadow" style="border-radius: 50%; aspect-ratio: 1/1;" width="64" height="64" loading="lazy">
                     <h3 class="text-lg font-bold mb-1" style="color:var(--text)">Little Smart Genius</h3>
                     <p class="text-brand font-semibold text-sm mb-1">Founder &amp; Lead Editor</p>
                     <p class="text-slate-400 text-xs mb-3 italic">Richard Dubois</p>
@@ -367,8 +376,8 @@
                 <!-- Sarah Mitchell — Teacher -->
                 <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition fade-in-up"
                     style="animation-delay: 0.05s">
-                    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl mb-4">👩‍🏫
-                    </div>
+                    <img src="/authors/Sarah Mitchell.jpg" alt="Sarah Mitchell — Senior Content Creator"
+                        class="w-16 h-16 rounded-full border-2 border-blue-500 object-cover shadow" style="border-radius: 50%; aspect-ratio: 1/1;" width="64" height="64" loading="lazy">
                     <h3 class="text-lg font-bold mb-1" style="color:var(--text)">Sarah Mitchell</h3>
                     <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm mb-3">Senior Content Creator —
                         Elementary Teacher (15 years)</p>
@@ -383,8 +392,8 @@
                 <!-- Dr. Emily Carter — Psychologist -->
                 <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition fade-in-up"
                     style="animation-delay: 0.1s">
-                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-3xl mb-4">🧬
-                    </div>
+                    <img src="/authors/Emily Carter.jpg" alt="Dr. Emily Carter — Child Development Advisor"
+                        class="w-16 h-16 rounded-full border-2 border-purple-500 object-cover shadow" style="border-radius: 50%; aspect-ratio: 1/1;" width="64" height="64" loading="lazy">
                     <h3 class="text-lg font-bold mb-1" style="color:var(--text)">Dr. Emily Carter</h3>
                     <p class="text-purple-600 dark:text-purple-400 font-semibold text-sm mb-3">Child Development Advisor
                         — PhD in Developmental Psychology</p>
@@ -398,8 +407,8 @@
                 <!-- Rachel Nguyen — Montessori -->
                 <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition fade-in-up"
                     style="animation-delay: 0.15s">
-                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-3xl mb-4">🌱
-                    </div>
+                    <img src="/authors/Rachel Nguyen.jpg" alt="Rachel Nguyen — Montessori Specialist"
+                        class="w-16 h-16 rounded-full border-2 border-green-500 object-cover shadow" style="border-radius: 50%; aspect-ratio: 1/1;" width="64" height="64" loading="lazy">
                     <h3 class="text-lg font-bold mb-1" style="color:var(--text)">Rachel Nguyen</h3>
                     <p class="text-green-600 dark:text-green-400 font-semibold text-sm mb-3">Parenting &amp; Montessori
                         Specialist</p>
@@ -413,8 +422,8 @@
                 <!-- David Moreau — Pedagogy -->
                 <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition fade-in-up"
                     style="animation-delay: 0.2s">
-                    <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center text-3xl mb-4">📐
-                    </div>
+                    <img src="/authors/David Moreau.jpg" alt="David Moreau — Education Specialist"
+                        class="w-16 h-16 rounded-full border-2 border-indigo-500 object-cover shadow" style="border-radius: 50%; aspect-ratio: 1/1;" width="64" height="64" loading="lazy">
                     <h3 class="text-lg font-bold mb-1" style="color:var(--text)">David Moreau</h3>
                     <p class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm mb-3">Education &amp; Pedagogy
                         Specialist — M.Ed. (12 years)</p>
@@ -429,8 +438,8 @@
                 <!-- Lina Bautista — Design -->
                 <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition fade-in-up"
                     style="animation-delay: 0.25s">
-                    <div class="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center text-3xl mb-4">🎨
-                    </div>
+                    <img src="/authors/Lina Bautista.jpg" alt="Lina Bautista — Educational Designer"
+                        class="w-16 h-16 rounded-full border-2 border-pink-500 object-cover shadow" style="border-radius: 50%; aspect-ratio: 1/1;" width="64" height="64" loading="lazy">
                     <h3 class="text-lg font-bold mb-1" style="color:var(--text)">Lina Bautista</h3>
                     <p class="text-pink-600 dark:text-pink-400 font-semibold text-sm mb-3">Educational Designer &amp;
                         Visual

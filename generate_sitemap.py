@@ -10,27 +10,34 @@ DOMAIN = "https://littlesmartgenius.com"
 OUTPUT = "sitemap.xml"
 TODAY = datetime.now().strftime("%Y-%m-%d")
 
+def _get_file_lastmod(filepath):
+    """Get the last modification date of a file as YYYY-MM-DD string."""
+    try:
+        if os.path.exists(filepath):
+            mtime = os.path.getmtime(filepath)
+            return datetime.fromtimestamp(mtime).strftime("%Y-%m-%d")
+    except OSError:
+        pass
+    return TODAY
+
+
 def build_sitemap():
     urls = []
     
-    # ── 1. Main pages (priority 1.0 - 0.8) ──
+    # ── 1. Main pages ──
     main_pages = [
-        ("/", "daily", "1.0"),
-        ("/products.html", "weekly", "0.9"),
-        ("/freebies.html", "weekly", "0.9"),
+        "/",
+        "/products.html",
+        "/freebies.html",
     ]
-    for path, freq, prio in main_pages:
-        urls.append({"loc": f"{DOMAIN}{path}", "changefreq": freq, "priority": prio})
+    for path in main_pages:
+        filepath = "index.html" if path == "/" else path.lstrip("/")
+        urls.append({"loc": f"{DOMAIN}{path}", "lastmod": _get_file_lastmod(filepath)})
     
-    # ── 2. Blog index + pagination (priority 0.8) ──
-    urls.append({"loc": f"{DOMAIN}/blog/", "changefreq": "daily", "priority": "0.8"})
+    # ── 2. Blog index (skip pagination pages — they waste crawl budget) ──
+    urls.append({"loc": f"{DOMAIN}/blog/", "lastmod": _get_file_lastmod("blog/index.html")})
     
-    blog_pages = sorted(glob.glob("blog/page-*.html"))
-    for p in blog_pages:
-        name = os.path.basename(p)
-        urls.append({"loc": f"{DOMAIN}/blog/{name}", "changefreq": "weekly", "priority": "0.7"})
-    
-    # ── 3. Blog category pages (priority 0.7) ──
+    # ── 3. Blog category pages ──
     category_pages = []
     for f in sorted(glob.glob("blog/*.html")):
         name = os.path.basename(f)
@@ -39,9 +46,9 @@ def build_sitemap():
         category_pages.append(name)
     
     for name in category_pages:
-        urls.append({"loc": f"{DOMAIN}/blog/{name}", "changefreq": "weekly", "priority": "0.7"})
+        urls.append({"loc": f"{DOMAIN}/blog/{name}", "lastmod": _get_file_lastmod(f"blog/{name}")})
     
-    # ── 4. All articles (priority 0.6) ──
+    # ── 4. All articles ──
     try:
         with open("articles.json", "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -57,8 +64,6 @@ def build_sitemap():
             urls.append({
                 "loc": f"{DOMAIN}/articles/{slug}.html",
                 "lastmod": date_pub,
-                "changefreq": "monthly",
-                "priority": "0.6"
             })
     except FileNotFoundError:
         # Fallback: scan articles directory
@@ -66,20 +71,31 @@ def build_sitemap():
             name = os.path.basename(f)
             urls.append({
                 "loc": f"{DOMAIN}/articles/{name}",
-                "changefreq": "monthly",
-                "priority": "0.6"
+                "lastmod": _get_file_lastmod(f"articles/{name}"),
             })
     
-    # ── 5. Legal / info pages (priority 0.4) ──
+    # ── 5. Author pages ──
+    if os.path.exists("authors"):
+        authors_index = "authors/index.html"
+        if os.path.exists(authors_index):
+            urls.append({"loc": f"{DOMAIN}/authors/", "lastmod": _get_file_lastmod(authors_index)})
+        for f in sorted(glob.glob("authors/*.html")):
+            name = os.path.basename(f)
+            if name == "index.html":
+                continue
+            urls.append({"loc": f"{DOMAIN}/authors/{name}", "lastmod": _get_file_lastmod(f"authors/{name}")})
+    
+    # ── 6. Legal / info pages ──
     legal_pages = [
         "/about.html", "/contact.html", "/terms.html", 
         "/privacy.html", "/education.html", "/legal.html"
     ]
     for path in legal_pages:
-        if os.path.exists(path.lstrip("/")):
-            urls.append({"loc": f"{DOMAIN}{path}", "changefreq": "monthly", "priority": "0.4"})
+        filepath = path.lstrip("/")
+        if os.path.exists(filepath):
+            urls.append({"loc": f"{DOMAIN}{path}", "lastmod": _get_file_lastmod(filepath)})
     
-    # ── Build XML ──
+    # ── Build XML (clean: no deprecated changefreq/priority) ──
     xml_parts = ['<?xml version="1.0" encoding="UTF-8"?>']
     xml_parts.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     
@@ -88,8 +104,6 @@ def build_sitemap():
         xml_parts.append(f"    <loc>{url['loc']}</loc>")
         if "lastmod" in url:
             xml_parts.append(f"    <lastmod>{url['lastmod']}</lastmod>")
-        xml_parts.append(f"    <changefreq>{url['changefreq']}</changefreq>")
-        xml_parts.append(f"    <priority>{url['priority']}</priority>")
         xml_parts.append("  </url>")
     
     xml_parts.append("</urlset>")
@@ -102,10 +116,11 @@ def build_sitemap():
     print(f"✅ Sitemap generated: {OUTPUT}")
     print(f"   Total URLs: {len(urls)}")
     print(f"   - Main pages: {len(main_pages)}")
-    print(f"   - Blog pages: {1 + len(blog_pages)}")
+    print(f"   - Blog index: 1")
     print(f"   - Categories: {len(category_pages)}")
     print(f"   - Articles: {len([u for u in urls if '/articles/' in u['loc']])}")
-    print(f"   - Legal pages: {len([u for u in urls if u['priority'] == '0.4'])}")
+    print(f"   - Authors: {len([u for u in urls if '/authors/' in u['loc']])}")
+    print(f"   - Legal pages: {len([u for u in urls if any(p in u['loc'] for p in legal_pages)])}")
 
 if __name__ == "__main__":
     build_sitemap()

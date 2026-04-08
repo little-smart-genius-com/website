@@ -1,0 +1,8 @@
+﻿ scripts/auto_blog_v6_ultimate.py  | 74 +++++++--------------------------------
+ scripts/build_articles.py         |  2 +-
+ scripts/build_author_pages.py     |  4 +--
+ scripts/fix_images.py             | 49 +++++---------------------
+ scripts/mass_fix_recent_images.py | 46 ++++++++++++++++++++++++
+ scripts/regen_missing_images.py   | 49 +++++---------------------
+ scripts/update_site_master.py     | 11 ++++--
+ 7 files changed, 87 insertions(+), 148 deletions(-)

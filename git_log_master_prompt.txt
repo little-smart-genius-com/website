@@ -1,0 +1,2 @@
+﻿0963f6ff Regenerate all images (V8 Pixar Style) and update OG images
+110d3cc2 fix: correct related article thumbnails + save master prompt template

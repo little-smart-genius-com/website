@@ -1,0 +1,25 @@
+﻿b0af0405 fix: restore V5 Art Director style + regenerate 9 recent article images
+99458e82 Auto-blog V6: 2026-04-06 21h ÔÇö schedule
+898e378f Auto-blog V6: 2026-04-06 20h ÔÇö schedule
+2237568f Auto-blog V6: 2026-04-06 16h ÔÇö schedule
+2c2a0276 Auto-blog V6: 2026-04-06 14h ÔÇö schedule
+9eb15de1 Auto-blog V6: 2026-04-06 10h ÔÇö schedule
+e31cb1e3 Auto-blog V6: 2026-04-06 09h ÔÇö schedule
+705b2211 Auto-blog V6: 2026-04-06 06h ÔÇö schedule
+aa3cd719 Auto-blog V6: 2026-04-05 21h ÔÇö schedule
+6d31986f Auto-blog V6: 2026-04-05 20h ÔÇö schedule
+eccc3b9e Auto-blog V6: 2026-04-05 15h ÔÇö schedule
+4925d6ee Auto-blog V6: 2026-04-05 14h ÔÇö schedule
+ed8e8fb7 Auto-blog V6: 2026-04-05 10h ÔÇö schedule
+565ae527 Auto-blog V6: 2026-04-05 09h ÔÇö schedule
+00b0befc Auto-blog V6: 2026-04-05 05h ÔÇö schedule
+651ace9e Sync: align auto-gen blog articles with local WebP logo and absolute meta URIs
+8a1da17f Auto-update TPT products [2026-04-05]
+da219907 Optimize imagery for 95+ PageSpeed: local logo WebP and local featured products WebP
+d68d3b85 Auto-blog V6: 2026-04-04 21h ÔÇö schedule
+9fd33c1a Auto-blog V6: 2026-04-04 20h ÔÇö schedule
+ed50ba9c Fix: Revert critical inline CSS to restore layout
+1da65a8b Perf/A11y: Fix final LCP and Contrast issues on homepage
+658195d7 perf(pagespeed): optimize LCP/FCP, accessibility, SEO for mobile+desktop
+06db0c71 Auto-blog V6: 2026-04-04 16h ÔÇö schedule
+d6d8a4e5 Auto-blog V6: 2026-04-04 14h ÔÇö schedule
