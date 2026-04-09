@@ -73,7 +73,8 @@
     "Craft projects for kids to practice scissor skills",
     "Word family worksheets for early readers printable",
     "Friendship craft ideas for kids (bracelets and cards)",
-    "Free printable I spy worksheets for kids ages 4-7"
+    "Free printable I spy worksheets for kids ages 4-7",
+    "How to use coloring pages to calm anxious kids"
   ],
   "daily_log": [
     {
@@ -730,6 +731,11 @@
       "slot": "keyword",
       "topic": "Free printable I spy worksheets for kids ages 4-7",
       "date": "2026-04-09T06:00:24.329941"
+    },
+    {
+      "slot": "keyword",
+      "topic": "How to use coloring pages to calm anxious kids",
+      "date": "2026-04-09T09:28:13.488555"
     }
   ],
   "product": [
