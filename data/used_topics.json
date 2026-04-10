@@ -775,6 +775,11 @@
       "slot": "keyword",
       "topic": "Visual memory matching games for kids printable pdf",
       "date": "2026-04-10T16:22:47.211840"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Math Pack",
+      "date": "2026-04-10T20:52:35.539584"
     }
   ],
   "product": [
@@ -852,6 +857,7 @@
     "Bi-Lingual Matching",
     "Tic Tac Toe",
     "Kakurasu",
-    "Missing Vowels"
+    "Missing Vowels",
+    "Math Pack"
   ]
 }
