@@ -113,7 +113,7 @@ def build_sitemap():
     with open(OUTPUT, "w", encoding="utf-8") as f:
         f.write(sitemap_content)
     
-    print(f"✅ Sitemap generated: {OUTPUT}")
+    print(f"[OK] Sitemap generated: {OUTPUT}")
     print(f"   Total URLs: {len(urls)}")
     print(f"   - Main pages: {len(main_pages)}")
     print(f"   - Blog index: 1")
