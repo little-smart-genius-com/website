@@ -82,7 +82,8 @@
     "Fine motor worksheets for kids with small pictures to color",
     "Math fact practice worksheets for kids with answer keys",
     "Animal themed spot the difference printables for kids",
-    "Simple painting projects for preschoolers at home"
+    "Simple painting projects for preschoolers at home",
+    "Sight word coloring pages for kids printable"
   ],
   "daily_log": [
     {
@@ -814,6 +815,11 @@
       "slot": "keyword",
       "topic": "Simple painting projects for preschoolers at home",
       "date": "2026-04-12T06:10:37.230563"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Sight word coloring pages for kids printable",
+      "date": "2026-04-12T09:05:49.326557"
     }
   ],
   "product": [
