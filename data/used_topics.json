@@ -831,6 +831,11 @@
       "slot": "keyword",
       "topic": "Picture matching worksheets for early learners printable",
       "date": "2026-04-12T16:06:58.439226"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Spot Correct Spelling",
+      "date": "2026-04-12T20:53:07.175372"
     }
   ],
   "product": [
@@ -912,6 +917,7 @@
     "Kakurasu",
     "Missing Vowels",
     "Math Pack",
-    "Mine Finder"
+    "Mine Finder",
+    "Spot Correct Spelling"
   ]
 }
