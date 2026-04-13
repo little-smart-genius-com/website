@@ -859,6 +859,11 @@
       "slot": "keyword",
       "topic": "cutting practice worksheets for preschool kids",
       "date": "2026-04-13T16:53:45.777784"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Spot the Difference",
+      "date": "2026-04-13T21:10:48.881221"
     }
   ],
   "product": [
@@ -942,6 +947,7 @@
     "Missing Vowels",
     "Math Pack",
     "Mine Finder",
-    "Spot Correct Spelling"
+    "Spot Correct Spelling",
+    "Spot the Difference"
   ]
 }
