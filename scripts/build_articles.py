@@ -15,10 +15,7 @@ import shutil
 from datetime import datetime
 
 # Fix Windows terminal encoding
-try:
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-except Exception:
-    pass
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(BASE_DIR)
