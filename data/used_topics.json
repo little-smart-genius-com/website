@@ -84,7 +84,8 @@
     "Animal themed spot the difference printables for kids",
     "Simple painting projects for preschoolers at home",
     "Sight word coloring pages for kids printable",
-    "Picture matching worksheets for early learners printable"
+    "Picture matching worksheets for early learners printable",
+    "Word problem worksheets for kids who hate math"
   ],
   "daily_log": [
     {
@@ -836,6 +837,11 @@
       "slot": "freebie",
       "topic": "Spot Correct Spelling",
       "date": "2026-04-12T20:53:07.175372"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Word problem worksheets for kids who hate math",
+      "date": "2026-04-13T06:35:09.643131"
     }
   ],
   "product": [
