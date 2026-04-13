@@ -7,7 +7,7 @@ Each page includes:
 - List of published articles (from articles.json)
 - Internal links back to the author's articles
 """
-import os, json, re
+import os, json, re, base64
 from datetime import datetime
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -76,7 +76,7 @@ AUTHORS = [
         "credentials": ["Certified Montessori Educator", "Homeschool Parent (3 children)", "Nature-Based Learning Advocate"],
         "image": "Rachel Nguyen.jpg",
         "email": "Rachel_Nguyen@littlesmartgenius.com",
-        "linkedin": "https://www.linkedin.com/in/rachel_nguyen-smart/",
+        "linkedin": "https://www.linkedin.com/in/rachel-nguyen-smart/",
     },
     {
         "slug": "david-moreau",
@@ -173,6 +173,10 @@ def build_author_page(author, articles_list):
             </a>'''
     
     total_articles = len(articles_list)
+    
+    encoded_email = ""
+    if author.get("email"):
+        encoded_email = base64.b64encode(author["email"].encode("utf-8")).decode()
     
     return f'''<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -303,7 +307,7 @@ def build_author_page(author, articles_list):
                 <!-- Contact Links -->
                 <div class="flex flex-wrap items-center gap-3 mt-4">
                     {"<a href='" + author['linkedin'] + "' target='_blank' rel='noopener' class='inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold text-white transition hover:opacity-90' style='background: #0A66C2;'><svg class='w-4 h-4' fill='currentColor' viewBox='0 0 24 24'><path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'/></svg>LinkedIn</a>" if author.get('linkedin') else ""}
-                    {"<a href='mailto:" + author['email'] + "' class='inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold border transition hover:bg-slate-50 dark:hover:bg-slate-800' style='color: var(--text); border-color: var(--bord);'><svg class='w-4 h-4' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'/></svg>" + author['email'] + "</a>" if author.get('email') else ""}
+                    {f"""<button onclick="revealEmail(this, '{encoded_email}')" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold border transition hover:bg-slate-50 dark:hover:bg-slate-800" style="color: var(--text); border-color: var(--bord);"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Contact via Email</button>""" if author.get('email') else ""}
                 </div>
             </div>
         </div>
@@ -367,9 +371,10 @@ def build_author_page(author, articles_list):
 def main():
     # Load articles
     articles_path = os.path.join(PROJECT_ROOT, "articles.json")
-    with open(articles_path, "r", encoding="utf-8") as f:
+    with open(articles_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    all_articles = data.get("articles", [])
+    
+    all_articles = data if isinstance(data, list) else data.get("articles", [])
     
     # Create authors directory
     authors_dir = os.path.join(PROJECT_ROOT, "authors")
