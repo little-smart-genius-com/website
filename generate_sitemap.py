@@ -48,7 +48,15 @@ def build_sitemap():
     for name in category_pages:
         urls.append({"loc": f"{DOMAIN}/blog/{name}", "lastmod": _get_file_lastmod(f"blog/{name}")})
     
-    # ── 4. All articles ──
+    # Load canonical map to filter out non-pillar articles
+    canonical_map = {}
+    try:
+        with open("canonical_map.json", "r", encoding="utf-8") as f:
+            canonical_map = json.load(f)
+    except FileNotFoundError:
+        pass
+
+    # 🌟 4. All articles 🌟
     try:
         with open("articles.json", "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -57,6 +65,11 @@ def build_sitemap():
         
         for article in articles:
             slug = article.get("slug", "")
+            
+            # Skip non-pillar articles mapped in canonical_map
+            if slug in canonical_map and canonical_map[slug].get("pillar_slug") != slug:
+                continue
+
             date_pub = article.get("iso_date", article.get("date_published", TODAY))
             if isinstance(date_pub, str) and "T" in date_pub:
                 date_pub = date_pub.split("T")[0]
@@ -69,6 +82,12 @@ def build_sitemap():
         # Fallback: scan articles directory
         for f in sorted(glob.glob("articles/*.html")):
             name = os.path.basename(f)
+            slug = name.replace(".html", "")
+            
+            # Skip non-pillar articles
+            if slug in canonical_map and canonical_map[slug].get("pillar_slug") != slug:
+                continue
+
             urls.append({
                 "loc": f"{DOMAIN}/articles/{name}",
                 "lastmod": _get_file_lastmod(f"articles/{name}"),

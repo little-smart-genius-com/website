@@ -7,6 +7,7 @@ Tracks used topics to avoid repetition.
 import os
 import json
 import random
+import re
 from datetime import datetime
 from typing import Dict, Optional
 
@@ -40,6 +41,25 @@ FREEBIE_CATEGORIES = {
     "Cookbook for Kids": "Creative Arts", "Stickers Pack": "Creative Arts",
 }
 
+def normalize_tokens(text):
+    """Extract lowercase word tokens from text, filtering noise."""
+    stopwords = {
+        "the", "a", "an", "and", "or", "but", "in", "on", "at", "to", 
+        "for", "of", "with", "by", "is", "are", "was", "were", "be",
+        "this", "that", "it", "its", "how", "what", "why", "when",
+        "your", "our", "my", "their", "kids", "children", "child",
+        "best", "ultimate", "guide", "top",
+    }
+    tokens = set(re.findall(r'[a-z]+', text.lower()))
+    return tokens - stopwords
+
+def jaccard_similarity(set_a, set_b):
+    """Compute Jaccard similarity between two sets."""
+    if not set_a or not set_b:
+        return 0.0
+    intersection = set_a & set_b
+    union = set_a | set_b
+    return len(intersection) / len(union) if union else 0.0
 
 class TopicSelector:
     """
@@ -50,8 +70,22 @@ class TopicSelector:
     def __init__(self):
         self.used = self._load_used()
         self.keywords = self._load_keywords()
+        self.existing_titles = self._load_existing_titles()
         self.products = parse_products_tpt()
         self.freebies = parse_download_links()
+
+    def _load_existing_titles(self) -> list:
+        """Load titles of all currently published articles to avoid cannibalization."""
+        path = os.path.join(PROJECT_ROOT, "articles.json")
+        if not os.path.exists(path):
+            return []
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            articles = data.get("articles", data) if isinstance(data, dict) else data
+            return [a.get("title", "") for a in articles if a.get("title")]
+        except Exception:
+            return []
 
     def _load_used(self) -> Dict:
         """Load used_topics.json or create default."""
@@ -112,7 +146,29 @@ class TopicSelector:
         if not available:
             return None
 
-        keyword = random.choice(available)
+        # Filter available keywords against existing articles and used keywords using Jaccard Similarity >= 0.35
+        clean_available = []
+        existing_tokens_list = [normalize_tokens(title) for title in self.existing_titles]
+        existing_tokens_list.extend([normalize_tokens(k) for k in self.used.get("keyword", [])])
+
+        for kw in available:
+            kw_tokens = normalize_tokens(kw)
+            is_cannibal = False
+            for exist_toks in existing_tokens_list:
+                if jaccard_similarity(kw_tokens, exist_toks) >= 0.35:
+                    is_cannibal = True
+                    break
+            
+            if is_cannibal:
+                self.mark_used("keyword", kw) # Auto-burn to prevent endless loops
+            else:
+                clean_available.append(kw)
+
+        if not clean_available:
+            print("[TopicSelector] All remaining keywords cannibalize existing ones! Aborting.")
+            return None
+
+        keyword = random.choice(clean_available)
 
         # Derive category from keyword to ensure strict adherence to blog pillars
         kw_lower = keyword.lower()
