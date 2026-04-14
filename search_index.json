@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-04-14T16:50:25.291524",
-  "total_articles": 173,
+  "generated_at": "2026-04-14T21:08:01.778842",
+  "total_articles": 174,
   "articles": [
+    {
+      "title": "Level Up Learning with Tic Tac Logic",
+      "slug": "level-up-learning-with-tic-tac-logic",
+      "date": "April 14, 2026",
+      "iso_date": "2026-04-14T21:07:56.001949",
+      "category": "Education",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Boost cognitive skills with Tic Tac Logic's scored puzzles for kids 4-12. Turn playtime into learning achievements! Download free now.",
+      "image": "images/level-up-your-childs-brain-with-tic-tac-logic-the-ultimate-gamified-learning-cha-cover-1776200618.webp",
+      "reading_time": 12,
+      "url": "articles/level-up-learning-with-tic-tac-logic.html",
+      "keywords": [
+        "tic tac logic",
+        "tic tac",
+        "tac logic",
+        "tac logic kids",
+        "logic kids",
+        "pro tip experience",
+        "little smart genius",
+        "row column",
+        "magic tic tac",
+        "pattern recognition brain"
+      ],
+      "word_count": 2489,
+      "slot": "freebie"
+    },
     {
       "title": "Best Q-tip Painting Activities for Kids Fine Motor Control",
       "slug": "best-q-tip-painting-activities-for-kids-fine-motor-control",
