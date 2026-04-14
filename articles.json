@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-14T09:38:17.368973",
-  "total_articles": 169,
+  "generated_at": "2026-04-14T14:00:30.074343",
+  "total_articles": 171,
   "articles": [
     {
       "title": "Best Rainy Day Craft Ideas for Kids That Are Mess Free",
@@ -4563,6 +4563,38 @@
         "fine motor skills"
       ],
       "word_count": 2660,
+      "slot": "keyword"
+    },
+    {
+      "title": "4-Week Shadow Matching Challenge Builds Skills",
+      "slug": "4-week-shadow-matching-challenge-builds-skills",
+      "date": "March 23, 2026",
+      "iso_date": "2026-03-23T20:51:28.245726",
+      "category": "Education",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Shadow matching activities help track cognitive milestones in 4-6 weeks. Get your free printable and start monitoring development today!",
+      "image": "images/og/4-week-shadow-matching-challenge-builds-skills.jpg",
+      "reading_time": 26,
+      "url": "articles/4-week-shadow-matching-challenge-builds-skills.html",
+      "keywords": [],
+      "word_count": 5266,
+      "slot": "keyword"
+    },
+    {
+      "title": "How Word Search Puzzles Transform Reading Skills in Children",
+      "slug": "how-word-search-puzzles-transform-reading-skills-in-children",
+      "date": "April 13, 2026",
+      "iso_date": "2026-04-13T15:24:31.253996",
+      "category": "Education",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Discover how Thanksgiving word searches boost vocabulary and reading comprehension. Get our worksheet collection for measurable results today!",
+      "image": "images/og/how-word-search-puzzles-transform-reading-skills-in-children.jpg",
+      "reading_time": 26,
+      "url": "articles/how-word-search-puzzles-transform-reading-skills-in-children.html",
+      "keywords": [],
+      "word_count": 5358,
       "slot": "keyword"
     }
   ]
