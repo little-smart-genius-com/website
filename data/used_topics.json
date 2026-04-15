@@ -285,7 +285,21 @@
     "Simple ways to make math fun for kids using games",
     "Parent guide to using mazes and logic puzzles for learning",
     "How to build a low cost learning toolkit at home for kids",
-    "Math games for kids to play in the car without screens"
+    "Math games for kids to play in the car without screens",
+    "Deduction puzzles for kids to build reasoning skills",
+    "Mystery grid puzzles for kids to solve at home",
+    "Weekly logic puzzle challenge for kids printable pack",
+    "Logic puzzle centers for elementary classroom printable",
+    "Printable math challenge cards for fast finishers",
+    "Math centers for kids using printable task cards",
+    "Visual tracking worksheets for kids learning to read",
+    "Printable story sequencing cards for kids to retell stories",
+    "Alphabet coloring pages for preschoolers learning letters",
+    "Dot marker coloring pages for toddlers and preschoolers",
+    "Fine motor task cards for preschool centers printable",
+    "Real life problem solving scenarios for kids printable",
+    "Open ended problem solving questions for kids printable",
+    "Math worksheets for kids learning greater than and less than"
   ],
   "daily_log": [
     {
@@ -2062,6 +2076,76 @@
       "slot": "keyword",
       "topic": "Math games for kids to play in the car without screens",
       "date": "2026-04-15T06:16:00.882525"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Deduction puzzles for kids to build reasoning skills",
+      "date": "2026-04-15T09:27:26.846080"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Mystery grid puzzles for kids to solve at home",
+      "date": "2026-04-15T09:27:26.849423"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Weekly logic puzzle challenge for kids printable pack",
+      "date": "2026-04-15T09:27:26.853238"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzle centers for elementary classroom printable",
+      "date": "2026-04-15T09:27:26.856193"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable math challenge cards for fast finishers",
+      "date": "2026-04-15T09:27:26.866957"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Math centers for kids using printable task cards",
+      "date": "2026-04-15T09:27:26.870842"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Visual tracking worksheets for kids learning to read",
+      "date": "2026-04-15T09:27:26.873182"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable story sequencing cards for kids to retell stories",
+      "date": "2026-04-15T09:27:26.878255"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Alphabet coloring pages for preschoolers learning letters",
+      "date": "2026-04-15T09:27:26.885667"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot marker coloring pages for toddlers and preschoolers",
+      "date": "2026-04-15T09:27:26.891940"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor task cards for preschool centers printable",
+      "date": "2026-04-15T09:27:26.909431"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Real life problem solving scenarios for kids printable",
+      "date": "2026-04-15T09:27:26.916334"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Open ended problem solving questions for kids printable",
+      "date": "2026-04-15T09:27:26.921459"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Math worksheets for kids learning greater than and less than",
+      "date": "2026-04-15T09:42:17.752315"
     }
   ],
   "product": [
