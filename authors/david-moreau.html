@@ -332,6 +332,17 @@
         function initTheme(){if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');document.getElementById('theme-icon').innerHTML='☀️';}else{document.documentElement.classList.remove('dark');document.getElementById('theme-icon').innerHTML='🌙';}}
         function toggleTheme(){const h=document.documentElement;h.classList.toggle('dark');const d=h.classList.contains('dark');localStorage.setItem('theme',d?'dark':'light');document.getElementById('theme-icon').innerHTML=d?'☀️':'🌙';}
         function toggleMobileMenu(){const m=document.getElementById('mobile-menu');m.style.display=(m.style.display==='flex')?'none':'flex';}
+        function revealEmail(btn, encoded) {
+            try {
+                const email = atob(encoded);
+                const link = document.createElement('a');
+                link.href = 'mailto:' + email;
+                link.textContent = email;
+                link.className = 'inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold border transition hover:bg-slate-50 dark:hover:bg-slate-800';
+                link.style.cssText = 'color: var(--text); border-color: var(--bord); text-decoration: none;';
+                btn.replaceWith(link);
+            } catch (e) { console.error('Email reveal failed:', e); }
+        }
         initTheme();
     </script>
 </body>
