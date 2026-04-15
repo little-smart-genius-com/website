@@ -299,7 +299,14 @@
     "Fine motor task cards for preschool centers printable",
     "Real life problem solving scenarios for kids printable",
     "Open ended problem solving questions for kids printable",
-    "Math worksheets for kids learning greater than and less than"
+    "Math worksheets for kids learning greater than and less than",
+    "Logic puzzle worksheets for kids learning to read clues",
+    "Classroom logic puzzle stations printable resources",
+    "Hands-on math centers for kindergarten printable cards",
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Coloring pages for kids learning the alphabet and numbers",
+    "Printable puzzle challenge pack for kids who love brain games",
+    "Tracing and coloring worksheets for kids two in one"
   ],
   "daily_log": [
     {
@@ -2151,6 +2158,41 @@
       "slot": "product",
       "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.4",
       "date": "2026-04-15T15:19:52.822142"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzle worksheets for kids learning to read clues",
+      "date": "2026-04-15T16:36:05.247339"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Classroom logic puzzle stations printable resources",
+      "date": "2026-04-15T16:36:05.253071"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Hands-on math centers for kindergarten printable cards",
+      "date": "2026-04-15T16:36:05.257225"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot to dot worksheets for kids to build visual tracking",
+      "date": "2026-04-15T16:36:05.266168"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Coloring pages for kids learning the alphabet and numbers",
+      "date": "2026-04-15T16:36:05.283060"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable puzzle challenge pack for kids who love brain games",
+      "date": "2026-04-15T16:36:05.303272"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Tracing and coloring worksheets for kids two in one",
+      "date": "2026-04-15T16:45:55.163452"
     }
   ],
   "product": [
