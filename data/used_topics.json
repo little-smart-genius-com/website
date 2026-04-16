@@ -308,7 +308,9 @@
     "Printable puzzle challenge pack for kids who love brain games",
     "Tracing and coloring worksheets for kids two in one",
     "Printable brain teaser challenge pack for 3rd graders",
-    "Seasonal math worksheets for kids (spring themed)"
+    "Seasonal math worksheets for kids (spring themed)",
+    "Seasonal holiday math worksheets for kids (Christmas, Halloween)",
+    "Printable inference and deduction puzzles for kids"
   ],
   "daily_log": [
     {
@@ -2210,6 +2212,16 @@
       "slot": "keyword",
       "topic": "Seasonal math worksheets for kids (spring themed)",
       "date": "2026-04-16T06:21:36.006917"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Seasonal holiday math worksheets for kids (Christmas, Halloween)",
+      "date": "2026-04-16T09:26:23.851331"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable inference and deduction puzzles for kids",
+      "date": "2026-04-16T09:39:11.095295"
     }
   ],
   "product": [
