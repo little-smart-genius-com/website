@@ -2279,6 +2279,11 @@
       "slot": "keyword",
       "topic": "Paper cutting and gluing crafts for kindergarten printable",
       "date": "2026-04-17T16:49:31.611509"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Word Scramble",
+      "date": "2026-04-17T21:04:52.901335"
     }
   ],
   "product": [
@@ -2328,6 +2333,7 @@
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4"
   ],
   "freebie": [
-    "Creative Pack"
+    "Creative Pack",
+    "Word Scramble"
   ]
 }
