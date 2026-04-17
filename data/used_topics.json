@@ -312,7 +312,9 @@
     "Seasonal holiday math worksheets for kids (Christmas, Halloween)",
     "Printable inference and deduction puzzles for kids",
     "Holiday crafts for kids for Christmas and Halloween",
-    "Sensory bottle crafts for kids to calm down"
+    "Sensory bottle crafts for kids to calm down",
+    "Holiday coloring sheets for kids (Christmas, Halloween, Easter)",
+    "Holiday card making crafts for kids printable templates"
   ],
   "daily_log": [
     {
@@ -2244,6 +2246,16 @@
       "slot": "freebie",
       "topic": "Creative Pack",
       "date": "2026-04-16T21:05:55.896592"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Holiday coloring sheets for kids (Christmas, Halloween, Easter)",
+      "date": "2026-04-17T06:10:26.470093"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Holiday card making crafts for kids printable templates",
+      "date": "2026-04-17T06:18:32.087533"
     }
   ],
   "product": [
