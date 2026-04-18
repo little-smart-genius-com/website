@@ -2307,6 +2307,11 @@
       "slot": "keyword",
       "topic": "Cooperative logic games for kids to play in groups",
       "date": "2026-04-18T16:09:00.533374"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Coloring Page (Kids)",
+      "date": "2026-04-18T20:50:12.091221"
     }
   ],
   "product": [
@@ -2358,6 +2363,7 @@
   ],
   "freebie": [
     "Creative Pack",
-    "Word Scramble"
+    "Word Scramble",
+    "Coloring Page (Kids)"
   ]
 }
