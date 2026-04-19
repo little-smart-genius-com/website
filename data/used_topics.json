@@ -2341,6 +2341,11 @@
       "slot": "keyword",
       "topic": "Measurement activities for kids with household items",
       "date": "2026-04-19T16:11:24.437747"
+    },
+    {
+      "slot": "freebie",
+      "topic": "One Hundred Puzzle",
+      "date": "2026-04-19T20:57:16.813851"
     }
   ],
   "product": [
@@ -2394,6 +2399,7 @@
   "freebie": [
     "Creative Pack",
     "Word Scramble",
-    "Coloring Page (Kids)"
+    "Coloring Page (Kids)",
+    "One Hundred Puzzle"
   ]
 }
