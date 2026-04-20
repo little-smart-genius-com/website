@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-04-20T06:35:04.408448",
-  "total_articles": 199,
+  "generated_at": "2026-04-20T10:21:24.974309",
+  "total_articles": 200,
   "articles": [
+    {
+      "title": "Visual Scanning for Kids: 6-Week Progress Tracker",
+      "slug": "visual-scanning-for-kids-6-week-progress-tracker",
+      "date": "April 20, 2026",
+      "iso_date": "2026-04-20T10:20:10.373950",
+      "category": "Problem Solving",
+      "author": "David_Moreau",
+      "author_name": "David Moreau",
+      "excerpt": "Fun visual scanning puzzles for kids: Track cognitive growth over 6 weeks with concrete milestones. Start tracking today!",
+      "image": "images/visual-scanning-activities-for-kids-the-ultimate-6-week-progress-tracker-cover-1776679670.webp",
+      "reading_time": 14,
+      "url": "articles/visual-scanning-for-kids-6-week-progress-tracker.html",
+      "keywords": [
+        "visual scanning",
+        "visual scanning activities",
+        "scanning activities kids",
+        "activities kids fun",
+        "kids fun puzzles",
+        "progress tracking",
+        "week progress",
+        "activities kids",
+        "little smart genius",
+        "scanning activities"
+      ],
+      "word_count": 2930,
+      "slot": "keyword"
+    },
     {
       "title": "Best Printable Puppet Crafts for Kids: Cut, Color & Play",
       "slug": "best-printable-puppet-crafts-for-kids-cut-color-play",
