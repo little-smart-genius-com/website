@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-04-20T11:02:27.833722",
-  "total_articles": 200,
+  "generated_at": "2026-04-20T15:33:38.025981",
+  "total_articles": 201,
   "articles": [
+    {
+      "title": "Word Search Puzzles Build Vocabulary in Young Learners",
+      "slug": "word-search-puzzles-build-vocabulary-in-young-learners",
+      "date": "April 20, 2026",
+      "iso_date": "2026-04-20T15:32:18.591290",
+      "category": "Word Search Activity Worksheet",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Thanksgiving word searches boost vocabulary, spelling, and reading for kids 4-12. Download our worksheet collection today!",
+      "image": "images/how-word-search-puzzles-build-vocabulary-skills-in-young-learners-cover-1776698308.webp",
+      "reading_time": 12,
+      "url": "articles/word-search-puzzles-build-vocabulary-in-young-learners.html",
+      "keywords": [
+        "word search",
+        "thanksgiving word search",
+        "word search activities",
+        "search activities kids",
+        "thanksgiving word",
+        "search activities",
+        "activities kids",
+        "little smart genius",
+        "word search puzzles",
+        "found works best"
+      ],
+      "word_count": 2468,
+      "slot": "product"
+    },
     {
       "title": "Visual Scanning for Kids: 6-Week Progress Tracker",
       "slug": "visual-scanning-for-kids-6-week-progress-tracker",
