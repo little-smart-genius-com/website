@@ -61,6 +61,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://littlesmartgenius.com/articles/how-one-family-turned-warships-into-a-learning-adventure.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://littlesmartgenius.com/articles/best-mental-math-challenge-worksheets-for-kids-ages-8-12.html</loc>
     <lastmod>2026-04-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -1514,6 +1520,12 @@
   </url>
   <url>
     <loc>https://littlesmartgenius.com/blog/page-23.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://littlesmartgenius.com/blog/page-24.html</loc>
     <lastmod>2026-04-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
