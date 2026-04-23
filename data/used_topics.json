@@ -2468,6 +2468,11 @@
       "slot": "keyword",
       "topic": "Teaching kids responsibility with printable chore charts",
       "date": "2026-04-23T17:05:09.406655"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Logic Pack",
+      "date": "2026-04-23T21:03:41.226018"
     }
   ],
   "product": [
@@ -2532,6 +2537,7 @@
     "One Hundred Puzzle",
     "Stickers Pack",
     "Warships",
-    "Spot Correct Spelling"
+    "Spot Correct Spelling",
+    "Logic Pack"
   ]
 }
