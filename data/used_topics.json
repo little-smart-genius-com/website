@@ -2501,6 +2501,11 @@
       "slot": "keyword",
       "topic": "Creative problem solving prompts for kids to write and draw",
       "date": "2026-04-24T16:37:33.600613"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Logic Puzzle (Adult)",
+      "date": "2026-04-24T21:02:11.230871"
     }
   ],
   "product": [
@@ -2514,6 +2519,7 @@
     "Stickers Pack",
     "Warships",
     "Spot Correct Spelling",
-    "Logic Pack"
+    "Logic Pack",
+    "Logic Puzzle (Adult)"
   ]
 }
