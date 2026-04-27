@@ -2595,6 +2595,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D1",
       "date": "2026-04-27T11:28:16.643432"
+    },
+    {
+      "slot": "product",
+      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.8",
+      "date": "2026-04-27T15:50:26.681339"
     }
   ],
   "product": [
@@ -2603,7 +2608,8 @@
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D2",
     "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.3",
     "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.3",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D1"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D1",
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.8"
   ],
   "freebie": [
     "Creative Pack",
