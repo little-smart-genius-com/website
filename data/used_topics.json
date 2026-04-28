@@ -349,7 +349,9 @@
     "How to turn family game night into a learning opportunity",
     "Sequencing and ordering worksheets for kids learning routines",
     "Easy paper crafts for kids ages 5-9 with templates",
-    "Weather themed coloring pages for kids to learn vocabulary"
+    "Weather themed coloring pages for kids to learn vocabulary",
+    "Science themed coloring pages for curious kids",
+    "Hidden pictures in busy scenes worksheets for kids"
   ],
   "daily_log": [
     {
@@ -2611,6 +2613,16 @@
       "slot": "freebie",
       "topic": "Mine Finder",
       "date": "2026-04-27T21:16:15.663673"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Science themed coloring pages for curious kids",
+      "date": "2026-04-28T06:38:11.613498"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Hidden pictures in busy scenes worksheets for kids",
+      "date": "2026-04-28T06:41:17.675150"
     }
   ],
   "product": [
