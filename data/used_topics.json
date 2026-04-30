@@ -2717,6 +2717,11 @@
       "slot": "keyword",
       "topic": "Easy ways to sneak learning into everyday play with kids",
       "date": "2026-04-30T17:00:22.010007"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Math Pack",
+      "date": "2026-04-30T21:13:00.599095"
     }
   ],
   "product": [
@@ -2748,6 +2753,7 @@
     "Word Pack",
     "Mine Finder",
     "Hangman",
-    "Kids Math Equations"
+    "Kids Math Equations",
+    "Math Pack"
   ]
 }
