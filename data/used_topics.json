@@ -360,7 +360,8 @@
     "Logic activities for kids that support STEM learning",
     "Space themed logic puzzles for young problem solvers",
     "Easy yes or no logic riddles for kids with clues",
-    "Easy ways to sneak learning into everyday play with kids"
+    "Easy ways to sneak learning into everyday play with kids",
+    "Parent guide to choosing age appropriate puzzle books"
   ],
   "daily_log": [
     {
@@ -2722,6 +2723,11 @@
       "slot": "freebie",
       "topic": "Math Pack",
       "date": "2026-04-30T21:13:00.599095"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Parent guide to choosing age appropriate puzzle books",
+      "date": "2026-05-01T06:47:43.098440"
     }
   ],
   "product": [
