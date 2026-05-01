@@ -2750,6 +2750,11 @@
       "slot": "keyword",
       "topic": "Challenge cards for kids 'what would you do' scenarios",
       "date": "2026-05-01T16:34:38.090602"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Missing Vowels",
+      "date": "2026-05-01T21:03:08.363586"
     }
   ],
   "product": [
@@ -2784,6 +2789,7 @@
     "Mine Finder",
     "Hangman",
     "Kids Math Equations",
-    "Math Pack"
+    "Math Pack",
+    "Missing Vowels"
   ]
 }
