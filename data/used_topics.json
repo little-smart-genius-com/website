@@ -2739,6 +2739,11 @@
       "slot": "product",
       "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.4",
       "date": "2026-05-01T10:54:29.260178"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D2",
+      "date": "2026-05-01T14:59:20.928512"
     }
   ],
   "product": [
@@ -2755,7 +2760,8 @@
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3",
     "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.3",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.2",
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.4"
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.4",
+    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D2"
   ],
   "freebie": [
     "Creative Pack",
