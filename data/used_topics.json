@@ -2828,6 +2828,11 @@
       "slot": "keyword",
       "topic": "Coloring pages for kids with positive affirmations",
       "date": "2026-05-03T16:14:32.476660"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Nurikabe",
+      "date": "2026-05-03T20:59:29.183096"
     }
   ],
   "product": [
@@ -2868,6 +2873,7 @@
     "Kids Math Equations",
     "Math Pack",
     "Missing Vowels",
-    "Crossword"
+    "Crossword",
+    "Nurikabe"
   ]
 }
