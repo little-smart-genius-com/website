@@ -2912,6 +2912,11 @@
       "slot": "keyword",
       "topic": "Sports themed coloring sheets for active kids",
       "date": "2026-05-05T17:06:16.109035"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Full Freebie Pack",
+      "date": "2026-05-05T21:12:05.951081"
     }
   ],
   "product": [
@@ -2958,6 +2963,7 @@
     "Missing Vowels",
     "Crossword",
     "Nurikabe",
-    "Skyscraper"
+    "Skyscraper",
+    "Full Freebie Pack"
   ]
 }
