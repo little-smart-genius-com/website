@@ -2901,6 +2901,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.2",
       "date": "2026-05-05T11:02:37.896870"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.1",
+      "date": "2026-05-05T16:01:10.321956"
     }
   ],
   "product": [
@@ -2925,7 +2930,8 @@
     "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.8",
     "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.5",
     "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.1",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.2"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.2",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.1"
   ],
   "freebie": [
     "Creative Pack",
