@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-05-06T17:13:20.806927",
-  "total_articles": 296,
+  "generated_at": "2026-05-06T21:29:49.029547",
+  "total_articles": 297,
   "articles": [
+    {
+      "title": "Tic Tac Toe for Reluctant Learners: Sparks Critical Thinking",
+      "slug": "tic-tac-toe-for-reluctant-learners-sparks-critical-thinking",
+      "date": "May 06, 2026",
+      "iso_date": "2026-05-06T21:21:59.163693",
+      "category": "Critical Thinking",
+      "author": "David_Moreau",
+      "author_name": "David Moreau",
+      "excerpt": "Is your child resistant to learning? This classic game turns frustration into fun while building logic and sportsmanship. Free printable included!",
+      "image": "images/tic-tac-toe-for-reluctant-learners-a-free-printable-that-sparks-critical-thinkin-cover-1778102276.webp",
+      "reading_time": 9,
+      "url": "articles/tic-tac-toe-for-reluctant-learners-sparks-critical-thinking.html",
+      "keywords": [
+        "tic tac toe",
+        "tic tac",
+        "tac toe",
+        "tac toe kids",
+        "toe kids",
+        "reluctant learners",
+        "critical thinking",
+        "little smart genius",
+        "slid piece paper",
+        "little smart"
+      ],
+      "word_count": 1941,
+      "slot": "freebie"
+    },
     {
       "title": "Printable bookmarks with 10 fun reading challenges for kids",
       "slug": "printable-bookmarks-with-10-fun-reading-challenges-for-kids",
