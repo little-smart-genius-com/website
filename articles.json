@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-05-07T11:40:02.910018",
-  "total_articles": 300,
+  "generated_at": "2026-05-07T16:16:15.718641",
+  "total_articles": 301,
   "articles": [
+    {
+      "title": "How Word Search Activities Boost Vocabulary on Road Trips",
+      "slug": "how-word-search-activities-boost-vocabulary-on-road-trips",
+      "date": "May 07, 2026",
+      "iso_date": "2026-05-07T16:09:55.029890",
+      "category": "Word Search Activity Worksheet",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Discover how word search activity worksheets build vocabulary and spelling skills during car rides, plane trips, and waiting rooms. Perfect for ages 4-12.",
+      "image": "images/how-word-search-activities-boost-vocabulary-on-road-trips-cover-1778170082.webp",
+      "reading_time": 9,
+      "url": "articles/how-word-search-activities-boost-vocabulary-on-road-trips.html",
+      "keywords": [
+        "word search",
+        "word search activity",
+        "search activity worksheet",
+        "activity worksheet travel",
+        "word search activities",
+        "search activity",
+        "activity worksheet",
+        "worksheet travel",
+        "little smart genius",
+        "search activities"
+      ],
+      "word_count": 1939,
+      "slot": "product"
+    },
     {
       "title": "Word Puzzles Boost Multi-Sensory Reading for Ages 4-12",
       "slug": "word-puzzles-boost-multi-sensory-reading-for-ages-4-12",
