@@ -3017,6 +3017,11 @@
       "slot": "keyword",
       "topic": "Encouraging independent learning in kids with printables",
       "date": "2026-05-08T16:55:50.457787"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Cookbook for Kids",
+      "date": "2026-05-08T21:13:40.767463"
     }
   ],
   "product": [
@@ -3072,6 +3077,7 @@
     "Skyscraper",
     "Full Freebie Pack",
     "Tic Tac Toe",
-    "Clip Art Set"
+    "Clip Art Set",
+    "Cookbook for Kids"
   ]
 }
