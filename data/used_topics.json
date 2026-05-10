@@ -3072,6 +3072,11 @@
       "slot": "product",
       "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
       "date": "2026-05-10T10:48:08.434625"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.1",
+      "date": "2026-05-10T14:58:25.431379"
     }
   ],
   "product": [
@@ -3106,7 +3111,8 @@
     "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.5",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.4",
-    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1"
+    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.1"
   ],
   "freebie": [
     "Creative Pack",
