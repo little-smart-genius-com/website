@@ -3105,6 +3105,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Bundle",
       "date": "2026-05-11T12:32:39.826777"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.1",
+      "date": "2026-05-11T16:40:29.499307"
     }
   ],
   "product": [
@@ -3141,7 +3146,8 @@
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.4",
     "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.1",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Bundle"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Bundle",
+    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.1"
   ],
   "freebie": [
     "Creative Pack",
