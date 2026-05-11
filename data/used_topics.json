@@ -3116,6 +3116,11 @@
       "slot": "keyword",
       "topic": "Emotions and feelings coloring pages for kids",
       "date": "2026-05-11T17:39:20.906242"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Kakurasu",
+      "date": "2026-05-11T21:26:13.123118"
     }
   ],
   "product": [
@@ -3180,6 +3185,7 @@
     "Clip Art Set",
     "Cookbook for Kids",
     "Spot the Difference",
-    "Hitori"
+    "Hitori",
+    "Kakurasu"
   ]
 }
