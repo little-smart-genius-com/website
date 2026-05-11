@@ -1,29 +1,8 @@
 window.importedProducts = [
     {
-        "name": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.1",
-        "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Animals-Vol1-10436437",
-        "img": "images/products-thumbs/10436437.webp",
-        "price": "$3.00",
-        "category": "Spot the Difference (Photorealistic)"
-    },
-    {
-        "name": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.4",
-        "url": "https://www.teacherspayteachers.com/Product/Thanksgiving-Word-Search-Adventure-Fun-Activity-Worksheet-Collection-Vol4-10519832",
-        "img": "images/products-thumbs/10519832.webp",
-        "price": "$2.00",
-        "category": "Word Search Activity Worksheet"
-    },
-    {
-        "name": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.7",
-        "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzles-Brain-Games-School-Classroom-Vol7-15413166",
-        "img": "images/products-thumbs/15413166.webp",
-        "price": "$3.00",
-        "category": "Spot the Difference for Kids"
-    },
-    {
-        "name": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.1",
-        "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Rooms-Vol1-10561567",
-        "img": "images/products-thumbs/10561567.webp",
+        "name": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.2",
+        "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol2-10478033",
+        "img": "images/products-thumbs/10478033.webp",
         "price": "$3.00",
         "category": "Spot the Difference (Photorealistic)"
     },
@@ -35,23 +14,44 @@ window.importedProducts = [
         "category": "Spot the Difference (Photorealistic)"
     },
     {
-        "name": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.3",
-        "url": "https://www.teacherspayteachers.com/Product/Happy-Thanksgiving-Coloring-Page-Coloring-Pages-Thanksgiving-Turkey-Vol3-10534262",
-        "img": "images/products-thumbs/10534262.webp",
+        "name": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.5",
+        "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzles-Brain-Games-School-Classroom-Vol5-15413162",
+        "img": "images/products-thumbs/15413162.webp",
+        "price": "$3.00",
+        "category": "Spot the Difference for Kids"
+    },
+    {
+        "name": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.3",
+        "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Animals-Vol3-10436447",
+        "img": "images/products-thumbs/10436447.webp",
+        "price": "$3.00",
+        "category": "Spot the Difference (Photorealistic)"
+    },
+    {
+        "name": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection",
+        "url": "https://www.teacherspayteachers.com/Product/Thanksgiving-Word-Search-Adventure-Fun-Activity-Worksheet-Collection-10534022",
+        "img": "images/products-thumbs/10534022.webp",
+        "price": "$12.00",
+        "category": "Word Search Activity Worksheet"
+    },
+    {
+        "name": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
+        "url": "https://www.teacherspayteachers.com/Product/Happy-Thanksgiving-Coloring-Page-Coloring-Pages-Thanksgiving-Turkey-Vol1-10533959",
+        "img": "images/products-thumbs/10533959.webp",
         "price": "$1.00",
         "category": "Coloring Book"
     },
     {
-        "name": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.6",
-        "url": "https://www.teacherspayteachers.com/Product/Thanksgiving-Word-Search-Adventure-Fun-Activity-Worksheet-Collection-Vol6-10522227",
-        "img": "images/products-thumbs/10522227.webp",
-        "price": "$2.00",
-        "category": "Word Search Activity Worksheet"
+        "name": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.5",
+        "url": "https://www.teacherspayteachers.com/Product/Happy-Thanksgiving-Coloring-Page-Coloring-Pages-Thanksgiving-Turkey-Vol5-10540763",
+        "img": "images/products-thumbs/10540763.webp",
+        "price": "$1.00",
+        "category": "Coloring Book"
     },
     {
-        "name": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.1",
-        "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Buildings-Vol1-10464350",
-        "img": "images/products-thumbs/10464350.webp",
+        "name": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.2",
+        "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Rooms-Vol2-10565689",
+        "img": "images/products-thumbs/10565689.webp",
         "price": "$3.00",
         "category": "Spot the Difference (Photorealistic)"
     }
@@ -69,18 +69,18 @@ window.importedFreebies = [
         "category": "creative"
     },
     {
-        "name": "Skyscrapper",
-        "icon": "🏙️",
+        "name": "Warships",
+        "icon": "🚢",
         "category": "logic"
     },
     {
-        "name": "Tic Tac Toe",
-        "icon": "❌",
+        "name": "Four In A Row",
+        "icon": "🔴",
         "category": "logic"
     },
     {
-        "name": "One Hundred Puzzle",
-        "icon": "💯",
+        "name": "Counting Numbers",
+        "icon": "1️⃣",
         "category": "math"
     },
     {
@@ -89,8 +89,8 @@ window.importedFreebies = [
         "category": "math"
     },
     {
-        "name": "Bi-Lingual Matching",
-        "icon": "🗣️",
+        "name": "Word Scramble",
+        "icon": "🔀",
         "category": "word"
     },
     {
@@ -99,13 +99,13 @@ window.importedFreebies = [
         "category": "word"
     },
     {
-        "name": "Coloring Page (Kids)",
-        "icon": "🖍️",
+        "name": "Shadow Matching",
+        "icon": "👤",
         "category": "creative"
     },
     {
-        "name": "Clip Art Set",
-        "icon": "📎",
+        "name": "Joke Book for Kids",
+        "icon": "😂",
         "category": "creative"
     }
 ];
