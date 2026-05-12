@@ -3149,6 +3149,11 @@
       "slot": "keyword",
       "topic": "Crafts for kids to decorate their homework area",
       "date": "2026-05-12T17:34:50.716184"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Shadow Matching",
+      "date": "2026-05-12T21:28:21.504531"
     }
   ],
   "product": [
@@ -3216,6 +3221,7 @@
     "Cookbook for Kids",
     "Spot the Difference",
     "Hitori",
-    "Kakurasu"
+    "Kakurasu",
+    "Shadow Matching"
   ]
 }
