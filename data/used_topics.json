@@ -3177,6 +3177,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
       "date": "2026-05-13T11:44:45.208317"
+    },
+    {
+      "slot": "product",
+      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.7",
+      "date": "2026-05-13T16:22:18.522217"
     }
   ],
   "product": [
@@ -3217,7 +3222,8 @@
     "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.1",
     "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.2",
     "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.7",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.4",
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.7"
   ],
   "freebie": [
     "Creative Pack",
