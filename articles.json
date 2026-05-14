@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-05-13T23:00:00.985175",
-  "total_articles": 340,
+  "generated_at": "2026-05-14T07:07:17.669426",
+  "total_articles": 341,
   "articles": [
+    {
+      "title": "Craft activities for kids: Following directions family day",
+      "slug": "craft-activities-for-kids-following-directions-family-day",
+      "date": "May 14, 2026",
+      "iso_date": "2026-05-14T06:55:03.833454",
+      "category": "Creative Arts",
+      "author": "David_Moreau",
+      "author_name": "David Moreau",
+      "excerpt": "Explore a family's day with fun craft activities that teach following directions. Boost cognitive skills for ages 4-12. Try now!",
+      "image": "images/craft-activities-for-kids-to-practice-following-directions-a-familys-day-cover-1778741557.webp",
+      "reading_time": 15,
+      "url": "articles/craft-activities-for-kids-following-directions-family-day.html",
+      "keywords": [
+        "following directions",
+        "craft activities kids",
+        "activities kids practice",
+        "kids practice following",
+        "practice following directions",
+        "craft activities",
+        "activities kids",
+        "kids practice",
+        "practice following",
+        "little smart genius"
+      ],
+      "word_count": 3165,
+      "slot": "keyword"
+    },
     {
       "title": "Number line activities: 7 fun addition & subtraction games",
       "slug": "number-line-activities-7-fun-addition-subtraction-games",
