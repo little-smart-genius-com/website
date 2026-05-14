@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-05-14T10:45:20.452443",
-  "total_articles": 342,
+  "generated_at": "2026-05-14T11:41:38.467820",
+  "total_articles": 343,
   "articles": [
+    {
+      "title": "How Word Search Adventures Build Vocabulary in Kids 4-12",
+      "slug": "how-word-search-adventures-build-vocabulary-in-kids-4-12",
+      "date": "May 14, 2026",
+      "iso_date": "2026-05-14T11:29:22.413851",
+      "category": "Word Search Activity Worksheet",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Boost vocabulary, spelling & focus with word search worksheets! Expert tips for parents & teachers. Try our free resource now.",
+      "image": "images/how-word-search-adventures-build-vocabulary-in-kids-aged-4-12-cover-1778757947.webp",
+      "reading_time": 9,
+      "url": "articles/how-word-search-adventures-build-vocabulary-in-kids-4-12.html",
+      "keywords": [
+        "word search",
+        "word search activity",
+        "search activity worksheet",
+        "activity worksheet activities",
+        "worksheet activities kids",
+        "search activity",
+        "activity worksheet",
+        "worksheet activities",
+        "activities kids",
+        "word search worksheets"
+      ],
+      "word_count": 1849,
+      "slot": "product"
+    },
     {
       "title": "Coloring for Ages 9-12: Boost Classroom Focus & Creativity",
       "slug": "coloring-for-ages-9-12-boost-classroom-focus-creativity",
