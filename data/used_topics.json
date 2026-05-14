@@ -410,7 +410,8 @@
     "Number line activities for kids learning addition and subtraction",
     "Craft activities for kids to practice following directions",
     "Detailed coloring pages for older kids ages 9-12",
-    "Creative writing prompts for kids who say 'I hate writing'"
+    "Creative writing prompts for kids who say 'I hate writing'",
+    "Printable 'who did it' logic mysteries for kids"
   ],
   "daily_log": [
     {
@@ -3232,6 +3233,11 @@
       "slot": "freebie",
       "topic": "Cryptogram",
       "date": "2026-05-14T21:18:29.907215"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable 'who did it' logic mysteries for kids",
+      "date": "2026-05-14T22:38:40.158027"
     }
   ],
   "product": [
