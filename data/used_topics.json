@@ -3227,6 +3227,11 @@
       "slot": "keyword",
       "topic": "Creative writing prompts for kids who say 'I hate writing'",
       "date": "2026-05-14T17:22:52.331292"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Cryptogram",
+      "date": "2026-05-14T21:18:29.907215"
     }
   ],
   "product": [
@@ -3300,6 +3305,7 @@
     "Hitori",
     "Kakurasu",
     "Shadow Matching",
-    "Maze for Kids"
+    "Maze for Kids",
+    "Cryptogram"
   ]
 }
