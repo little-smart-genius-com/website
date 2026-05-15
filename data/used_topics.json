@@ -413,7 +413,8 @@
     "Creative writing prompts for kids who say 'I hate writing'",
     "Printable 'who did it' logic mysteries for kids",
     "How to use printable worksheets without boring your child",
-    "Reading response worksheets for kids after storytime"
+    "Reading response worksheets for kids after storytime",
+    "Sentence building worksheets for kids learning grammar"
   ],
   "daily_log": [
     {
@@ -3260,6 +3261,11 @@
       "slot": "product",
       "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.6",
       "date": "2026-05-15T16:06:33.919308"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Sentence building worksheets for kids learning grammar",
+      "date": "2026-05-15T17:11:23.567743"
     }
   ],
   "product": [
