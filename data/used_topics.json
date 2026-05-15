@@ -3266,6 +3266,11 @@
       "slot": "keyword",
       "topic": "Sentence building worksheets for kids learning grammar",
       "date": "2026-05-15T17:11:23.567743"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Shikaku",
+      "date": "2026-05-15T21:14:58.527874"
     }
   ],
   "product": [
@@ -3342,6 +3347,7 @@
     "Kakurasu",
     "Shadow Matching",
     "Maze for Kids",
-    "Cryptogram"
+    "Cryptogram",
+    "Shikaku"
   ]
 }
