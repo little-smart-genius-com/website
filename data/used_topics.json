@@ -414,7 +414,9 @@
     "Printable 'who did it' logic mysteries for kids",
     "How to use printable worksheets without boring your child",
     "Reading response worksheets for kids after storytime",
-    "Sentence building worksheets for kids learning grammar"
+    "Sentence building worksheets for kids learning grammar",
+    "Grammar worksheets for kids learning nouns and verbs",
+    "Fun math riddles and puzzles for kids with answers"
   ],
   "daily_log": [
     {
@@ -3271,6 +3273,16 @@
       "slot": "freebie",
       "topic": "Shikaku",
       "date": "2026-05-15T21:14:58.527874"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Grammar worksheets for kids learning nouns and verbs",
+      "date": "2026-05-15T22:29:45.288327"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fun math riddles and puzzles for kids with answers",
+      "date": "2026-05-15T22:32:23.301118"
     }
   ],
   "product": [
