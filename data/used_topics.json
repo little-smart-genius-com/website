@@ -3311,6 +3311,11 @@
       "slot": "keyword",
       "topic": "Critical thinking puzzles for kids that love animals",
       "date": "2026-05-16T16:33:59.135466"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Four In A Row",
+      "date": "2026-05-16T21:02:44.664575"
     }
   ],
   "product": [
@@ -3390,6 +3395,7 @@
     "Shadow Matching",
     "Maze for Kids",
     "Cryptogram",
-    "Shikaku"
+    "Shikaku",
+    "Four In A Row"
   ]
 }
