@@ -419,7 +419,10 @@
     "Fun math riddles and puzzles for kids with answers",
     "How to use crafts to reinforce school topics with kids",
     "Motivating rewards charts for kids that encourage learning",
-    "Critical thinking puzzles for kids that love animals"
+    "Critical thinking puzzles for kids that love animals",
+    "Logic puzzles that combine math and critical thinking",
+    "Teaching critical thinking skills to kids through puzzles",
+    "Printable times tables practice grids for kids"
   ],
   "daily_log": [
     {
@@ -3316,6 +3319,21 @@
       "slot": "freebie",
       "topic": "Four In A Row",
       "date": "2026-05-16T21:02:44.664575"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles that combine math and critical thinking",
+      "date": "2026-05-16T22:10:38.747331"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Teaching critical thinking skills to kids through puzzles",
+      "date": "2026-05-16T22:10:38.784815"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable times tables practice grids for kids",
+      "date": "2026-05-16T22:13:06.211409"
     }
   ],
   "product": [
