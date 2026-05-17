@@ -3362,6 +3362,11 @@
       "slot": "keyword",
       "topic": "Dot to dot worksheets for kids to practice pencil grip",
       "date": "2026-05-17T16:34:02.823299"
+    },
+    {
+      "slot": "freebie",
+      "topic": "ABC Path",
+      "date": "2026-05-17T21:04:33.600033"
     }
   ],
   "product": [
@@ -3444,6 +3449,7 @@
     "Maze for Kids",
     "Cryptogram",
     "Shikaku",
-    "Four In A Row"
+    "Four In A Row",
+    "ABC Path"
   ]
 }
