@@ -3401,6 +3401,11 @@
       "slot": "keyword",
       "topic": "Logic puzzle workbook printable for 4th and 5th graders",
       "date": "2026-05-18T17:44:24.870485"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Sudoku",
+      "date": "2026-05-18T21:22:16.797539"
     }
   ],
   "product": [
@@ -3486,6 +3491,7 @@
     "Cryptogram",
     "Shikaku",
     "Four In A Row",
-    "ABC Path"
+    "ABC Path",
+    "Sudoku"
   ]
 }
