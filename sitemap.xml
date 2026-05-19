@@ -61,6 +61,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://littlesmartgenius.com/articles/how-to-set-up-a-learning-corner-for-kids-at-home.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://littlesmartgenius.com/articles/unlock-senses-free-multi-sensory-activity-book-ages-4-12.html</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -2450,6 +2456,12 @@
   </url>
   <url>
     <loc>https://littlesmartgenius.com/blog/education-4.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://littlesmartgenius.com/blog/education-5.html</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
