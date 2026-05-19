@@ -3440,6 +3440,11 @@
       "slot": "keyword",
       "topic": "Quiet time fine motor activities for kids with minimal mess",
       "date": "2026-05-19T17:47:22.073175"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Activity Book",
+      "date": "2026-05-19T21:29:37.846340"
     }
   ],
   "product": [
@@ -3528,6 +3533,7 @@
     "Shikaku",
     "Four In A Row",
     "ABC Path",
-    "Sudoku"
+    "Sudoku",
+    "Activity Book"
   ]
 }
