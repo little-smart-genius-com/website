@@ -3479,6 +3479,11 @@
       "slot": "keyword",
       "topic": "Story sequencing cut and paste activities for kids",
       "date": "2026-05-20T18:07:17.002236"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Coloring Page (Adult)",
+      "date": "2026-05-20T22:03:28.211243"
     }
   ],
   "product": [
@@ -3570,6 +3575,7 @@
     "Four In A Row",
     "ABC Path",
     "Sudoku",
-    "Activity Book"
+    "Activity Book",
+    "Coloring Page (Adult)"
   ]
 }
