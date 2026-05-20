@@ -437,7 +437,9 @@
     "How to set up a learning corner for kids at home",
     "Space coloring sheets for kids who love planets",
     "Fine motor busy book pages for toddlers printable",
-    "Story sequencing cut and paste activities for kids"
+    "Story sequencing cut and paste activities for kids",
+    "Phonics cut and paste activities for early readers",
+    "How to keep kids learning over summer with printables"
   ],
   "daily_log": [
     {
@@ -3484,6 +3486,16 @@
       "slot": "freebie",
       "topic": "Coloring Page (Adult)",
       "date": "2026-05-20T22:03:28.211243"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Phonics cut and paste activities for early readers",
+      "date": "2026-05-20T22:51:33.987112"
+    },
+    {
+      "slot": "keyword",
+      "topic": "How to keep kids learning over summer with printables",
+      "date": "2026-05-20T22:54:53.594795"
     }
   ],
   "product": [
