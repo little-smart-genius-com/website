@@ -3530,6 +3530,11 @@
       "slot": "keyword",
       "topic": "Buttoning and zipper practice activities for kids",
       "date": "2026-05-21T17:40:29.623013"
+    },
+    {
+      "slot": "freebie",
+      "topic": "CalcuDoku",
+      "date": "2026-05-21T21:43:38.450054"
     }
   ],
   "product": [
@@ -3570,6 +3575,7 @@
     "ABC Path",
     "Sudoku",
     "Activity Book",
-    "Coloring Page (Adult)"
+    "Coloring Page (Adult)",
+    "CalcuDoku"
   ]
 }
