@@ -3575,6 +3575,11 @@
       "slot": "keyword",
       "topic": "Camping themed crafts for kids at home or school",
       "date": "2026-05-22T17:25:51.690196"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Counting Numbers",
+      "date": "2026-05-22T21:22:22.676835"
     }
   ],
   "product": [
@@ -3618,6 +3623,7 @@
     "Sudoku",
     "Activity Book",
     "Coloring Page (Adult)",
-    "CalcuDoku"
+    "CalcuDoku",
+    "Counting Numbers"
   ]
 }
