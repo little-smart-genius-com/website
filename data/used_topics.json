@@ -3564,11 +3564,17 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.2",
       "date": "2026-05-22T12:06:30.508524"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.8",
+      "date": "2026-05-22T16:31:03.085642"
     }
   ],
   "product": [
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.1",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.2"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.2",
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.8"
   ],
   "freebie": [
     "Creative Pack",
