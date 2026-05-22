@@ -445,7 +445,9 @@
     "Recycled crafts for kids using cardboard and paper rolls",
     "Buttoning and zipper practice activities for kids",
     "STEM building challenges for kids using craft sticks",
-    "Fun math board games for kids you can print at home"
+    "Fun math board games for kids you can print at home",
+    "Problem solving board games for kids you can print",
+    "How to limit screen time with engaging printable activities"
   ],
   "daily_log": [
     {
@@ -3547,6 +3549,16 @@
       "slot": "keyword",
       "topic": "Fun math board games for kids you can print at home",
       "date": "2026-05-22T07:55:35.429427"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Problem solving board games for kids you can print",
+      "date": "2026-05-22T10:56:23.541929"
+    },
+    {
+      "slot": "keyword",
+      "topic": "How to limit screen time with engaging printable activities",
+      "date": "2026-05-22T11:02:32.258267"
     }
   ],
   "product": [
