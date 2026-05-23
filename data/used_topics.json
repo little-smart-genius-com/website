@@ -451,7 +451,8 @@
     "Camping themed crafts for kids at home or school",
     "Tweezers and pom pom activities for kids at home",
     "Critical thinking games for kids without screens at home",
-    "Reading fluency practice passages for kids printable"
+    "Reading fluency practice passages for kids printable",
+    "Back to school math review worksheets for elementary"
   ],
   "daily_log": [
     {
@@ -3608,6 +3609,11 @@
       "slot": "product",
       "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.7",
       "date": "2026-05-23T15:06:19.072617"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Back to school math review worksheets for elementary",
+      "date": "2026-05-23T16:36:14.530235"
     }
   ],
   "product": [
