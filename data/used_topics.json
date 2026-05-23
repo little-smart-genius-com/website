@@ -3614,6 +3614,11 @@
       "slot": "keyword",
       "topic": "Back to school math review worksheets for elementary",
       "date": "2026-05-23T16:36:14.530235"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Word Search",
+      "date": "2026-05-23T21:04:08.433108"
     }
   ],
   "product": [
@@ -3660,6 +3665,7 @@
     "Activity Book",
     "Coloring Page (Adult)",
     "CalcuDoku",
-    "Counting Numbers"
+    "Counting Numbers",
+    "Word Search"
   ]
 }
