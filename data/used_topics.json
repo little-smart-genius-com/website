@@ -3653,6 +3653,11 @@
       "slot": "keyword",
       "topic": "Morning routine ideas for kids that include learning time",
       "date": "2026-05-24T16:36:23.860969"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Joke Book for Kids",
+      "date": "2026-05-24T21:07:58.183859"
     }
   ],
   "product": [
@@ -3702,6 +3707,7 @@
     "Coloring Page (Adult)",
     "CalcuDoku",
     "Counting Numbers",
-    "Word Search"
+    "Word Search",
+    "Joke Book for Kids"
   ]
 }
