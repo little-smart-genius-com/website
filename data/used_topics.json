@@ -3692,6 +3692,11 @@
       "slot": "keyword",
       "topic": "Mindfulness coloring pages for kids to reduce anxiety",
       "date": "2026-05-25T17:20:55.700522"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Complete the Word",
+      "date": "2026-05-25T21:19:09.351050"
     }
   ],
   "product": [
@@ -3744,6 +3749,7 @@
     "CalcuDoku",
     "Counting Numbers",
     "Word Search",
-    "Joke Book for Kids"
+    "Joke Book for Kids",
+    "Complete the Word"
   ]
 }
