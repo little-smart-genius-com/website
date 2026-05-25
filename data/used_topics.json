@@ -458,7 +458,8 @@
     "Visual scanning worksheets for kids to improve reading fluency",
     "Morning routine ideas for kids that include learning time",
     "Sticker activities for kids to build pincer grasp",
-    "Real life math worksheets for kids using shopping themes"
+    "Real life math worksheets for kids using shopping themes",
+    "How to choose the right worksheets for your child's age"
   ],
   "daily_log": [
     {
@@ -3670,6 +3671,11 @@
       "slot": "keyword",
       "topic": "Real life math worksheets for kids using shopping themes",
       "date": "2026-05-25T08:30:41.706071"
+    },
+    {
+      "slot": "keyword",
+      "topic": "How to choose the right worksheets for your child's age",
+      "date": "2026-05-25T12:03:16.087267"
     }
   ],
   "product": [
