@@ -471,7 +471,8 @@
     "Visual discrimination cards for kids to cut and sort",
     "Logic puzzles for kids that hate math but love games",
     "Critical thinking riddles for kids with answers pdf",
-    "Number coloring worksheets for kids learning to count"
+    "Number coloring worksheets for kids learning to count",
+    "Supporting your child's handwriting with fine motor printables"
   ],
   "daily_log": [
     {
@@ -3803,6 +3804,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.4",
       "date": "2026-05-28T17:41:26.345939"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Supporting your child's handwriting with fine motor printables",
+      "date": "2026-05-28T18:26:01.500875"
     }
   ],
   "product": [
