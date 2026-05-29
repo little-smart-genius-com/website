@@ -474,7 +474,8 @@
     "Number coloring worksheets for kids learning to count",
     "Supporting your child's handwriting with fine motor printables",
     "Telling time worksheets for kids learning analog clocks",
-    "Craft activities for kids to do with grandparents"
+    "Craft activities for kids to do with grandparents",
+    "How to help anxious kids with calming coloring routines"
   ],
   "daily_log": [
     {
@@ -3826,6 +3827,11 @@
       "slot": "keyword",
       "topic": "Craft activities for kids to do with grandparents",
       "date": "2026-05-29T08:08:53.295905"
+    },
+    {
+      "slot": "keyword",
+      "topic": "How to help anxious kids with calming coloring routines",
+      "date": "2026-05-29T11:40:08.388617"
     }
   ],
   "product": [
