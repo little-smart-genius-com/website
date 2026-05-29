@@ -3848,6 +3848,11 @@
       "slot": "keyword",
       "topic": "Logic puzzles for kids to improve concentration and focus",
       "date": "2026-05-29T18:22:19.979462"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Kakurasu",
+      "date": "2026-05-29T22:01:36.272380"
     }
   ],
   "product": [
@@ -3870,6 +3875,7 @@
     "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1"
   ],
   "freebie": [
-    "Counting Numbers"
+    "Counting Numbers",
+    "Kakurasu"
   ]
 }
