@@ -476,7 +476,8 @@
     "Telling time worksheets for kids learning analog clocks",
     "Craft activities for kids to do with grandparents",
     "How to help anxious kids with calming coloring routines",
-    "Logic puzzles for kids to improve concentration and focus"
+    "Logic puzzles for kids to improve concentration and focus",
+    "How to help siblings learn together with shared activities"
   ],
   "daily_log": [
     {
@@ -3853,6 +3854,11 @@
       "slot": "freebie",
       "topic": "Kakurasu",
       "date": "2026-05-29T22:01:36.272380"
+    },
+    {
+      "slot": "keyword",
+      "topic": "How to help siblings learn together with shared activities",
+      "date": "2026-05-29T22:53:38.260951"
     }
   ],
   "product": [
