@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-05-29T12:56:35.403840",
-  "total_articles": 444,
+  "generated_at": "2026-05-29T18:00:43.142229",
+  "total_articles": 445,
   "articles": [
+    {
+      "title": "How Thanksgiving Coloring Builds Cognitive Skills in Kids",
+      "slug": "how-thanksgiving-coloring-builds-cognitive-skills-in-kids",
+      "date": "May 29, 2026",
+      "iso_date": "2026-05-29T17:35:50.590413",
+      "category": "Coloring Book",
+      "author": "Dr_Emily_Carter",
+      "author_name": "Dr. Emily Carter",
+      "excerpt": "Discover how Thanksgiving coloring pages boost concentration, fine motor skills, and creativity in children ages 4-12. Backed by developmental research.",
+      "image": "images/how-thanksgiving-coloring-builds-cognitive-skills-in-kids-cover-1780076044.webp",
+      "reading_time": 13,
+      "url": "articles/how-thanksgiving-coloring-builds-cognitive-skills-in-kids.html",
+      "keywords": [
+        "thanksgiving coloring",
+        "thanksgiving coloring cognitive",
+        "coloring cognitive benefits",
+        "coloring pages",
+        "little smart genius",
+        "coloring cognitive",
+        "cognitive benefits",
+        "happy thanksgiving coloring",
+        "thanksgiving coloring page",
+        "coloring page coloring"
+      ],
+      "word_count": 2707,
+      "slot": "product"
+    },
     {
       "title": "How Word Search Activities Build Reading Skills in Kids",
       "slug": "how-word-search-activities-build-reading-skills-in-kids",
