@@ -3887,6 +3887,11 @@
       "slot": "keyword",
       "topic": "Seasonal coloring bundle for preschool and kindergarten",
       "date": "2026-05-30T16:38:56.206705"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Coloring Page (Adult)",
+      "date": "2026-05-30T21:11:05.876088"
     }
   ],
   "product": [
@@ -3912,6 +3917,7 @@
   ],
   "freebie": [
     "Counting Numbers",
-    "Kakurasu"
+    "Kakurasu",
+    "Coloring Page (Adult)"
   ]
 }
