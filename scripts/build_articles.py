@@ -2354,6 +2354,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
         og_image=og_image,
         iso_date=iso_date,
         author_name=author_name,
+        author_url=author_url,
         reading_time=reading_time,
         author_display=author_display,
         date=date_str,
