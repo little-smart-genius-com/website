@@ -3921,6 +3921,11 @@
       "slot": "keyword",
       "topic": "Fun word challenges for kids to play in the car",
       "date": "2026-05-31T16:44:45.061513"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Crossword",
+      "date": "2026-05-31T21:14:31.726980"
     }
   ],
   "product": [
@@ -3948,6 +3953,7 @@
   "freebie": [
     "Counting Numbers",
     "Kakurasu",
-    "Coloring Page (Adult)"
+    "Coloring Page (Adult)",
+    "Crossword"
   ]
 }
