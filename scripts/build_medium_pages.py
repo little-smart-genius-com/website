@@ -377,6 +377,45 @@ def main():
     rss_path = build_rss_feed(articles_data)
     print(f"  📡 Generated RSS Feed: {rss_path}")
 
+    # Build an index.html so the user can easily view and copy abstracts
+    index_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medium Abstracts - Little Smart Genius</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #333; }}
+        h1 {{ border-bottom: 2px solid #1a8917; padding-bottom: 10px; color: #1a1a1a; }}
+        .article-card {{ background: #f9f9f9; border: 1px solid #eee; border-radius: 8px; padding: 20px; margin-bottom: 20px; }}
+        .article-card h2 {{ margin-top: 0; margin-bottom: 10px; font-size: 1.3rem; }}
+        .article-card a {{ display: inline-block; background: #1a8917; color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; }}
+        .article-card a:hover {{ background: #126610; }}
+        .meta {{ color: #777; font-size: 0.85rem; margin-bottom: 15px; }}
+    </style>
+</head>
+<body>
+    <h1>Medium Abstracts Repository</h1>
+    <p>This is your private, non-indexed folder containing ready-to-copy HTML abstracts for Medium.</p>
+"""
+    for data in articles_data:
+        index_html += f"""
+    <div class="article-card">
+        <h2>{data['title']}</h2>
+        <div class="meta">Slug: {data['slug']}</div>
+        <a href="{data['slug']}.html" target="_blank">View & Copy Abstract</a>
+    </div>"""
+
+    index_html += """
+</body>
+</html>"""
+    
+    index_path = os.path.join(MEDIUM_HTML_DIR, "index.html")
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(index_html)
+    print(f"  📄 Generated Index Page: {index_path}")
+
     print(f"\n{'='*60}")
     print(f"  COMPLETE: {len(results)}/{len(md_files)} HTML pages built")
     print(f"  Output: {MEDIUM_HTML_DIR}")
