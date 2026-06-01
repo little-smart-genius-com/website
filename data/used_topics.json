@@ -488,7 +488,8 @@
     "Printable craft templates for kids cut and glue",
     "Craft ideas for kids using yarn and string",
     "Writing prompts for kids about adventures and superheroes",
-    "Easy arts and crafts projects for kids using household items"
+    "Easy arts and crafts projects for kids using household items",
+    "How to use puzzles to support gifted and advanced learners"
   ],
   "daily_log": [
     {
@@ -3965,6 +3966,11 @@
       "slot": "freebie",
       "topic": "Warships",
       "date": "2026-06-01T22:37:30.433927"
+    },
+    {
+      "slot": "keyword",
+      "topic": "How to use puzzles to support gifted and advanced learners",
+      "date": "2026-06-01T23:19:29.455044"
     }
   ],
   "product": [
