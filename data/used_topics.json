@@ -6390,6 +6390,11 @@
       "slot": "keyword",
       "topic": "Logic puzzles that combine math and critical thinking",
       "date": "2026-06-05T17:31:31.461473"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Skyscraper",
+      "date": "2026-06-05T21:45:59.993998"
     }
   ],
   "product": [
@@ -6432,6 +6437,7 @@
     "Warships",
     "Range Puzzle",
     "Mine Finder",
-    "ABC Path"
+    "ABC Path",
+    "Skyscraper"
   ]
 }
