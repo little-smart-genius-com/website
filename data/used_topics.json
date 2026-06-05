@@ -465,7 +465,9 @@
     "Short reading comprehension worksheets for kids pdf",
     "Reading comprehension worksheets for kids with multiple choice",
     "Holiday coloring sheets for kids (Christmas, Halloween, Easter)",
-    "Number coloring worksheets for kids learning to count"
+    "Number coloring worksheets for kids learning to count",
+    "Reading comprehension worksheets for kids about science topics",
+    "Space coloring sheets for kids who love planets"
   ],
   "daily_log": [
     {
@@ -6362,6 +6364,16 @@
       "slot": "keyword",
       "topic": "Number coloring worksheets for kids learning to count",
       "date": "2026-06-05T08:17:50.957579"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Reading comprehension worksheets for kids about science topics",
+      "date": "2026-06-05T11:33:40.849298"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Space coloring sheets for kids who love planets",
+      "date": "2026-06-05T11:36:57.595638"
     }
   ],
   "product": [
