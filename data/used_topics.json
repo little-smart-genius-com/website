@@ -468,7 +468,9 @@
     "Number coloring worksheets for kids learning to count",
     "Reading comprehension worksheets for kids about science topics",
     "Space coloring sheets for kids who love planets",
-    "Logic puzzles that combine math and critical thinking"
+    "Logic puzzles that combine math and critical thinking",
+    "Critical thinking puzzles for kids that love animals",
+    "best educational printables for homeschool families"
   ],
   "daily_log": [
     {
@@ -6395,6 +6397,16 @@
       "slot": "freebie",
       "topic": "Skyscraper",
       "date": "2026-06-05T21:45:59.993998"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Critical thinking puzzles for kids that love animals",
+      "date": "2026-06-05T22:41:30.817980"
+    },
+    {
+      "slot": "keyword",
+      "topic": "best educational printables for homeschool families",
+      "date": "2026-06-05T22:47:08.527157"
     }
   ],
   "product": [
