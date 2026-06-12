@@ -482,7 +482,13 @@
     "Fine motor sticker charts for kids practicing new skills",
     "Real life problem solving scenarios for kids printable",
     "Open ended problem solving questions for kids printable",
-    "Craft ideas for kids using yarn and string"
+    "Craft ideas for kids using yarn and string",
+    "Logic puzzle worksheets for kids learning to read clues",
+    "Classroom logic puzzle stations printable resources",
+    "Hands-on math centers for kindergarten printable cards",
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Holiday coloring sheets for kids (Christmas, Halloween, Easter)",
+    "Coloring bookmarks for kids to color and use in books"
   ],
   "daily_log": [
     {
@@ -9074,6 +9080,36 @@
       "slot": "freebie",
       "topic": "Word Pack",
       "date": "2026-06-12T21:57:36.672079"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzle worksheets for kids learning to read clues",
+      "date": "2026-06-12T22:56:49.652127"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Classroom logic puzzle stations printable resources",
+      "date": "2026-06-12T22:56:49.659966"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Hands-on math centers for kindergarten printable cards",
+      "date": "2026-06-12T22:56:49.667695"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot to dot worksheets for kids to build visual tracking",
+      "date": "2026-06-12T22:56:49.676886"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Holiday coloring sheets for kids (Christmas, Halloween, Easter)",
+      "date": "2026-06-12T22:56:49.688216"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Coloring bookmarks for kids to color and use in books",
+      "date": "2026-06-12T23:02:03.467755"
     }
   ],
   "product": [
