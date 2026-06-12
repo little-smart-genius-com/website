@@ -459,7 +459,30 @@
     "Teaching critical thinking skills to kids through puzzles",
     "Planning a learning themed playdate with printable games",
     "How to build a low cost learning toolkit at home for kids",
-    "Parent guide to using mazes and logic puzzles for learning"
+    "Parent guide to using mazes and logic puzzles for learning",
+    "Deduction puzzles for kids to build reasoning skills",
+    "Printable brain teaser challenge pack for 3rd graders",
+    "Mystery grid puzzles for kids to solve at home",
+    "Logic puzzle centers for elementary classroom printable",
+    "Printable logic mazes that teach cause and effect",
+    "Logic puzzles for kids that build perseverance and grit",
+    "Math centers for kids using printable task cards",
+    "Visual tracking worksheets for kids learning to read",
+    "Hidden object picture puzzles for kids printable",
+    "Printable pattern picture puzzles for visual thinking",
+    "Printable visual perception workbook for kids ages 4-8",
+    "Printable story sequencing cards for kids to retell stories",
+    "Phonics board games for kids printable at home",
+    "Printable language arts workbook for kids ages 7-10",
+    "Dot marker coloring pages for toddlers and preschoolers",
+    "Holiday crafts for kids for Christmas and Halloween",
+    "Printable craft workbook for kids ages 4-8",
+    "Fine motor task cards for preschool centers printable",
+    "Fine motor crafts for kids to build hand strength",
+    "Fine motor sticker charts for kids practicing new skills",
+    "Real life problem solving scenarios for kids printable",
+    "Open ended problem solving questions for kids printable",
+    "Craft ideas for kids using yarn and string"
   ],
   "daily_log": [
     {
@@ -8931,6 +8954,121 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.3",
       "date": "2026-06-12T16:50:29.511077"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Deduction puzzles for kids to build reasoning skills",
+      "date": "2026-06-12T17:43:57.622745"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable brain teaser challenge pack for 3rd graders",
+      "date": "2026-06-12T17:43:57.630845"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Mystery grid puzzles for kids to solve at home",
+      "date": "2026-06-12T17:43:57.638780"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzle centers for elementary classroom printable",
+      "date": "2026-06-12T17:43:57.647503"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable logic mazes that teach cause and effect",
+      "date": "2026-06-12T17:43:57.655427"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids that build perseverance and grit",
+      "date": "2026-06-12T17:43:57.663874"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Math centers for kids using printable task cards",
+      "date": "2026-06-12T17:43:57.672313"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Visual tracking worksheets for kids learning to read",
+      "date": "2026-06-12T17:43:57.680060"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Hidden object picture puzzles for kids printable",
+      "date": "2026-06-12T17:43:57.687822"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable pattern picture puzzles for visual thinking",
+      "date": "2026-06-12T17:43:57.697072"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable visual perception workbook for kids ages 4-8",
+      "date": "2026-06-12T17:43:57.706250"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable story sequencing cards for kids to retell stories",
+      "date": "2026-06-12T17:43:57.714799"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Phonics board games for kids printable at home",
+      "date": "2026-06-12T17:43:57.723875"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable language arts workbook for kids ages 7-10",
+      "date": "2026-06-12T17:43:57.732430"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot marker coloring pages for toddlers and preschoolers",
+      "date": "2026-06-12T17:43:57.741057"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Holiday crafts for kids for Christmas and Halloween",
+      "date": "2026-06-12T17:43:57.749671"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable craft workbook for kids ages 4-8",
+      "date": "2026-06-12T17:43:57.759298"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor task cards for preschool centers printable",
+      "date": "2026-06-12T17:43:57.767242"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor crafts for kids to build hand strength",
+      "date": "2026-06-12T17:43:57.775168"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor sticker charts for kids practicing new skills",
+      "date": "2026-06-12T17:43:57.783115"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Real life problem solving scenarios for kids printable",
+      "date": "2026-06-12T17:43:57.791063"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Open ended problem solving questions for kids printable",
+      "date": "2026-06-12T17:43:57.799637"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Craft ideas for kids using yarn and string",
+      "date": "2026-06-12T17:47:25.341296"
     }
   ],
   "product": [
