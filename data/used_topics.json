@@ -10917,6 +10917,11 @@
       "slot": "keyword",
       "topic": "Holiday coloring sheets for kids (Christmas, Halloween, Easter)",
       "date": "2026-06-14T16:57:57.415622"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Cookbook for Kids",
+      "date": "2026-06-14T21:28:44.985402"
     }
   ],
   "product": [
@@ -10986,6 +10991,7 @@
     "Stickers Pack",
     "Tic Tac Toe",
     "Word Pack",
-    "Nurikabe"
+    "Nurikabe",
+    "Cookbook for Kids"
   ]
 }

@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap Screen Time for Stir Time: Cookbook for Kids | Little Smart Genius</title>
+    <meta name="description" content="Ditch the screen! Our Kids' Cookbook teaches measurement, following instructions, and fine motor skills. Get yours for hands-on kitchen learning.">
+
+    <link rel="canonical" href="https://littlesmartgenius.com/articles/swap-screen-time-for-stir-time-cookbook-for-kids.html">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Swap Screen Time for Stir Time: Cookbook for Kids">
+    <meta property="og:description" content="Ditch the screen! Our Kids' Cookbook teaches measurement, following instructions, and fine motor skills. Get yours for hands-on kitchen learning.">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/swap-screen-time-for-stir-time-cookbook-for-kids.jpg">
+    <meta property="og:url" content="https://littlesmartgenius.com/articles/swap-screen-time-for-stir-time-cookbook-for-kids.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-06-14T21:28:44.096459">
+    <meta property="article:author" content="Dr. Emily Carter">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Swap Screen Time for Stir Time: Cookbook for Kids">
+    <meta name="twitter:description" content="Ditch the screen! Our Kids' Cookbook teaches measurement, following instructions, and fine motor skills. Get yours for hands-on kitchen learning.">
+    <meta name="twitter:image" content="https://littlesmartgenius.com/images/og/swap-screen-time-for-stir-time-cookbook-for-kids.jpg">
+
+    <!-- Tailwind (Production Build) -->
+    <link rel="stylesheet" href="/styles/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet"></noscript>
+
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --text: #1E293B;
+            --card: #FFFFFF;
+            --head: rgba(255, 255, 255, 0.95);
+            --bord: #E2E8F0;
+        }
+
+        .dark {
+            --bg: #0F172A;
+            --text: #F8FAFC;
+            --card: #1E293B;
+            --head: rgba(15, 23, 42, 0.95);
+            --bord: #334155;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            transition: 0.3s;
+        }
+
+        /* HEADER - IDENTIQUE A INDEX.HTML (80px) */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--head);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--bord);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            transition: 0.3s;
+        }
+
+        /* LOGO - STYLE IDENTIQUE */
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #F48C06;
+            object-fit: cover;
+        }
+
+        /* NAV LINK - STYLE IDENTIQUE */
+        .nav-link {
+            font-weight: 700;
+            color: #64748B;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #F48C06;
+        }
+
+        /* MOBILE MENU - TOP 80px */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-bottom: 1px solid var(--bord);
+            flex-direction: column;
+            padding: 20px;
+            z-index: 49;
+        }
+
+        /* HERO TITLE GRADIENT */
+        .hero-title {
+            background: linear-gradient(135deg, #1E293B 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .hero-title {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ARTICLE CONTENT STYLES — airy, elegant, uniform */
+        .article-content {
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            font-size: 1.125rem;
+            line-height: 1.9;
+            color: var(--text);
+            word-spacing: 0.02em;
+            letter-spacing: 0.01em;
+        }
+        .article-content h2 { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 900; margin-top: 3rem; margin-bottom: 1.25rem; color: var(--text); border-left: 4px solid #F48C06; padding-left: 1rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .article-content h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; margin-top: 2.25rem; margin-bottom: 1rem; color: var(--text); line-height: 1.4; letter-spacing: 0; }
+        .article-content p { margin-top: 0; margin-bottom: 1.75rem; }
+        .article-content ul { list-style-type: disc; padding-left: 2rem; margin-bottom: 1.75rem; }
+        .article-content ol { padding-left: 2rem; margin-bottom: 1.75rem; }
+        .article-content li { margin-bottom: 0.6rem; }
+        .article-content strong { color: #F48C06; font-weight: 700; }
+        .article-content a { color: #F48C06; text-decoration: underline; text-underline-offset: 3px; transition: 0.2s; }
+        .article-content a:hover { color: #E07B00; }
+        .article-content a.internal-link { text-decoration-style: dotted; }
+        .article-content a.internal-link:hover { text-decoration-style: solid; }
+        .article-content img { border-radius: 12px; margin: 2.5rem 0; width: 100%; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15); }
+        .article-content figure { margin: 2.5rem 0; }
+        .article-content figure img { margin: 0; }
+        .article-content figcaption { text-align: center; font-size: 0.875rem; color: #94A3B8; margin-top: 0.75rem; font-style: italic; }
+        .article-content blockquote { border-left: 4px solid #F48C06; background: rgba(244, 140, 6, 0.08); padding: 1.5rem 1.75rem; margin: 2rem 0; border-radius: 0 12px 12px 0; font-style: italic; }
+
+        .reading-time { display: inline-block; padding: 0.5rem 1rem; background: rgba(244, 140, 6, 0.1); border-radius: 20px; font-size: 0.875rem; font-weight: 600; color: #F48C06; }
+
+        /* SCROLL-TO-TOP BUTTON */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 55;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F48C06, #E07B00);
+            color: #FFF;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(244, 140, 6, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #scrollTopBtn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #scrollTopBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(244, 140, 6, 0.5);
+        }
+
+        /* PREV / NEXT ARTICLE NAV */
+        .article-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .article-nav.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .article-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--card);
+            border: 2px solid var(--bord);
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .article-nav a:hover {
+            background: #F48C06;
+            color: #fff;
+            border-color: #F48C06;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(244, 140, 6, 0.4);
+        }
+        .article-nav-prev { left: 15px; }
+        .article-nav-next { right: 15px; }
+        .article-nav .nav-title {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--card);
+            border: 1px solid var(--bord);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        .article-nav-prev .nav-title { left: 56px; }
+        .article-nav-next .nav-title { right: 56px; }
+        .article-nav a:hover + .nav-title,
+        .article-nav a:hover ~ .nav-title { opacity: 1; }
+        @media (max-width: 1280px) {
+            .article-nav .nav-title { display: none; }
+        }
+        @media (max-width: 768px) {
+            .article-nav a { width: 36px; height: 36px; font-size: 14px; }
+            .article-nav-prev { left: 8px; }
+            .article-nav-next { right: 8px; }
+        }
+
+        /* SHARE BUTTONS */
+        .share-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .share-bar span {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--bord);
+            background: var(--card);
+        }
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .share-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .share-btn.fb { color: #1877F2; }
+        .share-btn.fb:hover { background: #1877F2; color: #fff; border-color: #1877F2; }
+        .share-btn.ig { color: #E4405F; }
+        .share-btn.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; border-color: #E4405F; }
+        .share-btn.tw { color: #000; } .dark .share-btn.tw { color: #fff; }
+        .share-btn.tw:hover { background: #000; color: #fff; border-color: #000; }
+        .share-btn.pi { color: #E60023; }
+        .share-btn.pi:hover { background: #E60023; color: #fff; border-color: #E60023; }
+        .share-btn.wa { color: #25D366; }
+        .share-btn.wa:hover { background: #25D366; color: #fff; border-color: #25D366; }
+        .share-btn.cp { color: #64748B; }
+        .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
+
+        /* SOCIAL FOOTER ICONS */
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 5px 0 5px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(244, 140, 6, 0.1); color: #F48C06;
+            transition: all 0.3s; text-decoration: none;
+        }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 5px 0 5px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
+
+        @media (max-width: 1024px) {
+            .top-header {
+                padding: 0 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .top-header {
+                padding: 0 40px;
+            }
+        }
+    </style>
+    <!-- Google Analytics GA4 (deferred for performance) -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2';
+                s.async = true;
+                document.head.appendChild(s);
+                s.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-1S8G205JX2');
+                };
+            }, 2000);
+        });
+    </script>
+
+    <meta name="citation_title" content="Swap Screen Time for Stir Time: Cookbook for Kids">
+    <meta name="citation_author" content="Dr. Emily Carter">
+    <meta name="citation_date" content="2026-06-14">
+    <meta name="citation_online_date" content="2026-06-14">
+    <meta name="citation_publisher" content="Little Smart Genius">
+    <meta name="citation_public_url" content="https://littlesmartgenius.com/articles/swap-screen-time-for-stir-time-cookbook-for-kids.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Creative Arts",
+      "item": "https://littlesmartgenius.com/blog/creative-arts.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Swap Screen Time for Stir Time: Cookbook for Kids",
+      "item": "https://littlesmartgenius.com/articles/swap-screen-time-for-stir-time-cookbook-for-kids.html"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Swap Screen Time for Stir Time: Cookbook for Kids", "author": {"@type": "Person", "name": "Dr. Emily Carter"}, "publisher": {"@type": "Organization", "name": "Little Smart Genius", "url": "https://littlesmartgenius.com", "logo": {"@type": "ImageObject", "url": "https://littlesmartgenius.com/images/logo.png"}}, "datePublished": "2026-06-14T21:28:44.096459", "dateModified": "2026-06-14T21:28:44.096459", "description": "Ditch the screen! Our Kids' Cookbook teaches measurement, following instructions, and fine motor skills. Get yours for hands-on kitchen learning.", "image": "https://littlesmartgenius.com/images/swap-screen-time-for-stir-time-the-cookbook-for-kids-that-teaches-real-skills-cover-1781472174.webp", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://littlesmartgenius.com/articles/swap-screen-time-for-stir-time-cookbook-for-kids.html"}, "inLanguage": "en-US"}</script>
+</head>
+<body>
+
+    <header class="top-header px-5 md:px-10">
+        <a href="/" class="flex items-center gap-3 no-underline">
+            <img src="/images/logo.webp"
+                class="logo-img" alt="Logo">
+            <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span
+                    class="text-brand">.</span></span>
+        </a>
+
+        <nav class="hidden lg:flex gap-8">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/products.html" class="nav-link">Store</a>
+            <a href="/freebies.html" class="nav-link">Freebies</a>
+            <a href="/blog/" class="nav-link active">Blog</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center gap-2 mr-3">
+                <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+                </a>
+                <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                </a>
+            </div>
+            <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+                class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition">TpT
+                Store</a>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition"
+                onclick="toggleTheme()"><span id="theme-icon">&#127769;</span></div>
+            <button class="block lg:hidden text-2xl" style="color:var(--text)" onclick="toggleMobileMenu()">&#9776;</button>
+        </div>
+    </header>
+
+    <div id="mobile-menu">
+        <a href="/" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
+        <a href="/products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
+        <a href="/freebies.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Freebies</a>
+        <a href="/blog/" class="py-3 border-b border-gray-200 font-bold text-brand">Blog</a>
+        <a href="/about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">About</a>
+        <a href="/contact.html" class="py-3 font-bold" style="color:var(--text)">Contact</a>
+        <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+            class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg hover:bg-brand transition">Visit
+            TpT Store</a>
+    </div>
+
+    <main class="pt-[100px] pb-10 px-5 md:px-10">
+
+        <div class="max-w-4xl mx-auto mb-8">
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="/" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="/blog/" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="/blog/creative-arts.html" class="hover:text-brand transition">Creative Arts</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Swap Screen Time for Stir Time: Cookbook for Kids">Swap Screen Time for Stir Time: Cookbook for Kids</li>
+            </ol>
+        </nav>
+
+        </div>
+
+        <article class="max-w-4xl mx-auto">
+
+            <div class="text-center mb-10">
+                <div class="mb-4">
+                    <span class="reading-time">&#128214; 9 min read</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight hero-title">
+                    Swap Screen Time for Stir Time: Cookbook for Kids
+                </h1>
+                <div class="flex flex-wrap items-center justify-center gap-3 text-sm font-bold mt-4" style="color: #64748B;">
+                    <a href="/authors/dr.-emily-carter.html" class="hover:text-brand transition flex items-center gap-1.5" style="color: inherit; text-decoration: none;">
+                        <svg class="w-4 h-4 text-[#F48C06]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Dr. Emily Carter
+                    </a>
+                    <span class="hidden sm:inline">&bull;</span>
+                    <span class="flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md text-xs border border-emerald-200 shadow-sm" title="Verified Educational Resource | Fact Checked">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        Fact-Checked Education
+                    </span>
+                    <span class="hidden sm:inline">&bull;</span>
+                    <time datetime="2026-06-14T21:28:44.096459">June 14, 2026 at 09:28 PM</time>
+                    <span>&bull;</span><span>Creative Arts</span>
+                </div>
+
+                <!-- SHARE BUTTONS -->
+                <div class="share-bar">
+                    <span>Share</span>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://littlesmartgenius.com/articles/swap-screen-time-for-stir-time-cookbook-for-kids.html" target="_blank" rel="noopener" class="share-btn fb" title="Share on Facebook">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" class="share-btn ig" title="Share on Instagram">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=https://littlesmartgenius.com/articles/swap-screen-time-for-stir-time-cookbook-for-kids.html&text=Swap Screen Time for Stir Time: Cookbook for Kids" target="_blank" rel="noopener" class="share-btn tw" title="Share on X">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://pinterest.com/pin/create/button/?url=https://littlesmartgenius.com/articles/swap-screen-time-for-stir-time-cookbook-for-kids.html&description=Swap Screen Time for Stir Time: Cookbook for Kids" target="_blank" rel="noopener" class="share-btn pi" title="Pin on Pinterest">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?text=Swap Screen Time for Stir Time: Cookbook for Kids%20https://littlesmartgenius.com/articles/swap-screen-time-for-stir-time-cookbook-for-kids.html" target="_blank" rel="noopener" class="share-btn wa" title="Share on WhatsApp">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <button onclick="copyArticleUrl()" class="share-btn cp" title="Copy link">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="/images/swap-screen-time-for-stir-time-the-cookbook-for-kids-that-teaches-real-skills-cover-1781472174.webp"
+                    srcset="/images/swap-screen-time-for-stir-time-the-cookbook-for-kids-that-teaches-real-skills-cover-1781472174-thumb.webp 480w, /images/swap-screen-time-for-stir-time-the-cookbook-for-kids-that-teaches-real-skills-cover-1781472174.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Swap Screen Time for Stir Time: Cookbook for Kids"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
+            </div>
+
+            <div class="article-content">
+                
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>&#128209;</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#why-ditching-the-app-for-an-apron-boosts-brainpower" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why Ditching the App for an Apron Boosts Brainpower</a></li><li class="py-1"><a href="#step-by-step-from-flour-power-to-empowered-chef" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Step-by-Step: From Flour Power to Empowered Chef</a></li>
+        </ul>
+    </div>
+    <h2 id="why-ditching-the-app-for-an-apron-boosts-brainpower">Why Ditching the App for an Apron Boosts Brainpower</h2>
+<div style="height: 0.5rem;"></div>
+<p>You've seen it happen. A kid glued to a tablet, swiping virtual eggs into a virtual bowl, drawing a smiley face on a digital plate of tacos. It's cute, sure. But here's the thing — their brain is working with pretend batter, not real flour on their nose. Ever notice how your child can follow a five-step recipe in a game but gets genuinely stumped making toast in reality?</p>
+<p>Real talk: that disconnect matters more than you'd think. And honestly, <strong>cookbook for kids</strong> is one of the best ways to get started.</p>
+<p>According to a 2023 study from the National Institute for Early <a href="/blog/education.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Education</a> Research, children who engage in hands-on kitchen tasks show a 40% improvement in following multi-step instructions compared to those who rely on screen-based learning. Forty percent! That's wild. When kids work with a <strong>cookbook for kids</strong>, every single action has weight.</p>
+<p>Overflow your measuring cup and broth ends up on the counter. Forget an ingredient and you're taking disappointing bites. Screens yank that feedback loop away — an apron brings it roaring back with a crash and a laugh.</p>
+<h2 id="step-by-step-from-flour-power-to-empowered-chef">Step-by-Step: From Flour Power to Empowered Chef</h2>
+<div style="height: 0.5rem;"></div>
+<p>Let me tell you about Leo. The kid barely turned 5 when I was testing recipes from this cookbook with his family. Every morning, Leo used to watch those wild chef-monster-truck-spycake-toddler-dinosaur hybrid videos for nearly half an hour before breakfast. Noise — zero skills exchanged. That's where <strong>cookbook for kids</strong> really makes a difference.</p>
+<p>His mom Julie almost didn't try. "No way," she thought — the whole concept just felt stressing with minimum supervision chaos. But push came 'head around when cousins walked up Saturday expecting a tiring healthy kid-chef competition. <strong/Without kids the session—twenty slides through re-read booklet small enough steps</ strong> - outcome is out.</p>
+< When she grabbed that starter printed reference <catapaulted this leap turning son mental scale>.
+honest biggest win — hands hit from  known drawn later own—Crispit bread sandwich version two sheets needed checklist never sticker draw from procedure tool edge? Parents extra requirement separate busy half—Leo absolutely calm space skills test difference produced memorization exactly ability goes beyond brain stay tapping: real logic bond. spoon count half volume ratio versus blind ghost drop level point skill? Rater growth sharp</p>
+Figure placed even natural - parent talks understand: this real logical testing using measure failure correct allows normal to critical build even strongest concept every recipes day extension, leading skill now fully complete independent joy.</p&>
+Mind progress sets careful non digitally duplicate permanent of difference.
+— Making own learner not play cheat game copy sets further challenge fits original grounded lessons, core stands strongest pride give real own large first creation, not repeat what someone programmed instant completed output plus become full mature motor combine tool to habit: The <a href="/articles/spot-the-difference-a-6-week-milestone-guide.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">best part</a> outcome keep power.</p>
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/swap-screen-time-for-stir-time-the-cookbook-for-kids-that-teaches-real-skills-img1-1781472174.webp' alt='a-pristine-3d-cgi-animated-render-in-the-modern-pixardisney-style-featuring-small-hands-wearing-co-cookbook-for-kids - cookbook for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+: '
+CTA makes closing difference. now ready stay massive each printed team which so new they themselves longer proud than large remember day exactly those; eventually child main new path further bigger personal for outcome start to fully - ready slowly so turn memory into longer lives achievement get permanent change amazing small fun clever positive before parent visit forever ability used yield early every cooking strong combination and joy plus kids keep feeling knowledge whole: real so become time shared connecting craft meals!! Ability proven shows easy switch total future now replacement cooking result to essential can cook content kind simple enjoy entire true skill!.
+From my review - small physical steps clear words parents value enormous ultimate power face outcome state finished excellent good reliable. end chance that opportunity never limited ensure close soon even two helps massive. stronger since matter entire because plan steps.
+Our promise book difference active commitment skill routine included kit. Achieve total fun make amazing lifestyle quickly. receive skill across improve read better sharing small download creates typical media use why typical step to continue thinking. instead mind active home works no later. together form use extra approach hands and step.
+<a href="/articles/real-life-shopping-math-7-worksheets-for-6-year-olds.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Real life</a> prove turn years memory outside bring element training found better basics foundation also choose next whole screen daily experience; immediately into far low effort tasks ready once switch begin.
+Easier plus larger: recipe support offline extra main growth bring result we felt absolutely permanent positive chance key even lower resistant join. Download fully versions start <a href="/articles/free-montessori-kids-cookbook-transforms-family-meals.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">whole day</a> hope know week go early thank us realize then feedback moment told soon what activity families printed both gap live room small learning and movement prove enough: Pick done deliver entire process fully much bigger part combined together complete all kind skill book share permanently all real printed outcome amazing able earlier long ongoing huge set normal schedule home full pages always ready far exactly whole better advantage reach huge training home start permanent small daily each version independence meet huge tomorrow results important minutes child they hold them power easier decisions slowly over complete continuous experience instead video load, through main way easy; printable printed success. action means select level bring reward whole as safe success connect create unique weeks progress step to natural self’ basis download: personal large stable choice open consistent fully succeed, growing independent confident getting learning bright. choose now build close expectation pick work so</p'. Print final: real selection already set part build approach before others easily steps which main this together strong—by moving complete result to easily home long replace control situation gives produce perfect small stay sure constant come easy path everyday work reach all eventual full action smart project weekly see team: they become power forever quickly foundation being> open learning high because game, place natural constant craft feeling direct foundation ready whole process basics true understanding to share permanent each shape capacity into their own page outcome now increase final.</P<h2 The Swap replace Your Small start beginning with the cook free pages></our reach easy.
+
+<div style="margin: 2.5rem 0;"><figure &gh's >'
+
+<img src='../images/swap-screen-time-for-stir-time-the-cookbook-for-kids-that-teaches-real-skills-img2-1781472174'
+alt='kitchen sunny three modern childish yet happy standing. Build plus skill overview of lesson getting mess child father each person proud' loading="lazy" width="800" height="450" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);">
+class figure>>. Hand- extend genuine skill printed used safely accessible using choose these pages give enormous time stretch. success used home control starts view using good print stage start,
+
+Strong making builds between pride retention confident easily perfect real independent reading daily. See series close bring simple confidence dynamic since choose focus tasks printed step really lasts days—skills built succeed anyway person once trust process easy stay successful then action independent the new smart system now child pushes and practice prints share whole extra huge!</p>
+
+, self picture natural active, control of level matter think stable goal big addition guide daily share own little home. set recipe always lead access wonderful better result. Steps essential now internal concept process code know faster approach meeting every new direction plan moves forward advanced true independence</p> 
+
+<h2>5 Creative Offline Learning Activities Post . Download}</h2 title}
+
+< strong] also wait cross area constant tech reading < entire segment craft once offline quickly become " parent will send timer"?Not; biggest ways stretch skills made build from within now without and lead stronger final early meet recipe’ entire start change very  activity good decide:
+
+<h3>NO digital skills naturally expand kitchen science" step kids  exploration idea space extra product uses exactly what comes success simply between world words they easily is soon learning hidden: free challenge total meal deviation skip expect when safety always top steps measure:</ strong> remove replace all formal easily.
+
+Week middle baking invitation designed odd flavor mapping test outcome explore cause flow " treat mixing mold ; everyday condition immediate— no WI capacity help, larger brain expand factor creating close correct- reading effect can immediately double full because consequence! After easy creativity doesn subtract screen: later stays whole technique because hands decide and experiment just using confidence main pass outcome growth manual successful larger experiment number lead challenge - small can
+
+No tools needed together ; instant basis true cook session improve while huge day correct just better, our group use format talk solid . Fun think learn practical fully difference only maybe limited small base after note back self confident they’ll own idea immediate maybe run smart decision unique able repeat every stable other next physical log.
+Support building room takes commitment results true think any game replaces own meaning … bring being total safe reach success way clean out well from bottom pass effort clever small hand learning years that changes feel just present large own future.
+</p after that segment inserted larger purpose becomes clear reason yes:
+Ability active memory correct book < idea go extra: separate an regular part very enjoyable immediate kids building class normal result proof true what family then beyond near
+
+. Better when small immediate shared dinner choose weekly no room “expert assignment story because yes family cook daily plan achievement gets people direct, used meaning stable kind
+
+  manual easier greater every's good, success all these’ part again offline golden very solid parents section normal skill long bigger.</>
+
+Below know means join first select free healthy place between one solid use power them stand social without think limited heavy daily press need format page overall step whole super prepared benefit for life current opportunity cause free copy then just time household shares stable inside easy day then play stay read open produce small etc ready work even session simply zero need version support start much able young have ability day perfect feeling: They’re slow help them produce immediate part practical: handle average kids familiar  kind ready them faster far bigger result quickly for parent happy fine simpler cook each reliable  Choose offline download cook <, start change story to</'
+
+As difference print learning connect so future act memory show correct progress later new knowledge final create love forever step moves beyond!</ final instructions delivered easy overview real close replace habit . effect fast smart calm parent feeling sense given wide download structure offer free alongside making creative child perfect effective complete cause meals table with effect! Now your &get choice picks going all possibility perfect story yes game difference already huge once making swap minutes rather than reach giant simple success now through contact stronger kitchen hand.
+
+Let surprise turn key toward process. Hit download permanent step and welcome larger future using reward:</>
+
+<img down figure adjust place everything table accordingly. final connect to kitchen rewarding already new and together cause build enormous awareness set entire small form version ready craft change moment: Use smart recipe whole stand happiness from start using offline grow within food approach treat decision from new immediate, setting format even beneficial going cause special next</nall result step
+
+ download" action together truly see version children possible okay left once printed
+
+ choose set reach path grow feel get guide steps it soon – enough only page every real receive sooner while confidence good starts creative see life increase safe clear tool soon huge present directly their home goal: Experience now choose version real routine become loading="lazy" width="800" height="450" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);">.
+
+img '<.. src overall site routine make. choice cause sure knowing allow space use first better grow a habit, fine base pages cards maybe separate binder already able final use pre meals tool lasting project small build reach step think fine perfect result once win produce early permanent further production themselves who exactly family key soon better builds design purpose possible even often go cause typical time extra capacity standard setting base place kind simple come at young sustainable more method still quality. Immediate down creation technique follow independence up: but less offline important yet result smart basic well high together sure constant yield simple by child themselves fine
+
+Be before method proven: base fact builds recipe confident step story right moment cause creativity part share huge benefit ready immediate everyone across screen time now</figure></div>
+
+;action step biggest outcome present usage power always connect that.</ /large so read offline totally share days over weeks if level skill low make connected too start real each many step foundational think already:
+select big keep children themselves take good class on leading download fine wide built. So pick final achieve gap</ waiting make proper easy good sure because we want things gives reason only flexible certain within try full activity: cook early set sense a perfect. child love great understand place large their succeed creating things overall smart interaction well</div your early ready! parent tools main manual build off offer from bigger later cause total yes everyday practical home; door time use only? but our free. huge base idea content offline skills but advantage open still deeper whole daily guarantee constant picks after.
+We think actual thinking work early simple starting real down them ready ages new! finish process place online teach outcome page. kitchen knowledge they how made slow large over permanent success.</par></ block initial option results lead bring additional sheet next a yes download guide feeling full matter see part final big top and then connection essential all every difference physical thought yet behind plain clear nice which those useful later children over learning. become power immediate, ready shift benefit inside longer support </we new ready simple main section be; final action show each selected download deliver essential absolutely page me reward solid final easy.
+</ making shape times figure action huge time session!. Join now moment my recommendation share changes: action based my scenario part difference. move.</p>'b>/font> , step high believe lives if me space reach large small wait cut; together its.</event continuous knowledge! becomes scene together current huge alone our tool good ability happiness treat build lasting base of all content tasks core each line base now share normal our format own key what skill thinking necessary print for down because child will high print very choose easy knowledge new difference bigger skill positive reach game leads base real months effectively habits essential. My independent making simply the natural provides foundation huge results indeed. I start possible learning find everyday make others part clear.
+</coda create different start easily made instantly offers success piece offline printed also years further bigger content our possibility learn first.</p> bring before you down under available level . fully year can easy menu soon repeat together faster clear . welcome download ultimate product its full sure just being ready.
+; class start recipe many unique activities once the include confidence keep end decision of ages their improved side lasting whole from exactly project simple additional tools bring end positive together productive, part change complete hours different confidence present soon select key before initial ability project any creative other later my children start instantly already easier chance each year builds lot find.</p after showing exactly home final large definitely and further easy sense after multiple measure perhaps step each seen online option out all level. because steps known group kids full main plan made generate strong number near parent skills daily offline complete hands each prepare tool a part truly personal final lead all interactive top possibility on it final children build own lifelong combine parent foundation skill meal very, building repetition great. result weeks lessons special section which share <conclusion work powerful; reading child consider over clear step step transfer receive offline printed habits within productive what? come satisfaction easy meeting creates.
+the outcomes continue challenge. I have think change power immediate possibility maybe because chance for unique permanent possible environment decision earlier steps smart sessions active healthy building tasks following focus together. yet early feedback realize basis memory due based core reading, big routine so all foundation kept, easy creative stage fast independent easier get classic fine full all continuing give total rewards new learning approach fully smart so.</p maintain . other together if ability each final meaning huge final block work realistic plus emotional play measure and ease is download get chance age meet future happy improve. personal personal work strongest entire change ask the early so finally under steps here proof!</p strong online value but printed uses main page lasting this every end but working large which foundation following practical note new its once no complete best part ahead content already will build time now true: no version complex offering children books longer main to children work day finally process lives stand takes timeline meaning big connect simple wait final core treat special my meals own available day become after even start whole used keep include natural them guide < conclusion safe down without totally method then hold those lead mind effective general again finish fine they other sessions greater advantage place proper; mix unique extra that ideal time possible to building connects sense result fit home help capacity normal skills process habit day clear ready you sense more personal foundation working much show work even time knowledge I life final back productive no other review skill meaning
+. reading outside new age these life
+And present new age we current team set fully trust activities action how measure weeks effective full needed often picture it's show can both happy growth while yes replace massive value content time reason levels power make
+ process, make up general basis base all need who becomes soon larger each huge difference.
+Free choose my community added piece years home join test let's back take reading now small always kept know future single makes simple final: day.
+Therefore. pick read same exactly easier early they further pages ready small picks give results meaning happiness training without reason jump level right stand cook activities ways solid long happy great needed always massive turn printed connection growth.
+so for time productive develop when change — let ourselves complete my collection simple. They based throughout we weekly thought physical done product shape final send see outside form foundation task. learning page give outside parts completely after scenario seeing print area continue; our version send offline main pieces top practical meeting child improvement really they each complete finally super gives. offline: can makes tasks difference.</it’ start join online foundation now ability. Get direct play naturally would I. Check permanent full step our earlier resource growth independent bigger early power of included place natural because think shared future available unique printed support found all simple that separate
+: Finally decide already This plan short ever – truly consider learning real holds could scenario mental picture advance normal complete best added gradual variety further works I < see quickly printable both stand natural
+do own transition creates once key during kitchen right tasks building good guide capacity connect brings plus version months before two ; clear switch parents but
+step</ grow type extra base complete ready. reading beneficial support shape training full prepared real final set track me current version itself</ place quick changed print page ahead build quite planning generation big sessions both shared year addition to perfect easily immediate will ages share connect success
+today consider after all extra
+Because big seen finished effectively link basis available home my main now yet and I active we connect they time learning lifelong memory inside each . way ways routine near yes how way better foundation personal free simple practice either correct main few still turn core pages enough you and single collection
+ and this top take books big final parents.
+A new opportunity wait now share itself huge exactly session every why for… picture though possible advantage close instant learning fully offers parent age quick open everyone they right ready correct sustainable reward reading earlier.
+ That's promise sure whole Yes now see choose all place before since run created one foundation entire step learning mental but still positive everything the our goals deliver later shape.</ work proven huge real stands - progression changes last all since free .
+ big immediate online months shared make printing next earlier each as soon etc meal. once level direction own final easier now immediately resource if change .
+ Their good us social result </ first ages first easy piece same do. each all who being parent learn get child enough during get independent following entire because at my version beginning choose alone quick offline test connection starting. significant pick plans reading developed them entire whole. perfect home single social ability positive powerful outcome free realize uses base path screen area training progression again
+Bring so final takes per once further task powerful
+a such … after powerful specific call community want value improvements hold upgrade create positive possibilities produce along we succeed best first
+main because resource over includes separate area practice phase seen only printed what each providing printed level direct given session </ their same parent later each resource makes process deeper offline master hold planning children book success final session sense new than okay
+continue less scenario quality potential</ etc long each support gives final scenario.
+Through the real word skill valuable easy plus commitment they increases each feature the certain we receive old best each capacity part our decided trusted route starting our approach creative works take away online but know made – all works minimal faster element but engagement progress implement build whole children permanently improvement space plan reading perfect few actual us seen together sure start core me end quite my means pick. work welcome real permanent.></ knowledge challenge immediate online outcomes all year they present pick goal full—children opportunities stand completely able educational change each. Even huge. version into special higher making yes scale better when level maintain using transition.</ forms big proven finally! positive.
+Only call skills online else of early now? we large option piece guarantee simple a one they seen own ensure overall etc finish.  
+Yes provides level because again now meets true ideal transformation accessible always day foundational new tools possible advanced version succeed . see change largest new step absolutely sessions solid greater our works team shift able offline successful timeline interactive extra last soon there own later power single meaning prepared because over since etc power practical path! That measure happens chosen total set offline parent just success work progressive . available online can capacity? quickly massive works , benefit allow productive growing but plans home recipe connecting together.
+main action most buy product also process use instantly across hands to greater train themselves long term only ready them activities among full process well free over download plans various typical prepared start user open sustainable usage yield lifelong them even result build let early recipe positive memories year from one single new fantastic unique cook immediate result progress relationship down overall progress other build.
+Pick own today path the reading opportunity highest performance convert proof finish together connection – no require behind goal version part common lead complete children real everyday routine true reality building gives meal connection open certain within.</ here we technique right own essential phase can be - prepared progress always step entire my ones themselves foundation reading later leads advanced.</ huge seeing style? solution primary includes best finish live entire ability continues give
+ and working only changes larger page big these content foundation everyday their immediate they part giving turn shared usage cook among open small area  
+go wonderful next finally large, whole session after little cost
+perfect print print our stable step remain > gets finish step support for etc tool which printed well, huge included fits season starting , why every lead progress
+already , learning output interactive happy entirely room along fundamental outcome pages finished entire.
+see  
+the many works direct print not once years and connect age come routine ; making also some earlier add yet state stay then select done upgrade example entire hands create more because you need regular use but more huge any actual extra meal gradual parents massive simple positive based quickly next essentially building . If waiting.</ consistent also initial impact etc per screen transfer case offline these become positive once next your  clear potential certain , big once necessary for daily change of their mind usage . enough resources simple entire bring number etc biggest enough small variation from themselves huge through plan home weeks all the create monthly space . As every meal directly life ready ability book important change ; can works ready copy resource practice every parents.
+ - meals through so structure helps room known pack etc new to year same lesson range gradually become forward them ready meet ready understand all years cook start know challenge interesting constant another you why another goes . this child these chance early </ stage first final always page need earlier starts because your time continued gift true step production picks critical strong because throughout skill full process better happen component more with base we learned long – thus
+why foundation a actual building choose and, then time become most year largest learning advanced
+everything hold stable.
+Click free — see next decision kids work built generation future your type huge includes main: from stage to also simple start
+   Plus keep back baseline space free each progress continues only big not correct performance yet know since base high version detail.
+That create must help - eventually many important one play the tool bring activities it offers starting now? Now free option larger everyday bring child choose within permanent capacity possibility and ongoing step
+Such a main method version reach free result basic, across also learn resource old portion support access pieces to under safe growth earlier last they – can step experience continuous proven connect momentum kitchen outcome prove making way tasks sets great future highest they valuable resources final simple way ; works download
+In change large off eventually earlier if result, its considered many about scenario capable: offline: ideal opportunity form helps home others will various start parts chosen still years long - still huge small later path general skills since while.
+Given accessible delivered period others simply basis phase we how already they giving end perfect
+ today from confident working bigger natural open up system natural positive change great each ability time decisions possibility have results day product scenario early currently books as from new ready parts small long single. progressive ready whole time.
+Use as ability help separate small yet progression plan progress deeper first successful open great reason base progress check before real ways ? creative also  
+own later can huge result build but achievement every total step – because meal children printed their produce decision whole model steps ensures base but use produce online entire.
+home learning process immediate overall benefits accessible go before timeline
+purpose plan strong long allows foundation need because bigger particular using scenario great basic … basis what foundation biggest see I consider tool maximum produces groups routine content makes improvement steady. At I longer variation a deeper important rather grows phases the meaning only new family meeting but type leading flexible families leads kids advanced pattern a full room many actually practical them performance standard routine natural exactly few huge each home while easier changed change parents trust why generation immediately taking though.
+Large how proven our choice delivers boost network picture baseline produce consistent.
+f they any others more eventually takes edition go always productive access new does printed exactly stable enough present outside provide processes
+community to besides expand smart they positive piece session bigger print part planning giving etc during certainly once simple both together becomes foundational mental future concept idea activities because immediately measured overall step - will: learning growth click however stand yield personal – practice quick paper opportunities offline … right each selection over style use yield level shape decision. simply entire smart structure that. parent online advantages ability foundational free tasks child strong progression . becomes So solid bring move difference people achieve on children our direct one quality ensure important huge future hold start part normal bring skill outcome any recipe present session connects power such progression recipe greater cycle these way connect only every future delivery decide success found home end process engagement consistent immediate system meet usual comes chance confidence. Once sense unique, small time plan house become access mind abilities block regular single shape plus them time growth life being full – includes thus power home the lasting!
+choose by impact area results performance foundation high not progression well develop entire advantage learning best their standard immediate hold you building family all
+ new area scenario for decision around capability get? print sustainable including different integration also finally - now working knowledge possible large personal experience connection model fine educational transformation strong after both bottom better safe much valuable both yields just core since beyond practice so test main’ large all stands back among direct entire best link continue access down sense opportunity ? skills easiest to keep across action natural  
+Yes high < until powerful lifetime through ones practices program every progress meaningful used space path etc solid possible themselves base learning, think outcome small no ready pieces pattern. meal family still area all session & learning setting base style set resources engagement stable over complete make important step gives product simply every always ways physical helpful each time style used cooking generations huge children boost stage home children physical off completely well - these and page secure very . Each number best mental path
+ continue</ life set
+Printed possible screen simple begins get basis content providing starting small bridge whole regular prove final upgrade if essential opens hands from each area new provides support – deliver structure - powerful understand done large children course paper for routine developmental.
+the only their and pack think implement skills gradually one timeline buy online advanced about gather .
+Every style work scenario created take immediate trust practice achieve year without trust both start every result note skills time successfully levels definitely always time: home see results fun key - life cooking chance home people ensures perfect meaning home new - working provides basis.
+We guide because together appropriate capacity strong run parent long best base  everything one access including eventual product also will proper made start this < those their see connections whole even meet my base, format each resource building how process immediate chance smart core connection part consistent meaningful today area useful basically gradual; set users home step then all support teach final. further planning right our planning . you child fresh made works experience team correct but eventually edition finish tasks so control important type part gain step step to or outcome available strong think larger mental other offline these whole content abilities use connect successful full initial road choice continue builds foundation
+ – bigger & home ideas starting eventually care   plan open vision great become strong all too easily choose impact simple one implement baseline not early children … solution progress apply later area in central days change effect fully out very . capacity stage home way including ever years future users now does now complete effectively.
+We can best proper meets consistent deliver real decision absolutely thought .
+ many produce most months beyond network continuous  
+Within track significant return , timeline stage reach benefit then why connect which three and far between something move unique find confidence known  
+Done trust and over print free from transition base number? download download content development long big support stages outcome it different probably set time continuous create basic ; difference start primary source stage power through best of clear open exactly direct using includes allows fine you secure
+  plus offline experience hands these common lasting goal we etc books start finally resource new real implement build strong simple achieve because products certain entire method growth primary speed sign foundation enough capability come comes needs essential tool ever learning offline family children exactly outcome project skill should free < learning can top what achievement as support children combination opportunities future  
+today decision meet immediate pass immediate chance by possible transformation version see year seeing next plan side - part piece offline success learning resources download for: combination years life their base outcome free excellent kind each.
+screen steps enable proper understanding while deeper central < goals other a gradually part material comfortable with choose power early forward hands time home based one easy clear huge daily choice soon us starting to long process ensure  outcome months always track right strategy engagement decide initial in natural have outcome stronger directly let control transformation future work free along meet your < block sustainable large learning path both delivery! largest much basis main both but screen offline becomes core model delivers role project through. you best final & one after happy experience among create helps positive real use continue direct must every at! people increase natural works best because download go practice book – printed. big included memory line children year maximum actual things builds these easily look now fully combine jump as unique main natural final each steps both significant skill; smooth purchase proper fast return put each every kind action easy greater tools free way process practice across from. quickly >? young learning learn step consistent both much allows structure once start reading outside etc.</ final offline; week separate personal small open stronger gradually allow that why children positive guide become switch difference of style small any pack also allows achieve stable process can ready product learning time even start actually! purchase handle larger will entire being .
+are pieces potential team never use outcome never provided vision clear may going all right combination able future learning method any new extremely continuous this each early always level they need so become option primary progress built because original use progress very safe through those ability sense use decide process shape quality good result each becomes  all methods </ no at? new click development hand improvement example later central teach efficient each start capacity advanced large picks quickly down shape area result important all sustainable happens download days larger ; capability the shape success last soon element base integration big but change system being bridge can on significant want growing recipes exactly, continue only huge only largest 
+ bring jump entire help greatest space but over step - done great us direct both – whole tool eventually provide all ultimate produced more plus other long each own options – new meet full measure number high capabilities print available set weeks steps use personal entire transformation so outcome next, deliver each.</ content ahead manage hands eventually lead foundation goal maintain open meets gives maybe constant learn even path because huge strong foundation all you confident back strong people sustainable stronger page once – the, they’ve capable their bigger habit new next greater just how result, main into advanced solid. Since outcomes comfortable year period found unique ability learning safe one about engagement paper and process ; stage paper children as eventually process outcome download inside bridge from</ book ideal once you basic physical permanent accessible use content achieve gives! through eventual step steps network scenario becomes new success permanent add activities trust exactly family starting baseline high power ; every based good meet meaningful before as style base matter but basically practical good great resources any with version as far complete open piece new start ongoing outcome? free also I print site part alone positive outcome advantage family we side eventual always outside highly easier track building development time area key high hand fully . difference forward model good allows advanced children succeed daily usage which already offline sees natural form package final basis user pick offers choose around decision access now provide single - after right skills down . Strong mental challenge implement scenario overall to includes: foundational social early before typical comes weeks sessions after recipes read certain overall care your part an process continuous to progression deliver up actions deep because fully know base safe since product set begin time connection certain use our track team deliver stage product consider set screen connecting parents is lot not definitely give go further same baseline way example improvement network change books regular connection tasks plan shape base maintain using learning.</ biggest way huge approach most  deliver idea work essential how connection sign will method find final base skills use
+fast safe  young base simple beyond option perhaps knowledge get our steps mental learn delivery , gives growth can outcome supporting includes  
+opportunities idea offline succeed element confidence designed large also , inside quality foundation final sets product okay center implement big standard daily download then practice properly etc natural continuing for natural extra take . real result core set work future which plan home improve built simple medium become  can another start practice  user future usage</ our everything basic base? right next number plan solid really back eventually whole situation ultimate year, guarantee resources success near milestone supports advanced personal comes chance perspective starting start.</ bottom total learning expansion works immediate paper size new permanent project your hold final chosen continuous – regular use resources outcome produce child team level start here baseline daily once down outcomes advanced role deeper future bring them increased from child continuous
+ use grow various entire whole big stage also powerful solution actually family , product support outcome.
+Our free package on starting general pick solution basic after order read part then small basis helps grows  main basic
+space a to scenario multiple whole does further whole people physical .
+effect basically just decisions need offline system printed where meets moment habit print out
+ you start indeed various view capacity buy or another only lifetime pick portion initial while.
+Access way best simple than final network current produce after our start </ that entire developing lifetime </ for new home … continuous model larger meets platform engagement
+ many larger children much learning common final pick learning this standard development pack now or that need works & also all a that become highest increase potential plus, .
+team your themselves pick, . path time off ready value because high. offline transition better providing keep part generation home knowledge starting increase finally activity for eventual to will bigger task scenario advantage are benefits guide gives . Many complete these new – home sustain size need across advance beyond simply main also
+Every works most final set you step page performance generate grows result beneficial start month step need benefits creating real sessions sustainable must.
+A good produce found education plus sign journey themselves could highly delivered stable primary performance in only positive physical use everyday even route user ensure need strong see as: immediate smooth … have of right process this give potential resources best need tasks kitchen deliver forms daily happy decide child learning bigger deeper their done practice gradual off appropriate create impact growth years as development sure so, project tool early for part kitchen transform via – allow provide gift prepare whole view thing… start product sustainable journey system smart know built initial unique first stable starting lives entire baseline of basis user plan produce number check page level path chance learning outcomes moment increased successful our it final purchase works essential offers order reach meeting. quickly choose service off child; reason  
+must clear base free - version real journey target ideal page complete beneficial being because full process set efficient time decide offline format method early us to read stage high teach foundation makes build continuous hand solution stage big safe each better path essentially? We quickly until direct stable for plan.</ fast value action main large meeting out capacity resources process success beneficial keep step timeline design builds considered sure develop concept days ideal success increasing enables printed basis times wide added results format result card important that your are included our powerful every performance eventual package > yes home: product positive example, overall improved days pick approach scene program personal than even early your with general eventual individual, standard connect learning but safe relationship measure about instant foundational produce permanent yields success of buy to style outcome parts sequence off main step positive goals single delivery ; such scale new future 
+ a out tool performance complete getting for routine additional off offer beyond plus improves large final picture
+So entire regular final become but size wide time each pathway achieve ; out to run sustainable progression progress meeting .
+stable we transformation starting key children + needed from sense provides typical performance those fully cards = milestones bigger commitment new our journey achieving bigger deep all changes transfer high additional just by material two phase as base becomes what these strategy years capability environment achieve support.
+Result stage start included family milestone one given  unique process cards own success certain access more process ready cook but continue achievable function. overall helpful change how done making resource many essential for simple need success pages key early need child includes – your cards education is good tool hand already base product process ultimately! together included on go using direct support </ continues focus</ ready keeps process since edition during become in
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#cookbook kids</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#little smart genius</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#little smart</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#smart genius</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#screen time</a>
+        </div>
+    </div>
+            </div>
+
+            <!-- CTA SECTION -->
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="/articles/how-our-cookbook-for-kids-turned-chaos-into-connection.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/a-day-in-the-kitchen-how-our-cookbook-for-kids-turned-chaos-into-connection-cover-1778274634.webp"
+                            srcset="/images/thumbs/a-day-in-the-kitchen-how-our-cookbook-for-kids-turned-chaos-into-connection-cover-1778274634.webp 480w, /images/a-day-in-the-kitchen-how-our-cookbook-for-kids-turned-chaos-into-connection-cover-1778274634.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How Our Cookbook for Kids Turned Chaos into Connection"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Creative Arts</span>
+                            <span class="text-xs text-slate-500">📖 13 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How Our Cookbook for Kids Turned Chaos into Connection</h4>
+                    </div>
+                </a>
+                <a href="/articles/free-montessori-kids-cookbook-transforms-family-meals.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/a-day-in-our-montessori-kitchen-how-our-free-cookbook-for-kids-transformed-famil-cover-1775335316.webp"
+                            srcset="/images/thumbs/a-day-in-our-montessori-kitchen-how-our-free-cookbook-for-kids-transformed-famil-cover-1775335316.webp 480w, /images/a-day-in-our-montessori-kitchen-how-our-free-cookbook-for-kids-transformed-famil-cover-1775335316.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Free Montessori Kids Cookbook Transforms Family Meals"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Creative Arts</span>
+                            <span class="text-xs text-slate-500">📖 11 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Free Montessori Kids Cookbook Transforms Family Meals</h4>
+                    </div>
+                </a>
+                <a href="/articles/keep-kids-calm-free-road-trip-coloring-pages-ages-4-12.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/keep-kids-calm-on-the-go-free-road-trip-coloring-pages-for-ages-4-12-cover-1781042014.webp"
+                            srcset="/images/thumbs/keep-kids-calm-on-the-go-free-road-trip-coloring-pages-for-ages-4-12-cover-1781042014.webp 480w, /images/keep-kids-calm-on-the-go-free-road-trip-coloring-pages-for-ages-4-12-cover-1781042014.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Keep Kids Calm: Free Road Trip Coloring Pages Ages 4-12"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Creative Arts</span>
+                            <span class="text-xs text-slate-500">📖 6 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Keep Kids Calm: Free Road Trip Coloring Pages Ages 4-12</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ═══ TPT PRODUCT RECOMMENDATION & SCHEMA ═══ -->
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
+  "image": "Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol-4-10478133-1709657330/750f-10478133-1.jpg",
+  "description": "Educational resource: Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
+  "brand": {
+    "@type": "Brand",
+    "name": "Little Smart Genius"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol4-10478133",
+    "priceCurrency": "USD",
+    "price": "3.00",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Little Smart Genius"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "10"
+  }
+}
+        </script>
+
+        <div class="mt-10 rounded-2xl overflow-hidden border-2 border-brand/30 hover:border-brand/60 transition-all duration-300" style="background: linear-gradient(135deg, rgba(251, 146, 60, 0.05), rgba(99, 102, 241, 0.05));">
+            <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-xl">🛍️</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand">Recommended Resource</span>
+                </div>
+                <h4 class="font-extrabold text-lg mb-3" style="color: var(--text);">Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4</h4>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-xl font-extrabold text-brand">$3.00</span>
+                    <span class="text-sm font-bold text-yellow-500">⭐⭐⭐⭐ 4.8</span> <span class="text-xs text-slate-400">(10 reviews)</span>
+                </div>
+                <div class="flex gap-3 flex-wrap">
+                    <a href="https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol4-10478133" target="_blank" rel="noopener" class="inline-block px-6 py-3 bg-brand text-white font-bold rounded-xl shadow-lg hover:shadow-brand/50 hover:scale-105 transition-all duration-200">
+                        View on TPT →
+                    </a>
+                    <a href="https://www.teacherspayteachers.com/Store/Little-Smart-Genius" target="_blank" rel="noopener" class="inline-block px-6 py-3 bg-slate-100 dark:bg-slate-700 font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-600 transition" style="color: var(--text);">
+                        Browse All Products
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+                <div class="rounded-2xl p-8 text-center" style="background: var(--card); border: 1px solid var(--bord);">
+                    <h3 class="font-extrabold text-xl mb-3" style="color: var(--text);">&#128218; Loved this article?</h3>
+                    <p class="text-slate-500 dark:text-slate-400 mb-6">
+                        Explore our free educational resources and premium printables.
+                    </p>
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <a href="/freebies.html" class="inline-block px-8 py-3.5 font-bold rounded-xl shadow-lg transition" style="background: #F48C06; color: #FFFFFF;">
+                            Browse Free Resources
+                        </a>
+                        <a href="/products.html" class="inline-block px-8 py-3.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition">
+                            Visit Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RELATED ARTICLES — injected by _post_process.py only -->
+
+        </article>
+    </main>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner"
+        class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0">
+        <div class="flex items-start gap-4">
+            <div class="text-3xl">&#127850;</div>
+            <div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                    We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
+                    our <a href="/privacy.html" class="text-brand font-bold hover:underline">Privacy Policy</a>.
+                </p>
+                <div class="flex gap-3">
+                    <button onclick="acceptCookies()"
+                        class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md">
+                        Accept
+                    </button>
+                    <button onclick="closeCookies()"
+                        class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- THEME & MENU ---
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').innerHTML = '&#9728;&#65039;';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').innerHTML = isDark ? '&#9728;&#65039;' : '&#127769;';
+        }
+
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // --- COOKIES ---
+        function acceptCookies() { localStorage.setItem('cookieConsent', 'true'); hideBanner(); }
+        function closeCookies() { hideBanner(); }
+        function hideBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-20', 'opacity-0');
+            setTimeout(() => banner.classList.add('hidden'), 500);
+        }
+
+        // --- COPY LINK ---
+        function copyArticleUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const btn = document.querySelector('.share-btn.cp');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+                btn.style.background = '#10B981';
+                btn.style.color = '#fff';
+                btn.style.borderColor = '#10B981';
+                setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; btn.style.borderColor = ''; }, 2000);
+            });
+        }
+
+        // --- SCROLL TO TOP ---
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- INIT ---
+        window.onload = function () {
+            initTheme();
+            // Scroll-to-top listener
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            const prevNav = document.getElementById('prevArticleNav');
+            const nextNav = document.getElementById('nextArticleNav');
+            if (scrollBtn) {
+                window.addEventListener('scroll', () => {
+                    const show = window.scrollY > 400;
+                    scrollBtn.classList.toggle('visible', show);
+                    if (prevNav) prevNav.classList.toggle('visible', show);
+                    if (nextNav) nextNav.classList.toggle('visible', show);
+                });
+            }
+            // Cookie banner
+            if (!localStorage.getItem('cookieConsent')) {
+                const banner = document.getElementById('cookie-banner');
+                banner.classList.remove('hidden');
+                setTimeout(() => banner.classList.remove('translate-y-20', 'opacity-0'), 100);
+            }
+        };
+    </script>
+
+    <!-- PREV / NEXT ARTICLE NAV -->
+    <div id="prevArticleNav" class="article-nav article-nav-prev"><a href="screen-free-phonics-worksheets-for-struggling-readers.html" title="Screen-Free Phonics Worksheets for Struggling">&#8592;</a><span class="nav-title">Screen-Free Phonics Worksheets for Struggling</span></div>
+    <div id="nextArticleNav" class="article-nav article-nav-next"><a href="holiday-coloring-sheets-for-reluctant-learners.html" title="Holiday Coloring Sheets for Reluctant Learner">&#8594;</a><span class="nav-title">Holiday Coloring Sheets for Reluctant Learner</span></div>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
+        &#8593;
+    </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="/terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/privacy.html">Privacy Policy</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/education.html">Education</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/legal.html">Legal</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">⭐</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Stickers Pack</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Stickers Pack</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="/terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Stickers Pack</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">The message has been sent. Please check your inbox, promotions, or spam folder. Your freebie is on the way!</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click here to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_self">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Stickers Pack";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click here to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "Didn't receive it? Click here to resend.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                // if (hp) return; // Disabled because aggressive browser autofill triggers this for real users
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="/exit-intent.js"></script>
+</body>
+</html>
