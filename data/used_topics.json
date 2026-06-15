@@ -11694,6 +11694,11 @@
       "slot": "keyword",
       "topic": "Pattern recognition worksheets for kindergarten and 1st grade",
       "date": "2026-06-15T19:14:37.248967"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Four In A Row",
+      "date": "2026-06-15T22:28:01.612626"
     }
   ],
   "product": [
@@ -11766,6 +11771,7 @@
     "Tic Tac Toe",
     "Word Pack",
     "Nurikabe",
-    "Cookbook for Kids"
+    "Cookbook for Kids",
+    "Four In A Row"
   ]
 }
