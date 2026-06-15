@@ -492,7 +492,11 @@
     "Real life problem solving scenarios for kids printable",
     "Open ended problem solving questions for kids printable",
     "Parent guide to using mazes and logic puzzles for learning",
-    "Craft activities for kids to do with grandparents"
+    "Craft activities for kids to do with grandparents",
+    "Classroom logic puzzle stations printable resources",
+    "Hands-on math centers for kindergarten printable cards",
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Coloring bookmarks for kids to color and use in books"
   ],
   "daily_log": [
     {
@@ -11654,6 +11658,26 @@
       "slot": "keyword",
       "topic": "Craft activities for kids to do with grandparents",
       "date": "2026-06-15T10:39:47.890962"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Classroom logic puzzle stations printable resources",
+      "date": "2026-06-15T14:30:29.080612"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Hands-on math centers for kindergarten printable cards",
+      "date": "2026-06-15T14:30:29.090661"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot to dot worksheets for kids to build visual tracking",
+      "date": "2026-06-15T14:30:29.100540"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Coloring bookmarks for kids to color and use in books",
+      "date": "2026-06-15T14:33:42.411950"
     }
   ],
   "product": [
