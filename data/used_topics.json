@@ -14175,6 +14175,11 @@
       "slot": "keyword",
       "topic": "Crafts for kids that take 15 minutes or less",
       "date": "2026-06-16T19:10:12.819456"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Math Pack",
+      "date": "2026-06-16T22:23:22.459883"
     }
   ],
   "product": [
@@ -14250,6 +14255,7 @@
     "Word Pack",
     "Nurikabe",
     "Cookbook for Kids",
-    "Four In A Row"
+    "Four In A Row",
+    "Math Pack"
   ]
 }
