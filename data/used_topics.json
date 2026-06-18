@@ -16708,10 +16708,16 @@
       "slot": "product",
       "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.3",
       "date": "2026-06-18T12:39:23.802614"
+    },
+    {
+      "slot": "product",
+      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection",
+      "date": "2026-06-18T17:03:20.273743"
     }
   ],
   "product": [
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.3"
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.3",
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection"
   ],
   "freebie": [
     "Counting Numbers",
