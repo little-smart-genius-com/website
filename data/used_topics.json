@@ -16719,6 +16719,11 @@
       "slot": "keyword",
       "topic": "Crafts for kids that take 15 minutes or less",
       "date": "2026-06-18T18:18:53.922022"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Sudoku",
+      "date": "2026-06-18T22:23:32.854362"
     }
   ],
   "product": [
@@ -16746,6 +16751,7 @@
     "Cookbook for Kids",
     "Four In A Row",
     "Math Pack",
-    "Creative Pack"
+    "Creative Pack",
+    "Sudoku"
   ]
 }
