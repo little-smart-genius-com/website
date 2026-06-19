@@ -477,7 +477,25 @@
     "Teaching critical thinking skills to kids through puzzles",
     "Planning a learning themed playdate with printable games",
     "How to build a low cost learning toolkit at home for kids",
-    "Printable language arts workbook for kids ages 7-10"
+    "Printable language arts workbook for kids ages 7-10",
+    "Printable brain teaser challenge pack for 3rd graders",
+    "Mystery grid puzzles for kids to solve at home",
+    "Printable logic mazes that teach cause and effect",
+    "Logic puzzles for kids that build perseverance and grit",
+    "Math centers for kids using printable task cards",
+    "Hidden object picture puzzles for kids printable",
+    "Printable pattern picture puzzles for visual thinking",
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Printable visual perception workbook for kids ages 4-8",
+    "Printable story sequencing cards for kids to retell stories",
+    "Reading comprehension worksheets for kids about science topics",
+    "Dot marker coloring pages for toddlers and preschoolers",
+    "Printable craft workbook for kids ages 4-8",
+    "Fine motor task cards for preschool centers printable",
+    "Fine motor crafts for kids to build hand strength",
+    "Fine motor sticker charts for kids practicing new skills",
+    "Parent guide to using mazes and logic puzzles for learning",
+    "Coloring bookmarks for kids to color and use in books"
   ],
   "daily_log": [
     {
@@ -19104,6 +19122,96 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.2",
       "date": "2026-06-19T16:35:28.950201"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable brain teaser challenge pack for 3rd graders",
+      "date": "2026-06-19T17:30:17.167729"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Mystery grid puzzles for kids to solve at home",
+      "date": "2026-06-19T17:30:17.183744"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable logic mazes that teach cause and effect",
+      "date": "2026-06-19T17:30:17.199595"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids that build perseverance and grit",
+      "date": "2026-06-19T17:30:17.215713"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Math centers for kids using printable task cards",
+      "date": "2026-06-19T17:30:17.231984"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Hidden object picture puzzles for kids printable",
+      "date": "2026-06-19T17:30:17.247549"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable pattern picture puzzles for visual thinking",
+      "date": "2026-06-19T17:30:17.262510"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot to dot worksheets for kids to build visual tracking",
+      "date": "2026-06-19T17:30:17.278602"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable visual perception workbook for kids ages 4-8",
+      "date": "2026-06-19T17:30:17.294478"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable story sequencing cards for kids to retell stories",
+      "date": "2026-06-19T17:30:17.310360"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Reading comprehension worksheets for kids about science topics",
+      "date": "2026-06-19T17:30:17.326022"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot marker coloring pages for toddlers and preschoolers",
+      "date": "2026-06-19T17:30:17.341835"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable craft workbook for kids ages 4-8",
+      "date": "2026-06-19T17:30:17.359614"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor task cards for preschool centers printable",
+      "date": "2026-06-19T17:30:17.375706"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor crafts for kids to build hand strength",
+      "date": "2026-06-19T17:30:17.391670"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor sticker charts for kids practicing new skills",
+      "date": "2026-06-19T17:30:17.408014"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Parent guide to using mazes and logic puzzles for learning",
+      "date": "2026-06-19T17:30:17.424157"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Coloring bookmarks for kids to color and use in books",
+      "date": "2026-06-19T17:34:32.143112"
     }
   ],
   "product": [
