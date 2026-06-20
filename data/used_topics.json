@@ -21639,6 +21639,11 @@
       "slot": "keyword",
       "topic": "Fine motor sticker charts for kids practicing new skills",
       "date": "2026-06-20T17:06:43.013926"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Hangman",
+      "date": "2026-06-20T21:31:30.063824"
     }
   ],
   "product": [
@@ -21672,6 +21677,7 @@
     "Math Pack",
     "Creative Pack",
     "Sudoku",
-    "Clip Art Set"
+    "Clip Art Set",
+    "Hangman"
   ]
 }

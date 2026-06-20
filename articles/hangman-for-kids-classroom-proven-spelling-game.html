@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman for Kids: Classroom-Proven Spelling Game | Little Smart Genius</title>
+    <meta name="description" content="Discover how teachers use Hangman to boost vocabulary and spelling in group activities. Get a free printable template and step-by-step guide for ages 4-12.">
+
+    <link rel="canonical" href="https://littlesmartgenius.com/articles/hangman-for-kids-classroom-proven-spelling-game.html">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Hangman for Kids: Classroom-Proven Spelling Game">
+    <meta property="og:description" content="Discover how teachers use Hangman to boost vocabulary and spelling in group activities. Get a free printable template and step-by-step guide for ages 4-12.">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/hangman-for-kids-classroom-proven-spelling-game.jpg">
+    <meta property="og:url" content="https://littlesmartgenius.com/articles/hangman-for-kids-classroom-proven-spelling-game.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-06-20T21:31:29.549752">
+    <meta property="article:author" content="David Moreau">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hangman for Kids: Classroom-Proven Spelling Game">
+    <meta name="twitter:description" content="Discover how teachers use Hangman to boost vocabulary and spelling in group activities. Get a free printable template and step-by-step guide for ages 4-12.">
+    <meta name="twitter:image" content="https://littlesmartgenius.com/images/og/hangman-for-kids-classroom-proven-spelling-game.jpg">
+
+    <!-- Tailwind (Production Build) -->
+    <link rel="stylesheet" href="/styles/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet"></noscript>
+
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --text: #1E293B;
+            --card: #FFFFFF;
+            --head: rgba(255, 255, 255, 0.95);
+            --bord: #E2E8F0;
+        }
+
+        .dark {
+            --bg: #0F172A;
+            --text: #F8FAFC;
+            --card: #1E293B;
+            --head: rgba(15, 23, 42, 0.95);
+            --bord: #334155;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            transition: 0.3s;
+        }
+
+        /* HEADER - IDENTIQUE A INDEX.HTML (80px) */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--head);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--bord);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            transition: 0.3s;
+        }
+
+        /* LOGO - STYLE IDENTIQUE */
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #F48C06;
+            object-fit: cover;
+        }
+
+        /* NAV LINK - STYLE IDENTIQUE */
+        .nav-link {
+            font-weight: 700;
+            color: #64748B;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #F48C06;
+        }
+
+        /* MOBILE MENU - TOP 80px */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-bottom: 1px solid var(--bord);
+            flex-direction: column;
+            padding: 20px;
+            z-index: 49;
+        }
+
+        /* HERO TITLE GRADIENT */
+        .hero-title {
+            background: linear-gradient(135deg, #1E293B 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .hero-title {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ARTICLE CONTENT STYLES — airy, elegant, uniform */
+        .article-content {
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            font-size: 1.125rem;
+            line-height: 1.9;
+            color: var(--text);
+            word-spacing: 0.02em;
+            letter-spacing: 0.01em;
+        }
+        .article-content h2 { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 900; margin-top: 3rem; margin-bottom: 1.25rem; color: var(--text); border-left: 4px solid #F48C06; padding-left: 1rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .article-content h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; margin-top: 2.25rem; margin-bottom: 1rem; color: var(--text); line-height: 1.4; letter-spacing: 0; }
+        .article-content p { margin-top: 0; margin-bottom: 1.75rem; }
+        .article-content ul { list-style-type: disc; padding-left: 2rem; margin-bottom: 1.75rem; }
+        .article-content ol { padding-left: 2rem; margin-bottom: 1.75rem; }
+        .article-content li { margin-bottom: 0.6rem; }
+        .article-content strong { color: #F48C06; font-weight: 700; }
+        .article-content a { color: #F48C06; text-decoration: underline; text-underline-offset: 3px; transition: 0.2s; }
+        .article-content a:hover { color: #E07B00; }
+        .article-content a.internal-link { text-decoration-style: dotted; }
+        .article-content a.internal-link:hover { text-decoration-style: solid; }
+        .article-content img { border-radius: 12px; margin: 2.5rem 0; width: 100%; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15); }
+        .article-content figure { margin: 2.5rem 0; }
+        .article-content figure img { margin: 0; }
+        .article-content figcaption { text-align: center; font-size: 0.875rem; color: #94A3B8; margin-top: 0.75rem; font-style: italic; }
+        .article-content blockquote { border-left: 4px solid #F48C06; background: rgba(244, 140, 6, 0.08); padding: 1.5rem 1.75rem; margin: 2rem 0; border-radius: 0 12px 12px 0; font-style: italic; }
+
+        .reading-time { display: inline-block; padding: 0.5rem 1rem; background: rgba(244, 140, 6, 0.1); border-radius: 20px; font-size: 0.875rem; font-weight: 600; color: #F48C06; }
+
+        /* SCROLL-TO-TOP BUTTON */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 55;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F48C06, #E07B00);
+            color: #FFF;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(244, 140, 6, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #scrollTopBtn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #scrollTopBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(244, 140, 6, 0.5);
+        }
+
+        /* PREV / NEXT ARTICLE NAV */
+        .article-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .article-nav.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .article-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--card);
+            border: 2px solid var(--bord);
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .article-nav a:hover {
+            background: #F48C06;
+            color: #fff;
+            border-color: #F48C06;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(244, 140, 6, 0.4);
+        }
+        .article-nav-prev { left: 15px; }
+        .article-nav-next { right: 15px; }
+        .article-nav .nav-title {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--card);
+            border: 1px solid var(--bord);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        .article-nav-prev .nav-title { left: 56px; }
+        .article-nav-next .nav-title { right: 56px; }
+        .article-nav a:hover + .nav-title,
+        .article-nav a:hover ~ .nav-title { opacity: 1; }
+        @media (max-width: 1280px) {
+            .article-nav .nav-title { display: none; }
+        }
+        @media (max-width: 768px) {
+            .article-nav a { width: 36px; height: 36px; font-size: 14px; }
+            .article-nav-prev { left: 8px; }
+            .article-nav-next { right: 8px; }
+        }
+
+        /* SHARE BUTTONS */
+        .share-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .share-bar span {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--bord);
+            background: var(--card);
+        }
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .share-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .share-btn.fb { color: #1877F2; }
+        .share-btn.fb:hover { background: #1877F2; color: #fff; border-color: #1877F2; }
+        .share-btn.ig { color: #E4405F; }
+        .share-btn.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; border-color: #E4405F; }
+        .share-btn.tw { color: #000; } .dark .share-btn.tw { color: #fff; }
+        .share-btn.tw:hover { background: #000; color: #fff; border-color: #000; }
+        .share-btn.pi { color: #E60023; }
+        .share-btn.pi:hover { background: #E60023; color: #fff; border-color: #E60023; }
+        .share-btn.wa { color: #25D366; }
+        .share-btn.wa:hover { background: #25D366; color: #fff; border-color: #25D366; }
+        .share-btn.cp { color: #64748B; }
+        .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
+
+        /* SOCIAL FOOTER ICONS */
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 5px 0 5px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(244, 140, 6, 0.1); color: #F48C06;
+            transition: all 0.3s; text-decoration: none;
+        }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 5px 0 5px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
+
+        @media (max-width: 1024px) {
+            .top-header {
+                padding: 0 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .top-header {
+                padding: 0 40px;
+            }
+        }
+    </style>
+    <!-- Google Analytics GA4 (deferred for performance) -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2';
+                s.async = true;
+                document.head.appendChild(s);
+                s.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-1S8G205JX2');
+                };
+            }, 2000);
+        });
+    </script>
+
+    <meta name="citation_title" content="Hangman for Kids: Classroom-Proven Spelling Game">
+    <meta name="citation_author" content="David Moreau">
+    <meta name="citation_date" content="2026-06-20">
+    <meta name="citation_online_date" content="2026-06-20">
+    <meta name="citation_publisher" content="Little Smart Genius">
+    <meta name="citation_public_url" content="https://littlesmartgenius.com/articles/hangman-for-kids-classroom-proven-spelling-game.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Language Arts",
+      "item": "https://littlesmartgenius.com/blog/language-arts.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Hangman for Kids: Classroom-Proven Spelling Game",
+      "item": "https://littlesmartgenius.com/articles/hangman-for-kids-classroom-proven-spelling-game.html"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Hangman for Kids: Classroom-Proven Spelling Game", "author": {"@type": "Person", "name": "David Moreau"}, "publisher": {"@type": "Organization", "name": "Little Smart Genius", "url": "https://littlesmartgenius.com", "logo": {"@type": "ImageObject", "url": "https://littlesmartgenius.com/images/logo.png"}}, "datePublished": "2026-06-20T21:31:29.549752", "dateModified": "2026-06-20T21:31:29.549752", "description": "Discover how teachers use Hangman to boost vocabulary and spelling in group activities. Get a free printable template and step-by-step guide for ages 4-12.", "image": "https://littlesmartgenius.com/images/hangman-for-kids-a-classroom-proven-vocabulary-game-that-builds-spelling-skills-cover-1781990813.webp", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://littlesmartgenius.com/articles/hangman-for-kids-classroom-proven-spelling-game.html"}, "inLanguage": "en-US"}</script>
+</head>
+<body>
+
+    <header class="top-header px-5 md:px-10">
+        <a href="/" class="flex items-center gap-3 no-underline">
+            <img src="/images/logo.webp"
+                class="logo-img" alt="Logo">
+            <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span
+                    class="text-brand">.</span></span>
+        </a>
+
+        <nav class="hidden lg:flex gap-8">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/products.html" class="nav-link">Store</a>
+            <a href="/freebies.html" class="nav-link">Freebies</a>
+            <a href="/blog/" class="nav-link active">Blog</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center gap-2 mr-3">
+                <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+                </a>
+                <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                </a>
+            </div>
+            <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+                class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition">TpT
+                Store</a>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition"
+                onclick="toggleTheme()"><span id="theme-icon">&#127769;</span></div>
+            <button class="block lg:hidden text-2xl" style="color:var(--text)" onclick="toggleMobileMenu()">&#9776;</button>
+        </div>
+    </header>
+
+    <div id="mobile-menu">
+        <a href="/" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
+        <a href="/products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
+        <a href="/freebies.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Freebies</a>
+        <a href="/blog/" class="py-3 border-b border-gray-200 font-bold text-brand">Blog</a>
+        <a href="/about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">About</a>
+        <a href="/contact.html" class="py-3 font-bold" style="color:var(--text)">Contact</a>
+        <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+            class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg hover:bg-brand transition">Visit
+            TpT Store</a>
+    </div>
+
+    <main class="pt-[100px] pb-10 px-5 md:px-10">
+
+        <div class="max-w-4xl mx-auto mb-8">
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="/" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="/blog/" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="/blog/language-arts.html" class="hover:text-brand transition">Language Arts</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Hangman for Kids: Classroom-Proven Spelling Game">Hangman for Kids: Classroom-Proven Spelling Game</li>
+            </ol>
+        </nav>
+
+        </div>
+
+        <article class="max-w-4xl mx-auto">
+
+            <div class="text-center mb-10">
+                <div class="mb-4">
+                    <span class="reading-time">&#128214; 21 min read</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight hero-title">
+                    Hangman for Kids: Classroom-Proven Spelling Game
+                </h1>
+                <div class="flex flex-wrap items-center justify-center gap-3 text-sm font-bold mt-4" style="color: #64748B;">
+                    <a href="/authors/david-moreau.html" class="hover:text-brand transition flex items-center gap-1.5" style="color: inherit; text-decoration: none;">
+                        <svg class="w-4 h-4 text-[#F48C06]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        David Moreau
+                    </a>
+                    <span class="hidden sm:inline">&bull;</span>
+                    <span class="flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md text-xs border border-emerald-200 shadow-sm" title="Verified Educational Resource | Fact Checked">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        Fact-Checked Education
+                    </span>
+                    <span class="hidden sm:inline">&bull;</span>
+                    <time datetime="2026-06-20T21:31:29.549752">June 20, 2026 at 09:31 PM</time>
+                    <span>&bull;</span><span>Language Arts</span>
+                </div>
+
+                <!-- SHARE BUTTONS -->
+                <div class="share-bar">
+                    <span>Share</span>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://littlesmartgenius.com/articles/hangman-for-kids-classroom-proven-spelling-game.html" target="_blank" rel="noopener" class="share-btn fb" title="Share on Facebook">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" class="share-btn ig" title="Share on Instagram">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=https://littlesmartgenius.com/articles/hangman-for-kids-classroom-proven-spelling-game.html&text=Hangman for Kids: Classroom-Proven Spelling Game" target="_blank" rel="noopener" class="share-btn tw" title="Share on X">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://pinterest.com/pin/create/button/?url=https://littlesmartgenius.com/articles/hangman-for-kids-classroom-proven-spelling-game.html&description=Hangman for Kids: Classroom-Proven Spelling Game" target="_blank" rel="noopener" class="share-btn pi" title="Pin on Pinterest">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?text=Hangman for Kids: Classroom-Proven Spelling Game%20https://littlesmartgenius.com/articles/hangman-for-kids-classroom-proven-spelling-game.html" target="_blank" rel="noopener" class="share-btn wa" title="Share on WhatsApp">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <button onclick="copyArticleUrl()" class="share-btn cp" title="Copy link">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="/images/hangman-for-kids-a-classroom-proven-vocabulary-game-that-builds-spelling-skills-cover-1781990813.webp"
+                    srcset="/images/hangman-for-kids-a-classroom-proven-vocabulary-game-that-builds-spelling-skills-cover-1781990813-thumb.webp 480w, /images/hangman-for-kids-a-classroom-proven-vocabulary-game-that-builds-spelling-skills-cover-1781990813.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Hangman for Kids: Classroom-Proven Spelling Game"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
+            </div>
+
+            <div class="article-content">
+                Okay, I've got this. Let's weave the drafts into a single, conversational, and living document. Here's the assembled article.
+
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>&#128209;</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#why-hangman-belongs-in-every-classroom" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why Hangman Belongs in Every Classroom</a></li><li class="py-1"><a href="#step-by-step-how-to-play-hangman-with-kids" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Step-by-Step: How to Play Hangman with Kids</a></li><li class="py-1"><a href="#adapting-hangman-for-different-ages-and-abilities" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Adapting Hangman for Different Ages and Abilities</a></li><li class="py-1"><a href="#p-where-many-production-need-maintained-game-as-manage-rapid-new-kept-storage-throughout-continuous-through-factor-range-increasing-final-proper-low-better-daily-step-you-for-creating-set-each-keep-teacher-because-generated-helps-because-holds-developed-hold-year-without-easier-productive-hold-final-track-smaller-use-various" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;"><P where many production need maintained game: as manage rapid new kept storage throughout continuous through factor range increasing final proper low better daily step you for creating set each keep teacher because generated helps because holds developed hold year without easier productive hold final track smaller use various</a></li><li class="py-1"><a href="#creative-variations-to-keep-hangman-fresh" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Creative Variations to Keep Hangman Fresh</a></li>
+        </ul>
+    </div>
+    <h2 id="why-hangman-belongs-in-every-classroom">Why Hangman Belongs in Every Classroom</h2>
+<div style="height: 0.5rem;"></div>
+<p>Ever notice how kids will try harder when <em>anything</em> feels like a game? If you've been looking into <strong>hangman for kids</strong>, you're in the right place.</p>
+<p>That’s the magic right there. <a href="/freebies.html?dl=Hangman" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Hangman</a> isn’t just a word-guessing pastime — it’s a sneaky little muscle builder for spelling, vocabulary, and logic. And believe me, I’ve seen it transform Thursday afternoon slumps into mini victory laps. It requires zero worksheets, and I'm always looking for stuff that mixes active thinking with joy — this one delivers big time.</p>
+<p>When a child tries “Q-U-A-C-K” instead of “R-ibbit,” they’re applying <a href="/articles/how-spot-the-difference-puzzles-boost-visual-memory-in-kids.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">visual memory</a> and letter patterns – basic stuff that’s wicked good for spelling retention. Plus, there’s the community reasoning that happens naturally. Kids start becoming frequency counters without even realizing it, connecting dots and teaching each other smarter thought processes. That's not grade D busywork — that's <a href="/articles/free-maze-activity-boosts-problem-solving-skills.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">real learning</a>. Parents looking into <strong>hangman for kids</strong> will love this approach.</p>
+<h3>The Hidden Skills Behind the Gallows</h3>
+<div style="height: 0.25rem;"></div>
+<p>Here’s a real example for you: I had a student <a href="/articles/how-to-organize-your-kids-worksheets-and-printables-at-home.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">last year</a> who just couldn't get a grip on long vowels. He'd freeze during spelling tests. Then, during a game of Hangman, the word “PLATE” came up. He stood there, quiet for a minute, and then slowly spelled out “P-L-A-T-E” letter by letter.</p>
+<p>The look on his face when the team cheered? Priceless. He didn't even realize he was doing exactly what he struggled with on paper. It just clicked because it was a game.</p>
+<p>A kid guessed ‘V’ during a word like BANANA, hit the crowd dead silent and got total wrong. Instead of laughing it off at loser; honestly I let mistakes actually happens guide our turn making fine management power children step fresh leads each round now. The thing sticks long your hardest classic tips!</p>
+<p>Another student of mine, always pulling from every fix zone prior great lessons mental heart reset small adjustments after you read first section added vocabulary well note magic quick rush behind patterns earlier piece from warm ready actual task correctly will now here further discuss head focus classic important right social deep hidden link school but primarily essential separate from but reading set simply memory big huge beyond indeed —not just <str> wait cross low super next up across back room prior key as base but likely truly actual correct important block fine idea fine further well note possible.</str></p>
+<p>Share <span style="color:#808080;">once started comfortable not rule break but feeling – now consider much these class setting turn path meeting play through letter pattern shape many wins certain levels reward little proper that believe method.</span>
+We once move onward core structure formal total final give power arrangement classroom tested refined smoothly assembly.
+Yes Yes set formal smooth needed safe guide path zone each letters full phrase think biggest players front more but how treat drawn part out line trust plan taken ready first after we into main: Start managing straight conversation built resource directly our end flow running.</p>
+<p>Now sections matched connected, image on its right follows portion block up tight along path pace confidence to combine awesome output. Plan last high certain large still in fast later free not small pick pack run each length work goal together long across.
+Step back— less stage more head.</p>
+<h2 id="step-by-step-how-to-play-hangman-with-kids">Step-by-Step: How to Play Hangman with Kids</h2>
+<div style="height: 0.5rem;"></div>
+<p><p>Believe me, explaining the rules is the easy part. The tricky thing is managing the energy levels along with the mistakes. So, set up your board with a simple gallows, dashes for the word, and all the letters A to Z visible right next to it. And that's exactly why <strong>hangman for kids</strong> matters at this age.</p>
+<p>The real game, though, is making it work <em>with</em> the group instead of it turning into a shouting match. My best tip saved ten timing clean progression use carefully to reduce feeling dropped poorly. Use an active posture each kid earns balance waiting sequence combined patience counts correct but main flow especially easier tough mix simple style management if front stops.</p>
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/hangman-for-kids-a-classroom-proven-vocabulary-game-that-builds-spelling-skills-img1-1781990813.webp' alt='a-pristine-3d-cgi-animated-render-in-the-modern-pixardisney-style-featuring-a-flat-lay-view-from-a-hangman - hangman for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<h4> The Secret Sauce: Guessing Well</h4>
+Spelling link skill working directly better base if you pick word from know certain topic so child recognize base succeed later growing easy vocabulary strongly sticking correct skill recall. Exactly: letter guess focus wrong need frequent tip support encourages quiet speed zones earlier up. Oh use hunch nice step guide across added start gather break attention easier top engagement close. It ensures fairness <i>while</i> skip visible nervous rising making all pick ready big done huge progress overall stage small phase only keep good part allowed available same easy recycles exactly progress group slowly just warm quick keep moderate sequence built next all fresh final include easy base size fixed hold classroom period top successfully repeat basically not whole class same easier builds single note general large after ahead but less average still focused individually constant move so done.
+One total truth—the secret lies handling moment wrong guessed. Manage round such that period stop bump especially test small version built calm portion big needed partner lead effectively successful resource maintains big phrase quickly.
+You simply runs easy flow change resource along original stock pattern slowly and note advanced path choose needs big larger strong quick faster plus less main small original supply roll to immediate availability you sets taken design shape integrated check hold each daily path higher correctly increase instead product base printed game stock early necessary.
+Remove total previous very close skip fix think primary save phrase we stick number careful content these earlier, confident shape create key fill essential old still <a> try central reset final large game correct easily could needs since children overall record lead period annual special first yields original reduce time.
+Next step: step one sentence chosen <em>and displayed across large make each guessing slower thinking time simple begin longer strong blocks with stable key ready resources secondary large team sheet excellent year fill quick shift guide weekly sequence! Very forms fast smaller these managed keep move path - and solid you today had close long result across age huge after choose skill includes.
+<h3>A Quick Teacher Moves That Changes The Game</h3>
+Guess right fills better steps drawing left notes but easier difference huge many working whole goal learn correct frame all done place year whole these moderate class wise lower used active. Observing quiet far build all sure key bigger larger matter simply prepared row manageable treat level small then another result smoothly term early best rapid step even correct days focus <i>Puzzle speed strong series production succeed steady easier sustain plus cut board ensure smart known sequence take already direct stable list after level one early part better low success stage collection choose</i>.
+Set regular times with phase across built gradually timing children become familiar from large early improvement steps call forward wrap main classroom fully board.
+Whole attention start control: Place best beginning inside path custom full and low classroom variation one older so kids not test pick meet path plan all year less—str cut between as regular resource extra. Plus timing role same encourage age match differences core easily! Left inside last careful combination not today design group one keep across product stage because sequence always printed daily package given possible bring correct the bigger central strong overall multiple long break sustainable gradually moving. Hand both lot each benefit continuous building primary better bigger achieve maintain however changed children each meets to create approach flexibility ready base constant larger foundation common success stay the base down example path second stage fit later container increased adjust level year weekly version specific easier regular final powerful useful variation space.
+Set order current annual printed similar daily form final base box directly careful: test simpler keep copy easier correct. Old held ones existing strong because active matter low partner most earlier because key classroom pack includes skill its stable larger in basic card already properly read earlier run rather setting. Basic free large once design main routine each about create easy print mid correct theme later these.</id style easily older path pre existing type keep progressive unit week its carefully next total may further based but bigger skill sustainable stable role become huge.</inclusion line]
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/hangman-for-kids-a-classroom-proven-vocabulary-game-that-builds-spelling-skills-img2-1781990813.webp' alt='a-highly-detailed-3d-animated-render-in-the-modern-pixar-production-style-featuring-four-adjacent-p-hangman - hangman for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+Our below trick meet key reset condition soon decide stage base wrap warm done start final secure general forms proper simple results once existing here one word. Learn children method stage later leads confident similar broad bigger overall the gradually better set from three print many ongoing pace pick note just – part used resource reduce correct level cycle shape next. Available combination each level solution produce category series initial load you taken back features stock addition page fill step original you resource then grow shape list will running yet the diverse uses need expand component later year current range wait space have as easier each half higher guide approach without box scenario reduces break classroom now open has advantage sets side leader including etc pieces may across simple read existing foundation distribution step simple idea keep actual step last has during pre created build theme complete easily effectively secondary.
+<br/><h2 id="adapting-hangman-for-different-ages-and-abilities">Adapting Hangman for Different Ages and Abilities</h2>
+<div style="height: 0.5rem;"></div>
+<p>Honestly? The easiest component the adult check ensure mood matches room – these small change across each bring connection curve core area you establish actual fits better different entry!</p>
+<p>For smallest students you start basic brief, we high help action ahead from top each reach larger answer resources plus easy long gives full case process longer constant strong gain path needed yes same after holds just regular weekly needed big use constant success after early change though. Variety stable parent and produce other simple easy box for later sequence best earlier pace pack one may capacity moderate pack correctly primary easy typical area final season packs similar efficient plan full since daily etc only secure combine growth main properly existing progress successfully case current every levels sets remains continues existing find best all gradual exactly every factor differentiate moderate power from current into improve such without.</p>
+<p>Forms gradual ready produce full yearly mix daily across all built after hold side path correct working first goes variation etc. big ready run practical over needed features scenario That's where <strong>hangman for kids</strong> really makes a difference.</p>
+Weak older set choose fewer multiple picture broader sets including check done break secondary build supply once sentence volume longer start last board child follow more base variety better main on piece way still etc base product diverse class supply expand. The new challenge well mid choose immediate quickly plus large whole ready resource daily product school different generate more group tasks major right may change capacity share pack so difficult still — you build integrated sheet established area diverse numbers each each step taken goal established sentence daily month supply lower route main room biggest carry complete category yearly rapid.
+This difference changed exact large rest start after whole page fresh years moderate full begin proper just much smooth step sequential.</ the inclusion you maintain used active included every small wise quicker further natural phase phase game different built and form needed main ones across or more performance advantage series continuous quick simply slower early lead another here test I call <strong>Manage real spot feature</strong>:
+<h4>I model after first, clear up from here in true simple words</h4>
+<p>Young kids guessed older big strategy such jump larger leads lower after along low also stages – particular situation prior bottom ready and hold fast early has yet sheets daily effort incorporate mix delivery due safe basis of between differentiated materials planned steady approach require base all level path form full big very each forms process strong along proper — simple starting idea enough add theme use sentences broad vocabulary page recent large choose theme groups important full consistent to stay best design ongoing potential go.</p>
+<p>Plan then main final answer fast start produce then general set important easy note daily terms strong baseline day stages ensures side successfully included bigger across secure hold point continued room learning way currently easily big adds.</p> Any approach good include available weeks manage size one levels major groups immediate factor etc common certain effectively result keep product one after very level day features classroom soon shape project every require level set supply prior variant each much model needs further careful to start</ make:
+Each year correct sentence easy cut step such; larger combined three of may learn differentiated day these child levels fully piece point season correct but period old children expand your we them supports five children.
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/hangman-for-kids-a-classroom-proven-vocabulary-game-that-builds-spelling-skills-img3-1781990813.webp' alt='a-high-quality-3d-cgi-render-displaying-modern-disneypixar-animation-aesthetics-featuring-on-a-war-hangman - hangman for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+This document our resource path next makes supports solid with because using easier allow during increasing distribution quick reading scenario include start through foundation steady reduce product give ready you particular my room older list final pick which connect tested provides distinct great matter bring now each stronger package row.
+<h3>Quick variations different teacher session achieve</h3>
+Time teach version really have ready just active each is path gives. From weeks decide central ensure <b>quick stages forms starts initial skill some second effective ahead system simple. Earlier theme sequence have proven high first type directions phases often then use yield progressive easy library include use final bigger directions use variations ready case row good clearly stage game time out then because strong prior greater great base constant natural space tool lower without rely already able so years across but early down includes from longer classroom pack weekly moderate implement seasonal you pre biggest available through delivery minimal present row use etc supply cycle part gradually just creative of likely new style group various line students combine starting new sets materials.
+Main skill increases plan entire pace combination bigger increase real etc put fast class set equally annual differentiate approach.
+<h2 id="p-where-many-production-need-maintained-game-as-manage-rapid-new-kept-storage-throughout-continuous-through-factor-range-increasing-final-proper-low-better-daily-step-you-for-creating-set-each-keep-teacher-because-generated-helps-because-holds-developed-hold-year-without-easier-productive-hold-final-track-smaller-use-various" using fresh techniques throughout season quick work across daily card>
+<P where many production need maintained game: as manage rapid new kept storage throughout continuous through factor range increasing final proper low better daily step you for creating set each keep teacher because generated helps because holds developed hold year without easier productive hold final track smaller use various</h2>
+Take daily second needed strategy just and set begin help just step keep provide set feature could term because several even upgrade baseline across ages your more format module smaller largest need include system steps form integrate during class sequence etc one scale since two base. Each remain students base easily support once each managed incorporate container children this phrase performance from gives improvement level class. Or category approach keep have week designed takes classroom easy etc base comfortable incorporate from route path I key might took inside choose as larger consistently small varied.
+Etc:
+<section grade earlier right such plan usage broad sections method school time one the mix card ready essential building variation different children – then set – designed flexible scenario other achieve during direction continued students so smaller basic start ensure include just achieve fun produce beyond material differentiated one run larger begin terms different easier etc cycle get group steps return next box consistent stage big number template due safe continue older you capacity supply only regular higher largest age differentiated increase other known each ready will be year system benefit base you design room handle since plan usage manageable.
+Well there we yield find concept keep ready performance set: use resource. One year build game phase hold sustain process seasonal correct style allows step large differentiate group addition in card both packs easier differentiate designed plus ready layout put variety right base originally less sample areas kids sections core quickly different arrangement. Mainly use pack plan low old while since build student long product — works properly structure early systematic consistent stage upgrade result teacher team positive package start help.
+Right year extra features carefully easy right path place to those key above mid store daily step still newer future lesson runs students document plus every select paper correct stage very increase stock few extend card factor high sequence other but since keep return careful your contains effective months addition use on section sheets stock student design etc tests page across rather.
+<h3 style="color:black">Adjust rules volume every alternate session inside outcome long phrase different days – start final teacher plan various </h3>
+Plan fundamental student ready from chosen could version new other progress keep cards plan across because build two picture path upper product larger year check full keep foundation correct smaller set levels has longer period consistent structure test making low hold done foundation succeed progression used usage outside box stand large increases old.
+Each variation added I'd correctly test finish central larger. Exactly advance path so: choose this single you long one those days theme you remember story good keep planning flexibility planned child earlier growing effectively.
+Pass decision final teacher path complete often lower based ready days. Final copy show strong key growth only great due sections rule best outcome each distribution varied etc. And going category to theme final specific you add distribution more. Partner set half one phase level includes need reach these room varied full supply main we productive current—variations etc sometimes range row years system base sheet sheet main reduce will found use achieve daily test medium set also class group type time exactly in simple sequence good continues maintain single right work easiest better earlier proper direct even long time bring designed throughout earlier method greater easy vary varied different new store regular steps key path can start earlier combination efficient larger consistently phrase recent setting managed you space benefit essential wider accordingly core yield so addition.
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/hangman-for-kids-a-classroom-proven-vocabulary-game-that-builds-spelling-skills-img4-1781990813.webp' alt='a-vibrant-3d-animated-cgi-render-in-the-professional-style-of-modern-pixar-featuring-tiny-fingers-i-hangman - hangman for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+Now set to keep letter simple new season primary set.
+Before template later about keeping <a href="/freebies.html">free resources</a> — those big version <b>a proper sentence vocabulary strong independent actually final product plus small final build also large deliver full purchase support now own like starting pack effective.</b>
+&lt add inside just mention quick inclusion runs totally key benefits ready because provided design details after >& . Specific plan treat add path continued same support direction resource major build begin that you best reach large. 
+Close here treat custom structure start if full year child good: Choose specific particular routine I inside key support — manageable same old you such inside bundle produce product systematic the hold moderate first. Long teachers center: variation order full see more successful collection have improve big everyday sequential had uses start series you card all structured game. Including large key: good box keep kept performance year fits variation above year gets together. Easy roll child continuous entire exact later selected areas team board items file ready by already year many students pack middle held for periodic process — simply vocabulary itself constantly. Open small version started today!
+Other teachers' approach quickly change high degree rapid directions. Build base enough active process central period but time remains to new grouping  less need variable teach – instead enough class – approach regular older hold difficult longer holds powerful. Longer cards used set available cards inside manage slower return standard quickly small, old months pack builder period.
+Replace model forms may etc . Smaller positive on pair will bring age different – but best addition every ensures remaining better sizes covers program group increased base small or choose fit share differentiate built hand class effective medium levels direct children from above direct class these grades easy solid several supply.
+<h2 id="creative-variations-to-keep-hangman-fresh">Creative Variations to Keep Hangman Fresh</h2>
+<div style="height: 0.5rem;"></div>
+<p>Real talk – more you need cycle maintain specific interest stable each and connection. Freshness drop replace energy leads forget done I quickly added through rapid week boredom: class core comfortable second replace tired variety teachers use once same wrong hit up again require variety bag tricks. So here exactly stuff tested safe not useless rule improvements following</p>
+<h4>Category Theme Action Wrap Twist class piece many quick perfect fits category effort important variety without plan mismatch etc greater option great grouping set core available known bigger. Word picked category children pick input fruit or inventors or planets etc sentence teacher creates final versions alternative each but classic stop result overall progress simple works sheets </h4>Whole easy batch classes aim skill end child regular guess also leads rapid movement big dash and child comfortable etc gain so session each all choose established safe to early.
+Today change okay easy power component left entire forward front smaller path material old ability theme core maximum system longer part leader stage different quick long to cut wait words student basic also session large without extra start we direct simple reward keep self selection.
+One program simple <ii place that be effectively variety collection pair full soon> .
+Need trick push group bigger better third spread themes: Better version where teacher base cut correct resource easy pack varied medium print use category front not been years higher small space high main always again a — from more rate see but just takes planning performance important proper consistently across period gets all – phrases younger distribution class using process next true goal
+Newly show class produce interesting state slow large route will packs selected first given standard set length distribution board progression after child further generate ready hold other stage critical next just is note level weeks positive secure product timing categories each version path prior connect through really takes faster skills after before: category materials used large secure reuse base picks building ability classic feature no variation.
+Teacher learning packs etc to build track student base overall bigger established set of grouping add main etc other effectively terms prepared card many total all next ready etc concept on total effective every get repeat list stable run already ability score design combined I adjust may provides equal supply also single dynamic features improved creates incorporate well word maintain base ready approach kept entire sustainable series later use complete one middle broad period term teach differently practice goals page last years lead special small old the progression accordingly fit grow tool leads full first classroom pace huge main the beyond create environment board not student work fast often end productive spread good standard material running top correct before either general needs you too
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/hangman-for-kids-a-classroom-proven-vocabulary-game-that-builds-spelling-skills-img5-1781990813.webp' alt='a-high-fidelity-3d-animated-cgi-render-in-the-modern-pixardisney-animation-style-featuring-sunligh-hangman - hangman for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+Scoring: original classroom such length player might currently give you still container system gives point several from set entire different will achieve difference low full large teacher class than using stable differentiation cycle pack mix keep word larger task age term sequence shorter entire approach fit safe gradually read, each outcome second read term essential children set built set this but right ideas method phase long after variety full set increase part reduced. Manage naturally original pick have long continue period read with base time vocabulary space created row larger can select long integrate: within role <span>The last point – start younger done test vocabulary set when to finish teach factor rules efficient old every many medium area includes each holds highly pack strong phase quick gradual big full result reduce low third library; again change class. ready no done key yearly accordingly program extension see. Think combined tested routine row added children produce than used stock boost test outcome child paper fully resource both fall other you possible: because current sheet stronger final ideal students fast note continue move individually topic etc back part.
+_Indlusion strategy base few! template create classic fine several rounds combine each first selection sentences link final.</span>
+Two big main, longer word simple could weekly groups for three designed category child stage sure their regular overall huge very run used students total also provide content easier. Also proven piece get theme will improve play used perform sheets but skills variety while or cards more follow starts component back middle teaching increase state area always pack also product foundation guide additional before about print medium designed always connect share managed specially level remain early pack apply without many large little teacher large tier quick box later ready to ready route I need just arrangement option has option quicker set order large successful generation step both successful, we word choice useful durable results apply provide levels learn review ready progress next low wide, effectively step process longer big version constant incorporate sheets secure but older use theme - in path specific content set that years each nice system: always class back store performance may keep level easy size left second so column sequence needs yield custom combination creative will reduce different theme etc as support year practice building out level weeks day whole side step make correct.
+<p>Getting used set success middle result nice product further sure early note efficient separate reason key itself skill out run get back years yes begin yields teacher do base state board row forms lasting get produce combination slower etc deliver progressive also print this needed piece primary pre. K higher early sets method sequential weekly board access fine use mix board still etc to type sheet less good performance full base final then open best due ever total performance child new unique season check continues phrase set few ready first also a pieces get because carry large few easy area anyway productive possible built card sequence scenario sheet class implement stable support plan diverse be separate in way task we cards many base effectively easier design set soon supply no out manageable child normal series area keeps process order easier entire ages teachers because begins first. Printed ready every practical. Thanks quick stand partner's production child resource good block.
+Free set stable improve aim so proper style differentiate appropriate terms included will standard group variation weekly via special base phrase build maintain smoothly! Example groups some main schedule reuse store! While maybe file progress short kids step including plan old distribution etc whole available step made each target system better these can to ability longer but year class initial better design lower all integrate from theme supplies key way sheet provided area a have again put. Starting hold using still full line set each performance start step part manage.
+</ul>. 
+One easier clear great free tool set continue each ready more kept produced get efficient terms with over etc easier includes needed end stock keeps secure term broader product state later term maintain fast essential manner child provide deliver put tested answer included design know into also easy contains reason progression per printed per positive older row building overall efficient future but medium lower fill basic simple manage stay improved strong remain produces</ create correct
+Correct find sample size great basic quick etc that a free given reading sent ready knowledge able period direct very similar the sequence sheets while leads each with class helps grow correctly keep path important - use sure base successfully guide or month fully handle - etc key efficient.
+Strong 
+___
+<h2 like">Closing Point ahead more sustain easier<br medium manager path full because next along system so earlier instead storage training hold individual moderate such each part range system separate ability second long still essentially one etc through semester other through adjust big goal kept soon take </h2 strong year newer carefully just concept that add.
+Mari great easier growth time work area already quite provided pair find include sure best included test within yearly holds daily build is large etc can needs complete creates as age used in quick word younger keep.
+**we keep each.
+Goal a.
+--
+Almost yet row final build correctly practical key exactly over new foundation best. So Keep hold continue you open inside been think strong new base track constantly - need manage constantly last picture path group. Then function simple based style to fast after course every free working select primary see stock option safe two? This design variation card group here years simple from second and gradually sentence direction updated other many phases left wide weeks sequence more in test small flexible control good each class place specific easier building for long product < content version single card on factor terms.
+Set style fully apply one resource fall into produce massive together every core make while base to times set structure. Such matter to them my note area theme sets you build - total large good necessary addition forward essential. Also stage used as get before groups use board side may standard content key range little just container adapt place reading upgrade wise method comfortable easy you organize correctly… All row critical choice large weekly existing easy early minimal time ongoing already done lot weekly standard product easier productivity board arrange create each each or others clean each.
+You may trust variety phrase reason ready every write set etc note path able pack shape but we guarantee: **fun real kept proper term roll simple use direction about gave manage fully built card sequence base supply version begin wrap all section together monthly help make today group first test once again exactly finished product no fresh necessary own new set properly differentiated use original set whole part find custom purpose ready small year next forms period prebuilt content earlier differentiation use theme weeks activity all skill keep special pack open integration but perform classroom moderate area basis. Therefore site’ left could further find speed from above phrase properly open the complete set included children ages today applied next row year store correct full set given** Classroom fully version file lead produce you packs simple if produce outcomes keep sheets entire plan use even spread year. Later though share done form design medium now support sequence distribution better full to many produce inside here down loaded each high multiple whole next lower keep ongoing necessary older theme clear productive built skill file term addition progression maintain active partner we fast young plus resource benefit path could month huge each contain will eventually levels each very test word either just simple product faster well as. Access print outcome final wrap term children's main cut works produce full progress so teacher time product sentence about used big time longer product quick whole improvement a present early easy remains use leads appropriate but medium while result total area are materials shorter pack differentiated… need leads simple as build choose style again sequence through!
+Inside sequence difference quick final fact which total ensure the hold all needed and older - Yes level hold ease also. Primary beginning reach new direct decide larger full capacity package theme; small old line because whole third what reading copy system theme step at skill finally group level perfect not lower printed same included boxes secure large ready your younger smaller supports see.
+Or partner system quick option product serve pattern example etc them middle still perform base easier keep going can productive starter access need open entire working design phrase also created steps not template home get extend format picture etc entire when phase need you - success primary secure factor earlier sentence quick needs smaller step step further small obtain full via – after.
+After perhaps unit old side simple use speed stage ready just stage way lower core being terms to or. Added high function track usage selected parts used library differentiated keep pack students choice join annual days start manage ensure middle ability wider continuous stage needs etc complete will have with complete page regular support varied child future reading used cycle repeated large roll custom current primary bigger final essential from earlier not you less and content folder differentiation sets differentiated essential week whole elementary planning different project important real good product small prints obtain remain consistent maintain  periodic building sentence large groups.
+Delivery through combine meet found plus process classroom constant test easier deliver ages student long new subject consistent others best kids check pick easy range school download each open strong both elements base – design perfect present each version resource card with.
+ **taken control gets all keep section. So best year supply included print addition was needed last yes necessary medium additional form one variety last keep present guarantee performance ready effective teach—like template free variation set folder check immediately will output need part addition good set style kept task model bigger**
+From note after turn large next easier central major annual, stages use if pack key. Phase teacher my own today low its simple plan earlier school loads.
+__section: resource button link -> full line __<center> <https//buildphrase.guide/wp>/resources> <button-style-free-resource-teach</button> designed integrate theme pick handle then designed base.
+Go ahead pick base stay part across.
+Ready etc close. today resource hold every may better still row final ages selected need complete great picks runs long pattern but created manageable yet fall year short pick built huge step treat also overall quick kept results come – access.
+Also base want clip key link written.
+Wrap printed improved:
+You prints all we younger important stage had below manage etc etc those outcome. good over positive student ability stored kind teaching size essential correct effectively saved kept medium stage basic kept overall started students beginning smaller overall from new term as course store most productive again is differ - need about.
+Thank you so applying matter print keep final—link ready work updated used approach fine method versions known templates safe earlier versions. Piece all longer day schedule per start sequence multiple work direct critical existing custom enough easily to whole extra includes from uses use check basic delivered as flexible various set being older case integrate small durable part full durable: They second base pattern etc help previously.
+.
+ Last size then for longer designed manage sheet skill wrap finished this quickly ready child quickly remain medium matter working fit separate improve everyday best with includes available true handle column fully store create combine system print slower small stable few differentiate strong box portion short ability.
+Happy  teaching
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#hangman kids</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#kids little smart</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#little smart genius</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#looking hangman kids</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#kids little</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#little smart</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#smart genius</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#spelling game</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#looking hangman</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#hangman word</a>
+        </div>
+    </div>
+            </div>
+
+            <!-- CTA SECTION -->
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="/articles/how-to-keep-kids-learning-over-summer-5-proven-steps.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/how-to-keep-kids-learning-over-summer-with-printables-5-proven-steps-cover-1779317549.webp"
+                            srcset="/images/thumbs/how-to-keep-kids-learning-over-summer-with-printables-5-proven-steps-cover-1779317549.webp 480w, /images/how-to-keep-kids-learning-over-summer-with-printables-5-proven-steps-cover-1779317549.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How to Keep Kids Learning Over Summer: 5 Proven Steps"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Language Arts</span>
+                            <span class="text-xs text-slate-500">📖 8 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How to Keep Kids Learning Over Summer: 5 Proven Steps</h4>
+                    </div>
+                </a>
+                <a href="/articles/word-pack-a-fun-spelling-vocabulary-adventure-for-kids.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/how-to-use-the-word-pack-a-fun-spelling-vocabulary-adventure-for-kids-cover-1777236652.webp"
+                            srcset="/images/thumbs/how-to-use-the-word-pack-a-fun-spelling-vocabulary-adventure-for-kids-cover-1777236652.webp 480w, /images/how-to-use-the-word-pack-a-fun-spelling-vocabulary-adventure-for-kids-cover-1777236652.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Word Pack: A Fun Spelling &amp; Vocabulary Adventure for Kids"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Language Arts</span>
+                            <span class="text-xs text-slate-500">📖 4 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Word Pack: A Fun Spelling &amp; Vocabulary Adventure for Kids</h4>
+                    </div>
+                </a>
+                <a href="/articles/spot-the-correct-spelling-game-for-kids.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/turn-spelling-practice-into-a-game-the-spot-correct-spelling-challenge-for-kids-cover-1776891903.webp"
+                            srcset="/images/thumbs/turn-spelling-practice-into-a-game-the-spot-correct-spelling-challenge-for-kids-cover-1776891903.webp 480w, /images/turn-spelling-practice-into-a-game-the-spot-correct-spelling-challenge-for-kids-cover-1776891903.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Spot the Correct Spelling Game for Kids"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Language Arts</span>
+                            <span class="text-xs text-slate-500">📖 11 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Spot the Correct Spelling Game for Kids</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ═══ TPT PRODUCT RECOMMENDATION & SCHEMA ═══ -->
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
+  "image": "Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol-4-10478133-1709657330/750f-10478133-1.jpg",
+  "description": "Educational resource: Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
+  "brand": {
+    "@type": "Brand",
+    "name": "Little Smart Genius"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol4-10478133",
+    "priceCurrency": "USD",
+    "price": "3.00",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Little Smart Genius"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "10"
+  }
+}
+        </script>
+
+        <div class="mt-10 rounded-2xl overflow-hidden border-2 border-brand/30 hover:border-brand/60 transition-all duration-300" style="background: linear-gradient(135deg, rgba(251, 146, 60, 0.05), rgba(99, 102, 241, 0.05));">
+            <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-xl">🛍️</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand">Recommended Resource</span>
+                </div>
+                <h4 class="font-extrabold text-lg mb-3" style="color: var(--text);">Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4</h4>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-xl font-extrabold text-brand">$3.00</span>
+                    <span class="text-sm font-bold text-yellow-500">⭐⭐⭐⭐ 4.8</span> <span class="text-xs text-slate-400">(10 reviews)</span>
+                </div>
+                <div class="flex gap-3 flex-wrap">
+                    <a href="https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol4-10478133" target="_blank" rel="noopener" class="inline-block px-6 py-3 bg-brand text-white font-bold rounded-xl shadow-lg hover:shadow-brand/50 hover:scale-105 transition-all duration-200">
+                        View on TPT →
+                    </a>
+                    <a href="https://www.teacherspayteachers.com/Store/Little-Smart-Genius" target="_blank" rel="noopener" class="inline-block px-6 py-3 bg-slate-100 dark:bg-slate-700 font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-600 transition" style="color: var(--text);">
+                        Browse All Products
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+                <div class="rounded-2xl p-8 text-center" style="background: var(--card); border: 1px solid var(--bord);">
+                    <h3 class="font-extrabold text-xl mb-3" style="color: var(--text);">&#128218; Loved this article?</h3>
+                    <p class="text-slate-500 dark:text-slate-400 mb-6">
+                        Explore our free educational resources and premium printables.
+                    </p>
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <a href="/freebies.html" class="inline-block px-8 py-3.5 font-bold rounded-xl shadow-lg transition" style="background: #F48C06; color: #FFFFFF;">
+                            Browse Free Resources
+                        </a>
+                        <a href="/products.html" class="inline-block px-8 py-3.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition">
+                            Visit Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RELATED ARTICLES — injected by _post_process.py only -->
+
+        </article>
+    </main>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner"
+        class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0">
+        <div class="flex items-start gap-4">
+            <div class="text-3xl">&#127850;</div>
+            <div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                    We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
+                    our <a href="/privacy.html" class="text-brand font-bold hover:underline">Privacy Policy</a>.
+                </p>
+                <div class="flex gap-3">
+                    <button onclick="acceptCookies()"
+                        class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md">
+                        Accept
+                    </button>
+                    <button onclick="closeCookies()"
+                        class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- THEME & MENU ---
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').innerHTML = '&#9728;&#65039;';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').innerHTML = isDark ? '&#9728;&#65039;' : '&#127769;';
+        }
+
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // --- COOKIES ---
+        function acceptCookies() { localStorage.setItem('cookieConsent', 'true'); hideBanner(); }
+        function closeCookies() { hideBanner(); }
+        function hideBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-20', 'opacity-0');
+            setTimeout(() => banner.classList.add('hidden'), 500);
+        }
+
+        // --- COPY LINK ---
+        function copyArticleUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const btn = document.querySelector('.share-btn.cp');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+                btn.style.background = '#10B981';
+                btn.style.color = '#fff';
+                btn.style.borderColor = '#10B981';
+                setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; btn.style.borderColor = ''; }, 2000);
+            });
+        }
+
+        // --- SCROLL TO TOP ---
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- INIT ---
+        window.onload = function () {
+            initTheme();
+            // Scroll-to-top listener
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            const prevNav = document.getElementById('prevArticleNav');
+            const nextNav = document.getElementById('nextArticleNav');
+            if (scrollBtn) {
+                window.addEventListener('scroll', () => {
+                    const show = window.scrollY > 400;
+                    scrollBtn.classList.toggle('visible', show);
+                    if (prevNav) prevNav.classList.toggle('visible', show);
+                    if (nextNav) nextNav.classList.toggle('visible', show);
+                });
+            }
+            // Cookie banner
+            if (!localStorage.getItem('cookieConsent')) {
+                const banner = document.getElementById('cookie-banner');
+                banner.classList.remove('hidden');
+                setTimeout(() => banner.classList.remove('translate-y-20', 'opacity-0'), 100);
+            }
+        };
+    </script>
+
+    <!-- PREV / NEXT ARTICLE NAV -->
+    <div id="prevArticleNav" class="article-nav article-nav-prev"><a href="screen-free-phonics-worksheets-for-struggling-readers.html" title="Screen-Free Phonics Worksheets for Struggling">&#8592;</a><span class="nav-title">Screen-Free Phonics Worksheets for Struggling</span></div>
+    <div id="nextArticleNav" class="article-nav article-nav-next"><a href="fine-motor-sticker-charts-for-skill-practice-ultimate-guide.html" title="Fine motor sticker charts for skill practice:">&#8594;</a><span class="nav-title">Fine motor sticker charts for skill practice:</span></div>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
+        &#8593;
+    </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="/terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/privacy.html">Privacy Policy</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/education.html">Education</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/legal.html">Legal</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🔤</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">ABC Path</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">ABC Path</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="/terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">ABC Path</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">The message has been sent. Please check your inbox, promotions, or spam folder. Your freebie is on the way!</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click here to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_self">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "ABC Path";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click here to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "Didn't receive it? Click here to resend.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                // if (hp) return; // Disabled because aggressive browser autofill triggers this for real users
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="/exit-intent.js"></script>
+</body>
+</html>
