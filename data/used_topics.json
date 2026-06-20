@@ -21076,6 +21076,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.2",
       "date": "2026-06-20T11:32:53.694596"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.2",
+      "date": "2026-06-20T15:50:51.672751"
     }
   ],
   "product": [
@@ -21083,7 +21088,8 @@
     "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection",
     "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.8",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.2",
-    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.2"
+    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.2",
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.2"
   ],
   "freebie": [
     "Counting Numbers",
