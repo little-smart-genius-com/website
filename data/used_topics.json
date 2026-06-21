@@ -23628,6 +23628,11 @@
       "slot": "keyword",
       "topic": "Homework alternatives for elementary kids that still teach",
       "date": "2026-06-21T17:10:18.109650"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Bi-Lingual Matching",
+      "date": "2026-06-21T21:27:30.937570"
     }
   ],
   "product": [
@@ -23664,6 +23669,7 @@
     "Creative Pack",
     "Sudoku",
     "Clip Art Set",
-    "Hangman"
+    "Hangman",
+    "Bi-Lingual Matching"
   ]
 }
