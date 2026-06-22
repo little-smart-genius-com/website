@@ -484,7 +484,19 @@
     "Teaching critical thinking skills to kids through puzzles",
     "Planning a learning themed playdate with printable games",
     "How to build a low cost learning toolkit at home for kids",
-    "Reading comprehension worksheets for kids about science topics"
+    "Reading comprehension worksheets for kids about science topics",
+    "Printable brain teaser challenge pack for 3rd graders",
+    "Mystery grid puzzles for kids to solve at home",
+    "Printable logic mazes that teach cause and effect",
+    "Logic puzzles for kids that build perseverance and grit",
+    "Math centers for kids using printable task cards",
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Printable story sequencing cards for kids to retell stories",
+    "Dot marker coloring pages for toddlers and preschoolers",
+    "Fine motor task cards for preschool centers printable",
+    "Fine motor crafts for kids to build hand strength",
+    "Parent guide to using mazes and logic puzzles for learning",
+    "Coloring bookmarks for kids to color and use in books"
   ],
   "daily_log": [
     {
@@ -24161,6 +24173,66 @@
       "slot": "keyword",
       "topic": "Reading comprehension worksheets for kids about science topics",
       "date": "2026-06-21T22:46:24.390798"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable brain teaser challenge pack for 3rd graders",
+      "date": "2026-06-22T09:53:33.064253"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Mystery grid puzzles for kids to solve at home",
+      "date": "2026-06-22T09:53:33.084157"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable logic mazes that teach cause and effect",
+      "date": "2026-06-22T09:53:33.104106"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids that build perseverance and grit",
+      "date": "2026-06-22T09:53:33.124252"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Math centers for kids using printable task cards",
+      "date": "2026-06-22T09:53:33.144694"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot to dot worksheets for kids to build visual tracking",
+      "date": "2026-06-22T09:53:33.164412"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable story sequencing cards for kids to retell stories",
+      "date": "2026-06-22T09:53:33.184047"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot marker coloring pages for toddlers and preschoolers",
+      "date": "2026-06-22T09:53:33.203841"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor task cards for preschool centers printable",
+      "date": "2026-06-22T09:53:33.224871"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor crafts for kids to build hand strength",
+      "date": "2026-06-22T09:53:33.244678"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Parent guide to using mazes and logic puzzles for learning",
+      "date": "2026-06-22T09:53:33.264315"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Coloring bookmarks for kids to color and use in books",
+      "date": "2026-06-22T09:56:46.570158"
     }
   ],
   "product": [
