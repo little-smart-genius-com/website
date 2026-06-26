@@ -26744,6 +26744,11 @@
       "slot": "keyword",
       "topic": "Crafts for kids that take 15 minutes or less",
       "date": "2026-06-26T17:25:43.072255"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Missing Vowels",
+      "date": "2026-06-26T21:35:14.578785"
     }
   ],
   "product": [
@@ -26784,6 +26789,7 @@
     "Sudoku",
     "Clip Art Set",
     "Hangman",
-    "Bi-Lingual Matching"
+    "Bi-Lingual Matching",
+    "Missing Vowels"
   ]
 }
