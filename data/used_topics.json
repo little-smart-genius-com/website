@@ -488,7 +488,16 @@
     "Teaching critical thinking skills to kids through puzzles",
     "Planning a learning themed playdate with printable games",
     "How to build a low cost learning toolkit at home for kids",
-    "Parent guide to using mazes and logic puzzles for learning"
+    "Parent guide to using mazes and logic puzzles for learning",
+    "Mystery grid puzzles for kids to solve at home",
+    "Printable logic mazes that teach cause and effect",
+    "Logic puzzles for kids that build perseverance and grit",
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Printable story sequencing cards for kids to retell stories",
+    "Reading comprehension worksheets for kids about science topics",
+    "Dot marker coloring pages for toddlers and preschoolers",
+    "Fine motor crafts for kids to build hand strength",
+    "Crafts for kids that take 15 minutes or less"
   ],
   "daily_log": [
     {
@@ -31700,6 +31709,51 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Beach Vol.1",
       "date": "2026-06-28T15:23:47.961181"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Mystery grid puzzles for kids to solve at home",
+      "date": "2026-06-28T16:42:46.745295"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable logic mazes that teach cause and effect",
+      "date": "2026-06-28T16:42:46.770410"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids that build perseverance and grit",
+      "date": "2026-06-28T16:42:46.795346"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot to dot worksheets for kids to build visual tracking",
+      "date": "2026-06-28T16:42:46.820327"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable story sequencing cards for kids to retell stories",
+      "date": "2026-06-28T16:42:46.845355"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Reading comprehension worksheets for kids about science topics",
+      "date": "2026-06-28T16:42:46.870250"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot marker coloring pages for toddlers and preschoolers",
+      "date": "2026-06-28T16:42:46.895191"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor crafts for kids to build hand strength",
+      "date": "2026-06-28T16:42:46.921520"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Crafts for kids that take 15 minutes or less",
+      "date": "2026-06-28T16:46:03.798539"
     }
   ],
   "product": [
