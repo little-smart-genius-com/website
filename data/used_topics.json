@@ -31754,6 +31754,11 @@
       "slot": "keyword",
       "topic": "Crafts for kids that take 15 minutes or less",
       "date": "2026-06-28T16:46:03.798539"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Full Freebie Pack",
+      "date": "2026-06-28T21:14:50.917504"
     }
   ],
   "product": [
@@ -31800,6 +31805,7 @@
     "Hangman",
     "Bi-Lingual Matching",
     "Missing Vowels",
-    "Complete the Word"
+    "Complete the Word",
+    "Full Freebie Pack"
   ]
 }
