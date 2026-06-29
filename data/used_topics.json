@@ -490,7 +490,14 @@
     "Teaching critical thinking skills to kids through puzzles",
     "Planning a learning themed playdate with printable games",
     "How to build a low cost learning toolkit at home for kids",
-    "Fine motor crafts for kids to build hand strength"
+    "Fine motor crafts for kids to build hand strength",
+    "Mystery grid puzzles for kids to solve at home",
+    "Logic puzzles for kids that build perseverance and grit",
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Printable story sequencing cards for kids to retell stories",
+    "Reading comprehension worksheets for kids about science topics",
+    "Dot marker coloring pages for toddlers and preschoolers",
+    "Crafts for kids that take 15 minutes or less"
   ],
   "daily_log": [
     {
@@ -34217,6 +34224,41 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Bundle",
       "date": "2026-06-29T16:56:38.459246"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Mystery grid puzzles for kids to solve at home",
+      "date": "2026-06-29T17:58:18.694897"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids that build perseverance and grit",
+      "date": "2026-06-29T17:58:18.723414"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot to dot worksheets for kids to build visual tracking",
+      "date": "2026-06-29T17:58:18.751053"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable story sequencing cards for kids to retell stories",
+      "date": "2026-06-29T17:58:18.778801"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Reading comprehension worksheets for kids about science topics",
+      "date": "2026-06-29T17:58:18.806270"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot marker coloring pages for toddlers and preschoolers",
+      "date": "2026-06-29T17:58:18.833880"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Crafts for kids that take 15 minutes or less",
+      "date": "2026-06-29T18:03:28.493520"
     }
   ],
   "product": [
