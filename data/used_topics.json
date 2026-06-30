@@ -36723,6 +36723,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D1",
       "date": "2026-06-30T12:01:44.537172"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.6",
+      "date": "2026-06-30T16:30:24.974666"
     }
   ],
   "product": [
@@ -36743,7 +36748,8 @@
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Beach Vol.1",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.3",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Bundle",
-    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D1"
+    "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D1",
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.6"
   ],
   "freebie": [
     "Counting Numbers",
