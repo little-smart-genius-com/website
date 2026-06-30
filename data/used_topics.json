@@ -491,7 +491,13 @@
     "Teaching critical thinking skills to kids through puzzles",
     "Planning a learning themed playdate with printable games",
     "How to build a low cost learning toolkit at home for kids",
-    "Reading comprehension worksheets for kids about science topics"
+    "Reading comprehension worksheets for kids about science topics",
+    "Mystery grid puzzles for kids to solve at home",
+    "Logic puzzles for kids that build perseverance and grit",
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Printable story sequencing cards for kids to retell stories",
+    "Dot marker coloring pages for toddlers and preschoolers",
+    "Coloring bookmarks for kids to color and use in books"
   ],
   "daily_log": [
     {
@@ -36728,6 +36734,36 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.6",
       "date": "2026-06-30T16:30:24.974666"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Mystery grid puzzles for kids to solve at home",
+      "date": "2026-06-30T17:23:56.180166"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids that build perseverance and grit",
+      "date": "2026-06-30T17:23:56.209474"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot to dot worksheets for kids to build visual tracking",
+      "date": "2026-06-30T17:23:56.239895"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable story sequencing cards for kids to retell stories",
+      "date": "2026-06-30T17:23:56.268930"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot marker coloring pages for toddlers and preschoolers",
+      "date": "2026-06-30T17:23:56.298179"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Coloring bookmarks for kids to color and use in books",
+      "date": "2026-06-30T17:27:33.088565"
     }
   ],
   "product": [
