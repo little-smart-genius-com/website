@@ -39240,6 +39240,11 @@
       "slot": "product",
       "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.5",
       "date": "2026-07-01T12:21:47.856289"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.4",
+      "date": "2026-07-01T16:30:36.150838"
     }
   ],
   "product": [
@@ -39262,7 +39267,8 @@
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Bundle",
     "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D1",
     "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.6",
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.5"
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.5",
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.4"
   ],
   "freebie": [
     "Counting Numbers",
