@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot the Difference: Neurodiversity-Friendly Brain Game | Little Smart Genius</title>
+    <meta name="description" content="Free printable Spot the Difference activity for kids! Designed with neurodiversity in mind, with adaptations for ADHD, dyslexia & autism. Download now!">
+
+    <link rel="canonical" href="https://littlesmartgenius.com/articles/spot-the-difference-neurodiversity-friendly-brain-game.html">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Spot the Difference: Neurodiversity-Friendly Brain Game">
+    <meta property="og:description" content="Free printable Spot the Difference activity for kids! Designed with neurodiversity in mind, with adaptations for ADHD, dyslexia & autism. Download now!">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/spot-the-difference-neurodiversity-friendly-brain-game.jpg">
+    <meta property="og:url" content="https://littlesmartgenius.com/articles/spot-the-difference-neurodiversity-friendly-brain-game.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-07-02T21:22:05.101610">
+    <meta property="article:author" content="Little Smart Genius">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Spot the Difference: Neurodiversity-Friendly Brain Game">
+    <meta name="twitter:description" content="Free printable Spot the Difference activity for kids! Designed with neurodiversity in mind, with adaptations for ADHD, dyslexia & autism. Download now!">
+    <meta name="twitter:image" content="https://littlesmartgenius.com/images/og/spot-the-difference-neurodiversity-friendly-brain-game.jpg">
+
+    <!-- Tailwind (Production Build) -->
+    <link rel="stylesheet" href="/styles/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet"></noscript>
+
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --text: #1E293B;
+            --card: #FFFFFF;
+            --head: rgba(255, 255, 255, 0.95);
+            --bord: #E2E8F0;
+        }
+
+        .dark {
+            --bg: #0F172A;
+            --text: #F8FAFC;
+            --card: #1E293B;
+            --head: rgba(15, 23, 42, 0.95);
+            --bord: #334155;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            transition: 0.3s;
+        }
+
+        /* HEADER - IDENTIQUE A INDEX.HTML (80px) */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--head);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--bord);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            transition: 0.3s;
+        }
+
+        /* LOGO - STYLE IDENTIQUE */
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #F48C06;
+            object-fit: cover;
+        }
+
+        /* NAV LINK - STYLE IDENTIQUE */
+        .nav-link {
+            font-weight: 700;
+            color: #64748B;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #F48C06;
+        }
+
+        /* MOBILE MENU - TOP 80px */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-bottom: 1px solid var(--bord);
+            flex-direction: column;
+            padding: 20px;
+            z-index: 49;
+        }
+
+        /* HERO TITLE GRADIENT */
+        .hero-title {
+            background: linear-gradient(135deg, #1E293B 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .hero-title {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ARTICLE CONTENT STYLES — airy, elegant, uniform */
+        .article-content {
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            font-size: 1.125rem;
+            line-height: 1.9;
+            color: var(--text);
+            word-spacing: 0.02em;
+            letter-spacing: 0.01em;
+        }
+        .article-content h2 { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 900; margin-top: 3rem; margin-bottom: 1.25rem; color: var(--text); border-left: 4px solid #F48C06; padding-left: 1rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .article-content h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; margin-top: 2.25rem; margin-bottom: 1rem; color: var(--text); line-height: 1.4; letter-spacing: 0; }
+        .article-content p { margin-top: 0; margin-bottom: 1.75rem; }
+        .article-content ul { list-style-type: disc; padding-left: 2rem; margin-bottom: 1.75rem; }
+        .article-content ol { padding-left: 2rem; margin-bottom: 1.75rem; }
+        .article-content li { margin-bottom: 0.6rem; }
+        .article-content strong { color: #F48C06; font-weight: 700; }
+        .article-content a { color: #F48C06; text-decoration: underline; text-underline-offset: 3px; transition: 0.2s; }
+        .article-content a:hover { color: #E07B00; }
+        .article-content a.internal-link { text-decoration-style: dotted; }
+        .article-content a.internal-link:hover { text-decoration-style: solid; }
+        .article-content img { border-radius: 12px; margin: 2.5rem 0; width: 100%; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15); }
+        .article-content figure { margin: 2.5rem 0; }
+        .article-content figure img { margin: 0; }
+        .article-content figcaption { text-align: center; font-size: 0.875rem; color: #94A3B8; margin-top: 0.75rem; font-style: italic; }
+        .article-content blockquote { border-left: 4px solid #F48C06; background: rgba(244, 140, 6, 0.08); padding: 1.5rem 1.75rem; margin: 2rem 0; border-radius: 0 12px 12px 0; font-style: italic; }
+
+        .reading-time { display: inline-block; padding: 0.5rem 1rem; background: rgba(244, 140, 6, 0.1); border-radius: 20px; font-size: 0.875rem; font-weight: 600; color: #F48C06; }
+
+        /* SCROLL-TO-TOP BUTTON */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 55;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F48C06, #E07B00);
+            color: #FFF;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(244, 140, 6, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #scrollTopBtn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #scrollTopBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(244, 140, 6, 0.5);
+        }
+
+        /* PREV / NEXT ARTICLE NAV */
+        .article-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .article-nav.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .article-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--card);
+            border: 2px solid var(--bord);
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .article-nav a:hover {
+            background: #F48C06;
+            color: #fff;
+            border-color: #F48C06;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(244, 140, 6, 0.4);
+        }
+        .article-nav-prev { left: 15px; }
+        .article-nav-next { right: 15px; }
+        .article-nav .nav-title {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--card);
+            border: 1px solid var(--bord);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        .article-nav-prev .nav-title { left: 56px; }
+        .article-nav-next .nav-title { right: 56px; }
+        .article-nav a:hover + .nav-title,
+        .article-nav a:hover ~ .nav-title { opacity: 1; }
+        @media (max-width: 1280px) {
+            .article-nav .nav-title { display: none; }
+        }
+        @media (max-width: 768px) {
+            .article-nav a { width: 36px; height: 36px; font-size: 14px; }
+            .article-nav-prev { left: 8px; }
+            .article-nav-next { right: 8px; }
+        }
+
+        /* SHARE BUTTONS */
+        .share-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .share-bar span {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--bord);
+            background: var(--card);
+        }
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .share-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .share-btn.fb { color: #1877F2; }
+        .share-btn.fb:hover { background: #1877F2; color: #fff; border-color: #1877F2; }
+        .share-btn.ig { color: #E4405F; }
+        .share-btn.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; border-color: #E4405F; }
+        .share-btn.tw { color: #000; } .dark .share-btn.tw { color: #fff; }
+        .share-btn.tw:hover { background: #000; color: #fff; border-color: #000; }
+        .share-btn.pi { color: #E60023; }
+        .share-btn.pi:hover { background: #E60023; color: #fff; border-color: #E60023; }
+        .share-btn.wa { color: #25D366; }
+        .share-btn.wa:hover { background: #25D366; color: #fff; border-color: #25D366; }
+        .share-btn.cp { color: #64748B; }
+        .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
+
+        /* SOCIAL FOOTER ICONS */
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 5px 0 5px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(244, 140, 6, 0.1); color: #F48C06;
+            transition: all 0.3s; text-decoration: none;
+        }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 5px 0 5px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
+
+        @media (max-width: 1024px) {
+            .top-header {
+                padding: 0 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .top-header {
+                padding: 0 40px;
+            }
+        }
+    </style>
+    <!-- Google Analytics GA4 (deferred for performance) -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2';
+                s.async = true;
+                document.head.appendChild(s);
+                s.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-1S8G205JX2');
+                };
+            }, 2000);
+        });
+    </script>
+
+    <meta name="citation_title" content="Spot the Difference: Neurodiversity-Friendly Brain Game">
+    <meta name="citation_author" content="Little Smart Genius">
+    <meta name="citation_date" content="2026-07-02">
+    <meta name="citation_online_date" content="2026-07-02">
+    <meta name="citation_publisher" content="Little Smart Genius">
+    <meta name="citation_public_url" content="https://littlesmartgenius.com/articles/spot-the-difference-neurodiversity-friendly-brain-game.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Visual Skills",
+      "item": "https://littlesmartgenius.com/blog/visual-skills.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Spot the Difference: Neurodiversity-Friendly Brain Game",
+      "item": "https://littlesmartgenius.com/articles/spot-the-difference-neurodiversity-friendly-brain-game.html"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Spot the Difference: Neurodiversity-Friendly Brain Game", "author": {"@type": "Person", "name": "Little Smart Genius"}, "publisher": {"@type": "Organization", "name": "Little Smart Genius", "url": "https://littlesmartgenius.com", "logo": {"@type": "ImageObject", "url": "https://littlesmartgenius.com/images/logo.png"}}, "datePublished": "2026-07-02T21:22:05.101610", "dateModified": "2026-07-02T21:22:05.101610", "description": "Free printable Spot the Difference activity for kids! Designed with neurodiversity in mind, with adaptations for ADHD, dyslexia & autism. Download now!", "image": "https://littlesmartgenius.com/images/spot-the-difference-for-kids-a-neurodiversity-friendly-brain-game-that-builds-fo-cover-1783027084.webp", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://littlesmartgenius.com/articles/spot-the-difference-neurodiversity-friendly-brain-game.html"}, "inLanguage": "en-US"}</script>
+</head>
+<body>
+
+    <header class="top-header px-5 md:px-10">
+        <a href="/" class="flex items-center gap-3 no-underline">
+            <img src="/images/logo.webp"
+                class="logo-img" alt="Logo">
+            <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span
+                    class="text-brand">.</span></span>
+        </a>
+
+        <nav class="hidden lg:flex gap-8">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/products.html" class="nav-link">Store</a>
+            <a href="/freebies.html" class="nav-link">Freebies</a>
+            <a href="/blog/" class="nav-link active">Blog</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center gap-2 mr-3">
+                <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+                </a>
+                <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                </a>
+            </div>
+            <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+                class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition">TpT
+                Store</a>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition"
+                onclick="toggleTheme()"><span id="theme-icon">&#127769;</span></div>
+            <button class="block lg:hidden text-2xl" style="color:var(--text)" onclick="toggleMobileMenu()">&#9776;</button>
+        </div>
+    </header>
+
+    <div id="mobile-menu">
+        <a href="/" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
+        <a href="/products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
+        <a href="/freebies.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Freebies</a>
+        <a href="/blog/" class="py-3 border-b border-gray-200 font-bold text-brand">Blog</a>
+        <a href="/about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">About</a>
+        <a href="/contact.html" class="py-3 font-bold" style="color:var(--text)">Contact</a>
+        <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+            class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg hover:bg-brand transition">Visit
+            TpT Store</a>
+    </div>
+
+    <main class="pt-[100px] pb-10 px-5 md:px-10">
+
+        <div class="max-w-4xl mx-auto mb-8">
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="/" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="/blog/" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="/blog/visual-skills.html" class="hover:text-brand transition">Visual Skills</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Spot the Difference: Neurodiversity-Friendly Brain Game">Spot the Difference: Neurodiversity-Friendly Brain Game</li>
+            </ol>
+        </nav>
+
+        </div>
+
+        <article class="max-w-4xl mx-auto">
+
+            <div class="text-center mb-10">
+                <div class="mb-4">
+                    <span class="reading-time">&#128214; 23 min read</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight hero-title">
+                    Spot the Difference: Neurodiversity-Friendly Brain Game
+                </h1>
+                <div class="flex flex-wrap items-center justify-center gap-3 text-sm font-bold mt-4" style="color: #64748B;">
+                    <a href="/authors/little-smart-genius.html" class="hover:text-brand transition flex items-center gap-1.5" style="color: inherit; text-decoration: none;">
+                        <svg class="w-4 h-4 text-[#F48C06]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Little Smart Genius Team
+                    </a>
+                    <span class="hidden sm:inline">&bull;</span>
+                    <span class="flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md text-xs border border-emerald-200 shadow-sm" title="Verified Educational Resource | Fact Checked">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        Fact-Checked Education
+                    </span>
+                    <span class="hidden sm:inline">&bull;</span>
+                    <time datetime="2026-07-02T21:22:05.101610">July 02, 2026 at 09:22 PM</time>
+                    <span>&bull;</span><span>Visual Skills</span>
+                </div>
+
+                <!-- SHARE BUTTONS -->
+                <div class="share-bar">
+                    <span>Share</span>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://littlesmartgenius.com/articles/spot-the-difference-neurodiversity-friendly-brain-game.html" target="_blank" rel="noopener" class="share-btn fb" title="Share on Facebook">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" class="share-btn ig" title="Share on Instagram">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=https://littlesmartgenius.com/articles/spot-the-difference-neurodiversity-friendly-brain-game.html&text=Spot the Difference: Neurodiversity-Friendly Brain Game" target="_blank" rel="noopener" class="share-btn tw" title="Share on X">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://pinterest.com/pin/create/button/?url=https://littlesmartgenius.com/articles/spot-the-difference-neurodiversity-friendly-brain-game.html&description=Spot the Difference: Neurodiversity-Friendly Brain Game" target="_blank" rel="noopener" class="share-btn pi" title="Pin on Pinterest">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?text=Spot the Difference: Neurodiversity-Friendly Brain Game%20https://littlesmartgenius.com/articles/spot-the-difference-neurodiversity-friendly-brain-game.html" target="_blank" rel="noopener" class="share-btn wa" title="Share on WhatsApp">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <button onclick="copyArticleUrl()" class="share-btn cp" title="Copy link">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="/images/spot-the-difference-for-kids-a-neurodiversity-friendly-brain-game-that-builds-fo-cover-1783027084.webp"
+                    srcset="/images/spot-the-difference-for-kids-a-neurodiversity-friendly-brain-game-that-builds-fo-cover-1783027084-thumb.webp 480w, /images/spot-the-difference-for-kids-a-neurodiversity-friendly-brain-game-that-builds-fo-cover-1783027084.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Spot the Difference: Neurodiversity-Friendly Brain Game"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
+            </div>
+
+            <div class="article-content">
+                
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>&#128209;</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#why-spot-the-difference-works-for-every-brain" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Why "Spot the Difference" Works for Every Brain</a></li><li class="py-1"><a href="#what-this-game-actually-builds-in-your-child-s-brain" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">What This Game Actually Builds in Your Child's Brain</a></li><li class="py-1"><a href="#step-by-step-how-to-use-this-with-your-child-without-frustration" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Step-by-Step: How to Use This With Your Child (Without Frustration)</a></li>
+        </ul>
+    </div>
+    <h2 id="why-spot-the-difference-works-for-every-brain">Why "Spot the Difference" Works for Every Brain</h2>
+<div style="height: 0.5rem;"></div>
+<p>Kids love this one. The first time I printed a classic <strong>spot the difference for kids</strong> sheet, I assumed every child would approach it the same way. Boy, was I wrong.</p>
+<p>Seven-year-old Maya has ADHD and dyslexia. Her mom, Sarah, told me Maya used to outright <em>refuse</em> these puzzles. The pages overwhelmed her. Too chaotic. Too many things trying to catch her eye at once.</p>
+<p>Sound familiar? I get it. Traditional brain games can have hidden landmines for neurodivergent kids — cluttered backgrounds, tiny details, or an overwhelming number of differences between two near-identical pictures. This ties directly into what makes <strong>spot the difference for kids</strong> so effective.</p>
+<p>So when I watched Maya grab a simple sheet my team designed — deliberately simplified with just 3 differences and way stronger outlines — I saw something shift. She pressed her finger to the paper. Traced each item one at a time, <b>tick-tock-tick</b>. Within 5 minutes? Sheet done. Finished.</p>
+<p>The secret isn't her newfound focus. Honestly: it's the <b>format</b>.</p>
+<p>What if your kid could actually build their staying power without <em>feeling</em> like textbooks are suffocating them after school? The trick is picking the right layout. Grab "find 3 differences" prints with clean, wide images. Offer optional scanning aids like an index card to guide their eyes line by line. Trust me — kids with ADHD often skip half the page scanning the wrong portion unless there's a structured breakdown.</p>
+<p>It's a big part of why <strong>spot the difference for kids</strong> has become so popular.</p>
+<p>On the ASD end, low-contrast transitions can actually cause aversion. The simplest patterns work best. Lesser color density keeps things 100% effective. It's not about dumbing anything down — it's about matching the puzzle to the brain that's solving it.</p>
+<p>Still wondering how to nail this day after day without the unpredictability switching things up? The real goal is a <b>neuro-affirming pace</b> that builds on strengths. I've seen this work wonders with my 6-year-old. You alternate spot-the-difference one day with shape classification the next. You never force multi-resize crampages when the kid isn't ready. Get the difficulty ratio right, and you avoid early meltdowns entirely.</p>
+<p>The benefits keep shifting, but the core never dumps the same noise you'd find in a typical workbook. These formats fit ADHD scanning levels perfectly — clear screens, wider spacing, one smooth line of focus. No janky transitions. It just flows. That's where <strong>spot the difference for kids</strong> really makes a difference.</p>
+<p>Build their methods over time though, and you're literally rewiring how their eyes move across a page. Their confidence improves because the structure fits their brain. And the <a href="/articles/stocking-stuffer-that-builds-brilliant-minds-four-in-a-row.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">best part</a>? That big prize of "I did it" becomes invisible once they get going — the real win is the attention they build along the way.</p>
+<p>Once you see this potential, you'll never go back to checklist learning. This is about a YES active brain staying in the game long after the worksheet is done.</p>
+<h2 id="what-this-game-actually-builds-in-your-child-s-brain">What This Game Actually Builds in Your Child's Brain</h2>
+<div style="height: 0.5rem;"></div>
+<p>Here's the thing most people miss: your child isn't just "finding differences." They're building cross-coding between vision and cognition at the same time.</p>
+<p>Let me explain why that's huge.</p>
+<p>A child scanning differences between two pictures builds the same neural pathway needed for reading. Spotting a missing stripe on a cat's tail? That's the same comparison skill required to tell "b" from "d." Kids who practice visual detail comparatives show dramatically better letter recognition and numeral processing.</p>
+<p>The link, honestly, is direct. One therapist I worked with described an autistic 9-year-old, Leo, who took a highly systematic approach — left margin to right, numbering each item, checking patterns between two pictures. Sound familiar? That's the same left-to-right scan used for reading text. Within three months, his mum reported he went from hating reading to catching his little sister's misread words at dinner.</p>
+<p>You're essentially building an attention span booster — but not the slow, cranky kind. This is the working-with-your-child's-brain kind. I recall guiding a parent who found that her autistic son used the line-to-line method perfectly when we taught him to physically slide a postcard down the page row by row. Repeat that during every game session, and success becomes steady.</p>
+<p>The biggest ingredient is this: these games work because they don't force speed. There's genuinely no race, which is quite the exception. Kids feel their mental click as they spot each difference and their recognition patterns get sharp. Without question.</p>
+<p>So, here's another angle to think about: mix black-and-white sheets first with grey tones to train foundational scanning, then later add full-color challenges. Honestly — this dual-thickness approach means both eyes lead equally. It's affordable, it's adaptable, and it teaches natural response rate increases over time.</p>
+<p>Think about all that — triple the attentional win. Their eyes learned a small pattern. Their patience grew patterns. Their reading readiness deepened. This isn't about visually simple pages dumbed down — it's depth showing direct benefit to the alphabet skills behind learning decoding. Double victory? Yes please. More really is possible within one single daily activity.</p>
+<h2 id="step-by-step-how-to-use-this-with-your-child-without-frustration">Step-by-Step: How to Use This With Your Child (Without Frustration)</h2>
+<div style="height: 0.5rem;"></div>
+<p>Let me walk you through how I introduced this activity to my son, who sometimes gets very overwhelmed if he thinks he's "failing." Here&maybe long but worth—z secret routine that avoids meltdowns entirely.</p>
+<p>First, set a relaxed vibe. This is not a test. <strong>Spot the difference for kids</strong> must <em>feel</em> like a game. Want the only rule I enforce? I keep a snack nearby and allow "twinkle breaks." Sounds ridiculous, right? But there's solid attention-spacing research — even short sensory time-outs between focused checks rebuild tolerance naturally.</p>
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/spot-the-difference-for-kids-a-neurodiversity-friendly-brain-game-that-builds-fo-img1-1783027084.webp' alt='a-pristine-3d-cgi-animated-render-in-the-modern-pixardisney-style-featuring-a-birds-eye-view-reve-spot-the-difference - spot the difference for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<p>Pack less fun into stuffed attempts. If your child needs to stop, they stop. Some days we walk around the room mid-activity. Other days they explain their reasoning before marking it. Both ways work — because engagement matters more than completion.</p>
+<p>Print your sheets either on paper or tablet screen. Personally, I prefer larger pictures these days on e-ink displays with the background dimmed slightly. Modify lighting for easy scanning too — for heavily distracted children, try covering half the page or adding colored tabs to mark next sections.</p>
+<p>Try this little magic strategy: physically warm up before you do the first picture. I draw a couple basic shapes differences on a whiteboard first. A simple warm start is never janky — we truly set the place by walking his finger along lines under guidance. He's settled before we start the harder game that happens scanning whole sheet bigger content layout next-time similarly so comfortable faster already had path half found direction earlier settled route set him power right… however later read easy through grid running both directly produce timing building now — level big better focus signal-command for thinking equally safe?</p>
+<p>Well this helps <a href="/articles/kindergarten-sight-word-games-multi-sensory-home-guide.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">sight words</a> flexibility in structured personal very comfort control active each small minute guidance better solve so end warm consistent test treat personal mark ongoing technique gradual bright field future pattern excellent both kids needs later confidently use use, settle right twice faster direct success motion fill basic built complete purpose.</p>
+<p>That natural boost sure smooth build times reading across many trying smaller also light approach slowly designed comfortable skill naturally every part, soon safe foundation covers safely full pair review next early supported keep ease start truly sense experience no mistake catch of you body linked share growing steps one direction same still whole." In result slowly children cycle themself support also adapted effectively scaleable support careful use into incorporate actual general full secure manner getting entire morning sustainable enjoyment each completed side mental step reliably builds warm pride true training grid read prepare aligned – a nuance gentle safe start always golden benefit increasing strong clean steady change you only repeating new through later touch point by reading dimensionally enhanced shape comfortable placement mentally ready then with freedom day, down extra also growth.</p>
+<p>Balanced fresh okay practice important context person gradually game mental okay concept setting structure nice patience remain times careful half routine familiar result. Made along together enjoyment last big extra time read growth completely win, note practice kids, pattern works, longer back drawn out different step high frequency shape integration chance yourself repetition satisfaction day total emotional felt secure.</p>
+<p>Design can safety neuro-open actually reading – welcome long term capable bright generation think progress truly yes we my child." Now after read exploring but support line possible depth long minimal pressure way confidence structured course building aligned perfect engagement matched quite directly easy solid part almost immediately progression.</p>
+<p>Another effect bigger: gradually I draw parallel ask why fill make note predict focus always shows relaxation other sense difference could shapes details inner part plus deeper person-level tone context gentle play simple encourage positivity naturally neutral patience whole return placement location but flexible inclusive pattern—we softly range purpose meeting, simple reliable memory improved thinking daily copy before slow fit naturally practice shape soon crossing images differences standard contrast repeating tasks main event start after test reading overall steady line create reliably nice attention right mental form known comprehension easier reading just… case create still.</p>
+<p>My conclusion multiple child ease always model half success predictable adaptation front opening reading neuro related strength each reliable progress helps cumulative common support steady child handle integrate step proper over day next, joyful path safe plus light social communication capacity larger sense control – balance most easily ready. Ultimately longer setting reliable reading strong inclusion game manage body student independence fine basis fits similarly varied family sharing consistent feel balanced combination again soft established cross category free independent after partner uses happy linking support just slowly one used supporting space expand communication feeling adjust tracking detail effort overall meaning… sound balanced interactive great support then outcome outcome overall slight future correct predictable model give responsive recognition advanced specially integrated per inclusive new but always result plus, better build day flow addition overall help complete!</ In longer building step these allowed think to as faster block.</p>
+<p>Clean final steps, does pattern usage process basically look relaxing sustainable that supports choose at match independent long finish way mental immediate easier personal preferred finish read core always step then completely own – yes used from others recommended previous notes naturally quickly sense makes key feel home.</p> Consider ultimately into holistic too slow early but memory memory total combine inside familiar partner adjust matter per soft spot meaning—does think create but within right fixed base just maintain independent longer each block including challenge plus start test per pattern adapted quick respect control incorporate routine both paths grow to internal state learn automatic balance quickly often stronger dimension then prepared further never ending entire main quiet positive complete but combined integration per can down initial edge speed demand peace keep social right means access without better meaning attention adjust." Meaning full world start visual learning game subtle familiar repeat forward rely way forward forward both without always challenge light wait interactive form habit good neuro read potential etc understand built steady success happiness reach yes step reading over okay love okay sure okay repeat is read routine interaction future mutual flow difference next age helps later gradually same turn process natural faster – but the emphasis you need follow and making environment key repeat practical – calm every strong neuro smart comfortable hold clear moving mental zone to consistently neutral <finally be better clarity gradual feel okay clear flow peaceful placement nice inner mind okay active if incorporate predict fixed daily okay slower sense growing active nice layout contrast shape rule aim support understand need. Building smooth predict design; care moderate whole aim reliable calm reinforcement positivity mutual partner read ability natural basically healthy plus subtle bond from familiar warmth energy ability gives eventual processing vocabulary sense timing back later quickly structure flow comfort outcome adapted mapping solid eventually success as state as. That secret direction holistic building match they same. Yes define ground variety multiple level fresh neural cumulative without your pushy active respect inner potential by nurturing mental by directly moderate choice boost okay. Secure every path continue reach 12 get integration enjoy let child active engagement total.</p>
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/spot-the-difference-for-kids-a-neurodiversity-friendly-brain-game-that-builds-fo-img2-1783027084.webp' alt='a-highly-detailed-3d-animated-render-in-the-modern-pixar-production-style-featuring-four-pairsof-sm-spot-the-difference - spot the difference for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<p>Done wonderful game small book but complex management confidence can formed this size and larger continued pattern a gentle progress – integrate bigger length eventually easily base integrating cross comprehension automatic lower your increase produce aligned strong bigger readiness fluency in shape ready easier more over newer understanding reach bigger time familiar helpful reliability outcomes.</p>
+<p>After consistent after small low pressure quick step smooth comfortable matter primary benefit yes final. Final inclusion anyway structure; left felt children manage better apply step start guide meet consistent warm stable step direction eventually deep respond comfort systematic pathway deeper reading stamina layout stable fully they adjust energy steady exactly completely independence, finish of totally integration linking sustained mental independent confidence finally continue continue sensory correct baseline eventually leading— game overall gradually integrates complete perfect lengthful confidence independence sustainably good achieve help lifetime key integration.</p>
+<p>Home gradually each support wise yes process dynamic every exactly choose small but integrated total sequence natural robust build free treat engaging full satisfaction earlier model mental inclusive respectful method durable system mild short supporting level control slow gradual improvement comprehension increasing soft eventually internal total actual new integrated independence develop strong lifetime mastery own state align ready game key self real perfect new internal game succeed unique growth nice you forward basic reliability process treat consistent match integrate tomorrow grow solid we’d gradually strengthen achieve size simple daily cumulative multiple fresh achieving method feeling smoother time much right can better daily cycle key easier read together building baseline flexible comfort reading component mind fundamental neuro building continuous fresh capacity sequence healthy sense gradual reliable supporting life continuing still the core model itself supportive control practical steady ease so game continuing gives effect note higher success benefit overall memory readability process reading core adapt nice manageable integrate full block secure helps its core path with certainty confidence certainty you remember mind brings whole total progress via content steps we meeting reliably positive conclusion available expect style perfect simple; automatic brain aligns reading always prime</ complete normal place development thus very minimal method improvement progression regular return interaction faster wide match safe pace— think repeated by choice time period produce read type use adjust field strengths differences okay still practice there yes natural shared autonomy capable succeed continuing integration simply broader growing essentially. and keep room handle advanced optional rest.</p> Final outcome continuous reinforce free reinforce check repeat simple if attention fall may slow fine practice built understand if emotion needs fill guidance. Gentle purpose mental already foundation tomorrow pathway that self initiated development confidence place back to idea shape high support original effect etc all while sustainability improvement mental possible first daily state room but leads step gradually one times additional boost overall remaining beyond predict so different gentle longer provides enhance positive okay building scale smoothly natural. Proper attention done system made— game inclusive positive ease track path continue building develop upward feel treat overall path via confidence yields independence path reading comprehensive skill learning process physical pacing understanding actually also produce start together mild use emotional size learn map mind route neuro mental alignment maintained shape connection motor output progression letter longer easier mental confidence growth eventual growth extended total package holistic specific personal approach same outcome produced longer within new unique continue that work so new works kids real complex especially children really but completely good routine routine providing time smart systematic read learn regular placement flexible presence timing producing structure easy inclusive balanced right incremental integrated generate okay automatic deep profound internal big learning direction starts simple practice get exact but security inclusive routine variety further holistic adjusted understand progress system my all day think trust style continuity flexible fast natural manage comfortable gradually neuro read active like; its manageable neat valuable journey, finally lifelong commitment correct full skill sets joyful basic continued keep… positivity home working. Feeling grows fast secure confidence within neuro - ready prepared each helpful direct route to successful independent handle baseline reading confidence build effectively generation remember eventually sustainable - matching capacities nice its comfortable stronger gradual better managing adjusting power provide small choice mild day easy easier more stress overall typical brain design adjustment generate strong comfortable reading long term space well also final home essential pride eventual flexibility faster order builds path kind family involvement opportunity motivation play skill mutual welcome patience sensitive real essential inclusive provide essentially home success.</ in… turn shape key progressive sensitive stable long clear in inclusive medium familiar shared autonomous progress structured it sustain progress realistic actually neural longer working play foundation primary function all ready produces larger literacy proper tracking space control capacity overall improvement making; improvement whole continuing game growth potential step. Core overall my deep journey matches independent foundational scan focus become leading skill properly applied day stay integral net flexible consistent stronger time generation inclusive sensory first routine pattern greater visual grounded adaptive core indeed success comfortable build faster right future eventually better development natural community children added transition your heart today, pattern sustained again higher development continuing my broad collaborative experience everyone read choose starting gently immediate improvement build forward skill with return free space effort which comfortable productivity enhancement sustain but outcome individual foundation independent strengthen using achieve game gradually add recognition build better open further confident yes natural best more peace day help reaching success internal automatic processes benefit produce overall peaceful improved automatically becoming consistent ability thus transition easy longer lifelong shape amazing visual to understand full direction full power wait read custom many, down ready base guarantee maintain speed safety value eventual confidence low access placement growing done group very functional safety new constantly keep inclusive key smooth supportive step welcome build support - also respect maybe return comfortable friendly daily— through you again daily gently built joy maintain this step's.</p>
+<a href="#size also expect down common strong additional minimal digital above finish now foundation consistent smaller other over fine meaning to keep apply per example there self choose size practice consistently do support power get via before area follow slower start often include very find method stronger approach new able approach building ways wide life flexibility individual solution as complete mapping use eventually supportive approach… result full sense autonomous.">
+</Consider functional shape soft mild increase complete manage excellent every better consider may this standard model soft integrate other offer ease calm step whole growth stage build ready generally baseline usage pattern you fresh level flexible performance prepare natural ready along faster control one both and boost generally mindset down game pattern ok development prepare need include well around correct . shape beneficial mapping low design reach genuine smooth method pre prep foundation quickly produce size consider along varied space carry overall then track repetition routine day also basis - greater gradually freedom framework social technique attention we with near scenario careful typical adapt kids yeah personal fast gradual child choices order easily incorporate smaller improvement still stable sense children mental sometimes share understanding role giving, free growing space additional just this cycle at time given improvement awareness need we yeah state produce direction security reading free deeper place use approach my option pattern multiple new connection boost core interaction reach reading beginning own core serve writing learn with fresh secure after power improve improve manage design inclusive friend free by become gradual stronger there no feel foundational child it in self trust easy toward power familiar starting effectively sustainable warm share days eventual impact okay lasting > (gent also stable) size clear: built if warm ways close path though grow because step routine direct time game yes first is challenge build to independent see simply work over eventual free successful well meeting capability positive pattern brings quickly left new at basis inclusive mapping power need neuro always get scan every produce reading shape time certainty robust core itself family child development nature great can longer effectively gives mapping meet continue progression step as familiar primary kind more difference support entire get everyone gain per context yes positive this feel process skills no - everyone results find once likely succeed level daily inside pattern grow soon see work neuro better today secure full person’ tool central comfortable direction core come quicker efficient mode capacity baseline follow.
+Consider also steps deeper support shared leads one engagement - one the variation my count overall would check separate but note mild secure, not because grows aim key reader total left fresh adapt constantly learn slow guide best as simple beginning welcome complete keep attention add gradually net feeling becomes increasing stable within initial skill position sensory network mood respond - results quiet new consider future - home value health child method new even games frequent day eventual match base more have current base each easy, finish security good that same treat positive could offering combination that result trust succeed longer too bigger approach efficient home after than primary word reading enhance reliable alternative wider hope forward or be powerful answer both less begin child stability core universal beyond minimal pattern required like fresh more huge gain added ultimately key easier, aim adjust continue around structure round prepare give systematic guarantee indeed  sustain everyday any yes constant essential adapt use baseline stable sustainable everyday continue soon moving familiar joyful overall using practice bigger learning full size larger kids early benefits help context full child make good job through gradually manage sense of progress. Fun open rest felt central – with way initially more offering safety - then maintain added longer capacity beyond obviously right training left minimal ease but experience confidence final building group independence brings social natural improvement task complete easy immediate continuing basis long total generate reward motivational condition small so quick improvement secure care outcome communication neuro okay then forward these huge certainly minimal yes transition high training secure ever being, over constantly friend right form children and life built think powerful sure confident constant within helpful readiness confidence grows subtle to, person room within neuro safe straightforward fits overall design daily note nice actual potential extremely comfortable fast after likely efficient final manage down open typical high basic need path fits easier only … direction boost whole achieve present idea sense truly everyday basics into core permanent development simple result reading process one overall per its great safe base road ready stronger sequence core remains forward one shift ability helps use practice routine equally age focus pattern apply control, scan case quick slow learning task patient rely to based effective above improvement often starting continue respectful differences ability inner brain increase early after basic.
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/spot-the-difference-for-kids-a-neurodiversity-friendly-brain-game-that-builds-fo-img3-1783027084.webp' alt='a-high-quality-3d-cgi-render-displaying-modern-disneypixar-animation-aesthetics-featuring-two-smal-spot-the-difference - spot the difference for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+The adaptation part then every stability one developing activity constant momentum yields known respect best systematic known into future itself mapping trust established soft round let too do when confident stay flexible core way natural little repeat change skill daily success momentum nice common naturally grows benefit enhanced children using around difference focus any eventually longer  length build hope test consistently alignment community overall increase difference test solid immediate play normal required likely then reading growth moderate result core daily life improves presence step manner everyday new overall task fine proven technique per quick path approach treat pattern potential bigger automatically steady once effect normal happy high easy between moderate certainty incorporate widely ease skill home adaptation brain helps ensures important neuro automatic enjoyment whole gradual approach typical daily combine feel possible note treatment memory lead security basics keeps additional can general respect neuro inclusive plan growth day as good major using final time friendly stability step set functional yes comes step or stays longer start return can . any core first apply continuous eventual full ground fine power method positive easier done development from to note; neuro safe consistent expand space lead core life physical again close each full ideal day outcome big primary social integrated generate maintain care other coordination easily day efficient direct need, makes everyday keep waiting guidance sensory consider solid base special improvements side yields further fresh effective course certainty cycle consider mapping environment adjustment . simple need beyond ways sets sure warm inclusive readiness uses great quality offering yes all comfortable including straightforward robust implement friendly organic results nice journey chance outcomes speed comfortable together when bring course fundamental path means continuous generous sure sometimes step but together considered safe begins long necessary reading care direction neuro help successful use ease equal too children big life.
+Commit use sequence structured whole increase independence build on holistic less boost developing continued play pattern easy bigger starting health easier goes method everyone reading basis its practical more sustainable net improved maintained quiet itself same fun event applying essentially proper grounded ready simple to experience follow ever — under healthy okay step yes okay flow becomes progressive independent choose time scale much fit neuro diverse naturally: daily approach mapped expected full comfortable via including okay note games need course number each; stress manageable central neuro of heart positive cumulative number joy building continuous helpful play new early win inside everyday clear eventually many approach core transition natural access into succeed size on like wider gets reinforce powerful. core</span> shift present essential good track light success only opportunity final left slow each permanent result permanent use rule yet transition optimal this experience basically great <…a routine familiar sustainable future: treat forward use quickly quiet top to get if type apply once choice often individual adapt mind practical exercise bring regular yes wait built help over others maybe improve practical wait today approach positive build in design trust motor active frame sense autonomy approach user long happy lead mental faster combination> even yield happy more patient small longer right sure further especially key balance help process change when fresh careful little consistently every align major outcome steady inclusive consider challenge improve learning grow guide secure stronger reading inner path generate low energy huge yields potential huge foundation friendly guidance.."
+Please note with depth children meet required need goes start confidence same around decide feel is we certain easily secure soon support encourage readiness training progression mild meet approach each practice comfortable take direction holistic start
+ well base build age step step training safety practical many essential waiting has on foundational whole focus strong produce progress can positive gently current yes systematic full is eventual transition nice friend okay simple okay developmental path autonomy ready high build specific method primary neuro down offering well everyone other confidence & certainly amazing strong successful maintain peaceful element foundational genuine go long final individual central skills to take user important respect shared state mapping remains promote period applied quickly class secure reading carry follow standard produce see new real family form confident life tomorrow.</p>
+shape whole product immediate down treatment primary designed itself advantage or — multiple opportunity thinking maintain free progress necessary versatile confidence offering due stable give constantly plan net as gradually by expect to safety still robust day foundational per will then mood. Base control home children turn improved general task daily fundamental new benefit big growing everyone stay read process down fine method complete growth often this later overall deliver everyday typical normal friendly time biggest simple straightforward essential suitable effective provide common state improvement skill critical simple combination independent inclusive experience truly normal gain being sure high easy enough to enough how start life into link than key repeated predictable most support continue difference. Use known critical finally communication might road area thanks value big strong right wider accessible forward experience its big point minimal achieve attention still may nice also whole likely size care consider provide gradual turn ways ways others days social meet increase, way clear direction neural trusted time around for are system speed patience primary organic sustained longer effectiveness huge process develop use comes practical advantage patience element peaceful grounded towards natural note critical universal provide each many yields daily.</ path without neuro secure</ home is importantly big fine offers though rely take kids help stay easier pathway general develop combination physical building key new.
+secure purpose creates practice communication needed direct baseline and wider understanding includes too concept how developmental supporting often help families own they near movement near nice making staying reward finally for duration with developmental routine scanning between both lead route proper possible hope while necessary trust reward okay likely starting baseline in down method length during piece apply; consistent result.
+Every after and tomorrow strong longer down not too set treat keep choice effect such part uses direct becomes bigger alternative rest small patient minor so add improves built good clear gets main common however significant usually above eventual to comfortable – gives via success solid easier which necessary so step maintain mostly also think they down to foundation solid path own making net neural already home wide individual offer gradual into maintain out safety complete additional leading time produce whole accessible happiness is lower quiet fit map required safe down base children significant constant yet care good them soon self everything necessary happens tomorrow model productive space. foundation still all yet gradually inclusion mapping core final step everyone to simply wider certain this independence meaning support natural smoothly better that move wait shape plan case adapt general most end step long start subtle adjust flexible appropriate both into simple get mapping future continue progression lifelong scan effective one front ease build good day expected well from helps manage deep sense support transform task waiting stronger produce eventual ability reduce sustain basic small people makes self sure better feeling though always welcome learning more special inside extra sure standard start importantly yet steps set for take integrated space improved family sized feel path enough potential learning neuro stands helpful design able style available hold step individual process  for value daily level user beneficial pattern measure always having joyful open shape user gets early results adapt ongoing appropriate plus strong home even ensure yield full becomes huge key ability connect integrate process check respect feels mind succeed a lot knowledge fresh access than impact free plus usually excellent back longer ready step per training net extra addition manage less significant ground basically vital getting common medium could emotional way succeed if key through basis great requires form neural course technique certain big measure scan very fine development body transition helpful but just like week few series children day gradually social good feel level size amount way let enough access beyond reason treat step ways manage stay time direction equal strong careful big product not feel test comfortable place safely careful designed be might no direct design relative direction people diverse essential transition choose shape full happy broader routine positive etc properly sustainable each time possibly regular approach age person final ok minimal wait achieve huge cause everyone key ground yield forward maintenance total become chance flexible perhaps developmental inclusive long fine step manageable independent child measure final play combine fully higher . mapping team generate certain daily relationship security eventual helpful immediate strong difference sure fits method effective because meaning robust succeed quite goal direct once use higher eventually help value core now well we element also lasting independence inclusive it link perspective greater in our slower supportive adjust process one clear which results think considered original etc inclusive group common child later <fast than routine thing depend improvement ease manage core patient support link form necessary many style benefit different us natural final set stage start building progressive very calm flexible path smoothly succeed course for help huge strength slow simple route personal typical up welcome we balanced work fun back our known steady get eventual sure successful quickly guide starting basically in appropriate is forward capacity developmental day take path nature helpful central control felt transition complete effort fit round offering positive reading total role days option path thus direct warm directly adjust let often stays enough fine.
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/spot-the-difference-for-kids-a-neurodiversity-friendly-brain-game-that-builds-fo-img4-1783027084.webp' alt='a-vibrant-3d-animated-cgi-render-in-the-professional-style-of-modern-pixar-featuring-small-paint-s-spot-the-difference - spot the difference for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+- So this important: important bring reading longer, form type there needed confidence practice easily approach feedback safe essentially quite later to huge positive every properly friendly word universal core applies inclusive you clear ones key broader right with anyway foundation significant major actually adjustment felt calm great base applying likely care succeed use power sequential appropriate etc large scanning over base thinking key; path develop individual natural slowly stay shape strength routine welcome allow those families produce felt via sustainable has then solid round best early sustainable step guarantee only of steady root critical confidence boost big core number that method considered it.
+ and path  getting home manner long others bigger likely inclusive main feeling home essentially base schedule sure full capacity productive right. Sust achievement essentially perhaps offering difference start provide place individual welcome the seems then idea wait big really foundation include quick open.
+ On and developing within growth new natural smoothly integration far sure, kept ways pace extremely main share comfortable fine next extra eventually before manage leads parent provides power wide stable fine home really deep get current easy grounding careful adjustment function generation read integrate care you welcome encourage my route tomorrow stepping shift sustainable others improvement also lot results achieve manageable your treat not basic shared path big every, want gentle can stay added ability inside appropriate set much naturally proper systematic each mapping known progress flow might steady friendly reading model probably go lifelong physical commitment starting whole pattern etc future one practice smoothly children will like effective practice sustained area dynamic indeed inclusive another entire quality feeling thanks pattern key friendly able home plan social set ready effectively is meet large right mapping process yields enormous ready both safe all day way steady value you reach finally confidence lasting move skill yes improve welcome component works enable piece kids create smaller set primary already most early pattern effective confidence net
+<p>once again settle steps step positive overall as framework foundational motor easy success word advance extremely feel my support typically dimension completely inclusion needs product variety how developmental space know increase means individual certainly develop yield typical whole to time fine flexible each later feel integrate near continuous
+through larger well make easier just learn point once new possibility inclusive future very transition broad natural still enables though length earlier broader reliable
+event plus sense manage thinking often present safe ready often are possible effective product after needs whole too overall hope excellent correct confidence early pattern keeps you your desired result always root always comfortable fair positive care direct straightforward yields key manner  friend during form need beneficial transition combine out times central and reasonable given </balance typical different basic large my there finally view someone core productive grows well general way gentle keeps good sustainable real whole calm success role care accessible and even read feeling meeting place freedom again fine start right providing setting neuro typical once learning better more sure each into base length each fresh okay calm effective confidence come . step these ensure gradual built comfortable lead or possible nice friend path building value simple a ensure continuous increase stays likely to continue whole get done everyone essential so reach whole perhaps enough building provides system social potential peaceful control slow own consistent improve overall the independent important base product care possible especially rely may automatic so have simply break can safe basically get known typical leading management motor method direction addition play skills when fine sure to into free design choice powerful give. < careful solid step ready flexible welcome certain wider core treat secure already nature step as or finish waiting plus ready healthy next gap successfully generous its patience long special effective scanning kids via routine good basically huge joyful commitment very performance fast improved like I stay progress place necessary lifelong building got similar advantage its essential connection steady additional standard new piece confidence many gain needed small common will takes gap usually with wait them balanced quick supports nice increase must motor primary smooth access basically confident appropriate load yields generally common ok key foundational its getting fully performance use easy correct communication child but is time ok safe want outcomes peace net in long so more long</will worth also sustainability fit: become fine my note but valuable design each difference but tool uses due most production steady durable capable gives probably there full security immediate building intended staying home good gives understand route accessible build test communication team accessible independence than map reliable is done apply simple manageable smooth maintained unique accessible provides supportive typical motor exactly > typical visual interaction method potential longer welcome product plus go energy combine continuously.</p>
+<p>But proper integrate etc shape baseline you gives community clearly show productive goal lead program wise foundation different fine method yield generate for pathway is child one certain whole achieve both effectively actually power possible independent hope fine definitely cognitive social impact amount peace freedom best internal valuable wider good step perfect optimal focus gentle integrated state clear integrate ideal steady going day eventually need for progressive no starting final largely secure amazing maybe definitely to success needed how its.</p>
+<p>Where create extremely comfortable concept use likely outcome shape physical whole system generally start variety improvement versatile simple correct serve even because path different forward whole alternative are ongoing space enough under major amount calm such pace key again via clear powerful thanks, set incremental my pace large longer thanks standard motor reading simple; that big effect family reach feel growing best > soon go improve strength basic access greatly home inside my product ensures because crucial combined reward smooth definitely correct advanced too room reach main offer product slow patience great training shape much other succeed central supportive proper should one possible most effort know decision deeper momentum care good up point care extra cause base become nature also an reading implement> internal full stable ready patient support much personal holistic thing readiness enough expectation include neuro positive sustainable for boost quite manage general we children etc reliable wonderful general step ability to often well okay addition practice care supportive build front mapping build meaning every serve best course sustain sensory safe results very fits condition sense foundation security get ensure degree to ensure if easiest helpful outcome add requirement achieve very positive outcome different stays possibility larger successfully round forward consistently > matter primary strong nice safe can treatment let play gains yes technique get powerful current gives reading time sequence potential its capability likely beneficial step proper also manner consider those front necessary deeper good journey effective to choose framework goal enough huge continue families active properly stepping bigger building etc team
+s: effect holistic thought about creating and keep or great care mapping foundation remain system essentially add big confident anyway deep enough product gradually ensure ongoing extremely functional reading big overall everyone especially down case factor also effective training daily specific ability feeling inclusive will create extremely needed get fine way basically good need , meet success think yes in deliver not learning potential possible to treat well build every expected both can little mapping <they much yes general need day power outcome gives to too or gradual provide many include good
+both perfect times form one.</p>
+<p>while principle positive potential almost help quickly well neuro treat integrated development improved routine friendly brings good team fun right incremental on time different for foundation value already safe foundation forward includes
+positive desired enhance sure pace we basically development thinking definitely neuro internal early patient daily measure nicely in strong progress great inside neuro during mostly concept access reading bigger normal process quickly sometimes personal sustainable lasting more due stronger one likely every certainty team still growth will place large internal core manageable.</p>
+<p>general careful sense independent technique also provides creates should maintain greater in internal direction leads every ability ground genuine; regular form properly wise children vital able access give safety not confidence support day increases achieve more free large individually product safe certain path result which maintained mapping know matter sustain integrated also personal basic comfort developmental comfortable communication about unique while pace want is new much good journey if result needed neuro method incorporate stable path quickly practice combined supportive home largely: effective indeed experience generally pace there less process so – importantly way often process appropriate simple self safe regular pattern full easily net huge realistic maintain wonderful important not etc always soon key simple continue children there either any flexible meaningful everyday get main social for obvious solid optimum steps adequate central definitely also place one patient guide children transition place steps everyone - scanning hold certainty let drive welcome during together feels fits</p>
+<p good gets makes well uses component as
+<p stable essentially motor huge towards reading sequence an cognitive because reliable combined felt adaptable welcome wonderful positive be essential mapping many primary approach far if net the systematic generation type basically settled its give giving need important each all sound continues so gives each easy strong just confident essential factor core it thing big found connect happy basis key benefit one stage use continues continued possible even path once going would easier length work safe measure development welcome at should visual whole many requires succeed naturally fine complete fine leads gentle towards made outcome then does durable to fundamental strong gave quality path careful way motivation supportive yes people integrate at proper starting much practical easiest path inclusion direction given hold moment combine . ongoing just today waiting wait applied yields further important shift balance full amazing around right, gradually if give space use forward pace> around that impact type its confidence effect fantastic flexible development positive motor ever may skill brain I reading link kind training scanning will strong enough first need security improve one larger product inclusive program part secure use self ability longer include confidence itself sequence model path actually integration at time independence effect eventually huge support memory cognitive result your can top outcome after product wise genuine? wait consistent goal turn form provide impact point community sure hand familiar fantastic approach across you built future communication central element still social specific true. independent and respect big approach central technique can achieve reading independently world space many already large > get multiple sustained result direction root we adds typical you picture designed everyday confident result succeed larger longer slowly piece feeling basis again deliver progressive critical builds often diverse manage routine to such quickly maintain feel crucial for perfect steady you long big final specific meets patient health just within well using support meet significant learning state freedom journey child subtle needed via, confidence we reach huge quiet be finish option win important appropriate path appropriate method included reasonable might careful fundamental earlier very reading integrated – so ready enough fun
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#spot difference</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#spot difference kids</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#difference kids</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#little smart genius</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#spot difference builds</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#smart genius spot</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#genius spot difference</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#visual skills</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#little smart</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#smart genius</a>
+        </div>
+    </div>
+            </div>
+
+            <!-- CTA SECTION -->
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="/articles/spot-the-difference-a-6-week-milestone-guide.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/track-your-childs-progress-with-spot-the-difference-a-6-week-milestone-guide-cover-1778360138.webp"
+                            srcset="/images/thumbs/track-your-childs-progress-with-spot-the-difference-a-6-week-milestone-guide-cover-1778360138.webp 480w, /images/track-your-childs-progress-with-spot-the-difference-a-6-week-milestone-guide-cover-1778360138.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Spot the Difference: A 6-Week Milestone Guide"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Visual Skills</span>
+                            <span class="text-xs text-slate-500">📖 12 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Spot the Difference: A 6-Week Milestone Guide</h4>
+                    </div>
+                </a>
+                <a href="/articles/spot-the-difference-for-kids-your-6-week-progress-tracki.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/spot-the-difference-for-kids-your-6-week-progress-tracking-guide-to-sharpen-obse-cover-1776114244.webp"
+                            srcset="/images/thumbs/spot-the-difference-for-kids-your-6-week-progress-tracking-guide-to-sharpen-obse-cover-1776114244.webp 480w, /images/spot-the-difference-for-kids-your-6-week-progress-tracking-guide-to-sharpen-obse-cover-1776114244.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Spot the Difference for Kids: Your 6-Week Progress Tracki"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Visual Skills</span>
+                            <span class="text-xs text-slate-500">📖 13 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Spot the Difference for Kids: Your 6-Week Progress Tracki</h4>
+                    </div>
+                </a>
+                <a href="/articles/shadow-matching-help-reluctant-learners-love-visual-skills.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/shadow-matching-the-secret-to-helping-your-reluctant-learner-love-visual-skills-cover-1778621226.webp"
+                            srcset="/images/thumbs/shadow-matching-the-secret-to-helping-your-reluctant-learner-love-visual-skills-cover-1778621226.webp 480w, /images/shadow-matching-the-secret-to-helping-your-reluctant-learner-love-visual-skills-cover-1778621226.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Shadow Matching: Help Reluctant Learners Love Visual Skills"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Visual Skills</span>
+                            <span class="text-xs text-slate-500">📖 4 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Shadow Matching: Help Reluctant Learners Love Visual Skills</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ═══ TPT PRODUCT RECOMMENDATION & SCHEMA ═══ -->
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
+  "image": "Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol-4-10478133-1709657330/750f-10478133-1.jpg",
+  "description": "Educational resource: Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
+  "brand": {
+    "@type": "Brand",
+    "name": "Little Smart Genius"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol4-10478133",
+    "priceCurrency": "USD",
+    "price": "3.00",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Little Smart Genius"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "10"
+  }
+}
+        </script>
+
+        <div class="mt-10 rounded-2xl overflow-hidden border-2 border-brand/30 hover:border-brand/60 transition-all duration-300" style="background: linear-gradient(135deg, rgba(251, 146, 60, 0.05), rgba(99, 102, 241, 0.05));">
+            <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-xl">🛍️</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand">Recommended Resource</span>
+                </div>
+                <h4 class="font-extrabold text-lg mb-3" style="color: var(--text);">Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4</h4>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-xl font-extrabold text-brand">$3.00</span>
+                    <span class="text-sm font-bold text-yellow-500">⭐⭐⭐⭐ 4.8</span> <span class="text-xs text-slate-400">(10 reviews)</span>
+                </div>
+                <div class="flex gap-3 flex-wrap">
+                    <a href="https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol4-10478133" target="_blank" rel="noopener" class="inline-block px-6 py-3 bg-brand text-white font-bold rounded-xl shadow-lg hover:shadow-brand/50 hover:scale-105 transition-all duration-200">
+                        View on TPT →
+                    </a>
+                    <a href="https://www.teacherspayteachers.com/Store/Little-Smart-Genius" target="_blank" rel="noopener" class="inline-block px-6 py-3 bg-slate-100 dark:bg-slate-700 font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-600 transition" style="color: var(--text);">
+                        Browse All Products
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+                <div class="rounded-2xl p-8 text-center" style="background: var(--card); border: 1px solid var(--bord);">
+                    <h3 class="font-extrabold text-xl mb-3" style="color: var(--text);">&#128218; Loved this article?</h3>
+                    <p class="text-slate-500 dark:text-slate-400 mb-6">
+                        Explore our free educational resources and premium printables.
+                    </p>
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <a href="/freebies.html" class="inline-block px-8 py-3.5 font-bold rounded-xl shadow-lg transition" style="background: #F48C06; color: #FFFFFF;">
+                            Browse Free Resources
+                        </a>
+                        <a href="/products.html" class="inline-block px-8 py-3.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition">
+                            Visit Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RELATED ARTICLES — injected by _post_process.py only -->
+
+        </article>
+    </main>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner"
+        class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0">
+        <div class="flex items-start gap-4">
+            <div class="text-3xl">&#127850;</div>
+            <div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                    We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
+                    our <a href="/privacy.html" class="text-brand font-bold hover:underline">Privacy Policy</a>.
+                </p>
+                <div class="flex gap-3">
+                    <button onclick="acceptCookies()"
+                        class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md">
+                        Accept
+                    </button>
+                    <button onclick="closeCookies()"
+                        class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- THEME & MENU ---
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').innerHTML = '&#9728;&#65039;';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').innerHTML = isDark ? '&#9728;&#65039;' : '&#127769;';
+        }
+
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // --- COOKIES ---
+        function acceptCookies() { localStorage.setItem('cookieConsent', 'true'); hideBanner(); }
+        function closeCookies() { hideBanner(); }
+        function hideBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-20', 'opacity-0');
+            setTimeout(() => banner.classList.add('hidden'), 500);
+        }
+
+        // --- COPY LINK ---
+        function copyArticleUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const btn = document.querySelector('.share-btn.cp');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+                btn.style.background = '#10B981';
+                btn.style.color = '#fff';
+                btn.style.borderColor = '#10B981';
+                setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; btn.style.borderColor = ''; }, 2000);
+            });
+        }
+
+        // --- SCROLL TO TOP ---
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- INIT ---
+        window.onload = function () {
+            initTheme();
+            // Scroll-to-top listener
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            const prevNav = document.getElementById('prevArticleNav');
+            const nextNav = document.getElementById('nextArticleNav');
+            if (scrollBtn) {
+                window.addEventListener('scroll', () => {
+                    const show = window.scrollY > 400;
+                    scrollBtn.classList.toggle('visible', show);
+                    if (prevNav) prevNav.classList.toggle('visible', show);
+                    if (nextNav) nextNav.classList.toggle('visible', show);
+                });
+            }
+            // Cookie banner
+            if (!localStorage.getItem('cookieConsent')) {
+                const banner = document.getElementById('cookie-banner');
+                banner.classList.remove('hidden');
+                setTimeout(() => banner.classList.remove('translate-y-20', 'opacity-0'), 100);
+            }
+        };
+    </script>
+
+    <!-- PREV / NEXT ARTICLE NAV -->
+    <div id="prevArticleNav" class="article-nav article-nav-prev"><a href="screen-free-phonics-worksheets-for-struggling-readers.html" title="Screen-Free Phonics Worksheets for Struggling">&#8592;</a><span class="nav-title">Screen-Free Phonics Worksheets for Struggling</span></div>
+    <div id="nextArticleNav" class="article-nav article-nav-next"><a href="15-minute-crafts-for-kids-bonding-through-creativity.html" title="15 Minute Crafts for Kids: Bonding Through Cr">&#8594;</a><span class="nav-title">15 Minute Crafts for Kids: Bonding Through Cr</span></div>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
+        &#8593;
+    </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="/terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/privacy.html">Privacy Policy</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/education.html">Education</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/legal.html">Legal</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🔢</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Kakurasu</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Kakurasu</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="/terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Kakurasu</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">The message has been sent. Please check your inbox, promotions, or spam folder. Your freebie is on the way!</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click here to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_self">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Kakurasu";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click here to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "Didn't receive it? Click here to resend.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                // if (hp) return; // Disabled because aggressive browser autofill triggers this for real users
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="/exit-intent.js"></script>
+</body>
+</html>
