@@ -494,7 +494,11 @@
     "Teaching critical thinking skills to kids through puzzles",
     "Planning a learning themed playdate with printable games",
     "How to build a low cost learning toolkit at home for kids",
-    "Coloring bookmarks for kids to color and use in books"
+    "Coloring bookmarks for kids to color and use in books",
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Printable story sequencing cards for kids to retell stories",
+    "Dot marker coloring pages for toddlers and preschoolers",
+    "Crafts for kids that take 15 minutes or less"
   ],
   "daily_log": [
     {
@@ -41756,6 +41760,26 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Animals Vol.D2",
       "date": "2026-07-02T16:09:49.826761"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot to dot worksheets for kids to build visual tracking",
+      "date": "2026-07-02T17:10:31.482968"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable story sequencing cards for kids to retell stories",
+      "date": "2026-07-02T17:10:31.517185"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot marker coloring pages for toddlers and preschoolers",
+      "date": "2026-07-02T17:10:31.551268"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Crafts for kids that take 15 minutes or less",
+      "date": "2026-07-02T17:15:49.223025"
     }
   ],
   "product": [
