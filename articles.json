@@ -1,7 +1,32 @@
 {
-  "generated_at": "2026-07-03T16:03:11.940259",
-  "total_articles": 645,
+  "generated_at": "2026-07-03T21:24:34.393518",
+  "total_articles": 646,
   "articles": [
+    {
+      "title": "How Hitori Puzzles Helped Little Leo Conquer Math Anxiety",
+      "slug": "how-hitori-puzzles-helped-little-leo-conquer-math-anxiety",
+      "date": "July 03, 2026",
+      "iso_date": "2026-07-03T21:24:33.849270",
+      "category": "Critical Thinking",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Discover how one simple grid game turned math dread into delight for a 7-year-old. Free printable Hitori download included!",
+      "image": "images/how-hitori-puzzles-helped-little-leo-conquer-math-anxiety-a-parents-story-cover-1783113501.webp",
+      "reading_time": 6,
+      "url": "articles/how-hitori-puzzles-helped-little-leo-conquer-math-anxiety.html",
+      "keywords": [
+        "hitori kids",
+        "little smart genius",
+        "critical thinking",
+        "little smart",
+        "smart genius",
+        "hitori puzzles",
+        "aha moment",
+        "math logic"
+      ],
+      "word_count": 1377,
+      "slot": "freebie"
+    },
     {
       "title": "How Word Search Alternatives Boost Vocabulary Skills",
       "slug": "how-word-search-alternatives-boost-vocabulary-skills",

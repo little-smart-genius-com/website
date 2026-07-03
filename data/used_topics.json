@@ -44285,6 +44285,11 @@
       "slot": "keyword",
       "topic": "Crafts for kids that take 15 minutes or less",
       "date": "2026-07-03T16:57:33.078238"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Hitori",
+      "date": "2026-07-03T21:24:34.155239"
     }
   ],
   "product": [
@@ -44346,6 +44351,7 @@
     "Shikaku",
     "Maze for Kids",
     "One Hundred Puzzle",
-    "Spot the Difference"
+    "Spot the Difference",
+    "Hitori"
   ]
 }
