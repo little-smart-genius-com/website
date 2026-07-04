@@ -48788,6 +48788,11 @@
       "slot": "keyword",
       "topic": "Problem solving worksheets for kids learning time management",
       "date": "2026-07-04T16:35:35.519722"
+    },
+    {
+      "slot": "freebie",
+      "topic": "CalcuDoku",
+      "date": "2026-07-04T21:10:17.314252"
     }
   ],
   "product": [
@@ -48852,6 +48857,7 @@
     "Maze for Kids",
     "One Hundred Puzzle",
     "Spot the Difference",
-    "Hitori"
+    "Hitori",
+    "CalcuDoku"
   ]
 }
