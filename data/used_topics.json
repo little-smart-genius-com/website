@@ -495,7 +495,9 @@
     "Teaching critical thinking skills to kids through puzzles",
     "Planning a learning themed playdate with printable games",
     "How to build a low cost learning toolkit at home for kids",
-    "Dot to dot worksheets for kids to build visual tracking"
+    "Dot to dot worksheets for kids to build visual tracking",
+    "Dot marker coloring pages for toddlers and preschoolers",
+    "Crafts for kids that take 15 minutes or less"
   ],
   "daily_log": [
     {
@@ -49267,6 +49269,16 @@
       "slot": "keyword",
       "topic": "Dot to dot worksheets for kids to build visual tracking",
       "date": "2026-07-04T22:33:27.953905"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Dot marker coloring pages for toddlers and preschoolers",
+      "date": "2026-07-05T07:35:33.052449"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Crafts for kids that take 15 minutes or less",
+      "date": "2026-07-05T07:40:04.613279"
     }
   ],
   "product": [
