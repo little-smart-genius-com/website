@@ -54284,6 +54284,11 @@
       "slot": "keyword",
       "topic": "Dot to dot worksheets for kids to build visual tracking",
       "date": "2026-07-06T18:01:17.371885"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Shadow Matching",
+      "date": "2026-07-06T21:45:35.865904"
     }
   ],
   "product": [
@@ -54354,6 +54359,7 @@
     "Spot the Difference",
     "Hitori",
     "CalcuDoku",
-    "Cryptogram"
+    "Cryptogram",
+    "Shadow Matching"
   ]
 }
