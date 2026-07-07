@@ -58889,6 +58889,11 @@
       "slot": "keyword",
       "topic": "Coloring pages for kids about healthy foods and nutrition",
       "date": "2026-07-07T17:43:23.103322"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Word Scramble",
+      "date": "2026-07-07T21:44:06.068315"
     }
   ],
   "product": [
@@ -58962,6 +58967,7 @@
     "Hitori",
     "CalcuDoku",
     "Cryptogram",
-    "Shadow Matching"
+    "Shadow Matching",
+    "Word Scramble"
   ]
 }
