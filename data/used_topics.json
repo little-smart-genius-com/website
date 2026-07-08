@@ -63896,6 +63896,11 @@
       "slot": "keyword",
       "topic": "Tracing shapes worksheets for kids learning to draw",
       "date": "2026-07-08T17:01:52.733002"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Tic Tac Logic",
+      "date": "2026-07-08T21:21:29.539541"
     }
   ],
   "product": [
@@ -63972,6 +63977,7 @@
     "CalcuDoku",
     "Cryptogram",
     "Shadow Matching",
-    "Word Scramble"
+    "Word Scramble",
+    "Tic Tac Logic"
   ]
 }
