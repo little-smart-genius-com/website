@@ -68903,6 +68903,11 @@
       "slot": "keyword",
       "topic": "Printable logic puzzles to build attention to detail",
       "date": "2026-07-09T17:32:48.879369"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Spot Correct Spelling",
+      "date": "2026-07-09T21:31:35.345353"
     }
   ],
   "product": [
@@ -68982,6 +68987,7 @@
     "Cryptogram",
     "Shadow Matching",
     "Word Scramble",
-    "Tic Tac Logic"
+    "Tic Tac Logic",
+    "Spot Correct Spelling"
   ]
 }
