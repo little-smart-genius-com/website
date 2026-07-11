@@ -61,6 +61,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://littlesmartgenius.com/articles/how-our-free-activity-book-helped-mia-beat-boredom.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://littlesmartgenius.com/articles/hidden-picture-puzzles-for-kids-printable-gift-guide.html</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -5012,6 +5018,12 @@
   </url>
   <url>
     <loc>https://littlesmartgenius.com/blog/problem-solving-5.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://littlesmartgenius.com/blog/problem-solving-6.html</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
