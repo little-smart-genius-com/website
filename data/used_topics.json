@@ -83930,6 +83930,11 @@
       "slot": "keyword",
       "topic": "Printable visual perception workbook for kids ages 4-8",
       "date": "2026-07-12T16:35:21.893543"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Logic Puzzle (Adult)",
+      "date": "2026-07-12T21:06:30.573171"
     }
   ],
   "product": [
@@ -84018,6 +84023,7 @@
     "Tic Tac Logic",
     "Spot Correct Spelling",
     "Joke Book for Kids",
-    "Activity Book"
+    "Activity Book",
+    "Logic Puzzle (Adult)"
   ]
 }
