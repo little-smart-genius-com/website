@@ -93950,6 +93950,11 @@
       "slot": "keyword",
       "topic": "Math worksheets bundle for homeschool parents printable",
       "date": "2026-07-14T16:52:13.122882"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Hitori",
+      "date": "2026-07-14T21:12:26.048616"
     }
   ],
   "product": [
@@ -94002,6 +94007,7 @@
     "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.10"
   ],
   "freebie": [
-    "CalcuDoku"
+    "CalcuDoku",
+    "Hitori"
   ]
 }
