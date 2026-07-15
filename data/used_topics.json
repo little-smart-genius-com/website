@@ -98957,6 +98957,11 @@
       "slot": "keyword",
       "topic": "Spelling practice worksheets for 2nd graders pdf",
       "date": "2026-07-15T16:54:16.664311"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Sudoku",
+      "date": "2026-07-15T21:10:33.529149"
     }
   ],
   "product": [
@@ -99012,6 +99017,7 @@
   ],
   "freebie": [
     "CalcuDoku",
-    "Hitori"
+    "Hitori",
+    "Sudoku"
   ]
 }
