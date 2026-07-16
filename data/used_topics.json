@@ -103964,6 +103964,11 @@
       "slot": "keyword",
       "topic": "Logic puzzles for kids learning English as a second language",
       "date": "2026-07-16T16:53:23.189376"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Joke Book for Kids",
+      "date": "2026-07-16T21:13:40.548732"
     }
   ],
   "product": [
@@ -104022,6 +104027,7 @@
   "freebie": [
     "CalcuDoku",
     "Hitori",
-    "Sudoku"
+    "Sudoku",
+    "Joke Book for Kids"
   ]
 }
