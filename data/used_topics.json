@@ -108965,6 +108965,11 @@
       "slot": "keyword",
       "topic": "Holiday crafts for kids for Christmas and Halloween",
       "date": "2026-07-17T16:50:44.954012"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Word Pack",
+      "date": "2026-07-17T21:08:49.060770"
     }
   ],
   "product": [
@@ -109026,6 +109031,7 @@
     "CalcuDoku",
     "Hitori",
     "Sudoku",
-    "Joke Book for Kids"
+    "Joke Book for Kids",
+    "Word Pack"
   ]
 }
