@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-07-19T06:43:09.120168",
-  "total_articles": 734,
+  "generated_at": "2026-07-19T10:03:49.025691",
+  "total_articles": 735,
   "articles": [
+    {
+      "title": "Coloring Bookmarks for Kids: A Day in the Life",
+      "slug": "coloring-bookmarks-for-kids-a-day-in-the-life",
+      "date": "July 19, 2026",
+      "iso_date": "2026-07-19T10:03:47.425004",
+      "category": "Coloring Book",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Discover how coloring bookmarks for kids boosts creativity & motor skills. Follow a family's morning-to-evening routine. Get free printables!",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 11,
+      "url": "articles/coloring-bookmarks-for-kids-a-day-in-the-life.html",
+      "keywords": [
+        "coloring bookmarks kids",
+        "coloring bookmarks",
+        "bookmarks kids",
+        "bookmarks kids color",
+        "kids color books",
+        "kids color",
+        "color books",
+        "fine motor skills",
+        "little smart genius",
+        "color books change"
+      ],
+      "word_count": 2233,
+      "slot": "keyword"
+    },
     {
       "title": "Logic puzzles for kids ESL: 6 fun challenges",
       "slug": "logic-puzzles-for-kids-esl-6-fun-challenges",
