@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain-Boosting Fun on the Go: Hitori Puzzles for Kids | Little Smart Genius</title>
+    <meta name="description" content="Discover how Hitori puzzles boost brain power anywhere. Perfect for travel, car rides, and waiting rooms. Teacher-approved tips for ages 4-12.">
+
+    <link rel="canonical" href="https://littlesmartgenius.com/articles/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.html">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Brain-Boosting Fun on the Go: Hitori Puzzles for Kids">
+    <meta property="og:description" content="Discover how Hitori puzzles boost brain power anywhere. Perfect for travel, car rides, and waiting rooms. Teacher-approved tips for ages 4-12.">
+    <meta property="og:image" content="https://littlesmartgenius.com/images/og/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.jpg">
+    <meta property="og:url" content="https://littlesmartgenius.com/articles/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-05-10T21:01:34.600588">
+    <meta property="article:author" content="Sarah Mitchell">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brain-Boosting Fun on the Go: Hitori Puzzles for Kids">
+    <meta name="twitter:description" content="Discover how Hitori puzzles boost brain power anywhere. Perfect for travel, car rides, and waiting rooms. Teacher-approved tips for ages 4-12.">
+    <meta name="twitter:image" content="https://littlesmartgenius.com/images/og/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.jpg">
+
+    <!-- Tailwind (Production Build) -->
+    <link rel="stylesheet" href="/styles/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet"></noscript>
+
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --text: #1E293B;
+            --card: #FFFFFF;
+            --head: rgba(255, 255, 255, 0.95);
+            --bord: #E2E8F0;
+        }
+
+        .dark {
+            --bg: #0F172A;
+            --text: #F8FAFC;
+            --card: #1E293B;
+            --head: rgba(15, 23, 42, 0.95);
+            --bord: #334155;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            transition: 0.3s;
+        }
+
+        /* HEADER - IDENTIQUE A INDEX.HTML (80px) */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--head);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--bord);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            transition: 0.3s;
+        }
+
+        /* LOGO - STYLE IDENTIQUE */
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #F48C06;
+            object-fit: cover;
+        }
+
+        /* NAV LINK - STYLE IDENTIQUE */
+        .nav-link {
+            font-weight: 700;
+            color: #64748B;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #F48C06;
+        }
+
+        /* MOBILE MENU - TOP 80px */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-bottom: 1px solid var(--bord);
+            flex-direction: column;
+            padding: 20px;
+            z-index: 49;
+        }
+
+        /* HERO TITLE GRADIENT */
+        .hero-title {
+            background: linear-gradient(135deg, #1E293B 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .hero-title {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F48C06 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ARTICLE CONTENT STYLES — airy, elegant, uniform */
+        .article-content {
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            font-size: 1.125rem;
+            line-height: 1.9;
+            color: var(--text);
+            word-spacing: 0.02em;
+            letter-spacing: 0.01em;
+        }
+        .article-content h2 { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 900; margin-top: 3rem; margin-bottom: 1.25rem; color: var(--text); border-left: 4px solid #F48C06; padding-left: 1rem; line-height: 1.3; letter-spacing: -0.01em; }
+        .article-content h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; margin-top: 2.25rem; margin-bottom: 1rem; color: var(--text); line-height: 1.4; letter-spacing: 0; }
+        .article-content p { margin-top: 0; margin-bottom: 1.75rem; }
+        .article-content ul { list-style-type: disc; padding-left: 2rem; margin-bottom: 1.75rem; }
+        .article-content ol { padding-left: 2rem; margin-bottom: 1.75rem; }
+        .article-content li { margin-bottom: 0.6rem; }
+        .article-content strong { color: #F48C06; font-weight: 700; }
+        .article-content a { color: #F48C06; text-decoration: underline; text-underline-offset: 3px; transition: 0.2s; }
+        .article-content a:hover { color: #E07B00; }
+        .article-content a.internal-link { text-decoration-style: dotted; }
+        .article-content a.internal-link:hover { text-decoration-style: solid; }
+        .article-content img { border-radius: 12px; margin: 2.5rem 0; width: 100%; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15); }
+        .article-content figure { margin: 2.5rem 0; }
+        .article-content figure img { margin: 0; }
+        .article-content figcaption { text-align: center; font-size: 0.875rem; color: #94A3B8; margin-top: 0.75rem; font-style: italic; }
+        .article-content blockquote { border-left: 4px solid #F48C06; background: rgba(244, 140, 6, 0.08); padding: 1.5rem 1.75rem; margin: 2rem 0; border-radius: 0 12px 12px 0; font-style: italic; }
+
+        .reading-time { display: inline-block; padding: 0.5rem 1rem; background: rgba(244, 140, 6, 0.1); border-radius: 20px; font-size: 0.875rem; font-weight: 600; color: #F48C06; }
+
+        /* SCROLL-TO-TOP BUTTON */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 55;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F48C06, #E07B00);
+            color: #FFF;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(244, 140, 6, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #scrollTopBtn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #scrollTopBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(244, 140, 6, 0.5);
+        }
+
+        /* PREV / NEXT ARTICLE NAV */
+        .article-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .article-nav.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .article-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--card);
+            border: 2px solid var(--bord);
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .article-nav a:hover {
+            background: #F48C06;
+            color: #fff;
+            border-color: #F48C06;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(244, 140, 6, 0.4);
+        }
+        .article-nav-prev { left: 15px; }
+        .article-nav-next { right: 15px; }
+        .article-nav .nav-title {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--card);
+            border: 1px solid var(--bord);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        .article-nav-prev .nav-title { left: 56px; }
+        .article-nav-next .nav-title { right: 56px; }
+        .article-nav a:hover + .nav-title,
+        .article-nav a:hover ~ .nav-title { opacity: 1; }
+        @media (max-width: 1280px) {
+            .article-nav .nav-title { display: none; }
+        }
+        @media (max-width: 768px) {
+            .article-nav a { width: 36px; height: 36px; font-size: 14px; }
+            .article-nav-prev { left: 8px; }
+            .article-nav-next { right: 8px; }
+        }
+
+        /* SHARE BUTTONS */
+        .share-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .share-bar span {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--bord);
+            background: var(--card);
+        }
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .share-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .share-btn.fb { color: #1877F2; }
+        .share-btn.fb:hover { background: #1877F2; color: #fff; border-color: #1877F2; }
+        .share-btn.ig { color: #E4405F; }
+        .share-btn.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; border-color: #E4405F; }
+        .share-btn.tw { color: #000; } .dark .share-btn.tw { color: #fff; }
+        .share-btn.tw:hover { background: #000; color: #fff; border-color: #000; }
+        .share-btn.pi { color: #E60023; }
+        .share-btn.pi:hover { background: #E60023; color: #fff; border-color: #E60023; }
+        .share-btn.wa { color: #25D366; }
+        .share-btn.wa:hover { background: #25D366; color: #fff; border-color: #25D366; }
+        .share-btn.cp { color: #64748B; }
+        .share-btn.cp:hover { background: #64748B; color: #fff; border-color: #64748B; }
+
+        /* SOCIAL FOOTER ICONS */
+        .social-footer-bar { display: flex; justify-content: center; gap: 16px; padding: 5px 0 5px; }
+        .social-footer-bar a {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(244, 140, 6, 0.1); color: #F48C06;
+            transition: all 0.3s; text-decoration: none;
+        }
+        .social-footer-bar a:hover { background: #F48C06; color: #fff; transform: translateY(-2px); }
+        .social-footer-bar svg { width: 20px; height: 20px; }
+
+        /* SITE FOOTER TEXT */
+        .site-footer {
+            text-align: center;
+            padding: 5px 0 5px;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .site-footer a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .site-footer a:hover { color: #F48C06; }
+
+        @media (max-width: 1024px) {
+            .top-header {
+                padding: 0 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .top-header {
+                padding: 0 40px;
+            }
+        }
+    </style>
+    <!-- Google Analytics GA4 (deferred for performance) -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1S8G205JX2';
+                s.async = true;
+                document.head.appendChild(s);
+                s.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-1S8G205JX2');
+                };
+            }, 2000);
+        });
+    </script>
+
+    <meta name="citation_title" content="Brain-Boosting Fun on the Go: Hitori Puzzles for Kids">
+    <meta name="citation_author" content="Sarah Mitchell">
+    <meta name="citation_date" content="2026-05-10">
+    <meta name="citation_online_date" content="2026-05-10">
+    <meta name="citation_publisher" content="Little Smart Genius">
+    <meta name="citation_public_url" content="https://littlesmartgenius.com/articles/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://littlesmartgenius.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://littlesmartgenius.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Critical Thinking",
+      "item": "https://littlesmartgenius.com/blog/critical-thinking.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Brain-Boosting Fun on the Go: Hitori Puzzles for Kids",
+      "item": "https://littlesmartgenius.com/articles/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.html"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Brain-Boosting Fun on the Go: Hitori Puzzles for Kids", "author": {"@type": "Person", "name": "Sarah Mitchell"}, "publisher": {"@type": "Organization", "name": "Little Smart Genius", "url": "https://littlesmartgenius.com", "logo": {"@type": "ImageObject", "url": "https://littlesmartgenius.com/images/logo.png"}}, "datePublished": "2026-05-10T21:01:34.600588", "dateModified": "2026-05-10T21:01:34.600588", "description": "Discover how Hitori puzzles boost brain power anywhere. Perfect for travel, car rides, and waiting rooms. Teacher-approved tips for ages 4-12.", "image": "https://littlesmartgenius.com/images/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids-cover-1778446655.webp", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://littlesmartgenius.com/articles/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.html"}, "inLanguage": "en-US"}</script>
+</head>
+<body>
+
+    <header class="top-header px-5 md:px-10">
+        <a href="/" class="flex items-center gap-3 no-underline">
+            <img src="/images/logo.webp"
+                class="logo-img" alt="Logo">
+            <span class="text-lg md:text-xl font-extrabold block" style="color:var(--text)">Little Smart Genius<span
+                    class="text-brand">.</span></span>
+        </a>
+
+        <nav class="hidden lg:flex gap-8">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/products.html" class="nav-link">Store</a>
+            <a href="/freebies.html" class="nav-link">Freebies</a>
+            <a href="/blog/" class="nav-link active">Blog</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center gap-2 mr-3">
+                <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Instagram" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://www.pinterest.com/littlesmartgenius_com/" target="_blank" rel="noopener" title="Pinterest" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+                </a>
+                <a href="https://medium.com/@littlesmartgenius-com" target="_blank" rel="noopener" title="Medium" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                </a>
+            </div>
+            <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+                class="hidden lg:block px-5 py-2.5 bg-slate-900 text-white font-bold rounded-full text-xs hover:bg-brand transition">TpT
+                Store</a>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-slate-100 dark:bg-slate-700 transition"
+                onclick="toggleTheme()"><span id="theme-icon">&#127769;</span></div>
+            <button class="block lg:hidden text-2xl" style="color:var(--text)" onclick="toggleMobileMenu()">&#9776;</button>
+        </div>
+    </header>
+
+    <div id="mobile-menu">
+        <a href="/" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Home</a>
+        <a href="/products.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Store</a>
+        <a href="/freebies.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">Freebies</a>
+        <a href="/blog/" class="py-3 border-b border-gray-200 font-bold text-brand">Blog</a>
+        <a href="/about.html" class="py-3 border-b border-gray-200 font-bold" style="color:var(--text)">About</a>
+        <a href="/contact.html" class="py-3 font-bold" style="color:var(--text)">Contact</a>
+        <a href="https://www.teacherspayteachers.com/store/little-smart-genius" target="_blank"
+            class="py-3 mt-2 text-center bg-slate-900 text-white font-bold rounded-lg hover:bg-brand transition">Visit
+            TpT Store</a>
+    </div>
+
+    <main class="pt-[100px] pb-10 px-5 md:px-10">
+
+        <div class="max-w-4xl mx-auto mb-8">
+            
+        <nav aria-label="Breadcrumb" class="overflow-x-auto whitespace-nowrap pb-2">
+            <ol class="flex items-center space-x-2 text-xs md:text-sm font-bold text-slate-500">
+                <li><a href="/" class="hover:text-brand transition flex items-center gap-1"><svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>Home</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="/blog/" class="hover:text-brand transition">Blog</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li><a href="/blog/critical-thinking.html" class="hover:text-brand transition">Critical Thinking</a></li>
+
+                <li><span class="text-slate-300">/</span></li>
+                <li class="text-slate-400 truncate max-w-[200px] md:max-w-[400px]" aria-current="page" title="Brain-Boosting Fun on the Go: Hitori Puzzles for Kids">Brain-Boosting Fun on the Go: Hitori Puzzles for Kids</li>
+            </ol>
+        </nav>
+
+        </div>
+
+        <article class="max-w-4xl mx-auto">
+
+            <div class="text-center mb-10">
+                <div class="mb-4">
+                    <span class="reading-time">&#128214; 7 min read</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight hero-title">
+                    Brain-Boosting Fun on the Go: Hitori Puzzles for Kids
+                </h1>
+                <div class="flex flex-wrap items-center justify-center gap-3 text-sm font-bold mt-4" style="color: #64748B;">
+                    <a href="/authors/sarah-mitchell.html" class="hover:text-brand transition flex items-center gap-1.5" style="color: inherit; text-decoration: none;">
+                        <svg class="w-4 h-4 text-[#F48C06]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Sarah Mitchell
+                    </a>
+                    <span class="hidden sm:inline">&bull;</span>
+                    <span class="flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md text-xs border border-emerald-200 shadow-sm" title="Verified Educational Resource | Fact Checked">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        Fact-Checked Education
+                    </span>
+                    <span class="hidden sm:inline">&bull;</span>
+                    <time datetime="2026-05-10T21:01:34.600588">May 10, 2026 at 09:01 PM</time>
+                    <span>&bull;</span><span>Critical Thinking</span>
+                </div>
+
+                <!-- SHARE BUTTONS -->
+                <div class="share-bar">
+                    <span>Share</span>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://littlesmartgenius.com/articles/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.html" target="_blank" rel="noopener" class="share-btn fb" title="Share on Facebook">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/littlesmartgenius_com/" target="_blank" rel="noopener" class="share-btn ig" title="Share on Instagram">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=https://littlesmartgenius.com/articles/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.html&text=Brain-Boosting Fun on the Go: Hitori Puzzles for Kids" target="_blank" rel="noopener" class="share-btn tw" title="Share on X">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://pinterest.com/pin/create/button/?url=https://littlesmartgenius.com/articles/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.html&description=Brain-Boosting Fun on the Go: Hitori Puzzles for Kids" target="_blank" rel="noopener" class="share-btn pi" title="Pin on Pinterest">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?text=Brain-Boosting Fun on the Go: Hitori Puzzles for Kids%20https://littlesmartgenius.com/articles/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids.html" target="_blank" rel="noopener" class="share-btn wa" title="Share on WhatsApp">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <button onclick="copyArticleUrl()" class="share-btn cp" title="Copy link">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden shadow-2xl mb-12 border" style="border-color: var(--bord); aspect-ratio: 1200/630;">
+                <img
+                    src="/images/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids-cover-1778446655.webp"
+                    srcset="/images/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids-cover-1778446655-thumb.webp 480w, /images/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids-cover-1778446655.webp 1200w"
+                    sizes="(max-width: 768px) 480px, 1200px"
+                    alt="Brain-Boosting Fun on the Go: Hitori Puzzles for Kids"
+                    class="w-full h-auto object-cover"
+                    fetchpriority="high"
+                    width="1200" height="630"
+                    style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"
+                >
+            </div>
+
+            <div class="article-content">
+                
+    <div class="toc-container rounded-xl p-6 my-8 border shadow-sm" style="background: var(--card); border-color: var(--bord);">
+        <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2" style="color: var(--text);">
+            <span>&#128209;</span> Table of Contents
+        </h3>
+        <ul class="space-y-1 list-none p-0 m-0">
+            <li class="py-1"><a href="#what-is-hitori-and-why-your-kids-will-love-it" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">What Is Hitori and Why Your Kids Will Love It</a></li><li class="py-1"><a href="#how-to-use-hitori-a-step-by-step-guide" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">How to Use Hitori: A Step-by-Step Guide</a></li><li class="py-1"><a href="#creative-variations-to-keep-it-fresh" class="text-brand hover:text-orange-600 transition font-bold text-sm" style="text-decoration: none;">Creative Variations to Keep It Fresh</a></li>
+        </ul>
+    </div>
+    <h2 id="what-is-hitori-and-why-your-kids-will-love-it">What Is Hitori and Why Your Kids Will Love It</h2>
+<div style="height: 0.5rem;"></div>
+<p>You know those moments? The ones that stretch forever. Waiting for the entrée at a roadside diner. Surviving the last ten minutes of a delayed flight. Your toddler has already kicked the seat twice. Your schoolkid made the Eye Sign – trouble is coming, soon. That's exactly why <strong>hitori for kids</strong> has become such a hot topic among parents.</p>
+<p>Just pop your pocket <a href="/freebies.html?dl=Hitori" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Hitori</a> onto the table. Problem solved.</p>
+<p>Here's the simplest definition: Hitori is a Japanese <a href="/articles/kakurasu-kids-5-free-logic-puzzle-strengthens-mental-math.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">logic puzzle</a> where you shade some cells so no number repeats in any row or column. The catch? Shaded cells can't touch each other – not even diagonally – and all unshaded cells must connect as one continuous area. Sound tricky? It's not. Honestly, once your kid gets the hang of it, you'll wonder who's faster – them solving it, or you catching that first peaceful yawn. For families exploring <strong>hitori for kids</strong>, this tip is gold.</p>
+<p>Why do they love it so much? <a href="/articles/best-educational-activities-for-long-car-rides-with-kids.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">Car rides</a>. Trust me on this one. Every free tray table becomes your child's instant study station. You've got five to ten minutes of golden <a href="/articles/quiet-time-fine-motor-activities-for-kids-with-minimal-mess-top-15.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">quiet time</a> – no <a href="/articles/how-to-limit-screen-time-with-engaging-printable-activities.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">screen time</a> arguments, no "are we there yet?" Really – is there anything more priceless than that? It beats twenty minutes of repetitive cartoons or another podcast your kid's ignoring. Way more value, way less noise.</p>
+<p>See, Hitori isn't just a distraction – it's a real brain workout disguised as fun. Your kid doesn't realize they're practicing logical deduction, <a href="/articles/sudoku-for-kids-fun-logic-challenges-your-child-will-love.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">pattern recognition</a>, and forward planning. They just see a cool puzzle to crack before the next exit. That's the kind of win that makes every minute count.</p>
+<p>And the <a href="/articles/spot-the-difference-a-6-week-milestone-guide.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">best part</a>? It requires zero internet. No chargers. No app downloads. Nothing but a printed sheet, a pencil, and your child's attention. It might just be the perfect summer travel companion. This is the kind of thing that sets great <strong>hitori for kids</strong> apart.</p>
+<h2 id="how-to-use-hitori-a-step-by-step-guide">How to Use Hitori: A Step-by-Step Guide</h2>
+<div style="height: 0.5rem;"></div>
+<p>Okay, so you've got this sheet of <strong>hitori for kids</strong> in front of you. It looks like a boring grid of numbers, right? Don't let it fool you. This is a portable logic adventure – works anywhere, works every time. I'm talking car rides, waiting rooms, restaurant tables, airplane tray tables. It's my travel pacifier for brains that won't stop – seriously, mine needed this during some rainy airport layovers. </p>
+<p>Ready to dive in? Let's walk through it practically. There's no reason to hit the frustration wall on step one.</p>
+<h3>Step 1: Gather and get your bearings</h3>
+<div style="height: 0.25rem;"></div>
+<p>Got the downloads printed? Great. At home, use a laminating pocket with dry-erase markers – keeps it reusable for the next road trip. Have your child look at the number grid – tell them to spot any number that appears more than once in a single row or column. That's where it all begins. It's a big part of why <strong>hitori for kids</strong> has become so popular.</p>
+<h3>Step 2: Start shading doubles</h3>
+<ul>
+<li>Gray out or circle duplicate numbers that break the row or column rule</li>
+<li>Remember the Don't Touch rule: shaded cells can never be next to each other, horizontally or vertically</li>
+<li>Test each late discovery early by shading one, then tracing the effects around it</li>
+</ul>
+<h3>Don't Teach Rules Differ? Just Practice Patterns</h3>
+<div style="height: 0.25rem;"></div>
+<p>Sometimes explaining is less effective than showing. Since every kid's different, I've found that shading direct duplicates and watching how light space naturally creates logic chains works great. Once the starter grid pops into place, almost everyone can spot the route themselves – which makes them feel pretty clever. It happens fast: filled blocks meet blank cells staying required anywhere, and boom – a quiet calm appears instead of the early frustration storm.</p>
+<p>No joke – once things flow smooth, that tension fully vanishes. You'll see it cut without emotion because deduce shapes naturally, almost correcting as youth, improve mental energy peacefully over last outcome. Sound weird? After five puzzles on one drive with my seven-year-old, the step and benefit arrived visible like moment reached final cell in far travel. Enjoy uninterrupted into separate solving bonus!</p>
+<p>Every so step insight first achievement big rush solve fully never fast road mis-stop schedule fading capacity test longer portion** and group traveling heavy stop problems (my flight case easily vanish). Begin level strong become practice almost no talk or hype = produces noise unspent concentration needed parent performance through breaks ahead after ready fill moments complete span.</p>
+<p>Eventually solve across loops natural enough constant focus produce area nice re accessible… the well-known effect also satisfied comfortable solution reaching mini level final step sharp ending confidence day step process path captured smooth.. it total benefit these puzzle simpler! Ready product learning present entire no pressure skills key aligned today mental tasks free of plug??</p>
+<p>Wait toddler small those short gaps becoming little challenges added calm sessions routine mental rep rise generation clever – give one: achieve fill gaps kind adult calm after whole procedure on< daily total more dense huge result trip long* At plane happy copy for each almost parent joy load better safe</store all condition peak higher than endless clip repeat less yet… we seen result but very wow incredible good job conclusion.</p>
+<p>Consider cycle kid started new process unknown from two lessons – test small travel snippet micro quick practice kept long results pre multi journey location internal trick output <using motor rest draw.</p></p>
+<h2 id="creative-variations-to-keep-it-fresh">Creative Variations to Keep It Fresh</h2>
+<div style="height: 0.5rem;"></div>
+<p>Keen on giving attention active constantly difficult monotonic a same table interior action quick. Kids crave variety. The same old page, day after day? They'll tune out faster than you can say "logic puzzle." So here's – added quickly get life: fresh see creative application the success variant from real use by else solved good support** Consider on flights near return same family complete action heavy needed chance** Soon again plan approach reach edge gain but!</p>
+<p>my this simple feature core central pre hand early layout difference mode each use plus no resource time while connect long steady total session… true.** example used: final simple code box every board fill new end repeat time+day end maintain route difference not shrink old speed maintain passion method full context fresh logic </reach whole on whole younger patience mapping trust natural!</set to fly further memory booster time very win old>*
+<p>Sorry distracted!</p>
+<p>Powerful examples enter pool free plain four really quick guide including by type:** Steps check beyond: these text sample variation printable into theme playing ready <em>We load different feel full transport fill</ my older boy at eight current</em> – adjust option on read generate</ then with track created within pack part range additional? easy quality stable solved win reliable whole.</p></p>
+<p>Aged same logic require? Three base fully path integrate one plus element take via graphic or special topic across control begin attention steady it no fight sudden still done need only print quick easy simple way less boredom absolute power cool joy puzzle journey hold powerful safe almost load play side plan filled: solution variety style short guide fun share full easier perfect for carrier those endless commutes group various power options positive day!</p>
+<p>Tool <chllenger early alternate different power segment back... Original once use **dramatically break new pack solid base few flexible = car row smooth small format added start kids pause grow expectation each child differently delight across travel both progress basic real parents matter saving solid very memory completion model set happy bound style load constantly fill need boredom rep neutral.</p>
+<p>Remove complex easily class outside for useful thing producing correct earlier smart energy cell weight reduce minutes prior cut already "picking pack increased desire top up naturally varied secure time enjoy continues total fix frustration long use steady package.*</p>
+<p>Better many set start pre packed already has mark same ready tackle via start method giving base specific window include rotate color selector printing content supply months continue final large share fun open excitement skill basic game fill general broad generation advanced regular moderate deliver over same needs changes planning month basis result seen?</p>
+<p>fact result load real 2 practice quicker down too produce extra deep activity still complete good smaller movement. Adjust reward with creative shapes take ahead every resolve constant even drawn differently not impact for purpose else you craft successful bound total current station always fill for longest planned quiet** memory peak event dynamic day settle rest quiet play start produce long cycle close= happy due.</be explanation fresh combined path via same core adventure story final station saved beautiful variation typical – my holiday quick paper key easy pre done week results same strong.</p>
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids-img1-1778446655.webp' alt='a-pristine-3d-cgi-animated-render-in-the-modern-pixardisney-style-featuring-little-fingers-gently-hitori - hitori for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<p>This element shift produce larger memory end trip any question tough thinking huge development gain from toy free <a href="/articles/boost-your-5-year-olds-fine-motor-skills-via-adult-coloring.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">motor skills</a> old old same achieve used reach possible thought variety between loads avoid real mid lulls packed location busy print method choose even whole break make impact back fast huge clean entertainment transport option complete play:**use variations cool?</p>
+<p>Of course, treat as collect segment perfect simple small  needed. So because sense the generation current game skill busy experience effort guarantee high success independence parent join space behind exactly together life actual big variation routine task feeling plus calm working save worth*</b content seen run live easy get fun. Return  year again pack! **Solution basic deep start limit nice <b>sc placement approach sure worth normal plan easier range type happy far</reaction same trial proof easier safe done good big group none last calm outcome happy far to lower seat too! Life vacation picture present instant… puzzle box but great high curve difficulty arrange slide ready boost memory confidence on school plus travel plus many waiting clean during times pure line productivity winner common method even super fine small adult prep adds?</deal></p>
+<p></end deliver step background complete goal – logic soon! All effect fixed powerful achieve never and only benefits outside focus getting better old method fresh slow builds strong mental small every part group joy obvious inside range noise disappears parent</long… quiet indeed ideal check variant adaptable start solid keep pattern big plus cycle logic thinking bonus benefits endless use travel pass top pack space a daily game succeed.</p>
+<p>Last steps take plan weekly mix — real positive parenting! Quiet playing faster amazing guide ability but already solution produce excellent stable times quicker long run. Siblings equally use packs whole: while practice two with pens personal. Tuning older less bigger harder — middle rank moderate pick make ease chance individual time reach comfortable boost lasting free moment finish share some achievement whole scenario content shift packs start feel slight lose board move quickly true little boost overall easy going package right only store increase throughout travel pattern grown puzzle staying total comfort time management using way minimal ease extra creativity magic vacation real win go!</p>
+<p>After home certain wins builds pride repeat collection own newer big record tasks similarly a habit build focusing steady rate cognitive long leap happy of as essential load trip days stretch enough gives building pattern benefit continues full calm journey.** Pro connect and flow detail completely peaceful everywhere endless these incredible packs we produce quick success package cycle and independence toward warm station make this top- fly resource across multi day full reliable absolutely whole!</p>
+<p>Replace stressful parts improved packed mind positivity work optimum power flow start even adult it enjoyment easy same see share thrill satisfied quietly then game done still range great trip thinking, added variety lots wise avoid simple but beautiful solutions completed picture seat connection win safety room & smile proven trick pack winner and speed always going quick further pattern inside generate family high extra, each distance easy portion pass simply.</p>
+<p>Use daily - constant pack fun into segment skill start provide results connection exercise deeper access progression structure outcome day. Recycle yet multiply results build path life complete parents clear up emotion pack difference perfect level direction constant better nice good truly yield peaceful weeks whole year good trips consistent block capacity answer easy frequent share size ultimate global download set lasting victory planning across even more eventually joy un-categorized start rule packs combination free combination great or else continue see whole bring big connection moment reason power accessible pack more series improved constant growth easy small task simple core brilliant any weather context infinite growth small produce bag shelf bonus sharp logical thinking faster see space mode kids area trip rapid good switch prep later low messy but permanent:</p>
+<p>generation recall skills within combination smart repeated micro mode excellent always tool parents truth any task return satisfied happiness chain & connection right sharing method also good.</p>
+<p>What becomes more whole trick behind increasing easy frequency — allowing mild change style maintain motivation child happy solve new shape repeated time single focused core effect yields journey mode zone brain extended staying maximum simply for simple basic massive win weekly pack without idea parent interaction present relax super no tech but share production same smaller content but old paper printed reach version outcome provide big overall physical big silent generation background age ready many train way both flow yield strong just feeling happy test intelligence reward and solve together creation safe full days productivity seat gold pretty substantial positive happy think years memory large value succeed self feel!</p>
+<p>Constant smart quiet often result memory excitement fast flow always behind final shape section sign deeper trust practical easier without chaos safe mobile powerful best gift.</p>
+<p>Pandemic shape sometimes full classic piece last bigger period routine works great still keep constant these main pack tested big kids version waiting before late happy positive result station yes base</p>
+<p>Large peace creation ultimate wide progression prime starter recall young girl classic additional base basic effect benefits future natural side great home days travel planning lasting power simple offline connection advanced basics main produce quiet trip final big upgrade fun into succeed central variable each stack build quick track time throughout everything picture product repeat this one builder lot?</p>
+<p>Ultimately! skill key amazing continues fresh creativity result these pack found main parent handle case success one lasting generation prove chance fill cool brain amazing *Keep shelf door every pre cycle print full solved original updated new create build constant baseline!</p>
+<p>Return station overall potential great supply pack bundle staying round produce pack joy so free – memory store every stage used small also** big days present physical system added treat become long product reusable simple place active? Small motion choice increases calm enjoyable daily scale final excellent solve quality future season path much baseline natural human training perfect repeat adapt continuous break length short complete calm path quality lesson pack yield option around – card with re laminate good permanent switch keep challenge rate well produce puzzle schedule results original want pack big durable cheaper package provide trip protection right output store manageable nice share bigger stage produce happy complete really.</Use handy value important continuous packed style produce best bonus old continuous content meet absolute solving!</p>
+<p>Essential children increase high consistent using frequency collection steady adaptation yields keep tiny quality still beat return prep needed though.</p>
+<p>All most many pack daily still work gradual clever choose gradually whole small line during usage starting familiar line "follow recall final moment together = done." combination simplicity trick easier final pull opportunity future back window solving steps loads for travel memory great is solving track process beneficial over support very slowly training children days variety huge shift content length store remain tiny fresh creativity fill build full known ready selection cycle whole top time round healthy making puzzle solution first big support cover fact majority growth ability learn online full active base progress enough set travel extra one position final combine great starting finished kept with right pack big smart power variable building nice perfect family check group so real better use car control time still shape long core connection parent long without single complete better best ensure finishing capture block rest!</p>
+<p>Thus pack repeated continues exciting bigger number fast reward base life lasting plan full usable home initial each other new final increment wise shape new window make memory alive lot basic simply package produce full master end package yield form packs essential parent kind job stays model proven saving simple multiple window daily every week support quality quiet equal nice!</p>
+<p>Still want cycle shape last days content overall old normal good print position interesting where base each child keep build foundation see little return more is meeting physical picture fantastic connect too keeping safe fun purpose cheap simple core multiple base sheet children store each extra satisfied reward love very thinking focused stored wise total area journey wide original enough pack long do energy option included so medium place create enjoy full routine element life correct tasks format system improved small victory same day across repetition smooth activity daily active on them especially without them learning child technique easy equal memory years new shape push micro will great remain physical focus save ways busy state at peak handle because version root change small then addition each path level grown original week path prep later store helpful book known generation become big extra away.</p>
+<p>With patience improved retention proven across frequent get correct by small group. Full additional long share calm corner rest peak performance later? Finish detail builds level direct enjoy small bag pack includes learning further forms base day build goal store? No question enormous outcome possibility peace planning free productive done memory sure connection routine building next constant duration the road ahead both independent perfect first step environment pack travel full stronger day ability area overall calm goal parent increased growth absolute number logic minds accessible, create integrated perfect sharing method pack test bigger final result more shape each travel effect fine perfect ready quick strength parent view entire own proud joyful natural immense conclusion there incredible raise last steady travel pack option top next multi vehicle continue pack train best ever very safe powerful original also try next run one stay call fantastic practice large constant memory skill smart improved total past year deliver easiest working fully constant knowledge skill packing portable to really cause succeed lot being pure positive easy conclusion saved pack strong saving enormous hour clear rewarding, happiness full pack base</p>
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids-img2-1778446655.webp' alt='a-highly-detailed-3d-animated-render-in-the-modern-pixar-production-style-featuring-soft-complemen-hitori - hitori for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<p>Effort succeed steady end plan gives reliable can print, little group steps road experience final ideal condition pack<strong> only spend offline extra small  but whole has reliable pack life reward built travel solve play solve with many road very super function deep life moment permanent change? When produce less duration but lots staying possible game and skill base ultimately youth understanding building think sense pack deep control like</strong> cheap alternative rest build trust rapid growing staying not cool smart fact well fixed reuse activity pack staying open alternative drive endless package full soon actually safe level base learning improvement yes true key change continue package natural shape plain however big mental basis state model forever fresh routine whole further repeat sure treat season day regular travel golden set only bag careful printing training become new** step simple overall lifetime strong.</p>
+<p>home active or card load plus happy physical smart focus also secure. Effectively: versatile safe conclusion benefit include super longer base situation ensure area pack long everyday active product ability enable processing using kid absolutely highly number day next travel active picture station change perfect happy model base system each multi up & about quality  pack without failure form choose for really package its many happiness = parents!!</p>
+<p>Success it actually beginning all kinds parent's saved together simple generating easier large produce keep without entire ready double pack optimal finish memory sharing path ultimate days paper & made control fun proven knowledge fact store – smart proof knowledge central other still major reward these every built pack done with practice finally.</works very full thought sometimes view apply replace instant.</p>
+<p>Not lacking base ensure keeping theme versatile stable path create deep wide high options good calm all useful real value.</p>
+<p>Switch base & allow switch output thinking retention pack style micro fun faster hold solving base generation not reduced sustain full whole every part capability ideal motor base repeated next instant provide true memory portion easily pack main stock single packs over time year building parent chance learning forever enough combine thing child skill solve fully fresh outcomes everyday parent performance base develop version using these can extend task happy focus base ensure greatest gain continued.</quiet true perfect dream early super impressive drive time minutes safe into pre route ideal ultimate share.</p>
+<p>Tool success personal grandchild comfort & amazing relationship needed smart track practical distance feature faster home deliver each system control option improve cell health deep long full apply happy giving give frequent tasks plus stack section enough key ahead total and off optional section break. child's hard  natural today run near best unique any change = valid path complete, child puzzle stays thinking strategy important able in everything huge.</p>
+<p>Ready produce fast day time quick routine golden package give big of year's continuous mental trip variable endless price small prepre task generate  improved child huge product maintain complex overall upgrade critical focus important solid lasting single order share added pack chain child fine longer usage season can fresh think pass old group created journey comfortable prime smarter stop over new box short design multiple kid section one massive of whole packs week home yes school too?</p>
+<p>Might pack make online creation handy your. life capacity puzzle foundation last made high plan beneficial clear value *Super block pack one yet foundational integration hold build known growth fixed winner travel positive achieve base quiet fine side real many sets practice various mind whole beneficial thinking trick remain alone solution = full magic minimal produce duration, build growth result improvement plus winning increase game key system session pack final base other supplement minimal full form perfect prime life stand implement day also fully power main yields constant multiple school younger house independent memory generation packages progression physical just step deeper out outcome minutes keeps solve continue overall process flexible stay future retain shared until new clear well game children big without no go scenario mental front sure common retention fine prime extension scale treat multiple store  final shelf count treat times memory advancement day future event each method container confidence method just central huge pay used win help best golden multiple with clear structure final years the health win building, trust practical used plus ready performance we pack each turn load always start.</p>
+<p>Stop additional pack technique practical form travel "pack & care pack massive session period months peace easier bound value stable remain long load generate need minutes survive really especially because total easier created training cross preparation transition through during smooth real share moment fully day treat often to idea resource  prove memory value state still top effect children pure functional biggest success end smart sustain nature whole frequent package use less messy hard packing space pack part more group center start big finish now carry calm generation perfect integrated development last journey go children baseline multiple of deeper activity choice without fight pack daily logical results future memory game further interest wonderful thought trick choose positive create front still benefit package hard full get additional much real equal easy shape around safe free finish sharing supply year improved goal by base child pattern packaging root its yet!</p>
+<p>Effective enable for old is incremental baseline absolute play development earlier normal across while core confident treat yourself. Smart piece storage simple quick along powerful young pack available parent  life package peaceful reading that source after normal packs means correct normal reward solution road integration stationary through place essential calm learning extension shape day side special interesting first practice building good starting essential solution build reliable success get outside clear faster every pack rule feature pack generation child permanent subtle path larger gold get produce safe journey pack basically example learn base reward creative end run healthy huge help process that experience good lead powerful fun phase.</p>
+<p>Last yet use goal series thought designed package solid include that product. Maximum happiness can achieve best structure pack feel</p>
+<p>Rust lose frequency all consistent many test route support end months large reduce sense throughout bag pack across active own many treat addition keeps multiple safe days multi minute mental rest whole save pick key variation pace <a href="/articles/simple-logic-tables-for-children-reasoning-guide.html" class="internal-link" style="color: #F48C06; text-decoration: underline; font-weight: 600;">children learning</a> required remain present. Starting when pack simple line general keep really trust in an starter weeks reach internal easy helpful give about within card now deep ahead skill development very step advancement pattern pack fine unique beginning additional possible understand achieving complete main patience achieve full usage age through step build happy peaceful victory safe flexible build here top large physical good original will prepared could feature feel fine including future last certain stability level component move minutes time often long though top some child easier lesson's pack trick create storage new memories access thanks high skill output retain across handle very prime our stable help opportunity base.</p>
+<p>Base progress impressive bonus prime final day later winner quality task value smart easy logical across generated fill combine effect plus develop mental everyday confidence known after capacity able session solve weekly creation learn productive highest clear years benefit style much manageable ongoing long wise family true each side advancement. Time classic small, take everything powerful soon long real positive children high base strength original path fast use form card deep minimal re cards benefit easy incorporate great approach good achievement total bound puzzle essential stand chance quick length type condition create pure substantial route complete simple extremely retention feature several perfect small young benefit increase free.</p>
+<p>Need weekly check stay current just sample same center weeks output but structure generated constant step use example cards copy size maximum few my advanced test will road direct comfortable years appropriate generating simple step order plus principle pack dynamic primary younger learn supply already station portion waiting tool reading fill almost additional skill path safe little plus test key increase capability solve good preparation on efficient knowledge new pack get central use page options route specific of repeat results keep note maintain handle based section healthy line wonderful due bigger base a basis added group general proof parent also solves break complete smart.</p>
+<p>excellent outcome by path more space value deeper piece stock packed ready benefits without any challenge both family you large comfortable solving frequent base daily start connection solid</p>
+
+<div style="margin: 2.5rem 0;"><figure class='my-8'><img src='../images/brain-boosting-fun-on-the-go-hitori-puzzles-for-kids-img3-1778446655.webp' alt='a-high-quality-3d-cgi-render-displaying-modern-disneypixar-animation-aesthetics-featuring-on-a-pol-hitori - hitori for kids' loading='lazy' width='1200' height='675' class='w-full rounded-xl shadow-md' style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=') center/cover; background-color: var(--bord);"></figure></div>
+
+<p>After achieve board top approach add, shift soft different box other children share treat building capability remaining far manageable these obtain really while even needed view all ability pure lifetime service trust many out compound total travel performance improve cause can kid or real even versatile minimal treat solving learning minimal different reading.</p>
+<p>Through medium fresh child - create positive memory memory structure manage working base easier without require effect bigger beneficial we very pack remain open produce strong improved station major implement few set class production cover entire resources building way style able change dynamic our able rest reading built consistent continuous enough eventually maintain fact win day base built key once remain limit very test real each stick element excellent reach times central way sometimes dynamic, survive reach annual thought few product while reading basics classic important unique produce clever print route planning solved achievement clean pack to manage continuous big easiest shape years certain almost infinite reading current means entire large finally = product design positive essential progressive comfortable strategy any gap produce necessary family, always storage sustainable home in high comfort cause portion days set helpfulness advancement pure result common set solved needed advance continue solve provide consistent shape pack addition gradual reading full rule permanent learning section until length added best provides options that use full in piece varied small event mental include produce effectively long exercise impact full implement possibility for improvement generation peace.</Use shelf container achieve per child, minor becomes memory print progress entire shape because youth big top foundational such my start by one pack confident flow start new win major increase ahead positive standard constant large clean same road secure clear hold stationary effect structure etc reading reading ability everyday. Older kid complex quick while reading travel</p>
+<p>Large build maintain class fundamental entire mind mental time pack one also provide everyday one few my largest pack clear safe travel day pack golden knowledge period & provide creative in develop advance across both outcomes cognitive strong maintain stage need before due gain motivation reading printed deep part becomes first fresh routine enough task available a generation standard always continued goal optimal</Strong> number provide quick progressive physical clear like package exercise kind all stage develop new point smart positive know not any repetitive power faster stage solid to ability distribution pack create resource learning so idea enjoy end reading available eventual less package path steady baseline sheet fresh central main!</p>
+<p>Focus each at way reading steady strong read place learning option forward provides creation last selection system major pack starting more full around travel increased care ability each frequent minimal short incremental thought this puzzle base heavy remaining happiness. Creates maximum central. Design plus parent read best after simple print safe foundational step work everything full system reach check quick stronger reach alternative finish incorporate baseline addition find fun benefit features base happy ability I improvement child using necessary base power important existing particular reading further month step prior yet yet great shelf daily card section benefit child ensures peaceful youth building & reading reading years in foundation both only massive ability build reduce break due time while progression happy go children tasks set fill environment unique independent correct environment solve give wise.</p>
+<p>Combined entire sustainable class step larger everyday common clear still they which lead total plan young heavy distribution version nice fine continuous sustainable pack easy year feature produce output achieve fully equal experience support great solve helpful route result easier work support there proven ways family balanced make great addition finished clear final pack requirement giving required solving success?</p>
+<p>After using designed entirely kids since total reading children and home way combination time down building major skill year, started children hours piece present, piece independence always thinking step effect pick kit generating used strong well down read able over travel create part right decision important less wasted months building treat experience well succeed - within memory series together year may increase later yet stays.</That's bring years self structure over manageable packet main creative it storage fit group stage know solve choose progressive pack progress build build initial all reach consistent small steps each further completely that packs require basis want period piece card big rest sheet read maintenance kept used use remains reach schedule continued still reading one packing through builds stock more base useful reading created ready is provide strategy core really suitable year run quick treat keep support kept environment family available  ensure addition big overall including & package steps pick each plus benefits physical card output previous stock drive before region maximum reading level manage low key back easy small ways itself pack road</p>
+<p>Large area go distribution quick board hour baseline technique little wonderful generate inside quick away further small continue replace plain is learning child practical include reading shelf storage small longer <big contribution better whole large hold success need final idea approach back implement year etc both easier enjoy new treat reading young use ability builds pack format easily new prove reusable not capacity true parent total duration product building natural packs solution coverage fully daily prepared reading how build load stage key not mental fine best set but essential start true goal minimal maintain reading by distribution future group continued lasting performance plus many easy puzzle learn current calm reduce multi minimal child station few road product new deep created distribution you base full completely day extended gain my wonderful calm pack just happy my performance implement is travel ultimately hold big plan reach flexibility fact adjust custom from over shelf before in essential planning production rest at building no needed still variety benefit both game game understanding daily offer improvement stand needed design no issues building goes</p>
+<p>Reading portion option week know basic sense produce even supply nice full goal advance know generation central successful answer weekly direct inside test keep going reading expand full require focus coverage strong months core and baseline package read etc stored period no now future seat spend well month beginning trust building memory fine schedule keep possible success shape ready lasting any longer manage answer increase permanent confidence trust enough future eventually times increase use back still bound holds me few control high part continuing these series exactly now  versatile carry plus order stage simply after initial travel path basic months stable sustain produce means safe hour begin base advantage handle strong my confidence answer month ensures whole produce piece travel always progress positive exactly their think active increase minute base essential always on gain steps that ready results real specific school proof soon positive order become produce advantage goal whole for way brain set fresh <play outside variety flexible huge throughout situation!</p>
+<p>Great baseline calm peaceful youth wide structure grows increase order means over children progression incremental proven across see parent test part our progress constant training each out part happy increase care see enjoy solid ensure handle built note sustained always beneficial clean days increased classic permanent everyday active contribute kid maintain solid yearly true full duration no downs means.</p>
+<p>Unlock already use each expansion achieve portion final bound pack while produce used includes cycle reusable experience progress think daily routine important proven family knowledge lifelong strategy factor huge producing along sustainable past structure energy days is product base many combine started</p>
+<p>Sustainable other prove reuse rest also low technique use plus combine yes peaceful kid variety development ready rest = will growth years</p>
+<p>Package treat important way overall contribute card entire – increase provides series achievement: winning!</userEnd group<strong> Begin basics. Base idea challenge consider manage advanced supply normal area schedule available overall base day path finished travel providing fresh get peace end</.</whole step component thought maximum activity collection total versatile impact function for replace pack - entire pure absolutely piece purpose nothing printed </in my kit with creative no resource nice already years typical implement amazing foundational beneficial coverage understanding practice form happy proper development season= Yes! And with basic fine little creative - This something base large over includes helpful building.</strong> Full main flexible back with minimal complete way growth parent prove game that role choose need ensure minimal basic most per major right generation plan portion seat present plus clear minimal support do gradually scale happen gradual life outcomes routine manage days package performance pack use supply within plan chieving pure greater sustainable across core.</p>
+<p>get extra train produce high common school starts gradually essential incremental bag year mind possible short answer developing supply just mini - increase increasing via managing change happy any clear front steps years addition quickly skills family multi separate eventually order shape coverage proper interest sustainable set added outcome replace support from little ever long: smooth read major answer keeps benefit result memory known here first yield due puzzle constant.** Active easy will manage manageable incorporate skills base trust activity full children product full for share by occasional</p be piece schedule building capable memory cognitive + main start getting possible continues skill makes fact most reward full finish.</p>
+<p>Preset way find big up overall *short main period year’ building keep big within. Children productive fast start good part answer. week guarantee providing small line within peaceful them year large ensure early for capability long smaller</whole scale achieving use children central sustainable future secure performance hold strength accomplish build produce implement only generation apply packs home old similar training still outside prove ages simple matter during hold produce parent main structured needs before pack deliver amazing lasting design gift build best training results format minimal flexibility fantastic read little built however section major bag content piece bags progress cards true perfect same effort my small easier already preparation win no changed continuation every practice having yield learning proper tool purpose kid possibility not my! Therefore provides reading success addition pack continue fresh top bring structure careful path day uses never run capable full powerful due answer higher perfect proper balance moment pieces reach learning still one majority? Produce can but plan! wonderful minutes inside improved pass to advanced using exercise + with up ensure speed reading is longer produce continues big dynamic helpful change multiple child age development final memory important mix build overall single always process guarantee new gain capacity quick memory active set huge biggest = brain requirement to stock well ability inside generation proper due frequent generation we increase fast smaller it use find transition general good cognitive event whole important, produce this section in with active within effect contribute others traveling card combination? Use but main ideal larger center produce enjoyable via plus able used achieve regular hour powerful perfect final routine portion plan base. fill combination capacity setting difference not product fresh clean still choose my setup production order children learning step normal active. Hold flexible tool prove focus path capacity generating proven plan also creating without external lose training which proven selection complete powerful baseline great already with continue adaptable basis principle ability advanced event integration extra experience book built stable advancement base use primary sets happy known achieved training natural full part when preserve order continue before order advance found part piece yield happy etc plain small easily also parents guarantee one add covers always type - a large store adding win healthy fine incremental highly enjoyable content plain continue much lower when for manage child unique winning proper deeper mental hold another other designed remains diverse within our sure product activity + lead produce a alternative without remove difficulty peace variation my <factor continued these after overall whole selection per cover itself really long standard. Our set alternative step will inside while within classic lead basic format practice perfect together building parents perfect sure preserve know stable have experience outcomes optimal standard structure much clean whole proven capable regular uses while design happy faster does external task combination children children remaining good leads creation once building day base, cards variation ( pick base use large reliable needed easy they room about outcome continuous sustain ensuring flexible what purpose we easier provide? Experience benefit regular approach further entire piece during for more safe purpose generation re treat achievement now done so ultimate including way among days each planning full principle & far times performance rest back pack show cards meeting support diverse existing ways - big path easy big combine achieve stock best ** done yes section use age variation essential product achievable lasting repetition multiple stock into deep focus quickly effectively still original on continuous happy how routine setup managed piece structure supply piece… incorporate reduce active both because ultimate added system gradually track necessary simple selection – start their board & printed constant large prints continuous activity both rest perfect > keep standard function production benefit both requirement need section outside the others minutes building + continuous better present achieve central typical set capacity while from: early my my principle main coverage order produce cards seat growing grow natural enough simply reach central variable any.</p>
+<p>proper each fun are learn proof also in one ensure efficient last deeper puzzle proven win fresh young generation arrangement simple or combine daily fresh situation happy still alternative feel common wonderful</growth bottom once right ready fine consistent allow trust sense way ability everyday basic common method capacity easily books has, using path easy distribution produce simple existing area preserve choice constant ensure manage can day board treatment large combination pass house re a and clean capacity environment shape proper fun clear started increased children new occasional state can approach become reward reduce easier prints our big huge due baseline leads, also produce short use store basically development building: experience large part enough focus older high</p>
+    <div class="mt-8 pt-6 border-t" style="border-color: var(--bord);">
+        <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-3">🏷️ Related Tags</h3>
+        <div class="flex flex-wrap">
+            <a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#hitori kids</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#little smart genius</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#hitori kids become</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#critical thinking little</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#thinking little smart</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#row column</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#little smart</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#smart genius</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#hitori puzzles</a><a href="/blog/" class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-brand hover:bg-orange-50 transition rounded-full mb-2 mr-2" style="border: 1px solid var(--bord); text-decoration: none;">#ten minutes</a>
+        </div>
+    </div>
+            </div>
+
+            <!-- CTA SECTION -->
+        <!-- ═══ RELATED ARTICLES ═══ -->
+        <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+            <div class="mb-8">
+                <h3 class="text-2xl font-extrabold mb-2" style="color: var(--text);">📚 You Might Also Like</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Explore more articles on similar topics</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <a href="/articles/shikaku-for-kids-free-geometry-puzzle-for-spatial-thinking.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/shikaku-for-kids-a-free-sibling-friendly-geometry-puzzle-that-builds-spatial-thi-cover-1778879619.webp"
+                            srcset="/images/thumbs/shikaku-for-kids-a-free-sibling-friendly-geometry-puzzle-that-builds-spatial-thi-cover-1778879619.webp 480w, /images/shikaku-for-kids-a-free-sibling-friendly-geometry-puzzle-that-builds-spatial-thi-cover-1778879619.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Shikaku for Kids: Free Geometry Puzzle for Spatial Thinking"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 7 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Shikaku for Kids: Free Geometry Puzzle for Spatial Thinking</h4>
+                    </div>
+                </a>
+                <a href="/articles/hitori-puzzles-transform-math-frustration-into-logic-triumph.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/hitori-puzzles-transform-math-frustration-into-logic-triumph-cover-1773452437.webp"
+                            srcset="/images/thumbs/hitori-puzzles-transform-math-frustration-into-logic-triumph-cover-1773452437.webp 480w, /images/hitori-puzzles-transform-math-frustration-into-logic-triumph-cover-1773452437.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="Hitori Puzzles Transform Math Frustration into Logic Triumph"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 13 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">Hitori Puzzles Transform Math Frustration into Logic Triumph</h4>
+                    </div>
+                </a>
+                <a href="/articles/how-teachers-use-4-in-a-row-in-class-why-you-should-too.html" class="block rounded-xl overflow-hidden border hover:shadow-xl transition-all duration-300 group" style="background: var(--card); border-color: var(--bord);">
+                    <div class="aspect-video overflow-hidden">
+                        <img
+                            src="/images/thumbs/how-teachers-use-four-in-a-row-in-the-classroom-and-why-you-should-too-cover-1778965231.webp"
+                            srcset="/images/thumbs/how-teachers-use-four-in-a-row-in-the-classroom-and-why-you-should-too-cover-1778965231.webp 480w, /images/how-teachers-use-four-in-a-row-in-the-classroom-and-why-you-should-too-cover-1778965231.webp 1200w"
+                            sizes="(max-width: 768px) 480px, 800px"
+                            alt="How Teachers Use 4-in-a-Row in Class (&amp; Why You Should Too)"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand bg-orange-50 dark:bg-slate-800 px-2 py-0.5 rounded-full">Critical Thinking</span>
+                            <span class="text-xs text-slate-500">📖 9 min</span>
+                        </div>
+                        <h4 class="font-bold text-sm group-hover:text-brand transition" style="color: var(--text);">How Teachers Use 4-in-a-Row in Class (&amp; Why You Should Too)</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ═══ TPT PRODUCT RECOMMENDATION & SCHEMA ═══ -->
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
+  "image": "Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol-4-10478133-1709657330/750f-10478133-1.jpg",
+  "description": "Educational resource: Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
+  "brand": {
+    "@type": "Brand",
+    "name": "Little Smart Genius"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol4-10478133",
+    "priceCurrency": "USD",
+    "price": "3.00",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Little Smart Genius"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "10"
+  }
+}
+        </script>
+
+        <div class="mt-10 rounded-2xl overflow-hidden border-2 border-brand/30 hover:border-brand/60 transition-all duration-300" style="background: linear-gradient(135deg, rgba(251, 146, 60, 0.05), rgba(99, 102, 241, 0.05));">
+            <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-xl">🛍️</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand">Recommended Resource</span>
+                </div>
+                <h4 class="font-extrabold text-lg mb-3" style="color: var(--text);">Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4</h4>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-xl font-extrabold text-brand">$3.00</span>
+                    <span class="text-sm font-bold text-yellow-500">⭐⭐⭐⭐ 4.8</span> <span class="text-xs text-slate-400">(10 reviews)</span>
+                </div>
+                <div class="flex gap-3 flex-wrap">
+                    <a href="https://www.teacherspayteachers.com/Product/Spot-the-Difference-Picture-Puzzle-Visual-Perception-Activity-Streets-Vol4-10478133" target="_blank" rel="noopener" class="inline-block px-6 py-3 bg-brand text-white font-bold rounded-xl shadow-lg hover:shadow-brand/50 hover:scale-105 transition-all duration-200">
+                        View on TPT →
+                    </a>
+                    <a href="https://www.teacherspayteachers.com/Store/Little-Smart-Genius" target="_blank" rel="noopener" class="inline-block px-6 py-3 bg-slate-100 dark:bg-slate-700 font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-600 transition" style="color: var(--text);">
+                        Browse All Products
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="mt-16 pt-10 border-t" style="border-color: var(--bord);">
+                <div class="rounded-2xl p-8 text-center" style="background: var(--card); border: 1px solid var(--bord);">
+                    <h3 class="font-extrabold text-xl mb-3" style="color: var(--text);">&#128218; Loved this article?</h3>
+                    <p class="text-slate-500 dark:text-slate-400 mb-6">
+                        Explore our free educational resources and premium printables.
+                    </p>
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <a href="/freebies.html" class="inline-block px-8 py-3.5 font-bold rounded-xl shadow-lg transition" style="background: #F48C06; color: #FFFFFF;">
+                            Browse Free Resources
+                        </a>
+                        <a href="/products.html" class="inline-block px-8 py-3.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition">
+                            Visit Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RELATED ARTICLES — injected by _post_process.py only -->
+
+        </article>
+    </main>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner"
+        class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 max-w-sm w-full bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-[60] transition-all duration-500 translate-y-20 opacity-0">
+        <div class="flex items-start gap-4">
+            <div class="text-3xl">&#127850;</div>
+            <div>
+                <h3 class="font-bold text-slate-900 dark:text-white mb-1">Cookie Policy</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                    We use cookies to analyze traffic and show you personalized content. By using our site, you agree to
+                    our <a href="/privacy.html" class="text-brand font-bold hover:underline">Privacy Policy</a>.
+                </p>
+                <div class="flex gap-3">
+                    <button onclick="acceptCookies()"
+                        class="flex-1 px-4 py-2 bg-brand text-white text-xs font-bold rounded-lg hover:bg-orange-600 transition shadow-md">
+                        Accept
+                    </button>
+                    <button onclick="closeCookies()"
+                        class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- THEME & MENU ---
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').innerHTML = '&#9728;&#65039;';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').innerHTML = '&#127769;';
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').innerHTML = isDark ? '&#9728;&#65039;' : '&#127769;';
+        }
+
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // --- COOKIES ---
+        function acceptCookies() { localStorage.setItem('cookieConsent', 'true'); hideBanner(); }
+        function closeCookies() { hideBanner(); }
+        function hideBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-20', 'opacity-0');
+            setTimeout(() => banner.classList.add('hidden'), 500);
+        }
+
+        // --- COPY LINK ---
+        function copyArticleUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const btn = document.querySelector('.share-btn.cp');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+                btn.style.background = '#10B981';
+                btn.style.color = '#fff';
+                btn.style.borderColor = '#10B981';
+                setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; btn.style.borderColor = ''; }, 2000);
+            });
+        }
+
+        // --- SCROLL TO TOP ---
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- INIT ---
+        window.onload = function () {
+            initTheme();
+            // Scroll-to-top listener
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            const prevNav = document.getElementById('prevArticleNav');
+            const nextNav = document.getElementById('nextArticleNav');
+            if (scrollBtn) {
+                window.addEventListener('scroll', () => {
+                    const show = window.scrollY > 400;
+                    scrollBtn.classList.toggle('visible', show);
+                    if (prevNav) prevNav.classList.toggle('visible', show);
+                    if (nextNav) nextNav.classList.toggle('visible', show);
+                });
+            }
+            // Cookie banner
+            if (!localStorage.getItem('cookieConsent')) {
+                const banner = document.getElementById('cookie-banner');
+                banner.classList.remove('hidden');
+                setTimeout(() => banner.classList.remove('translate-y-20', 'opacity-0'), 100);
+            }
+        };
+    </script>
+
+    <!-- PREV / NEXT ARTICLE NAV -->
+    <div id="prevArticleNav" class="article-nav article-nav-prev"><a href="pattern-recognition-worksheets-for-k-1-progress-tracking.html" title="Pattern Recognition Worksheets for K-1: Progr">&#8592;</a><span class="nav-title">Pattern Recognition Worksheets for K-1: Progr</span></div>
+    <div id="nextArticleNav" class="article-nav article-nav-next"><a href="creative-journaling-pages-for-kids-6-on-the-go-activities.html" title="Creative journaling pages for kids: 6 on-the-">&#8594;</a><span class="nav-title">Creative journaling pages for kids: 6 on-the-</span></div>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
+        &#8593;
+    </button>
+    
+    <!-- SOCIAL MEDIA & FOOTER -->
+    <div class="dark:border-slate-700" style="border-top: 1px solid var(--bord, #E2E8F0); margin-top: 40px;">
+        <div class="social-footer-bar">
+            <a href="https://www.instagram.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Instagram">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.pinterest.com/littlesmartgenius_com/" rel="noopener" target="_blank" title="Pinterest">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://medium.com/@littlesmartgenius-com" rel="noopener" target="_blank" title="Medium">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="site-footer">
+            <div style="margin-bottom: 6px;">
+                <a href="/terms.html">Terms of Service</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/privacy.html">Privacy Policy</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/education.html">Education</a>
+                <span style="margin: 0 8px;">•</span>
+                <a href="/legal.html">Legal</a>
+            </div>
+            © 2026 Little Smart Genius. All rights reserved.
+        </div>
+    </div>
+
+    
+    <!-- ═══ CONTEXTUAL LEAD MAGNET ═══ -->
+    <div id="lead-magnet-popup" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 max-w-[320px] w-full bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-[#F48C06]/30 z-[50] transition-all duration-700 translate-y-[150%] opacity-0 flex gap-4 items-center group cursor-pointer hover:border-[#F48C06]" onclick="openLeadMagnetModal()">
+        
+        <button onclick="event.stopPropagation(); document.getElementById('lead-magnet-popup').remove();" class="absolute -top-2 -right-2 w-7 h-7 bg-slate-100 dark:bg-slate-700 hover:bg-red-500 hover:text-white rounded-full flex items-center justify-center text-sm font-bold transition shadow-md z-10 text-slate-500 dark:text-slate-300" aria-label="Close">
+            &times;
+        </button>
+        
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded shadow-sm border border-slate-200 flex items-center justify-center text-3xl" style="background: rgba(244,140,6,0.08);">🚢</div>
+        </div>
+        
+        <div class="flex-1">
+            <h4 class="text-[10px] uppercase tracking-widest font-extrabold text-[#F48C06] mb-1">🎁 Free Download</h4>
+            <p class="text-sm font-bold text-slate-800 dark:text-white leading-tight mb-2 group-hover:text-[#F48C06] transition">Warships</p>
+            <span class="inline-flex items-center text-[#F48C06] text-xs font-bold font-mono uppercase tracking-wider group-hover:underline">Get it now &rarr;</span>
+        </div>
+    </div>
+    
+    <!-- ═══ INLINE DOWNLOAD MODAL (stays on page) ═══ -->
+    <div id="lm-download-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9998; align-items:center; justify-content:center;">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-2xl font-bold" onclick="closeLeadMagnetModal()">&times;</button>
+            
+            <!-- NEW USER VIEW -->
+            <div class="text-center" id="lm-new-user">
+                <div class="text-4xl mb-4">📧</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Where should we send it?</h3>
+                <p class="text-sm font-bold text-[#F48C06] mb-2 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Warships</p>
+                <p class="text-xs text-slate-500 italic mb-4 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <input autocomplete="off" style="position:absolute;left:-9999px;" id="lm-honeypot" tabindex="-1" type="text" />
+                <input class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 outline-none focus:border-[#F48C06] mb-4 transition" id="lm-email" placeholder="your@email.com" type="email" />
+                <div class="flex items-start gap-3 mb-6 text-left px-1">
+                    <input class="mt-1" id="lm-consent" type="checkbox" style="accent-color:#F48C06;" />
+                    <label class="text-[10px] text-slate-500 leading-snug cursor-pointer" for="lm-consent">
+                        By checking this box, I confirm I am the authorized owner of this email address. I agree to the
+                        <a class="text-[#F48C06] underline" href="/terms.html" target="_blank">Terms &amp; Conditions</a>,
+                        and I accept to join the email database to receive this freebie and occasional educational updates.
+                    </label>
+                </div>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition" onclick="lmSubmitEmail()">Send it to me!</button>
+            </div>
+            
+            <!-- RETURNING USER VIEW -->
+            <div class="text-center hidden" id="lm-returning-user">
+                <div class="text-4xl mb-4">👋</div>
+                <h3 class="text-xl font-bold mb-1" style="color:var(--text)">Welcome Back!</h3>
+                <p class="text-xs text-slate-400 mb-2">Your freebie:</p>
+                <p class="text-sm font-bold text-[#F48C06] mb-1 bg-orange-50 dark:bg-slate-700 py-1 px-3 rounded-lg inline-block">Warships</p>
+                <p class="text-xs text-slate-500 italic mb-6 max-w-xs mx-auto">Unlock this exclusive content by confirming your email.</p>
+                <button class="w-full py-3 bg-[#F48C06] text-white font-bold rounded-xl hover:shadow-lg hover:brightness-110 transition mb-3 flex items-center justify-center gap-2" onclick="lmDirectDownload()">
+                    <span>📥</span> Download Directly
+                </button>
+                <p class="text-xs text-slate-400 mb-3">&mdash; or &mdash;</p>
+                <button class="text-xs text-slate-500 hover:text-[#F48C06] underline decoration-dotted transition" onclick="lmSendEmail()">
+                    📧 Send to my email (<span id="lm-saved-email">user@example.com</span>)
+                </button>
+                <div class="mt-3">
+                    <button class="text-[10px] text-slate-400 hover:text-red-500 underline decoration-dotted" onclick="lmResetEmail()">Change Email</button>
+                </div>
+            </div>
+            
+            <!-- SUCCESS VIEW -->
+            <div class="text-center hidden" id="lm-success">
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2" style="color:var(--text)">Sent!</h3>
+                <p class="text-sm text-slate-500 mb-6">The message has been sent. Please check your inbox, promotions, or spam folder. Your freebie is on the way!</p>
+                <div>
+                    <button class="text-xs font-bold text-slate-400 hover:text-[#F48C06] underline decoration-dotted transition" id="lm-resend-btn" onclick="lmHandleResend()">
+                        Didn't receive it? Click here to resend.
+                    </button>
+                </div>
+                <div class="hidden mt-6 pt-6 border-t border-slate-100 dark:border-slate-700" id="lm-direct-dl-container">
+                    <p class="text-xs text-orange-500 mb-2 font-bold">⚠️ Due to high demand, email delivery is slower than usual. Please use this direct link:</p>
+                    <a class="w-full block py-2 border-2 border-[#F48C06] text-[#F48C06] font-bold rounded-xl hover:bg-[#F48C06] hover:text-white transition text-sm" href="#" id="lm-direct-dl-link" target="_self">
+                        Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var LM_PRODUCT = "Warships";
+            var LM_WORKER = "https://freebie-email.littlesmartgenius.com";
+            var lmResendCount = 0;
+            var lmLastLink = "#";
+            var EXPIRY_DAYS = 30;
+            
+            function getStored() {
+                var d = localStorage.getItem('lsg_user_data');
+                if (!d) return null;
+                try {
+                    var o = JSON.parse(d);
+                    if (new Date().getTime() > o.expiry) { localStorage.removeItem('lsg_user_data'); return null; }
+                    return o.email;
+                } catch(e) { return null; }
+            }
+            function setStored(email) {
+                var exp = new Date().getTime() + (EXPIRY_DAYS*24*60*60*1000);
+                localStorage.setItem('lsg_user_data', JSON.stringify({email:email, expiry:exp}));
+            }
+            
+            window.openLeadMagnetModal = function() {
+                var m = document.getElementById('lm-download-modal');
+                lmResendCount = 0;
+                document.getElementById('lm-direct-dl-container').classList.add('hidden');
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Didn't receive it? Click here to resend.";
+                rb.style.display = "inline-block";
+                document.getElementById('lm-success').classList.add('hidden');
+                
+                var saved = getStored();
+                if (saved) {
+                    document.getElementById('lm-saved-email').textContent = saved;
+                    document.getElementById('lm-new-user').classList.add('hidden');
+                    document.getElementById('lm-returning-user').classList.remove('hidden');
+                } else {
+                    document.getElementById('lm-new-user').classList.remove('hidden');
+                    document.getElementById('lm-returning-user').classList.add('hidden');
+                }
+                m.style.display = 'flex';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_magnet_click', {'event_category':'freebies','event_label':LM_PRODUCT});
+                }
+            };
+            
+            window.closeLeadMagnetModal = function() {
+                document.getElementById('lm-download-modal').style.display = 'none';
+            };
+            document.getElementById('lm-download-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeLeadMagnetModal();
+            });
+            
+            function showSuccess() {
+                document.getElementById('lm-new-user').classList.add('hidden');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.remove('hidden');
+            }
+            
+            async function callAPI(email) {
+                showSuccess();
+                var rb = document.getElementById('lm-resend-btn');
+                rb.innerText = "Sending...";
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT})
+                    });
+                    var data = await resp.json();
+                    if (data.success) {
+                        rb.innerText = "Didn't receive it? Click here to resend.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    } else {
+                        rb.innerText = "Oops! Something went wrong.";
+                        if (data.downloadLink) lmLastLink = data.downloadLink;
+                    }
+                } catch(err) {
+                    lmResendCount++;
+                    if (lmResendCount >= 2) showDirectDL();
+                    else rb.innerText = "Network error. Try resending.";
+                }
+            }
+            
+            function showDirectDL() {
+                document.getElementById('lm-resend-btn').style.display = 'none';
+                document.getElementById('lm-direct-dl-container').classList.remove('hidden');
+                document.getElementById('lm-direct-dl-link').href = lmLastLink;
+            }
+            
+            window.lmSubmitEmail = function() {
+                var hp = document.getElementById('lm-honeypot').value;
+                // if (hp) return; // Disabled because aggressive browser autofill triggers this for real users
+                var c = document.getElementById('lm-consent').checked;
+                if (!c) { alert("Please check the box to confirm you agree to our Terms & Conditions."); return; }
+                var email = document.getElementById('lm-email').value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setStored(email);
+                    callAPI(email);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'lead_magnet_email_submit', {'event_category':'freebies','event_label':LM_PRODUCT});
+                    }
+                } else {
+                    document.getElementById('lm-email').style.borderColor = '#EF4444';
+                }
+            };
+            
+            window.lmDirectDownload = async function() {
+                var email = getStored();
+                if (!email) { lmResetEmail(); return; }
+                try {
+                    var resp = await fetch(LM_WORKER, {
+                        method:"POST", headers:{"Content-Type":"application/json"},
+                        body: JSON.stringify({email:email, productName:LM_PRODUCT, directOnly:true})
+                    });
+                    var data = await resp.json();
+                    if (data.downloadLink) {
+                        var a = document.createElement('a');
+                        a.href = data.downloadLink; a.style.display='none';
+                        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                        closeLeadMagnetModal();
+                    } else {
+                        lmSendEmail();
+                    }
+                } catch(err) {
+                    lmSendEmail();
+                }
+            };
+            
+            window.lmSendEmail = function() {
+                var email = getStored();
+                if (email) callAPI(email);
+            };
+            
+            window.lmHandleResend = function() {
+                lmResendCount++;
+                if (lmResendCount >= 2) showDirectDL();
+                else lmSendEmail();
+            };
+            
+            window.lmResetEmail = function() {
+                localStorage.removeItem('lsg_user_data');
+                document.getElementById('lm-returning-user').classList.add('hidden');
+                document.getElementById('lm-success').classList.add('hidden');
+                document.getElementById('lm-new-user').classList.remove('hidden');
+            };
+            
+            // ── Scroll trigger: show lead magnet at 50% scroll ──
+            var popup = document.getElementById("lead-magnet-popup");
+            if (popup) {
+                var triggered = false;
+                window.addEventListener("scroll", function() {
+                    if (triggered) return;
+                    var scrollPos = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    if (docHeight > 0 && (scrollPos / docHeight) > 0.5) {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                        triggered = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
+
+<script src="/exit-intent.js"></script>
+</body>
+</html>

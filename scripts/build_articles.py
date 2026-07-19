@@ -1790,12 +1790,18 @@ def inject_internal_links(content: str, link_targets: list, max_links=12) -> str
     url_counts = {}  # Allow up to 2 links per URL
     linked_phrases = set()  # Track what we've already linked
     
+    content_lower = content.lower()
+    
     for phrase, url, priority in link_targets:
         if links_added >= max_links:
             break
         
         # Allow max 2 links per unique URL
         if url_counts.get(url, 0) >= 2:
+            continue
+            
+        # Fast path check
+        if phrase.lower() not in content_lower:
             continue
         
         # Build a regex that matches the phrase case-insensitively
@@ -2152,7 +2158,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
         flags=re.DOTALL | re.IGNORECASE
     )
     content = re.sub(
-        r'<h3[^>]*>You M(?:ight|ay) Also Like</h3>\s*(?:<(?:a|p|div|hr|br)[^>]*>.*?</(?:a|p|div)>\s*(?:<hr[^>]*/?>\s*)*)*',
+        r'<h3[^>]*>You M(?:ight|ay) Also Like</h3>.*',
         '',
         content,
         flags=re.DOTALL | re.IGNORECASE
@@ -2358,6 +2364,7 @@ def generate_article_html(json_data: dict, slug: str, all_articles=None, prev_ar
         og_image=og_image,
         iso_date=iso_date,
         author_name=author_name,
+        author_url=author_url,
         reading_time=reading_time,
         author_display=author_display,
         author_url=author_url,
@@ -2536,11 +2543,17 @@ def build_all():
                 prev_art = None
                 next_art = None
             
+            # Skip if already exists
+            html_path = os.path.join(ARTICLES_DIR, f"{slug}.html")
+            if os.path.exists(html_path):
+                print(f"  [{i:>2}] SKIP {title[:60]}")
+                built_json_paths.append(source_json_path)
+                continue
+                
             # Generate HTML (now with related articles + prev/next nav)
             html = generate_article_html(data, slug, all_articles=full_articles_list, prev_article=prev_art, next_article=next_art, tpt_products=tpt_products, freebies=freebies)
             
             # Save HTML file
-            html_path = os.path.join(ARTICLES_DIR, f"{slug}.html")
             with open(html_path, 'w', encoding='utf-8') as f:
                 f.write(html)
             

@@ -53,28 +53,21 @@ def md_to_html(md_text: str) -> str:
     # Italic
     html = re.sub(r'\*(.+?)\*', r'<em>\1</em>', html)
 
+    # Images
+    html = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'<figure><img src="\2" alt="\1" /></figure>', html)
+
+    # Tables to simple lists
+    html = re.sub(r'^\| (.+?) \| \[(.+?)\]\((.+?)\) \|$', r'<li>\1 — <a href="\3" target="_blank" rel="noopener">\2</a></li>', html, flags=re.MULTILINE)
+    
+    # Remove table headers and separator
+    html = re.sub(r'^\| Resource.*\|$', '', html, flags=re.MULTILINE)
+    html = re.sub(r'^\|[-|]+\|$', '', html, flags=re.MULTILINE)
+
     # Links
     html = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank" rel="noopener">\1</a>', html)
 
-    # Tables → convert to simple list (Medium doesn't support tables well)
-    # Match table rows like "| content | link |"
-    table_rows = re.findall(r'^\| (.+?) \| (.+?) \|$', html, re.MULTILINE)
-    if table_rows:
-        # Remove table header and separator
-        html = re.sub(r'^\| Resource.*\|$', '', html, flags=re.MULTILINE)
-        html = re.sub(r'^\|[-|]+\|$', '', html, flags=re.MULTILINE)
-        # Convert data rows to list items
-        for content, link in table_rows:
-            if '---' in content or 'Resource' in content:
-                continue
-            row_html = f'<li>{content.strip()} — {link.strip()}</li>'
-            html = re.sub(
-                re.escape(f'| {content} | {link} |'),
-                row_html,
-                html
-            )
-        # Wrap list items in <ul>
-        html = re.sub(r'((?:<li>.*?</li>\s*)+)', r'<ul>\1</ul>', html, flags=re.DOTALL)
+    # Wrap list items in <ul>
+    html = re.sub(r'((?:<li>.*?</li>\s*)+)', r'<ul>\n\1</ul>', html, flags=re.DOTALL)
 
     # Paragraphs — wrap remaining text lines
     lines = html.split('\n')
@@ -102,9 +95,11 @@ def md_to_html(md_text: str) -> str:
 # ─── HTML TEMPLATE ──────────────────────────────────────────────────
 
 def build_html_page(title: str, author: str, body_html: str,
-                    article_url: str, slug: str) -> str:
+                    article_url: str, slug: str, image_url: str) -> str:
     """Build a clean, Medium-importable HTML page."""
     
+    og_image_tag = f'\n    <meta property="og:image" content="{image_url}">' if image_url else ''
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,12 +108,11 @@ def build_html_page(title: str, author: str, body_html: str,
     <title>{title}</title>
     <meta name="description" content="A summary of '{title}' from Little Smart Genius — expert educational resources for children aged 3-10.">
     <meta name="robots" content="noindex, follow">
-    <link rel="canonical" href="{article_url}">
 
     <!-- Open Graph -->
     <meta property="og:title" content="{title}">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="{SITE_BASE}/medium/{slug}.html">
+    <meta property="og:url" content="{SITE_BASE}/medium/{slug}.html">{og_image_tag}
     <meta property="article:author" content="{author}">
 
     <style>
@@ -148,6 +142,12 @@ def build_html_page(title: str, author: str, body_html: str,
             font-size: 0.95rem;
             margin-bottom: 24px;
             font-style: italic;
+        }}
+        img {{
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
         }}
         p {{
             margin-bottom: 16px;
@@ -214,6 +214,10 @@ def parse_medium_md(md_path: str) -> dict:
     author_match = re.search(r'^\*By (.+?) ·', content, re.MULTILINE)
     author = author_match.group(1).strip() if author_match else "Little Smart Genius"
 
+    # Extract image
+    image_match = re.search(r'!\[[^\]]*\]\(([^)]+)\)', content)
+    image_url = image_match.group(1).strip() if image_match else ""
+
     # Extract slug from filename
     slug = os.path.splitext(os.path.basename(md_path))[0]
 
@@ -231,6 +235,7 @@ def parse_medium_md(md_path: str) -> dict:
         "title": title,
         "author": author,
         "slug": slug,
+        "image_url": image_url,
         "article_url": article_url,
         "body_md": body.strip()
     }
@@ -307,7 +312,8 @@ def build_page(md_path: str) -> dict:
         author=data['author'],
         body_html=body_html,
         article_url=data['article_url'],
-        slug=data['slug']
+        slug=data['slug'],
+        image_url=data.get('image_url', '')
     )
 
     os.makedirs(MEDIUM_HTML_DIR, exist_ok=True)
@@ -376,6 +382,45 @@ def main():
     # Build RSS feed
     rss_path = build_rss_feed(articles_data)
     print(f"  📡 Generated RSS Feed: {rss_path}")
+
+    # Build an index.html so the user can easily view and copy abstracts
+    index_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medium Abstracts - Little Smart Genius</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #333; }}
+        h1 {{ border-bottom: 2px solid #1a8917; padding-bottom: 10px; color: #1a1a1a; }}
+        .article-card {{ background: #f9f9f9; border: 1px solid #eee; border-radius: 8px; padding: 20px; margin-bottom: 20px; }}
+        .article-card h2 {{ margin-top: 0; margin-bottom: 10px; font-size: 1.3rem; }}
+        .article-card a {{ display: inline-block; background: #1a8917; color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; }}
+        .article-card a:hover {{ background: #126610; }}
+        .meta {{ color: #777; font-size: 0.85rem; margin-bottom: 15px; }}
+    </style>
+</head>
+<body>
+    <h1>Medium Abstracts Repository</h1>
+    <p>This is your private, non-indexed folder containing ready-to-copy HTML abstracts for Medium.</p>
+"""
+    for data in articles_data:
+        index_html += f"""
+    <div class="article-card">
+        <h2>{data['title']}</h2>
+        <div class="meta">Slug: {data['slug']}</div>
+        <a href="{data['slug']}.html" target="_blank">View & Copy Abstract</a>
+    </div>"""
+
+    index_html += """
+</body>
+</html>"""
+    
+    index_path = os.path.join(MEDIUM_HTML_DIR, "index.html")
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(index_html)
+    print(f"  📄 Generated Index Page: {index_path}")
 
     print(f"\n{'='*60}")
     print(f"  COMPLETE: {len(results)}/{len(md_files)} HTML pages built")
