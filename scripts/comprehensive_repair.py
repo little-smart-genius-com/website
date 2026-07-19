@@ -16,6 +16,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 ARTICLES_DIR = os.path.join(PROJECT_ROOT, "articles")
 POSTS_DIR = os.path.join(PROJECT_ROOT, "posts")
+ARCHIVE_DIR = os.path.join(PROJECT_ROOT, "data", "archive_posts")
 IMAGES_DIR = os.path.join(PROJECT_ROOT, "images")
 
 # ── AI Detection Phrases ──
@@ -63,7 +64,8 @@ AI_PHRASES_TO_REPLACE = {
 
 def get_json_data(slug):
     """Find the JSON source for an article and extract data."""
-    for jf in glob.glob(os.path.join(POSTS_DIR, "*.json")):
+    json_files = glob.glob(os.path.join(POSTS_DIR, "*.json")) + glob.glob(os.path.join(ARCHIVE_DIR, "*.json"))
+    for jf in json_files:
         basename = os.path.basename(jf)
         # Remove timestamp suffix
         parts = basename.rsplit("-", 1)
@@ -286,7 +288,8 @@ def main():
     
     # Also update JSON files to add proper keywords
     print("\n--- Phase 1: Updating JSON source files with long-tail keywords ---")
-    for jf in sorted(glob.glob(os.path.join(POSTS_DIR, "*.json"))):
+    json_files = sorted(glob.glob(os.path.join(POSTS_DIR, "*.json")) + glob.glob(os.path.join(ARCHIVE_DIR, "*.json")))
+    for jf in json_files:
         try:
             with open(jf, "r", encoding="utf-8") as f:
                 data = json.load(f)

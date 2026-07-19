@@ -2,7 +2,12 @@
 Comprehensive Blog Integrity Verification
 Checks: articles, images, blog pages, indexes, sitemap, and asset directories.
 """
-import os, json, re, glob
+import os, json, re, glob, sys
+
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+except AttributeError:
+    pass
 
 ROOT = '.'
 IMAGES_DIR = 'images'
