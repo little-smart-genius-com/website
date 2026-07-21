@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-07-21T17:01:08.266490",
-  "total_articles": 747,
+  "generated_at": "2026-07-21T21:22:01.439239",
+  "total_articles": 748,
   "articles": [
+    {
+      "title": "Free Activity Book: Budget Fun for Road Trips & Rainy Days",
+      "slug": "free-activity-book-budget-fun-for-road-trips-rainy-days",
+      "date": "July 21, 2026",
+      "iso_date": "2026-07-21T21:21:59.746514",
+      "category": "Education",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Get screen-free fun! Learn how to use a free activity book to boost your child's skills during road trips or rainy days. Perfect for ages 4-12.",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 9,
+      "url": "articles/free-activity-book-budget-fun-for-road-trips-rainy-days.html",
+      "keywords": [
+        "activity book",
+        "activity book kids",
+        "book kids",
+        "little smart genius",
+        "free activity book",
+        "road trips rainy",
+        "trips rainy days",
+        "book kids love",
+        "little smart",
+        "smart genius"
+      ],
+      "word_count": 1972,
+      "slot": "freebie"
+    },
     {
       "title": "Gamified punctuation worksheets for elementary kids",
       "slug": "gamified-punctuation-worksheets-for-elementary-kids",
