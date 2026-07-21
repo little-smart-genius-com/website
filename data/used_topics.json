@@ -126720,6 +126720,11 @@
       "slot": "product",
       "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.8",
       "date": "2026-07-21T11:30:18.767273"
+    },
+    {
+      "slot": "product",
+      "topic": "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.6",
+      "date": "2026-07-21T15:48:48.578548"
     }
   ],
   "product": [
@@ -126728,7 +126733,8 @@
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.3",
     "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D2",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.4",
-    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.8"
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.8",
+    "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.6"
   ],
   "freebie": [
     "CalcuDoku",
