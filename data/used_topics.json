@@ -139007,6 +139007,11 @@
       "slot": "keyword",
       "topic": "Printable math journal prompts for elementary students",
       "date": "2026-07-23T17:00:39.633700"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Cookbook for Kids",
+      "date": "2026-07-23T21:16:04.012201"
     }
   ],
   "product": [
@@ -139032,6 +139037,7 @@
     "Skyscraper",
     "Math Pack",
     "Activity Book",
-    "Stickers Pack"
+    "Stickers Pack",
+    "Cookbook for Kids"
   ]
 }
