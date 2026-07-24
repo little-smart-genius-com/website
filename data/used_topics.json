@@ -465,7 +465,40 @@
     "How to use puzzles as rewards instead of screen time",
     "Parent tips for making homework time less stressful",
     "How to build a low cost learning toolkit at home for kids",
-    "Classroom craft centers for kids printable patterns"
+    "Classroom craft centers for kids printable patterns",
+    "Beginner logic puzzles for 1st and 2nd graders printable",
+    "Deduction puzzles for kids to build reasoning skills",
+    "Holiday themed logic puzzles for kids printable pdf",
+    "Printable logic mazes that teach cause and effect",
+    "Logic puzzles for kids learning English as a second language",
+    "Free printable logic challenge book for kids ages 6-10",
+    "Number sense activities for preschoolers printable",
+    "Skip counting worksheets for early learners printable",
+    "Printable math journal prompts for elementary students",
+    "Morning math work worksheets for elementary classroom",
+    "Seasonal holiday math worksheets for kids (Christmas, Halloween)",
+    "Spot the difference puzzles for kids that double as coloring pages",
+    "Journal prompts for elementary students printable pdf",
+    "Spelling word games for kids weekly practice printable",
+    "Writing prompts for reluctant writers in elementary school",
+    "Rhyming word worksheets for preschool and kindergarten",
+    "Vocabulary journal pages for kids printable pdf",
+    "Word building activities for kids using letter tiles",
+    "Science themed coloring pages for curious kids",
+    "Nature mandala coloring sheets for kids and parents",
+    "Vehicles color by number worksheets for kids",
+    "Coloring pages for kids to practice staying in the lines",
+    "Holiday crafts for kids for Christmas and Halloween",
+    "Printable craft workbook for kids ages 4-8",
+    "Playdough mats for kids to build finger strength printable",
+    "Pencil control worksheets for beginning writers printable",
+    "Hole punch activities for kids fine motor practice",
+    "Fine motor dinosaur activities for kids that love fossils",
+    "Tracing letters worksheets for kindergarten fine motor",
+    "Problem solving board games for kids you can print",
+    "Multi step word problems worksheets for kids printable",
+    "Homework alternatives for elementary kids that still teach",
+    "Teaching critical thinking skills to kids through puzzles"
   ],
   "daily_log": [
     {
@@ -141502,6 +141535,171 @@
       "slot": "keyword",
       "topic": "Classroom craft centers for kids printable patterns",
       "date": "2026-07-24T06:39:35.034248"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Beginner logic puzzles for 1st and 2nd graders printable",
+      "date": "2026-07-24T10:25:57.878905"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Deduction puzzles for kids to build reasoning skills",
+      "date": "2026-07-24T10:25:57.992973"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Holiday themed logic puzzles for kids printable pdf",
+      "date": "2026-07-24T10:25:58.105409"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable logic mazes that teach cause and effect",
+      "date": "2026-07-24T10:25:58.218318"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids learning English as a second language",
+      "date": "2026-07-24T10:25:58.334039"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Free printable logic challenge book for kids ages 6-10",
+      "date": "2026-07-24T10:25:58.446788"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Number sense activities for preschoolers printable",
+      "date": "2026-07-24T10:25:58.559552"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Skip counting worksheets for early learners printable",
+      "date": "2026-07-24T10:25:58.673630"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable math journal prompts for elementary students",
+      "date": "2026-07-24T10:25:58.786218"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Morning math work worksheets for elementary classroom",
+      "date": "2026-07-24T10:25:58.899048"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Seasonal holiday math worksheets for kids (Christmas, Halloween)",
+      "date": "2026-07-24T10:25:59.012330"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Spot the difference puzzles for kids that double as coloring pages",
+      "date": "2026-07-24T10:25:59.126956"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Journal prompts for elementary students printable pdf",
+      "date": "2026-07-24T10:25:59.240314"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Spelling word games for kids weekly practice printable",
+      "date": "2026-07-24T10:25:59.354141"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Writing prompts for reluctant writers in elementary school",
+      "date": "2026-07-24T10:25:59.467858"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Rhyming word worksheets for preschool and kindergarten",
+      "date": "2026-07-24T10:25:59.584132"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Vocabulary journal pages for kids printable pdf",
+      "date": "2026-07-24T10:25:59.698430"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Word building activities for kids using letter tiles",
+      "date": "2026-07-24T10:25:59.811140"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Science themed coloring pages for curious kids",
+      "date": "2026-07-24T10:25:59.923952"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Nature mandala coloring sheets for kids and parents",
+      "date": "2026-07-24T10:26:00.037295"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Vehicles color by number worksheets for kids",
+      "date": "2026-07-24T10:26:00.154380"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Coloring pages for kids to practice staying in the lines",
+      "date": "2026-07-24T10:26:00.274740"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Holiday crafts for kids for Christmas and Halloween",
+      "date": "2026-07-24T10:26:00.407696"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Printable craft workbook for kids ages 4-8",
+      "date": "2026-07-24T10:26:00.543240"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Playdough mats for kids to build finger strength printable",
+      "date": "2026-07-24T10:26:00.664547"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Pencil control worksheets for beginning writers printable",
+      "date": "2026-07-24T10:26:00.777229"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Hole punch activities for kids fine motor practice",
+      "date": "2026-07-24T10:26:00.890550"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor dinosaur activities for kids that love fossils",
+      "date": "2026-07-24T10:26:01.003926"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Tracing letters worksheets for kindergarten fine motor",
+      "date": "2026-07-24T10:26:01.119452"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Problem solving board games for kids you can print",
+      "date": "2026-07-24T10:26:01.232229"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Multi step word problems worksheets for kids printable",
+      "date": "2026-07-24T10:26:01.345385"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Homework alternatives for elementary kids that still teach",
+      "date": "2026-07-24T10:26:01.458734"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Teaching critical thinking skills to kids through puzzles",
+      "date": "2026-07-24T10:26:01.572117"
     }
   ],
   "product": [
