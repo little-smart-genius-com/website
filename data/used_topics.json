@@ -153978,6 +153978,11 @@
       "slot": "keyword",
       "topic": "Logic puzzles for kids learning English as a second language",
       "date": "2026-07-26T16:36:21.202076"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Kids Math Equations",
+      "date": "2026-07-26T21:08:38.384061"
     }
   ],
   "product": [
@@ -154008,6 +154013,7 @@
     "Math Pack",
     "Activity Book",
     "Stickers Pack",
-    "Cookbook for Kids"
+    "Cookbook for Kids",
+    "Kids Math Equations"
   ]
 }
