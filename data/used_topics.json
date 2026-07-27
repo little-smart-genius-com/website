@@ -156670,6 +156670,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7",
       "date": "2026-07-27T12:47:57.294863"
+    },
+    {
+      "slot": "product",
+      "topic": "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.5",
+      "date": "2026-07-27T16:26:59.924145"
     }
   ],
   "product": [
@@ -156688,7 +156693,8 @@
     "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.6",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.5",
     "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.6",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Streets Vol.7",
+    "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.5"
   ],
   "freebie": [
     "CalcuDoku",
