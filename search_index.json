@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-07-27T21:26:07.102615",
-  "total_articles": 768,
+  "generated_at": "2026-07-28T06:40:46.853678",
+  "total_articles": 769,
   "articles": [
+    {
+      "title": "Math Journal Prompts: Neurodiversity-Inclusive Tools",
+      "slug": "math-journal-prompts-neurodiversity-inclusive-tools",
+      "date": "July 28, 2026",
+      "iso_date": "2026-07-28T06:40:31.386660",
+      "category": "Math Skills",
+      "author": "Sarah_Mitchell",
+      "author_name": "Sarah Mitchell",
+      "excerpt": "Discover printable math journal prompts for elementary students with ADHD, dyslexia, and autism. Downloadable PDFs for classroom and homeschool success.",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 9,
+      "url": "articles/math-journal-prompts-neurodiversity-inclusive-tools.html",
+      "keywords": [
+        "math journal prompts",
+        "printable math journal",
+        "prompts elementary students",
+        "journal prompts elementary",
+        "math journal",
+        "journal prompts",
+        "printable math",
+        "prompts elementary",
+        "elementary students",
+        "little smart genius"
+      ],
+      "word_count": 1904,
+      "slot": "keyword"
+    },
     {
       "title": "Counting Together: Parent-Child Activity for Number Sense",
       "slug": "counting-together-parent-child-activity-for-number-sense",
