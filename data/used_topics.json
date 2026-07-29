@@ -168987,6 +168987,11 @@
       "slot": "keyword",
       "topic": "Free printable logic challenge book for kids ages 6-10",
       "date": "2026-07-29T16:58:41.716990"
+    },
+    {
+      "slot": "freebie",
+      "topic": "ABC Path",
+      "date": "2026-07-29T21:06:31.336403"
     }
   ],
   "product": [
@@ -169026,6 +169031,7 @@
     "Cookbook for Kids",
     "Kids Math Equations",
     "Counting Numbers",
-    "Creative Pack"
+    "Creative Pack",
+    "ABC Path"
   ]
 }

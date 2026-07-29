@@ -1,7 +1,32 @@
 {
-  "generated_at": "2026-07-29T16:58:42.472692",
-  "total_articles": 776,
+  "generated_at": "2026-07-29T21:06:31.653596",
+  "total_articles": 777,
   "articles": [
+    {
+      "title": "Travel Time to Learning: ABC Path Fun on the Go",
+      "slug": "travel-time-to-learning-abc-path-fun-on-the-go",
+      "date": "July 29, 2026",
+      "iso_date": "2026-07-29T21:06:29.973015",
+      "category": "Language Arts",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
+      "excerpt": "Keep kids engaged during travel with ABC Path printable. Boosts letter sequencing, fine motor skills & focus. Zero prep. Download now!",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 7,
+      "url": "articles/travel-time-to-learning-abc-path-fun-on-the-go.html",
+      "keywords": [
+        "abc path",
+        "abc path kids",
+        "path kids",
+        "little smart genius",
+        "little smart",
+        "smart genius",
+        "time learning",
+        "letter sequencing"
+      ],
+      "word_count": 1409,
+      "slot": "freebie"
+    },
     {
       "title": "Free logic challenge for kids 6-10: Multi-sensory puzzles",
       "slug": "free-logic-challenge-for-kids-6-10-multi-sensory-puzzles",
