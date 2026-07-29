@@ -61,6 +61,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://littlesmartgenius.com/articles/free-logic-challenge-for-kids-6-10-multi-sensory-puzzles.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://littlesmartgenius.com/articles/thanksgiving-travel-boosting-fine-motor-skills-on-the-go.html</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -5564,6 +5570,12 @@
   </url>
   <url>
     <loc>https://littlesmartgenius.com/blog/page-86.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://littlesmartgenius.com/blog/page-87.html</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
