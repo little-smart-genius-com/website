@@ -173988,6 +173988,11 @@
       "slot": "keyword",
       "topic": "Hole punch activities for kids fine motor practice",
       "date": "2026-07-30T17:05:42.767012"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Word Scramble",
+      "date": "2026-07-30T21:23:58.590299"
     }
   ],
   "product": [
@@ -174030,6 +174035,7 @@
     "Kids Math Equations",
     "Counting Numbers",
     "Creative Pack",
-    "ABC Path"
+    "ABC Path",
+    "Word Scramble"
   ]
 }
