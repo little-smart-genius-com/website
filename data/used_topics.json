@@ -178995,6 +178995,11 @@
       "slot": "keyword",
       "topic": "Writing prompts for reluctant writers in elementary school",
       "date": "2026-07-31T17:18:34.875975"
+    },
+    {
+      "slot": "freebie",
+      "topic": "One Hundred Puzzle",
+      "date": "2026-07-31T21:23:57.349855"
     }
   ],
   "product": [
@@ -179040,6 +179045,7 @@
     "Counting Numbers",
     "Creative Pack",
     "ABC Path",
-    "Word Scramble"
+    "Word Scramble",
+    "One Hundred Puzzle"
   ]
 }
