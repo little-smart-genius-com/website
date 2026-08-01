@@ -184008,6 +184008,11 @@
       "slot": "keyword",
       "topic": "Printable logic mazes that teach cause and effect",
       "date": "2026-08-01T16:36:48.020932"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Tic Tac Toe",
+      "date": "2026-08-01T21:11:43.940039"
     }
   ],
   "product": [
@@ -184056,6 +184061,7 @@
     "Creative Pack",
     "ABC Path",
     "Word Scramble",
-    "One Hundred Puzzle"
+    "One Hundred Puzzle",
+    "Tic Tac Toe"
   ]
 }
