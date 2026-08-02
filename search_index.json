@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-08-02T16:37:33.983197",
-  "total_articles": 795,
+  "generated_at": "2026-08-02T21:09:28.869925",
+  "total_articles": 796,
   "articles": [
+    {
+      "title": "Mine Finder for Kids: A Day in the Life of Logical Thinking",
+      "slug": "mine-finder-for-kids-a-day-in-the-life-of-logical-thinking",
+      "date": "August 02, 2026",
+      "iso_date": "2026-08-02T21:09:26.700895",
+      "category": "Education",
+      "author": "Dr_Emily_Carter",
+      "author_name": "Dr. Emily Carter",
+      "excerpt": "Turn screen time into brain time! Discover how Mine Finder for kids boosts risk assessment and deductive reasoning. Free printable puzzle inside!",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 18,
+      "url": "articles/mine-finder-for-kids-a-day-in-the-life-of-logical-thinking.html",
+      "keywords": [
+        "mine finder",
+        "kids day life",
+        "little smart genius",
+        "day life",
+        "mine finder kids",
+        "day life guide",
+        "life guide little",
+        "guide little smart",
+        "kids day",
+        "little smart"
+      ],
+      "word_count": 3713,
+      "slot": "freebie"
+    },
     {
       "title": "Holiday Logic Puzzles for Kids: 7 Printable PDF Activities",
       "slug": "holiday-logic-puzzles-for-kids-7-printable-pdf-activities",

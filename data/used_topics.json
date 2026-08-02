@@ -189021,6 +189021,11 @@
       "slot": "keyword",
       "topic": "Holiday themed logic puzzles for kids printable pdf",
       "date": "2026-08-02T16:37:33.363692"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Mine Finder",
+      "date": "2026-08-02T21:09:28.422733"
     }
   ],
   "product": [
@@ -189072,6 +189077,7 @@
     "ABC Path",
     "Word Scramble",
     "One Hundred Puzzle",
-    "Tic Tac Toe"
+    "Tic Tac Toe",
+    "Mine Finder"
   ]
 }
