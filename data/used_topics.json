@@ -194028,6 +194028,11 @@
       "slot": "keyword",
       "topic": "Free printable logic challenge book for kids ages 6-10",
       "date": "2026-08-03T17:31:57.213601"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Four In A Row",
+      "date": "2026-08-03T21:18:12.890876"
     }
   ],
   "product": [
@@ -194082,6 +194087,7 @@
     "Word Scramble",
     "One Hundred Puzzle",
     "Tic Tac Toe",
-    "Mine Finder"
+    "Mine Finder",
+    "Four In A Row"
   ]
 }
