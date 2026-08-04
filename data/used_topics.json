@@ -199035,6 +199035,11 @@
       "slot": "keyword",
       "topic": "Tracing letters worksheets for kindergarten fine motor",
       "date": "2026-08-04T17:22:09.727804"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Hangman",
+      "date": "2026-08-04T21:27:33.345205"
     }
   ],
   "product": [
@@ -199092,6 +199097,7 @@
     "One Hundred Puzzle",
     "Tic Tac Toe",
     "Mine Finder",
-    "Four In A Row"
+    "Four In A Row",
+    "Hangman"
   ]
 }
