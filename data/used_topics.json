@@ -484,7 +484,21 @@
     "How to use puzzles as rewards instead of screen time",
     "Parent tips for making homework time less stressful",
     "How to build a low cost learning toolkit at home for kids",
-    "Problem solving board games for kids you can print"
+    "Problem solving board games for kids you can print",
+    "Beginner logic puzzles for 1st and 2nd graders printable",
+    "Deduction puzzles for kids to build reasoning skills",
+    "Logic puzzles for kids learning English as a second language",
+    "Skip counting worksheets for early learners printable",
+    "Rhyming word worksheets for preschool and kindergarten",
+    "Vocabulary journal pages for kids printable pdf",
+    "Science themed coloring pages for curious kids",
+    "Nature mandala coloring sheets for kids and parents",
+    "Vehicles color by number worksheets for kids",
+    "Playdough mats for kids to build finger strength printable",
+    "Pencil control worksheets for beginning writers printable",
+    "Fine motor dinosaur activities for kids that love fossils",
+    "Homework alternatives for elementary kids that still teach",
+    "Teaching critical thinking skills to kids through puzzles"
   ],
   "daily_log": [
     {
@@ -201536,6 +201550,76 @@
       "slot": "keyword",
       "topic": "Problem solving board games for kids you can print",
       "date": "2026-08-05T06:44:36.850297"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Beginner logic puzzles for 1st and 2nd graders printable",
+      "date": "2026-08-05T10:44:13.600930"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Deduction puzzles for kids to build reasoning skills",
+      "date": "2026-08-05T10:44:13.755528"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids learning English as a second language",
+      "date": "2026-08-05T10:44:13.912128"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Skip counting worksheets for early learners printable",
+      "date": "2026-08-05T10:44:14.067436"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Rhyming word worksheets for preschool and kindergarten",
+      "date": "2026-08-05T10:44:14.222444"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Vocabulary journal pages for kids printable pdf",
+      "date": "2026-08-05T10:44:14.376048"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Science themed coloring pages for curious kids",
+      "date": "2026-08-05T10:44:14.531341"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Nature mandala coloring sheets for kids and parents",
+      "date": "2026-08-05T10:44:14.685443"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Vehicles color by number worksheets for kids",
+      "date": "2026-08-05T10:44:14.841165"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Playdough mats for kids to build finger strength printable",
+      "date": "2026-08-05T10:44:14.998452"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Pencil control worksheets for beginning writers printable",
+      "date": "2026-08-05T10:44:15.153995"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor dinosaur activities for kids that love fossils",
+      "date": "2026-08-05T10:44:15.317026"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Homework alternatives for elementary kids that still teach",
+      "date": "2026-08-05T10:44:15.474129"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Teaching critical thinking skills to kids through puzzles",
+      "date": "2026-08-05T10:44:15.628349"
     }
   ],
   "product": [
