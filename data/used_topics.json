@@ -204042,6 +204042,11 @@
       "slot": "keyword",
       "topic": "Vehicles color by number worksheets for kids",
       "date": "2026-08-05T17:11:46.390050"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Crossword",
+      "date": "2026-08-05T21:25:32.801665"
     }
   ],
   "product": [
@@ -204102,6 +204107,7 @@
     "Tic Tac Toe",
     "Mine Finder",
     "Four In A Row",
-    "Hangman"
+    "Hangman",
+    "Crossword"
   ]
 }
