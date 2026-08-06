@@ -1,7 +1,34 @@
 {
-  "generated_at": "2026-08-05T21:25:33.254468",
-  "total_articles": 811,
+  "generated_at": "2026-08-06T06:48:31.919284",
+  "total_articles": 812,
   "articles": [
+    {
+      "title": "How to Teach Critical Thinking to Kids with Puzzles",
+      "slug": "how-to-teach-critical-thinking-to-kids-with-puzzles",
+      "date": "August 06, 2026",
+      "iso_date": "2026-08-06T06:48:29.871818",
+      "category": "Critical Thinking",
+      "author": "Lina_Bautista",
+      "author_name": "Lina Bautista",
+      "excerpt": "Discover how to teach critical thinking skills to kids through puzzles. Fun, age-appropriate strategies for ages 4-12 with visual learning tips.",
+      "image": "https://placehold.co/1200x675/F48C06/FFFFFF/png?text=Smart+Genius",
+      "reading_time": 17,
+      "url": "articles/how-to-teach-critical-thinking-to-kids-with-puzzles.html",
+      "keywords": [
+        "critical thinking",
+        "critical thinking skills",
+        "thinking skills kids",
+        "skills kids puzzles",
+        "kids puzzles",
+        "teaching critical thinking",
+        "thinking skills",
+        "skills kids",
+        "critical thinking kids",
+        "little smart genius"
+      ],
+      "word_count": 3506,
+      "slot": "keyword"
+    },
     {
       "title": "Crossword for Kids: The Teacher's Secret Weapon for Learning",
       "slug": "crossword-for-kids-the-teachers-secret-weapon-for-learning",
