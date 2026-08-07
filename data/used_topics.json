@@ -487,7 +487,18 @@
     "How to use puzzles as rewards instead of screen time",
     "Parent tips for making homework time less stressful",
     "How to build a low cost learning toolkit at home for kids",
-    "Science themed coloring pages for curious kids"
+    "Science themed coloring pages for curious kids",
+    "Beginner logic puzzles for 1st and 2nd graders printable",
+    "Deduction puzzles for kids to build reasoning skills",
+    "Logic puzzles for kids learning English as a second language",
+    "Skip counting worksheets for early learners printable",
+    "Rhyming word worksheets for preschool and kindergarten",
+    "Vocabulary journal pages for kids printable pdf",
+    "Nature mandala coloring sheets for kids and parents",
+    "Playdough mats for kids to build finger strength printable",
+    "Pencil control worksheets for beginning writers printable",
+    "Fine motor dinosaur activities for kids that love fossils",
+    "Homework alternatives for elementary kids that still teach"
   ],
   "daily_log": [
     {
@@ -209049,6 +209060,61 @@
       "slot": "keyword",
       "topic": "Science themed coloring pages for curious kids",
       "date": "2026-08-07T05:55:54.966940"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Beginner logic puzzles for 1st and 2nd graders printable",
+      "date": "2026-08-07T09:07:22.274740"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Deduction puzzles for kids to build reasoning skills",
+      "date": "2026-08-07T09:07:22.445266"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids learning English as a second language",
+      "date": "2026-08-07T09:07:22.613923"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Skip counting worksheets for early learners printable",
+      "date": "2026-08-07T09:07:22.783037"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Rhyming word worksheets for preschool and kindergarten",
+      "date": "2026-08-07T09:07:22.947359"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Vocabulary journal pages for kids printable pdf",
+      "date": "2026-08-07T09:07:23.113218"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Nature mandala coloring sheets for kids and parents",
+      "date": "2026-08-07T09:07:23.280285"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Playdough mats for kids to build finger strength printable",
+      "date": "2026-08-07T09:07:23.449353"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Pencil control worksheets for beginning writers printable",
+      "date": "2026-08-07T09:07:23.617770"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor dinosaur activities for kids that love fossils",
+      "date": "2026-08-07T09:07:23.792156"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Homework alternatives for elementary kids that still teach",
+      "date": "2026-08-07T09:07:23.955740"
     }
   ],
   "product": [
