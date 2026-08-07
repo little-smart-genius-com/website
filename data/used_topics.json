@@ -211555,6 +211555,11 @@
       "slot": "keyword",
       "topic": "Logic puzzles for kids learning English as a second language",
       "date": "2026-08-07T16:33:00.445915"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Coloring Page (Kids)",
+      "date": "2026-08-07T20:57:29.680643"
     }
   ],
   "product": [
@@ -211620,6 +211625,7 @@
     "Four In A Row",
     "Hangman",
     "Crossword",
-    "Maze for Kids"
+    "Maze for Kids",
+    "Coloring Page (Kids)"
   ]
 }
