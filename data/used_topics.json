@@ -206620,6 +206620,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception | Buildings Vol.D1",
       "date": "2026-08-06T11:47:42.812763"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Maze for Kids",
+      "date": "2026-08-07T01:04:57.437006"
     }
   ],
   "product": [
@@ -206682,6 +206687,7 @@
     "Mine Finder",
     "Four In A Row",
     "Hangman",
-    "Crossword"
+    "Crossword",
+    "Maze for Kids"
   ]
 }
