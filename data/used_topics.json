@@ -489,7 +489,16 @@
     "How to use puzzles as rewards instead of screen time",
     "Parent tips for making homework time less stressful",
     "How to build a low cost learning toolkit at home for kids",
-    "Playdough mats for kids to build finger strength printable"
+    "Playdough mats for kids to build finger strength printable",
+    "Deduction puzzles for kids to build reasoning skills",
+    "Logic puzzles for kids learning English as a second language",
+    "Skip counting worksheets for early learners printable",
+    "Rhyming word worksheets for preschool and kindergarten",
+    "Vocabulary journal pages for kids printable pdf",
+    "Nature mandala coloring sheets for kids and parents",
+    "Pencil control worksheets for beginning writers printable",
+    "Fine motor dinosaur activities for kids that love fossils",
+    "Homework alternatives for elementary kids that still teach"
   ],
   "daily_log": [
     {
@@ -216561,6 +216570,51 @@
       "slot": "freebie",
       "topic": "Bi-Lingual Matching",
       "date": "2026-08-08T20:47:38.035638"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Deduction puzzles for kids to build reasoning skills",
+      "date": "2026-08-08T21:57:05.029608"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Logic puzzles for kids learning English as a second language",
+      "date": "2026-08-08T21:57:05.201991"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Skip counting worksheets for early learners printable",
+      "date": "2026-08-08T21:57:05.376263"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Rhyming word worksheets for preschool and kindergarten",
+      "date": "2026-08-08T21:57:05.547286"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Vocabulary journal pages for kids printable pdf",
+      "date": "2026-08-08T21:57:05.716046"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Nature mandala coloring sheets for kids and parents",
+      "date": "2026-08-08T21:57:05.886428"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Pencil control worksheets for beginning writers printable",
+      "date": "2026-08-08T21:57:06.059530"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Fine motor dinosaur activities for kids that love fossils",
+      "date": "2026-08-08T21:57:06.230277"
+    },
+    {
+      "slot": "keyword",
+      "topic": "Homework alternatives for elementary kids that still teach",
+      "date": "2026-08-08T21:57:06.403819"
     }
   ],
   "product": [
