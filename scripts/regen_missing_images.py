@@ -14,10 +14,12 @@ from master_prompt import build_prompt as master_build_prompt
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 load_dotenv('.env')
 
+sys.stdout.reconfigure(encoding='utf-8')
+
 IMAGES_DIR = "images"
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 MODEL_CHAT = "deepseek-chat"
-GEN_MODEL = "zimage"
+GEN_MODEL = "klein"
 
 deepseek_key = os.getenv("DEEPSEEK_API_KEY")
 if not deepseek_key:
@@ -43,8 +45,9 @@ def get_working_pollinations_key():
             continue
     return None
 
-api_key = get_working_pollinations_key()
+api_key = os.getenv("POLLINATIONS_API_KEY_1") or get_working_pollinations_key()
 poll_headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
+print(f"Using Pollinations API Key starting with: {api_key[:5] if api_key else 'None'}")
 
 # ── Art Director (same as fix_images.py) ──
 IMAGE_ROLES = [
@@ -118,7 +121,7 @@ def center_crop_resize(img, tw, th):
 
 def generate_image(prompt, filename, retries=6):
     safe = quote(re.sub(r'[^a-zA-Z0-9 ,.\-]', '', prompt))
-    fallbacks = ["zimage", "flux", "gptimage"]
+    fallbacks = ["klein"]
     for attempt in range(retries):
         model = GEN_MODEL if attempt == 0 else fallbacks[attempt % len(fallbacks)]
         url = f"https://gen.pollinations.ai/image/{safe}?model={model}&width=1200&height=675&nologo=true&enhance=true"
@@ -133,6 +136,8 @@ def generate_image(prompt, filename, retries=6):
                 kb = os.path.getsize(out) // 1024
                 print(f"    ✅ {filename} ({kb}KB)")
                 return True
+            else:
+                print(f"    ❌ Failed: {res.status_code} - {res.text[:100]}")
         except Exception as e:
             print(f"    ❌ Error: {e}")
         time.sleep(3)

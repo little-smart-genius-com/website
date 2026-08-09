@@ -24,7 +24,7 @@ IMAGES_DIR = os.path.join(PROJECT_ROOT, 'images')
 load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
 
 # === EXACT SAME CONFIG AS V6 ===
-POLLINATIONS_MODEL = "klein-large"
+POLLINATIONS_MODEL = "klein"
 IMAGE_WIDTH, IMAGE_HEIGHT = 1200, 675
 
 # Load all API keys (primary + backup)

@@ -180,13 +180,13 @@ ARTICLE TYPE: Informational SEO pillar content (2000+ words)
   "primary_keyword": "{keyword}",
   "lsi_keywords": {lsi_keywords[:6]},
   "target_keyword_density": "1.5-2.5%",
-  "cover_concept": "Detailed visual: [SCENE] + [SUBJECTS] + [ACTION] + [MOOD] + [COLORS]. Example: 'A bright, warm classroom with a 6-year-old girl joyfully solving a colorful puzzle at her desk, sunlight streaming through windows, pastel yellows and soft blues, 3D Pixar-style illustration, depth of field, ultra-detailed'",
+  "cover_concept": "Detailed visual (MAX 15 WORDS): [SCENE] + [SUBJECTS] + [ACTION] + [MOOD] + [COLORS]",
   "sections": [
     {{
       "h2": "Section title — MUST include keyword variation or LSI keyword, use question format when natural",
       "h3_subsections": ["Subsection 1 (specific, actionable)", "Subsection 2", "Subsection 3"],
       "key_points": ["Detailed point with example", "Point with statistic or research reference", "Actionable tip with age-specific advice"],
-      "image_concept": "UNIQUE visual concept for this section — different composition, subject, and dominant color from other sections. Format: [SCENE] + [SUBJECTS] + [ACTION] + [STYLE]",
+      "image_concept": "UNIQUE visual concept (MAX 10 WORDS): [SCENE] + [SUBJECTS] + [ACTION]",
       "internal_link_opportunity": "Phrase that could naturally link to freebies.html, products.html, or blog.html",
       "anecdote_seed": "A concrete mini-scenario the writer should develop (e.g., 'A 6-year-old girl completing a puzzle in 10 minutes and asking for more')",
       "rhetorical_question": "A natural question to include in this section (e.g., 'But what makes this different from regular worksheets?')",

@@ -24,6 +24,8 @@ from master_prompt import build_prompt as master_build_prompt
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 load_dotenv('.env')
 
+sys.stdout.reconfigure(encoding='utf-8')
+
 # ── Directories ──
 DATA_DIR = "data"
 ARCHIVE_DIR = os.path.join(DATA_DIR, "archive_posts")
@@ -58,8 +60,9 @@ def get_working_pollinations_key():
             continue
     return None
 
-api_key = get_working_pollinations_key()
+api_key = os.getenv("POLLINATIONS_API_KEY_1") or get_working_pollinations_key()
 headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
+print(f"Using Pollinations API Key starting with: {api_key[:5] if api_key else 'None'}")
 
 
 # ── DEEPSEEK ART DIRECTOR ──
@@ -142,10 +145,10 @@ def center_crop_resize(img, target_w, target_h):
 
 def generate_image(prompt, filename, model="zimage", retries=3):
     safe_prompt = quote(re.sub(r'[^a-zA-Z0-9 ,.-]', '', prompt))
-    fallback_models = ["zimage", "flux", "gptimage"]
+    fallback_models = ["klein"]
     
     if model not in fallback_models:
-        model = "zimage"
+        model = "klein"
         
     for attempt in range(retries):
         current_model = model if attempt == 0 else fallback_models[attempt % len(fallback_models)]
@@ -161,6 +164,8 @@ def generate_image(prompt, filename, model="zimage", retries=3):
                 size_kb = os.path.getsize(out_path) // 1024
                 print(f"  ✅ Created {filename} ({size_kb}KB)")
                 return f"images/{filename}"
+            else:
+                print(f"  ❌ Failed: {res.status_code} - {res.text[:100]}")
         except Exception as e:
             print(f"  ❌ Error: {e}")
         time.sleep(2)

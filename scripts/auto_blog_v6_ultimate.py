@@ -973,16 +973,8 @@ Now, WRITE YOUR ASSIGNED SECTIONS ONLY. Remember: varied paragraph lengths, conv
             # Use V4's working URL format: gen.pollinations.ai/image/
             url = f"https://gen.pollinations.ai/image/{encoded_prompt}"
             
-            # Cascade models: zimage -> gptimage -> flux
-            if attempt < 3:
-                current_model = "zimage"
-            elif attempt < 6:
-                current_model = "gptimage"
-            else:
-                current_model = "flux"
-                
-            if attempt in (3, 6):
-                self.logger.warning(f"Image {idx+1}: switching to fallback model '{current_model}'", 3)
+            # Use requested model
+            current_model = "klein"
                 
             params = {
                 "width": width, "height": height, "seed": seed,
