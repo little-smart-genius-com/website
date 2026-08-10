@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-09T23:55:55.973531",
-  "total_articles": 739,
+  "generated_at": "2026-08-09T20:47:20.890000",
+  "total_articles": 827,
   "articles": [
     {
       "title": "Cryptogram for Kids: Brain-Boosting Puzzle vs. Word Searches",
@@ -17809,27 +17809,16 @@
       "slug": "how-word-search-puzzles-transform-reading-skills-in-children",
       "date": "April 13, 2026",
       "iso_date": "2026-04-13T15:24:31.253996",
-      "category": "Word Search Activity Worksheet",
-      "author": "Dr_Emily_Carter",
-      "author_name": "Dr. Emily Carter",
+      "category": "Education",
+      "author": "LSG_Admin",
+      "author_name": "Little Smart Genius",
       "excerpt": "Discover how Thanksgiving word searches boost vocabulary and reading comprehension. Get our worksheet collection for measurable results today!",
-      "image": "images/how-word-search-puzzles-transform-reading-skills-in-children-cover-1776093447.webp",
-      "reading_time": 13,
+      "image": "images/og/how-word-search-puzzles-transform-reading-skills-in-children.jpg",
+      "reading_time": 26,
       "url": "articles/how-word-search-puzzles-transform-reading-skills-in-children.html",
-      "keywords": [
-        "word search",
-        "word search puzzles",
-        "search puzzles reading",
-        "puzzles reading skills",
-        "search puzzles",
-        "reading skills",
-        "word searches",
-        "puzzles reading",
-        "little smart genius",
-        "year olds"
-      ],
-      "word_count": 2681,
-      "slot": "product"
+      "keywords": [],
+      "word_count": 5358,
+      "slot": "keyword"
     },
     {
       "title": "Best Ocean Animals Coloring Pages for Kids Printable",
@@ -19352,7 +19341,7 @@
       "author": "Rachel_Nguyen",
       "author_name": "Rachel Nguyen",
       "excerpt": "Discover fun sticker activities that strengthen parent-child bonds and build essential skills. Download free printable stickers for joyful playtime!",
-      "image": "images/strengthen-your-bond-with-free-play-stickers.webp",
+      "image": "images/strengthen-your-bond-with-free-play-stickers-cover-1775076952.webp",
       "reading_time": 14,
       "url": "articles/strengthen-your-bond-with-free-play-stickers.html",
       "keywords": [
@@ -20393,7 +20382,7 @@
       "category": "Language Arts",
       "author": "Rachel_Nguyen",
       "author_name": "Rachel Nguyen",
-      "excerpt": "Discover how to create a learning routine for kids at home with our gamified system. Turn education into scored challenges that boost cognitive skills....",
+      "excerpt": "Discover how to create a learning routine for kids at home with our gamified system. Turn education into scored challenges that boost cognitive skills. Start your child's achievement journey today!",
       "image": "images/best-how-to-create-a-learning-routine-for-kids-at-home-cover-1774256883.webp",
       "reading_time": 14,
       "url": "articles/best-how-to-create-a-learning-routine-for-kids-at-home.html",
