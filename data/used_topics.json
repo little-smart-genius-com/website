@@ -231595,6 +231595,11 @@
       "slot": "keyword",
       "topic": "Fine motor dinosaur activities for kids that love fossils",
       "date": "2026-08-13T16:24:43.608061"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Logic Pack",
+      "date": "2026-08-13T20:58:30.352309"
     }
   ],
   "product": [
@@ -231672,6 +231677,7 @@
     "Coloring Page (Kids)",
     "Bi-Lingual Matching",
     "Cryptogram",
-    "Logic Puzzle (Adult)"
+    "Logic Puzzle (Adult)",
+    "Logic Pack"
   ]
 }
