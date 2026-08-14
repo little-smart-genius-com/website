@@ -236590,6 +236590,11 @@
       "slot": "keyword",
       "topic": "Logic puzzles for kids learning English as a second language",
       "date": "2026-08-14T16:16:02.782081"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Tic Tac Logic",
+      "date": "2026-08-14T20:45:17.858740"
     }
   ],
   "product": [
@@ -236670,6 +236675,7 @@
     "Bi-Lingual Matching",
     "Cryptogram",
     "Logic Puzzle (Adult)",
-    "Logic Pack"
+    "Logic Pack",
+    "Tic Tac Logic"
   ]
 }
