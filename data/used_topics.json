@@ -246565,6 +246565,11 @@
       "slot": "keyword",
       "topic": "How to build a low cost learning toolkit at home for kids",
       "date": "2026-08-15T15:47:14.382944"
+    },
+    {
+      "slot": "freebie",
+      "topic": "Shikaku",
+      "date": "2026-08-15T20:38:32.610713"
     }
   ],
   "product": [
@@ -246648,6 +246653,7 @@
     "Cryptogram",
     "Logic Puzzle (Adult)",
     "Logic Pack",
-    "Tic Tac Logic"
+    "Tic Tac Logic",
+    "Shikaku"
   ]
 }
