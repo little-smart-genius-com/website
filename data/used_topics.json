@@ -244070,6 +244070,11 @@
       "slot": "product",
       "topic": "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3",
       "date": "2026-08-15T09:54:33.111901"
+    },
+    {
+      "slot": "product",
+      "topic": "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.3",
+      "date": "2026-08-15T14:27:12.479772"
     }
   ],
   "product": [
@@ -244121,7 +244126,8 @@
     "Spot the Difference | Picture Puzzles & Brain Games | School Classroom Vol.8",
     "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.1",
     "Happy Thanksgiving Coloring Page | Coloring Pages Thanksgiving | Turkey Vol.3",
-    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3"
+    "Spot the Difference | Picture Puzzle Visual Perception Activity | Rooms Vol.3",
+    "Thanksgiving Word Search Adventure | Fun Activity Worksheet Collection | Vol.3"
   ],
   "freebie": [
     "CalcuDoku",
